@@ -5,6 +5,7 @@ import React, {
   Dispatch,
   SetStateAction,
 } from 'react';
+import { GlobalLayoutProps } from '../interfaces/globalLayoutProps';
 
 interface AbaSelecionada {
   indice: number;
@@ -31,7 +32,7 @@ const CadastroComplementarContext =
     {} as CadastroComplementarContextProps,
   );
 
-export const CadastroComplementarProvider: React.FC = ({ children }) => {
+export const CadastroComplementarProvider: React.FC<GlobalLayoutProps>= ({ children }) => {
   const [abaSelecionada, setAbaSelecionada] = useState<AbaSelecionada>({
     indice: 0,
     porcentagem: 50,

@@ -19,6 +19,7 @@ import {
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { IPacoteInfo, IServicoInfo } from '../interfaces/IServicoInfo';
+import { GlobalLayoutProps } from '../interfaces/globalLayoutProps';
 
 interface CarrinhoConsumidorContextProps {
   idFornecedor?: number;
@@ -40,7 +41,7 @@ const CarrinhoConsumidorContext = createContext<CarrinhoConsumidorContextProps>(
   {} as CarrinhoConsumidorContextProps,
 );
 
-export const CarrinhoConsumidorProvider: React.FC = ({ children }) => {
+export const CarrinhoConsumidorProvider: React.FC<GlobalLayoutProps> = ({ children }) => {
   const [idFornecedor, setIdFornecedor] = useState<number | undefined>(
     undefined,
   );

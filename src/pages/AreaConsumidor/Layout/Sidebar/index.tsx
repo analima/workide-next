@@ -2,13 +2,17 @@ import { Content, NavItem, Nav, NavLink } from './style';
 
 import { Dropdown as DropdownMenu } from './Dropdown';
 import { useAuth } from '../../../../contexts/auth';
+import { IPessoa } from '../../../../interfaces/IPessoa';
 
 interface ISidebar {
   open: boolean;
 }
 
 export function Sidebar({ open }: ISidebar) {
-  const { user } = useAuth();
+  let { user } = useAuth();
+  if(!user){
+    user = {} as IPessoa;
+  }
 
   return (
     <Content open={open}>

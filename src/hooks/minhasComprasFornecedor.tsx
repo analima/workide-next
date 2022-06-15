@@ -23,6 +23,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { pagamentos_api } from '../services/pagamentos_api';
 import { useAuth } from '../contexts/auth';
 import { handleFormatDocument } from '../helpers/formatsHelper';
+import { GlobalLayoutProps } from '../interfaces/globalLayoutProps';
 
 interface ICompraProps {
   descricao: string;
@@ -64,7 +65,7 @@ const MinhasComprasFornecedorContext =
     {} as MinhasComprasFornecedorContextProps,
   );
 
-export const MinhasComprasFornecedorProvider: React.FC = ({ children }) => {
+export const MinhasComprasFornecedorProvider: React.FC<GlobalLayoutProps> = ({ children }) => {
   const [id, setId] = useState<number | undefined>(undefined);
   const [compras, setCompras] = useState<ICompraProps[]>([]);
   const [comprasSemFiltro, setComprasSemFiltro] = useState<ICompraProps[]>([]);

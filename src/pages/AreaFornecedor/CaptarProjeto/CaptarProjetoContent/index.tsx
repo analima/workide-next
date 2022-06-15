@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Accordion, Col, Row } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
+import { useRouter } from 'next/router'
 import { Spacer } from '../../../../components/Spacer';
+
 
 import { Layout } from '../../Layout';
 import {
@@ -22,12 +24,19 @@ import { Filtro } from '../Filtro';
 import { Ordenacao } from '../Ordenacao';
 import { SearchInput } from '../../../../components/Form/SearchInput';
 import { useAuth } from '../../../../contexts/auth';
+import { IPessoa } from '../../../../interfaces/IPessoa';
+
+
 
 const CaptarProjetoContent: React.FC = () => {
-  const history = useHistory();
   const projetosRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const { user } = useAuth();
+  let { user } = useAuth();
+  const history = useHistory();
+  const router = useRouter()
+  if(!user){
+    user = {} as IPessoa;
+  }
   const {
     control,
     watch,
@@ -44,7 +53,7 @@ const CaptarProjetoContent: React.FC = () => {
     projetos,
     projetosFavoritos,
     obterProjetos,
-    //obterProjetosExclusivos,
+    obterProjetosExclusivos,
     obterProjetosFavoritos,
     projetosExclusivos,
     loadingProjetos,
@@ -94,25 +103,33 @@ const CaptarProjetoContent: React.FC = () => {
   useEffect(() => {
     obterProjetos();
     obterProjetosFavoritos();
-    //obterProjetosExclusivos();
+    obterProjetosExclusivos();
 
     // eslint-disable-next-line
   }, [
     obterProjetos,
-    //obterProjetosExclusivos,
+    obterProjetosExclusivos,
     obterProjetosFavoritos,
     toggleVolutarios,
   ]);
 
+  function goHome(){
+    router.back();
+   }
+
   return (
     <Content ref={contentRef}>
       <Layout
-        titulo={''}
+        titulo={
+          user.id_pessoa && !!projetosExclusivos.length
+            ? 'Oportunidades enviadas para você'
+            : ''
+        }
         hinddenOportunidades={true}
       >
         {!!projetosExclusivos.length && <Spacer size={32} />}
 
-        {/* {user.id_pessoa && (
+        {user.id_pessoa && (
           <Row>
             <Col lg={12}>
               {!!projetosExclusivos.length && !loadingProjetos && (
@@ -135,7 +152,7 @@ const CaptarProjetoContent: React.FC = () => {
               )}
             </Col>
           </Row>
-        )} */}
+        )}
 
         <Titulo titulo="Encontre uma oportunidade" />
 
@@ -201,7 +218,7 @@ const CaptarProjetoContent: React.FC = () => {
 
             <Row>
               <Col lg={12}>
-                {!!projetos.length && !favorito && !loadingProjetos && (
+                 {!!projetos.length && !favorito && !loadingProjetos && (
                   <Row>
                     {projetos.map((projeto, index) => (
                       <Col key={index} lg={12} className="mb-3">
@@ -209,9 +226,9 @@ const CaptarProjetoContent: React.FC = () => {
                           tipo="normal"
                           projeto={projeto}
                           totalFavoritos={projetosFavoritos.length}
-                        />
+                        /> 
                       </Col>
-                    ))}
+                    ))} 
 
                     <Col lg={12} className="mt-3">
                       <Paginacao
@@ -222,7 +239,7 @@ const CaptarProjetoContent: React.FC = () => {
                       />
                     </Col>
                   </Row>
-                )}
+                )} 
                 {favorito && !!projetosFavoritos.length && (
                   <Row>
                     {projetosFavoritos.map((projeto, index) => (
@@ -246,12 +263,13 @@ const CaptarProjetoContent: React.FC = () => {
 
         <Row>
           <Col lg={12} className="d-flex justify-content-end">
-            <Button onClick={() => history.goBack()}>VOLTAR</Button>
+            <Button onClick={() => goHome()}>VOLTAR</Button>
           </Col>
         </Row>
       </Layout>
     </Content>
   );
 }
+
 
 export default CaptarProjetoContent;

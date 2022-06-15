@@ -1,4 +1,3 @@
-import { KeyboardEventHandler } from 'react';
 import { BaseSyntheticEvent, useCallback, useRef, useState } from 'react';
 import { Controller } from 'react-hook-form';
 import { IoMdSearch } from 'react-icons/io';
@@ -33,8 +32,8 @@ export function SearchInput({
   }, []);
 
   const handleEnterKey = useCallback(
-    (event: React.KeyboardEvent<HTMLDivElement>) => {
-      if (event.key === 'Enter' && onClick) onClick(event as any);
+    event => {
+      if (event.key === 'Enter' && onClick) onClick(event);
     },
     [onClick],
   );
@@ -54,7 +53,7 @@ export function SearchInput({
             placeholder={placeholder}
             onBlur={handleInputBlur}
             onChange={onChange}
-            onKeyDown={handleEnterKey}
+            onKeyUp={handleEnterKey}
           />
         )}
       />

@@ -5,6 +5,7 @@ import React, {
   Dispatch,
   SetStateAction,
 } from 'react';
+import { GlobalLayoutProps } from '../interfaces/globalLayoutProps';
 
 interface AbaSelecionada {
   indice: number;
@@ -29,7 +30,7 @@ const CadastroServicoContext = createContext<CadastroServicoContextProps>(
   {} as CadastroServicoContextProps,
 );
 
-export const CadastroServicoProvider: React.FC = ({ children }) => {
+export const CadastroServicoProvider: React.FC<GlobalLayoutProps> = ({ children }) => {
   const [abaSelecionada, setAbaSelecionada] = useState<AbaSelecionada>({
     indice: 0,
     porcentagem: 0,

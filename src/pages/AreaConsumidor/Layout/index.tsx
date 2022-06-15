@@ -7,6 +7,7 @@ import { Rodape } from '../../../components/Rodape';
 import { Spacer } from '../../../components/Spacer';
 import { Titulo } from '../../../components/Titulo';
 import { useAuth } from '../../../contexts/auth';
+import { IPessoa } from '../../../interfaces/IPessoa';
 import { HeaderPublico } from './HeaderPublico';
 import { Navbar } from './Navbar';
 import { Sidebar } from './Sidebar';
@@ -35,7 +36,10 @@ export function Layout({
     sidebar && setSidebar(!sidebar);
   }
 
-  const { user } = useAuth();
+  let { user } = useAuth();
+  if(!user){
+    user = {} as IPessoa;
+  }
 
   return (
     <Content>

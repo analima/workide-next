@@ -3,7 +3,7 @@ import userIcon from '../../assets/user_circle.svg';
 import separator from '../../assets/separador.svg';
 import logOutIcon from '../../assets/logout.svg';
 import { ReactComponent as Center } from '../../assets/center.svg';
-
+import Image from 'next/image'
 import { useAuth } from '../../contexts/auth';
 import { NavCustom, ButtonToggle, NavLink } from './style';
 import Logo from '../../assets/logo.svg';
@@ -107,14 +107,51 @@ export function Menu({
               className="logo"
               onClick={() => history.push('/', { noRedirect: true })}
             >
-              <img src={Logo} alt="Gyan" />
+            
+              {/* <img src="/logo.svg" alt="Gyan" />  */}
+              <Image src="/logo.svg" alt="Gyan" />
             </Navbar.Brand>
 
-           
+            {!user.visitante && user.email && !hiddenCenterMenu && (
+              <Center
+                className="icone-center"
+                onClick={() => {
+                  setShowModal(!showModal);
+                }}
+              />
+            )}
 
             <Navbar.Toggle aria-controls="navbarScroll" />
 
-            
+            {user.email ? (
+              <>
+                <Navbar.Collapse
+                  id="navbarScroll"
+                  className="justify-content-end"
+                >
+                  <img className="separator" src={separator} alt="perfil" />
+                  <Nav.Link
+                    className="container-profile"
+                    onClick={() => history.push('/persona')}
+                  >
+                    <img className="profile" src={userIcon} alt="perfil" />
+                    {name}
+                  </Nav.Link>
+                  <Nav.Link
+                    className="container-log-out"
+                    href="#"
+                    onClick={() => {
+                      history.push('/');
+                      signOut();
+                      apagarLocalStorage();
+                    }}
+                  >
+                    <img src={logOutIcon} alt="Sair" />
+                    <span className="log-out-text">Sair</span>
+                  </Nav.Link>
+                </Navbar.Collapse>
+              </>
+            ) : (
               <Navbar.Collapse
                 id="navbarScroll"
                 className="justify-content-end"
@@ -186,7 +223,7 @@ export function Menu({
                 </Nav.Link>
                */}
               </Navbar.Collapse>
-            
+            )}
           </Container>
         </Navbar>
       </NavCustom>

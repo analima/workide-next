@@ -17,6 +17,7 @@ import {
 } from 'react-hook-form';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { GlobalLayoutProps } from '../interfaces/globalLayoutProps';
 
 interface PropostaConsumidorContextProps {
   idProposta?: number;
@@ -135,7 +136,7 @@ const PropostaConsumidorContext = createContext<PropostaConsumidorContextProps>(
   {} as PropostaConsumidorContextProps,
 );
 
-export const PropostaConsumidorProvider: React.FC = ({ children }) => {
+export const PropostaConsumidorProvider: React.FC<GlobalLayoutProps> = ({ children }) => {
   const [idProposta, setIdProposta] = useState<number | undefined>(undefined);
   const [mensagemDica, setMensagemDica] = useState('');
   const [dica, setDica] = useState(false);

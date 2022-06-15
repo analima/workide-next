@@ -20,6 +20,7 @@ import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { IFeedback } from '../interfaces/IFeedback';
 import { geral_api } from '../services/geral_api';
+import { GlobalLayoutProps } from '../interfaces/globalLayoutProps';
 
 interface FeedbackAdministracaoContextProps {
   id?: number;
@@ -72,7 +73,7 @@ const FeedbackAdministracaoContext =
     {} as FeedbackAdministracaoContextProps,
   );
 
-export const FeedbackAdministracaoProvider: React.FC = ({ children }) => {
+export const FeedbackAdministracaoProvider: React.FC<GlobalLayoutProps> = ({ children }) => {
   const [id, setId] = useState<number | undefined>(undefined);
   const [feedbacks, setFeedbacks] = useState<IFeedback[]>([] as IFeedback[]);
   const [pages, setPages] = useState<number>(1);

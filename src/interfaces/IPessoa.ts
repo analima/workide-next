@@ -3,7 +3,7 @@ export interface IPessoa {
   nome?: string;
   email?: string;
   id_usuario?: number;
-  id_pessoa?: number;
+  id_pessoa?: number | undefined;
   tipo?: 'PF' | 'PJ';
   ong?: boolean;
   nome_tratamento?: string;

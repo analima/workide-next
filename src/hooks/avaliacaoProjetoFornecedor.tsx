@@ -18,6 +18,7 @@ import {
 } from 'react-hook-form';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { GlobalLayoutProps } from '../interfaces/globalLayoutProps';
 
 interface AvaliacaoProjetoFornecedorContextProps {
   idProjeto?: number;
@@ -59,7 +60,7 @@ const AvaliacaoProjetoFornecedorContext =
     {} as AvaliacaoProjetoFornecedorContextProps,
   );
 
-export const AvaliacaoProjetoFornecedorProvider: React.FC = ({ children }) => {
+export const AvaliacaoProjetoFornecedorProvider: React.FC<GlobalLayoutProps> = ({ children }) => {
   const [idProjeto, setIdProjeto] = useState<number | undefined>(undefined);
   const [mensagemDica, setMensagemDica] = useState('');
   const [dica, setDica] = useState(false);

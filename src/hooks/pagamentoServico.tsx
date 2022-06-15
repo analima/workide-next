@@ -18,6 +18,7 @@ import {
 } from 'react-hook-form';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { GlobalLayoutProps } from '../interfaces/globalLayoutProps';
 
 interface PagamentoServicoContextProps {
   control: Control<FieldValues, object>;
@@ -37,7 +38,7 @@ const PagamentoServicoContext = createContext<PagamentoServicoContextProps>(
   {} as PagamentoServicoContextProps,
 );
 
-export const PagamentoServicoProvider: React.FC = ({ children }) => {
+export const PagamentoServicoProvider: React.FC<GlobalLayoutProps> = ({ children }) => {
   const [parcelas, setParcelas] = useState(1);
   const [valorTotalCartao, setValorTotalCartao] = useState(0);
   const schema = Yup.object().shape({});

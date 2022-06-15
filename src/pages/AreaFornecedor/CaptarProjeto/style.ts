@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { AZUL, BRANCO, LARANJA } from '../../../styles/variaveis';
 
-export const Content = styled.section``;
+export const Content = styled.section`
+`;
 
 export const CardContent = styled.div`
   display: flex;

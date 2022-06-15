@@ -23,6 +23,7 @@ import { consultas_api } from '../services/consultas_api';
 import { oportunidades_api } from '../services/oportunidades_api';
 import { useAuth } from '../contexts/auth';
 import { GlobalLayoutProps } from '../interfaces/globalLayoutProps';
+import { IPessoa } from '../interfaces/IPessoa';
 
 interface CaptarProjetoFornecedorContextProps {
   id?: number;
@@ -47,7 +48,7 @@ interface CaptarProjetoFornecedorContextProps {
   projetosExclusivos: ProjectType[];
   projetosFavoritos: ProjectType[];
   obterProjetos: () => void;
-  //obterProjetosExclusivos: () => void;
+  obterProjetosExclusivos: () => void;
   obterProjetosFavoritos: () => void;
   loadingProjetos: boolean;
   loadingProjetosExclusivos: boolean;
@@ -140,9 +141,11 @@ export const CaptarProjetoFornecedorProvider: React.FC<GlobalLayoutProps> = ({ c
   const [mudar, setMudar] = useState(false);
   const [causas, setCausas] = useState<CausaProp[]>([]);
 
-  const { user } = useAuth();
+  let { user } = useAuth();
   const schema = Yup.object().shape({});
-
+    if(!user){
+      user = {} as IPessoa;
+    }
   const {
     control,
     handleSubmit,
@@ -157,6 +160,7 @@ export const CaptarProjetoFornecedorProvider: React.FC<GlobalLayoutProps> = ({ c
   });
 
   const obterProjetos = useCallback(async () => {
+    
     setLoadingProjetos(true);
     const formData: {
       [key: string]: string | string[] | number | number[] | Date;
@@ -210,6 +214,7 @@ export const CaptarProjetoFornecedorProvider: React.FC<GlobalLayoutProps> = ({ c
         ...formData,
       },
     );
+    console.log('ta rolando? ',data)
     setProjetos(data.values);
     setTotalPaginas(data.pages);
     setLoadingProjetos(false);
@@ -255,37 +260,39 @@ export const CaptarProjetoFornecedorProvider: React.FC<GlobalLayoutProps> = ({ c
       console.error(error.response);
     }
   }, []);
+  
+  const obterProjetosExclusivos = useCallback(async () => {
+    
+    if (!user.id_pessoa) return;
+    setLoadingProjetosExclusivos(true);
+    
+    const { data } = await oportunidades_api.get(`/projetos/selecionados`);
+    setProjetosExclusivos(
+      data.values
+        .filter(
+          (project: any) =>
+            project.status.codigo === 'RECEBENDO_PROPOSTAS' ||
+            project.status.codigo === 'PAUSADO',
+        )
+        .map((project: any) => ({
+          id: project.id,
+          nome: project.nome,
+          descricao: project.descricao,
+          subareas: project.subareas.map((subarea: any) => subarea.descricao),
+          precoMinimo: project.precoMinimo,
+          precoMaximo: project.precoMaximo,
+          escopo: project.escopo,
+          proBono: project.proBono,
+          totalHoras: project.totalHoras,
+          idPessoaConsumidor: project.idPessoaConsumidor,
+          dataHoraCriacao: project.dataHoraCriacao,
+        })),
+    );
 
-  // const obterProjetosExclusivos = useCallback(async () => {
-  //   if (!user.id_pessoa) return;
-  //   setLoadingProjetosExclusivos(true);
-
-  //   const { data } = await oportunidades_api.get(`/projetos/selecionados`);
-  //   setProjetosExclusivos(
-  //     data.values
-  //       .filter(
-  //         (project: any) =>
-  //           project.status.codigo === 'RECEBENDO_PROPOSTAS' ||
-  //           project.status.codigo === 'PAUSADO',
-  //       )
-  //       .map((project: any) => ({
-  //         id: project.id,
-  //         nome: project.nome,
-  //         descricao: project.descricao,
-  //         subareas: project.subareas.map((subarea: any) => subarea.descricao),
-  //         precoMinimo: project.precoMinimo,
-  //         precoMaximo: project.precoMaximo,
-  //         escopo: project.escopo,
-  //         proBono: project.proBono,
-  //         totalHoras: project.totalHoras,
-  //         idPessoaConsumidor: project.idPessoaConsumidor,
-  //         dataHoraCriacao: project.dataHoraCriacao,
-  //       })),
-  //   );
-
-  //   setTotalPaginasExclusivo(data.pages);
-  //   setLoadingProjetosExclusivos(false);
-  // }, [user.id_pessoa]);
+    setTotalPaginasExclusivo(data.pages);
+    setLoadingProjetosExclusivos(false);
+   
+  }, [user.id_pessoa]);
 
   const proximaPagina = () => {
     setPagina(pagina + 1);
@@ -332,7 +339,7 @@ export const CaptarProjetoFornecedorProvider: React.FC<GlobalLayoutProps> = ({ c
         projetosExclusivos,
         projetosFavoritos,
         obterProjetos,
-        //obterProjetosExclusivos,
+        obterProjetosExclusivos,
         obterProjetosFavoritos,
         loadingProjetos,
         loadingProjetosExclusivos,

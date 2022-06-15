@@ -9,7 +9,7 @@ import { pessoas_api } from '../services/pessoas_api';
 import { useAuth } from '../contexts/auth';
 import { GlobalLayoutProps } from '../interfaces/globalLayoutProps';
 
-interface PlanLimits {
+export interface PlanLimits {
   id: number;
   idPlano: number;
   seloAssinatura: boolean;

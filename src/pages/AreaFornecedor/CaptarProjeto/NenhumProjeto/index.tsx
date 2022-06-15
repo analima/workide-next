@@ -1,6 +1,6 @@
 import { ContainerAntonio, Content, TextoNenhumProjeto } from './style';
 import { Card } from '../../../../components/Card';
-import { ReactComponent as Antonio } from '../../../../assets/antonio-full.svg';
+import Antonio  from '../../../../assets/antonio-full.svg';
 import { LARANJA } from '../../../../styles/variaveis';
 import { Titulo } from '../../../../components/Titulo';
 import { Col, Row } from 'react-bootstrap';
@@ -51,7 +51,8 @@ export function NenhumProjeto({ tipo }: ProjetoProps) {
           </Col>
           <Col lg={4}>
             <ContainerAntonio>
-              <Antonio />
+              <img src={Antonio} alt="" />
+              
             </ContainerAntonio>
           </Col>
         </Row>

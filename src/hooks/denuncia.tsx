@@ -5,6 +5,7 @@ import {
   Dispatch,
   SetStateAction,
 } from 'react';
+import { GlobalLayoutProps } from '../interfaces/globalLayoutProps';
 
 export interface IPessoaDenunciaProps {
   id?: number;
@@ -155,7 +156,7 @@ export interface IDenuncia {
 
 export const DenunciaContext = createContext<IDenuncia>({} as IDenuncia);
 
-export const DenunciaProvider: React.FC = ({ children }) => {
+export const DenunciaProvider: React.FC<GlobalLayoutProps> = ({ children }) => {
   const [denuncia, setDenuncia] = useState<IDenunciaProps>(
     {} as IDenunciaProps,
   );

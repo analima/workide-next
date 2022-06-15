@@ -12,7 +12,7 @@ import { consultas_api } from '../services/consultas_api';
 import {
   IFiltroFornecedor,
   IFiltroOferta,
-} from '../views/AreaConsumidor/Busca/Filtro';
+} from '../pages/AreaConsumidor/Busca/Filtro';
 import { useQuery } from './geral';
 import {
   Control,
@@ -26,6 +26,7 @@ import {
 } from 'react-hook-form';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { GlobalLayoutProps } from '../interfaces/globalLayoutProps';
 
 interface BuscaFornecedorOfertaProps {
   control: Control<FieldValues, object>;
@@ -153,7 +154,7 @@ const BuscaFornecedorOferta = createContext<BuscaFornecedorOfertaProps>(
   {} as BuscaFornecedorOfertaProps,
 );
 
-export const BuscaFornecedorOfertaProvider: React.FC = ({ children }) => {
+export const BuscaFornecedorOfertaProvider: React.FC<GlobalLayoutProps>= ({ children }) => {
   const query = useQuery();
 
   const [volunteers, setVolunteers] = useState<boolean>(false);
@@ -245,7 +246,7 @@ export const BuscaFornecedorOfertaProvider: React.FC = ({ children }) => {
 
       if (filtroFornecedor.causas)
         fornecedoresQuery.ids_causas_sociais = filtroFornecedor.causas.map(
-          causa => causa.id,
+          (causa: any) => causa.id,
         );
 
       if (avaliacao)
@@ -296,7 +297,7 @@ export const BuscaFornecedorOfertaProvider: React.FC = ({ children }) => {
           ...ofertasQuery,
         })
         .then(({ data }) => {
-          console.log(data);
+         
           setService(data.values);
           setTotalPaginas(data.pages);
         });
@@ -358,7 +359,7 @@ export const BuscaFornecedorOfertaProvider: React.FC = ({ children }) => {
   }, [query]);
 
   useEffect(() => {
-    setFiltroFornecedor(oldFiltro => ({
+    setFiltroFornecedor((oldFiltro: any) => ({
       ...oldFiltro,
       inVoluntariado: volunteers,
     }));

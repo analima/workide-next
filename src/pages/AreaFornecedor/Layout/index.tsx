@@ -14,6 +14,7 @@ import { Content, Subtitulo } from './style';
 import { useAuth } from '../../../contexts/auth';
 import { HeaderPublico } from '../../AreaConsumidor/Layout/HeaderPublico';
 import { FeedbackChat } from '../../../components/FeedbackChat';
+import { IPessoa } from '../../../interfaces/IPessoa';
 
 interface LayoutProps {
   titulo?: string;
@@ -33,19 +34,24 @@ export function Layout({
   isConsumidor,
 }: LayoutProps) {
   const [sidebar, setSidebar] = useState(false);
-  const { user } = useAuth();
+  let { user } = useAuth();
+  
+  if(!user){
+    user = {} as IPessoa;
+  }
+
   function toggleSidebar() {
     sidebar && setSidebar(!sidebar);
   }
 
   return (
     <Content>
-      {/* {!user.id_pessoa ? (
+      {!user.id_pessoa ? (
         <>
           <HeaderPublico />
           <Spacer size={60} />
         </>
-      ) : ( */}
+      ) : (
         <>
           <Menu />
           <Spacer size={90} />
@@ -67,8 +73,7 @@ export function Layout({
             <SidebarFornecedor open={sidebar} />
           )}
         </>
-      {/* )
-      } */}
+      )}
       <Container onClick={toggleSidebar}>
         <Spacer size={90} />
         <Subtitulo>{subtitulo}</Subtitulo>

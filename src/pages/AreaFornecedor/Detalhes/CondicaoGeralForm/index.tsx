@@ -44,7 +44,7 @@ export function CondicaoGeralForm() {
   }, [user, pessoa, setPessoa]);
 
   const handleSubmit = useCallback(
-    async event => {
+    async (event: any) => {
       event.preventDefault();
       setErrors({});
 

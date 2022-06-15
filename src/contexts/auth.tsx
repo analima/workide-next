@@ -30,6 +30,7 @@ interface IAuthContextProps {
 const AuthContext = createContext<IAuthContextProps>({} as IAuthContextProps);
 
 export const AuthProvider: React.FC = ({ children }: any) => {
+  debugger
   const [user, setUser] = useState({} as IPessoa);
   const [isAuthDataLoading, setIsAuthDataLoading] = useState(true);
   const [idToken, setIdToken] = useState('');
@@ -51,6 +52,7 @@ export const AuthProvider: React.FC = ({ children }: any) => {
   }, []);
 
   const refreshUserData = useCallback(async () => {
+    
     const newIdToken = localStorage.getItem(ID_TOKEN);
     setIdToken(newIdToken || '');
     if (newIdToken) {
@@ -70,12 +72,13 @@ export const AuthProvider: React.FC = ({ children }: any) => {
         });
       }
     }
+  
+  
   }, []);
 
   useEffect(() => {
     refreshUserData().then(() => setIsAuthDataLoading(false));
   }, [refreshUserData]);
-
   return (
     <AuthContext.Provider
       value={{

@@ -6,6 +6,7 @@ import React, {
   SetStateAction,
   useCallback,
 } from 'react';
+import { GlobalLayoutProps } from '../interfaces/globalLayoutProps';
 import { pessoas_api } from '../services/pessoas_api';
 
 export interface IPessoaProps {
@@ -134,7 +135,7 @@ const CadastroComplementarContext =
     {} as CadastroComplementarContextProps,
   );
 
-export const CadastroComplementarProvider: React.FC = ({ children }) => {
+export const CadastroComplementarProvider: React.FC<GlobalLayoutProps> = ({ children }) => {
   const [abaSelecionada, setAbaSelecionada] = useState<AbaSelecionada>({
     indice: 0,
     porcentagem: 20,

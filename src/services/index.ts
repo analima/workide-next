@@ -10,6 +10,9 @@ import { oportunidades_api } from './oportunidades_api';
 import axios, { AxiosRequestConfig } from 'axios';
 import { ID_TOKEN, REFRESH_TOKEN, USER } from '../contexts/auth';
 import { notificacoes_api } from './notificacoes_api';
+import { useEffect } from 'react';
+
+const ISSERVER = typeof window === "undefined";
 
 const services = [
   arquivos_api,
@@ -25,6 +28,7 @@ const services = [
 ];
 
 services.forEach(service => {
+  if (!ISSERVER){
   service.interceptors.response.use(
     response => {
       return response;
@@ -77,17 +81,21 @@ services.forEach(service => {
         resolve(res);
       });
     },
-  );
+  );}
 });
 
 const updateToken = () => {
+  if (!ISSERVER){
   const idToken = localStorage.getItem(ID_TOKEN);
   services.forEach(service => {
     if (ID_TOKEN) {
       service.defaults.headers.common['Authorization'] = `Bearer ${idToken}`;
     }
-  });
+  });}
 };
-updateToken();
+
+  updateToken();
+
+
 
 export { services, updateToken };

@@ -4,6 +4,7 @@ import { IIuguClientData } from '../interfaces/iuguInterfaces';
 import { pagamentos_api } from '../services/pagamentos_api';
 import { pessoas_api } from '../services/pessoas_api';
 import { useAuth } from '../contexts/auth';
+import { GlobalLayoutProps } from '../interfaces/globalLayoutProps';
 
 export interface IAssinaturaEscolhida {
   ativa: boolean;
@@ -82,7 +83,7 @@ const InformacoesFinanceirasContext =
     {} as IInformacoesFinanceirasProps,
   );
 
-export const InformacoesFinanceirasProvider: React.FC = ({ children }) => {
+export const InformacoesFinanceirasProvider: React.FC<GlobalLayoutProps> = ({ children }) => {
   const [planoSelecionado, setPlanoSelecionado] = useState('degustacao');
   const [possuiAssinatura, setPossuiAssinatura] = useState(true);
   const { user } = useAuth();

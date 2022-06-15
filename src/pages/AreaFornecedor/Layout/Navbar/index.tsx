@@ -107,9 +107,9 @@ export function Navbar({ toggleSidebar, hinddenOportunidades }: INavbar) {
         <div className="icones">
           <FiMenu onClick={toggleSidebar} />
 
-          <Link to="/fornecedor/home">
+          {/* <Link to="/fornecedor/home"> */}
             <Home className="fi-icon-home" />
-          </Link>
+          {/* </Link> */}
         </div>
 
         <ContentSession>
@@ -120,8 +120,8 @@ export function Navbar({ toggleSidebar, hinddenOportunidades }: INavbar) {
             BUSCAR OPORTUNIDADES
           </GhostButton>
 
-          <AcaoBell>
-            <Dropdown
+         <AcaoBell>
+             <Dropdown
               onToggle={isOpen => {
                 if (!isOpen) {
                   handleReadNotificationFromIdPessoa(user.id_pessoa || 0);
@@ -192,7 +192,7 @@ export function Navbar({ toggleSidebar, hinddenOportunidades }: INavbar) {
                   </ContentButton>
                 )}
               </Dropdown.Menu>
-            </Dropdown>
+            </Dropdown> 
           </AcaoBell>
         </ContentSession>
 

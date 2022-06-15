@@ -1,4 +1,6 @@
 import { Col, Row } from 'react-bootstrap';
+import Image from 'next/image'
+import { useRouter } from 'next/router';
 import { Titulo } from '../../../../components/Titulo';
 import {
   AZUL,
@@ -7,11 +9,11 @@ import {
   LARANJA,
   VERDE,
 } from '../../../../styles/variaveis';
-import { ReactComponent as Exclusivo } from '../../../../assets/exclusive.svg';
+import  Exclusivo from '../../../../assets/exclusive.svg';
 import { ModalDenuncia } from '../../../ModalDenuncia';
-import { ReactComponent as IconeVoluntario } from '../../../../assets/icon-voluntare.svg';
-import { ReactComponent as EstrelaOff } from '../../../../assets/estrela-off.svg';
-import { ReactComponent as Estrela } from '../../../../assets/estrela.svg';
+import IconeVoluntario  from '../../../../assets/icon-voluntare.svg';
+import EstrelaOff  from '../../../../assets/estrela-off.svg';
+import Estrela  from '../../../../assets/estrela.svg';
 import userPhoto from '../../../../assets/user.png';
 
 import {
@@ -50,12 +52,12 @@ import {
   useCaptarProjetoFornecedor,
 } from '../../../../hooks/captarProjetoFornecedor';
 
-import { ReactComponent as Coracao } from '../../../../assets/coracao.svg';
-import { ReactComponent as CoracaoOff } from '../../../../assets/coracao-off.svg';
+import Coracao  from '../../../../assets/coracao.svg';
+import CoracaoOff  from '../../../../assets/coracao-off.svg';
 import { useCallback, useEffect, useState } from 'react';
 import { pessoas_api } from '../../../../services/pessoas_api';
 import { oportunidades_api } from '../../../../services/oportunidades_api';
-import { useLimitacoesPlanos } from '../../../../contexts/planLimitations';
+import { PlanLimits, useLimitacoesPlanos } from '../../../../contexts/planLimitations';
 import { AvatarRegrasPlano } from '../../../../components/AvatarRegrasPlano';
 import { format, formatDistance } from 'date-fns';
 import { pt } from 'date-fns/locale';
@@ -68,6 +70,7 @@ import { FiTrash2 } from 'react-icons/fi';
 import { GiShare } from 'react-icons/gi';
 import { ModalRecomendacao } from '../../../../components/ModalRecomendacao';
 import { Spinner } from '../../../../components/Spinner';
+import { IPessoa } from '../../../../interfaces/IPessoa';
 
 type PessoaType = {
   id: number;
@@ -88,8 +91,19 @@ type ProjetoProps = {
 };
 
 export function Projeto({ tipo, projeto, totalFavoritos = 0 }: ProjetoProps) {
-  const { user } = useAuth();
-  const { projetosFavoritos, obterProjetosFavoritos } =
+  let { user } = useAuth();
+  let { limitacoesPlano } = useLimitacoesPlanos();
+  if(!user){
+    user = {} as IPessoa;
+  }
+
+  if(!limitacoesPlano){
+    limitacoesPlano = {} as PlanLimits;
+  }
+
+  const router = useRouter()
+
+  const { projetosFavoritos, obterProjetosFavoritos, obterProjetosExclusivos } =
     useCaptarProjetoFornecedor();
   const [consumidor, setConsumidor] = useState<PessoaType>({} as PessoaType);
   const history = useHistory();
@@ -101,7 +115,6 @@ export function Projeto({ tipo, projeto, totalFavoritos = 0 }: ProjetoProps) {
     useState(false);
   const [proposalAmount, setProposalAmount] = useState(0);
 
-  const { limitacoesPlano } = useLimitacoesPlanos();
   const [notaMedia, setNotaMedia] = useState<number>(0);
   const [showModalInformation, setShowModalInformation] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -141,9 +154,10 @@ export function Projeto({ tipo, projeto, totalFavoritos = 0 }: ProjetoProps) {
 
   const handleFavoritar = useCallback(async () => {
     if (!user.id_pessoa) {
-      history.push('/cadastro-basico');
+      router.push('/cadastro-basico');
       return;
     }
+
 
     const response = await oportunidades_api.get('/projetos/favoritos');
     const numeroFavoritos = response.data.length;
@@ -180,7 +194,7 @@ export function Projeto({ tipo, projeto, totalFavoritos = 0 }: ProjetoProps) {
     );
   }, [projetosFavoritos, projeto.id]);
 
-  const obterNotaMedia = useCallback((id:any) => {
+  const obterNotaMedia = useCallback((id: any) => {
     if (id) {
       oportunidades_api
         .get(`/projetos/avaliacoes-consumidor/${id}/count`)
@@ -209,12 +223,12 @@ export function Projeto({ tipo, projeto, totalFavoritos = 0 }: ProjetoProps) {
       if (i <= numberOfStars) {
         if (numberOfStars === 0)
           stars.push(
-            <EstrelaOff className="estrela" key={i + Math.random()} />,
+            <Image src={EstrelaOff} className="estrela" key={i + Math.random()} />,
           );
         else
-          stars.push(<Estrela className="estrela" key={i + Math.random()} />);
+          stars.push(<Image src={Estrela} className="estrela" key={i + Math.random()} />);
       } else {
-        stars.push(<EstrelaOff className="estrela" key={i + Math.random()} />);
+        stars.push(<Image src={EstrelaOff} className="estrela" key={i + Math.random()} />);
       }
     }
     return stars;
@@ -223,30 +237,30 @@ export function Projeto({ tipo, projeto, totalFavoritos = 0 }: ProjetoProps) {
   function handleShowAvatarCadastroIncompleto() {
     setShowAvatarCadastroIncompleto(!showAvatarCadastroIncompleto);
   }
-  // const handleExcluirProjeto = useCallback(
-  //   (id_projeto: number) => {
-  //     setLoading(true);
-  //     try {
-  //       oportunidades_api
-  //         .delete(
-  //           `/projetos/${id_projeto}/fornecedor-selecionado/${user.id_pessoa}`,
-  //         )
-  //         .then(() => {
-  //           setShowModalInformation(true);
-  //         });
+  const handleExcluirProjeto = useCallback(
+    (id_projeto: number) => {
+      setLoading(true);
+      try {
+        oportunidades_api
+          .delete(
+            `/projetos/${id_projeto}/fornecedor-selecionado/${user.id_pessoa}`,
+          )
+          .then(() => {
+            setShowModalInformation(true);
+          });
 
-  //       setTimeout(() => {
-  //         setLoading(false);
-  //         setShowModalInformation(false);
-  //         obterProjetosExclusivos();
-  //       }, 1500);
-  //     } catch (error) {
-  //       console.error(error);
-  //       setLoading(false);
-  //     }
-  //   },
-  //   [user.id_pessoa, obterProjetosExclusivos],
-  // );
+        setTimeout(() => {
+          setLoading(false);
+          setShowModalInformation(false);
+          obterProjetosExclusivos();
+        }, 1500);
+      } catch (error) {
+        console.error(error);
+        setLoading(false);
+      }
+    },
+    [user.id_pessoa, obterProjetosExclusivos],
+  );
 
   useEffect(() => {
     oportunidades_api
@@ -292,17 +306,21 @@ export function Projeto({ tipo, projeto, totalFavoritos = 0 }: ProjetoProps) {
         setShowModal={setShowRecommendationModal}
         link={link}
       />
-      <Card>
+       <Card>
         <ContainerProjeto>
           <ProjetoHeader>
             <HeaderContent>
               <TituloContainer>
-                {tipo === 'normal' &&
+                 {tipo === 'normal' &&
                   (projetoFavorito ? (
-                    <Coracao onClick={handleDesfavoritar} />
+                    <div style={{margin: '15px'}}>
+                    <Image style={{margin: '100px !important'}} src={Coracao} onClick={handleDesfavoritar} />
+                    </div>
                   ) : (
-                    <CoracaoOff onClick={handleFavoritar} />
-                  ))}
+                    <div style={{margin: '15px'}}>
+                    <Image style={{margin: '100px !important'}} src={CoracaoOff} onClick={handleFavoritar} /> 
+                    </div> 
+                  ))} 
 
                 {tipo === 'exclusivo' && (
                   <Exclusivo className="icon-exclusivo" />
@@ -329,11 +347,11 @@ export function Projeto({ tipo, projeto, totalFavoritos = 0 }: ProjetoProps) {
                     </DataPublicacao>
                   )}
                 </HeaderSecondary>
-              </TituloContainer>
+              </TituloContainer> 
 
-              {projeto.proBono ? (
+               {projeto.proBono ? (
                 <FaixaProBono>
-                  <IconeVoluntario />
+                  <Image src={IconeVoluntario} /> 
                   <div className="voluntariado">
                     {projeto.escopo === 'ABERTO' && (
                       <FaixaPrecoLabel right>Por hora</FaixaPrecoLabel>
@@ -360,8 +378,8 @@ export function Projeto({ tipo, projeto, totalFavoritos = 0 }: ProjetoProps) {
                     <p>Quantidade de horas: {projeto.totalHoras}h</p>
                   )}
                 </FaixaPrecoContainer>
-              )}
-            </HeaderContent>
+              )} 
+            </HeaderContent> 
           </ProjetoHeader>
 
           <ProjetoBody>
@@ -385,12 +403,12 @@ export function Projeto({ tipo, projeto, totalFavoritos = 0 }: ProjetoProps) {
               <Col lg={6}>
                 <Consumidor>
                   {consumidor.arquivo?.url ? (
-                    <FotoPerfil
-                      src={consumidor.arquivo?.url || userPhoto}
-                      alt={consumidor.nome_tratamento}
-                    />
+                    <div style={{margin: '0px 10px'}}>
+                    <Image style={{borderRadius: '100%'}}  src={consumidor.arquivo?.url || userPhoto} width={45} height={45} alt={consumidor.nome_tratamento} />
+                    </div>
+                   
                   ) : (
-                    <Skeleton width="45px" height="45px" radius="50%" />
+                     <Skeleton width="45px" height="45px" radius="50%" />
                   )}
                   <Info>
                     <Titulo
@@ -420,10 +438,8 @@ export function Projeto({ tipo, projeto, totalFavoritos = 0 }: ProjetoProps) {
                   onClick={() => {
                     if (!user.id_pessoa) {
                       history.push('/cadastro-basico');
-
                       return;
                     }
-
                     handleLinkDenuncia();
                     setShowModal(true);
                   }}
@@ -449,11 +465,11 @@ export function Projeto({ tipo, projeto, totalFavoritos = 0 }: ProjetoProps) {
                     disabled={projeto.idPessoaConsumidor === user.id}
                     onClick={() => {
                       if (!user.id_pessoa) {
-                        history.push('/cadastro-basico');
+                        router.push('/cadastro-basico');
                         return;
                       }
 
-                      history.push(`/detalhes-projeto/${projeto.id}`, {
+                      router.push(`/detalhes-projeto/${projeto.id}`, {
                         tipo: tipo === 'exclusivo',
                       });
                     }}
@@ -463,7 +479,7 @@ export function Projeto({ tipo, projeto, totalFavoritos = 0 }: ProjetoProps) {
                 </ContentButton>
               </ContentFooter>
 
-              {/* {tipo === 'exclusivo' && (
+              {tipo === 'exclusivo' && (
                 <ContentTrash>
                   <span>
                     {!loading ? (
@@ -473,15 +489,15 @@ export function Projeto({ tipo, projeto, totalFavoritos = 0 }: ProjetoProps) {
                         onClick={() => handleExcluirProjeto(projeto.id)}
                       />
                     ) : (
-                      <Spinner />
+                     <Spinner />
                     )}
                   </span>
                 </ContentTrash>
-              )} */}
+              )}
             </ContainerInfo>
           </ProjetoFooter>
         </ContainerProjeto>
-      </Card>
+      </Card> 
 
       <ModalInformation
         showModal={showModalInformation}

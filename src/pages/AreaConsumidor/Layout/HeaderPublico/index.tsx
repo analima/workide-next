@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router';
-
+import Image from 'next/image'
 import { FiMenu } from 'react-icons/fi';
 import { BiUserCircle } from 'react-icons/bi';
 import { Containe, Content, ContainerLogin } from './style';
@@ -46,19 +46,15 @@ export function HeaderPublico(): JSX.Element {
 
   return (
     <Containe>
-      <CadastroBasico
+      {/* <CadastroBasico
         isActive={showRegisterForm}
         display={displayOfOverlay}
         handleShowOverlay={handleShowOverlay}
-      />
+      /> */}
       <Container className="container">
         <Content>
-          <img
-            data-testid="logo"
-            src={Logo}
-            alt="Gyan"
-            onClick={() => history.push('/')}
-          />
+          
+          <Image src ="/logo.svg" alt="Gyan" width={100} height={100} />
           <button type="button" onClick={handleToggleMenu}>
             <FiMenu size={34} color="#fff" />
           </button>
@@ -86,10 +82,10 @@ export function HeaderPublico(): JSX.Element {
               <span onClick={() => handleShowOverlay()}>Cadastre-se</span>
 
               <span>
-                <Link to="/login" onClick={handleToggleMenu}>
+                {/* <Link to="/login" onClick={handleToggleMenu}>
                   <BiUserCircle />
                   Login
-                </Link>
+                </Link> */}
               </span>
             </ContainerLogin>
           </nav>

@@ -9,6 +9,7 @@ import { AZUL, BRANCO } from '../../styles/variaveis';
 import { FiLink } from 'react-icons/fi';
 import { ofertas_api } from '../../services/ofertas_api';
 import { useAuth } from '../../contexts/auth';
+import { IPessoa } from '../../interfaces/IPessoa';
 
 interface IModalRecomendacao {
   showModal: boolean;
@@ -28,12 +29,15 @@ export function ModalRecomendacao({
   const [mensagem, setMensagem] = useState(
     'Olá amigo(a), como vai? Gostaria de compartilhar com você esse ideia. Estou usando uma plataforma muito legal chamada Gyan. Lá você encontrará muita coisa legal que vai te ajudar. Se cuida, abraço!',
   );
-  const { user } = useAuth();
+  let { user } = useAuth();
+  if(!user){
+    user = {} as IPessoa
+  }
 
   const [showSuccess, setShowSuccess] = useState(false);
 
   const postar = useCallback(
-    async event => {
+    async (event: any) => {
       navigator.clipboard.writeText(link + '\n\n' + mensagem);
       //--> Fechar Modal
       setShowModal(false);

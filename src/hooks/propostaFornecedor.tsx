@@ -22,6 +22,7 @@ import { oportunidades_api } from '../services/oportunidades_api';
 import { useHistory } from 'react-router';
 import { addDays, addMinutes } from 'date-fns';
 import { geral_api } from '../services/geral_api';
+import { GlobalLayoutProps } from '../interfaces/globalLayoutProps';
 
 interface PropostaFornecedorContextProps {
   idProposta?: number;
@@ -190,7 +191,7 @@ const PropostaFornecedorContext = createContext<PropostaFornecedorContextProps>(
   {} as PropostaFornecedorContextProps,
 );
 
-export const PropostaFornecedorProvider: React.FC = ({ children }) => {
+export const PropostaFornecedorProvider: React.FC<GlobalLayoutProps> = ({ children }) => {
   const [idProposta, setIdProposta] = useState<number | undefined>(undefined);
   const [mensagemDica, setMensagemDica] = useState('');
   const [dataInicio, setDataInicio] = useState<string | undefined>();

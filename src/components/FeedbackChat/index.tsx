@@ -20,6 +20,7 @@ import { AZUL_60 } from '../../styles/variaveis';
 import { Alert } from 'react-bootstrap';
 import { typeFile } from '../../utils/typeFile';
 import { useAuth } from '../../contexts/auth';
+import { IPessoa } from '../../interfaces/IPessoa';
 
 export function FeedbackChat() {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,7 +33,12 @@ export function FeedbackChat() {
   const [sucessImage, setSucessImage] = useState('');
   const [showAlert, setShowAlert] = useState(false);
   const [urlAtual, setUrlAtual] = useState('');
-  const { user } = useAuth();
+  let { user } = useAuth();
+
+  if(!user){
+    user = {} as IPessoa;
+  }
+
   const handleSelectedFeedback = (
     evt: React.ChangeEvent<HTMLSelectElement>,
   ) => {

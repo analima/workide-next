@@ -28,6 +28,7 @@ import { pessoas_api } from '../../services/pessoas_api';
 import { useAuth } from '../../contexts/auth';
 import { ModalInformation } from '../../components/ModalInformation';
 import { LARANJA } from '../../styles/variaveis';
+import { IPessoa } from '../../interfaces/IPessoa';
 
 interface IModalDenuncia {
   showModal: boolean;
@@ -65,13 +66,18 @@ export function ModalDenuncia({
     },
   ];
 
-  const { user } = useAuth();
+
   const [errors, setErrors] = useState<ErrorMessages>({} as ErrorMessages);
   const [tipoDenuncia, setTipoDenuncia] = useState('');
 
   const [denuncia, setDenuncia] = useState('');
   const [checkedDenuncia, setCheckedDenuncia] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  let{ user } = useAuth();
+
+  if(!user){
+    user = {} as IPessoa;
+  }
 
   useEffect(() => {
     if (denuncia.length >= 150) {
@@ -80,7 +86,7 @@ export function ModalDenuncia({
   }, [denuncia]);
 
   const postar = useCallback(
-    async event => {
+    async (event: any) => {
       event.preventDefault();
       setErrors({});
       try {

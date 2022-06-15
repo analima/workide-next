@@ -8,10 +8,14 @@ import Instagram from '../../assets/instagram.svg';
 import { useHistory } from 'react-router';
 import { useAuth } from '../../contexts/auth';
 import { useValorProjetoPago } from '../../contexts/valorProjetoPago';
+import { IPessoa } from '../../interfaces/IPessoa';
 
 export function Rodape() {
   const history = useHistory();
-  const { user, signOut } = useAuth();
+  let { user, signOut } = useAuth();
+  if(!user){
+    user = {} as IPessoa;
+  }
   const { apagarLocalStorage } = useValorProjetoPago();
 
   return (

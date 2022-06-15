@@ -17,7 +17,8 @@ import {
 } from 'react-hook-form';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Subarea } from '../views/AreaConsumidor/Busca/Filtro/FiltroSubarea';
+import { Subarea } from '../pages/AreaConsumidor/Busca/Filtro/FiltroSubarea';
+import { GlobalLayoutProps } from '../interfaces/globalLayoutProps';
 
 type CadastroProjetoContextProps = {
   errorName?: boolean;
@@ -85,7 +86,7 @@ const CadastroProjetoContext = createContext<CadastroProjetoContextProps>(
   {} as CadastroProjetoContextProps,
 );
 
-export const CadastroProjetoProvider: React.FC = ({ children }) => {
+export const CadastroProjetoProvider: React.FC<GlobalLayoutProps> = ({ children }) => {
   const [escopo, setEscopo] = useState('FECHADO');
   const [valorMinimoHora, setValorMinimoHora] = useState(0);
   const [valorMaximoHora, setValorMaximoHora] = useState(0);
