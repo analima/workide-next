@@ -87,7 +87,7 @@ export function CardComentario({ id }: IProps) {
         <Carrousel size={evaluations.length} {...settingsSlider}>
           {evaluations?.map((obj, index) => (
             <Avaliacao key={index}>
-              <AvaliacaoTexto>"{obj?.descricao}"</AvaliacaoTexto>
+              <AvaliacaoTexto>&ldquo;{obj?.descricao}&rdquo;</AvaliacaoTexto>
 
               <ContainerCardUsuario>
                 <div>

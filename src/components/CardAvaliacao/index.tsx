@@ -117,7 +117,7 @@ export function CardAvaliacao({ id }: IProps) {
             <div key={index}>
               <Avaliacao>
                 <AvaliacaoTitulo>{obj?.projeto.nome}</AvaliacaoTitulo>
-                <AvaliacaoTexto>"{obj?.descricao}"</AvaliacaoTexto>
+                <AvaliacaoTexto>&ldquo;{obj?.descricao}&rdquo;</AvaliacaoTexto>
                 <ContentLabel>
                   {obj?.habilidadesPercebidas
                     .split('|')

@@ -73,7 +73,7 @@ export function AvaliacoesConsumidor({ id }: { id: number }) {
             return (
               <Avaliacao key={index}>
                 <AvaliacaoTitulo>{obj.projeto.nome}</AvaliacaoTitulo>
-                <AvaliacaoTexto>"{obj.descricao}"</AvaliacaoTexto>
+                <AvaliacaoTexto>&ldquo;{obj.descricao}&rdquo;</AvaliacaoTexto>
                 <AvaliacaoRodape>
                   <span>Publicado em: {formatDate(obj?.dataHoraCriacao)}</span>
                   <AvaliacaoCliente>
@@ -95,9 +95,9 @@ export function AvaliacoesConsumidor({ id }: { id: number }) {
         ) : (
           evaluations?.reverse().map((obj, index) => {
             return (
-              <Avaliacao>
+              <Avaliacao key={index}>
                 <AvaliacaoTitulo>{obj.projeto.nome}</AvaliacaoTitulo>
-                <AvaliacaoTexto>"{obj.descricao}"</AvaliacaoTexto>
+                <AvaliacaoTexto>&ldquo;{obj.descricao}&rdquo;</AvaliacaoTexto>
                 <AvaliacaoRodape>
                   <span>Publicado em: {formatDate(obj?.dataHoraCriacao)}</span>
                   <AvaliacaoCliente>

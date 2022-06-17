@@ -124,7 +124,7 @@ export function MinhaReputacao({ pontuacao }: IProps) {
             recomendacoes.map((recomendacao, index) => (
               <Recomendacao key={index}>
                 <RecomendacaoTexto>
-                  <p>"{recomendacao.recomendacao}"</p>
+                  <p>&ldquo;{recomendacao.recomendacao}&rdquo;</p>
                 </RecomendacaoTexto>
 
                 <RecomendacaoRodape>

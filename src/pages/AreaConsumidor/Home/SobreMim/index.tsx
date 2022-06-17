@@ -72,7 +72,7 @@ export function SobreMim() {
               obj?.descricao?.length && (
                 <Avaliacao key={index}>
                   <AvaliacaoTitulo>{obj.projeto.nome}</AvaliacaoTitulo>
-                  <AvaliacaoTexto>"{obj.descricao}"</AvaliacaoTexto>
+                  <AvaliacaoTexto>&ldquo;{obj.descricao}&rdquo;</AvaliacaoTexto>
                   <AvaliacaoRodape>
                     <span>
                       Publicado em: {formatDate(obj?.dataHoraCriacao)}
