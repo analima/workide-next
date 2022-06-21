@@ -216,7 +216,7 @@ export function PosGraduacoes({ id_pessoa, readonly }: IGraduacoesProps) {
           }}
         />
 
-        <Button onClick={handleSubmit(handleAdd)}>
+        <Button onClick={handleSubmit(handleAdd as any)}>
           <FaPlus />
         </Button>
       </Form>

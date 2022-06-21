@@ -122,7 +122,7 @@ export function Cursos({ id_pessoa, readonly }: ICursosProps) {
           }}
         />
 
-        <Button onClick={handleSubmit(handleAdd)}>
+        <Button onClick={handleSubmit(handleAdd as any)}>
           <FaPlus />
         </Button>
       </Form>

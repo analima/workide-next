@@ -5,6 +5,7 @@ import { Titulo } from '../../../../components/Titulo';
 import { ReactComponent as EstrelaOff } from '../../../../assets/estrela-off.svg';
 import { ReactComponent as Estrela } from '../../../../assets/estrela.svg';
 import PlaceholderImage from '../../../../assets/placeholderImg.png';
+import Image from 'next/image'
 
 import {
   AvaliacaoContainer,
@@ -99,21 +100,25 @@ export function Contratante({ idPessoaConsumidor }: IContratanteProps) {
               {dadosContratante.ativo ? (
                 <>
                   {image ? (
-                    <FotoPerfil
-                      onClick={() =>
+
+                    <FotoPerfil >
+                    <Image   onClick={() =>
                         history.push(`/consumidor/perfil-publico/`, {
                           id: idPessoaConsumidor,
                         })
                       }
                       src={image}
-                      alt="Foto Contrantante"
-                    />
+                      alt="Foto Contrantante" />
+                    </FotoPerfil>
                   ) : (
                     <Skeleton width="152px" height="152px" />
                   )}
                 </>
               ) : (
-                <FotoPerfil src={PlaceholderImage} alt="Foto Contrantante" />
+                
+                <FotoPerfil  >
+                <Image src={PlaceholderImage} alt="Foto Contrantante" />
+                </FotoPerfil>
               )}
             </FotoPerfilContainer>
           </Col>

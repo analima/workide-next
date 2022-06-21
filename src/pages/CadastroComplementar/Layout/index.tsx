@@ -4,8 +4,8 @@ import { Container } from 'react-bootstrap';
 import { Spacer } from '../../../components/Spacer';
 
 import { Navbar } from './Navbar';
-import { Sidebar as SidebarConsumidor } from '../../../views/AreaConsumidor/Layout/Sidebar/index';
-import { Sidebar as SidebarFornecedor } from '../../../views/AreaFornecedor/Layout/Sidebar/index';
+import { Sidebar as SidebarConsumidor } from '../../../pages/AreaConsumidor/Layout/Sidebar/index';
+import { Sidebar as SidebarFornecedor } from '../../../pages/AreaFornecedor/Layout/Sidebar/index';
 import { Content } from './style';
 
 interface LayoutProps {

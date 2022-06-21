@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Alert, Col, Row } from 'react-bootstrap';
+
 import {
   Acoes,
   NomeTitulo,
@@ -8,6 +9,7 @@ import {
   Content,
   FotoPerfil,
   ContentImg,
+  CapaProps,
   ContentCapa,
   ContentInfo,
   ContentInfo3,
@@ -15,7 +17,7 @@ import {
   LinkToScroll,
   ContentSpinnerLoading,
 } from './style';
-
+import Image from 'next/image'
 import { ReactComponent as EstrelaOff } from '../../../../assets/estrela-off.svg';
 import { ReactComponent as Estrela } from '../../../../assets/estrela.svg';
 import { ReactComponent as CoracaoOff } from '../../../../assets/coracao-off.svg';
@@ -225,11 +227,11 @@ export function Sobre({ dataProps, getProvider, imageLoaded }: PropsPage) {
             ) : (
               <>
                 {loadingCapa ? (
-                  <ContentSpinnerLoading CapaDefault={CapaDefault}>
+                  <ContentSpinnerLoading CapaDefault={CapaDefault as any}>
                     <Spinner type="primary" size="24" />
                   </ContentSpinnerLoading>
                 ) : (
-                  <img
+                  <Image
                     src={dataProps?.capa ? dataProps.capa.url : CapaDefault}
                     alt="capa"
                     className="capa-img"

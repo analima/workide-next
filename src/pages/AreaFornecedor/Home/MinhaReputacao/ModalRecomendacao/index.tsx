@@ -32,7 +32,7 @@ export function ModalRecomendacao({
   const { user } = useAuth();
 
   const post = useCallback(
-    async event => {
+    async (event: any) => {
       event.preventDefault();
       setErrors({});
       try {

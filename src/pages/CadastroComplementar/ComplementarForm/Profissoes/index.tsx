@@ -119,7 +119,7 @@ export function Profissoes({ id_pessoa, readonly }: IProfissoesProps) {
           }}
         />
 
-        <Button onClick={handleSubmit(handleAdd)}>
+        <Button onClick={handleSubmit(handleAdd as any)}>
           <FaPlus />
         </Button>
       </Form>

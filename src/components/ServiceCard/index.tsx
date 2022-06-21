@@ -7,6 +7,7 @@ import { ofertas_api } from '../../services/ofertas_api';
 import { LARANJA } from '../../styles/variaveis';
 import { formatarValor } from '../../utils/CurrencyFormat';
 import { Skeleton } from '../Skeleton';
+import Image from 'next/image'
 
 import {
   Content,
@@ -187,7 +188,7 @@ export function ServiceCard({
         {service?.fornecedor?.foto?.url && (
           <ContainerProfile>
             <div>
-              <img
+              <Image
                 src={service?.fornecedor?.foto.url}
                 alt={service?.fornecedor?.nome_tratamento}
               />
@@ -205,7 +206,7 @@ export function ServiceCard({
         {dadosFornec?.arquivo?.url && (
           <ContainerProfile>
             <div>
-              <img src={dadosFornec?.arquivo?.url} alt="" />
+              <Image src={dadosFornec?.arquivo?.url} alt="" />
             </div>
 
             <div>

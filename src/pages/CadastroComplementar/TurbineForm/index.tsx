@@ -1099,7 +1099,7 @@ export function TurbineForm() {
                 }}
               />
 
-              <OtherButton onClick={handleSubmit(handleSalvarPessoa)}>
+              <OtherButton onClick={handleSubmit(handleSalvarPessoa as any)}>
                 {loading ? <Spinner size="18" /> : 'SALVAR'}
               </OtherButton>
             </Actions>

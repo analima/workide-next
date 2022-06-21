@@ -131,7 +131,7 @@ export function Certificacoes({ id_pessoa, readonly }: ICertificacoesProps) {
           }}
         />
 
-        <Button onClick={handleSubmit(handleAdd)}>
+        <Button onClick={handleSubmit(handleAdd as any)}>
           <FaPlus />
         </Button>
       </Form>

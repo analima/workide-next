@@ -6,6 +6,7 @@ import { pagamentos_api } from '../../../../../services/pagamentos_api';
 import iconCheck from '../../../../../assets/check-azul.svg';
 import QRCode from 'qrcode.react';
 import { useAuth } from '../../../../../contexts/auth';
+import Image from 'next/image'
 import {
   Content,
   ContainerFinishPix,
@@ -61,7 +62,7 @@ export function PixModal({ show, setShow }: IModal): JSX.Element {
     if (assinaturaEscolhida.gratuita) {
       return (
         <ContainerPaymentFree>
-          <img src={iconCheck} alt="" />
+          <Image src={iconCheck} alt="" />
           <div className="text">
             <span>Não haverá cobrança.</span>
             <span>Não se preocupe, por aqui está tudo ok!</span>

@@ -13,6 +13,7 @@ import {
   ContainerPaymentFree,
 } from './style';
 import { handleFormatDocument } from '../../../../../../helpers/formatsHelper';
+import Image from 'next/image'
 interface IModal {
   show: boolean;
   setShow: React.Dispatch<React.SetStateAction<boolean>>;
@@ -105,7 +106,7 @@ export function ModalAprovacaoPagamento({
           dadosClienteIugu.fundador ||
           assinaturaEscolhida.ativa ? (
             <ContainerPaymentFree>
-              <img src={iconCheck} alt="" />
+              <Image src={iconCheck} alt="" />
               <div className="text">
                 {assinaturaEscolhida.ativa ? (
                   <span>Você já possui uma assinatura ativa.</span>

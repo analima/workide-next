@@ -32,7 +32,7 @@ export function SearchInput({
   }, []);
 
   const handleEnterKey = useCallback(
-    event => {
+    (event: any) => {
       if (event.key === 'Enter' && onClick) onClick(event);
     },
     [onClick],

@@ -351,7 +351,7 @@ export function FinanceiroFormContent() {
               />
               <Button
                 label={isLoading ? 'CARREGANDO...' : 'SALVAR'}
-                onClick={handleSubmit(handleSaveInformations)}
+                onClick={handleSubmit(handleSaveInformations as any)}
               />
             </Actions>
           </Col>

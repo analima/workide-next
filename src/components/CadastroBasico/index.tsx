@@ -24,6 +24,7 @@ import { ReactComponent as Escudinho } from '../../assets/escudinho.svg';
 import { ModalInformation } from '../ModalInformation';
 import { VERMELHO } from '../../styles/variaveis';
 import { useGAEventsTracker } from '../../hooks/useGAEventsTracker';
+import Image from 'next/image'
 
 interface User {
   name: string;
@@ -248,14 +249,14 @@ export function CadastroBasico({
               <h2>Olá</h2>
               <p>Deixe-nos conhecer melhor você:</p>
             </div>
-            <img src={LogoGyan} alt="Logo" />
+            <Image src={LogoGyan} alt="Logo" />
           </FormTitle>
 
           <Row>
             <Col lg={12}>
               <div className="google">
                 <button onClick={() => handleGoogleRegistry()}>
-                  <img src={Google} alt="Google" /> CADASTRO COM GOOGLE
+                  <Image src={Google} alt="Google" /> CADASTRO COM GOOGLE
                 </button>
               </div>
             </Col>

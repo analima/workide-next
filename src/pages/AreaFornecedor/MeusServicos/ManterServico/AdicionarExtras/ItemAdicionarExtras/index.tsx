@@ -192,7 +192,7 @@ export function ItemAdicionarExtras({
               </Row>
 
               <Col lg={12} className="mt-4">
-                <Button onClick={handleSubmit(handleAlterarServicoExtra)}>
+                <Button onClick={handleSubmit(handleAlterarServicoExtra as any)}>
                   SALVAR
                 </Button>
               </Col>

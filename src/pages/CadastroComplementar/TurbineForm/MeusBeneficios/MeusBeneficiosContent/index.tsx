@@ -6,7 +6,7 @@ import { useAuth } from '../../../../../contexts/auth';
 import { useInformacoesFinanceiras } from '../../../../../hooks/informacoesFinanceiras';
 import { FiArrowRightCircle } from 'react-icons/fi';
 import { useHistory } from 'react-router-dom';
-
+import Image from 'next/image'
 import {
   Container,
   ContainerPlans,
@@ -134,20 +134,20 @@ export function MeusBeneficiosContent(): JSX.Element {
                 </td>
 
                 <td className="align-end">
-                  <img src={checkAzul} alt="possui" />
+                  <Image src={checkAzul} alt="possui" />
                 </td>
               </tr>
               <tr>
                 <td>Visibilidade na busca</td>
 
                 <td className="align-end">
-                  <img src={checkAzul} alt="possui" />
+                  <Image src={checkAzul} alt="possui" />
                 </td>
               </tr>
               <tr>
                 <td>Gestão de reputação</td>
                 <td className="align-end">
-                  <img src={checkAzul} alt="possui" />
+                  <Image src={checkAzul} alt="possui" />
                 </td>
               </tr>
 

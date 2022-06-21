@@ -1,19 +1,20 @@
 import { Container, Nav, Navbar } from 'react-bootstrap';
+import Image from 'next/image'
 import userIcon from '../../assets/user_circle.svg';
 import separator from '../../assets/separador.svg';
 import logOutIcon from '../../assets/logout.svg';
 import { ReactComponent as Center } from '../../assets/center.svg';
-import Image from 'next/image'
-import { useAuth } from '../../contexts/auth';
-import { NavCustom, ButtonToggle, NavLink } from './style';
+import separador from '../../assets/separador.svg';
 import Logo from '../../assets/logo.svg';
+
+import { NavCustom, ButtonToggle, NavLink } from './style';
 import { CadastroBasico } from '../CadastroBasico';
 import { useHistory } from 'react-router-dom';
 
-import separador from '../../assets/separador.svg';
 import { useEffect, useState } from 'react';
 import { ModalCentralMenu } from '../ModalCentralMenu';
 import { useValorProjetoPago } from '../../contexts/valorProjetoPago';
+import { useAuth } from '../../contexts/auth';
 
 export function Menu({
   hiddenCenterMenu,
@@ -107,9 +108,7 @@ export function Menu({
               className="logo"
               onClick={() => history.push('/', { noRedirect: true })}
             >
-            
-              {/* <img src="/logo.svg" alt="Gyan" />  */}
-              <Image src="/logo.svg" alt="Gyan" />
+              <Image src={Logo} alt="Gyan" />
             </Navbar.Brand>
 
             {!user.visitante && user.email && !hiddenCenterMenu && (
@@ -129,12 +128,12 @@ export function Menu({
                   id="navbarScroll"
                   className="justify-content-end"
                 >
-                  <img className="separator" src={separator} alt="perfil" />
+                  <Image className="separator" src={separator} alt="perfil" />
                   <Nav.Link
                     className="container-profile"
                     onClick={() => history.push('/persona')}
                   >
-                    <img className="profile" src={userIcon} alt="perfil" />
+                    <Image className="profile" src={userIcon} alt="perfil" />
                     {name}
                   </Nav.Link>
                   <Nav.Link
@@ -146,7 +145,7 @@ export function Menu({
                       apagarLocalStorage();
                     }}
                   >
-                    <img src={logOutIcon} alt="Sair" />
+                    <Image src={logOutIcon} alt="Sair" />
                     <span className="log-out-text">Sair</span>
                   </Nav.Link>
                 </Navbar.Collapse>
@@ -171,7 +170,7 @@ export function Menu({
                     </Nav.Link>
 
                     <div className="divisor">
-                      <img src={separador} alt="Separador" />
+                      <Image src={separador} alt="Separador" />
                     </div>
 
                     <Nav.Link href="/login">Login</Nav.Link>
@@ -201,7 +200,7 @@ export function Menu({
                     </NavLink>
 
                     <div className="divisor">
-                      <img src={separador} alt="Separador" />
+                      <Image src={separador} alt="Separador" />
                     </div>
 
                     <Nav.Link href="/login">Login</Nav.Link>
@@ -219,9 +218,9 @@ export function Menu({
                 </ButtonToggle>
                 {/* Cartão 062
                 <Nav.Link href="/login">
-                  <img src={user_circle} alt="login icon" />
-                </Nav.Link>
-               */}
+                  <Image src={user_circle} alt="login icon" />
+                </Nav.Link> */}
+              
               </Navbar.Collapse>
             )}
           </Container>

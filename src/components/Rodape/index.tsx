@@ -1,17 +1,20 @@
 import { Container } from 'react-bootstrap';
 import { Footer, Content, FooterInfo, FooterSocial } from './style';
+import Image from 'next/image'
 import LogoGyan from '../../assets/logo-offset.svg';
 import Whatsapp from '../../assets/whatsapp.svg';
 import Facebook from '../../assets/facebook.svg';
 import Linkedin from '../../assets/linkedin.svg';
 import Instagram from '../../assets/instagram.svg';
 import { useHistory } from 'react-router';
+import { useRouter } from 'next/router';
 import { useAuth } from '../../contexts/auth';
 import { useValorProjetoPago } from '../../contexts/valorProjetoPago';
 import { IPessoa } from '../../interfaces/IPessoa';
 
 export function Rodape() {
   const history = useHistory();
+  const router = useRouter();
   let { user, signOut } = useAuth();
   if(!user){
     user = {} as IPessoa;
@@ -28,7 +31,7 @@ export function Rodape() {
               <ul>
                 <li
                   className="li-click"
-                  onClick={() => history.push('/', { noRedirect: true })}
+                  onClick={() => router.push('/')}
                 >
                   Home
                 </li>
@@ -55,7 +58,7 @@ export function Rodape() {
 
                     <li
                       className="li-click"
-                      onClick={() => history.push('/cadastro-basico')}
+                      onClick={() => router.push('/cadastro-basico')}
                     >
                       Cadastre-se
                     </li>
@@ -72,19 +75,19 @@ export function Rodape() {
             <article>
               <h2>Áreas</h2>
               <ul>
-                <li className="li-click" onClick={() => history.push('/areas')}>
+                <li className="li-click" onClick={() => router.push('/areas')}>
                   Gráficos e Design
                 </li>
-                <li className="li-click" onClick={() => history.push('/areas')}>
+                <li className="li-click" onClick={() => router.push('/areas')}>
                   Marketing Digital
                 </li>
-                <li className="li-click" onClick={() => history.push('/areas')}>
+                <li className="li-click" onClick={() => router.push('/areas')}>
                   Escrita e Tradução
                 </li>
-                <li className="li-click" onClick={() => history.push('/areas')}>
+                <li className="li-click" onClick={() => router.push('/areas')}>
                   Vídeo e Animação
                 </li>
-                <li className="li-click" onClick={() => history.push('/areas')}>
+                <li className="li-click" onClick={() => router.push('/areas')}>
                   Programação & Tecnologia
                 </li>
               </ul>
@@ -95,19 +98,19 @@ export function Rodape() {
               <ul>
                 <li
                   className="li-click"
-                  onClick={() => history.push('/termos-de-uso')}
+                  onClick={() => router.push('/termos-de-uso')}
                 >
                   Termos de Uso
                 </li>
                 <li
                   className="li-click"
-                  onClick={() => history.push('/politicas-de-privacidade')}
+                  onClick={() => router.push('/politicas-de-privacidade')}
                 >
                   Políticas de Privacidade
                 </li>
                 <li
                   className="li-click"
-                  onClick={() => history.push('/politicas-de-cookies')}
+                  onClick={() => router.push('/politicas-de-cookies')}
                 >
                   Políticas de Cookies
                 </li>
@@ -117,7 +120,7 @@ export function Rodape() {
             <article>
               <h2>Suporte</h2>
               <ul>
-                <li className="li-click" onClick={() => history.push('/faq')}>
+                <li className="li-click" onClick={() => router.push('/faq')}>
                   FAQ
                 </li>
               </ul>
@@ -126,13 +129,17 @@ export function Rodape() {
             <article>
               <h2>Fale conosco</h2>
               <ul>
-                <li>
+                <li style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
                   <a
                     target="_blank"
                     href="https://api.whatsapp.com/send/?phone=55061991053691"
                     rel="noreferrer"
                   >
-                    <img className="new" src={Whatsapp} alt="Whatsapp" />
+                    <Image className="new" src={Whatsapp} width={45} height={45} alt="Whatsapp" />
                   </a>
                   Clique aqui e fale com a gente
                 </li>
@@ -145,7 +152,7 @@ export function Rodape() {
       <FooterSocial>
         <Container>
           <div className="content-fale-conosco">
-            <img src={LogoGyan} alt="Logo da GYAN" />
+            <Image src={LogoGyan} alt="Logo da GYAN" width={260} />
           </div>
           <div className="content-version">
             <p>v{process.env.REACT_APP_VERSION}</p>
@@ -156,16 +163,16 @@ export function Rodape() {
               href="https://www.linkedin.com/company/gyan-plataforma-de-servi%C3%A7os/?viewAsMember=true"
               target="blank"
             >
-              <img src={Linkedin} alt="Linkedin" />
+              <Image src={Linkedin} width={40} height={40} alt="Linkedin" />
             </a>
             <a href="https://www.instagram.com/gyan.br/" target="blank">
-              <img src={Instagram} alt="Instagram" />
+              <Image src={Instagram} width={40} height={40} alt="Instagram" />
             </a>
             <a
               href="https://www.facebook.com/Gyan-101972215654187"
               target="blank"
             >
-              <img src={Facebook} alt="Facebook" />
+              <Image src={Facebook} width={40} height={40} alt="Facebook" />
             </a>
           </div>
         </Container>

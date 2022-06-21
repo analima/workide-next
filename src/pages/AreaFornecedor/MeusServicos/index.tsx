@@ -195,7 +195,7 @@ export function MeusServicos() {
   };
 
   const handleCompartilharServico = useCallback(
-    id_servico => {
+    (id_servico: any) => {
       ofertas_api
         .get<string>('/servicos/indicacao', {
           params: {

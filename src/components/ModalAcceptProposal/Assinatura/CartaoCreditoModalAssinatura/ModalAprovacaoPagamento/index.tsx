@@ -15,6 +15,7 @@ import {
   ContainerPaymentFree,
   TextPendingInvoice,
 } from './style';
+import Image from 'next/image'
 import { handleFormatDocument } from '../../../../../helpers/formatsHelper';
 interface IModal {
   show: boolean;
@@ -170,7 +171,7 @@ export function ModalAprovacaoPagamento({
             </>
           ) : assinaturaEscolhida.gratuita || dadosClienteIugu.fundador ? (
             <ContainerPaymentFree>
-              <img src={iconCheck} alt="" />
+              <Image src={iconCheck} alt="" />
               <div className="text">
                 <span>
                   Não haverá cobrança no período de 6 meses em que você está

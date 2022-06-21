@@ -168,7 +168,7 @@ export const ContainerLogin = styled.span`
       opacity: 0.8;
     }
 
-    a {
+    div {
       border: 2px solid ${LARANJA};
       padding: 8px !important;
       cursor: pointer;

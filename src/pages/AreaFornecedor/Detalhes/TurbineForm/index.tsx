@@ -1,7 +1,7 @@
 import { useState, useEffect, ChangeEvent } from 'react';
 import { Col, Container, Form, FormCheck, Row } from 'react-bootstrap';
 import * as Yup from 'yup';
-
+import Image from 'next/image'
 import { Accordion } from '../../../../components/Accordion';
 import { AccordionItem } from '../../../../components/Accordion/AccordionItem';
 import { Spacer } from '../../../../components/Spacer';
@@ -243,7 +243,7 @@ export function TurbineForm() {
   };
 
   const handleSubmit = useCallback(
-    async event => {
+    async (event: any) => {
       event.preventDefault();
       setErrors({});
       try {
@@ -679,7 +679,7 @@ export function TurbineForm() {
                             href="#redesSociais"
                             onClick={() => handleRemoverRedeSocial(item)}
                           >
-                            <img src={DeleteButton} alt="Excluir" />
+                            <Image src={DeleteButton} alt="Excluir" />
                           </a>
                         </li>
                       ))}
@@ -732,7 +732,7 @@ export function TurbineForm() {
                             href="#certificacoes"
                             onClick={() => handleRemoverCertificacao(item)}
                           >
-                            <img src={DeleteButton} alt="Excluir" />
+                            <Image src={DeleteButton} alt="Excluir" />
                           </a>
                         </li>
                       ))}

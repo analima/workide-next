@@ -138,7 +138,7 @@ export function Graduacoes({ id_pessoa, readonly }: IGraduacoesProps) {
           error={errors.id_graduacao && errors.id_graduacao.message}
           disabled={readonly || false}
         />
-        <Button onClick={handleSubmit(handleAdd)}>
+        <Button onClick={handleSubmit(handleAdd as any)}>
           <FaPlus />
         </Button>
       </Form>

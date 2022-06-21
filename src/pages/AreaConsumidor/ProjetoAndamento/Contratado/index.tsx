@@ -8,6 +8,7 @@ import PlaceholderImage from '../../../../assets/placeholderImg.png';
 
 import { useAuth } from '../../../../contexts/auth';
 import { AvatarCadastroIncompleto } from '../../../../components/AvatarCadastroIncompleto';
+import Image from 'next/image'
 
 import {
   AvaliacaoContainer,
@@ -145,22 +146,24 @@ export function Contratado({ id_fornecedor }: IProps) {
             {dadosFornecedor.ativo ? (
               <FotoPerfilContainer>
                 {dadosFornecedor ? (
-                  <FotoPerfil
-                    onClick={() => {
+                  <FotoPerfil>
+                    <Image onClick={() => {
                       history.push(
                         `/fornecedor/perfil-publico/${dadosFornecedor.id}`,
                       );
                     }}
                     src={dadosFornecedor?.arquivo.url}
-                    alt="Foto contratado"
-                  />
+                    alt="Foto contratado"/>
+                  </FotoPerfil>
                 ) : (
                   <Skeleton width="152px" height="152px" />
                 )}
               </FotoPerfilContainer>
             ) : (
               <FotoPerfilContainer>
-                <FotoPerfil src={PlaceholderImage} alt="Foto contratado" />
+                <FotoPerfil>
+                  <Image src={PlaceholderImage} alt="Foto contratado" />
+                </FotoPerfil>
               </FotoPerfilContainer>
             )}
           </Col>

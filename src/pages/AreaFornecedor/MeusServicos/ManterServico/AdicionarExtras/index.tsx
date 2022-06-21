@@ -226,7 +226,7 @@ export function AdicionarExtras({ continuar, voltar }: IAdicionarExtrasProps) {
             </Row>
 
             <Col lg={12} className="mt-4">
-              <Button onClick={handleSubmit(handleCriarServicoExtra)}>
+              <Button onClick={handleSubmit(handleCriarServicoExtra as any)}>
                 SALVAR
               </Button>
             </Col>

@@ -21,6 +21,7 @@ import { Alert } from 'react-bootstrap';
 import { typeFile } from '../../utils/typeFile';
 import { useAuth } from '../../contexts/auth';
 import { IPessoa } from '../../interfaces/IPessoa';
+import Image from 'next/image'
 
 export function FeedbackChat() {
   const [isOpen, setIsOpen] = useState(false);
@@ -191,7 +192,7 @@ export function FeedbackChat() {
           </Wrapper>
           <ContainerThais>
             <ContentThais onClick={handleOpen}>
-              <img id="chat" src={chat} alt="" />
+              <Image id="chat" src={chat} alt="" />
             </ContentThais>
           </ContainerThais>
         </>

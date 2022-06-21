@@ -7,6 +7,7 @@ import {
   ContainerButtons,
   ButtonConfirm,
 } from './style';
+import Image from 'next/image'
 import andre from '../../assets/andre-full-regras-plano-png.png';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
 import { AZUL } from '../../styles/variaveis';
@@ -54,7 +55,7 @@ export function AvatarRegrasPlano({
           </AndreMensagem>
 
           <AndrePersonagem>
-            <img src={andre} alt="" className="avatar-upgrade" />
+            <Image src={andre} alt="" className="avatar-upgrade" />
           </AndrePersonagem>
         </AndreContainer>
       </Content>

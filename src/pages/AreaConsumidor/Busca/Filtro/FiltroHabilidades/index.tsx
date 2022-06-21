@@ -67,7 +67,7 @@ const FiltroHabilidades = ({
     if (page === 'captar') obterProjetos();
   }, [obterProjetos, page]);
 
-  const handleChangeSubareas = useCallback(event => {
+  const handleChangeSubareas = useCallback((event: any) => {
     const selectedId = Number(event.target.id);
     setHabilidadesTecnicas(oldAreas => {
       return oldAreas.map(a => ({

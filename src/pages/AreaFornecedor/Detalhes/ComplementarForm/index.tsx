@@ -43,6 +43,8 @@ interface IFormProps {
     endereco: string;
     complemento: string;
   };
+  [x: string]: any;
+
 }
 
 interface IUFProps {
@@ -520,7 +522,7 @@ export function ComplementarForm() {
             <Actions>
               <Button
                 label="Salvar"
-                onClick={handleSubmit(handleSalvarPessoa)}
+                onClick={handleSubmit(handleSalvarPessoa as any)}
               />
             </Actions>
           </Col>

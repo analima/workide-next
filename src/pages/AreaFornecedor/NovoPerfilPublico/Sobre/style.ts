@@ -63,7 +63,7 @@ export const ContentImg = styled.div`
   }
 `;
 
-interface CapaProps {
+export interface CapaProps {
   CapaDefault: string;
 }
 

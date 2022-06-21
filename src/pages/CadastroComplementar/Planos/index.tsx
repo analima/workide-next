@@ -4,7 +4,7 @@ import { Content, Button, LinkBtn } from './style';
 
 import CheckBranco from '../../../assets/check-branco.svg';
 import CirculoCinza from '../../../assets/circulo-cinza.svg';
-
+import Image from 'next/image'
 import { Template } from '../../../components/Template';
 import { useCallback, useEffect, useState } from 'react';
 import { pessoas_api } from '../../../services/pessoas_api';
@@ -64,7 +64,7 @@ export function Planos() {
                 {plano === 'BASICO' && (
                   <div className="descricao selected">
                     VOCÊ ESTÁ AQUI
-                    <img src={CheckBranco} alt="check" />
+                    <Image src={CheckBranco} alt="check" />
                   </div>
                 )}
                 {plano !== 'BASICO' && (
@@ -72,7 +72,7 @@ export function Planos() {
                     className="descricao"
                     onClick={() => handleAlterarPlano(1)}
                   >
-                    MIGRE PARA O BASICO <img src={CirculoCinza} alt="Circulo" />
+                    MIGRE PARA O BASICO <Image src={CirculoCinza} alt="Circulo" />
                   </div>
                 )}
                 <PlanoBasico />
@@ -83,7 +83,7 @@ export function Planos() {
                 {plano === 'PRO' && (
                   <div className="descricao selected">
                     VOCÊ ESTÁ AQUI
-                    <img src={CheckBranco} alt="check" />
+                    <Image src={CheckBranco} alt="check" />
                   </div>
                 )}
                 {plano !== 'PRO' && (
@@ -91,7 +91,7 @@ export function Planos() {
                     className="descricao"
                     onClick={() => handleAlterarPlano(2)}
                   >
-                    MIGRE PARA O PRO <img src={CirculoCinza} alt="Circulo" />
+                    MIGRE PARA O PRO <Image src={CirculoCinza} alt="Circulo" />
                   </div>
                 )}
                 <PlanoPro />
@@ -102,7 +102,7 @@ export function Planos() {
                 {plano === 'PREMIUM' && (
                   <div className="descricao selected">
                     VOCÊ ESTÁ AQUI
-                    <img src={CheckBranco} alt="check" />
+                    <Image src={CheckBranco} alt="check" />
                   </div>
                 )}
                 {plano !== 'PREMIUM' && (
@@ -111,7 +111,7 @@ export function Planos() {
                     onClick={() => handleAlterarPlano(3)}
                   >
                     MIGRE PARA O PREMIUM{' '}
-                    <img src={CirculoCinza} alt="Circulo" />
+                    <Image src={CirculoCinza} alt="Circulo" />
                   </div>
                 )}
                 <PlanoPremium />

@@ -4,6 +4,7 @@ import { oportunidades_api } from '../../services/oportunidades_api';
 import { ReactComponent as EstrelaOff } from '../../assets/estrela-off.svg';
 import { ReactComponent as Estrela } from '../../assets/estrela.svg';
 import PlaceholderImg from '../../assets/placeholderImg.png';
+import Image from 'next/image'
 
 import {
   Avaliacao,
@@ -129,7 +130,7 @@ export function CardAvaliacao({ id }: IProps) {
                 <AvaliacaoRodape>
                   <ContainerCardUsuario>
                     <AvaliacaoCliente>
-                      <img
+                      <Image
                         src={
                           obj?.projeto?.pessoaConsumidor?.arquivo?.url ||
                           PlaceholderImg

@@ -4,7 +4,7 @@ import { IoMdHelpCircle } from 'react-icons/io';
 import { AZUL } from '../../../../styles/variaveis';
 import { useAuth } from '../../../../contexts/auth';
 import { useInformacoesFinanceiras } from '../../../../hooks/informacoesFinanceiras';
-
+import Image from 'next/image'
 import {
   Container,
   ContainerPlans,
@@ -443,46 +443,46 @@ function TabelaSelecionarPlano({
                 )}
               </td>
               <td>
-                <img src={checkAzul} alt="possui" />
+                <Image src={checkAzul} alt="possui" />
               </td>
               <td>
-                <img src={checkAzul} alt="possui" />
+                <Image src={checkAzul} alt="possui" />
               </td>
               <td>
-                <img src={checkAzul} alt="possui" />
+                <Image src={checkAzul} alt="possui" />
               </td>
               <td>
-                <img src={checkAzul} alt="possui" />
+                <Image src={checkAzul} alt="possui" />
               </td>
             </tr>
             <tr>
               <td>Visibilidade na busca</td>
               <td>
-                <img src={checkAzul} alt="possui" />
+                <Image src={checkAzul} alt="possui" />
               </td>
               <td>
-                <img src={checkAzul} alt="possui" />
+                <Image src={checkAzul} alt="possui" />
               </td>
               <td>
-                <img src={checkAzul} alt="possui" />
+                <Image src={checkAzul} alt="possui" />
               </td>
               <td>
-                <img src={checkAzul} alt="possui" />
+                <Image src={checkAzul} alt="possui" />
               </td>
             </tr>
             <tr>
               <td>Gestão de reputação</td>
               <td>
-                <img src={checkAzul} alt="possui" />
+                <Image src={checkAzul} alt="possui" />
               </td>
               <td>
-                <img src={checkAzul} alt="possui" />
+                <Image src={checkAzul} alt="possui" />
               </td>
               <td>
-                <img src={checkAzul} alt="possui" />
+                <Image src={checkAzul} alt="possui" />
               </td>
               <td>
-                <img src={checkAzul} alt="possui" />
+                <Image src={checkAzul} alt="possui" />
               </td>
             </tr>
 

@@ -3,6 +3,7 @@ import { formatDate } from '../../helpers/DateHelper';
 import { oportunidades_api } from '../../services/oportunidades_api';
 import { ReactComponent as EstrelaOff } from '../../assets/estrela-off.svg';
 import { ReactComponent as Estrela } from '../../assets/estrela.svg';
+import Image from 'next/image'
 import {
   Avaliacao,
   AvaliacaoTitulo,
@@ -72,7 +73,7 @@ export function AvaliacoesFornecedor({ id }: IProps) {
                   <span>Publicado em: {formatDate(obj?.dataHoraCriacao)}</span>
                   <ContainerCardUsuario>
                     <AvaliacaoCliente>
-                      <img
+                      <Image
                         src={obj?.projeto?.pessoaConsumidor?.arquivo?.url}
                         alt={obj?.projeto?.pessoaConsumidor?.nomeTratamento}
                       />

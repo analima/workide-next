@@ -5,7 +5,7 @@ import { Titulo } from '../../../../components/Titulo';
 import iconSelectPosition from '../../../../assets/IconSelectPosition.svg';
 import { Skeleton } from '../../../../components/Skeleton';
 import { Spinner } from '../../../../components/Spinner';
-
+import Image from 'next/image'
 import { LARANJA, VERMELHO_70 } from '../../../../styles/variaveis';
 import {
   Content,
@@ -91,7 +91,7 @@ export function MeusProjetos() {
     [history],
   );
 
-  const handleSetFiltro = useCallback(key => {
+  const handleSetFiltro = useCallback((key: any) => {
     setFiltro(oldFiltro => ({
       ...oldFiltro,
       [key]: !oldFiltro[key],
@@ -261,7 +261,7 @@ export function MeusProjetos() {
                     <th></th>
                     <th>
                       {' '}
-                      <img
+                      <Image
                         src={iconSelectPosition}
                         alt=""
                         onClick={() => {
@@ -273,7 +273,7 @@ export function MeusProjetos() {
                     </th>
                     <th>
                       {' '}
-                      <img
+                      <Image
                         src={iconSelectPosition}
                         alt=""
                         onClick={() => {
@@ -285,7 +285,7 @@ export function MeusProjetos() {
                     </th>
                     <th>
                       {' '}
-                      <img
+                      <Image
                         src={iconSelectPosition}
                         alt=""
                         onClick={() => {
@@ -297,7 +297,7 @@ export function MeusProjetos() {
                     </th>
                     <th>
                       {' '}
-                      <img
+                      <Image
                         src={iconSelectPosition}
                         alt=""
                         onClick={() => {
@@ -309,7 +309,7 @@ export function MeusProjetos() {
                     </th>
                     <th>
                       {' '}
-                      <img
+                      <Image
                         src={iconSelectPosition}
                         alt=""
                         onClick={() => {

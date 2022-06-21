@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { oportunidades_api } from '../../../../services/oportunidades_api';
 import { pagamentos_api } from '../../../../services/pagamentos_api';
 import { formatToPrice } from '../../../../helpers/formatsHelper';
+import Image from 'next/image'
 
 export function Dashboard() {
   const { user, refreshUserData } = useAuth();
@@ -58,7 +59,7 @@ export function Dashboard() {
                 <p>Você ainda não tem nada por aqui.</p>
                 <p>O primeiro passo é concluir seu cadastro. Vamos nessa?</p>
               </div>
-              <img src={Antonio} alt="Antonio" />
+              <Image src={Antonio} alt="Antonio" />
             </div>
           </div>
           <ContentButton>
@@ -81,7 +82,7 @@ export function Dashboard() {
                   isso?
                 </p>
               </div>
-              <img src={Antonio} alt="Antonio" />
+              <Image src={Antonio} alt="Antonio" />
             </div>
           </div>
         </CardPercentage>
@@ -100,7 +101,7 @@ export function Dashboard() {
                     Você já fez isso?
                   </p>
                 </div>
-                <img src={Antonio} alt="Antonio" />
+                <Image src={Antonio} alt="Antonio" />
               </div>
             </div>
           </CardPercentage>

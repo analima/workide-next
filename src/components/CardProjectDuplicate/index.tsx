@@ -13,6 +13,8 @@ import {
   TextStatus,
 } from './style';
 
+import Image from 'next/image'
+
 type AreaInteresse = {
   dataHoraCriacao: string;
   descricao: string;
@@ -65,7 +67,7 @@ export const CardProjectDuplicate = ({
             {img.length > 0 ? (
               <Images>
                 {img.slice(0, 2).map((e: string) => (
-                  <img key={e} src={e} alt="" />
+                  <Image key={e} src={e} alt="" />
                 ))}
                 {img.length > 2 && (
                   <div className="length-img">
@@ -109,7 +111,7 @@ export const CardProjectDuplicate = ({
             {img.length > 0 ? (
               <Images>
                 {img.slice(0, 2).map((e: string) => (
-                  <img key={e} src={e} alt="" />
+                  <Image key={e} src={e} alt="" />
                 ))}
                 <div className="length-img">
                   <span>+{img.length - 2}</span>

@@ -1,6 +1,8 @@
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { useHistory } from 'react-router';
+import { useRouter } from 'next/router';
 import { useAuth } from '../../contexts/auth';
+import { IPessoa } from '../../interfaces/IPessoa';
 import { AZUL, CINZA_10 } from '../../styles/variaveis';
 import {
   ContainerPaginacao,
@@ -29,8 +31,11 @@ export function Paginacao({
   ultima,
   primeira,
 }: IPaginacao) {
-  const { user } = useAuth();
-  const history = useHistory();
+  let { user } = useAuth();
+  if(!user){
+    user = {} as IPessoa;
+  }
+  const router = useRouter();
 
   return (
     <Content>
@@ -52,7 +57,7 @@ export function Paginacao({
             disabled={pagina === totalPaginas}
             onClick={() => {
               if (!user.id_pessoa) {
-                history.push('/cadas-basico');
+                router.push('/cadastro-basico');
                 return;
               }
               proxima();

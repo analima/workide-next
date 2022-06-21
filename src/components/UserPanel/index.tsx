@@ -12,7 +12,7 @@ import {
   TypographyNameStyled,
 } from './style';
 import { parseISO, format } from 'date-fns';
-
+import Image from 'next/image'
 type Props = {
   image: string | number;
   name: string;
@@ -47,7 +47,7 @@ export const UserPanel = ({
       {imageRemetente && (
         <ContainerStyled>
           <ContentImageStyled>
-            <img src={imageRemetente} alt="Logo" />
+            <Image src={imageRemetente} alt="Logo" />
           </ContentImageStyled>
           <ContentInfoStyled>
             <TypographyNameStyled>{name}</TypographyNameStyled>

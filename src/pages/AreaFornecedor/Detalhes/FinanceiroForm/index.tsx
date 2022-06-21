@@ -2,7 +2,7 @@ import { Col, Container, Form, Row } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-
+import Image from 'next/image'
 import { useAuth } from '../../../../contexts/auth';
 import { useForm } from 'react-hook-form';
 import { useCadastroComplementar } from '../../../../hooks/detalheFornecedor';
@@ -80,7 +80,7 @@ export function FinanceiroForm() {
   }, []);
 
   const handleSubmit = useCallback(
-    async event => {
+    async (event: any) => {
       event.preventDefault();
       setErrors({});
 
@@ -280,7 +280,7 @@ export function FinanceiroForm() {
               <div className="box-plano">
                 <div className="descricao selected">
                   VOCÊ ESTÁ AQUI
-                  <img src={CheckBranco} alt="check" />
+                  <Image src={CheckBranco} alt="check" />
                 </div>
                 <PlanoBasico />
               </div>
@@ -288,7 +288,7 @@ export function FinanceiroForm() {
             <Col lg={4}>
               <div className="box-plano">
                 <div className="descricao">
-                  MIGRE PARA O PRO <img src={CirculoCinza} alt="Circulo" />
+                  MIGRE PARA O PRO <Image src={CirculoCinza} alt="Circulo" />
                 </div>
                 <PlanoPro />
               </div>
@@ -296,7 +296,7 @@ export function FinanceiroForm() {
             <Col lg={4}>
               <div className="box-plano">
                 <div className="descricao">
-                  MIGRE PARA O PREMIUM <img src={CirculoCinza} alt="Circulo" />
+                  MIGRE PARA O PREMIUM <Image src={CirculoCinza} alt="Circulo" />
                 </div>
                 <PlanoPremium />
               </div>

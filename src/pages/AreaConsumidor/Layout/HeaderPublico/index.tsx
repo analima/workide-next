@@ -8,9 +8,11 @@ import { Containe, Content, ContainerLogin } from './style';
 import Logo from '../../../../assets/logo-branca.svg';
 import { Container } from 'react-bootstrap';
 import { CadastroBasico } from '../../../../components/CadastroBasico';
+import {useRouter} from 'next/router';
 
 export function HeaderPublico(): JSX.Element {
   const history = useHistory();
+  const router = useRouter();
 
   const [open, setOpen] = useState(false);
   const [displayOfOverlay, setdisplayOfOverlay] = useState('none');
@@ -54,7 +56,7 @@ export function HeaderPublico(): JSX.Element {
       <Container className="container">
         <Content>
           
-          <Image src ="/logo.svg" alt="Gyan" width={100} height={100} />
+          <Image src={Logo} alt="Gyan" width={200} height={60} />
           <button type="button" onClick={handleToggleMenu}>
             <FiMenu size={34} color="#fff" />
           </button>
@@ -82,10 +84,13 @@ export function HeaderPublico(): JSX.Element {
               <span onClick={() => handleShowOverlay()}>Cadastre-se</span>
 
               <span>
-                {/* <Link to="/login" onClick={handleToggleMenu}>
+                <div onClick={() => {
+                  handleToggleMenu
+                  router.push('/login')
+                }}>
                   <BiUserCircle />
                   Login
-                </Link> */}
+                </div>
               </span>
             </ContainerLogin>
           </nav>
