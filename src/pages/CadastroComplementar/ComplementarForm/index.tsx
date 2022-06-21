@@ -6,7 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { cpf as cpfValidator, cnpj as cnpjValidator } from 'cpf-cnpj-validator';
 import { isValid, parse } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
-
+import Image from 'next/image'
 import { useAuth } from '../../../contexts/auth';
 import { useCadastroComplementar } from '../../../hooks/cadastroComplementar';
 import { pessoas_api } from '../../../services/pessoas_api';
@@ -1160,7 +1160,7 @@ export function ComplementarForm() {
                       color="#fff"
                       className={selectedItems.includes(item.id) ? 'p' : ''}
                     />
-                    <img
+                    <Image
                       className={
                         selectedItems.includes(item.id) ? 'selected' : ''
                       }
@@ -1178,7 +1178,7 @@ export function ComplementarForm() {
             <Actions>
               <Button
                 label="SALVAR"
-                onClick={handleSubmit(handleSalvarPessoa)}
+                onClick={handleSubmit(handleSalvarPessoa as any)}
               />
             </Actions>
           </Col>

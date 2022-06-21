@@ -98,7 +98,6 @@ export function TooltipPacotes({
             <ContentButton>
               {pacote.map((item: IPacoteInfo) => (
                 <ButtonPacote
-                  key={item.id}
                   active={item.id === idPacote}
                   onClick={() => setIdPacote(item.id)}
                 >

@@ -50,7 +50,7 @@ const FiltroSubarea = ({
 
   const [foundAreasLength, setFoundAreasLength] = useState(0);
 
-  const handleChangeSubareas = useCallback(event => {
+  const handleChangeSubareas = useCallback((event: any) => {
     const selectedId = Number(event.target.id);
     setAreas(oldAreas => {
       return oldAreas.map(a => ({

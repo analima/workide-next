@@ -12,6 +12,7 @@ import {
   PorcentageCompleted,
   ContentPerfilData,
 } from './style';
+import Image from 'next/image'
 import { ReactComponent as EstrelaOff } from '../../../../assets/estrela-off.svg';
 import { ReactComponent as Estrela } from '../../../../assets/estrela.svg';
 import { AZUL_60, CINZA_40 } from '../../../../styles/variaveis';
@@ -133,7 +134,7 @@ export function Perfil({ isConsumidor }: IProps) {
               </PerfilInfo>
 
               <PerfilFoto>
-                <img src={user.url_avatar || defaultImage} alt="Foto Perfil" />
+                <Image src={user.url_avatar || defaultImage} alt="Foto Perfil" />
               </PerfilFoto>
             </ContentPerfilData>
             <PorcentageCompleted

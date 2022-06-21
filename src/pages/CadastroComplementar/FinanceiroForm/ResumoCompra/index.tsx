@@ -6,6 +6,7 @@ import { InputCheck } from '../../../../components/Form/InputCheck';
 import { Titulo } from '../../../../components/Titulo';
 import checkIcon from '../../../../assets/check-gradient.svg';
 import { useAuth } from '../../../../contexts/auth';
+import Image from 'next/image'
 import {
   AiOutlineCloseCircle,
   AiOutlineCheckCircle,
@@ -209,7 +210,7 @@ function ResumoCompra({ plano }: IProps) {
                 {user.fundador && (
                   <ContentDesconto>
                     <div className="cofundador">
-                      <img src={checkIcon} alt="" />
+                      <Image src={checkIcon} alt="" />
                       <span>Desconto Cofundador</span>
                     </div>
 

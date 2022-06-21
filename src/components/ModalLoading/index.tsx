@@ -2,6 +2,7 @@ import { Container, Modal, ModalBody } from 'react-bootstrap';
 import { BarraCarregamentoCircular } from '../BarraCarregamentoCircular';
 import { ContainerAvatar, Content } from './style';
 import andre from '../../assets/andre-full-regras-plano-png.png';
+import Image from 'next/image'
 
 interface IModalRecomendacao {
   showModal: boolean;
@@ -28,7 +29,7 @@ export function ModalLoading({ showModal, setShowModal }: IModalRecomendacao) {
                   <BarraCarregamentoCircular />
                 </div>
               </ContainerAvatar>
-              <img src={andre} alt="andre" />
+              <Image src={andre} alt="andre" />
             </Content>
           </Container>
         </ModalBody>

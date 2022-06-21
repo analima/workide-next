@@ -4,6 +4,7 @@ import Antonio  from '../../../../assets/antonio-full.svg';
 import { LARANJA } from '../../../../styles/variaveis';
 import { Titulo } from '../../../../components/Titulo';
 import { Col, Row } from 'react-bootstrap';
+import Image from 'next/image'
 
 type ProjetoProps = {
   tipo: 'exclusivo' | 'normal';
@@ -51,7 +52,7 @@ export function NenhumProjeto({ tipo }: ProjetoProps) {
           </Col>
           <Col lg={4}>
             <ContainerAntonio>
-              <img src={Antonio} alt="" />
+              <Image src={Antonio} alt="" />
               
             </ContainerAntonio>
           </Col>

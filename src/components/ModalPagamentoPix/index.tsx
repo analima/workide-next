@@ -3,6 +3,7 @@ import carol from '../../assets/carol-full-fundador.svg';
 import { formatToPrice } from '../../helpers/formatsHelper';
 import { Content, ContainerText, ContainerButton, ButtonLink } from './style';
 import { ButtonLinkLaranja } from './style';
+import Image from 'next/image'
 interface IModal {
   show: boolean;
   setShow: React.Dispatch<React.SetStateAction<boolean>>;
@@ -27,7 +28,7 @@ export function ModalPagamentoPix({
     >
       <Modal.Body>
         <Content>
-          <img className="avatar-fundador" src={carol} alt="" />
+          <Image className="avatar-fundador" src={carol} alt="" />
           <ContainerText>
             <h3>Oba, sua fatura por pix foi paga!</h3>
             <p>

@@ -469,8 +469,9 @@ export function Projeto({ tipo, projeto, totalFavoritos = 0 }: ProjetoProps) {
                         return;
                       }
 
-                      router.push(`/detalhes-projeto/${projeto.id}`, {
-                        tipo: tipo === 'exclusivo',
+                      router.push({
+                        pathname: `/detalhes-projeto/${projeto.id}`,
+                        query: {tipo: tipo === 'exclusivo'},
                       });
                     }}
                   >

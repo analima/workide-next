@@ -8,6 +8,7 @@ import { TurbineForm } from '../TurbineForm';
 import { Container, Button, ContentButton } from './style';
 
 import ArrowButton from '../../../../assets/arrow.svg';
+import Image from 'next/image'
 
 export function CadastroComplementarContent() { 
 
@@ -19,7 +20,7 @@ export function CadastroComplementarContent() {
           <div>
             <Accordion.Toggle  className="panel-toggle" eventKey="0">
                 <p className="panel-titulo">Dados pessoais</p> 
-                <div className="panel-seta"> <img src={ArrowButton}  alt="Abrir" /> </div>
+                <div className="panel-seta"> <Image src={ArrowButton}  alt="Abrir" /> </div>
             </Accordion.Toggle>
           </div>
           <Accordion.Collapse eventKey="0">
@@ -28,7 +29,7 @@ export function CadastroComplementarContent() {
           <div>
             <Accordion.Toggle className="panel-toggle" eventKey="1">
               <div className="panel-titulo">Turbine o seu potencial</div> 
-              <div className="panel-seta"> <img src={ArrowButton}  alt="Abrir" /> </div>              
+              <div className="panel-seta"> <Image src={ArrowButton}  alt="Abrir" /> </div>              
             </Accordion.Toggle>
           </div>
           <Accordion.Collapse eventKey="1">
@@ -41,7 +42,7 @@ export function CadastroComplementarContent() {
           <div>
             <Accordion.Toggle className="panel-toggle" eventKey="3">
               <div className="panel-titulo">Dados Financeiros</div> 
-              <div className="panel-seta"> <img src={ArrowButton}  alt="Abrir" /> </div>              
+              <div className="panel-seta"> <Image src={ArrowButton}  alt="Abrir" /> </div>              
             </Accordion.Toggle>
           </div>
           <Accordion.Collapse eventKey="3">
@@ -50,7 +51,7 @@ export function CadastroComplementarContent() {
           <div>
             <Accordion.Toggle className="panel-toggle" eventKey="4">
               <div className="panel-titulo">Condições gerais </div> 
-              <div className="panel-seta"> <img src={ArrowButton}  alt="Abrir" /> </div>              
+              <div className="panel-seta"> <Image src={ArrowButton}  alt="Abrir" /> </div>              
             </Accordion.Toggle>
           </div>
           <Accordion.Collapse eventKey="4">

@@ -11,6 +11,8 @@ import {
   TypographyNameStyled,
 } from './styles';
 
+import Image from 'next/image'
+
 type Props = {
   anexo: string;
   id: number;
@@ -43,7 +45,7 @@ export const UserPanelAnexo = ({ anexo, id }: Props): JSX.Element => {
     <>
       <ContainerStyled>
         <ContentImageStyled>
-          <img src={imageRemetente} alt="Logo" />
+          <Image src={imageRemetente} alt="Logo" />
         </ContentImageStyled>
         <ContentInfoStyled>
           <TypographyNameStyled>{name}</TypographyNameStyled>

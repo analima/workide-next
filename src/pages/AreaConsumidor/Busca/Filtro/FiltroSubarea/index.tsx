@@ -92,7 +92,7 @@ const FiltroSubarea = ({
     }
   }, [handleSubmit, onSubmit, page, selectedSubareas]);
 
-  const handleChangeSubareas = useCallback(event => {
+  const handleChangeSubareas = useCallback((event: any) => {
     const selectedId = Number(event.target.id);
     setAreas(oldAreas => {
       return oldAreas.map(a => ({

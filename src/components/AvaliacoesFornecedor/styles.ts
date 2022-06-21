@@ -47,7 +47,7 @@ export const AvaliacaoCliente = styled.div`
   display: flex;
   justify-content: space-between;
 
-  img {
+  Image {
     height: 32px;
     width: 32px;
     border-radius: 50%;

@@ -163,7 +163,7 @@ export function Sobre({ dataProps, isPreview = false }: PerfilFornecedorProps) {
   }, [handleMedals]);
 
   const handleOpenShareLink = useCallback(
-    event => {
+    (event: any) => {
       const handleLink = `${linkUrlAmbiente}/fornecedor/perfil-publico/${
         dataProps?.usuario.id
       }-${(dataProps?.nome).replace(/ /g, '-')}`;

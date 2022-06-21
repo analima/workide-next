@@ -12,6 +12,7 @@ import searchUsersImage from '../../../../assets/search-users_white.png';
 import BeToBeImage from '../../../../assets/be_to_be_white.png';
 import { pessoas_api } from '../../../../services/pessoas_api';
 import { AZUL, LARANJA } from '../../../../styles/variaveis';
+import Image from 'next/image'
 
 type Props = {
   img: string;
@@ -31,21 +32,21 @@ export function Card({ img, text, typeCard, onClick }: Props): JSX.Element {
   function checkImage(nameImage: string) {
     switch (nameImage) {
       case 'together':
-        return <img src={TogetherImage} alt={nameImage} />;
+        return <Image src={TogetherImage} alt={nameImage} />;
       case 'myProjects':
-        return <img src={MyProjectsImage} alt={nameImage} />;
+        return <Image src={MyProjectsImage} alt={nameImage} />;
       case 'journeyPath':
-        return <img src={JourneyPath} alt={nameImage} />;
+        return <Image src={JourneyPath} alt={nameImage} />;
       case 'toTeacher':
-        return <img src={ToTeacherImage} alt={nameImage} />;
+        return <Image src={ToTeacherImage} alt={nameImage} />;
       case 'buildingTogether':
-        return <img src={BuildingTogetherImage} alt={nameImage} />;
+        return <Image src={BuildingTogetherImage} alt={nameImage} />;
       case 'searchUsers':
-        return <img src={searchUsersImage} alt={nameImage} />;
+        return <Image src={searchUsersImage} alt={nameImage} />;
       case 'beTobe':
-        return <img src={BeToBeImage} alt={nameImage} />;
+        return <Image src={BeToBeImage} alt={nameImage} />;
       default:
-        <img src={BeToBeImage} alt={nameImage} />;
+        <Image src={BeToBeImage} alt={nameImage} />;
     }
   }
 

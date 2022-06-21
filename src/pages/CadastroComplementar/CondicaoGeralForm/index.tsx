@@ -244,7 +244,7 @@ export function CondicaoGeralForm({ cadastroCompleto, isConsumidor }: IProps) {
               &nbsp;&nbsp;
               <Button
                 label={cadastroCompleto ? 'SALVAR' : 'CONCLUÍDO'}
-                onClick={handleSubmit(handleSalvarConfiguracao)}
+                onClick={handleSubmit(handleSalvarConfiguracao as any)}
               />
             </Actions>
           </Col>

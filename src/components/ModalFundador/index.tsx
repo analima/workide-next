@@ -1,6 +1,7 @@
 import { Modal } from 'react-bootstrap';
 import carol from '../../assets/carol-full-fundador.svg';
 import { Content, ContainerText, ContainerButton, ButtonLink } from './style';
+import Image from 'next/image'
 interface IModal {
   show: boolean;
   setShow: React.Dispatch<React.SetStateAction<boolean>>;
@@ -18,7 +19,7 @@ export function ModalFundador({ show, setShow }: IModal): JSX.Element {
     >
       <Modal.Body>
         <Content>
-          <img className="avatar-fundador" src={carol} alt="" />
+          <Image className="avatar-fundador" src={carol} alt="" />
           <ContainerText>
             <h3>Que bom que você está aqui!</h3>
             <p>É muito bom tê-lo conosco. </p>

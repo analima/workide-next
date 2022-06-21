@@ -342,7 +342,8 @@ export function ModalCreateSubaccount({ show, setShow }: IModal): JSX.Element {
                 <Button
                   label={isLoading ? 'CARREGANDO...' : 'SALVAR'}
                   color="primary"
-                  onClick={() => handleSubmit(handleSaveInformations)()}
+                  //onClick={() => handleSubmit(handleSaveInformations)()}
+                  onClick={() => {console.log('SALVAR')}}
                 />
               </ContainerButton>
             </Col>

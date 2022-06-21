@@ -11,7 +11,7 @@ import { pessoas_api } from '../../services/pessoas_api';
 import { updateToken } from '../../services';
 import { AZUL } from '../../styles/variaveis';
 import { Helmet } from 'react-helmet';
-
+import Image from 'next/image'
 export default class Login extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
@@ -229,7 +229,7 @@ export default class Login extends React.Component<any, any> {
         <div className="form-content">
           <div className="form-title">
             <div className="logo">
-              <img src={Logo} alt="Logo Gyan" />
+              <Image src={Logo} alt="Logo Gyan" />
             </div>
             <br />
             <br />
@@ -241,7 +241,7 @@ export default class Login extends React.Component<any, any> {
               <Col lg={12}>
                 <div className="google">
                   <a onClick={this.cadastroGoogle} href="# ">
-                    <img src={Google} alt="Google" /> LOGIN COM GOOGLE
+                    <Image src={Google} alt="Google" /> LOGIN COM GOOGLE
                   </a>
                 </div>
               </Col>

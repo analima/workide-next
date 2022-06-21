@@ -8,6 +8,7 @@ import ArrowReload from '../../../../assets/arrow_reload.svg';
 import ArrowUndoUpLeft from '../../../../assets/arrow_undo_up_left.svg';
 import Show from '../../../../assets/show.svg';
 import { Card } from '../../../../components/Card';
+import Image from 'next/image'
 import {
   AcoesContainer,
   ComprasContainer,
@@ -304,7 +305,7 @@ export function Compras() {
                                     title="Vizualizar fatura"
                                   >
                                     <button>
-                                      <img src={Show} alt="Show" />
+                                      <Image src={Show} alt="Show" />
                                     </button>
                                   </DownloadLink>
                                 )}
@@ -324,7 +325,7 @@ export function Compras() {
                                     atualizarFatura(compra);
                                   }}
                                 >
-                                  <img src={ArrowReload} alt="Arrow Reload" />
+                                  <Image src={ArrowReload} alt="Arrow Reload" />
                                 </button>
                                 <button
                                   data-toggle="tooltip"
@@ -342,7 +343,7 @@ export function Compras() {
                                     setShowModalAcceptProposal(true);
                                   }}
                                 >
-                                  <img
+                                  <Image
                                     src={ArrowUndoUpLeft}
                                     alt="Arrow Undo Up Left"
                                   />

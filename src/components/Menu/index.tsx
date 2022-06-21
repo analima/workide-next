@@ -7,7 +7,6 @@ import { ReactComponent as Center } from '../../assets/center.svg';
 import separador from '../../assets/separador.svg';
 import Logo from '../../assets/logo.svg';
 
-
 import { NavCustom, ButtonToggle, NavLink } from './style';
 import { CadastroBasico } from '../CadastroBasico';
 import { useHistory } from 'react-router-dom';
@@ -219,7 +218,7 @@ export function Menu({
                 </ButtonToggle>
                 {/* Cartão 062
                 <Nav.Link href="/login">
-                  <img src={user_circle} alt="login icon" />
+                  <Image src={user_circle} alt="login icon" />
                 </Nav.Link> */}
               
               </Navbar.Collapse>

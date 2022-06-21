@@ -12,6 +12,7 @@ import {
   GhostButtonStyled,
   ButtonMainStyled,
 } from './style';
+import Image from 'next/image'
 import { ReactComponent as EstrelaOff } from '../../assets/estrela-off.svg';
 import { ReactComponent as Estrela } from '../../assets/estrela.svg';
 import PlaceholderImage from '../../assets/placeholderImg.png';
@@ -123,14 +124,14 @@ export const UserCard = ({
           }}
         >
           {image ? (
-            <img src={image} alt={altImage} />
+            <Image src={image} alt={altImage} />
           ) : (
             <Skeleton width="152px" height="152px" />
           )}
         </ContainerImageStyled>
       ) : (
         <ContainerImageStyled>
-          <img src={PlaceholderImage} alt={altImage} />
+          <Image src={PlaceholderImage} alt={altImage} />
         </ContainerImageStyled>
       )}
       <ContentCardStyled>

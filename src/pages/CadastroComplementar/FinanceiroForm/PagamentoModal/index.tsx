@@ -8,7 +8,7 @@ import { CardTipoPagamento, CardTipoPagamentoDisabled, Content } from './style';
 import pixIcon from '../../../../assets/pix-icon.svg';
 import boletoIcon from '../../../../assets/boleto.svg';
 import cartaoIcon from '../../../../assets/cartao-credito.svg';
-
+import Image from 'next/image'
 interface IModal {
   show: boolean;
   setShow: React.Dispatch<React.SetStateAction<boolean>>;
@@ -42,7 +42,7 @@ export function PagamentoModal({ show, setShow }: IModal) {
                 </div>
 
                 <div>
-                  <img src={cartaoIcon} alt="" />
+                  <Image src={cartaoIcon} alt="" />
                 </div>
               </CardTipoPagamento>
             </Col>
@@ -57,7 +57,7 @@ export function PagamentoModal({ show, setShow }: IModal) {
                 </div>
 
                 <div>
-                  <img src={pixIcon} alt="" />
+                  <Image src={pixIcon} alt="" />
                 </div>
               </CardTipoPagamento>
             </Col>
@@ -71,7 +71,7 @@ export function PagamentoModal({ show, setShow }: IModal) {
                 </div>
 
                 <div>
-                  <img src={boletoIcon} alt="" />
+                  <Image src={boletoIcon} alt="" />
                 </div>
               </CardTipoPagamentoDisabled>
             </Col>

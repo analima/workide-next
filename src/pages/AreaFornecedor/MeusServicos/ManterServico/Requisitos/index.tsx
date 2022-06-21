@@ -165,7 +165,7 @@ export function Requisitos({ continuar, voltar }: IRequisitosProps) {
             </Col>
 
             <Col lg={12} className="mt-4">
-              <Button onClick={handleSubmit(handleCriarRequisito)}>
+              <Button onClick={handleSubmit(handleCriarRequisito as any)}>
                 SALVAR
               </Button>
             </Col>

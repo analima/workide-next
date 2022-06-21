@@ -8,6 +8,7 @@ import {
   Resultados,
   NenhumProjetoContent,
 } from './style';
+import Image from 'next/image'
 import { ReactComponent as SeloExlusivo } from '../../../../assets/exclusive.svg';
 import { Paginacao } from '../Paginacao';
 import { oportunidades_api } from '../../../../services/oportunidades_api';
@@ -251,7 +252,7 @@ export function Propostas() {
                     <th></th>
                     <th></th>
                     <th>
-                      <img
+                      <Image
                         src={iconSelectPosition}
                         alt=""
                         onClick={() => {
@@ -262,7 +263,7 @@ export function Propostas() {
                       Projeto
                     </th>
                     <th>
-                      <img
+                      <Image
                         src={iconSelectPosition}
                         alt=""
                         onClick={() => {
@@ -273,7 +274,7 @@ export function Propostas() {
                       Início
                     </th>
                     <th>
-                      <img
+                      <Image
                         src={iconSelectPosition}
                         alt=""
                         onClick={() => {
@@ -284,7 +285,7 @@ export function Propostas() {
                       Status
                     </th>
                     <th>
-                      <img
+                      <Image
                         src={iconSelectPosition}
                         alt=""
                         onClick={() => {
@@ -295,7 +296,7 @@ export function Propostas() {
                       Cliente
                     </th>
                     <th>
-                      <img
+                      <Image
                         src={iconSelectPosition}
                         alt=""
                         onClick={() => {

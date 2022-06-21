@@ -121,7 +121,7 @@ export function RedesSociais({ id_pessoa, readonly }: IRedesSociaisProps) {
           }}
         />
 
-        <Button onClick={handleSubmit(handleAdd)}>
+        <Button onClick={handleSubmit(handleAdd as any)}>
           <FaPlus />
         </Button>
       </Form>

@@ -1,5 +1,6 @@
 import { ProgressBar } from 'react-bootstrap';
 import Lampada from '../../assets/lampada.svg';
+import Image from 'next/image'
 import { Content } from './style';
 
 interface BarraProgressoInterface {
@@ -15,7 +16,7 @@ export function BarraProgresso({ porcentagem }: BarraProgressoInterface) {
     <Content>
       <ProgressBar now={porcentagem} label={`${porcentagem}%`} />
       <div className="icone-barra">
-        <img src={Lampada} alt="Lâmpada" />
+        <Image src={Lampada} alt="Lâmpada" />
       </div>
     </Content>
   );

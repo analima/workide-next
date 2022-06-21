@@ -28,7 +28,7 @@ import { addDays } from 'date-fns';
 import { format } from 'date-fns/esm';
 import { Spacer } from '../Spacer';
 import { pagamentos_api } from '../../services/pagamentos_api';
-import { ModalCreateSubaccount } from '../../views/AreaConsumidor/ProjetoAndamento/Detalhes/ModalCreateSubaccount';
+import { ModalCreateSubaccount } from '../../pages/AreaConsumidor/ProjetoAndamento/Detalhes/ModalCreateSubaccount';
 interface IModalDesistir {
   showModal: boolean;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;

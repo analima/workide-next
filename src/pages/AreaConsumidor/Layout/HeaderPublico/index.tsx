@@ -4,7 +4,7 @@ import { useHistory } from 'react-router';
 import Image from 'next/image'
 import { FiMenu } from 'react-icons/fi';
 import { BiUserCircle } from 'react-icons/bi';
-import { Containe, Content, ContainerLogin, loginButton } from './style';
+import { Containe, Content, ContainerLogin } from './style';
 import Logo from '../../../../assets/logo-branca.svg';
 import { Container } from 'react-bootstrap';
 import { CadastroBasico } from '../../../../components/CadastroBasico';

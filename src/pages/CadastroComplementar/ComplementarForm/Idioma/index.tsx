@@ -224,7 +224,7 @@ export function Idioma({ id_pessoa, readonly }: IIdiomaProps) {
           />
         </ContainerSelect>
 
-        <Button onClick={handleSubmit(handleAdd)}>
+        <Button onClick={handleSubmit(handleAdd as any)}>
           <FaPlus />
         </Button>
       </Form>

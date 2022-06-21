@@ -69,7 +69,7 @@ const FiltroCausas = ({
     }
   }, [obterProjetos, page]);
 
-  const handleChangeSubareas = useCallback(event => {
+  const handleChangeSubareas = useCallback((event: any) => {
     const selectedId = Number(event.target.id);
     setCausasSociais(oldAreas => {
       return oldAreas.map(a => ({

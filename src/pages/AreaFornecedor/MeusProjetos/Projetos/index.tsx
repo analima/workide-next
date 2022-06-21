@@ -8,6 +8,7 @@ import {
   Body,
   Resultados,
 } from './style';
+import Image from 'next/image'
 import { Paginacao } from '../Paginacao';
 import { dataValidation } from '../../../../utils/DateValidator';
 import { addDays, format, parseISO } from 'date-fns';
@@ -289,7 +290,7 @@ export function Projetos({ pesquisaNome = '' }: IProps) {
                   <tr>
                     <th></th>
                     <th>
-                      <img
+                      <Image
                         src={iconSelectPosition}
                         alt=""
                         onClick={() => {
@@ -300,7 +301,7 @@ export function Projetos({ pesquisaNome = '' }: IProps) {
                       Projeto
                     </th>
                     <th>
-                      <img
+                      <Image
                         src={iconSelectPosition}
                         alt=""
                         onClick={() => {
@@ -311,7 +312,7 @@ export function Projetos({ pesquisaNome = '' }: IProps) {
                       Início
                     </th>
                     <th>
-                      <img
+                      <Image
                         src={iconSelectPosition}
                         alt=""
                         onClick={() => {
@@ -322,7 +323,7 @@ export function Projetos({ pesquisaNome = '' }: IProps) {
                       Status
                     </th>
                     <th>
-                      <img
+                      <Image
                         src={iconSelectPosition}
                         alt=""
                         onClick={() => {
@@ -333,7 +334,7 @@ export function Projetos({ pesquisaNome = '' }: IProps) {
                       Cliente
                     </th>
                     <th>
-                      <img
+                      <Image
                         src={iconSelectPosition}
                         onClick={() => {
                           setOrder('&order=prazoConclusao');
@@ -345,7 +346,7 @@ export function Projetos({ pesquisaNome = '' }: IProps) {
                     </th>
 
                     <th>
-                      <img
+                      <Image
                         src={iconSelectPosition}
                         onClick={() => {
                           setOrder('&order=dataHoraFim');

@@ -90,7 +90,7 @@ export function CardRecomendation({ id }: IProps) {
                 <ContentRecomendacao>
                   <div>
                     <RecomendacaoTexto>
-                      &ldquo;{recomendacao.recomendacao}&rdquo;
+                      "{recomendacao.recomendacao}"
                     </RecomendacaoTexto>
                   </div>
 

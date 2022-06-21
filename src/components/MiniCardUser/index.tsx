@@ -5,6 +5,7 @@ import { ReactComponent as EstrelaOff } from '../../assets/estrela-off.svg';
 import { ReactComponent as Estrela } from '../../assets/estrela.svg';
 import defaultImage from '../../assets/profileImage.svg';
 import { Avaliacao, Container } from './style';
+import Image from 'next/image'
 
 type Props = {
   id: number;
@@ -54,9 +55,9 @@ export function MiniCardUser({ id, estrela }: Props) {
   return (
     <Container>
       {!user.imagem ? (
-        <img src={defaultImage} alt={name} />
+        <Image src={defaultImage} alt={name} />
       ) : (
-        <img src={user.imagem} alt="Imagem" />
+        <Image src={user.imagem} alt="Imagem" />
       )}
       <div>
         <p>{name}</p>

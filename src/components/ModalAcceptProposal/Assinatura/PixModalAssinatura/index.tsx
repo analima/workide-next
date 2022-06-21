@@ -20,6 +20,7 @@ import {
   ContainerPendingInvoice,
   TextPendingInvoice,
 } from './style';
+import Image from 'next/image'
 import { handleFormatDocument } from '../../../../helpers/formatsHelper';
 import { useAuth } from '../../../../contexts/auth';
 interface IModal {
@@ -121,7 +122,7 @@ export function PixModalAssinatura({
     if (assinaturaEscolhida.gratuita || dadosClienteIugu.fundador) {
       return (
         <ContainerPaymentFree>
-          <img src={iconCheck} alt="" />
+          <Image src={iconCheck} alt="" />
           <div className="text">
             <span>
               Não haverá cobrança no período de 6 meses em que você está

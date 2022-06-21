@@ -20,7 +20,8 @@ export const FotoPerfilContainer = styled.div`
   }
 `;
 
-export const FotoPerfil = styled.img`
+export const FotoPerfil = styled.div`
+img:{
   object-fit: cover;
   max-width: 152px;
   height: 152px;
@@ -34,6 +35,8 @@ export const FotoPerfil = styled.img`
     height: 100px;
     margin: 16px 0;
   }
+}
+ 
 `;
 
 export const NomeContainer = styled.div`

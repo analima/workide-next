@@ -44,7 +44,7 @@ const ImageCrop: React.FC<ImageCropProps> = ({
   const [zoom, setZoom] = useState(1);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState<Area>({} as Area);
 
-  const onCropComplete = useCallback((croppedArea, newCroppedAreaPixels) => {
+  const onCropComplete = useCallback((croppedArea: any, newCroppedAreaPixels: any) => {
     setCroppedAreaPixels(newCroppedAreaPixels);
   }, []);
 

@@ -8,6 +8,7 @@ import {
   ButtonConfirm,
   ContainerText,
 } from './style';
+import Image from 'next/image'
 import andre from '../../assets/andre-full-regras-plano-png.png';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
 import { AZUL } from '../../styles/variaveis';
@@ -50,7 +51,7 @@ export function AvatarContaBancaria({ mostrar, esconderAvatar }: AndreProps) {
         </AndreMensagem>
 
         <AndrePersonagem>
-          <img src={andre} alt="Andre" className="avatar-upgrade" />
+          <Image src={andre} alt="Andre" className="avatar-upgrade" />
         </AndrePersonagem>
       </AndreContainer>
     </Content>

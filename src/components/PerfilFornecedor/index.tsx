@@ -23,6 +23,7 @@ import { pessoas_api } from '../../services/pessoas_api';
 import { useAuth } from '../../contexts/auth';
 import { AvatarCadastroIncompleto } from '../../components/AvatarCadastroIncompleto';
 import { AvatarErroGeral } from '../AvatarErroGeral';
+import Image from 'next/image'
 
 type PerfilFornecedorProps = {
   dataProps: {
@@ -92,7 +93,7 @@ export function PerfilFornecedor({ dataProps }: PerfilFornecedorProps) {
   }
 
   const handleOpenRecomendacao = useCallback(
-    event => {
+    (event: any) => {
       pessoas_api
         .get<string>(`/pessoas/indicacao`, {
           params: {
@@ -136,7 +137,7 @@ export function PerfilFornecedor({ dataProps }: PerfilFornecedorProps) {
                 title="Video"
               />
             ) : (
-              <img src={defaultImage} alt="Foto do perfil" />
+              <Image src={defaultImage} alt="Foto do perfil" />
             )}
           </div>
 

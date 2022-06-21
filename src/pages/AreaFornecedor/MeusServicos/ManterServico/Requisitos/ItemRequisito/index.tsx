@@ -133,7 +133,7 @@ export function ItemRequisito({
               </Col>
 
               <Col lg={12} className="mt-4">
-                <Button onClick={handleSubmit(handleAlterarRequisito)}>
+                <Button onClick={handleSubmit(handleAlterarRequisito as any)}>
                   SALVAR
                 </Button>
               </Col>

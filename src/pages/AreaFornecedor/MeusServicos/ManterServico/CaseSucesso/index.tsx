@@ -319,7 +319,7 @@ export function CaseSucesso({ continuar, voltar }: ICaseSucessoProps) {
 
             <Col lg={12} className="mt-4">
               <ContainerButtons>
-                <Button onClick={handleSubmit(handleCriarCaseSucesso)}>
+                <Button onClick={handleSubmit(handleCriarCaseSucesso as any)}>
                   SALVAR
                 </Button>
               </ContainerButtons>

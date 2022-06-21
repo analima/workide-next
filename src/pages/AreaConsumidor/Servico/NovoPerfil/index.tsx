@@ -18,7 +18,7 @@ import { geral_api } from '../../../../services/geral_api';
 import { consultas_api } from '../../../../services/consultas_api';
 import { useAuth } from '../../../../contexts/auth';
 import { AvatarCadastroIncompleto } from '../../../../components/AvatarCadastroIncompleto';
-
+import Image from 'next/image'
 import UserDefaultImageProfile from '../../../../assets/placeholderImg.png';
 import { IProvider } from '../../../../interfaces/IProvider';
 import { AvatarErroGeral } from '../../../../components/AvatarErroGeral';
@@ -159,10 +159,11 @@ export function NovoPerfil({
           />
 
           <MobileCenter>
-            <FotoPerfil
-              src={dataProvider.arquivo?.url || UserDefaultImageProfile}
-              alt="Perfil"
-            />
+            
+            <FotoPerfil>
+            <Image src={dataProvider.arquivo?.url || UserDefaultImageProfile}
+              alt="Perfil"/>
+            </FotoPerfil>
           </MobileCenter>
 
           <ContainerNameUser

@@ -11,7 +11,7 @@ import {
   AvaliacaoCliente,
   NenhumaAvaliacaoContent,
 } from './style';
-
+import Image from 'next/image'
 import { Titulo } from '../../../../components/Titulo';
 import { LARANJA, PRETO_10 } from '../../../../styles/variaveis';
 import { useEffect, useState } from 'react';
@@ -72,13 +72,13 @@ export function SobreMim() {
               obj?.descricao?.length && (
                 <Avaliacao key={index}>
                   <AvaliacaoTitulo>{obj.projeto.nome}</AvaliacaoTitulo>
-                  <AvaliacaoTexto>&ldquo;{obj.descricao}&rdquo;</AvaliacaoTexto>
+                  <AvaliacaoTexto>"{obj.descricao}"</AvaliacaoTexto>
                   <AvaliacaoRodape>
                     <span>
                       Publicado em: {formatDate(obj?.dataHoraCriacao)}
                     </span>
                     <AvaliacaoCliente>
-                      <img
+                      <Image
                         src={obj.projeto.pessoaFornecedor.arquivo.url}
                         alt={obj.projeto.pessoaFornecedor.nomeTratamento}
                       />

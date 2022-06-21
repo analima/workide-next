@@ -265,7 +265,7 @@ export function ItemCaseSucesso({ item, loadItens }: IItemCaseSucessoProps) {
               </Col>
 
               <Col lg={12} className="mt-4">
-                <Button onClick={handleSubmit(handleAlterarCaseSucesso)}>
+                <Button onClick={handleSubmit(handleAlterarCaseSucesso as any)}>
                   SALVAR
                 </Button>
               </Col>

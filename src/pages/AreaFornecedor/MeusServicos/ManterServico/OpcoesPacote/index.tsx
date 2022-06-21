@@ -259,10 +259,12 @@ export function OpcoesPacote({ continuar }: IOpcoesPacoteProps) {
 
   /**Filtro busca subarea */
   const [idsSubareas, setIdsSubareas] = useState<number[]>([]);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [, setSelectedSubareas] = useState<Subarea[]>([]);
   const [subareasInitialValue, setSubareasInitialValue] = useState<Subarea[]>(
     [],
   );
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [errorSubArea, setErrorSubArea] = useState(false);
   const handleChangeSubareas = useCallback((selSubareas: Subarea[]) => {
     setIdsSubareas(selSubareas.map(sa => sa.id));
@@ -279,40 +281,40 @@ export function OpcoesPacote({ continuar }: IOpcoesPacoteProps) {
 
   const mensagemAdicaoOferta = `
   Informações básicas*
-  Vamos começar criando a sua oferta dando um nome.
-  Aqui você irá resumir em poucas palavras o que você está ofertando.
-  Coloque uma foto ou uma imagem relacionada ao serviço ofertado
-  e depois o descreva em detalhes.*
+  Vamos começar criando a sua oferta dando um nome. 
+  Aqui você irá resumir em poucas palavras o que você está ofertando. 
+  Coloque uma foto ou uma imagem relacionada ao serviço ofertado 
+  e depois o descreva em detalhes.* 
   Link de apresentação*
-  Nesse campo você pode inserir um link de apresentação.
-  Ele deve ser um vídeo anunciando a sua oferta com mais detalhes!
+  Nesse campo você pode inserir um link de apresentação. 
+  Ele deve ser um vídeo anunciando a sua oferta com mais detalhes! 
   A ideia é que o cliente possa saber um pouco mais sobre você e seu trabalho.
   `;
 
   const mensagemTresPacotes = `
-  Aqui nessa mesma oferta você pode criar um ou três pacotes (versões)
-  diferentes, oferecendo quantidades, preços e prazos diferentes para cada um deles.*
-  Por exemplo: Se você trabalha com vídeos, no seu plano básico você pode oferecer edição de 3 vídeos de até 10 minutos. No seu plano intermediário você pode oferecer a edição de 10 vídeos de até 15 minutos. E no plano avançado, os  mesmos serviços dos outros planos mais a produção de vinheta.*
+  Aqui nessa mesma oferta você pode criar um ou três pacotes (versões) 
+  diferentes, oferecendo quantidades, preços e prazos diferentes para cada um deles.* 
+  Por exemplo: Se você trabalha com vídeos, no seu plano básico você pode oferecer edição de 3 vídeos de até 10 minutos. No seu plano intermediário você pode oferecer a edição de 10 vídeos de até 15 minutos. E no plano avançado, os  mesmos serviços dos outros planos mais a produção de vinheta.* 
   Claro que, conforme seu trabalho muda, os preços também podem ser alterados.*
   E é aqui que você configura tudo isso. Eai, mão na massa?
   `;
 
   const mensagemNome = `
-  Dê um nome para cada pacote do seu serviço.
-  Aqui é importante ser um nome único para cada pacote,
-  para que seu cliente possa perceber claramente qual a
+  Dê um nome para cada pacote do seu serviço. 
+  Aqui é importante ser um nome único para cada pacote, 
+  para que seu cliente possa perceber claramente qual a 
   diferença entre um pacote e outro, e não venha a confundi-los.
   `;
 
   const mensagemDescricao = `
-  Descreva em poucas palavras o diferencial de cada pacote,
-  o serviço a ser executado e por que o seu cliente deve comprá-lo.
-  Neste momento, não se preocupe com os métodos e os requisitos.
+  Descreva em poucas palavras o diferencial de cada pacote, 
+  o serviço a ser executado e por que o seu cliente deve comprá-lo. 
+  Neste momento, não se preocupe com os métodos e os requisitos. 
   Temos uma sessão específica para eles.
   `;
 
   const mensagemPrazo = `
-  Informe o prazo em dias que você vai levar para executar cada pacote.
+  Informe o prazo em dias que você vai levar para executar cada pacote. 
   Lembrando que quanto mais itens você promete entregar, maior deve ser seu prazo.
   `;
 

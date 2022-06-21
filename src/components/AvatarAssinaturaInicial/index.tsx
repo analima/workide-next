@@ -9,6 +9,7 @@ import {
   ContainerText,
 } from './style';
 import andre from '../../assets/andre-full-regras-plano-png.png';
+import Image from 'next/image'
 import { IoMdCloseCircleOutline } from 'react-icons/io';
 import { AZUL } from '../../styles/variaveis';
 import { useHistory } from 'react-router-dom';
@@ -55,7 +56,7 @@ export function AvatarAssinaturaInicial({
         </AndreMensagem>
 
         <AndrePersonagem>
-          <img src={andre} alt="Andre" className="avatar-upgrade" />
+          <Image src={andre} alt="Andre" className="avatar-upgrade" />
         </AndrePersonagem>
       </AndreContainer>
     </Content>

@@ -9,6 +9,7 @@ import {
   Carrousel,
   ArrowSlider,
 } from './styles';
+import Image from 'next/image'
 import { IEvaluation } from '../../interfaces/IProvider';
 import PlaceholderImg from '../../assets/placeholderImg.png';
 import { PRETO_10 } from '../../styles/variaveis';
@@ -87,17 +88,17 @@ export function CardComentario({ id }: IProps) {
         <Carrousel size={evaluations.length} {...settingsSlider}>
           {evaluations?.map((obj, index) => (
             <Avaliacao key={index}>
-              <AvaliacaoTexto>&ldquo;{obj?.descricao}&rdquo;</AvaliacaoTexto>
+              <AvaliacaoTexto>"{obj?.descricao}"</AvaliacaoTexto>
 
               <ContainerCardUsuario>
                 <div>
                   {obj?.projeto?.pessoaConsumidor?.arquivo?.url ? (
-                    <img
+                    <Image
                       src={obj?.projeto?.pessoaConsumidor?.arquivo?.url}
                       alt={obj?.projeto?.pessoaConsumidor?.nomeTratamento}
                     />
                   ) : (
-                    <img
+                    <Image
                       src={PlaceholderImg}
                       alt={obj?.projeto?.pessoaConsumidor?.nomeTratamento}
                     />

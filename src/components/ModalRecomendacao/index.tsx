@@ -10,6 +10,7 @@ import { FiLink } from 'react-icons/fi';
 import { ofertas_api } from '../../services/ofertas_api';
 import { useAuth } from '../../contexts/auth';
 import { IPessoa } from '../../interfaces/IPessoa';
+import Image from 'next/image'
 
 interface IModalRecomendacao {
   showModal: boolean;
@@ -91,7 +92,7 @@ export function ModalRecomendacao({
                 </Col>
                 <Col lg={4}>
                   <Center>
-                    <img src={logo} alt="Gyan Logo" />
+                    <Image src={logo} alt="Gyan Logo" />
                   </Center>
                 </Col>
               </Row>

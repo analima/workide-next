@@ -1,7 +1,6 @@
 import { lighten } from 'polished';
 import styled from 'styled-components';
 import { AZUL, BRANCO, LARANJA, PRETO_10 } from '../../../../styles/variaveis';
-
 export const Content = styled.div``;
 
 export const FotoPerfilContainer = styled.div`
@@ -25,7 +24,7 @@ export const FotoPerfilContainer = styled.div`
   }
 `;
 
-export const FotoPerfil = styled.img`
+export const FotoPerfil = styled.div`
   max-width: 152px;
   height: 152px;
   border-radius: 8px;

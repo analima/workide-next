@@ -27,6 +27,7 @@ import { ModalConfirmarAtualizacaoFatura } from '../ModalConfirmarAtualizacaoFat
 import { FiXCircle } from 'react-icons/fi';
 import { usePooling } from '../../hooks/usePooling';
 import { useFaturaProjeto } from '../../hooks/faturasProjeto';
+import Image from 'next/image'
 
 interface IModalProps {
   show: boolean;
@@ -266,7 +267,7 @@ export function ModalManagePayment({
                         title="Vizualizar fatura"
                       >
                         <button>
-                          <img src={Show} alt="Show" />
+                          <Image src={Show} alt="Show" />
                         </button>
                       </DownloadLink>
 
@@ -275,7 +276,7 @@ export function ModalManagePayment({
                         data-toggle="tooltip"
                         title="Atualizar fatura"
                       >
-                        <img src={ArrowReload} alt="Arrow Reload" />
+                        <Image src={ArrowReload} alt="Arrow Reload" />
                       </button>
                       <button
                         data-toggle="tooltip"
@@ -286,7 +287,7 @@ export function ModalManagePayment({
                           setShowModalAcceptProposal(true);
                         }}
                       >
-                        <img src={ArrowUndoUpLeft} alt="Arrow Undo Up Left" />
+                        <Image src={ArrowUndoUpLeft} alt="Arrow Undo Up Left" />
                       </button>
                     </ContainerButtons>
                   </ContainerInfoProjeto>

@@ -8,6 +8,7 @@ import {
   IPosGraduacao,
   IProvider,
 } from '../../../../interfaces/IProvider';
+import Image from 'next/image'
 import { consultas_api } from '../../../../services/consultas_api';
 import { AZUL, PRETO_10 } from '../../../../styles/variaveis';
 import { IGraduacao } from '../../../../interfaces/IProvider';
@@ -341,7 +342,7 @@ export function OutrasInformacoes({ data, imageLoaded }: Props) {
                       })
                       ?.map(item => (
                         <li key={item.id}>
-                          <img src={item.url} alt={item.descricao} />
+                          <Image src={item.url} alt={item.descricao} />
                         </li>
                       ))}
                   </Carrousel>
