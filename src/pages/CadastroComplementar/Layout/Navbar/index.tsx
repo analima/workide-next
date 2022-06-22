@@ -15,7 +15,7 @@ import {
   Notification,
   TitleNotification,
 } from './style';
-import { ReactComponent as Home } from '../../../../assets/House.svg';
+import Home from '../../../../assets/House.svg';
 import { Dropdown, ModalBody } from 'react-bootstrap';
 import { Titulo } from '../../../../components/Titulo';
 import { AZUL, CINZA_40 } from '../../../../styles/variaveis';

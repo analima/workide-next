@@ -5,7 +5,7 @@ import {
   AndrePersonagem,
   AndreIconClose,
 } from './style';
-import { ReactComponent as AndreSuperior } from '../../assets/andre-superior.svg';
+import  AndreSuperior  from '../../assets/andre-superior.svg';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
 import { AZUL } from '../../styles/variaveis';
 

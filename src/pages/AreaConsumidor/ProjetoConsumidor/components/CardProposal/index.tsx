@@ -9,8 +9,8 @@ import {
 } from '../../../../../helpers/formatsHelper';
 import { Titulo } from '../../../../../components/Titulo';
 import { UserPanel } from '../../../../../components/UserPanel';
-import { ReactComponent as IconeVoluntario } from '../../../../../assets/icon-voluntare.svg';
-import { ReactComponent as PDFIcon } from '../../../../../assets/print-icon.svg';
+import IconeVoluntario from '../../../../../assets/icon-voluntare.svg';
+import PDFIcon from '../../../../../assets/print-icon.svg';
 
 import {
   AZUL,

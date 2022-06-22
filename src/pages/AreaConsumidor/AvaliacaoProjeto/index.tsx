@@ -1,5 +1,5 @@
 import { Content } from './style';
-import { AvaliacaoProjetoContent } from './AvaliacaoProjetoContent';
+import  AvaliacaoProjetoContent  from './AvaliacaoProjetoContent';
 import { AvaliacaoProjetoConsumidorProvider } from '../../../hooks/avaliacaoProjetoConsumidor';
 import { Layout } from '../Layout';
 import { useLocation } from 'react-router-dom';
@@ -8,7 +8,7 @@ import { Helmet } from 'react-helmet';
 import { hotjar } from 'react-hotjar';
 import { useEffect } from 'react';
 
-export function AvaliacaoProjeto() {
+export default function AvaliacaoProjeto() {
   const location = useLocation();
   const { state }: { state: any } = location;
 

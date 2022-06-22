@@ -9,7 +9,7 @@ import {
 import { AZUL, CINZA_50, LARANJA } from '../../../../styles/variaveis';
 import { formatarValor } from '../../../../utils/CurrencyFormat';
 import { FiHeart, FiShare2 } from 'react-icons/fi';
-import { ReactComponent as Venda } from '../../../../assets/venda.svg';
+import Venda from '../../../../assets/venda.svg';
 
 import {
   Content,
@@ -97,7 +97,7 @@ export function TooltipPacotes({
           <Col lg={12} className="d-flex gap-2 col-btn-descricao">
             <ContentButton>
               {pacote.map((item: IPacoteInfo) => (
-                <ButtonPacote
+                <ButtonPacote key={item.id}
                   active={item.id === idPacote}
                   onClick={() => setIdPacote(item.id)}
                 >

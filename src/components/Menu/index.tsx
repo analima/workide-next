@@ -3,7 +3,7 @@ import Image from 'next/image'
 import userIcon from '../../assets/user_circle.svg';
 import separator from '../../assets/separador.svg';
 import logOutIcon from '../../assets/logout.svg';
-import { ReactComponent as Center } from '../../assets/center.svg';
+import  Center  from '../../assets/center.svg';
 import separador from '../../assets/separador.svg';
 import Logo from '../../assets/logo.svg';
 
@@ -220,7 +220,7 @@ export function Menu({
                 <Nav.Link href="/login">
                   <Image src={user_circle} alt="login icon" />
                 </Nav.Link> */}
-              
+
               </Navbar.Collapse>
             )}
           </Container>

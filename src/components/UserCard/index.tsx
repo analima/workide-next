@@ -13,8 +13,8 @@ import {
   ButtonMainStyled,
 } from './style';
 import Image from 'next/image'
-import { ReactComponent as EstrelaOff } from '../../assets/estrela-off.svg';
-import { ReactComponent as Estrela } from '../../assets/estrela.svg';
+import EstrelaOff  from '../../assets/estrela-off.svg';
+import Estrela  from '../../assets/estrela.svg';
 import PlaceholderImage from '../../assets/placeholderImg.png';
 
 import { useAuth } from '../../contexts/auth';

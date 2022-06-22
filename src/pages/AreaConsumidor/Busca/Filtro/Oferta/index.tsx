@@ -13,7 +13,7 @@ import { FiltroSubarea, Subarea } from '../FiltroSubarea';
 import { useBuscaFornecedorOferta } from '../../../../../hooks/buscaConsumidor';
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 import { PRETO_40 } from '../../../../../styles/variaveis';
-import { FiltroHabilidades } from '../FiltroHabilidades';
+import  FiltroHabilidades  from '../FiltroHabilidades';
 import { InputNumber } from '../../../../../components/Form/InputNumber';
 
 export function Oferta() {

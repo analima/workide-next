@@ -47,7 +47,7 @@ import {
   ContentQuantidadeHora,
   CondicoesGeraisContent,
 } from './style';
-import { ReactComponent as IconeVoluntario } from '../../../../assets/icon-voluntare.svg';
+import IconeVoluntario from '../../../../assets/icon-voluntare.svg';
 
 import { pessoas_api } from '../../../../services/pessoas_api';
 import { usePropostaFornecedor } from '../../../../hooks/propostaFornecedor';
@@ -70,7 +70,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { InputHour } from '../../../../components/Form/InputHour';
 import { AtividadesProps } from '../../../../hooks/propostaConsumidor';
-import { ReactComponent as PDFIcon } from '../../../../assets/print-icon.svg';
+import PDFIcon from '../../../../assets/print-icon.svg';
 import { useValorProjetoPago } from '../../../../contexts/valorProjetoPago';
 import BuscarFaturaProjeto from '../../../../utils/buscarFaturaProjeto';
 

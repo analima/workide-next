@@ -17,9 +17,9 @@ import {
   SobreDrescricao,
 } from './style';
 
-import { ReactComponent as EstrelaOff } from '../../../../assets/estrela-off.svg';
-import { ReactComponent as Estrela } from '../../../../assets/estrela.svg';
-import { ReactComponent as CoracaoOff } from '../../../../assets/coracao-off.svg';
+import EstrelaOff from '../../../../assets/estrela-off.svg';
+import Estrela from '../../../../assets/estrela.svg';
+import CoracaoOff from '../../../../assets/coracao-off.svg';
 import { Card } from '../../../../components/Card';
 import { FiShare2 } from 'react-icons/fi';
 import { AZUL } from '../../../../styles/variaveis';

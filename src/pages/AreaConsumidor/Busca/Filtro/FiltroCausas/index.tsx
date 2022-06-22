@@ -198,4 +198,4 @@ const FiltroCausas = ({
   );
 };
 
-export { FiltroCausas };
+export default FiltroCausas ;

@@ -13,8 +13,8 @@ import {
   ContentPerfilData,
 } from './style';
 import Image from 'next/image'
-import { ReactComponent as EstrelaOff } from '../../../../assets/estrela-off.svg';
-import { ReactComponent as Estrela } from '../../../../assets/estrela.svg';
+import EstrelaOff from '../../../../assets/estrela-off.svg';
+import Estrela from '../../../../assets/estrela.svg';
 import { AZUL_60, CINZA_40 } from '../../../../styles/variaveis';
 import { Card } from '../../../../components/Card';
 import { Titulo } from '../../../../components/Titulo';

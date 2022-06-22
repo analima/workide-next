@@ -3,7 +3,7 @@ import { Col, Container, Modal, ModalBody, Row } from 'react-bootstrap';
 import { Input } from '../../../../../components/Input';
 import { Content, Button, ModalTitle, ModalLogo, CloseModal } from './style';
 
-import { ReactComponent as Logo } from '../../../../../assets/gyan-logo-nome.svg';
+import Logo from '../../../../../assets/gyan-logo-nome.svg';
 import { TextArea } from '../../../../../components/TextArea';
 
 import { FiArrowRightCircle } from 'react-icons/fi';

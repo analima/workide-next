@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { arquivos_api } from '../../services/arquivos_api';
 import { pessoas_api } from '../../services/pessoas_api';
-import { ReactComponent as EstrelaOff } from '../../assets/estrela-off.svg';
-import { ReactComponent as Estrela } from '../../assets/estrela.svg';
+import EstrelaOff from '../../assets/estrela-off.svg';
+import  Estrela from '../../assets/estrela.svg';
 import defaultImage from '../../assets/profileImage.svg';
 import { Avaliacao, Container } from './style';
 import Image from 'next/image'

@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { ReactComponent as CoracaoOff } from '../../../../../../../assets/coracao-off.svg';
-import { ReactComponent as CoracaoOn } from '../../../../../../../assets/coracao.svg';
+import CoracaoOff from '../../../../../../../assets/coracao-off.svg';
+import CoracaoOn from '../../../../../../../assets/coracao.svg';
 import { Container, ContentFooter, ContentService, LabelPrice } from './styled';
 import { useHistory } from 'react-router';
 import { IUsuario } from '../..';

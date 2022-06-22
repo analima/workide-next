@@ -214,4 +214,4 @@ const FiltroHabilidades = ({
   );
 };
 
-export { FiltroHabilidades };
+export default FiltroHabilidades;

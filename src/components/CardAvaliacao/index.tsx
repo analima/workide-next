@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { formatDate } from '../../helpers/DateHelper';
 import { oportunidades_api } from '../../services/oportunidades_api';
-import { ReactComponent as EstrelaOff } from '../../assets/estrela-off.svg';
-import { ReactComponent as Estrela } from '../../assets/estrela.svg';
+import  EstrelaOff  from '../../assets/estrela-off.svg';
+import Estrela  from '../../assets/estrela.svg';
 import PlaceholderImg from '../../assets/placeholderImg.png';
 import Image from 'next/image'
 
@@ -118,7 +118,7 @@ export function CardAvaliacao({ id }: IProps) {
             <div key={index}>
               <Avaliacao>
                 <AvaliacaoTitulo>{obj?.projeto.nome}</AvaliacaoTitulo>
-                <AvaliacaoTexto>"{obj?.descricao}"</AvaliacaoTexto>
+                <AvaliacaoTexto>&ldquo;{obj?.descricao}&ldquo;</AvaliacaoTexto>
                 <ContentLabel>
                   {obj?.habilidadesPercebidas
                     .split('|')

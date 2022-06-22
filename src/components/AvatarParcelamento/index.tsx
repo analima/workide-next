@@ -9,7 +9,7 @@ import {
   ContainerText,
   ButtonCancel,
 } from './style';
-import { ReactComponent as Andre } from '../../assets/andre-full-moderacao.svg';
+import Andre  from '../../assets/andre-full-moderacao.svg';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
 import { AZUL } from '../../styles/variaveis';
 

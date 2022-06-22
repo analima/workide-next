@@ -18,10 +18,10 @@ import {
   ContentSpinnerLoading,
 } from './style';
 import Image from 'next/image'
-import { ReactComponent as EstrelaOff } from '../../../../assets/estrela-off.svg';
-import { ReactComponent as Estrela } from '../../../../assets/estrela.svg';
-import { ReactComponent as CoracaoOff } from '../../../../assets/coracao-off.svg';
-import { ReactComponent as Coracao } from '../../../../assets/coracao.svg';
+import EstrelaOff from '../../../../assets/estrela-off.svg';
+import Estrela from '../../../../assets/estrela.svg';
+import CoracaoOff from '../../../../assets/coracao-off.svg';
+import Coracao from '../../../../assets/coracao.svg';
 import { GiShare } from 'react-icons/gi';
 import { AZUL } from '../../../../styles/variaveis';
 import { ModalRecomendacao } from '../../../../components/ModalRecomendacao';

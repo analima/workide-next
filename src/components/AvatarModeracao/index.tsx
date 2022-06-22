@@ -8,7 +8,7 @@ import {
   ButtonConfirm,
   ContainerText,
 } from './style';
-import { ReactComponent as Andre } from '../../assets/andre-full-moderacao.svg';
+import Andre  from '../../assets/andre-full-moderacao.svg';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
 import { AZUL } from '../../styles/variaveis';
 
@@ -34,7 +34,7 @@ export function AvatarModeracao({mostrar, esconderAvatar, setAbaSelecionada}: An
           <IoMdCloseCircleOutline
            onClick={() =>{
             esconderAvatar()
-          }} 
+          }}
             color={AZUL}
             size={24}
           />
@@ -42,23 +42,23 @@ export function AvatarModeracao({mostrar, esconderAvatar, setAbaSelecionada}: An
 
         <AndreMensagem>
           <ContainerText>
-            <p>Para sua segurança e de outros, seu perfil está em análise. 
-              Por isso, ainda não é possível fazer essa ação. 
+            <p>Para sua segurança e de outros, seu perfil está em análise.
+              Por isso, ainda não é possível fazer essa ação.
               Assim que concluirmos, enviaremos um email para te avisar, ok?
             </p>
           </ContainerText>
           <ContainerButtons>
-         
+
             <ButtonConfirm onClick={() =>{
               esconderAvatar()
             }}>
               ENTENDI
             </ButtonConfirm>
-             
-            
+
+
           </ContainerButtons>
         </AndreMensagem>
-         
+
         <AndrePersonagem>
           <Andre className="avatar-upgrade"/>
         </AndrePersonagem>

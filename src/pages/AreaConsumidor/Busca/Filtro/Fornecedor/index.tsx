@@ -18,8 +18,8 @@ import { FaQuestionCircle } from 'react-icons/fa';
 import { PRETO_40 } from '../../../../../styles/variaveis';
 import { useBuscaFornecedorOferta } from '../../../../../hooks/buscaConsumidor';
 import { FiArrowDownLeft, FiArrowUpRight } from 'react-icons/fi';
-import { FiltroHabilidades } from '../FiltroHabilidades';
-import { FiltroCausas } from '../FiltroCausas';
+import  FiltroHabilidades  from '../FiltroHabilidades';
+import  FiltroCausas  from '../FiltroCausas';
 
 type FornecedorProps = {
   onChange?: (filtro: IFiltroFornecedor) => void;

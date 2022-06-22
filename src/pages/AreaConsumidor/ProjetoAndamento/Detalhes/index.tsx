@@ -69,7 +69,7 @@ import { typeFile } from '../../../../utils/typeFile';
 import { ModalManagePayment } from '../../../../components/ModalManagePayment';
 import { useAuth } from '../../../../contexts/auth';
 import { ModalCreateSubaccount } from './ModalCreateSubaccount';
-import { ReactComponent as IconeVoluntario } from '../../../../assets/icon-voluntare.svg';
+import IconeVoluntario from '../../../../assets/icon-voluntare.svg';
 import { Skeleton } from '../../../../components/Skeleton';
 import ModalCancelProject from '../../../../components/ModalCancelProject';
 import { InputHour } from '../../../../components/Form/InputHour';
@@ -77,7 +77,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { pagamentos_api } from '../../../../services/pagamentos_api';
-import { ReactComponent as PDFIcon } from '../../../../assets/print-icon.svg';
+import PDFIcon from '../../../../assets/print-icon.svg';
 import { useFaturaProjeto } from '../../../../hooks/faturasProjeto';
 
 import BuscarFaturaProjeto from '../../../../utils/buscarFaturaProjeto';

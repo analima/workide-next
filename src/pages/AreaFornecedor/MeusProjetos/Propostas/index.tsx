@@ -9,7 +9,7 @@ import {
   NenhumProjetoContent,
 } from './style';
 import Image from 'next/image'
-import { ReactComponent as SeloExlusivo } from '../../../../assets/exclusive.svg';
+import SeloExlusivo from '../../../../assets/exclusive.svg';
 import { Paginacao } from '../Paginacao';
 import { oportunidades_api } from '../../../../services/oportunidades_api';
 import { Card } from '../../../../components/Card';

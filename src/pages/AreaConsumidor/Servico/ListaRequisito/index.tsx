@@ -61,9 +61,8 @@ export function ListaRequisito({ requisitos }: { requisitos: IRequisito[] }) {
           <Col lg={10}>
             <Card>
               {requisitos.map(requisito => (
-                <RequisitoContainer>
+                <RequisitoContainer key={requisito.id}>
                   <InputCheck
-                    key={requisito.id}
                     control={control}
                     name="requisito_1"
                     readOnly={true}

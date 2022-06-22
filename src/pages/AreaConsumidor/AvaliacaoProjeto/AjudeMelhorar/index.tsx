@@ -13,7 +13,7 @@ import { CINZA_80, VERDE, VERMELHO } from '../../../../styles/variaveis';
 import { range } from 'lodash';
 import { AiFillDislike, AiFillLike } from 'react-icons/ai';
 
-export function AjudeMelhorar() {
+export default function AjudeMelhorar() {
   const {
     control,
     nota_plataforma,
