@@ -1,8 +1,8 @@
 import { Col, Row } from 'react-bootstrap';
 import { Titulo } from '../../../../components/Titulo';
 import { LARANJA, VERDE } from '../../../../styles/variaveis';
-import { ReactComponent as EstrelaOff } from '../../../../assets/estrela-off.svg';
-import { ReactComponent as Estrela } from '../../../../assets/estrela.svg';
+import EstrelaOff from '../../../../assets/estrela-off.svg';
+import Estrela from '../../../../assets/estrela.svg';
 import { AvaliacaoContainer, Content, LabelHabilidade } from './style';
 import { TextArea } from '../../../../components/Form/TextArea';
 import { useAvaliacaoProjetoConsumidor } from '../../../../hooks/avaliacaoProjetoConsumidor';
@@ -16,7 +16,7 @@ interface IProps {
   idProjeto: number;
 }
 
-export function SobreProjeto({ id, idProjeto }: IProps) {
+export default function SobreProjeto({ id, idProjeto }: IProps) {
   const {
     control,
     setValue,
@@ -132,12 +132,12 @@ export function SobreProjeto({ id, idProjeto }: IProps) {
               return estrela === 1 ? (
                 <Estrela
                   key={index}
-                  onClick={e => preencherEstrelas(e, index + 1)}
+                  onClick={(e: any) => preencherEstrelas(e, index + 1)}
                 />
               ) : (
                 <EstrelaOff
                   key={index}
-                  onClick={e => preencherEstrelas(e, index + 1)}
+                  onClick={(e: any) => preencherEstrelas(e, index + 1)}
                 />
               );
             })}

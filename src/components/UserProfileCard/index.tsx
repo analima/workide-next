@@ -1,5 +1,5 @@
-import { ReactComponent as EstrelaOff } from '../../assets/estrela-off.svg';
-import { ReactComponent as Estrela } from '../../assets/estrela.svg';
+import EstrelaOff  from '../../assets/estrela-off.svg';
+import  Estrela  from '../../assets/estrela.svg';
 import defaultImage from '../../assets/profileImage.svg';
 import { Titulo } from '../Titulo';
 import { AZUL_60, PRETO_10 } from '../../styles/variaveis';

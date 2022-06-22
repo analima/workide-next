@@ -1,14 +1,14 @@
-import { ReactComponent as PessoaVerificada } from '../../assets/selo-pessoa_verificada.svg';
-import { ReactComponent as Fundador } from '../../assets/selo-fundador.svg';
-import { ReactComponent as Feedback } from '../../assets/selo-feedback.svg';
-import { ReactComponent as PrimeiroProjeto } from '../../assets/selo-primeiro-projeto.svg';
-import { ReactComponent as CadastroCompleto } from '../../assets/selo-cadastro-completo.svg';
-import { ReactComponent as RecomendacaoBronze } from '../../assets/selo-recomendacoes-bronze.svg';
-import { ReactComponent as RecomendacaoPrata } from '../../assets/selo-recomendacoes-prata.svg';
-import { ReactComponent as RecomendacaoOuro } from '../../assets/selo-recomendacoes-ouro.svg';
-import { ReactComponent as IndicacaoBronze } from '../../assets/selo-indicacao-bronze.svg';
-import { ReactComponent as IndicacaoPrata } from '../../assets/selo-indicacao-prata.svg';
-import { ReactComponent as IndicacaoOuro } from '../../assets/selo-indicacao-ouro.svg';
+import PessoaVerificada from '../../assets/selo-pessoa_verificada.svg';
+import  Fundador from '../../assets/selo-fundador.svg';
+import  Feedback from '../../assets/selo-feedback.svg';
+import PrimeiroProjeto from '../../assets/selo-primeiro-projeto.svg';
+import CadastroCompleto from '../../assets/selo-cadastro-completo.svg';
+import  RecomendacaoBronze from '../../assets/selo-recomendacoes-bronze.svg';
+import  RecomendacaoPrata from '../../assets/selo-recomendacoes-prata.svg';
+import  RecomendacaoOuro from '../../assets/selo-recomendacoes-ouro.svg';
+import IndicacaoBronze from '../../assets/selo-indicacao-bronze.svg';
+import IndicacaoPrata from '../../assets/selo-indicacao-prata.svg';
+import IndicacaoOuro from '../../assets/selo-indicacao-ouro.svg';
 
 export const Selos = [
   {

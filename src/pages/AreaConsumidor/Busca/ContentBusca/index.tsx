@@ -60,7 +60,7 @@ export type ServiceProps = {
   itens: Array<ItemsService>;
 };
 
-export function ContentBusca() {
+export default function ContentBusca() {
   const history = useHistory();
 
   const {

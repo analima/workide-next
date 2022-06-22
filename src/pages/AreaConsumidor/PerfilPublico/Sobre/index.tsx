@@ -9,8 +9,8 @@ import {
   ContentImg,
 } from './style';
 
-import { ReactComponent as EstrelaOff } from '../../../../assets/estrela-off.svg';
-import { ReactComponent as Estrela } from '../../../../assets/estrela.svg';
+import EstrelaOff from '../../../../assets/estrela-off.svg';
+import Estrela from '../../../../assets/estrela.svg';
 import { AZUL } from '../../../../styles/variaveis';
 import { Card } from '../../../../components/Card';
 import { Medalha } from '../../../../components/Medalha';

@@ -2,8 +2,8 @@ import { Col, Row } from 'react-bootstrap';
 import { Card } from '../../../../components/Card';
 import { Titulo } from '../../../../components/Titulo';
 
-import { ReactComponent as EstrelaOff } from '../../../../assets/estrela-off.svg';
-import { ReactComponent as Estrela } from '../../../../assets/estrela.svg';
+import  EstrelaOff  from '../../../../assets/estrela-off.svg';
+import Estrela from '../../../../assets/estrela.svg';
 import PlaceholderImage from '../../../../assets/placeholderImg.png';
 import Image from 'next/image'
 
@@ -115,7 +115,7 @@ export function Contratante({ idPessoaConsumidor }: IContratanteProps) {
                   )}
                 </>
               ) : (
-                
+
                 <FotoPerfil  >
                 <Image src={PlaceholderImage} alt="Foto Contrantante" />
                 </FotoPerfil>

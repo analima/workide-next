@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image'
 import { oportunidades_api } from '../../services/oportunidades_api';
 import { formatDate } from '../../helpers/DateHelper';
-import { ReactComponent as EstrelaOff } from '../../assets/estrela-off.svg';
-import { ReactComponent as Estrela } from '../../assets/estrela.svg';
+import EstrelaOff  from '../../assets/estrela-off.svg';
+import Estrela from '../../assets/estrela.svg';
 
 import {
   Avaliacao,
@@ -74,7 +74,7 @@ export function AvaliacoesConsumidor({ id }: { id: number }) {
             return (
               <Avaliacao key={index}>
                 <AvaliacaoTitulo>{obj.projeto.nome}</AvaliacaoTitulo>
-                <AvaliacaoTexto>"{obj.descricao}"</AvaliacaoTexto>
+                <AvaliacaoTexto>&ldquo;{obj.descricao}&ldquo;</AvaliacaoTexto>
                 <AvaliacaoRodape>
                   <span>Publicado em: {formatDate(obj?.dataHoraCriacao)}</span>
                   <AvaliacaoCliente>
@@ -96,9 +96,9 @@ export function AvaliacoesConsumidor({ id }: { id: number }) {
         ) : (
           evaluations?.reverse().map((obj, index) => {
             return (
-              <Avaliacao>
+              <Avaliacao key={index}>
                 <AvaliacaoTitulo>{obj.projeto.nome}</AvaliacaoTitulo>
-                <AvaliacaoTexto>"{obj.descricao}"</AvaliacaoTexto>
+                <AvaliacaoTexto>&ldquo;{obj.descricao}&ldquo;</AvaliacaoTexto>
                 <AvaliacaoRodape>
                   <span>Publicado em: {formatDate(obj?.dataHoraCriacao)}</span>
                   <AvaliacaoCliente>

@@ -17,10 +17,10 @@ import {
 import { Spacer } from '../../components/Spacer';
 import { FiX } from 'react-icons/fi';
 import { pessoas_api } from '../../services/pessoas_api';
-import { ReactComponent as Boia } from '../../assets/boia.svg';
-import { ReactComponent as Chave } from '../../assets/chave.svg';
-import { ReactComponent as GuardaChuva } from '../../assets/guardachuva.svg';
-import { ReactComponent as Escudinho } from '../../assets/escudinho.svg';
+import Boia from '../../assets/boia.svg';
+import Chave  from '../../assets/chave.svg';
+import GuardaChuva from '../../assets/guardachuva.svg';
+import Escudinho  from '../../assets/escudinho.svg';
 import { ModalInformation } from '../ModalInformation';
 import { VERMELHO } from '../../styles/variaveis';
 import { useGAEventsTracker } from '../../hooks/useGAEventsTracker';

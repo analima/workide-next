@@ -1,4 +1,4 @@
-import { ReactComponent as EstrelaOff } from '../../../../assets/estrela-off.svg';
+import EstrelaOff from '../../../../assets/estrela-off.svg';
 
 import {
   Content,

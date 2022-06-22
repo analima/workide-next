@@ -13,14 +13,14 @@ import {
   WrapperToggleAvatar,
 } from './style';
 import { useGAEventsTracker } from '../../../hooks/useGAEventsTracker';
-import { ReactComponent as AndreToggleImage } from '../../../assets/andre.svg';
-import { ReactComponent as ThaisToggleImage } from '../../../assets/thais.svg';
-import { ReactComponent as AntonioToggleImage } from '../../../assets/antonio.svg';
-import { ReactComponent as CarolToggleImage } from '../../../assets/carol.svg';
-import { ReactComponent as CarolImage } from '../../../assets/carol-full.svg';
-import { ReactComponent as AntonioImage } from '../../../assets/antonio-full.svg';
-import { ReactComponent as ThaisImage } from '../../../assets/thais-full.svg';
-import { ReactComponent as AndreImage } from '../../../assets/andre-full.svg';
+import AndreToggleImage from '../../../assets/andre.svg';
+import ThaisToggleImage from '../../../assets/thais.svg';
+import AntonioToggleImage from '../../../assets/antonio.svg';
+import CarolToggleImage from '../../../assets/carol.svg';
+import CarolImage from '../../../assets/carol-full.svg';
+import AntonioImage from '../../../assets/antonio-full.svg';
+import ThaisImage  from '../../../assets/thais-full.svg';
+import AndreImage  from '../../../assets/andre-full.svg';
 import { Template } from '../../../components/Template';
 import { AZUL, CINZA_40, LARANJA } from '../../../styles/variaveis';
 import { useEffect, useState } from 'react';

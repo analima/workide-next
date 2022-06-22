@@ -4,7 +4,7 @@ const nextConfig = {
   images: {
     domains: ['files-gyan-hom.s3.amazonaws.com'],
   },
-
+  pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js'],
   env:{
     SKIP_PREFLIGHT_CHECK:true,
     APP_HOST:'localhost',
@@ -24,13 +24,9 @@ const nextConfig = {
     REACT_APP_API_URL:"https://syaoxtjjq5.execute-api.us-west-2.amazonaws.com/hom",
     REACT_APP_CHAT_API:"https://syaoxtjjq5.execute-api.us-west-2.amazonaws.com/hom"
   },
- 
+
   rewrites() {
     return [
-      {
-        source: "/dir/:customPage",
-        destination: "/dir/index.html",
-      },
       {
         source: '/:path*',
         destination: '/:path*'
@@ -40,7 +36,7 @@ const nextConfig = {
         destination: 'https://gyan.com.br/:path*'
       }
     ]
-    
+
   },
 }
 

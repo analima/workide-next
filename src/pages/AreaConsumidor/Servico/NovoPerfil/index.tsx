@@ -7,8 +7,8 @@ import {
   ContainerNameUser,
   Sobre,
 } from './style';
-import { ReactComponent as EstrelaOff } from '../../../../assets/estrela-off.svg';
-import { ReactComponent as Estrela } from '../../../../assets/estrela.svg';
+import EstrelaOff from '../../../../assets/estrela-off.svg';
+import Estrela from '../../../../assets/estrela.svg';
 import { useHistory } from 'react-router-dom';
 import { Titulo } from '../../../../components/Titulo';
 import { MedalhasFornecedor } from '../../../../components/MedalhasFornecedor';
@@ -159,7 +159,7 @@ export function NovoPerfil({
           />
 
           <MobileCenter>
-            
+
             <FotoPerfil>
             <Image src={dataProvider.arquivo?.url || UserDefaultImageProfile}
               alt="Perfil"/>

@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
 import { FiHeart, FiShare2 } from 'react-icons/fi';
 
-import { ReactComponent as EstrelaOff } from '../../assets/estrela-off.svg';
-import { ReactComponent as Estrela } from '../../assets/estrela.svg';
+import  EstrelaOff  from '../../assets/estrela-off.svg';
+import  Estrela  from '../../assets/estrela.svg';
 
 import { AZUL_60, LARANJA } from '../../styles/variaveis';
 import defaultImage from '../../assets/profileImage.svg';

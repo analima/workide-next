@@ -5,7 +5,7 @@ import { CINZA_40, LARANJA, PRETO_60, VERDE } from '../../../styles/variaveis';
 import { Layout } from '../Layout';
 import { useLocation } from 'react-router-dom';
 import { FiXCircle } from 'react-icons/fi';
-import { ReactComponent as Antonio } from '../../../assets/antonio-full.svg';
+import Antonio from '../../../assets/antonio-full.svg';
 import {
   Adicional,
   CardCarrinho,

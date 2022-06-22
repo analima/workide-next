@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
-import { ReactComponent as CartaoSvg } from '../../../assets/cartao-icon.svg';
-import { ReactComponent as BoletoSvg } from '../../../assets/pagamento-icon.svg';
-import { ReactComponent as PixSvg } from '../../../assets/pix-icon.svg';
+import CartaoSvg  from '../../../assets/cartao-icon.svg';
+import BoletoSvg  from '../../../assets/pagamento-icon.svg';
+import PixSvg  from '../../../assets/pix-icon.svg';
 import { AZUL, PRETO_10 } from '../../../styles/variaveis';
 import { Titulo } from '../../Titulo';
 import { CartaoCreditoModalServico } from '../Servico/CartaoCreditoModalServico';

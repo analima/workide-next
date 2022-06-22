@@ -25,7 +25,7 @@ import { InputNumber } from '../Form/InputNumber';
 import { DesistenciaProps } from '../../hooks/propostaFornecedor';
 import { pessoas_api } from '../../services/pessoas_api';
 import { addDays } from 'date-fns';
-import { format } from 'date-fns/esm';
+import { format } from 'date-fns';
 import { Spacer } from '../Spacer';
 import { pagamentos_api } from '../../services/pagamentos_api';
 import { ModalCreateSubaccount } from '../../pages/AreaConsumidor/ProjetoAndamento/Detalhes/ModalCreateSubaccount';
@@ -376,8 +376,8 @@ export function ModalDesistir({
 
                 <Col lg={12} className="mb-3">
                   <Titulo
-                    titulo="CUIDADO: Essa ação pode reduzir seu ranking e 
-                    comprometer sua reputação. Tem certeza que quer continuar 
+                    titulo="CUIDADO: Essa ação pode reduzir seu ranking e
+                    comprometer sua reputação. Tem certeza que quer continuar
                     com o desitência do projeto?"
                     cor={PRETO_10}
                     tamanho={18}

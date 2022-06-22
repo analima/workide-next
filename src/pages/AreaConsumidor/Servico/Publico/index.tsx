@@ -44,8 +44,8 @@ import { useAuth } from '../../../../contexts/auth';
 import { hotjar } from 'react-hotjar';
 import { SEO } from '../../../../components/SEO';
 
-import { ReactComponent as EstrelaOff } from '../../../../assets/estrela-off.svg';
-import { ReactComponent as Estrela } from '../../../../assets/estrela.svg';
+import EstrelaOff  from '../../../../assets/estrela-off.svg';
+import Estrela from '../../../../assets/estrela.svg';
 import { FaCheckCircle } from 'react-icons/fa';
 import { Pontuacao } from '../../../AreaFornecedor/Home/MinhaReputacao/Pontuacao';
 import { CardComentario } from '../../../../components/CardComentario';

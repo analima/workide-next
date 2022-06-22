@@ -19,7 +19,7 @@ import {
   ContentButton,
   ContainerHeader,
 } from './style';
-import { ReactComponent as Home } from '../../../../assets/House.svg';
+import Home  from '../../../../assets/House.svg';
 import { BsCircleFill } from 'react-icons/bs';
 import { AZUL, CINZA_40 } from '../../../../styles/variaveis';
 import { Titulo } from '../../../../components/Titulo';
@@ -192,7 +192,7 @@ export function Navbar({ toggleSidebar, hinddenOportunidades }: INavbar) {
                   </ContentButton>
                 )}
               </Dropdown.Menu>
-            </Dropdown> 
+            </Dropdown>
           </AcaoBell>
         </ContentSession>
 

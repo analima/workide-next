@@ -12,9 +12,9 @@ import {
   Subarea,
 } from '../../../AreaConsumidor/Busca/Filtro/FiltroSubarea';
 import { Dispatch, SetStateAction, useCallback } from 'react';
-import { FiltroHabilidades } from '../../../AreaConsumidor/Busca/Filtro/FiltroHabilidades';
+import FiltroHabilidades  from '../../../AreaConsumidor/Busca/Filtro/FiltroHabilidades';
 import { InputCheck } from '../../../../components/Form/InputCheck';
-import { FiltroCausas } from '../../../AreaConsumidor/Busca/Filtro/FiltroCausas';
+import FiltroCausas from '../../../AreaConsumidor/Busca/Filtro/FiltroCausas';
 
 interface IProp {
   filtroEnviado: boolean;

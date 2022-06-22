@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Avatar from 'react-avatar-edit';
 import { Col, Container, Form, FormCheck, Row } from 'react-bootstrap';
 import { Accordion } from '../../../../components/Accordion';
@@ -9,7 +9,8 @@ import { TituloForm } from '../../../../components/TituloForm';
 import { Content } from './style';
 
 export function ProdutoServicoForm() {
-  const [, setFoto] = useState({});
+  const [Foto, setFoto] = useState({});
+  const [clientSide, setClientSide] = useState(false);
 
   function onBeforeFileLoad(elem: any) {
     if (elem.target.files[0].size > 71680) {
@@ -17,6 +18,10 @@ export function ProdutoServicoForm() {
       elem.target.value = '';
     }
   }
+
+  useEffect(() => {
+    setClientSide(true);
+  }, [clientSide]);
 
   return (
     <Content>
@@ -55,14 +60,14 @@ export function ProdutoServicoForm() {
               >
                 <Row className="mt-4 mb-4">
                   <Col lg={3} className="avatar mb-4">
-                    <Avatar
+                  {/* {clientSide && <Avatar
                       width={196}
                       height={196}
                       onCrop={setFoto}
                       onClose={() => setFoto({})}
                       onBeforeFileLoad={onBeforeFileLoad}
                       // src={foto.src}
-                    />
+                    />} */}
                   </Col>
 
                   <Col lg={6}>
@@ -182,14 +187,14 @@ export function ProdutoServicoForm() {
               >
                 <Row className="mt-4 mb-4">
                   <Col lg={3} className="avatar mb-4">
-                    <Avatar
+                  {/* {clientSide &&<Avatar
                       width={196}
                       height={196}
                       onCrop={setFoto}
                       onClose={() => setFoto({})}
                       onBeforeFileLoad={onBeforeFileLoad}
                       // src={foto.src}
-                    />
+                    />} */}
                   </Col>
 
                   <Col lg={6}>

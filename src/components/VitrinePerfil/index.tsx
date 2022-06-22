@@ -1,8 +1,8 @@
 import ScrollContainer from 'react-indiana-drag-scroll';
-import { ReactComponent as CoracaoOn } from '../../assets/coracao.svg';
-import { ReactComponent as CoracaoOff } from '../../assets/coracao-off.svg';
-import { ReactComponent as EstrelaOff } from '../../assets/estrela-off.svg';
-import { ReactComponent as Estrela } from '../../assets/estrela.svg';
+import  CoracaoOn from '../../assets/coracao.svg';
+import  CoracaoOff from '../../assets/coracao-off.svg';
+import EstrelaOff from '../../assets/estrela-off.svg';
+import Estrela from '../../assets/estrela.svg';
 import {
   Content,
   Body,
