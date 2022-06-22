@@ -13,7 +13,7 @@ import {
   Dialogo,
 } from '../../../../../components/Vitrine/style';
 import { Avatar } from '../../../../CadastroComplementar/Apresentacao/style';
-import { ReactComponent as Carol } from '../../../../../assets/carol-full.svg';
+import Carol from '../../../../../assets/carol-full.svg';
 import { useBuscaFornecedorOferta } from '../../../../../hooks/buscaConsumidor';
 
 export function Fornecedor() {

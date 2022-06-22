@@ -1,8 +1,8 @@
 import { Col, Row } from 'react-bootstrap';
 import { Titulo } from '../../../../components/Titulo';
 import { AZUL } from '../../../../styles/variaveis';
-import { ReactComponent as EstrelaOff } from '../../../../assets/estrela-off.svg';
-import { ReactComponent as Estrela } from '../../../../assets/estrela.svg';
+import EstrelaOff from '../../../../assets/estrela-off.svg';
+import Estrela from '../../../../assets/estrela.svg';
 import { AvaliacaoContainer, Content } from './style';
 import { useAvaliacaoProjetoFornecedor } from '../../../../hooks/avaliacaoProjetoFornecedor';
 import { TextArea } from '../../../../components/Form/TextArea';
@@ -87,12 +87,12 @@ export function SobreProjeto({ idConsumidor }: IProps) {
             {numeroEstrelas?.map((estrela, index) => {
               return estrela === 1 ? (
                 <Estrela
-                  onClick={e => preencherEstrelas(e, index + 1)}
+                  onClick={(e: any) => preencherEstrelas(e, index + 1)}
                   key={index}
                 />
               ) : (
                 <EstrelaOff
-                  onClick={e => preencherEstrelas(e, index + 1)}
+                  onClick={(e: any) => preencherEstrelas(e, index + 1)}
                   key={index}
                 />
               );

@@ -8,7 +8,7 @@ import {
   ButtonCancel,
   ButtonConfirm,
 } from './style';
-import { ReactComponent as Andre } from '../../../../../assets/andre-full-downgrade.svg';
+import Andre from '../../../../../assets/andre-full-downgrade.svg';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
 import { AZUL } from '../../../../../styles/variaveis';
 import { useLimitacoesPlanos } from '../../../../../contexts/planLimitations';
@@ -46,7 +46,7 @@ export function AvatarDowngradePlano({
 
   const mensagem = `
     Você pode alterar seu plano a qualquer momento. Mas você precisa saber de uma coisa: ao fazer isso
-    sua conta será ajustada para os limites do novo plano. Isso significa que as informações excedentes 
+    sua conta será ajustada para os limites do novo plano. Isso significa que as informações excedentes
     serão perdidas, ok?
     `;
 

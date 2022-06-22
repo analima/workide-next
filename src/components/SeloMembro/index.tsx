@@ -1,6 +1,6 @@
 import { OverlayTrigger } from 'react-bootstrap';
-import { ReactComponent as Selo } from '../../assets/selo-membro.svg';
-import { ReactComponent as SeloVideo } from '../../assets/selo-membro-without-shadow.svg';
+import Selo  from '../../assets/selo-membro.svg';
+import SeloVideo  from '../../assets/selo-membro-without-shadow.svg';
 import { Content, TooltipMember } from './style';
 
 interface Props {

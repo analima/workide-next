@@ -1,6 +1,6 @@
 import { ContainerAvaliacao } from './styles';
-import { ReactComponent as EstrelaOff } from '../../assets/estrela-off.svg';
-import { ReactComponent as Estrela } from '../../assets/estrela.svg';
+import EstrelaOff  from '../../assets/estrela-off.svg';
+import Estrela  from '../../assets/estrela.svg';
 
 interface IProps {
   notaMedia: number;

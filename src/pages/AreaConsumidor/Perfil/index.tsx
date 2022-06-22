@@ -5,8 +5,8 @@ import { InputText } from '../../../components/Form/InputText';
 import { Foto } from '../../../components/Foto';
 import { Spacer } from '../../../components/Spacer';
 import { Layout } from '../../AreaConsumidor/Layout';
-import { Accordion } from '../Accordion';
-import { AccordionItem } from '../Accordion/AccordionItem';
+import  Accordion  from '../Accordion';
+import  AccordionItem  from '../Accordion/AccordionItem';
 import * as Yup from 'yup';
 import {
   Content,
@@ -72,16 +72,16 @@ export function Perfil() {
   );
 
   const [rotacionarCartao, setRotacionarCartao] = useState(false);
-  const mensagem = `Lorem ipsum dolor sit amet consectetur 
-  adipisicing elit. Explicabo sint quasi, doloremque 
-  necessitatibus maiores deleniti fuga eaque iusto, 
-  porro esse expedita! Neque inventore beatae id corporis 
-  adipisicing elit. Explicabo sint quasi, doloremque 
-  necessitatibus maiores deleniti fuga eaque iusto, 
-  porro esse expedita! Neque inventore beatae id corporis 
-  adipisicing elit. Explicabo sint quasi, doloremque 
-  necessitatibus maiores deleniti fuga eaque iusto, 
-  porro esse expedita! Neque inventore beatae id corporis 
+  const mensagem = `Lorem ipsum dolor sit amet consectetur
+  adipisicing elit. Explicabo sint quasi, doloremque
+  necessitatibus maiores deleniti fuga eaque iusto,
+  porro esse expedita! Neque inventore beatae id corporis
+  adipisicing elit. Explicabo sint quasi, doloremque
+  necessitatibus maiores deleniti fuga eaque iusto,
+  porro esse expedita! Neque inventore beatae id corporis
+  adipisicing elit. Explicabo sint quasi, doloremque
+  necessitatibus maiores deleniti fuga eaque iusto,
+  porro esse expedita! Neque inventore beatae id corporis
   repellat repudiandae nulla possimus!`;
 
   useEffect(() => {

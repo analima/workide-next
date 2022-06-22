@@ -9,7 +9,7 @@ import {
   ButtonConfirm,
   ContainerText,
 } from './style';
-import { ReactComponent as Andre } from '../../assets/andre-full-cadastro-incompleto.svg';
+import Andre  from '../../assets/andre-full-cadastro-incompleto.svg';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
 import { AZUL } from '../../styles/variaveis';
 import { useHistory } from 'react-router-dom';

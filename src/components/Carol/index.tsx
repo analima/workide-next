@@ -5,7 +5,7 @@ import {
   CarolPersonagem,
   CarolIconClose,
 } from './style';
-import { ReactComponent as CarolSuperior } from '../../assets/carol-superior.svg';
+ import CarolSuperior  from '../../assets/carol-superior.svg';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
 import { AZUL } from '../../styles/variaveis';
 
@@ -16,7 +16,7 @@ type CarolProps = {
 }
 
 export function Carol({mensagem, dica, setDica}: CarolProps) {
- 
+
   return (
     <Content>
     <CarolContainer showDica={dica}>
@@ -29,7 +29,7 @@ export function Carol({mensagem, dica, setDica}: CarolProps) {
         </CarolIconClose>
 
         <CarolMensagem>{mensagem}</CarolMensagem>
-         
+
         <CarolPersonagem>
           <CarolSuperior />
         </CarolPersonagem>

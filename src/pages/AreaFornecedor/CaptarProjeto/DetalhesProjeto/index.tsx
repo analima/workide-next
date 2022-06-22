@@ -4,13 +4,13 @@ import { Col, Row } from 'react-bootstrap';
 import { Card } from '../../../../components/Card';
 import { Titulo } from '../../../../components/Titulo';
 import { AZUL, PRETO_60 } from '../../../../styles/variaveis';
-import { ReactComponent as Coracao } from '../../../../assets/coracao.svg';
+import Coracao from '../../../../assets/coracao.svg';
 
-import { ReactComponent as ExclusivoImage } from '../../../../assets/exclusive.svg';
+import ExclusivoImage from '../../../../assets/exclusive.svg';
 
-import { ReactComponent as IconeVoluntario } from '../../../../assets/icon-voluntare.svg';
-import { ReactComponent as EstrelaOff } from '../../../../assets/estrela-off.svg';
-import { ReactComponent as Estrela } from '../../../../assets/estrela.svg';
+import IconeVoluntario from '../../../../assets/icon-voluntare.svg';
+import EstrelaOff from '../../../../assets/estrela-off.svg';
+import Estrela from '../../../../assets/estrela.svg';
 import {
   Content,
   Header,

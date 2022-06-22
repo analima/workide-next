@@ -5,7 +5,7 @@ import {
   AntonioPersonagem,
   AntonioIconClose,
 } from './style';
-import { ReactComponent as AntonioSuperior } from '../../assets/antonio-superior-dados-bancarios.svg';
+import AntonioSuperior  from '../../assets/antonio-superior-dados-bancarios.svg';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
 import { AZUL } from '../../styles/variaveis';
 

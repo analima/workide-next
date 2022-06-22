@@ -16,7 +16,7 @@ import {
   LARANJA,
   PRETO_10,
 } from '../../../../../styles/variaveis';
-import { ReactComponent as IconeVoluntario } from '../../../../../assets/icon-voluntare.svg';
+import IconeVoluntario  from '../../../../../assets/icon-voluntare.svg';
 
 import {
   ButtonMainStyled,

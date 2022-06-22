@@ -8,7 +8,7 @@ interface IAccordionItem {
   openDefault?: boolean | undefined;
 }
 
-export function AccordionItem({
+export default function AccordionItem({
   children,
   idHeader,
   idCollapse,

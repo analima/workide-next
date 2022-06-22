@@ -4,7 +4,7 @@ interface AccordionInterface {
   children: React.ReactNode;
 }
 
-export function Accordion({ children }: AccordionInterface) {
+export default function Accordion({ children }: AccordionInterface) {
   return (
     <Content>
       <div className="accordion" id="accordionExample">

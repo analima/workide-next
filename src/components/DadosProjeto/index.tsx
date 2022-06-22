@@ -21,7 +21,7 @@ import { oportunidades_api } from '../../services/oportunidades_api';
 import { useAuth } from '../../contexts/auth';
 import { useLimitacoesPlanos } from '../../contexts/planLimitations';
 
-import { ReactComponent as PDFIcon } from '../../assets/print-icon.svg';
+import  PDFIcon  from '../../assets/print-icon.svg';
 import { usePropostaFornecedor } from '../../hooks/propostaFornecedor';
 
 interface IAnexos {

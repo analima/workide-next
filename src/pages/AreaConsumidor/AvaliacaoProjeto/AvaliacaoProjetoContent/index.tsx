@@ -2,8 +2,8 @@ import { useCallback, useState } from 'react';
 import { Alert, Col, Row } from 'react-bootstrap';
 import { useAvaliacaoProjetoConsumidor } from '../../../../hooks/avaliacaoProjetoConsumidor';
 import { VERDE } from '../../../../styles/variaveis';
-import { AjudeMelhorar } from '../AjudeMelhorar';
-import { SobreProjeto } from '../SobreProjeto';
+import  AjudeMelhorar  from '../AjudeMelhorar';
+import  SobreProjeto  from '../SobreProjeto';
 import { Button, ContainerAcoes, Content, GhostButton } from './style';
 import { oportunidades_api } from '../../../../services/oportunidades_api';
 import { FiXCircle } from 'react-icons/fi';
@@ -16,7 +16,7 @@ interface IDadosProjetoFornecedor {
   idFornecedor: number;
 }
 
-export function AvaliacaoProjetoContent({
+export default function AvaliacaoProjetoContent({
   idProjeto,
   idFornecedor,
 }: IDadosProjetoFornecedor) {

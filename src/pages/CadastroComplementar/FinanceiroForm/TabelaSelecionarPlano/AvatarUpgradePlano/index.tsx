@@ -7,7 +7,7 @@ import {
   ContainerButtons,
   ButtonConfirm,
 } from './style';
-import { ReactComponent as Andre } from '../../../../../assets/andre-full.svg';
+import Andre  from '../../../../../assets/andre-full.svg';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
 import { AZUL } from '../../../../../styles/variaveis';
 import { useLimitacoesPlanos } from '../../../../../contexts/planLimitations';
@@ -44,8 +44,8 @@ export function AvatarUpgradePlano({
   const { user } = useAuth();
 
   const mensagem = `
-      Uou! Esse plano é excelente! Só queria lembra-lo que com esse plano você 
-      tem mais itens para preencher no seu potencial. Não esqueça de voltar lá 
+      Uou! Esse plano é excelente! Só queria lembra-lo que com esse plano você
+      tem mais itens para preencher no seu potencial. Não esqueça de voltar lá
       para aproveitar ao máximo essa possibilidade.
     `;
 

@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { hotjar } from 'react-hotjar';
 import { useEffect } from 'react';
 import { BuscaFornecedorOfertaProvider } from '../../../hooks/buscaConsumidor';
-import { ContentBusca } from './ContentBusca';
+import  ContentBusca  from './ContentBusca';
 import { Content } from './style';
 
 export function Busca() {

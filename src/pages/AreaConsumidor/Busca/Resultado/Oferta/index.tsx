@@ -4,7 +4,7 @@ import {
   Dialogo,
 } from '../../../../../components/Vitrine/style';
 import { Content, ContainerCard } from './style';
-import { ReactComponent as Carol } from '../../../../../assets/carol-full.svg';
+import Carol from '../../../../../assets/carol-full.svg';
 import { Avatar } from '../../../../CadastroComplementar/Apresentacao/style';
 import { Paginacao } from '../../../Home/MeusProjetos/Paginacao';
 import { useCallback, useEffect, useState } from 'react';

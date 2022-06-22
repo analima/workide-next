@@ -3,7 +3,7 @@ import { formatDistance } from 'date-fns';
 import { pt } from 'date-fns/locale';
 import { useAuth } from '../../../../contexts/auth';
 import { Link } from 'react-router-dom';
-import { ReactComponent as Home } from '../../../../assets/House.svg';
+import Home  from '../../../../assets/House.svg';
 import { Container, Dropdown, ModalBody } from 'react-bootstrap';
 import { BsCircleFill } from 'react-icons/bs';
 import { CINZA_40, VERDE } from '../../../../styles/variaveis';
