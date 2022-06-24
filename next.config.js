@@ -31,10 +31,10 @@ const nextConfig = {
         source: '/:path*',
         destination: '/:path*'
       },
-      // {
-      //   source: '/:path*',
-      //   destination: 'https://gyan.com.br/:path*'
-      // }
+      {
+        source: '/:path*',
+        destination: 'https://gyan.com.br/:path*'
+      }
     ]
 
   },
