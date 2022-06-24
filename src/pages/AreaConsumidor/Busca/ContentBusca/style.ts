@@ -2,7 +2,7 @@ import { lighten } from 'polished';
 import styled from 'styled-components';
 import { AZUL, BRANCO, PRETO_10 } from '../../../../styles/variaveis';
 
-export const Content = styled.section``;
+const Content = styled.section``;
 
 export const ContainerHeader = styled.div`
   display: flex;
@@ -124,3 +124,5 @@ export const ButtonClear = styled.button`
     margin-bottom: 8px;
   }
 `;
+
+export  default Content;

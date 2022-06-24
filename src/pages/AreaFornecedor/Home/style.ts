@@ -3,7 +3,7 @@ import { lighten } from 'polished';
 
 import { AZUL, AZUL_60, BRANCO } from '../../../styles/variaveis';
 
-export const Subtitulo = styled.div`
+const Subtitulo = styled.div`
   display: flex;
   align-items: center;
 
@@ -57,3 +57,5 @@ export const BotaoCaptar = styled.a`
     color: ${BRANCO};
   }
 `;
+
+export default Subtitulo;

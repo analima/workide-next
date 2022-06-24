@@ -5,7 +5,8 @@ import { useCadastroComplementar } from '../../../../hooks/cadastroComplementar'
 import { useHistory } from 'react-router-dom';
 import { IoMdHelpCircle } from 'react-icons/io';
 
-import { Content, Actions, Subtitle, SubtitleSecondary } from './style';
+import { Actions, Subtitle, SubtitleSecondary } from './style';
+import Content from './style';
 import { pessoas_api } from '../../../../services/pessoas_api';
 import { useAuth } from '../../../../contexts/auth';
 import DadosBancarios from '../DadosBancarios';
@@ -41,7 +42,7 @@ const schema = Yup.object().shape({
   tipoConta: Yup.string().required('tipo da conta é obrigatória'),
 });
 
-export function FinanceiroFormContent() {
+export default function FinanceiroFormContent() {
   const {
     setAbaSelecionada,
     isConsumer,

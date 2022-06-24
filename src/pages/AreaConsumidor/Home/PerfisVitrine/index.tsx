@@ -4,7 +4,8 @@ import { Spacer } from '../../../../components/Spacer';
 import { Titulo } from '../../../../components/Titulo';
 import { pessoas_api } from '../../../../services/pessoas_api';
 import { PRETO_10 } from '../../../../styles/variaveis';
-import { Content, ContentSkeleton, ErrorMessage } from './style';
+import { ContentSkeleton, ErrorMessage } from './style';
+import Content from './style'
 import { useAuth } from '../../../../contexts/auth';
 import { consultas_api } from '../../../../services/consultas_api';
 import { Vitrine } from '../../../../components/Vitrine';
@@ -52,7 +53,7 @@ type PessoaRecontratcProp = {
   }[];
 };
 
-export function PerfisVitrine({ recontract }: RecontantractProps) {
+export default function PerfisVitrine({ recontract }: RecontantractProps) {
   const [profiles, setProfiles] = useState<PessoaProp[]>([]);
   const { user } = useAuth();
   const [loading, setLoading] = useState<boolean>(false);

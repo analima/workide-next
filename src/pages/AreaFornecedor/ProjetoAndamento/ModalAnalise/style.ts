@@ -9,7 +9,7 @@ import {
   VERMELHO,
 } from '../../../../styles/variaveis';
 
-export const Content = styled.div``;
+const Content = styled.div``;
 
 export const DescricaoItem = styled.p`
   margin: 0;
@@ -160,3 +160,5 @@ export const InputStyled = styled.input`
     width: 100%;
   }
 `;
+
+export default Content;

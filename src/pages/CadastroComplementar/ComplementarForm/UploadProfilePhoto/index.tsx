@@ -9,7 +9,7 @@ interface IProps {
   setFotoUrl: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export function UploadProfilePhoto({
+export default function UploadProfilePhoto({
   fotoId,
   setFotoId,
   fotoUrl,

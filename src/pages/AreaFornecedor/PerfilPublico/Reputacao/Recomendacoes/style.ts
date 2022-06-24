@@ -2,7 +2,7 @@ import { lighten } from 'polished';
 import styled from 'styled-components';
 import { AZUL_60, BRANCO } from '../../../../../styles/variaveis';
 
-export const Content = styled.section``;
+const Content = styled.section``;
 
 export const Recomendacao = styled.div`
   padding: 16px;
@@ -38,3 +38,5 @@ export const NenhumaRecomendacaoContent = styled.div`
   display: flex;
   margin-top: 32px;
 `;
+
+export default Content;

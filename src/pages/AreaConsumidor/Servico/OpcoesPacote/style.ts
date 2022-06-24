@@ -15,7 +15,7 @@ interface ItemTipoProps {
   name?: string;
 }
 
-export const Content = styled.section`
+const Content = styled.section`
   .center {
     text-align: -webkit-center;
   }
@@ -131,3 +131,5 @@ export const Button = styled.button<CorBotao>`
     margin-top: 16px;
   }
 `;
+
+export default Content;

@@ -12,15 +12,15 @@ import { Spacer } from '../../../../../components/Spacer';
 import { TextArea } from '../../../../../components/Form/TextArea';
 import { Titulo } from '../../../../../components/Titulo';
 import { AZUL, CINZA_40, PRETO_10 } from '../../../../../styles/variaveis';
-import { ItemCaseSucesso } from './ItemCaseSucesso';
+import ItemCaseSucesso from './ItemCaseSucesso';
 
 import {
   Button,
   ContainerButtons,
   ContainerHeader,
-  Content,
   GhostButton,
 } from './style';
+import Content from './style';
 import { useCadastroServico } from '../../../../../hooks/cadastroServico';
 import { IoMdHelpCircle } from 'react-icons/io';
 import { InputNumber } from '../../../../../components/Form/InputNumber';
@@ -80,7 +80,7 @@ const schema = Yup.object().shape({
     .max(100, 'Descrição deve conter no máximo 100 caracteres'),
 });
 
-export function CaseSucesso({ continuar, voltar }: ICaseSucessoProps) {
+export default function CaseSucesso({ continuar, voltar }: ICaseSucessoProps) {
   const {
     control,
     handleSubmit,
@@ -93,11 +93,11 @@ export function CaseSucesso({ continuar, voltar }: ICaseSucessoProps) {
   });
 
   const mensagemCaseSucesso = `
-  Agora é a hora de conquistar novos clientes! 
-  Nesse campo você pode adicionar um case de 
-  sucesso para essa oferta, contando como você 
-  já atendeu um cliente com ela. Explique, qual 
-  foi o desafio, a solução que você encontrou e 
+  Agora é a hora de conquistar novos clientes!
+  Nesse campo você pode adicionar um case de
+  sucesso para essa oferta, contando como você
+  já atendeu um cliente com ela. Explique, qual
+  foi o desafio, a solução que você encontrou e
   o resultado final que você atingiu.
   `;
 

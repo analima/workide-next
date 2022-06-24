@@ -4,7 +4,7 @@ import { BRANCO, LARANJA, PRETO } from '../../../styles/variaveis';
 import ChevronUpIcon from '../../../assets/circle-chevron-up.svg';
 import ChevronDownIcon from '../../../assets/circle-chevron-down.svg';
 
-export const Content = styled.div`
+const Content = styled.div`
   .accordion-header {
     .accordion-button:not(.collapsed) {
       background-color: ${LARANJA};
@@ -33,3 +33,5 @@ export const Content = styled.div`
 
   
 `;
+
+export default Content;

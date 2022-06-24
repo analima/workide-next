@@ -7,10 +7,10 @@ import { VitrineServico } from '../../../../components/VitrineServico';
 import { IServicoInfo } from '../../../../interfaces/IServicoInfo';
 import { ofertas_api } from '../../../../services/ofertas_api';
 import { AZUL } from '../../../../styles/variaveis';
-import { Content } from './style';
+import Content from './style';
 import { useCarrinhoConsumidor } from '../../../../hooks/carrinhoConsumidor';
 
-export function MaisOfertas() {
+export default function MaisOfertas() {
   const [vitrineData, setVitrineData] = useState([] as IServicoInfo[]);
   const { servicoInfo } = useCarrinhoConsumidor();
 

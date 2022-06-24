@@ -8,10 +8,11 @@ import { Spacer } from '../../../components/Spacer';
 import { Titulo } from '../../../components/Titulo';
 import { useAuth } from '../../../contexts/auth';
 import { IPessoa } from '../../../interfaces/IPessoa';
-import { HeaderPublico } from './HeaderPublico';
-import { Navbar } from './Navbar';
-import { Sidebar } from './Sidebar';
-import { Content, Subtitulo } from './style';
+import HeaderPublico from './HeaderPublico';
+import Navbar from './Navbar';
+import Sidebar from './Sidebar';
+import { Subtitulo } from './style';
+import Content from './style';
 
 interface LayoutProps {
   titulo: string;
@@ -22,7 +23,7 @@ interface LayoutProps {
   navbarIsNotVisible?: boolean;
 }
 
-export function Layout({
+export default function Layout({
   titulo,
   subtitulo,
   children,

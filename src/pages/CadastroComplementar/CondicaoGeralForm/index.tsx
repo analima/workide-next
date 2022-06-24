@@ -10,7 +10,8 @@ import { useHistory } from 'react-router-dom';
 
 import { pessoas_api } from '../../../services/pessoas_api';
 import { useCadastroComplementar } from '../../../hooks/cadastroComplementar';
-import { Condicao, Content, Actions } from './style';
+import { Condicao, Actions } from './style';
+import Content from './style';
 import { Button } from '../../../components/Form/Button';
 import { ToggleSwitch } from '../../../components/Form/ToggleSwitch';
 import { useGAEventsTracker } from '../../../hooks/useGAEventsTracker';
@@ -42,7 +43,7 @@ interface IProps {
   isConsumidor: boolean;
 }
 
-export function CondicaoGeralForm({ cadastroCompleto, isConsumidor }: IProps) {
+export default function CondicaoGeralForm({ cadastroCompleto, isConsumidor }: IProps) {
   const { user, refreshUserData } = useAuth();
   const { setAbaSelecionada } = useCadastroComplementar();
   const history = useHistory();

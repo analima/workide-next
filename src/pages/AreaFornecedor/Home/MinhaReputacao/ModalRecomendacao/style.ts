@@ -2,7 +2,7 @@ import { lighten } from 'polished';
 import styled from 'styled-components';
 import { AZUL, BRANCO } from '../../../../../styles/variaveis';
 
-export const Content = styled.div`
+const Content = styled.div`
   /* não pega os estilos :/ verificar depois */
 `;
 
@@ -45,3 +45,5 @@ export const CloseModal = styled.span`
   display: flex;
   justify-content: flex-end;
 `;
+
+export default Content;

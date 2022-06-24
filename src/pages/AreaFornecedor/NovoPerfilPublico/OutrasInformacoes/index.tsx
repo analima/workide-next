@@ -13,7 +13,6 @@ import { consultas_api } from '../../../../services/consultas_api';
 import { AZUL, PRETO_10 } from '../../../../styles/variaveis';
 import { IGraduacao } from '../../../../interfaces/IProvider';
 import {
-  Content,
   InfoSection,
   Container,
   Wrapper,
@@ -23,13 +22,14 @@ import {
   Frame,
   TitleVideoNotFound,
 } from './style';
+import Content from './style';
 import { Card } from '../../../../components/Card';
 import { useAuth } from '../../../../contexts/auth';
 import { oportunidades_api } from '../../../../services/oportunidades_api';
 import { MedalhasFornecedor } from '../../../../components/MedalhasFornecedor';
 import { nivel_experiencia } from '../../../../utils/nivelExperiencia';
 import { Label } from '../../../../components/Label';
-import { HabilidadesPercebidas } from '../HabilidadesPercebidas';
+import HabilidadesPercebidas from '../HabilidadesPercebidas';
 import { CardAvaliacao } from '../../../../components/CardAvaliacao';
 import { IServicoInfo } from '../../../../interfaces/IServicoInfo';
 import { ofertas_api } from '../../../../services/ofertas_api';
@@ -49,7 +49,7 @@ interface Props {
   imageLoaded: boolean;
 }
 
-export function OutrasInformacoes({ data, imageLoaded }: Props) {
+export default function OutrasInformacoes({ data, imageLoaded }: Props) {
   const { user } = useAuth();
   const [verMaisSubareas, setVerMaisSubareas] = useState(false);
   const [verMaisCapacitacao, setVerMaisCapacitacao] = useState(false);
@@ -172,7 +172,7 @@ export function OutrasInformacoes({ data, imageLoaded }: Props) {
                   <span>
                     idiomas:{' '}
                     {data?.idiomas?.map(
-                      language => `${language.idioma.descricao} - 
+                      language => `${language.idioma.descricao} -
                   ${language.nivel}. `,
                     )}
                   </span>

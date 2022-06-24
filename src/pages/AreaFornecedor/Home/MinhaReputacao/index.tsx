@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { Card } from '../../../../components/Card';
 import { Titulo } from '../../../../components/Titulo';
 import {
-  Content,
   CardReputacao,
   CardRecomendacao,
   Recomendacao,
@@ -15,16 +14,17 @@ import {
   NenhumaAvaliacaoContent,
   ContentRecomendacao,
 } from './style';
-import { Pontuacao } from './Pontuacao';
+import Content from './style';
+import Pontuacao from './Pontuacao';
 import { AvaliacoesFornecedor } from '../../../../components/AvaliacoesFornecedor';
 
 import { useAuth } from '../../../../contexts/auth';
 import { pessoas_api } from '../../../../services/pessoas_api';
 
-import { ModalRecomendacao } from './ModalRecomendacao';
+import ModalRecomendacao from './ModalRecomendacao';
 
 import { LARANJA } from '../../../../styles/variaveis';
-import { HabilidadesPercebidas } from '../../PerfilPublico/Reputacao/HabilidadesPercebidas';
+import HabilidadesPercebidas from '../../PerfilPublico/Reputacao/HabilidadesPercebidas';
 
 interface IProps {
   pontuacao?: boolean;
@@ -62,7 +62,7 @@ interface IRecomendacao {
   fixa?: boolean;
 }
 
-export function MinhaReputacao({ pontuacao }: IProps) {
+export default function MinhaReputacao({ pontuacao }: IProps) {
   const [showModal, setModalShow] = useState(false);
   const [regraDePlanos, setRegraDePlanos] = useState<IRegraDePlanos | null>(
     null,

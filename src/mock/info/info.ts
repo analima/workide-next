@@ -1,4 +1,4 @@
-export const info = {
+const info = {
     price: 50,
     subdivisions: 3,
     data: '28/09/2019',
@@ -27,3 +27,5 @@ export const listChat = [
         date:"2021-11-28T15:15:00.000Z",
     },
 ]
+
+export default info;

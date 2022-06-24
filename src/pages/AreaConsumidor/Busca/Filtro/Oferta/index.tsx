@@ -1,22 +1,23 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import {
-  Content,
   ContentIcon,
   ContentFilter,
   HeaderTitle,
   TypographyTitle,
 } from './style';
+import Content from './style';
 import * as Yup from 'yup';
 import { useCallback, useEffect, useState } from 'react';
-import { FiltroSubarea, Subarea } from '../FiltroSubarea';
+import { Subarea } from '../FiltroSubarea';
+import FiltroSubarea from '../FiltroSubarea';
 import { useBuscaFornecedorOferta } from '../../../../../hooks/buscaConsumidor';
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 import { PRETO_40 } from '../../../../../styles/variaveis';
 import  FiltroHabilidades  from '../FiltroHabilidades';
 import { InputNumber } from '../../../../../components/Form/InputNumber';
 
-export function Oferta() {
+export default function Oferta() {
   const { sizeFilter, setSizeFilter, setFiltroOferta, limparFiltros } =
     useBuscaFornecedorOferta();
   const schema = Yup.object().shape({});

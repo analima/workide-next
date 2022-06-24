@@ -3,9 +3,10 @@ import { Alert, Col, Row } from 'react-bootstrap';
 // import { Antonio } from '../../../../components/Antonio';
 import { useAvaliacaoProjetoFornecedor } from '../../../../hooks/avaliacaoProjetoFornecedor';
 import { AZUL } from '../../../../styles/variaveis';
-import { AjudeMelhorar } from '../AjudeMelhorar';
-import { SobreProjeto } from '../SobreProjeto';
-import { Button, ContainerAcoes, Content, GhostButton } from './style';
+import AjudeMelhorar from '../AjudeMelhorar';
+import SobreProjeto from '../SobreProjeto';
+import { Button, ContainerAcoes, GhostButton } from './style';
+import Content from './style';
 import { useHistory } from 'react-router';
 import { useCallback, useEffect, useState } from 'react';
 import { oportunidades_api } from '../../../../services/oportunidades_api';
@@ -20,7 +21,7 @@ interface IDadosProjetoConsumidor {
   idConsumidor: number;
 }
 
-export function AvaliacaoProjetoContent({
+export default function AvaliacaoProjetoContent({
   idProjeto,
   idConsumidor,
 }: IDadosProjetoConsumidor) {

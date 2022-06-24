@@ -12,13 +12,13 @@ import {
   CompraStatus,
   CompraDescricao,
   CompraVencimento,
-  Content,
   GhostButton,
   CompraFormaPagamento,
   ContainerLoading,
   EmptyList,
   DownloadLink,
 } from './style';
+import Content from './style';
 import { BarraCarregamentoCircular } from '../../../../components/BarraCarregamentoCircular';
 import { useMinhasComprasFornecedor } from '../../../../hooks/minhasComprasFornecedor';
 
@@ -26,7 +26,7 @@ interface IMeioPagamentoProps {
   [key: string]: string;
 }
 
-export function Compras() {
+export default function Compras() {
   const { compras, loading } = useMinhasComprasFornecedor();
 
   const helperMeioPagamento: IMeioPagamentoProps = {

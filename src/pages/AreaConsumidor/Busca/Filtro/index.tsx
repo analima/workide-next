@@ -1,12 +1,12 @@
-import { Content } from './style';
+import Content from './style';
 import { Col, Row } from 'react-bootstrap';
-import { Oferta } from './Oferta';
-import { Fornecedor } from './Fornecedor';
+import Oferta from './Oferta';
+import Fornecedor from './Fornecedor';
 import { useState } from 'react';
 import { Antonio } from '../../../../components/Antonio';
 import { useBuscaFornecedorOferta } from '../../../../hooks/buscaConsumidor';
 
-export interface IFiltroFornecedor {
+export default interface IFiltroFornecedor {
   inVoluntariado?: boolean;
   subareas?: string[];
   habilidades?: string[];
@@ -25,7 +25,7 @@ export interface ITipoResultado {
   onChangeFiltroAvancadoOferta: (filtro: IFiltroOferta) => void;
 }
 
-export function Filtro() {
+export default function Filtro() {
   const { ofertaFiltro } = useBuscaFornecedorOferta();
 
   const [mensagem, setMensagem] = useState<string>('');

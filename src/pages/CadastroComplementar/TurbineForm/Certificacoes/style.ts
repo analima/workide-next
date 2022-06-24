@@ -8,7 +8,7 @@ import {
   VERMELHO,
 } from '../../../../styles/variaveis';
 
-export const Content = styled.div`
+const Content = styled.div`
   .block-error {
     color: red;
     white-space: nowrap;
@@ -70,3 +70,5 @@ export const ItemAction = styled.button`
     color: ${lighten(0.1, VERMELHO)};
   }
 `;
+
+export default Content;

@@ -7,7 +7,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { InputText } from '../../../../components/Form/InputText';
 
 import {
-  Content,
   Form,
   Label,
   Button,
@@ -18,11 +17,11 @@ import {
   ContainerSelect,
   ContainerAutoComplete,
 } from './style';
+import Content from './style';
 import { Select } from '../../../../components/Form/Select';
-import { niveis } from './niveis';
 import { AutocompleteList } from '../../../../components/Form/InputTag/style';
 import { geral_api } from '../../../../services/geral_api';
-import { pessoas_api } from '../../../../services/pessoas_api';
+import { pessoas_api } from '../../../../services/pessoas_api';              
 
 interface IIdiomaProps {
   id_pessoa: number;
@@ -49,6 +48,14 @@ const schema = Yup.object().shape({
   nivel: Yup.string(),
 });
 
+const niveis: { [key: string]: string } = {
+  Básico: 'Básico',
+  Intermediário: 'Intermediário',
+  Avançado: 'Avançado',
+  Fluente: 'Fluente',
+  Nativo: 'Nativo',
+};
+
 const niveisOptions = [
   {
     value: 'Básico',
@@ -72,7 +79,7 @@ const niveisOptions = [
   },
 ];
 
-export function Idioma({ id_pessoa, readonly }: IIdiomaProps) {
+export default function Idioma({ id_pessoa, readonly }: IIdiomaProps) {
   const {
     control,
     handleSubmit,

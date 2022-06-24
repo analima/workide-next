@@ -1,18 +1,19 @@
-import { BordaAzul, Content, Scroll } from './style';
+import { BordaAzul, Scroll } from './style';
+import Content from './style';
 import { Col, Row } from 'react-bootstrap';
-import { Pontuacao } from '../../Home/MinhaReputacao/Pontuacao';
+import Pontuacao from '../../Home/MinhaReputacao/Pontuacao';
 import { Titulo } from '../../../../components/Titulo';
-import { HabilidadesPercebidas } from './HabilidadesPercebidas';
+import HabilidadesPercebidas from './HabilidadesPercebidas';
 import { Card } from '../../../../components/Card';
 import { Spacer } from '../../../../components/Spacer';
-import { Avaliacoes } from './Avaliacoes';
-import { Recomendacoes } from './Recomendacoes';
+import Avaliacoes from './Avaliacoes';
+import Recomendacoes from './Recomendacoes';
 
 interface Props {
   idPessoa: number;
 }
 
-export function Reputacao({ idPessoa }: Props) {
+export default function Reputacao({ idPessoa }: Props) {
   return (
     <Content>
       <Card>

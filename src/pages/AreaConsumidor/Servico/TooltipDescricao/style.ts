@@ -6,7 +6,7 @@ import {
   PRETO_10,
 } from '../../../../styles/variaveis';
 
-export const Content = styled.div`
+const Content = styled.div`
   span {
     font-size: 12px;
     font-weight: bold;
@@ -111,3 +111,5 @@ export const ButtomCase = styled.span<ButtonCaseProps>`
   box-shadow: ${props =>
     props.active ? `0px 0px 4px 0px rgba(0, 0, 0, 0.2)` : 'none'};
 `;
+
+export default Content;

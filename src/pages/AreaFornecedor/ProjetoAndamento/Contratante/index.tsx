@@ -9,13 +9,13 @@ import Image from 'next/image'
 
 import {
   AvaliacaoContainer,
-  Content,
   FotoPerfil,
   FotoPerfilContainer,
   NomeContainer,
   Sobre,
   SobreContainer,
 } from './style';
+import Content from './style';
 import { PRETO_10 } from '../../../../styles/variaveis';
 import { Spacer } from '../../../../components/Spacer';
 import { useEffect, useState } from 'react';
@@ -37,7 +37,7 @@ interface IContratanteDados {
   ativo: boolean;
 }
 
-export function Contratante({ idPessoaConsumidor }: IContratanteProps) {
+export default function Contratante({ idPessoaConsumidor }: IContratanteProps) {
   const [dadosContratante, setDadosContratante] = useState<IContratanteDados>(
     {} as IContratanteDados,
   );

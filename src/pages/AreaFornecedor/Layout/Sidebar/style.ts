@@ -11,7 +11,7 @@ interface ISidebar {
   display: boolean;
 }
 
-export const Content = styled.div<ISidebar>`
+const Content = styled.div<ISidebar>`
   background-color: ${BRANCO};
   width: 340px;
   height: 100vh;
@@ -117,3 +117,5 @@ export const BotaoCaptar = styled.button`
   margin-left: 190px;
   font-size: 14px;
 `;
+
+export default Content;

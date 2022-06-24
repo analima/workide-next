@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { AZUL, BRANCO } from '../../../../../styles/variaveis';
 
-export const Content = styled.div`
+const Content = styled.div`
   .social {
     display: flex;
     justify-content: center;
@@ -49,3 +49,5 @@ export const ButtonLink = styled(Link)`
     margin-top: 16px;
   }
 `;
+
+export default Content;

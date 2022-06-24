@@ -8,7 +8,7 @@ import { useForm } from 'react-hook-form';
 import { useCadastroComplementar } from '../../../../hooks/detalheFornecedor';
 import { Spacer } from '../../../../components/Spacer';
 import { TituloForm } from '../../../../components/TituloForm';
-import { Content } from './style';
+import Content from './style';
 import CheckBranco from '../../../../assets/check-branco.svg';
 import CirculoCinza from '../../../../assets/circulo-cinza.svg';
 import { useCallback } from 'react';
@@ -32,7 +32,7 @@ interface IBanco {
   nome: string;
 }
 
-export function FinanceiroForm() {
+export default function FinanceiroForm() {
   const { user } = useAuth();
   const { pessoa, setPessoa, updatePessoa, setAbaSelecionada } =
     useCadastroComplementar();

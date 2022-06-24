@@ -7,7 +7,7 @@ interface TypographyProps {
   tamanho?: string;
 }
 
-export const TypographyStyled = styled.p<TypographyProps>`
+const TypographyStyled = styled.p<TypographyProps>`
   color: ${props => (props.cor ? props.cor : PRETO_10)};
   font-size: ${props => (props.tamanho ? props.tamanho : '24px')};
   margin: 0;
@@ -114,3 +114,5 @@ export const RequisitoLabel = styled.span`
   font-size: 12.8px;
   color: ${PRETO_10};
 `;
+
+export default TypographyStyled;

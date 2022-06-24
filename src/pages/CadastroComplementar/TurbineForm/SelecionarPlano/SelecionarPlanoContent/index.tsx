@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
-import { Layout } from '../../../Layout';
+import Layout from '../../../Layout';
 import {
-  Container,
   Subtitle,
   TituloGradiente,
   ContainerButtons,
   GhostButtonVoltar,
   GhostButtonContinuar,
 } from './style';
+import Container from './style';
 import { useHistory } from 'react-router-dom';
 import TabelaSelecionarPlano from '../../../FinanceiroForm/TabelaSelecionarPlano';
 import { ModalFundador } from '../../../../../components/ModalFundador';
@@ -15,7 +15,8 @@ import { useInformacoesFinanceiras } from '../../../../../hooks/informacoesFinan
 import { useAuth } from '../../../../../contexts/auth';
 import { pagamentos_api } from '../../../../../services/pagamentos_api';
 import { handleFormatDocument } from '../../../../../helpers/formatsHelper';
-export function SelecionarPlanoContent(): JSX.Element {
+
+export default function SelecionarPlanoContent(): JSX.Element {
   const history = useHistory();
   const { user } = useAuth();
   const [showModalFundador, setShowModalFundador] = useState(false);

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { AZUL, BRANCO, CINZA_40, VERDE } from '../../../../styles/variaveis';
 
-export const Content = styled.section`
+const Content = styled.section`
 
   /* Chrome, Safari, Edge, Opera */
   input::-webkit-outer-spin-button,
@@ -14,7 +14,7 @@ export const Content = styled.section`
   input[type=number] {
     -moz-appearance: textfield;
   }
-  
+
   .box-plano {
     display: flex;
     justify-content: center;
@@ -46,7 +46,7 @@ export const Content = styled.section`
       background-color: ${AZUL};
       color: ${BRANCO};
     }
-  
+
 
     .conteudo {
       padding: 40px;
@@ -112,3 +112,5 @@ export const Content = styled.section`
     }
   }
 `;
+
+export default Content;

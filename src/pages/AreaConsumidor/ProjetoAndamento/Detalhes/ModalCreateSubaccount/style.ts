@@ -1,7 +1,7 @@
 import { AZUL } from '../../../../../styles/variaveis';
 import styled from 'styled-components';
 
-export const Content = styled.div`
+const Content = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -25,3 +25,5 @@ export const ContainerButton = styled.div`
   display: flex;
   justify-content: flex-end;
 `;
+
+export default Content;

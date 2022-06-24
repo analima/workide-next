@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { oportunidades_api } from '../../../../services/oportunidades_api';
-import { Perguntas } from './Perguntas';
-import { Propostas } from './Propostas';
-import { Content } from './style';
+import Perguntas from './Perguntas';
+import Propostas from './Propostas';
+import Content from './style';
 
 interface IProps {
   id_projeto: number;
@@ -22,7 +22,7 @@ interface IPropostasProps {
   idProjeto: number;
 }
 
-export function HistoricoOrcamento({ id_projeto }: IProps) {
+export default function HistoricoOrcamento({ id_projeto }: IProps) {
   const [propostas, setPropostas] = useState<IPropostasProps[]>([]);
 
   useEffect(() => {

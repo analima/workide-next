@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { AZUL, BRANCO } from '../../../../styles/variaveis';
 
-export const Content = styled.div``;
+const Content = styled.div``;
 
 export const Button = styled.button`
   padding: 16px 40px;
@@ -25,3 +25,5 @@ export const Button = styled.button`
     margin-top: 16px;
   }
 `;
+
+export default Content;

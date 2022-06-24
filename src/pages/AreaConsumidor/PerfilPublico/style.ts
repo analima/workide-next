@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { AZUL, BRANCO } from '../../../styles/variaveis';
 
-export const Content = styled.section``;
+const Content = styled.section``;
 
 export const LinkReportPerfil = styled.button`
   text-decoration: none;
@@ -54,3 +54,5 @@ export const GhostButton = styled.a`
     border-color: ${BRANCO};
   }
 `;
+
+export default Content;

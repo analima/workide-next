@@ -3,7 +3,6 @@ import { useState, useCallback, useEffect } from 'react';
 import { Titulo } from '../../components/Titulo';
 
 import {
-  Content,
   Button,
   Center,
   GhostButton,
@@ -13,6 +12,7 @@ import {
   InputCheck,
   TextAreaDenuncia,
 } from './style';
+import Content from './style';
 import { Option, Select } from '../../components/Select';
 import { Spacer } from '../../components/Spacer';
 
@@ -37,7 +37,7 @@ interface IModalDenuncia {
   idPessoaDenunciado: number;
 }
 
-export function ModalDenuncia({
+export default function ModalDenuncia({
   showModal,
   setShowModal,
   url,

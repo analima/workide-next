@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { AZUL } from '../../../../../styles/variaveis';
 
-export const Content = styled.div`
+const Content = styled.div`
   flex: 1;
   display: flex;
   justify-content: center;
@@ -21,3 +21,5 @@ export const Content = styled.div`
     flex-direction: column;
   }
 `;
+
+export default Content;

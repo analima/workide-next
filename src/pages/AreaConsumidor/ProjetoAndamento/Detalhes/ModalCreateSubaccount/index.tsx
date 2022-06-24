@@ -8,7 +8,8 @@ import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FiXCircle } from 'react-icons/fi';
 
-import { ContainerButton, Content } from './style';
+import { ContainerButton } from './style';
+import Content from './style';
 import { Button } from '../../../../../components/Form/Button';
 import { Spacer } from '../../../../../components/Spacer';
 import { pessoas_api } from '../../../../../services/pessoas_api';
@@ -36,7 +37,7 @@ interface IFormProps {
   tipoConta: string;
 }
 
-export function ModalCreateSubaccount({ show, setShow }: IModal): JSX.Element {
+export default function ModalCreateSubaccount ({ show, setShow }: IModal): JSX.Element {
   const [bancoSelecionado, setBancoSelecionado] = useState<IBancoSelecionado>();
   const [isLoading, setIsloading] = useState(false);
   const [erroDadosBancarios, setErroDadosBancarios] = useState(false);

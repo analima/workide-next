@@ -1,17 +1,18 @@
 import { useEffect } from 'react';
 import { Col, Row } from 'react-bootstrap';
-import { Layout } from '../Layout';
-import { Dashboard } from './Dashboard';
+import Layout from '../Layout';
+import Dashboard from './Dashboard';
 import { Spacer } from '../../../components/Spacer';
-import { BotaoCaptar, Subtitulo } from './style';
-import { Perfil } from './Perfil';
+import { BotaoCaptar } from './style';
+import Subtitulo from './style';
+import Perfil from './Perfil';
 
-import { MinhaReputacao } from './MinhaReputacao';
-import { MinhaVitrine } from './MinhaVitrine';
+import MinhaReputacao from './MinhaReputacao';
+import MinhaVitrine from './MinhaVitrine';
 import { Helmet } from 'react-helmet';
 import { hotjar } from 'react-hotjar';
 
-export function Home() {
+export default function Home() {
   useEffect(() => {
     hotjar.initialize(
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,

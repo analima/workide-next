@@ -2,14 +2,14 @@ import { useCallback, useEffect, useState } from 'react';
 import { Col, Row, Table } from 'react-bootstrap';
 import {
   ContainerFiltro,
-  Content,
   Filtro,
   NenhumProjetoContent,
   Body,
   Resultados,
 } from './style';
+import Content from './style';
 import Image from 'next/image'
-import { Paginacao } from '../Paginacao';
+import Paginacao from '../Paginacao';
 import { dataValidation } from '../../../../utils/DateValidator';
 import { addDays, format, parseISO } from 'date-fns';
 import { LARANJA, VERMELHO_70 } from '../../../../styles/variaveis';
@@ -58,7 +58,7 @@ interface IStatusProjeto {
   [status: string]: string;
 }
 
-export function Projetos({ pesquisaNome = '' }: IProps) {
+export default function Projetos({ pesquisaNome = '' }: IProps) {
   const [emAndamento, setEmAndamento] = useState(false);
   const [cancelado, setCancelado] = useState(false);
   const [concluido, setConcluido] = useState(false);

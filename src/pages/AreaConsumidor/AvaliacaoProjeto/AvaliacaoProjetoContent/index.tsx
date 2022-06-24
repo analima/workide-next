@@ -4,7 +4,8 @@ import { useAvaliacaoProjetoConsumidor } from '../../../../hooks/avaliacaoProjet
 import { VERDE } from '../../../../styles/variaveis';
 import  AjudeMelhorar  from '../AjudeMelhorar';
 import  SobreProjeto  from '../SobreProjeto';
-import { Button, ContainerAcoes, Content, GhostButton } from './style';
+import { Button, ContainerAcoes, GhostButton } from './style';
+import Content from './style'
 import { oportunidades_api } from '../../../../services/oportunidades_api';
 import { FiXCircle } from 'react-icons/fi';
 import { useHistory } from 'react-router';

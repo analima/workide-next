@@ -22,7 +22,6 @@ import {
 import {
   ResumoContainer,
   Resumo,
-  Content,
   TituloGradiente,
   Plano,
   PlanoSelecionado,
@@ -37,10 +36,10 @@ import {
   ButtonCancel,
   OverlayGratuidade,
 } from './style';
-
+import Content from './style';
 import * as Yup from 'yup';
 import { useInformacoesFinanceiras } from '../../../../hooks/informacoesFinanceiras';
-import { ModalCancelarAssinatura } from './ModalCancelarAssinatura';
+import ModalCancelarAssinatura from './ModalCancelarAssinatura';
 import { pagamentos_api } from '../../../../services/pagamentos_api';
 import { ModalAcceptProposal } from '../../../../components/ModalAcceptProposal';
 import { handleFormatDocument } from '../../../../helpers/formatsHelper';

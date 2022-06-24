@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import { Spacer } from '../../../../components/Spacer';
-import { ListaRequisito } from '../ListaRequisito';
-import { MaisOfertas } from '../MaisOfertas';
-import { Oferta } from '../Oferta';
-import { ServicoExtra } from '../ServicoExtra';
+import ListaRequisito from '../ListaRequisito';
+import MaisOfertas from '../MaisOfertas';
+import Oferta from '../Oferta';
+import ServicoExtra from '../ServicoExtra';
 import { useCarrinhoConsumidor } from '../../../../hooks/carrinhoConsumidor';
-import { Button, ContainerAcoes, Content, GhostButton } from './style';
+import { Button, ContainerAcoes, GhostButton } from './style';
+import Content from './style'
 import { IServicoInfo } from '../../../../interfaces/IServicoInfo';
 import { AvatarErroGeral } from '../../../../components/AvatarErroGeral';
 import { useAuth } from '../../../../contexts/auth';
@@ -21,7 +22,7 @@ interface IProps {
   servicoInfo: IServicoInfo;
 }
 
-export function CarrinhoContent({ pacoteId, servicoInfo }: IProps) {
+export default function CarrinhoContent({ pacoteId, servicoInfo }: IProps) {
   const history = useHistory();
   const { user } = useAuth();
   const [showAvatar, setShowAvatar] = useState(false);

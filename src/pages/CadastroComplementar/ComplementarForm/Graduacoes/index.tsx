@@ -9,7 +9,6 @@ import { pessoas_api } from '../../../../services/pessoas_api';
 import { Select, Option } from '../../../../components/Form/Select';
 
 import {
-  Content,
   Form,
   Label,
   Button,
@@ -18,6 +17,7 @@ import {
   ItemLabel,
   ItemAction,
 } from './style';
+import Content from './style';
 
 interface IGraduacoesProps {
   id_pessoa: number;
@@ -44,7 +44,7 @@ const schema = Yup.object().shape({
   id_graduacao: Yup.string().required('Graduação é obrigatória'),
 });
 
-export function Graduacoes({ id_pessoa, readonly }: IGraduacoesProps) {
+export default function Graduacoes({ id_pessoa, readonly }: IGraduacoesProps) {
   const {
     control,
     handleSubmit,

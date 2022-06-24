@@ -5,10 +5,10 @@ import { AZUL, CINZA_40, VERDE } from '../../../../../styles/variaveis';
 import {
   CardPacote,
   ContainerValor,
-  Content,
   PassoDescricao,
   ValorTotal,
 } from './style';
+import Content from './style'
 import { useCarrinhoConsumidor } from '../../../../../hooks/carrinhoConsumidor';
 import { ofertas_api } from '../../../../../services/ofertas_api';
 import { useEffect, useState } from 'react';
@@ -16,7 +16,7 @@ import { IItens } from '../../../../../interfaces/IServicoInfo';
 import { formatarValor } from '../../../../../utils/CurrencyFormat';
 import { Skeleton } from '../../../../../components/Skeleton';
 
-export function PacoteSelecionado() {
+export default function PacoteSelecionado() {
   const { pacote, servicoInfo } = useCarrinhoConsumidor();
   const [itens, setItens] = useState<IItens[]>([] as IItens[]);
   const [valorTaxa, setValorTaxa] = useState<number>(0);

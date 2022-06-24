@@ -2,7 +2,7 @@ import { lighten } from 'polished';
 import styled from 'styled-components';
 import { BRANCO, AZUL, VERDE } from '../../../styles/variaveis';
 
-export const Content = styled.div``;
+const Content = styled.div``;
 
 export const CardCarrinho = styled.div`
   min-width: 650px;
@@ -153,3 +153,5 @@ export const CarrinhoVazio = styled.div`
   align-items: center;
   height: 100%;
 `;
+
+export default Content;

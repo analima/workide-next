@@ -2,10 +2,10 @@ import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { AZUL, CINZA_10 } from '../../../../styles/variaveis';
 import {
   ContainerPaginacao,
-  Content,
   Registro,
   RegistroQuantidade,
 } from './style';
+import Content from './style';
 
 interface IPaginacao {
   totalPaginas: number;
@@ -13,7 +13,7 @@ interface IPaginacao {
   setPagina: (pagina: number) => void;
 }
 
-export function Paginacao({ totalPaginas, setPagina, pagina }: IPaginacao) {
+export default function Paginacao({ totalPaginas, setPagina, pagina }: IPaginacao) {
   const handleProximaPagina = () => {
     setPagina(pagina + 1);
   };

@@ -5,7 +5,6 @@ import { LARANJA } from '../../../../../styles/variaveis';
 import { oportunidades_api } from '../../../../../services/oportunidades_api';
 
 import {
-  Content,
   Resumo,
   Avaliacao,
   Detalhes,
@@ -14,13 +13,14 @@ import {
   Barra,
   Quantidade,
 } from './style';
+import Content from './style';
 import { useState, useEffect } from 'react';
 
 interface IProps {
   idPessoa?: number;
 }
 
-export function Pontuacao({ idPessoa }: IProps) {
+export default function Pontuacao({ idPessoa }: IProps) {
   const [pontuacao, setPontuacao] = useState<Array<number>>();
   const [notaMedia, setNotaMedia] = useState<number>();
   const [totalAvaliacoes, setTotalAvaliacoes] = useState<number>(0);

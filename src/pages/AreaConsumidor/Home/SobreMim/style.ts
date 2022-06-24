@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { PRETO_60, VERDE } from '../../../../styles/variaveis';
 
-export const Content = styled.section`
+const Content = styled.section`
   .header-recomendacao {
     display: flex;
     justify-content: space-between;
@@ -80,3 +80,5 @@ export const NenhumaAvaliacaoContent = styled.div`
   justify-content: center;
   margin-top: 32px;
 `;
+
+export default Content;

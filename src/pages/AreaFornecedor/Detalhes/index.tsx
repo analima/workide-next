@@ -1,9 +1,9 @@
-import { Layout } from '../Layout';
-import { Content } from './style';
+import Layout from '../Layout';
+import Content from './style';
 import { CadastroComplementarProvider } from '../../../hooks/detalheFornecedor';
-import { CadastroComplementarContent } from './CadastroComplementarContent';
+import CadastroComplementarContent from './CadastroComplementarContent';
 
-export function Detalhes() {
+export default function Detalhes() {
   return (
     <>
       <Layout titulo="Meu Perfil">

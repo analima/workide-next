@@ -10,7 +10,7 @@ import {
   VERDE,
 } from '../../../../styles/variaveis';
 
-export const Content = styled.div`
+const Content = styled.div`
   background-color: ${CINZA_10};
 
   @media (max-width: 478px) {
@@ -139,3 +139,5 @@ export const CardContent = styled.div`
 export const NenhumRepasseEnviado = styled.h4`
   color: ${CINZA_40};
 `;
+
+export default Content;

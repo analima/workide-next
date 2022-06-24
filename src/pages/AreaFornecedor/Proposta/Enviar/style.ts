@@ -8,7 +8,7 @@ import {
   VERDE,
 } from '../../../../styles/variaveis';
 
-export const Content = styled.div`
+const Content = styled.div`
   color: ${CINZA_40};
 
   .btn-fornecedor {
@@ -112,3 +112,5 @@ export const TitleCondicoes = styled.span`
   font-weight: bold;
   font-size: 16px;
 `;
+
+export default Content;

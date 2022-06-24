@@ -6,7 +6,7 @@ import {
 
 import styled from 'styled-components';
 
-export const Content = styled.div`
+const Content = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -44,3 +44,5 @@ export const ButtonAccept = styled.button`
 export const ButtonCancel = styled(ButtonAccept)`
   background-color: ${CINZA_30};
 `;
+
+export default Content;

@@ -5,7 +5,7 @@ interface SizeProps {
   sizeFilter: string;
 }
 
-export const Content = styled.div<SizeProps>`
+const Content = styled.div<SizeProps>`
   border: 1px solid ${PRETO_40};
   padding: ${({ sizeFilter }) => (sizeFilter === 'small' ? '0px' : '8px')};
   border-radius: 8px;
@@ -83,3 +83,5 @@ export const HeaderTitle = styled.div`
     }
   }
 `;
+
+export default Content;

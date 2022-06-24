@@ -13,7 +13,7 @@ interface Props {
   isActive?: boolean;
 }
 
-export const Content = styled.section``;
+const Content = styled.section``;
 
 export const Avaliacao = styled.div`
   display: flex;
@@ -215,3 +215,5 @@ export const Button = styled.button<Props>`
     margin: 8px 0;
   }
 `;
+
+export default Content;

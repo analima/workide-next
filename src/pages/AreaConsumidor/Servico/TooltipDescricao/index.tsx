@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import {
-  Content,
   Descricao,
   DescricaoRodape,
   DescricaoRodapeContainer,
@@ -9,6 +8,7 @@ import {
   DescricaoTitulo,
   ButtomCase,
 } from './style';
+import Content from './style';
 
 interface ITooltipDescricao {
   id: number;
@@ -26,7 +26,7 @@ interface IItem {
   servicoLink?: string;
 }
 
-export function TooltipDescricao({ item, open = false, servicoLink }: IItem) {
+export default function TooltipDescricao({ item, open = false, servicoLink }: IItem) {
   const [caseSucessNumber, setCaseSucessNumber] = useState(0);
 
   useEffect(() => {

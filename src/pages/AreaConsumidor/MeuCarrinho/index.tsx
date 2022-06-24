@@ -2,14 +2,13 @@ import { Alert, Col, Row } from 'react-bootstrap';
 import { InputCheck } from '../../../components/Form/InputCheck';
 import { Titulo } from '../../../components/Titulo';
 import { CINZA_40, LARANJA, PRETO_60, VERDE } from '../../../styles/variaveis';
-import { Layout } from '../Layout';
+import Layout from '../Layout';
 import { useLocation } from 'react-router-dom';
 import { FiXCircle } from 'react-icons/fi';
 import Antonio from '../../../assets/antonio-full.svg';
 import {
   Adicional,
   CardCarrinho,
-  Content,
   Descricao,
   AdicionalDescricao,
   Oferta,
@@ -23,7 +22,7 @@ import {
   CarrinhoVazio,
   TituloGradiente,
 } from './style';
-
+import Content  from './style';
 import { useForm } from 'react-hook-form';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -47,7 +46,7 @@ interface ICarrinhoData {
   idProjeto?: number;
 }
 
-export function MeuCarrinho() {
+export default function MeuCarrinho() {
   const schema = Yup.object().shape({});
   const [showPagamento, setShowPagamento] = useState(false);
   const location = useLocation<ICarrinhoData>();

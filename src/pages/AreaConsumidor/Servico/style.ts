@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { AZUL, BRANCO, CINZA_50, VERDE_20 } from '../../../styles/variaveis';
 
-export const Content = styled.section`
+const Content = styled.section`
   .container-image {
     margin-right: 20px;
   }
@@ -70,3 +70,5 @@ export const LinkReportAnuncio = styled.a`
   color: ${AZUL};
   font-size: 12px;
 `;
+
+export default Content;

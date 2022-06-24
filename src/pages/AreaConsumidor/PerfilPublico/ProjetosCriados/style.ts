@@ -2,7 +2,7 @@ import ScrollContainer from 'react-indiana-drag-scroll';
 import styled from 'styled-components';
 import { AZUL } from '../../../../styles/variaveis';
 
-export const Content = styled.section`
+const Content = styled.section`
   .vitrine-projetos {
     display: flex;
 
@@ -44,3 +44,5 @@ export const CreatedProjects = styled.span`
     font-size: 22px;
   }
 `;
+
+export default Content;

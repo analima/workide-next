@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { BRANCO, CINZA_40, LARANJA } from '../../../../styles/variaveis';
 import { lighten } from 'polished';
 
-export const Content = styled.div`
+const Content = styled.div`
   .content-infos {
     @media (max-width: 1400px) {
       margin-left: 30px;
@@ -136,3 +136,5 @@ export const Sobre = styled.p`
   color: ${PRETO_10};
   word-wrap: break-word;
 `;
+
+export default Content;

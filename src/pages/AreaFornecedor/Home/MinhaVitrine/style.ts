@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { AZUL, AZUL_60, BRANCO } from '../../../../styles/variaveis';
 
-export const Content = styled.section`
+const Content = styled.section`
   .header {
     display: flex;
     justify-content: space-between;
@@ -64,3 +64,5 @@ export const Button = styled(Link)`
     border-color: ${BRANCO};
   }
 `;
+
+export default Content;

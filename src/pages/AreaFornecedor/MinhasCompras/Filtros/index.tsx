@@ -4,12 +4,12 @@ import { useMinhasComprasFornecedor } from '../../../../hooks/minhasComprasForne
 import {
   ContainerFiltro,
   ContainerMesAno,
-  Content,
   Filtrar,
   Filtro,
 } from './style';
+import Content from './style';
 
-export function Filtros() {
+export default function Filtros() {
   const { filtroDias, selecionaFiltroDias, control } =
     useMinhasComprasFornecedor();
 

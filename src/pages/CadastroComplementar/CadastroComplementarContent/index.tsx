@@ -5,14 +5,15 @@ import { Antonio } from '../../../components/Antonio';
 import { BarraProgresso } from '../../../components/BarraProgresso';
 import { Spacer } from '../../../components/Spacer';
 import { useCadastroComplementar } from '../../../hooks/cadastroComplementar';
-import { ComplementarForm } from '../ComplementarForm';
-import { CondicaoGeralForm } from '../CondicaoGeralForm';
-import { FinanceiroForm } from '../FinanceiroForm';
-import { Layout } from '../Layout';
-import { TurbineForm } from '../TurbineForm';
+import ComplementarForm from '../ComplementarForm';
+import CondicaoGeralForm from '../CondicaoGeralForm';
+import FinanceiroForm from '../FinanceiroForm';
+import Layout from '../Layout';
+import TurbineForm from '../TurbineForm';
 import { useAuth } from '../../../contexts/auth';
 
-import { Container, NavButton, Content } from './style';
+import { NavButton, Content } from './style';
+import Container from './style';
 
 interface IProps {
   turbineSeuPotencial?: boolean;
@@ -22,7 +23,7 @@ interface IProps {
   isConsumidor?: boolean;
 }
 
-export function CadastroComplementarContent({
+export default function CadastroComplementarContent({
   turbineSeuPotencial,
   selectAba,
   cadastroCompleto,

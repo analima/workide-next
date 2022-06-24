@@ -1,22 +1,23 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router';
-import { ContainerHeader, Content, Button, CardContainer } from './style';
+import { ContainerHeader, Button, CardContainer } from './style';
+import Content from './style';
 import { useAuth } from '../../../../../contexts/auth';
 import { AvatarCadastroIncompleto } from '../../../../../components/AvatarCadastroIncompleto';
 import { Card } from '../../../../../components/Card';
 import { ItemVitrine } from '../../../../../components/Vitrine';
 import { Col, Row } from 'react-bootstrap';
-import { Paginacao } from '../../../Home/MeusProjetos/Paginacao';
+import Paginacao from '../../../Home/MeusProjetos/Paginacao';
 import {
   AvatarContainer,
   ContentAvatar,
   Dialogo,
 } from '../../../../../components/Vitrine/style';
-import { Avatar } from '../../../../CadastroComplementar/Apresentacao/style';
+import Avatar from '../../../../CadastroComplementar/Apresentacao/style';
 import Carol from '../../../../../assets/carol-full.svg';
 import { useBuscaFornecedorOferta } from '../../../../../hooks/buscaConsumidor';
 
-export function Fornecedor() {
+export default function Fornecedor() {
   const history = useHistory();
   const { people, paginaPerfis, setPaginaPerfis, totalPaginasPerfis } =
     useBuscaFornecedorOferta();

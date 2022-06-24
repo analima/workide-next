@@ -1,7 +1,7 @@
 import { Col, Container, Row } from 'react-bootstrap';
 import { Spacer } from '../../../components/Spacer';
-import { Content, Button, LinkBtn } from './style';
-
+import { Button, LinkBtn } from './style';
+import Content from './style';
 import CheckBranco from '../../../assets/check-branco.svg';
 import CirculoCinza from '../../../assets/circulo-cinza.svg';
 import Image from 'next/image'
@@ -15,7 +15,7 @@ import { PlanoBasico } from '../../../components/PlanoBasico';
 import { Helmet } from 'react-helmet';
 import { hotjar } from 'react-hotjar';
 
-export function Planos() {
+export default function Planos() {
   const { user } = useAuth();
 
   const [plano, setPlano] = useState('BASICO');

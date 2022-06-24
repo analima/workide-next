@@ -1,5 +1,5 @@
-import { Content, CardPercentage, Button, ContentButton } from './style';
-
+import { CardPercentage, Button, ContentButton } from './style';
+import Content from './style';
 import { Titulo } from '../../../../components/Titulo';
 import { useAuth } from '../../../../contexts/auth';
 import Antonio from '../../../../assets/antonio-full.svg';
@@ -10,7 +10,7 @@ import { pagamentos_api } from '../../../../services/pagamentos_api';
 import { formatToPrice } from '../../../../helpers/formatsHelper';
 import Image from 'next/image'
 
-export function Dashboard() {
+export default function Dashboard() {
   const { user, refreshUserData } = useAuth();
   const history = useHistory();
   const [propostas, setPropostas] = useState([]);

@@ -10,7 +10,7 @@ import {
   AMARELO,
 } from '../../../../styles/variaveis';
 
-export const Content = styled.div`
+const Content = styled.div`
   .reprovado {
     color: ${LARANJA_10};
   }
@@ -171,3 +171,5 @@ export const ContainerButtons = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
+export default Content;

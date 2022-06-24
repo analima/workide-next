@@ -7,7 +7,7 @@ import {
   VERMELHO,
 } from '../../../../styles/variaveis';
 
-export const Content = styled.div``;
+const Content = styled.div``;
 
 export const IndicacaoContainer = styled.div`
   margin-top: 8px;
@@ -65,3 +65,5 @@ export const Avaliacao = styled.div`
     }
   }
 `;
+
+export default Content;

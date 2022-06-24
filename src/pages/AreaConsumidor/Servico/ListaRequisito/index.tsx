@@ -5,17 +5,16 @@ import { InputCheck } from '../../../../components/Form/InputCheck';
 import { Titulo } from '../../../../components/Titulo';
 import { AZUL } from '../../../../styles/variaveis';
 import {
-  Content,
   RequisitoContainer,
   RequisitoLabel,
   Card,
   ContainerTitle,
 } from './style';
-
+import Content from './style';
 import { IRequisito } from '../../../../interfaces/IServicoInfo';
 import { FiArrowDownCircle, FiArrowUpCircle } from 'react-icons/fi';
 
-export function ListaRequisito({ requisitos }: { requisitos: IRequisito[] }) {
+export default function ListaRequisito({ requisitos }: { requisitos: IRequisito[] }) {
   const [showRequisitos, setShowRequisitos] = useState(true);
   const { control, reset } = useForm();
 

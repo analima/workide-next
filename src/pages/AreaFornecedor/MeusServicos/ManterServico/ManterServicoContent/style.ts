@@ -6,7 +6,7 @@ interface IButtonProps {
   color: string;
 }
 
-export const Content = styled.section`
+const Content = styled.section`
   .aba-ja-preenchida {
     a {
       background-color: ${VERDE} !important;
@@ -132,3 +132,5 @@ export const Button = styled.button`
     margin-top: 16px;
   }
 `;
+
+export default Content;

@@ -3,20 +3,20 @@ import { Col, Row } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 import { useHistory } from 'react-router-dom';
 import { SearchInput } from '../../../components/SearchInput';
-import { Layout } from '../Layout';
-import { Projetos } from './Projetos';
-import { Propostas } from './Propostas';
+import Layout from '../Layout';
+import Projetos from './Projetos';
+import Propostas from './Propostas';
 import {
   ContainerFiltro,
   ContainerTipoFiltro,
-  Content,
   Filtros,
   GhostButton,
   TipoFiltro,
 } from './style';
+import Content from './style';
 import { hotjar } from 'react-hotjar';
 
-export function MeusProjetos() {
+export default function MeusProjetos() {
   const [tipoFiltro, setTipoFiltro] = useState('projetos');
   const [pesquisa, setPesquisa] = useState('');
   const history = useHistory();

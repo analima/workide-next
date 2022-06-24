@@ -1,7 +1,7 @@
 import { Col, Container, Row } from 'react-bootstrap';
 import { Titulo } from '../../../../components/Titulo';
-import { Content, Scroll, CreatedProjects } from './style';
-
+import { Scroll, CreatedProjects } from './style';
+import Content from './style';
 import { AZUL, LARANJA } from '../../../../styles/variaveis';
 import { Card } from '../../../../components/Card';
 import { Spacer } from '../../../../components/Spacer';
@@ -9,7 +9,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { oportunidades_api } from '../../../../services/oportunidades_api';
 import { CardProjectDuplicate } from '../../../../components/CardProjectDuplicate';
 
-export function ProjetosCriados({ idPessoa }: { idPessoa?: number }) {
+export default function ProjetosCriados({ idPessoa }: { idPessoa?: number }) {
   const [projetoPublicado, setProjetoPublicado] = useState<any>([]);
   const [projects, setProjects] = useState(0);
   const [concludedProjects, setConcludedProjects] = useState(0);

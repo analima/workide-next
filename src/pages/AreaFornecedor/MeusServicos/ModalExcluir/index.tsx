@@ -4,7 +4,8 @@ import { Col, Container, Modal, ModalBody, Row } from 'react-bootstrap';
 import { ofertas_api } from '../../../../services/ofertas_api';
 import { Titulo } from '../../../../components/Titulo';
 
-import { Content, Button, Center, GhostButton } from './style';
+import { Button, Center, GhostButton } from './style';
+import Content from './style';
 
 interface IModalExcluir {
   showModal: boolean;
@@ -13,7 +14,7 @@ interface IModalExcluir {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export function ModalExcluir({
+export default function ModalExcluir({
   showModal,
   idServico,
   loadData,

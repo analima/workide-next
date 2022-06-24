@@ -16,7 +16,7 @@ interface IFiltroProps {
   filtro: boolean;
 }
 
-export const Content = styled.section<IFiltroProps>`
+const Content = styled.section<IFiltroProps>`
   display: ${props => (props.filtro ? 'flex' : 'none')};
   flex-direction: column;
   z-index: 1;
@@ -264,3 +264,5 @@ export const Button = styled.button`
   @media (max-width: 478px) {
   }
 `;
+
+export default Content;

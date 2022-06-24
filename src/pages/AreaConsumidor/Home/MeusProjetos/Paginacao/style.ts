@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { BRANCO, AZUL } from '../../../../../styles/variaveis';
 
-export const Content = styled.div`
+const Content = styled.div`
   display: flex;
   width: 100%;
 `;
@@ -27,3 +27,5 @@ export const ContainerPaginacao = styled.div`
     }
   }
 `;
+
+export default Content;

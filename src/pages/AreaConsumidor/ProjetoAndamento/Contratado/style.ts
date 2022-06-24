@@ -1,7 +1,8 @@
 import { lighten } from 'polished';
 import styled from 'styled-components';
 import { AZUL, BRANCO, LARANJA, PRETO_10 } from '../../../../styles/variaveis';
-export const Content = styled.div``;
+
+const Content = styled.div``;
 
 export const FotoPerfilContainer = styled.div`
   margin-bottom: 8px;
@@ -108,3 +109,5 @@ export const Button = styled.button`
     font-size: 12px;
   }
 `;
+
+export default Content;

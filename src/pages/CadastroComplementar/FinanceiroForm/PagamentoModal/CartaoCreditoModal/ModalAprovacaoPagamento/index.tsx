@@ -6,12 +6,12 @@ import iconCheck from '../../../../../../assets/check-azul.svg';
 import { useLimitacoesPlanos } from '../../../../../../contexts/planLimitations';
 import { useAuth } from '../../../../../../contexts/auth';
 import {
-  Content,
   ContainerProgressBar,
   ProgressBar,
   LoadingText,
   ContainerPaymentFree,
 } from './style';
+import Content from './style';
 import { handleFormatDocument } from '../../../../../../helpers/formatsHelper';
 import Image from 'next/image'
 interface IModal {
@@ -20,7 +20,7 @@ interface IModal {
   id_meio_pagamento_iugu: string;
 }
 
-export function ModalAprovacaoPagamento({
+export default function ModalAprovacaoPagamento({
   show,
   setShow,
   id_meio_pagamento_iugu,

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { BRANCO, CINZA_40, LARANJA } from '../../../../styles/variaveis';
 import { lighten } from 'polished';
 
-export const Content = styled.div`
+const Content = styled.div`
   display: flex;
   align-items: flex-start;
   gap: 8px;
@@ -155,3 +155,5 @@ export const Sobre = styled.p`
     margin-bottom: 0;
   }
 `;
+
+export default Content;

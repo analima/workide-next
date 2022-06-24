@@ -2,7 +2,7 @@ import { CINZA_30, LARANJA } from './../../../../styles/variaveis';
 import styled from 'styled-components';
 import { AZUL, BRANCO, CINZA_40, VERDE } from '../../../../styles/variaveis';
 
-export const Content = styled.section`
+const Content = styled.section`
   display: flex;
 
   .container-planos {
@@ -101,3 +101,5 @@ export const SubtitleSecondary = styled.span`
   color: ${LARANJA};
   font-weight: bold;
 `;
+
+export default Content;

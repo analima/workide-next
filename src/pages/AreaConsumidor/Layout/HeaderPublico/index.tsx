@@ -4,13 +4,14 @@ import { useHistory } from 'react-router';
 import Image from 'next/image'
 import { FiMenu } from 'react-icons/fi';
 import { BiUserCircle } from 'react-icons/bi';
-import { Containe, Content, ContainerLogin } from './style';
+import { Containe, ContainerLogin } from './style';
+import Content from './style';
 import Logo from '../../../../assets/logo-branca.svg';
 import { Container } from 'react-bootstrap';
 import { CadastroBasico } from '../../../../components/CadastroBasico';
 import {useRouter} from 'next/router';
 
-export function HeaderPublico(): JSX.Element {
+export default function HeaderPublico(): JSX.Element {
   const history = useHistory();
   const router = useRouter();
 
@@ -55,7 +56,7 @@ export function HeaderPublico(): JSX.Element {
       /> */}
       <Container className="container">
         <Content>
-          
+
           <Image src={Logo} alt="Gyan" width={200} height={60} />
           <button type="button" onClick={handleToggleMenu}>
             <FiMenu size={34} color="#fff" />

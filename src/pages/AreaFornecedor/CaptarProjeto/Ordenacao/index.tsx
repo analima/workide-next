@@ -1,7 +1,6 @@
 import { Col, Row } from 'react-bootstrap';
 import { useCaptarProjetoFornecedor } from '../../../../hooks/captarProjetoFornecedor';
 import {
-  Content,
   Label,
   OrdemGroup,
   OrdemInput,
@@ -9,12 +8,12 @@ import {
   ContentFilter,
   Button,
 } from './style';
-
+import Content from './style';
 import { useEffect, useState } from 'react';
 import { formatarValor } from '../../../../utils/CurrencyFormat';
 import { subDays } from 'date-fns';
 
-export function Ordenacao() {
+export default function Ordenacao() {
   const {
     setValue,
     watch,

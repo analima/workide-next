@@ -10,9 +10,9 @@ import React, {
 
 import { consultas_api } from '../services/consultas_api';
 import {
-  IFiltroFornecedor,
   IFiltroOferta,
 } from '../pages/AreaConsumidor/Busca/Filtro';
+import IFiltroFornecedor from '../pages/AreaConsumidor/Busca/Filtro';
 import { useQuery } from './geral';
 import {
   Control,
@@ -297,7 +297,7 @@ export const BuscaFornecedorOfertaProvider: React.FC<GlobalLayoutProps>= ({ chil
           ...ofertasQuery,
         })
         .then(({ data }) => {
-         
+
           setService(data.values);
           setTotalPaginas(data.pages);
         });

@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Content } from './style';
+import Content from './style';
 
 import { Card } from '../../../../components/Card';
 import { Titulo } from '../../../../components/Titulo';
 import { oportunidades_api } from '../../../../services/oportunidades_api';
 
-export function Dashboard() {
+export default function Dashboard() {
   const [projetosCriados, setProjetosCriados] = useState(0);
   const [projetosEmAndamento, setProjetosEmAndamento] = useState(0);
   const [projetosConcluidos, setProjetosConcluidos] = useState(0);

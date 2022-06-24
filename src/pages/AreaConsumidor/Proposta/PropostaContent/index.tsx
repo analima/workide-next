@@ -1,19 +1,19 @@
 import { Col, Row } from 'react-bootstrap';
 
-import { Content } from './style';
+import Content from './style';
 
-import { perguntasMock, propostasMock } from '../mock';
+import { perguntasMock, propostasMock } from '../../../../mock/etapasMock/etapas';
 import { AZUL } from '../../../../styles/variaveis';
-import { Layout } from '../../Layout';
-import { Perguntas } from '../Perguntas';
-import { Propostas } from '../Propostas';
+import Layout from '../../Layout';
+import Perguntas from '../Perguntas';
+import Propostas from '../Propostas';
 import { Button } from '../../../../components/Form/Button';
 import { IoMdHelpCircle } from 'react-icons/io';
 import { usePropostaConsumidor } from '../../../../hooks/propostaConsumidor';
 import { Antonio } from '../../../../components/Antonio';
 import { Helmet } from 'react-helmet';
 
-export function PropostaContent() {
+export default function PropostaContent() {
   const { dica, setDica } = usePropostaConsumidor();
 
   const mensagem =

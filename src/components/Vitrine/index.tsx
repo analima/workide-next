@@ -31,7 +31,7 @@ import { LARANJA } from '../../styles/variaveis';
 import { pessoas_api } from '../../services/pessoas_api';
 import { useAuth } from '../../contexts/auth';
 import Carol from '../../assets/carol-full.svg';
-import { Avatar } from '../../pages/CadastroComplementar/Apresentacao/style';
+import Avatar from '../../pages/CadastroComplementar/Apresentacao/style';
 import { useHistory } from 'react-router';
 import { ModalLoading } from '../ModalLoading';
 import { Button } from '../Form/Button';

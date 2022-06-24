@@ -1,10 +1,10 @@
 import { PropostaFornecedorProvider } from '../../../hooks/propostaFornecedor';
-import { ProjetoAndamentoContent } from './ProjetoAndamentoContent';
-import { Content } from './style';
+import ProjetoAndamentoContent from './ProjetoAndamentoContent';
+import Content from './style';
 import { hotjar } from 'react-hotjar';
 import { useEffect } from 'react';
 
-export function ProjetoAndamento() {
+export default function ProjetoAndamento() {
   useEffect(() => {
     hotjar.initialize(
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,

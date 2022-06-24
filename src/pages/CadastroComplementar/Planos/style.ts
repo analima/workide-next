@@ -9,7 +9,7 @@ import {
   VERDE,
 } from '../../../styles/variaveis';
 
-export const Content = styled.section`
+const Content = styled.section`
   padding-top: 160px;
 
   h1 {
@@ -133,3 +133,5 @@ export const LinkBtn = styled(Link)`
     width: 100%;
   }
 `;
+
+export default Content;

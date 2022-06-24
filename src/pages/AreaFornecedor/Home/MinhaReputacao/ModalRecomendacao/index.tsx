@@ -1,8 +1,8 @@
 import { useState, useCallback } from 'react';
 import { Col, Container, Modal, ModalBody, Row } from 'react-bootstrap';
 import { Input } from '../../../../../components/Input';
-import { Content, Button, ModalTitle, ModalLogo, CloseModal } from './style';
-
+import { Button, ModalTitle, ModalLogo, CloseModal } from './style';
+import Content from './style';
 import Logo from '../../../../../assets/gyan-logo-nome.svg';
 import { TextArea } from '../../../../../components/TextArea';
 
@@ -21,7 +21,7 @@ interface IModalRecomendacao {
   setModalShow: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export function ModalRecomendacao({
+export default function ModalRecomendacao({
   showModal,
   setModalShow,
 }: IModalRecomendacao) {

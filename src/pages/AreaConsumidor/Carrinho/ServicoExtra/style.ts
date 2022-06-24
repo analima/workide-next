@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { VERDE } from '../../../../styles/variaveis';
 
-export const Content = styled.div``;
+const Content = styled.div``;
 
 export const ContainerServicoExtra = styled.div`
   display: flex;
@@ -38,3 +38,5 @@ export const TituloAcrescimo = styled.h1`
     font-size: 16px;
   }
 `;
+
+export default Content;

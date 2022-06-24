@@ -5,7 +5,7 @@ interface BarraProps {
   porcentagem: number;
 }
 
-export const Content = styled.article`
+const Content = styled.article`
   margin-top: 2rem;
 `;
 
@@ -91,3 +91,5 @@ export const Quantidade = styled.div`
   display: flex;
   justify-content: flex-end;
 `;
+
+export default Content;

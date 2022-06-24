@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { AZUL, BRANCO, PRETO_40, CINZA_40} from '../../styles/variaveis';
 
-export const Content = styled.section`
+const Content = styled.section`
   padding-top: 92px;
   .nav-pills {
     display: flex;
@@ -10,7 +10,7 @@ export const Content = styled.section`
 
     .nav-item {
       padding: 0;
-      
+
       a {
         padding: 0;
         display: flex;
@@ -44,3 +44,5 @@ export const Content = styled.section`
     font-weight: bold;
   }
 `;
+
+export default Content;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { AZUL, CINZA_50, VERDE_20 } from '../../../../../styles/variaveis';
 
-export const Content = styled.div`
+const Content = styled.div`
   margin-top: 32px;
 `;
 
@@ -61,3 +61,5 @@ export const ValorOferta = styled.label`
     text-align: center;
   }
 `;
+
+export default Content;

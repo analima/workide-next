@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { AZUL, BRANCO } from '../../../styles/variaveis';
 
-export const Content = styled.section`
+const Content = styled.section`
   textarea {
     border-radius: 8px;
   }
@@ -244,3 +244,5 @@ export const Subtitulo = styled.h2`
   font-weight: bold;
   margin-bottom: 16px;
 `;
+
+export default Content;

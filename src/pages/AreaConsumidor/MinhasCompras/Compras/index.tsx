@@ -15,7 +15,6 @@ import {
   CompraStatus,
   CompraDescricao,
   CompraVencimento,
-  Content,
   GhostButton,
   CompraFormaPagamento,
   ContainerLoading,
@@ -23,6 +22,7 @@ import {
   DownloadLink,
   ContainerButtons,
 } from './style';
+import Content from './style';
 import { BarraCarregamentoCircular } from '../../../../components/BarraCarregamentoCircular';
 import { useMinhasComprasConsumidor } from '../../../../hooks/minhasComprasConsumidor';
 import { formatarValor } from '../../../../utils/CurrencyFormat';
@@ -64,7 +64,7 @@ interface ICompraProps {
   vl_gyan_perc: number;
 }
 
-export function Compras() {
+export default function Compras() {
   const { compras, setCompras, loading } = useMinhasComprasConsumidor();
   const [compraSelecionada, setCompraSelecionada] = useState<ICompraProps>();
   const [showModalAcceptProposal, setShowModalAcceptProposal] =

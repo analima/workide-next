@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { LARANJA } from '../../../../styles/variaveis';
 
-export const Content = styled.section``;
+const Content = styled.section``;
 
 export const ContentSkeleton = styled.div`
   width: 310px;
@@ -15,3 +15,5 @@ export const ErrorMessage = styled.h1`
   text-align: center;
   font-weight: bold;
 `;
+
+export default Content;

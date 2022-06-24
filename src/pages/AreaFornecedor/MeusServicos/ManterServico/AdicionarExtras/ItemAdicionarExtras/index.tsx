@@ -13,7 +13,8 @@ import { TextArea } from '../../../../../../components/Form/TextArea';
 import { Titulo } from '../../../../../../components/Titulo';
 import { CINZA_80, LARANJA, AZUL } from '../../../../../../styles/variaveis';
 
-import { Button, Content } from './style';
+import { Button } from './style';
+import Content from './style';
 import { InputNumber } from '../../../../../../components/Form/InputNumber';
 import { InputMoney } from '../../../../../../components/Form/InputMoney';
 import { ModalExcludConfirmation } from '../../../../../../components/ModalExcludConfirmation';
@@ -45,7 +46,7 @@ const schema = Yup.object().shape({
   acrescimo: Yup.string().required('Acrescimo é obrigatório'),
 });
 
-export function ItemAdicionarExtras({
+export default function ItemAdicionarExtras({
   item,
   loadItens,
 }: IItemAdicionarExtrasProps) {

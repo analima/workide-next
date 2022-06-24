@@ -2,7 +2,7 @@ import { lighten } from 'polished';
 import styled from 'styled-components';
 import { AZUL, BRANCO, CINZA_40 } from '../../../../../styles/variaveis';
 
-export const Content = styled.div`
+const Content = styled.div`
   /* Não funciona, verificar pq o modal não pega estilo */
   /* .cartao-modal {
     background-color: rgba(128, 128, 128, 0.8);
@@ -77,3 +77,5 @@ export const LoadingText = styled.span`
   font-weight: bold;
   font-size: 20px;
 `;
+
+export default Content;

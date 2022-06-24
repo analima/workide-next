@@ -1,6 +1,6 @@
 import { Col, Row } from 'react-bootstrap';
-import { Content } from './style';
-import { CardProposal } from '../CardProposal';
+import Content from './style';
+import CardProposal from '../CardProposal';
 import { Spacer } from '../../../../../components/Spacer';
 import { UserCard } from '../../../../../components/UserCard';
 import { Titulo } from '../../../../../components/Titulo';
@@ -12,7 +12,7 @@ import { DadosProjeto } from '../../../../../components/DadosProjeto';
 import { pessoas_api } from '../../../../../services/pessoas_api';
 import { arquivos_api } from '../../../../../services/arquivos_api';
 import { consultas_api } from '../../../../../services/consultas_api';
-import { Layout } from '../../../Layout';
+import Layout from '../../../Layout';
 import { Helmet } from 'react-helmet';
 import { hotjar } from 'react-hotjar';
 
@@ -108,7 +108,7 @@ type ConsultaRankingType = {
   pontuacao: number;
 };
 
-export function PropostaContent() {
+export default function PropostaContent() {
   const [etapas, setEtapas] = useState<EtapasProps[]>([] as EtapasProps[]);
   const [dadosProjetos, setDadosProjetos] = useState<ProjetosProps>(
     {} as ProjetosProps,

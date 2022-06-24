@@ -1,11 +1,11 @@
-import { Content } from './style';
-import { AvaliacaoProjetoContent } from './AvaliacaoProjetoContent';
-import { AvaliacaoProjetoFornecedorProvider } from '../../../hooks/avaliacaoProjetoFornecedor';
-import { Layout } from '../Layout';
+import Content from './style';
+import AvaliacaoProjetoContent from './AvaliacaoProjetoContent';
+import { AvaliacaoProjetoFornecedorProvider }from '../../../hooks/avaliacaoProjetoFornecedor';
+import Layout from '../Layout';
 import { useLocation } from 'react-router-dom';
 import { Spacer } from '../../../components/Spacer';
 
-export function AvaliacaoProjeto() {
+export default function AvaliacaoProjeto() {
   const location = useLocation();
   const { state }: { state: any } = location;
   return (

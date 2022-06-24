@@ -1,13 +1,12 @@
 import { useCallback, useEffect } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { Spacer } from '../../../../components/Spacer';
-import { Layout } from '../../Layout';
-import { Filtro } from '../Filtro';
-import { Fornecedor } from '../Resultado/Fornecedor';
-import { Oferta } from '../Resultado/Oferta';
+import Layout from '../../Layout';
+import Filtro from '../Filtro';
+import Fornecedor from '../Resultado/Fornecedor';
+import Oferta from '../Resultado/Oferta';
 import {
   Button,
-  Content,
   ContainerHeader,
   ContentFilterHeader,
   ContentFilter,
@@ -15,6 +14,7 @@ import {
   ButtonClear,
   FiltrosAplicados,
 } from './style';
+import  Content from './style';
 import { useHistory } from 'react-router';
 import { useAuth } from '../../../../contexts/auth';
 import { AvatarCadastroIncompleto } from '../../../../components/AvatarCadastroIncompleto';

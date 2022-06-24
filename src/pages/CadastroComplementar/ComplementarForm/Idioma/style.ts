@@ -8,7 +8,7 @@ import {
   VERMELHO,
 } from '../../../../styles/variaveis';
 
-export const Content = styled.div`
+const Content = styled.div`
   position: relative;
 `;
 
@@ -79,3 +79,5 @@ export const ContainerAutoComplete = styled.div`
   width: 66%;
   z-index: 1;
 `;
+
+export default Content;

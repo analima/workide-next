@@ -12,7 +12,6 @@ import { Button } from '../../../../components/Form/Button';
 import { notificacoes_api } from '../../../../services/notificacoes_api';
 import { FiBell, FiMenu } from 'react-icons/fi';
 import {
-  Content,
   ContentSession,
   GhostButton,
   AcaoBell,
@@ -26,6 +25,7 @@ import {
   ContentButton,
   ContainerHeader,
 } from './style';
+import Content from './style';
 
 interface INavbar {
   toggleSidebar: () => void;
@@ -44,7 +44,7 @@ interface INotification {
   link?: string;
 }
 
-export function Navbar({
+export default function Navbar({
   toggleSidebar,
   activeMenu,
   maisSolucoesIsNotVisible,

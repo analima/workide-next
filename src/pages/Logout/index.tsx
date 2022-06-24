@@ -3,7 +3,7 @@ import { useAuth } from '../../contexts/auth';
 import { useHistory } from 'react-router-dom';
 import { useValorProjetoPago } from '../../contexts/valorProjetoPago';
 
-export function Logout() {
+export default function Logout() {
   const { signOut } = useAuth();
   const history = useHistory();
   const { apagarLocalStorage } = useValorProjetoPago();

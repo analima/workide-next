@@ -28,7 +28,6 @@ import { ToggleSwitch } from '../../../../../components/Form/ToggleSwitch';
 import { AZUL, PRETO_10 } from '../../../../../styles/variaveis';
 
 import {
-  Content,
   FotoServico,
   GhostButton,
   Button,
@@ -36,11 +35,13 @@ import {
   AjudaCalculadora,
   ContentInfoPrice,
 } from './style';
+import Content from './style';
 import { useCadastroServico } from '../../../../../hooks/cadastroServico';
 import { IoMdHelpCircle } from 'react-icons/io';
 import { InputNumber } from '../../../../../components/Form/InputNumber';
 import { InputMoney } from '../../../../../components/Form/InputMoney';
-import { FiltroSubarea, Subarea } from '../FiltroSubarea';
+import { Subarea } from '../FiltroSubarea';
+import FiltroSubarea from '../FiltroSubarea';
 import { TagInput } from '../../../../../components/TagInput';
 import { useHistory } from 'react-router';
 import { formatToPrice } from '../../../../../helpers/formatsHelper';
@@ -215,7 +216,7 @@ const schema = Yup.object().shape({
     }),
 });
 
-export function OpcoesPacote({ continuar }: IOpcoesPacoteProps) {
+export default function OpcoesPacote({ continuar }: IOpcoesPacoteProps) {
   const {
     control,
     handleSubmit,

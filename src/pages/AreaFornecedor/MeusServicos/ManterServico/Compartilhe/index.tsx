@@ -10,9 +10,10 @@ import { useCadastroServico } from '../../../../../hooks/cadastroServico';
 import { ofertas_api } from '../../../../../services/ofertas_api';
 import { AZUL, CINZA_40, LARANJA } from '../../../../../styles/variaveis';
 
-import { Button, ButtonLink, Content } from './style';
+import { Button, ButtonLink } from './style';
+import Content from './style';
 
-export function Compartilhe() {
+export default function Compartilhe() {
   const [showModalRecomendacao, setShowModalRecomendacao] =
     useState<boolean>(false);
   const [link, setLink] = useState('');

@@ -7,7 +7,7 @@ import {
   PRETO_10,
 } from '../../../../styles/variaveis';
 
-export const Content = styled.div`
+const Content = styled.div`
   @media (max-width: 478px) {
     margin-top: 32px;
   }
@@ -126,3 +126,5 @@ export const CardContent = styled.div`
       color: ${PRETO_10};
   }
 `;
+
+export default Content;

@@ -11,7 +11,7 @@ import {
   CINZA_10,
 } from '../../../../../styles/variaveis';
 
-export const ContentStyled = styled.section`
+const ContentStyled = styled.section`
   .selected-items__container-icons-export {
     margin-left: auto;
     background: ${CINZA_10};
@@ -424,3 +424,5 @@ export const CondicoesGeraisContent = styled.div`
     margin-top: 24px;
   }
 `;
+
+export default ContentStyled;

@@ -1,11 +1,11 @@
 import { Helmet } from 'react-helmet';
 import { PropostaFornecedorProvider } from '../../../hooks/propostaFornecedor';
-import { PropostaContent } from './PropostaContent';
-import { Content } from './style';
+import PropostaContent from './PropostaContent';
+import Content from './style';
 import { hotjar } from 'react-hotjar';
 import { useEffect } from 'react';
 
-export function Proposta() {
+export default function Proposta() {
   useEffect(() => {
     hotjar.initialize(
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,

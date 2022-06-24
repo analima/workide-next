@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { LARANJA, PRETO_10 } from '../../../../styles/variaveis';
 
-export const Content = styled.section`
+const Content = styled.section`
   .container-sobre__image {
     margin-right: 30px;
   }
@@ -66,3 +66,5 @@ export const SobreDrescricao = styled.p`
 export const ContentImg = styled.div`
   position: relative;
 `;
+
+export default Content;

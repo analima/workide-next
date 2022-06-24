@@ -4,14 +4,15 @@ import { Titulo } from '../../../components/Titulo';
 import { useHistory } from 'react-router-dom';
 import {
   Button,
+  Content,
   ContainerAvatarMeet,
   ContainerImageAvatar,
   ContainerToggleAvatar,
-  Content,
   ParagraphAvatarMeet,
   TituloGradiente,
   WrapperToggleAvatar,
 } from './style';
+import Avatar from './style';
 import { useGAEventsTracker } from '../../../hooks/useGAEventsTracker';
 import AndreToggleImage from '../../../assets/andre.svg';
 import ThaisToggleImage from '../../../assets/thais.svg';
@@ -27,15 +28,33 @@ import { useEffect, useState } from 'react';
 import { useAuth } from '../../../contexts/auth';
 import { Helmet } from 'react-helmet';
 import { hotjar } from 'react-hotjar';
-import { avatares } from './avatares';
 
-export function Aprensetacao() {
+export default function Aprensetacao() {
   const [selectedAvatar, setSelectedAvatar] = useState<
     'CAROL' | 'THAIS' | 'ANTONIO' | 'ANDRE'
   >('CAROL');
   const { user } = useAuth();
   const GAEventsTracker = useGAEventsTracker('Home Publica tela cadastro');
   const history = useHistory();
+
+  const avatares = {
+  CAROL: {
+    description:
+      'Olá, eu sou a Carol. Meu sonho é poder ajudar as pessoas. Sempre estou em busca de ser a minha melhor versão, posso te dar várias dicas para seu aperfeiçoamento pessoal e profissional.',
+  },
+  THAIS: {
+    description:
+      'Olá eu sou a Thais!Adoro me aventurar em novos desafios. Não vejo a hora de receber seus feedbacks com sugestões e críticas. Meu objetivo é melhorar sua jornada de trabalho através de uma boa experiência dentro da nossa plataforma.',
+  },
+  ANTONIO: {
+    description:
+      'Olá eu sou o António! Minhas maiores paixões são aprender e ensinar. Estarei te esperando na etapa de cadastro, sempre disponível para tirar suas dúvidas. Até logo!',
+  },
+  ANDRE: {
+    description:
+      'Olá, eu sou o André! Meu objetivo é proteger nossos usuários. Espero te ajudar no entendimento das regras que foram criadas para sua segurança e facilidade.',
+  },
+};
 
   useEffect(() => {
     const load = async () => {

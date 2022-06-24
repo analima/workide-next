@@ -7,9 +7,9 @@ import { useCadastroComplementar } from '../../../../hooks/detalheFornecedor';
 import { pessoas_api } from '../../../../services/pessoas_api';
 import { FormError } from '../../../../utils/FormError';
 import { ErrorMessages } from '../../../../utils/ValidationError';
-import { Content } from './style';
+import Content from './style';
 
-export function CondicaoGeralForm() {
+export default function CondicaoGeralForm() {
   const { user } = useAuth();
   // eslint-disable-next-line
   const { pessoa, setPessoa, updateFornecedor, setAbaSelecionada } =

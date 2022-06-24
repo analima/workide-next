@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { BRANCO, PRETO_10, VERDE } from '../../../../styles/variaveis';
 
-export const Content = styled.div``;
+const Content = styled.div``;
 
 export const NumeroRegistros = styled.div`
   width: 52px;
@@ -21,3 +21,5 @@ export const LabelStyled = styled.label`
   font-weight: 700;
   color: ${PRETO_10};
 `;
+
+export default Content;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { AZUL, BRANCO, CINZA_40 } from '../../../../styles/variaveis';
 
-export const Content = styled.div``;
+const Content = styled.div``;
 
 export const AvaliacaoContainer = styled.div`
   display: flex;
@@ -46,3 +46,5 @@ export const LabelHabilidade = styled.label<ILabelHabilidade>`
     display: none;
   }
 `;
+
+export default Content;

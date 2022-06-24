@@ -9,12 +9,12 @@ import { formatarValor } from '../../../../utils/CurrencyFormat';
 import {
   ContainerServicoExtra,
   ServicoExtraDetalhes,
-  Content,
   Descricao,
   TituloAcrescimo,
 } from './style';
+import Content from './style';
 
-export function ServicoExtra() {
+export default function ServicoExtra() {
   const { servicoInfo, control } = useCarrinhoConsumidor();
   return (
     <Content>

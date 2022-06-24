@@ -2,7 +2,7 @@ import { lighten } from 'polished';
 import styled from 'styled-components';
 import { BRANCO, CINZA_40 } from '../../../../styles/variaveis';
 
-export const Content = styled.section`
+const Content = styled.section`
   h2 {
     padding: 24px 32px;
   }
@@ -35,3 +35,5 @@ export const AtalhoTexto = styled.a`
     color: ${lighten(0.2, CINZA_40)};
   }
 `;
+
+export default Content;

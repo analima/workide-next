@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { PRETO_10 } from '../../../../styles/variaveis';
 
-export const Content = styled.section`
+const Content = styled.section`
   .btn-add {
     align-items: center;
     border: none;
@@ -53,3 +53,5 @@ export const Actions = styled.section`
   justify-content: flex-end;
   margin-top: 32px;
 `;
+
+export default Content;

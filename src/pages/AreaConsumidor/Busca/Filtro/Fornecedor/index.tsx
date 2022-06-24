@@ -1,18 +1,19 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import {
-  Content,
   ContentIcon,
   HeaderTitle,
   ContentFilter,
   TypographyTitle,
   ContentCheck,
 } from './style';
+import Content from './style';
 import * as Yup from 'yup';
 
 import { useCallback, useEffect, useState } from 'react';
-import { IFiltroFornecedor } from '..';
-import { FiltroSubarea, Subarea } from '../FiltroSubarea';
+import IFiltroFornecedor from '..';
+import { Subarea } from '../FiltroSubarea'
+import FiltroSubarea from '../FiltroSubarea'
 import { InputCheck } from '../../../../../components/Form/InputCheck';
 import { FaQuestionCircle } from 'react-icons/fa';
 import { PRETO_40 } from '../../../../../styles/variaveis';
@@ -28,7 +29,7 @@ type FornecedorProps = {
   setViewAntonio: (viewAntonio: boolean) => void;
 };
 
-export function Fornecedor({
+export default function Fornecedor({
   setMensagem,
   viewAntonio,
   setViewAntonio,

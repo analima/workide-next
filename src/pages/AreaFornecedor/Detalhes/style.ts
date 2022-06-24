@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { AZUL, BRANCO, PRETO_40 } from '../../../styles/variaveis';
 
-export const Content = styled.section`
+const Content = styled.section`
   .nav-pills {
     display: flex;
     justify-content: space-between;
@@ -37,3 +37,5 @@ export const Content = styled.section`
     padding: 4px;
   }
 `;
+
+export default Content;

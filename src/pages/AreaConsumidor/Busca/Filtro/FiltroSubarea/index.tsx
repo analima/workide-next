@@ -6,12 +6,12 @@ import { useBuscaFornecedorOferta } from '../../../../../hooks/buscaConsumidor';
 import { useCaptarProjetoFornecedor } from '../../../../../hooks/captarProjetoFornecedor';
 import { geral_api } from '../../../../../services/geral_api';
 import {
-  Container,
   Grupo,
   GrupoResultado,
   SubAreaContainer,
   SubAreaItem,
 } from './style';
+import Container from './style'
 
 export type Subarea = {
   id: number;
@@ -437,4 +437,4 @@ const FiltroSubarea = ({
   );
 };
 
-export { FiltroSubarea };
+export default FiltroSubarea;

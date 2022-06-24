@@ -1,15 +1,15 @@
-import { Content } from './style';
+import Content from './style';
 import { useHistory } from 'react-router-dom';
-import { Layout } from '../../Layout';
-import { Filtros } from '../Filtros';
+import Layout from '../../Layout';
+import Filtros from '../Filtros';
 import { Col, Row } from 'react-bootstrap';
 import { Spacer } from '../../../../components/Spacer';
-import { Compras } from '../Compras';
+import Compras from '../Compras';
 import { AcoesContainer, GhostButton } from '../Compras/style';
 import { Antonio } from '../../../../components/Antonio';
 import { useMinhasComprasConsumidor } from '../../../../hooks/minhasComprasConsumidor';
 
-export function MinhasComprasContent() {
+export default function MinhasComprasContent() {
   const { setMensagemDica, mensagemDica, setDica, dica } =
     useMinhasComprasConsumidor();
   const history = useHistory();

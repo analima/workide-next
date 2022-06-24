@@ -1,12 +1,12 @@
 import { MinhasComprasConsumidorProvider } from '../../../hooks/minhasComprasConsumidor';
-import { MinhasComprasContent } from './MinhasComprasContent';
+import MinhasComprasContent from './MinhasComprasContent';
 import { InformacoesFinanceirasProvider } from '../../../hooks/informacoesFinanceiras';
-import { Content } from './style';
+import Content from './style';
 import { Helmet } from 'react-helmet';
 import { hotjar } from 'react-hotjar';
 import { useEffect } from 'react';
 
-export function MinhasComprasConsumidor() {
+export default function MinhasComprasConsumidor() {
   useEffect(() => {
     hotjar.initialize(
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,

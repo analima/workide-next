@@ -1,7 +1,7 @@
-import { Content } from './style';
-import  AvaliacaoProjetoContent  from './AvaliacaoProjetoContent';
+import Content from './style';
+import AvaliacaoProjetoContent  from './AvaliacaoProjetoContent';
 import { AvaliacaoProjetoConsumidorProvider } from '../../../hooks/avaliacaoProjetoConsumidor';
-import { Layout } from '../Layout';
+import Layout from '../Layout';
 import { useLocation } from 'react-router-dom';
 import { Spacer } from '../../../components/Spacer';
 import { Helmet } from 'react-helmet';

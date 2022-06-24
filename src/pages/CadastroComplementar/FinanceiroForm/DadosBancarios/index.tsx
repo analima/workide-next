@@ -9,7 +9,8 @@ import {
   UseFormGetValues,
   UseFormWatch,
 } from 'react-hook-form';
-import { Content, InfoMessgae } from './style';
+import { InfoMessgae } from './style';
+import Content from './style';
 
 import * as Yup from 'yup';
 import { Select } from '../../../../components/Form/Select';

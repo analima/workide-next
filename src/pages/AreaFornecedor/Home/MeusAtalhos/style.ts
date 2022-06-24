@@ -6,7 +6,7 @@ type TextoAtalhoProps = {
   disabled?: boolean;
 };
 
-export const Content = styled.section`
+const Content = styled.section`
   h2 {
     padding: 24px 32px;
   }
@@ -43,3 +43,5 @@ export const AtalhoTexto = styled.a<TextoAtalhoProps>`
 
   }
 `;
+
+export default Content;

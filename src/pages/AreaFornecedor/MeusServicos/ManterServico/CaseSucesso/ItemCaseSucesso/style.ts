@@ -2,7 +2,7 @@ import { lighten } from 'polished';
 import styled from 'styled-components';
 import { AZUL, BRANCO } from '../../../../../../styles/variaveis';
 
-export const Content = styled.section`
+const Content = styled.section`
   .acoes {
     display: flex;
     justify-content: end;
@@ -31,3 +31,5 @@ export const Button = styled.button`
     margin-top: 16px;
   }
 `;
+
+export default Content;

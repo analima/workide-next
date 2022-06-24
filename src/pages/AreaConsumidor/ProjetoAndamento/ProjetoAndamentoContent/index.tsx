@@ -12,14 +12,15 @@ import {
 } from '../../../../hooks/propostaConsumidor';
 import { oportunidades_api } from '../../../../services/oportunidades_api';
 import { PRETO_10 } from '../../../../styles/variaveis';
-import { Layout } from '../../Layout';
-import { Contratado } from '../Contratado';
-import { Detalhes } from '../Detalhes';
-import { HistoricoOrcamento } from '../HistoricoOrcamento';
-import { Content, Button } from './style';
+import Layout from '../../Layout';
+import Contratado from '../Contratado';
+import Detalhes from '../Detalhes';
+import HistoricoOrcamento from '../HistoricoOrcamento';
+import { Button } from './style';
+import Content from './style';
 import { hotjar } from 'react-hotjar';
 
-export function ProjetoAndamentoContent() {
+export default function ProjetoAndamentoContent() {
   const { setDadosProjetos, dadosProjetos, setEtapas, etapas } =
     usePropostaConsumidor();
   const location = useLocation();

@@ -1,7 +1,6 @@
 import { Col, Row } from 'react-bootstrap';
 import { useCarrinhoConsumidor } from '../../../../../hooks/carrinhoConsumidor';
 import {
-  Content,
   TypographyStyled,
   DescricaoOferta,
   ValorOferta,
@@ -9,11 +8,12 @@ import {
   OfertaImagemContainer,
   ValorOfertaContainer,
 } from './style';
+import Content from './style';
 import { formatToPrice } from '../../../../../helpers/formatsHelper';
 import { useEffect, useState } from 'react';
 import { Skeleton } from '../../../../../components/Skeleton';
 
-export function Descricao() {
+export default function Descricao() {
   const { servicoInfo, pacote } = useCarrinhoConsumidor();
   const [valorTaxa, setValorTaxa] = useState<number>(0);
 

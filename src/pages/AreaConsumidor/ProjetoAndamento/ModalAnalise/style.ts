@@ -9,7 +9,7 @@ import {
   VERMELHO,
 } from '../../../../styles/variaveis';
 
-export const Content = styled.div``;
+const Content = styled.div``;
 
 export const DescricaoItem = styled.p`
   margin: 0;
@@ -160,3 +160,6 @@ export const EnviarRequisito = styled.span`
     color: ${lighten(0.1, VERDE)};
   }
 `;
+
+export default Content;
+

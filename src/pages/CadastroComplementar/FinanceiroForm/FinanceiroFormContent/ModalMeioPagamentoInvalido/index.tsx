@@ -1,11 +1,11 @@
 import { Modal } from 'react-bootstrap';
-import { Content } from './style';
+import Content from './style';
 interface IModal {
   show: boolean;
   setShow: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export function ModalMeioPagamentoInvalido({
+export default function ModalMeioPagamentoInvalido({
   show,
   setShow,
 }: IModal): JSX.Element {

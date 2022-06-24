@@ -14,13 +14,13 @@ import {
   AvaliacaoContainer,
   Button,
   ContainerAcoes,
-  Content,
   FotoPerfil,
   FotoPerfilContainer,
   NomeContainer,
   Sobre,
   SobreContainer,
 } from './style';
+import Content from './style';
 import { CINZA_40, PRETO_10 } from '../../../../styles/variaveis';
 import { Spacer } from '../../../../components/Spacer';
 import { useEffect, useState } from 'react';
@@ -53,7 +53,7 @@ type PessoaRanking = {
   notaMedia: number;
 };
 
-export function Contratado({ id_fornecedor }: IProps) {
+export default function Contratado({ id_fornecedor }: IProps) {
   const [dadosFornecedor, setDadosFornecedor] = useState<IFornecedorDados>(
     {} as IFornecedorDados,
   );

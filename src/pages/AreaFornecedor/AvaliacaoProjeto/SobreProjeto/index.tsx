@@ -3,7 +3,8 @@ import { Titulo } from '../../../../components/Titulo';
 import { AZUL } from '../../../../styles/variaveis';
 import EstrelaOff from '../../../../assets/estrela-off.svg';
 import Estrela from '../../../../assets/estrela.svg';
-import { AvaliacaoContainer, Content } from './style';
+import { AvaliacaoContainer } from './style';
+import Content from './style';
 import { useAvaliacaoProjetoFornecedor } from '../../../../hooks/avaliacaoProjetoFornecedor';
 import { TextArea } from '../../../../components/Form/TextArea';
 import { useEffect, useState } from 'react';
@@ -13,7 +14,7 @@ interface IProps {
   idConsumidor: number;
 }
 
-export function SobreProjeto({ idConsumidor }: IProps) {
+export default function SobreProjeto({ idConsumidor }: IProps) {
   const { control, errors, nota, setNota, setValue } =
     useAvaliacaoProjetoFornecedor();
   const [nomeConsumidor, setNomeConsumidor] = useState<string>('');

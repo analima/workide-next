@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { AZUL, AZUL_60, BRANCO } from '../../../styles/variaveis';
 
-export const ContentButton = styled.div`
+const ContentButton = styled.div`
   display: flex;
   justify-content: flex-end;
   margin-top: 32px;
@@ -59,3 +59,5 @@ export const Filtro = styled.label<IFiltro>`
     display: none;
   }
 `;
+
+export default ContentButton;

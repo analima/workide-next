@@ -1,11 +1,11 @@
 import { useForm } from 'react-hook-form';
 import { Card } from '../../../../components/Card';
 import { CardExperiencia } from '../../../../components/CardExperiencia';
-import { ButtonCancel, Content } from './style';
-
+import { ButtonCancel } from './style';
+import Content from './style';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Layout } from '../../Layout';
+import Layout from '../../Layout';
 import { Col, Row } from 'react-bootstrap';
 import { Anexo } from '../../../../components/Anexo';
 import { Spacer } from '../../../../components/Spacer';
@@ -19,7 +19,7 @@ import { InputRange } from '../../../../components/Form/InputRange';
 import { Helmet } from 'react-helmet';
 import { hotjar } from 'react-hotjar';
 
-export function Novo() {
+export default function Novo() {
   const schema = Yup.object().shape({});
   const [loading, setLoading] = useState(true);
 

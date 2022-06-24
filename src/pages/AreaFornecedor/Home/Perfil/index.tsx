@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { Content } from './style';
+import Content from './style';
 import { Titulo } from '../../../../components/Titulo';
 import { UserProfileCard } from '../../../../components/UserProfileCard';
 
@@ -31,7 +31,7 @@ type SubAreaPessoaType = {
   id_subarea_interesse: number;
 };
 
-export function Perfil() {
+export default function Perfil() {
   const { user } = useAuth();
 
   const [consultaRanking, setConsultaRanking] = useState<ConsultaRankingType>(

@@ -12,7 +12,7 @@ import {
   VERDE,
 } from '../../../../styles/variaveis';
 
-export const Content = styled.section``;
+const Content = styled.section``;
 
 export const Header = styled.div`
   display: flex;
@@ -586,3 +586,5 @@ export const InputStyled = styled.input`
     width: 100%;
   }
 `;
+
+export default Content;

@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Col, Form, Row, Button } from 'react-bootstrap';
 
-import { ContainerLogin } from './style';
+import ContainerLogin from './style';
 
 import Google from '../../assets/google.svg';
 import Logo from '../../assets/logo.svg';
@@ -12,6 +12,7 @@ import { updateToken } from '../../services';
 import { AZUL } from '../../styles/variaveis';
 import { Helmet } from 'react-helmet';
 import Image from 'next/image'
+
 export default class Login extends React.Component<any, any> {
   constructor(props: any) {
     super(props);

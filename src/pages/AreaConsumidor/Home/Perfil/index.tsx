@@ -1,6 +1,5 @@
 import {
   GhostButton,
-  Content,
   PerfilSelos,
   PerfilContainer,
   PerfilBody,
@@ -12,6 +11,7 @@ import {
   PorcentageCompleted,
   ContentPerfilData,
 } from './style';
+import Content from './style';
 import Image from 'next/image'
 import EstrelaOff from '../../../../assets/estrela-off.svg';
 import Estrela from '../../../../assets/estrela.svg';
@@ -36,7 +36,7 @@ interface IProps {
   isConsumidor: boolean;
 }
 
-export function Perfil({ isConsumidor }: IProps) {
+export default function Perfil({ isConsumidor }: IProps) {
   const { user } = useAuth();
   const [showRecomendacaoModal, setShowRecomendacaoModal] = useState(false);
   const [hasPrimeiroProjetoMedal, setHasPrimeiroProjeto] = useState(false);

@@ -14,7 +14,7 @@ interface ContentProps {
   isConsumidor?: boolean;
 }
 
-export const Content = styled.div<ContentProps>`
+const Content = styled.div<ContentProps>`
   padding: 16px 0px;
   background-color: ${props => (props.isConsumidor ? AZUL : LARANJA)};
   display: flex;
@@ -317,3 +317,5 @@ export const ContainerHeader = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
+
+export default Content;

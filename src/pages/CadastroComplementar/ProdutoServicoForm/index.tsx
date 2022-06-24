@@ -6,9 +6,9 @@ import { AccordionItem } from '../../../components/Accordion/AccordionItem';
 import Button from '../../../components/Button';
 import { Spacer } from '../../../components/Spacer';
 import { TituloForm } from '../../../components/TituloForm';
-import { Content } from './style';
+import Content from './style';
 
-export function ProdutoServicoForm() {
+export default function ProdutoServicoForm() {
   const [, setFoto] = useState({});
   const [clientSide, setClientSide] = useState(false);
 

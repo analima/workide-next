@@ -2,7 +2,7 @@ import { Accordion } from 'react-bootstrap';
 import styled from 'styled-components';
 import { AZUL, BRANCO } from '../../../../styles/variaveis';
 
-export const Content = styled.section`
+const Content = styled.section`
   .form-switch {
     font-weight: bold;
     color: ${AZUL};
@@ -51,3 +51,5 @@ export const FiltroTelaCheia = styled.div`
     display: none;
   }
 `;
+
+export default Content;

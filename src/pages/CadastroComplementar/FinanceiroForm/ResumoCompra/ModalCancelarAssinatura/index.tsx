@@ -11,9 +11,9 @@ import {
   ContainerTextArea,
   Content,
   ExpirationDate,
-  ModalContent,
   TextDeleteSuccess,
 } from './style';
+import ModalContent from './style';
 import { Titulo } from '../../../../../components/Titulo';
 import { Spacer } from '../../../../../components/Spacer';
 import { InputCheck } from '../../../../../components/Form/InputCheck';
@@ -35,7 +35,7 @@ interface IModal {
 
 const schema = Yup.object().shape({});
 
-export function ModalCancelarAssinatura({
+export default function ModalCancelarAssinatura({
   show,
   setShow,
 }: IModal): JSX.Element {

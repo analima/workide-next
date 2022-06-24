@@ -1,5 +1,4 @@
 import {
-  Content,
   LabelNota,
   LabelRank,
   FotoPerfil,
@@ -7,6 +6,7 @@ import {
   ContainerNameUser,
   Sobre,
 } from './style';
+import Content from './style';
 import EstrelaOff from '../../../../assets/estrela-off.svg';
 import Estrela from '../../../../assets/estrela.svg';
 import { useHistory } from 'react-router-dom';
@@ -32,7 +32,7 @@ interface PerfilProps {
   provider?: IProvider;
 }
 
-export function NovoPerfil({
+export default function NovoPerfil({
   idUsuario,
   onChange,
   publico = false,

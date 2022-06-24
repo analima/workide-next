@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { lighten } from 'polished';
 import { AZUL, BRANCO, LARANJA } from '../../../../styles/variaveis';
 
-export const Content = styled.div``;
+const Content = styled.div``;
 
 export const Center = styled.div`
   display: flex;
@@ -56,3 +56,5 @@ export const GhostButton = styled.button`
     font-size: 12px;
   }
 `;
+
+export default Content;

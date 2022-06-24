@@ -13,7 +13,7 @@ interface SizeProps {
   user?: boolean;
 }
 
-export const Content = styled.div<SizeProps>`
+const Content = styled.div<SizeProps>`
   padding: 16px 20px;
   background-color: ${BRANCO};
   border-radius: 8px;
@@ -234,3 +234,5 @@ export const Button = styled.button`
     margin-top: 16px;
   }
 `;
+
+export default Content;

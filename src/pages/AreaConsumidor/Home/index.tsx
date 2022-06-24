@@ -1,21 +1,22 @@
 import { Col, Row } from 'react-bootstrap';
-import { Layout } from '../Layout';
-import { Dashboard } from './Dashboard';
+import Layout from '../Layout';
+import Dashboard from './Dashboard';
 import { Spacer } from '../../../components/Spacer';
-import { BotaoCaptar, Subtitulo } from './style';
-import { Perfil } from './Perfil';
+import { BotaoCaptar} from './style';
+import Subtitulo from './style';
+import Perfil from './Perfil';
 
-import { SobreMim } from './SobreMim';
-import { ServicosFavoritos } from './ServicosFavoritos';
-import { MeusProjetos } from './MeusProjetos';
-import { PerfisVitrine } from './PerfisVitrine';
+import SobreMim from './SobreMim';
+import ServicosFavoritos from './ServicosFavoritos';
+import MeusProjetos from './MeusProjetos';
+import PerfisVitrine from './PerfisVitrine';
 import { useHistory } from 'react-router';
 import { Helmet } from 'react-helmet';
 import { useAuth } from '../../../contexts/auth';
 import { useEffect } from 'react';
 import { hotjar } from 'react-hotjar';
 
-export function Home() {
+export default function Home() {
   const history = useHistory();
   const { refreshUserData } = useAuth();
   const handleRedirect = () => {

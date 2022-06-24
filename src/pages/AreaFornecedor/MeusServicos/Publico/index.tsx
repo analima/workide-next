@@ -6,19 +6,19 @@ import { useLimitacoesPlanos } from '../../../../contexts/planLimitations';
 import { AvatarRegrasPlano } from '../../../../components/AvatarRegrasPlano';
 
 import {
-  Content,
   LabelValor,
   LinkReportAnuncio,
   ServicoImagem,
   ContentButton,
   Button,
 } from './styled';
+import Content from'./styled';
 import { AZUL } from '../../../../styles/variaveis';
 import { useCallback, useEffect, useState } from 'react';
 import { Spacer } from '../../../../components/Spacer';
 import { VitrineServico } from '../../../../components/VitrineServico';
 
-import { ModalDenuncia } from '../../../ModalDenuncia';
+import ModalDenuncia from '../../../ModalDenuncia';
 import { geral_api } from '../../../../services/geral_api';
 import { formatarValor } from '../../../../utils/CurrencyFormat';
 import { ModalRecomendacao } from '../../../../components/ModalRecomendacao';
@@ -30,11 +30,11 @@ import { useAuth } from '../../../../contexts/auth';
 import { Helmet } from 'react-helmet';
 import { Skeleton } from '../../../../components/Skeleton';
 import { hotjar } from 'react-hotjar';
-import { ListaRequisito } from '../../../AreaConsumidor/Servico/ListaRequisito';
-import { OpcoesPacote } from '../../../AreaConsumidor/Servico/OpcoesPacote';
-import { Perfil } from '../../../AreaConsumidor/Servico/Perfil';
-import { TooltipDescricao } from '../../../AreaConsumidor/Servico/TooltipDescricao';
-import { Layout } from '../../Layout';
+import ListaRequisito from '../../../AreaConsumidor/Servico/ListaRequisito';
+import OpcoesPacote from '../../../AreaConsumidor/Servico/OpcoesPacote';
+import Perfil from '../../../AreaConsumidor/Servico/Perfil';
+import TooltipDescricao from '../../../AreaConsumidor/Servico/TooltipDescricao';
+import Layout from '../../Layout';
 interface IPessoa {
   id: number;
   id_usuario: number;
@@ -46,7 +46,7 @@ interface IServicoConsumidorPublicoParams {
   str_servico: string;
 }
 
-export function ServicoFornecedorPublico() {
+export default function ServicoFornecedorPublico() {
   const [vitrineData, setVitrineData] = useState<IServicoInfo[]>([]);
   const [showModalDenuncia, setShowModalDenuncia] = useState(false);
   const [pessoa, setPessoa] = useState<IPessoa>({} as IPessoa);

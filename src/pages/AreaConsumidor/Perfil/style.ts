@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { AZUL, BRANCO, CINZA_10 } from '../../../styles/variaveis';
 
-export const Content = styled.section`
+const Content = styled.section`
   .btn-acoes {
     display: flex;
     justify-content: flex-end;
@@ -65,3 +65,5 @@ export const Condicao = styled.div`
     }
   }
 `;
+
+export default Content;

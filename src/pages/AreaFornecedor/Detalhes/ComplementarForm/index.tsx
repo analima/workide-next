@@ -20,12 +20,13 @@ import { InputCheck } from '../../../../components/Form/InputCheck';
 import { InputMask } from '../../../../components/Form/InputMask';
 import { Button } from '../../../../components/Form/Button';
 import { Foto } from '../../../../components/Foto';
-import { Profissoes } from '../../../CadastroComplementar/ComplementarForm/Profissoes';
-import { Graduacoes } from '../../../CadastroComplementar/ComplementarForm/Graduacoes';
-import { PosGraduacoes } from '../../../CadastroComplementar/ComplementarForm/PosGraduacoes';
-import { Cursos } from '../../../CadastroComplementar/ComplementarForm/Cursos';
+import Profissoes from '../../../CadastroComplementar/ComplementarForm/Profissoes';
+import Graduacoes from '../../../CadastroComplementar/ComplementarForm/Graduacoes';
+import PosGraduacoes from '../../../CadastroComplementar/ComplementarForm/PosGraduacoes';
+import Cursos from '../../../CadastroComplementar/ComplementarForm/Cursos';
 
-import { Content, Subtitulo, Actions } from './style';
+import { Subtitulo, Actions } from './style';
+import Content from './style';
 
 interface IFormProps {
   id_foto?: number;
@@ -99,7 +100,7 @@ const schema = Yup.object().shape({
   }),
 });
 
-export function ComplementarForm() {
+export default function ComplementarForm() {
   const { user } = useAuth();
   const { setAbaSelecionada } = useCadastroComplementar();
 

@@ -6,27 +6,27 @@ import { Spacer } from '../../../components/Spacer';
 import { useAuth } from '../../../contexts/auth';
 import { IProvider } from '../../../interfaces/IProvider';
 import { pessoas_api } from '../../../services/pessoas_api';
-import { ModalDenuncia } from '../../ModalDenuncia';
-import { Layout } from '../Layout';
-import { Reputacao } from './Reputacao';
-import { Sobre } from './Sobre';
+import ModalDenuncia from '../../ModalDenuncia';
+import Layout from '../Layout';
+import Reputacao from './Reputacao';
+import Sobre from './Sobre';
 import {
   ButtonVoltar,
-  Content,
   ContentButton,
   InfoPerfil,
   LinkReportPerfil,
   Button,
   GhostButton,
 } from './style';
-import { Vitrine } from './Vitrine';
+import Content from './style';
+import Vitrine from './Vitrine';
 import { SEO } from '../../../components/SEO';
 
 interface IServicoConsumidorPublicoParams {
   strUsuario: string;
 }
 
-export function PerfilPublico() {
+export default function PerfilPublico() {
   const [showModalDenuncia, setShowModalDenuncia] = useState(false);
   const [urlAtual, setUrlAtual] = useState('');
   const [dataProvider, setDataProvider] = useState<IProvider>({} as IProvider);

@@ -2,7 +2,7 @@ import { lighten } from "polished";
 import styled from "styled-components";
 import { AZUL, BRANCO } from "../../../../styles/variaveis";
 
-export const Content = styled.div``;
+const Content = styled.div``;
 
 
 export const ButtonCancel = styled.button`
@@ -27,3 +27,5 @@ export const ButtonCancel = styled.button`
         font-size: 12px;
     }
 `;
+
+export default Content;

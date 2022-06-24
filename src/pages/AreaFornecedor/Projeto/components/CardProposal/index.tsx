@@ -26,7 +26,6 @@ import {
   ContentDescription,
   ContentFooterStyled,
   ContentInputStyled,
-  ContentStyled,
   DescriptionStyled,
   FileStyled,
   HeaderStepsStyled,
@@ -44,6 +43,7 @@ import {
   ErrorAxexo,
   CondicoesGeraisContent,
 } from './styled';
+import ContentStyled from './styled';
 import { FiArrowUpCircle } from 'react-icons/fi';
 import { pessoas_api } from '../../../../../services/pessoas_api';
 import { oportunidades_api } from '../../../../../services/oportunidades_api';
@@ -128,7 +128,7 @@ interface ListPerguntasProps {
   texto: string;
 }
 
-export const CardProposal = ({
+const CardProposal = ({
   detalhesProposta,
   idConsumidor,
   idProjeto,
@@ -758,3 +758,5 @@ export const CardProposal = ({
     </ContentStyled>
   );
 };
+
+export default CardProposal;

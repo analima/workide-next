@@ -1,7 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import CoracaoOff from '../../../../../../../assets/coracao-off.svg';
 import CoracaoOn from '../../../../../../../assets/coracao.svg';
-import { Container, ContentFooter, ContentService, LabelPrice } from './styled';
+import { ContentFooter, ContentService, LabelPrice } from './styled';
+import Container from './styled';
 import { useHistory } from 'react-router';
 import { IUsuario } from '../..';
 import { ofertas_api } from '../../../../../../../services/ofertas_api';
@@ -13,7 +14,7 @@ type Props = {
   usuario: IUsuario;
 };
 
-export const Card = ({ service, usuario }: Props): JSX.Element => {
+const Card = ({ service, usuario }: Props): JSX.Element => {
   const [favoriteItem, setFavoriteItem] = useState<
     Array<Number | undefined | null>
   >([]);
@@ -98,3 +99,5 @@ export const Card = ({ service, usuario }: Props): JSX.Element => {
     </Container>
   );
 };
+
+export default Card;

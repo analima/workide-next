@@ -5,7 +5,7 @@ interface ISidebar {
   open: boolean;
 }
 
-export const Content = styled.div<ISidebar>`
+const Content = styled.div<ISidebar>`
   background-color: ${BRANCO};
   width: 340px;
   min-height: 100%;
@@ -66,3 +66,5 @@ export const NavLink = styled.a`
   font-size: 20px;
   font-weight: bold;
 `;
+
+export default Content;

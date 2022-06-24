@@ -1,22 +1,22 @@
 import { useState, useEffect } from 'react';
 import {
-  Content,
   NavItem,
   NavLink,
   Nav,
   BotaoCaptar,
   NavButton,
 } from './style';
+import Content from './style';
 import { useAuth } from '../../../../contexts/auth';
 import { useHistory } from 'react-router-dom';
 
-import { Dropdown as DropdownMenu } from './Dropdown';
+import DropdownMenu from './Dropdown';
 
 interface ISidebar {
   open: boolean;
 }
 
-export function Sidebar({ open }: ISidebar) {
+export default function Sidebar({ open }: ISidebar) {
   const { user } = useAuth();
   const [display, setDisplay] = useState(open);
   const history = useHistory();

@@ -8,7 +8,7 @@ import {
   VERDE,
 } from '../../../../styles/variaveis';
 
-export const Content = styled.div``;
+const Content = styled.div``;
 
 export const CardHeader = styled.div`
   display: flex;
@@ -95,3 +95,5 @@ export const CardContent = styled.div`
     background: ${CINZA_10};
   }
 `;
+
+export default Content;

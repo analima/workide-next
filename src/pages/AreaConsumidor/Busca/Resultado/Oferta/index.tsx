@@ -3,10 +3,11 @@ import {
   ContentAvatar,
   Dialogo,
 } from '../../../../../components/Vitrine/style';
-import { Content, ContainerCard } from './style';
+import { ContainerCard } from './style';
+import Content from './style';
 import Carol from '../../../../../assets/carol-full.svg';
-import { Avatar } from '../../../../CadastroComplementar/Apresentacao/style';
-import { Paginacao } from '../../../Home/MeusProjetos/Paginacao';
+import Avatar from '../../../../CadastroComplementar/Apresentacao/style';
+import Paginacao from '../../../Home/MeusProjetos/Paginacao';
 import { useCallback, useEffect, useState } from 'react';
 import { IServicoInfo } from '../../../../../interfaces/IServicoInfo';
 import { ofertas_api } from '../../../../../services/ofertas_api';
@@ -23,7 +24,7 @@ interface IService extends IServicoInfo {
   isFavorite: boolean;
 }
 
-export function Oferta() {
+export default function Oferta() {
   const [services, setServices] = useState<IService[]>([] as IService[]);
   const { user } = useAuth();
   const { service, pagina, totalPaginas, setPagina } =

@@ -14,7 +14,8 @@ import { Titulo } from '../../../../../../components/Titulo';
 import { CINZA_80, AZUL } from '../../../../../../styles/variaveis';
 import { ModalExcludConfirmation } from '../../../../../../components/ModalExcludConfirmation';
 
-import { Button, Content } from './style';
+import { Button } from './style';
+import Content from './style';
 import { ModalInformation } from '../../../../../../components/ModalInformation';
 
 interface IItemCaseSucessoProps {
@@ -69,7 +70,7 @@ const schema = Yup.object().shape({
     .max(100, 'Descrição deve conter no máximo 100 caracteres'),
 });
 
-export function ItemCaseSucesso({ item, loadItens }: IItemCaseSucessoProps) {
+export default function ItemCaseSucesso({ item, loadItens }: IItemCaseSucessoProps) {
   const {
     control,
     handleSubmit,

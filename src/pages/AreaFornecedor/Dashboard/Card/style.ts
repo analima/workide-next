@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { BRANCO, LARANJA } from '../../../../styles/variaveis';
 
-export const Content = styled.article`
+const Content = styled.article`
   background-color: ${BRANCO};
   height: 300px;
   width: 300px;
@@ -47,3 +47,5 @@ export const Content = styled.article`
     margin-top: 1rem;
   }
 `;
+
+export default Content;

@@ -9,7 +9,7 @@ import {
 } from '../../../../styles/variaveis';
 import { lighten } from 'polished';
 
-export const Content = styled.div`
+const Content = styled.div`
   .mobile-align {
     display: flex;
     align-items: center;
@@ -366,3 +366,5 @@ export const ContentTrash = styled.div`
     }
   }
 `;
+
+export default Content;

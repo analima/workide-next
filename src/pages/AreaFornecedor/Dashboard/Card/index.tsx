@@ -1,11 +1,11 @@
-import { Content } from './style';
+import Content from './style';
 
 interface ContadorProps {
   valor: number | string;
   descricao: string;
 }
 
-export function Card({ valor, descricao }: ContadorProps) {
+export default function Card({ valor, descricao }: ContadorProps) {
   return (
     <Content>
       <div className="valor">{valor}</div>
@@ -13,3 +13,5 @@ export function Card({ valor, descricao }: ContadorProps) {
     </Content>
   );
 }
+
+

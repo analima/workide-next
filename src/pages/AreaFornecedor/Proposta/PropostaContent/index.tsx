@@ -1,11 +1,11 @@
 import { Col, Row } from 'react-bootstrap';
 import { DadosProjeto } from '../../../../components/DadosProjeto';
 import { EtapasProjeto } from '../../../../components/EtapasProjeto';
-import { Layout } from '../../Layout';
-import { Content } from './style';
+import Layout from '../../Layout';
+import Content from './style';
 
-import { Enviar } from '../Enviar';
-import { Contratante } from '../Contratante';
+import Enviar from '../Enviar';
+import Contratante from '../Contratante';
 import { useLocation } from 'react-router';
 import { useEffect, useState } from 'react';
 import { oportunidades_api } from '../../../../services/oportunidades_api';
@@ -22,7 +22,7 @@ interface EtapasProps {
   dataOcorrencia: string;
 }
 
-export function PropostaContent() {
+export default function PropostaContent() {
   const [etapasProjeto, setEtapasProjeto] = useState<EtapasProps>(
     {} as EtapasProps,
   );

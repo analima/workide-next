@@ -8,7 +8,7 @@ import {
   VERMELHO,
 } from '../../../../../styles/variaveis';
 
-export const ContentStyled = styled.section``;
+const ContentStyled = styled.section``;
 
 export const ContentButtonStyled = styled.div`
   display: flex;
@@ -372,3 +372,5 @@ export const CondicoesGeraisContent = styled.div`
     margin-top: 24px;
   }
 `;
+
+export default ContentStyled;

@@ -1,4 +1,4 @@
-import { Content } from './style';
+import Content from './style';
 
 interface ContadorProps {
   titulo: string;
@@ -8,7 +8,7 @@ interface ContadorProps {
   isCursorPointer?: boolean;
 }
 
-export function Contador({
+export default function Contador({
   titulo,
   valor,
   Icone,

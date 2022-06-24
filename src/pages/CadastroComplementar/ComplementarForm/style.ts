@@ -12,7 +12,7 @@ type Props = {
   selected: boolean;
 };
 
-export const Content = styled.section`
+const Content = styled.section`
   #container-checkbox {
     margin-left: 140px;
 
@@ -254,3 +254,5 @@ export const SkipButton = styled(Link)`
   color: ${BRANCO} !important;
   border: none !important;
 `;
+
+export default Content;

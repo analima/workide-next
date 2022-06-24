@@ -1,7 +1,6 @@
 import EstrelaOff from '../../../../assets/estrela-off.svg';
 
 import {
-  Content,
   Titulo,
   Card,
   Resumo,
@@ -12,8 +11,9 @@ import {
   Barra,
   Quantidade,
 } from './style';
+import Content from './style';
 
-export function Avaliacoes() {
+ const Avaliacoes = () => {
   return (
     <Content>
       <Titulo>Avaliações</Titulo>
@@ -103,3 +103,4 @@ export function Avaliacoes() {
     </Content>
   );
 }
+export default Avaliacoes;

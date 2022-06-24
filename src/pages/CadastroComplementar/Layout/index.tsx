@@ -3,10 +3,10 @@ import { Container } from 'react-bootstrap';
 
 import { Spacer } from '../../../components/Spacer';
 
-import { Navbar } from './Navbar';
-import { Sidebar as SidebarConsumidor } from '../../../pages/AreaConsumidor/Layout/Sidebar/index';
-import { Sidebar as SidebarFornecedor } from '../../../pages/AreaFornecedor/Layout/Sidebar/index';
-import { Content } from './style';
+import Navbar from './Navbar';
+import SidebarConsumidor from '../../../pages/AreaConsumidor/Layout/Sidebar/index';
+import SidebarFornecedor from '../../../pages/AreaFornecedor/Layout/Sidebar/index';
+import Content from './style';
 
 interface LayoutProps {
   titulo?: string;
@@ -15,7 +15,7 @@ interface LayoutProps {
   isConsumidor?: boolean;
 }
 
-export function Layout({
+export default function Layout({
   titulo,
   children,
   active,

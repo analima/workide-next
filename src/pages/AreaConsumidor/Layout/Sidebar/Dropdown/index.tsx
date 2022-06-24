@@ -4,12 +4,12 @@ import { useHistory, useLocation } from 'react-router';
 import { ModalFullRecordGuidance } from '../../../../../components/ModalFullRecordGuidance';
 import { AZUL } from '../../../../../styles/variaveis';
 import {
-  Content,
   NavDropdown,
   NavDropdownButton,
   NavDropdownItem,
   TituloDropdown,
 } from './style';
+import Content from './style';
 import { useAuth } from '../../../../../contexts/auth';
 
 interface Item {
@@ -26,7 +26,7 @@ interface IDropdown {
   itens: Item[];
 }
 
-export function Dropdown({ titulo, itens }: IDropdown) {
+export default function Dropdown({ titulo, itens }: IDropdown) {
   const [state, setState] = useState(true);
   const history = useHistory();
   //assigning location variable

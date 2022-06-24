@@ -8,7 +8,6 @@ import { pessoas_api } from '../../../../services/pessoas_api';
 import { InputText } from '../../../../components/Form/InputText';
 
 import {
-  Content,
   Form,
   Label,
   Button,
@@ -17,6 +16,7 @@ import {
   ItemLabel,
   ItemAction,
 } from './style';
+import Content from './style';
 
 interface ICertificacoesProps {
   id_pessoa: number;
@@ -39,7 +39,7 @@ const schema = Yup.object().shape({
   descricao: Yup.string().required('Descrição da certificação é obrigatória'),
 });
 
-export function Certificacoes({ id_pessoa, readonly }: ICertificacoesProps) {
+export default function Certificacoes({ id_pessoa, readonly }: ICertificacoesProps) {
   const {
     control,
     handleSubmit,

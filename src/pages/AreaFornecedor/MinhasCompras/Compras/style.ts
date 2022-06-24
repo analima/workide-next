@@ -10,7 +10,7 @@ import {
   AMARELO,
 } from '../../../../styles/variaveis';
 
-export const Content = styled.div`
+const Content = styled.div`
   .reprovado {
     color: ${LARANJA_10};
   }
@@ -160,3 +160,5 @@ export const DownloadLink = styled.a`
   text-decoration: none;
   cursor: pointer;
 `;
+
+export default Content;

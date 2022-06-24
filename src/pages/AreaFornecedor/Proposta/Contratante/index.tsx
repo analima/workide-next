@@ -7,13 +7,13 @@ import Estrela from '../../../../assets/estrela.svg';
 
 import {
   AvaliacaoContainer,
-  Content,
   FotoPerfil,
   FotoPerfilContainer,
   NomeContainer,
   Sobre,
   SobreContainer,
 } from './style';
+import Content from './style';
 import { VERDE } from '../../../../styles/variaveis';
 import { Spacer } from '../../../../components/Spacer';
 import { usePropostaFornecedor } from '../../../../hooks/propostaFornecedor';
@@ -34,7 +34,7 @@ interface ConsumidorProps {
   nome_tratamento: string;
 }
 
-export function Contratante() {
+export default function Contratante() {
   const { project } = usePropostaFornecedor();
   const [dadosConsumidor, setDadosConsumidor] = useState<ConsumidorProps>(
     {} as ConsumidorProps,

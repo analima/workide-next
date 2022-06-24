@@ -12,7 +12,7 @@ import {
   VERMELHO,
 } from '../../../../styles/variaveis';
 
-export const Content = styled.div`
+const Content = styled.div`
   .selected-items__container-icons-export {
     margin-left: auto;
 
@@ -407,3 +407,5 @@ export const ContainerButtons = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
+
+export default Content;

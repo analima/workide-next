@@ -1,11 +1,11 @@
 import { Col, Row } from 'react-bootstrap';
 import { Card } from '../../../../components/Card';
 import { Spacer } from '../../../../components/Spacer';
-import { Descricao } from './Descricao';
-import { PacoteSelecionado } from './PacoteSelecionado';
-import { Content } from './style';
+import Descricao from './Descricao';
+import PacoteSelecionado  from './PacoteSelecionado';
+import Content from './style';
 
-export function Oferta() {
+export default function Oferta() {
   return (
     <Content>
       <Card>

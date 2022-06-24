@@ -7,7 +7,7 @@ import {
 } from './../../../../../styles/variaveis';
 import styled from 'styled-components';
 
-export const Content = styled.div`
+const Content = styled.div`
   flex: 1;
   display: flex;
   justify-content: space-between;
@@ -134,3 +134,5 @@ export const ActiveSignature = styled.h1`
   width: 100%;
   text-align: center;
 `;
+
+export default Content;

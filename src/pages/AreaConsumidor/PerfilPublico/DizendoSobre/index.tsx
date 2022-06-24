@@ -1,6 +1,7 @@
 import { Card } from '../../../../components/Card';
 
-import { Content, CardReputacao } from './style';
+import { CardReputacao } from './style';
+import Content from './style';
 
 import { Titulo } from '../../../../components/Titulo';
 import { AZUL } from '../../../../styles/variaveis';
@@ -11,7 +12,7 @@ interface IProps {
   id: number;
 }
 
-export function DizendoSobre({ id }: IProps) {
+export default function DizendoSobre({ id }: IProps) {
   return (
     <Content>
       <Card>

@@ -30,7 +30,6 @@ import {
   ContentDescription,
   ContentFooterStyled,
   ContentInputStyled,
-  ContentStyled,
   DescriptionStyled,
   HeaderStepsStyled,
   TitleDescriptionStyled,
@@ -48,6 +47,7 @@ import {
   ErrorAxexo,
   CondicoesGeraisContent,
 } from './styled';
+import ContentStyled from './styled';
 import { oportunidades_api } from '../../../../../services/oportunidades_api';
 import { dataValidation } from '../../../../../utils/DateValidator';
 import { pessoas_api } from '../../../../../services/pessoas_api';
@@ -142,7 +142,7 @@ interface ProjetoProps {
   escopo: string;
 }
 
-export const CardProposal = ({ id_proposta }: IProps) => {
+const CardProposal = ({ id_proposta }: IProps) => {
   const history = useHistory();
   const [modalAnalyzeReview, setModalAnalyzeReview] = useState<boolean>(false);
   const [showModalInformation, setShowModalInformation] =
@@ -856,3 +856,5 @@ export const CardProposal = ({ id_proposta }: IProps) => {
     </ContentStyled>
   );
 };
+
+export default CardProposal;

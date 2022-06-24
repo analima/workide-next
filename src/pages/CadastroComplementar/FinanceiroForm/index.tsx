@@ -1,7 +1,7 @@
 import { InformacoesFinanceirasProvider } from '../../../hooks/informacoesFinanceiras';
-import { FinanceiroFormContent } from './FinanceiroFormContent';
+import FinanceiroFormContent from './FinanceiroFormContent';
 
-export function FinanceiroForm() {
+export default function FinanceiroForm() {
   return (
     <InformacoesFinanceirasProvider>
       <FinanceiroFormContent />

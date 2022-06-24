@@ -1,6 +1,6 @@
 import ReactWordcloud from 'react-wordcloud';
 
-import { Content } from './style';
+import Content from './style';
 
 import { useCallback, useEffect, useState } from 'react';
 import { pessoas_api } from '../../../../services/pessoas_api';
@@ -14,7 +14,7 @@ interface Props {
   idPessoa: number;
 }
 
-export function HabilidadesPercebidas({ idPessoa }: Props) {
+export default function HabilidadesPercebidas({ idPessoa }: Props) {
   const [habilidadesPercebidas, setHabilidadesPercebidas] = useState('');
   const [habilidadesComportamentais, setHabilidadesComportamentais] =
     useState('');

@@ -7,7 +7,7 @@ interface ContadorProps {
   isCursorPointer?: boolean;
 }
 
-export const Content = styled.article<ContadorProps>`
+const Content = styled.article<ContadorProps>`
   margin-top: 16px;
   background-color: ${props => (props.destaque ? VERDE : BRANCO)};
   border-radius: 8px;
@@ -68,3 +68,5 @@ export const Content = styled.article<ContadorProps>`
     }
   }
 `;
+
+export default Content;

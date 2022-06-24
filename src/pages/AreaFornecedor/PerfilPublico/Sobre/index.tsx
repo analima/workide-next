@@ -8,13 +8,12 @@ import {
   Ranking,
   Avaliacao,
   Button,
-  Content,
   FotoPerfil,
   Frame,
   SobreDrescricao,
   ContentImg,
 } from './style';
-
+import Content from './style';
 import EstrelaOff  from '../../../../assets/estrela-off.svg';
 import  Estrela  from '../../../../assets/estrela.svg';
 import CoracaoOff from '../../../../assets/coracao-off.svg';
@@ -32,7 +31,7 @@ import { MedalhasFornecedor } from '../../../../components/MedalhasFornecedor';
 import { oportunidades_api } from '../../../../services/oportunidades_api';
 import { IProvider } from '../../../../interfaces/IProvider';
 import { consultas_api } from '../../../../services/consultas_api';
-import { OutrasInformacoes } from '../OutrasInformacoes';
+import OutrasInformacoes from '../OutrasInformacoes';
 import { Spacer } from '../../../../components/Spacer';
 import { Skeleton } from '../../../../components/Skeleton';
 import { SeloMembro } from '../../../../components/SeloMembro';
@@ -52,7 +51,7 @@ type PropsPage = {
   dataProps: IProvider;
 };
 
-export function Sobre({ dataProps, imageLoaded }: PropsPage) {
+export default function Sobre({ dataProps, imageLoaded }: PropsPage) {
   const [showRecommendationModal, setShowRecommendationModal] = useState(false);
   const [idFornecedores, setIdFornecedores] = useState<number[]>([]);
   const [isFavorite, setIsFavorite] = useState(false);

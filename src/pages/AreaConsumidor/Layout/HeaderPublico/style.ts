@@ -5,7 +5,7 @@ import {
 } from '../../../../utils/animations';
 import { AZUL, BRANCO, LARANJA } from '../../../../styles/variaveis';
 
-export const Content = styled.section`
+const Content = styled.section`
   display: flex;
   justify-content: space-between;
 
@@ -195,3 +195,5 @@ export const ContainerLogin = styled.span`
     margin-left: 0;
   }
 `;
+
+export default Content;

@@ -2,13 +2,12 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { Titulo } from '../../../../components/Titulo';
 import {
   Avaliacao,
-  Content,
   FotoPerfil,
   Medalhas,
   SobreDrescricao,
   ContentImg,
 } from './style';
-
+import Content from './style';
 import EstrelaOff from '../../../../assets/estrela-off.svg';
 import Estrela from '../../../../assets/estrela.svg';
 import { AZUL } from '../../../../styles/variaveis';
@@ -41,7 +40,7 @@ type UserProps = {
   tipo: string;
 };
 
-export function Sobre({ dataProps }: PerfilConsumidorProps) {
+export default function Sobre({ dataProps }: PerfilConsumidorProps) {
   const [img, setImg] = useState('');
   const [hasPrimeiroProjetoMedal, setHasPrimeiroProjeto] = useState(false);
   const [hasFeedbackMedal, setHasFeedbackMedal] = useState(false);

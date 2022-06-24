@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { AZUL, BRANCO, CINZA_10 } from '../../../../../styles/variaveis';
 
-export const Container = styled.div`
+const Container = styled.div`
   ul {
     list-style: none;
     padding: 0;
@@ -50,3 +50,5 @@ export const SubAreaItem = styled.div`
   display: flex;
   padding: 8px 0;
 `;
+
+export default Container

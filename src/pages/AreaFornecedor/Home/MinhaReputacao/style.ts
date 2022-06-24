@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { AZUL, AZUL_60, BRANCO } from '../../../../styles/variaveis';
 
-export const Content = styled.section``;
+const Content = styled.section``;
 
 export const Subtitulo = styled.h3`
   color: ${AZUL_60};
@@ -135,3 +135,5 @@ export const ContentRecomendacao = styled.div`
     align-items: center;
   }
 `;
+
+export default Content;

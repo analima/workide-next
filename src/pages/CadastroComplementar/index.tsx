@@ -1,8 +1,8 @@
 import { Container } from 'react-bootstrap';
 import { Template } from '../../components/Template';
-import { Content } from './style';
+import Content from './style';
 import { CadastroComplementarProvider } from '../../hooks/cadastroComplementar';
-import { CadastroComplementarContent } from './CadastroComplementarContent';
+import CadastroComplementarContent from './CadastroComplementarContent';
 import { InformacoesFinanceirasProvider } from '../../hooks/informacoesFinanceiras';
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -18,7 +18,7 @@ interface IProps {
   isConsumidor: boolean;
 }
 
-export function CadastroComplementar() {
+export default function CadastroComplementar() {
   const location = useLocation<IProps>();
   const { user } = useAuth();
   const [percentage, setPercentage] = useState(0);

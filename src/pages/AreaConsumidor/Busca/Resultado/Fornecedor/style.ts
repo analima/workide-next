@@ -2,7 +2,7 @@ import { lighten } from 'polished';
 import styled from 'styled-components';
 import { AZUL, BRANCO } from '../../../../../styles/variaveis';
 
-export const Content = styled.div``;
+const Content = styled.div``;
 
 export const ContainerHeader = styled.div`
   margin-top: 40px;
@@ -55,3 +55,5 @@ export const Button = styled.button`
     width: 100%;
   }
 `;
+
+export default Content;

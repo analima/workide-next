@@ -9,7 +9,6 @@ import { Select, Option } from '../../../../components/Form/Select';
 import { InputText } from '../../../../components/Form/InputText';
 
 import {
-  Content,
   Form,
   Label,
   Button,
@@ -18,6 +17,7 @@ import {
   ItemLabel,
   ItemAction,
 } from './style';
+import Content from './style';
 
 interface IGraduacoesProps {
   id_pessoa: number;
@@ -50,7 +50,7 @@ const schema = Yup.object().shape({
     ),
 });
 
-export function PosGraduacoes({ id_pessoa, readonly }: IGraduacoesProps) {
+export default function PosGraduacoes({ id_pessoa, readonly }: IGraduacoesProps) {
   const {
     control,
     handleSubmit,

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { AZUL, PRETO_60, VERDE } from '../../../../../styles/variaveis';
 
-export const Content = styled.div`
+const Content = styled.div`
   padding: 0 42px;
 
   @media (max-width: 478px) {
@@ -101,3 +101,5 @@ export const ValorTotal = styled.div`
     color: ${PRETO_60};
   }
 `;
+
+export default Content;

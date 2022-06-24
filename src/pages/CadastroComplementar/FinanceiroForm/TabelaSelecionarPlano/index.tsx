@@ -6,14 +6,14 @@ import { useAuth } from '../../../../contexts/auth';
 import { useInformacoesFinanceiras } from '../../../../hooks/informacoesFinanceiras';
 import Image from 'next/image'
 import {
-  Container,
   ContainerPlans,
   TablePlans,
   GhostButtonPlano,
   PrecoPlano,
 } from './style';
-import { AvatarDowngradePlano } from './AvatarDowngradePlano';
-import { AvatarUpgradePlano } from './AvatarUpgradePlano';
+import Container from './style';
+import AvatarDowngradePlano from './AvatarDowngradePlano';
+import AvatarUpgradePlano from './AvatarUpgradePlano';
 import { pagamentos_api } from '../../../../services/pagamentos_api';
 import {
   handleFormatDocument,

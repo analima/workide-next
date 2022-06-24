@@ -8,7 +8,7 @@ import {
   PRETO_40,
 } from '../../../../styles/variaveis';
 
-export const Content = styled.section`
+const Content = styled.section`
   padding: 0px;
   margin: 0px;
 `;
@@ -154,3 +154,5 @@ export const TitleVideoNotFound = styled.span`
   text-align: center;
   margin-top: 16px;
 `;
+
+export default Content;

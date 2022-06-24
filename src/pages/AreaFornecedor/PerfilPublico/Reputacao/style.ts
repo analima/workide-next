@@ -5,12 +5,12 @@ interface Props {
   reputacao?: boolean;
 }
 
-export const Content = styled.section``;
+const Content = styled.section``;
 
 export const Scroll = styled.div<Props>`
   height: ${props => (props.reputacao ? '400px' : 'auto')};
 
-  overflow: scroll; 
+  overflow: scroll;
   ::-webkit-scrollbar {
     display: none; /* Chrome Safari */
   }
@@ -29,3 +29,5 @@ export const SolicitarRecomendacao = styled.a`
   text-decoration: none;
   color: ${AZUL};
 `;
+
+export default Content;

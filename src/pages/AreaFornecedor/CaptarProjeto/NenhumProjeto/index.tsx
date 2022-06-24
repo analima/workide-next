@@ -1,4 +1,5 @@
-import { ContainerAntonio, Content, TextoNenhumProjeto } from './style';
+import { ContainerAntonio, TextoNenhumProjeto } from './style';
+import Content from './style';
 import { Card } from '../../../../components/Card';
 import Antonio  from '../../../../assets/antonio-full.svg';
 import { LARANJA } from '../../../../styles/variaveis';
@@ -10,7 +11,7 @@ type ProjetoProps = {
   tipo: 'exclusivo' | 'normal';
 };
 
-export function NenhumProjeto({ tipo }: ProjetoProps) {
+export default function NenhumProjeto({ tipo }: ProjetoProps) {
   return (
     <Content>
       <Card>
@@ -53,7 +54,7 @@ export function NenhumProjeto({ tipo }: ProjetoProps) {
           <Col lg={4}>
             <ContainerAntonio>
               <Image src={Antonio} alt="" />
-              
+
             </ContainerAntonio>
           </Col>
         </Row>

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { lighten } from 'polished';
 import { AZUL, BRANCO, PRETO } from '../../styles/variaveis';
 
-export const ContainerLogin = styled.div`
+const ContainerLogin = styled.div`
   margin: 10px;
   max-width: 100%;
   max-height: 100vh;
@@ -164,3 +164,5 @@ export const ContainerLogin = styled.div`
     }
   }
 `;
+
+export default ContainerLogin;

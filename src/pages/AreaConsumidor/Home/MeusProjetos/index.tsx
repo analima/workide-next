@@ -8,7 +8,6 @@ import { Spinner } from '../../../../components/Spinner';
 import Image from 'next/image'
 import { LARANJA, VERMELHO_70 } from '../../../../styles/variaveis';
 import {
-  Content,
   Header,
   Body,
   Resultados,
@@ -16,11 +15,12 @@ import {
   FiltrosContainer,
   Filtro,
 } from './style';
+import Content from './style';
 import { useQuery } from '../../../../hooks/geral';
 import { oportunidades_api } from '../../../../services/oportunidades_api';
 import { dataValidation } from '../../../../utils/DateValidator';
 import { useHistory } from 'react-router';
-import { Paginacao } from './Paginacao';
+import Paginacao  from './Paginacao';
 import { pessoas_api } from '../../../../services/pessoas_api';
 import { useAuth } from '../../../../contexts/auth';
 import { VscBell } from 'react-icons/vsc';
@@ -56,7 +56,7 @@ type PropostaProps = {
   values: IProjeto[];
 };
 
-export function MeusProjetos() {
+export default function MeusProjetos() {
   const query = useQuery();
   const [filtro, setFiltro] = useState<FiltroType>({
     AGUARDANDO_INICIO: false,

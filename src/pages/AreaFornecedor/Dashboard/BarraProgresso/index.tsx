@@ -1,11 +1,11 @@
-import { Content } from './style';
+import Content from './style';
 
 interface BarraProgressoProps {
   titulo: string;
   porcentagem: number;
 }
 
-export function BarraProgresso({ titulo, porcentagem }: BarraProgressoProps) {
+export default function BarraProgresso({ titulo, porcentagem }: BarraProgressoProps) {
   return (
     <Content porcentagem={porcentagem}>
       <div className="barra">

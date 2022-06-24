@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { BRANCO_GELO } from '../../../../styles/variaveis';
 
-export const Content = styled.div``;
+const Content = styled.div``;
 
 export const CardTipoPagamento = styled.div`
   width: 100%;
@@ -81,3 +81,5 @@ export const ContainerCheckbox = styled.div`
   padding-left: 25px;
   margin-bottom: 20px;
 `;
+
+export default Content;

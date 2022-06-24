@@ -6,7 +6,8 @@ import { Spacer } from '../../../../components/Spacer';
 import { Titulo } from '../../../../components/Titulo';
 import { VERDE } from '../../../../styles/variaveis';
 import { NumeroRegistros } from '../Perguntas/style';
-import { Content, MobileCenter } from './style';
+import { MobileCenter } from './style';
+import Content from './style';
 
 interface IProposta {
   propostas: IPropostaProps[];
@@ -23,7 +24,7 @@ interface IPropostaProps {
   date: string;
 }
 
-export function Propostas({ propostas, isProbono }: IProposta) {
+export default function Propostas({ propostas, isProbono }: IProposta) {
   return (
     <Content>
       <Card>

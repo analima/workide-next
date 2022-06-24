@@ -3,7 +3,7 @@ import { lighten } from 'polished';
 
 import { AZUL, BRANCO, LARANJA } from '../../../../styles/variaveis';
 
-export const Content = styled.div`
+const Content = styled.div`
   > div {
     min-height: 400px;
     margin-top: 16px;
@@ -155,3 +155,5 @@ export const PorcentageCompleted = styled.h3`
     opacity: 0.8;
   }
 `;
+
+export default Content;

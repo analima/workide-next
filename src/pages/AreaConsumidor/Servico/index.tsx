@@ -1,23 +1,24 @@
 import { Col, Container, Row } from 'react-bootstrap';
 import { Card } from '../../../components/Card';
 import { Titulo } from '../../../components/Titulo';
-import { Layout } from '../../AreaConsumidor/Layout';
-import { Content, LinkReportAnuncio, ContentButton, Button } from './style';
+import Layout from '../../AreaConsumidor/Layout';
+import { LinkReportAnuncio, ContentButton, Button } from './style';
+import Content from './style';
 import { AZUL } from '../../../styles/variaveis';
 import { useEffect, useState } from 'react';
 import { Spacer } from '../../../components/Spacer';
 import { VitrineServico } from '../../../components/VitrineServico';
-import { Perfil } from './Perfil';
+import Perfil from './Perfil';
 import { useHistory } from 'react-router-dom';
 
-import { ModalDenuncia } from '../../ModalDenuncia';
+import ModalDenuncia from '../../ModalDenuncia';
 import { useAuth } from '../../../contexts/auth';
 import { geral_api } from '../../../services/geral_api';
 import { IServicoInfo } from '../../../interfaces/IServicoInfo';
 import { Helmet } from 'react-helmet';
 import { hotjar } from 'react-hotjar';
 
-export function Servico() {
+export default function Servico() {
   const [vitrineData, setVitrineData] = useState([] as IServicoInfo[]);
   const [showModalDenuncia, setShowModalDenuncia] = useState(false);
   const [urlAtual, setUrlAtual] = useState('');

@@ -1,4 +1,4 @@
-export const etapasMock = [
+const etapasMock = [
   { concluida: true, data: '28/09/2021', descricao: 'Projeto criado' },
   { concluida: false, data: '28/09/2021', descricao: 'Proposta Enviada' },
   { concluida: false, descricao: 'Solicitou revisão' },
@@ -129,3 +129,5 @@ export const metodosMock = [
   { status: 'pendente', descricao: 'Requisito 3' },
   { status: 'pendente', descricao: 'Requisito 4' },
 ];
+
+export default etapasMock;

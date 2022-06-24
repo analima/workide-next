@@ -12,7 +12,6 @@ import { consultas_api } from '../../../../services/consultas_api';
 import { CINZA_40, LARANJA, PRETO_10 } from '../../../../styles/variaveis';
 import { IGraduacao } from '../../../../interfaces/IProvider';
 import {
-  Content,
   InformacaoContainer,
   LabelContainer,
   InfoSection,
@@ -25,6 +24,7 @@ import {
   ActiveMoreInfos,
   ContainerLanguages,
 } from './style';
+import Content from './style';
 import { IoIosArrowDropdown, IoIosArrowDropup } from 'react-icons/io';
 import { pessoas_api } from '../../../../services/pessoas_api';
 
@@ -55,7 +55,7 @@ interface IIdiomasProps {
   nivel: string;
 }
 
-export function OutrasInformacoes({ data }: { data: IProvider }) {
+export default function OutrasInformacoes({ data }: { data: IProvider }) {
   const [skillDeclared, setSkillDeclared] = useState<string[]>([]);
   const [areaAtuacao, setAreaAtaucao] = useState<AreaAtuacaoProps>();
   const [areaInteresse, setAreaInteresse] = useState<IAreaInteresse[]>([]);

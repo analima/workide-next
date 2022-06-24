@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { PRETO_10, PRETO_40 } from '../../../styles/variaveis';
 
-export const Content = styled.section``;
+const Content = styled.section``;
 
 export const Titulo = styled.h2`
   font-size: 48px;
@@ -16,3 +16,5 @@ export const Subtitulo = styled.h3`
   line-height: 24px;
   color: ${PRETO_40};
 `;
+
+export default Content;

@@ -1,7 +1,7 @@
 import { CarrinhoConsumidorProvider } from '../../../hooks/carrinhoConsumidor';
-import { Layout } from '../Layout';
-import { CarrinhoContent } from './CarrinhoContent';
-import { Content } from './style';
+import Layout from '../Layout';
+import CarrinhoContent from './CarrinhoContent';
+import Content from './style';
 import { useLocation } from 'react-router-dom';
 import { IServicoInfo } from '../../../interfaces/IServicoInfo';
 import { Helmet } from 'react-helmet';
@@ -13,7 +13,7 @@ interface IStateProps {
   servicoInfo: IServicoInfo;
 }
 
-export function Carrinho() {
+export default function Carrinho() {
   const location = useLocation<IStateProps>();
   useEffect(() => {
     hotjar.initialize(

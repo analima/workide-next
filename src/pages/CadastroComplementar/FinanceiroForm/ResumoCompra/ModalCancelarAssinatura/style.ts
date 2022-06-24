@@ -2,7 +2,7 @@ import { Modal } from 'react-bootstrap';
 import styled from 'styled-components';
 import { AZUL, LARANJA, VERDE } from '../../../../../styles/variaveis';
 
-export const ModalContent = styled(Modal)`
+const ModalContent = styled(Modal)`
   width: 100vw;
   max-width: 100vw;
   .modal-content,
@@ -117,3 +117,5 @@ export const ExpirationDate = styled.span`
   font-size: 18px;
   color: ${AZUL};
 `;
+
+export default ModalContent;

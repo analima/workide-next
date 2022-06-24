@@ -1,6 +1,7 @@
 import { Col, Row } from 'react-bootstrap';
 import { Card } from '../../../../components/Card';
-import { Content, CardHeader, CardBody, CardContent } from './style';
+import { CardHeader, CardBody, CardContent } from './style';
+import Content from './style';
 import 'rc-steps/assets/index.css';
 import Steps from 'rc-steps';
 import { formatarValor } from '../../../../utils/CurrencyFormat';
@@ -20,7 +21,7 @@ interface IProps {
   filtro: string;
 }
 
-export function Ganhos({ filtro }: IProps) {
+export default function Ganhos({ filtro }: IProps) {
   const { user } = useAuth();
   const [meusGanhos, setMeusGanhos] = useState<IMeusGanhos>({} as IMeusGanhos);
 

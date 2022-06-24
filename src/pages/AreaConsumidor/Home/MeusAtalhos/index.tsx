@@ -1,9 +1,10 @@
 import { Col, Row } from 'react-bootstrap';
 import { Titulo } from '../../../../components/Titulo';
 import { VERDE } from '../../../../styles/variaveis';
-import { Atalho, AtalhoTexto, Content } from './style';
+import { Atalho, AtalhoTexto } from './style';
+import Content from './style';
 
-export function MeusAtalhos() {
+export default function MeusAtalhos() {
   return (
     <Content>
       <Titulo titulo="Meus atalhos" cor={VERDE} />

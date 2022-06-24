@@ -7,7 +7,8 @@ import { Spacer } from '../../../../../components/Spacer';
 import { Titulo } from '../../../../../components/Titulo';
 import { usePropostaConsumidor } from '../../../../../hooks/propostaConsumidor';
 import { PRETO_10, VERDE } from '../../../../../styles/variaveis';
-import { Content, MobileCenter, NumeroRegistros } from './style';
+import { MobileCenter, NumeroRegistros } from './style';
+import Content from './style';
 
 interface IProposta {
   propostas: IPropostasProps[];
@@ -26,7 +27,7 @@ interface IPropostasProps {
   idProjeto: number;
 }
 
-export function Propostas({ propostas }: IProposta) {
+export default function Propostas({ propostas }: IProposta) {
   const { dadosProjetos } = usePropostaConsumidor();
   const [propostasComTaxas, setPropostasComTaxas] = useState(propostas);
 

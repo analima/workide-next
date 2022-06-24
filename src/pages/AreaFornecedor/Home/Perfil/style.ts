@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { BRANCO } from '../../../../styles/variaveis';
 
-export const Content = styled.div`
+const Content = styled.div`
   min-height: 100%;
   background-color: ${BRANCO};
   padding: 32px 32px;
@@ -20,3 +20,5 @@ export const Content = styled.div`
     padding: 16px;
   }
 `;
+
+export default Content;

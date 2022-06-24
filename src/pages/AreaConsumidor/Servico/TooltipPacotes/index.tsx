@@ -12,7 +12,6 @@ import { FiHeart, FiShare2 } from 'react-icons/fi';
 import Venda from '../../../../assets/venda.svg';
 
 import {
-  Content,
   Descricao,
   DescricaoRodape,
   DescricaoTexto,
@@ -24,6 +23,7 @@ import {
   TooltipMember,
   ContentButton,
 } from './style';
+import Content from './style';
 import { useAuth } from '../../../../contexts/auth';
 import { useHistory } from 'react-router';
 import { ModalRecomendacao } from '../../../../components/ModalRecomendacao';
@@ -39,7 +39,7 @@ interface IItem {
   loadServico: () => void;
 }
 
-export function TooltipPacotes({
+export default function TooltipPacotes({
   pacote,
   itens,
   favoritos,

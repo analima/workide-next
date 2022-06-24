@@ -3,10 +3,10 @@ import { Titulo } from '../../../../components/Titulo';
 import {
   Avaliacao,
   AvaliacaoContainer,
-  Content,
   LabelAvaliacao,
   LabelIndicacao,
 } from './style';
+import Content from './style';
 import { TextArea } from '../../../../components/Form/TextArea';
 
 import { AZUL, CINZA_80, VERDE, VERMELHO } from '../../../../styles/variaveis';
@@ -14,7 +14,7 @@ import { range } from 'lodash';
 import { AiFillDislike, AiFillLike } from 'react-icons/ai';
 import { useAvaliacaoProjetoFornecedor } from '../../../../hooks/avaliacaoProjetoFornecedor';
 
-export function AjudeMelhorar() {
+export default function AjudeMelhorar() {
   const {
     control,
     nota_plataforma,

@@ -1,13 +1,14 @@
 import { FiArrowLeftCircle, FiArrowRightCircle } from 'react-icons/fi';
 import { Card } from '../../../../components/Card';
 import { AZUL_60 } from '../../../../styles/variaveis';
-import { Content, CardHeader, CardBody, CardContent } from './style';
+import { CardHeader, CardBody, CardContent } from './style';
+import Content from './style';
 import 'rc-steps/assets/index.css';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { formatarValor } from '../../../../utils/CurrencyFormat';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export function OutrosGanhos() {
+export default function OutrosGanhos() {
   const values = [
     {
       mes: 'Janeiro',

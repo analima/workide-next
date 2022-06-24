@@ -1,6 +1,6 @@
-import { Content, NavItem, Nav, NavLink } from './style';
-
-import { Dropdown as DropdownMenu } from './Dropdown';
+import { NavItem, Nav, NavLink } from './style';
+import Content from './style';
+import DropdownMenu from './Dropdown';
 import { useAuth } from '../../../../contexts/auth';
 import { IPessoa } from '../../../../interfaces/IPessoa';
 
@@ -8,7 +8,7 @@ interface ISidebar {
   open: boolean;
 }
 
-export function Sidebar({ open }: ISidebar) {
+export default function Sidebar({ open }: ISidebar) {
   let { user } = useAuth();
   if(!user){
     user = {} as IPessoa;

@@ -16,7 +16,7 @@ interface MensagemProps {
   mensagemEssencial: boolean;
 }
 
-export const Container = styled.div`
+const Container = styled.div`
   width: 100%;
   .overlay-prazo {
     background-color: red !important;
@@ -340,3 +340,5 @@ export const OverlayMessageVoluntario = styled(OverlayMessageFerramenta)`
     top: calc(50% + 85rem);
   }
 `;
+
+export default Container;

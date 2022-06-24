@@ -8,7 +8,6 @@ import { pessoas_api } from '../../../../services/pessoas_api';
 import { InputText } from '../../../../components/Form/InputText';
 
 import {
-  Content,
   Form,
   Label,
   Button,
@@ -17,6 +16,7 @@ import {
   ItemLabel,
   ItemAction,
 } from './style';
+import Content from './style';
 
 interface ICursosProps {
   id_pessoa: number;
@@ -45,7 +45,7 @@ const schema = Yup.object().shape({
     ),
 });
 
-export function Cursos({ id_pessoa, readonly }: ICursosProps) {
+export default function Cursos({ id_pessoa, readonly }: ICursosProps) {
   const {
     control,
     handleSubmit,

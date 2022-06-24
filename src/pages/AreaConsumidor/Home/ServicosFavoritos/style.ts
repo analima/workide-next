@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Content = styled.section`
+const Content = styled.section`
   .header {
     display: flex;
     justify-content: space-between;
@@ -18,3 +18,5 @@ export const Content = styled.section`
     }
   }
 `;
+
+export default Content;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { VERDE } from '../../../../styles/variaveis';
 
-export const Content = styled.section`
+const Content = styled.section`
   .header-recomendacao {
     display: flex;
     justify-content: space-between;
@@ -70,3 +70,5 @@ export const AvaliacaoCliente = styled.div`
     margin-right: 22px;
   }
 `;
+
+export default Content;

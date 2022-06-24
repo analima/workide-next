@@ -6,7 +6,7 @@ interface BarraProgressoPropsProps {
   porcentagem?: number;
 }
 
-export const Content = styled.div<BarraProgressoPropsProps>`
+const Content = styled.div<BarraProgressoPropsProps>`
   width: 100%;
   margin-top: 16px;
 
@@ -24,3 +24,5 @@ export const Content = styled.div<BarraProgressoPropsProps>`
     }
   }
 `;
+
+export default Content;

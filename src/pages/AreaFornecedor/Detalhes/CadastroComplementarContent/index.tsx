@@ -1,16 +1,16 @@
 import { Accordion, Col, Row  } from 'react-bootstrap';
 
-import { ComplementarForm } from '../ComplementarForm';
-import { CondicaoGeralForm } from '../CondicaoGeralForm';
-import { FinanceiroForm } from '../FinanceiroForm';
-import { ProdutoServicoForm } from '../ProdutoServicoForm';
-import { TurbineForm } from '../TurbineForm';
-import { Container, Button, ContentButton } from './style';
-
+import ComplementarForm from '../ComplementarForm';
+import CondicaoGeralForm from '../CondicaoGeralForm';
+import FinanceiroForm from '../FinanceiroForm';
+import ProdutoServicoForm from '../ProdutoServicoForm';
+import TurbineForm from '../TurbineForm';
+import { Button, ContentButton } from './style';
+import Container from './style';
 import ArrowButton from '../../../../assets/arrow.svg';
 import Image from 'next/image'
 
-export function CadastroComplementarContent() { 
+export default function CadastroComplementarContent() {
 
   return (
     <Container>
@@ -19,7 +19,7 @@ export function CadastroComplementarContent() {
         <Accordion defaultActiveKey="0">
           <div>
             <Accordion.Toggle  className="panel-toggle" eventKey="0">
-                <p className="panel-titulo">Dados pessoais</p> 
+                <p className="panel-titulo">Dados pessoais</p>
                 <div className="panel-seta"> <Image src={ArrowButton}  alt="Abrir" /> </div>
             </Accordion.Toggle>
           </div>
@@ -28,21 +28,21 @@ export function CadastroComplementarContent() {
           </Accordion.Collapse>
           <div>
             <Accordion.Toggle className="panel-toggle" eventKey="1">
-              <div className="panel-titulo">Turbine o seu potencial</div> 
-              <div className="panel-seta"> <Image src={ArrowButton}  alt="Abrir" /> </div>              
+              <div className="panel-titulo">Turbine o seu potencial</div>
+              <div className="panel-seta"> <Image src={ArrowButton}  alt="Abrir" /> </div>
             </Accordion.Toggle>
           </div>
           <Accordion.Collapse eventKey="1">
             <TurbineForm />
           </Accordion.Collapse>
-         
+
           <Accordion.Collapse eventKey="2">
              <ProdutoServicoForm />
-          </Accordion.Collapse>          
+          </Accordion.Collapse>
           <div>
             <Accordion.Toggle className="panel-toggle" eventKey="3">
-              <div className="panel-titulo">Dados Financeiros</div> 
-              <div className="panel-seta"> <Image src={ArrowButton}  alt="Abrir" /> </div>              
+              <div className="panel-titulo">Dados Financeiros</div>
+              <div className="panel-seta"> <Image src={ArrowButton}  alt="Abrir" /> </div>
             </Accordion.Toggle>
           </div>
           <Accordion.Collapse eventKey="3">
@@ -50,8 +50,8 @@ export function CadastroComplementarContent() {
           </Accordion.Collapse>
           <div>
             <Accordion.Toggle className="panel-toggle" eventKey="4">
-              <div className="panel-titulo">Condições gerais </div> 
-              <div className="panel-seta"> <Image src={ArrowButton}  alt="Abrir" /> </div>              
+              <div className="panel-titulo">Condições gerais </div>
+              <div className="panel-seta"> <Image src={ArrowButton}  alt="Abrir" /> </div>
             </Accordion.Toggle>
           </div>
           <Accordion.Collapse eventKey="4">

@@ -1,16 +1,15 @@
 import { Titulo } from '../../../../components/Titulo';
 import { PRETO_60 } from '../../../../styles/variaveis';
 
-import { CardFiltro, Content, FiltroGroup, FiltroInputCheck } from './style';
+import { CardFiltro, FiltroGroup, FiltroInputCheck } from './style';
+import Content from './style';
 import { Col, Row } from 'react-bootstrap';
 import { Spacer } from '../../../../components/Spacer';
 
 import { useCaptarProjetoFornecedor } from '../../../../hooks/captarProjetoFornecedor';
 import { InputNumber } from '../../../../components/Form/InputNumber';
-import {
-  FiltroSubarea,
-  Subarea,
-} from '../../../AreaConsumidor/Busca/Filtro/FiltroSubarea';
+import { Subarea } from '../../../AreaConsumidor/Busca/Filtro/FiltroSubarea';
+import FiltroSubarea from '../../../AreaConsumidor/Busca/Filtro/FiltroSubarea';
 import { Dispatch, SetStateAction, useCallback } from 'react';
 import FiltroHabilidades  from '../../../AreaConsumidor/Busca/Filtro/FiltroHabilidades';
 import { InputCheck } from '../../../../components/Form/InputCheck';
@@ -21,7 +20,7 @@ interface IProp {
   setFiltroEnviado: Dispatch<SetStateAction<boolean>>;
 }
 
-export function Filtro({ filtroEnviado, setFiltroEnviado }: IProp) {
+export default function Filtro({ filtroEnviado, setFiltroEnviado }: IProp) {
   const {
     control,
     watch,

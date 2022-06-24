@@ -2,7 +2,7 @@ import { lighten } from 'polished';
 import styled from 'styled-components';
 import { AZUL, BRANCO, CINZA_40, VERDE } from '../../../styles/variaveis';
 
-export const Avatar = styled.div`
+const Avatar = styled.div`
   display: flex;
   justify-content: center;
 `;
@@ -103,3 +103,5 @@ export const TransparentButton = styled.button`
   border: none;
   margin: 2rem auto;
 `;
+
+export default Avatar;

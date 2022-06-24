@@ -5,12 +5,12 @@ import { ModalFullRecordGuidance } from '../../../../../components/ModalFullReco
 import { useAuth } from '../../../../../contexts/auth';
 import { LARANJA } from '../../../../../styles/variaveis';
 import {
-  Content,
   NavDropdown,
   NavDropdownButton,
   NavDropdownItem,
   TituloDropdown,
 } from './style';
+import Content from './style';
 
 interface Item {
   link: string;
@@ -26,7 +26,7 @@ interface IDropdown {
   itens: Item[];
 }
 
-export function Dropdown({ titulo, itens }: IDropdown) {
+export default function Dropdown({ titulo, itens }: IDropdown) {
   const [state, setState] = useState(true);
   const { user } = useAuth();
 

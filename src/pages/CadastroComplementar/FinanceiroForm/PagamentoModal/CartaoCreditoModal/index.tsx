@@ -8,20 +8,20 @@ import {
   BoxRegistrosCartao,
   BtnAdicionarCartao,
   Cartao,
-  Content,
   LabelAdicionarCartao,
   LoadingText,
   RegistrosCartao,
   CardText,
 } from './style';
+import Content from './style';
 import { Button } from '../../../../../components/Form/Button';
-import { NovoCartaoModal } from './NovoCartaoModal';
+import NovoCartaoModal from './NovoCartaoModal';
 import { useInformacoesFinanceiras } from '../../../../../hooks/informacoesFinanceiras';
 import { Spacer } from '../../../../../components/Spacer';
-import { ModalAprovacaoPagamento } from './ModalAprovacaoPagamento';
+import ModalAprovacaoPagamento from './ModalAprovacaoPagamento';
 import { FiTrash2 } from 'react-icons/fi';
 import { pagamentos_api } from '../../../../../services/pagamentos_api';
-import { ModalDeletarCartao } from './ModalDeletarCartao';
+import ModalDeletarCartao from './ModalDeletarCartao';
 import { handleFormatDocument } from '../../../../../helpers/formatsHelper';
 import { useAuth } from '../../../../../contexts/auth';
 interface IModal {
@@ -37,7 +37,7 @@ interface IPaymentMethod {
   anoVencimento: string;
 }
 
-export function CartaoCreditoModal({ show, setShow }: IModal) {
+export default function CartaoCreditoModal({ show, setShow }: IModal) {
   const { assinaturaEscolhida } = useInformacoesFinanceiras();
   const [showNovoCartao, setShowNovoCartao] = useState(false);
   const [showModalAprovacao, setShowModalAprovacao] = useState(false);

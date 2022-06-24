@@ -1,5 +1,4 @@
 import {
-  Content,
   AndreContainer,
   AndreMensagem,
   AndrePersonagem,
@@ -7,6 +6,7 @@ import {
   ContainerButtons,
   ButtonConfirm,
 } from './style';
+import Content from './style';
 import Andre  from '../../../../../assets/andre-full.svg';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
 import { AZUL } from '../../../../../styles/variaveis';
@@ -28,7 +28,7 @@ type IdentificadorPlano =
   | 'profissional'
   | 'premium';
 
-export function AvatarUpgradePlano({
+export default function AvatarUpgradePlano({
   mostrar,
   esconderAvatar,
   planoEscolhido,

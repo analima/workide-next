@@ -2,9 +2,10 @@ import { useState } from 'react';
 import { Col, Modal, Row } from 'react-bootstrap';
 import { Titulo } from '../../../../components/Titulo';
 import { AZUL } from '../../../../styles/variaveis';
-import { CartaoCreditoModal } from './CartaoCreditoModal';
-import { PixModal } from './PixModal';
-import { CardTipoPagamento, CardTipoPagamentoDisabled, Content } from './style';
+import CartaoCreditoModal from './CartaoCreditoModal';
+import PixModal from './PixModal';
+import { CardTipoPagamento, CardTipoPagamentoDisabled } from './style';
+import Content from './style';
 import pixIcon from '../../../../assets/pix-icon.svg';
 import boletoIcon from '../../../../assets/boleto.svg';
 import cartaoIcon from '../../../../assets/cartao-credito.svg';
@@ -14,7 +15,7 @@ interface IModal {
   setShow: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export function PagamentoModal({ show, setShow }: IModal) {
+export default function PagamentoModal({ show, setShow }: IModal) {
   const [creditoShow, setCreditoShow] = useState(false);
   const [pixShow, setPixShow] = useState(false);
 

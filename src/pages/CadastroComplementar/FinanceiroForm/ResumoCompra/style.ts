@@ -13,7 +13,7 @@ interface OverlayGratuidadeProps {
   show: boolean;
 }
 
-export const Content = styled.div``;
+const Content = styled.div``;
 
 export const ResumoContainer = styled.div`
   display: flex;
@@ -214,3 +214,5 @@ export const OverlayGratuidade = styled.div<OverlayGratuidadeProps>`
     width: 100%;
   }
 `;
+
+export default Content;

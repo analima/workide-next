@@ -13,13 +13,13 @@ import { Foto } from '../../../../components/Foto';
 import { Titulo } from '../../../../components/Titulo';
 import {
   CloseModal,
-  Content,
   Button,
   FotoServico,
   ModalServicoHeader,
   ModalServicoBody,
   ModalServicoFooter,
 } from './style';
+import Content from './style';
 import { AZUL } from '../../../../styles/variaveis';
 
 interface IModalAdicionar {
@@ -41,7 +41,7 @@ const schema = Yup.object().shape({
   termo_autoria: Yup.boolean().required('Termo de autoria é obrigatório'),
 });
 
-export function ModalAdicionar({
+export default function ModalAdicionar({
   showModal,
   setShowModal,
   loadData,

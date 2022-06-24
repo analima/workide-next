@@ -2,7 +2,7 @@ import { lighten } from 'polished';
 import styled from 'styled-components';
 import { AZUL, BRANCO } from '../../../../styles/variaveis';
 
-export const Content = styled.section``;
+const Content = styled.section``;
 
 export const FotoServico = styled.section`
   margin: 16px 0;
@@ -50,3 +50,5 @@ export const ModalServicoHeader = styled.div``;
 export const ModalServicoBody = styled.div``;
 
 export const ModalServicoFooter = styled.div``;
+
+export default Content;

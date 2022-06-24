@@ -3,7 +3,6 @@ import { Col, Container, Modal, ModalBody, Row } from 'react-bootstrap';
 import { Titulo } from '../../../../components/Titulo';
 
 import {
-  Content,
   Button,
   GhostButton,
   ContainerAcoes,
@@ -11,6 +10,7 @@ import {
   Progresso,
   Porcentagem,
 } from './style';
+import Content from './style'
 import { AZUL, CINZA_40, LARANJA } from '../../../../styles/variaveis';
 import { oportunidades_api } from '../../../../services/oportunidades_api';
 import { useHistory } from 'react-router-dom';
@@ -24,7 +24,7 @@ interface IModalConcluir {
   isProBono: boolean;
 }
 
-export function ModalConcluir({
+export default function ModalConcluir({
   showModal,
   setShowModal,
   idProjeto,
@@ -95,15 +95,15 @@ export function ModalConcluir({
               <Col lg={12} className="mb-3">
                 {isProBono ? (
                   <Titulo
-                    titulo="ATENÇÃO: Ao concluir este projeto o 
+                    titulo="ATENÇÃO: Ao concluir este projeto o
                       status passa para concluído e habilitaremos a avaliação."
                     cor={CINZA_40}
                     tamanho={24}
                   />
                 ) : (
                   <Titulo
-                    titulo="ATENÇÃO: Ao concluir esse projeto, 
-                  você autoriza a liberação do pagamento integral 
+                    titulo="ATENÇÃO: Ao concluir esse projeto,
+                  você autoriza a liberação do pagamento integral
                   pelos serviços realizados a(o) contratado(a)."
                     cor={CINZA_40}
                     tamanho={24}

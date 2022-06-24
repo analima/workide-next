@@ -8,7 +8,7 @@ import {
   VERDE,
 } from '../../../../styles/variaveis';
 
-export const Content = styled.div`
+const Content = styled.div`
   min-height: 100%;
   flex: 2;
   background-color: ${BRANCO};
@@ -156,3 +156,5 @@ export const Button = styled.button`
     border-color: ${BRANCO};
   }
 `;
+
+export default Content;

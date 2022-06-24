@@ -5,7 +5,7 @@ interface IButtonProps {
   selected: boolean;
 }
 
-export const Container = styled.div`
+const Container = styled.div`
   .nav-link {
     height: 47px;
     display: flex;
@@ -90,3 +90,5 @@ export const Content = styled.div`
   justify-content: center;
   margin-top: 5rem;
 `;
+
+export default Container;

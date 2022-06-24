@@ -12,7 +12,6 @@ import IconeVoluntario from '../../../../assets/icon-voluntare.svg';
 import EstrelaOff from '../../../../assets/estrela-off.svg';
 import Estrela from '../../../../assets/estrela.svg';
 import {
-  Content,
   Header,
   HeaderInfo,
   HeaderContentButton,
@@ -45,9 +44,10 @@ import {
   FaixaProBono,
   Compartilhar,
 } from './style';
+import Content from './style';
 import { GiShare } from 'react-icons/gi';
 
-import { Layout } from '../../Layout';
+import Layout from '../../Layout';
 import { Spacer } from '../../../../components/Spacer';
 import { useHistory } from 'react-router-dom';
 import { itens } from '../../../../utils/mock-busca';
@@ -179,7 +179,7 @@ interface ListPerguntasProps {
   };
 }
 
-export function DetalhesProjeto() {
+export default function DetalhesProjeto() {
   const [areas, setAreas] = useState<string[]>([]);
   const [, setService] = useState<IProduct[] | Array<any>>([]);
   const [project, setProject] = useState<ProjetoProps>({} as ProjetoProps);

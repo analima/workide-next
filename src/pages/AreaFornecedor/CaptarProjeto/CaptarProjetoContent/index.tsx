@@ -5,23 +5,22 @@ import { useRouter } from 'next/router'
 import { Spacer } from '../../../../components/Spacer';
 
 
-import { Layout } from '../../Layout';
+import Layout from '../../Layout';
 import {
-  Content,
   Button,
   AcordeonContent,
   AcordeonToggle,
   FiltroTelaCheia,
 } from './style';
-
-import { NenhumProjeto } from '../NenhumProjeto';
-import { Projeto } from '../Projeto';
+import Content from './style';
+import NenhumProjeto from '../NenhumProjeto';
+import Projeto  from '../Projeto';
 import { useCaptarProjetoFornecedor } from '../../../../hooks/captarProjetoFornecedor';
 import { Paginacao } from '../../../../components/Paginacao';
 import { Titulo } from '../../../../components/Titulo';
 import { ToggleSwitch } from '../../../../components/Form/ToggleSwitch';
-import { Filtro } from '../Filtro';
-import { Ordenacao } from '../Ordenacao';
+import Filtro from '../Filtro';
+import Ordenacao from '../Ordenacao';
 import { SearchInput } from '../../../../components/Form/SearchInput';
 import { useAuth } from '../../../../contexts/auth';
 import { IPessoa } from '../../../../interfaces/IPessoa';
@@ -226,9 +225,9 @@ const CaptarProjetoContent: React.FC = () => {
                           tipo="normal"
                           projeto={projeto}
                           totalFavoritos={projetosFavoritos.length}
-                        /> 
+                        />
                       </Col>
-                    ))} 
+                    ))}
 
                     <Col lg={12} className="mt-3">
                       <Paginacao
@@ -239,7 +238,7 @@ const CaptarProjetoContent: React.FC = () => {
                       />
                     </Col>
                   </Row>
-                )} 
+                )}
                 {favorito && !!projetosFavoritos.length && (
                   <Row>
                     {projetosFavoritos.map((projeto, index) => (

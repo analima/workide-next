@@ -8,7 +8,6 @@ import QRCode from 'qrcode.react';
 import { useAuth } from '../../../../../contexts/auth';
 import Image from 'next/image'
 import {
-  Content,
   ContainerFinishPix,
   ContentLoad,
   ContentPixOpened,
@@ -18,13 +17,14 @@ import {
   ContainerPaymentFree,
   ActiveSignature,
 } from './style';
+import Content from './style';
 import { handleFormatDocument } from '../../../../../helpers/formatsHelper';
 interface IModal {
   show: boolean;
   setShow: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export function PixModal({ show, setShow }: IModal): JSX.Element {
+export default function PixModal({ show, setShow }: IModal): JSX.Element {
   const [isLoading, setIsLoading] = useState(true);
   const [errorSubscription, setErrorSubscription] = useState(false);
   const { user } = useAuth();

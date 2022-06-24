@@ -1,8 +1,8 @@
 import { PropostaConsumidorProvider } from '../../../hooks/propostaConsumidor';
-import { PropostaContent } from './PropostaContent';
-import { Content } from './style';
+import PropostaContent from './PropostaContent';
+import Content from './style';
 
-export function Proposta() {
+export default function Proposta() {
   return (
     <Content>
       <PropostaConsumidorProvider>

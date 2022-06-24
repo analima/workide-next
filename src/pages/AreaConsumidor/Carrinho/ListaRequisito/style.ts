@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { AZUL, PRETO_10 } from '../../../../styles/variaveis';
 
-export const Content = styled.div`
+const Content = styled.div`
   .form-switch > label {
     font-size: 24px;
     font-weight: bold;
@@ -37,3 +37,5 @@ export const RequisitoVazio = styled.h3`
   width: 100%;
   text-align: center;
 `;
+
+export default Content;

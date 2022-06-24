@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { lighten } from 'polished';
 import { AZUL, BRANCO, CINZA_10 } from '../../../../styles/variaveis';
 
-export const Content = styled.div``;
+const Content = styled.div``;
 
 export const ContainerAcoes = styled.div`
   display: flex;
@@ -88,3 +88,5 @@ export const Porcentagem = styled.p`
   margin-left: 25%;
   color: ${BRANCO};
 `;
+
+export default Content;

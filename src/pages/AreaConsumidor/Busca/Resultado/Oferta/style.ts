@@ -4,7 +4,7 @@ type Props = {
   isEmpty: boolean;
 };
 
-export const Content = styled.div<Props>`
+const Content = styled.div<Props>`
   padding: 0px;
   border-radius: 5px;
   display: ${props => (props.isEmpty ? 'block' : 'grid')};
@@ -43,3 +43,5 @@ export const ContainerCard = styled.div`
     grid-template-columns: repeat(1, 1fr);
   }
 `;
+
+export default Content;

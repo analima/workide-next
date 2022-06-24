@@ -4,7 +4,7 @@ const nextConfig = {
   images: {
     domains: ['files-gyan-hom.s3.amazonaws.com'],
   },
-  pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js'],
+  // pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js'],
   env:{
     SKIP_PREFLIGHT_CHECK:true,
     APP_HOST:'localhost',
@@ -31,10 +31,10 @@ const nextConfig = {
         source: '/:path*',
         destination: '/:path*'
       },
-      {
-        source: '/:path*',
-        destination: 'https://gyan.com.br/:path*'
-      }
+      // {
+      //   source: '/:path*',
+      //   destination: 'https://gyan.com.br/:path*'
+      // }
     ]
 
   },

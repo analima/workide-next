@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { LARANJA, PRETO_10 } from '../../../../styles/variaveis';
 
-export const Content = styled.div``;
+const Content = styled.div``;
 
 export const FotoPerfilContainer = styled.div`
   margin-bottom: 8px;
@@ -36,7 +36,7 @@ img:{
     margin: 16px 0;
   }
 }
- 
+
 `;
 
 export const NomeContainer = styled.div`
@@ -92,3 +92,5 @@ export const Sobre = styled.p`
     margin-top: 0px;
   }
 `;
+
+export default Content;

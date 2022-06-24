@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { BRANCO, AZUL } from '../../../../styles/variaveis';
 import ChevronDownIcon from '../../../../assets/circle-chevron-down-blue.svg';
 
-export const Content = styled.div`
+const Content = styled.div`
   margin: 2px 0 10px;
 
   .accordion-header {
@@ -32,3 +32,5 @@ export const Content = styled.div`
     }
   }
 `;
+
+export default Content;

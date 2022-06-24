@@ -8,7 +8,6 @@ import { pessoas_api } from '../../../../services/pessoas_api';
 import { InputText } from '../../../../components/Form/InputText';
 
 import {
-  Content,
   Form,
   Label,
   Button,
@@ -17,6 +16,7 @@ import {
   ItemLabel,
   ItemAction,
 } from './style';
+import Content from './style';
 
 interface IRedesSociaisProps {
   id_pessoa: number;
@@ -40,7 +40,7 @@ const schema = Yup.object().shape({
     .required('URL é obrigatória'),
 });
 
-export function RedesSociais({ id_pessoa, readonly }: IRedesSociaisProps) {
+export default function RedesSociais({ id_pessoa, readonly }: IRedesSociaisProps) {
   const {
     control,
     handleSubmit,

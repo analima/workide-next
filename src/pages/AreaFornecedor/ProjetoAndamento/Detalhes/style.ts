@@ -12,7 +12,7 @@ import {
   VERMELHO,
 } from '../../../../styles/variaveis';
 
-export const Content = styled.div`
+const Content = styled.div`
   .selected-items__container-icons-export {
     margin-left: auto;
 
@@ -383,3 +383,5 @@ export const Information = styled.span`
   color: ${PRETO_60};
   margin: 20px 0;
 `;
+
+export default Content;

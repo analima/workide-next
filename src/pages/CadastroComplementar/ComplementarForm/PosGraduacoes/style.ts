@@ -8,7 +8,7 @@ import {
   VERMELHO,
 } from '../../../../styles/variaveis';
 
-export const Content = styled.div``;
+const Content = styled.div``;
 
 export const Label = styled.label`
   margin-bottom: 8px;
@@ -65,3 +65,5 @@ export const ItemAction = styled.button`
     color: ${lighten(0.1, VERMELHO)};
   }
 `;
+
+export default Content;

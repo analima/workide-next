@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { CINZA_40, VERDE } from '../../../../styles/variaveis';
 
-export const Content = styled.div`
+const Content = styled.div`
   label {
     &:first-child {
       margin-right: 1rem;
@@ -30,7 +30,7 @@ export const Content = styled.div`
   }
 `;
 
-export const ContentCheck = styled.div`
+const ContentCheck = styled.div`
   display: flex;
   gap: 24px;
 
@@ -40,3 +40,6 @@ export const ContentCheck = styled.div`
     gap: 0;
   }
 `;
+
+export default Content;
+

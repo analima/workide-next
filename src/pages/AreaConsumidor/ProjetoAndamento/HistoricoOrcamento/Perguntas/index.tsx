@@ -5,8 +5,8 @@ import { ScrollContainer } from '../../../../../components/ScrollContainer';
 import { Spacer } from '../../../../../components/Spacer';
 import { Titulo } from '../../../../../components/Titulo';
 import { PRETO_10, VERDE } from '../../../../../styles/variaveis';
-import { Content, MobileCenter, NumeroRegistros } from './style';
-
+import { MobileCenter, NumeroRegistros } from './style';
+import Content from './style';
 import { useForm } from 'react-hook-form';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -30,7 +30,7 @@ interface QuemPerguntaProps {
   nomeTratamento: string;
 }
 
-export function Perguntas() {
+export default function Perguntas() {
   const [perguntas, setPerguntas] = useState<IPerguntasProps[]>([]);
   const [loading, setLoading] = useState(true);
   const [exibirPerguntas, setExibirPerguntas] = useState<boolean>(true);

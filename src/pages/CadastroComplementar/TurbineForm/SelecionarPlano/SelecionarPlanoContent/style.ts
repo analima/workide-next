@@ -6,7 +6,7 @@ interface IPropButton {
   selected: boolean;
 }
 
-export const Container = styled.div`
+const Container = styled.div`
   width: 100%;
 `;
 export const TituloGradiente = styled.h3`
@@ -146,3 +146,5 @@ export const GhostButtonVoltar = styled(GhostButton)`
     margin-top: 10px;
   }
 `;
+
+export default Container;

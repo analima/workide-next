@@ -3,7 +3,6 @@ import EstrelaOff from '../../../../assets/estrela-off.svg';
 import Estrela from '../../../../assets/estrela.svg';
 import {
   Avaliacao,
-  Content,
   CardReputacao,
   AvaliacaoTitulo,
   AvaliacaoTexto,
@@ -11,6 +10,7 @@ import {
   AvaliacaoCliente,
   NenhumaAvaliacaoContent,
 } from './style';
+import Content from './style';
 import Image from 'next/image'
 import { Titulo } from '../../../../components/Titulo';
 import { LARANJA, PRETO_10 } from '../../../../styles/variaveis';
@@ -19,7 +19,7 @@ import { oportunidades_api } from '../../../../services/oportunidades_api';
 import { formatDate } from '../../../../helpers/DateHelper';
 import { IEvaluation } from '../../../../interfaces/IProvider';
 
-export function SobreMim() {
+export default function SobreMim() {
   const [evaluations, setEvaluations] = useState<IEvaluation[]>(
     [] as IEvaluation[],
   );

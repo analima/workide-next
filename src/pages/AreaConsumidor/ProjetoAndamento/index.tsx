@@ -1,8 +1,8 @@
 import { PropostaConsumidorProvider } from '../../../hooks/propostaConsumidor';
-import { ProjetoAndamentoContent } from './ProjetoAndamentoContent';
-import { Content } from './style';
+import ProjetoAndamentoContent from './ProjetoAndamentoContent';
+import Content from './style';
 
-export function ProjetoAndamento() {
+export default function ProjetoAndamento() {
   return (
     <Content>
       <PropostaConsumidorProvider>

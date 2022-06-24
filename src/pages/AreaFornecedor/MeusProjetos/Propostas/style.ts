@@ -17,7 +17,7 @@ import {
   VERMELHO_70,
 } from '../../../../styles/variaveis';
 
-export const Content = styled.section`
+const Content = styled.section`
   .label {
     border-radius: 8px;
     padding: 4px 16px;
@@ -214,3 +214,5 @@ export const NenhumProjetoContent = styled.div`
   justify-content: center;
   margin-top: 32px;
 `;
+
+export default Content;

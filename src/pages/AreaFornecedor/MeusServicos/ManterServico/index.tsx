@@ -1,18 +1,18 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { CadastroServicoProvider } from '../../../../hooks/cadastroServico';
-import { Layout } from '../../Layout';
-import { ManterServicoContent } from './ManterServicoContent';
+import Layout from '../../Layout';
+import ManterServicoContent from './ManterServicoContent';
 import { hotjar } from 'react-hotjar';
 
-import { Content } from './style';
+import Content from './style';
 
 interface ILocationProps {
   aba?: number;
   id_servico?: number;
 }
 
-export function ManterServico() {
+export default function ManterServico() {
   const location = useLocation<ILocationProps>();
 
   const [isLoading, setIsLoading] = useState(true);

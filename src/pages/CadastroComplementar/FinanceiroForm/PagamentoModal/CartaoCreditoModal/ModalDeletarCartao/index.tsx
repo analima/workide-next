@@ -3,7 +3,8 @@ import { Alert, Modal } from 'react-bootstrap';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 import { handleFormatDocument } from '../../../../../../helpers/formatsHelper';
 import { pagamentos_api } from '../../../../../../services/pagamentos_api';
-import { Content, ContainerButtons, ButtonCancel, ButtonAccept } from './style';
+import { ContainerButtons, ButtonCancel, ButtonAccept } from './style';
+import Content from './style';
 import { useAuth } from '../../../../../../contexts/auth';
 interface IModal {
   show: boolean;
@@ -12,7 +13,7 @@ interface IModal {
   atualizarListaCartoes: () => Promise<void>;
 }
 
-export function ModalDeletarCartao({
+export default function ModalDeletarCartao({
   show,
   setShow,
   id_meio_pagamento_iugu,

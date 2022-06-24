@@ -2,7 +2,7 @@ import { lighten } from 'polished';
 import styled from 'styled-components';
 import { AZUL, BRANCO } from '../../../../../../styles/variaveis';
 
-export const Content = styled.section`
+const Content = styled.section`
   .acoes {
     svg {
       margin-left: 16px;
@@ -32,3 +32,5 @@ export const Button = styled.button`
     margin-top: 16px;
   }
 `;
+
+export default Content;

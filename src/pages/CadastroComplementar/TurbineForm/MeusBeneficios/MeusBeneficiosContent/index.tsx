@@ -8,7 +8,6 @@ import { FiArrowRightCircle } from 'react-icons/fi';
 import { useHistory } from 'react-router-dom';
 import Image from 'next/image'
 import {
-  Container,
   ContainerPlans,
   TablePlans,
   Title,
@@ -17,14 +16,14 @@ import {
   GhostButtonBranco,
   GhostButtonAzul,
 } from './style';
-
+import Container from './style';
 import { pagamentos_api } from '../../../../../services/pagamentos_api';
 import { handleFormatDocument } from '../../../../../helpers/formatsHelper';
-import { Layout } from '../../../Layout';
+import Layout from '../../../Layout';
 import { ModalFundador } from '../../../../../components/ModalFundador';
 import { AvatarCadastroIncompleto } from '../../../../../components/AvatarCadastroIncompleto';
 
-export function MeusBeneficiosContent(): JSX.Element {
+export default function MeusBeneficiosContent(): JSX.Element {
   const [mensagemEssencial, setMensagemEssencial] = useState(false);
   const [mensagemRecebimento, setMensagemRecebimento] = useState(false);
   const [taxaAdministrativa, setTaxaAdministrativa] = useState(false);

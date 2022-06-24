@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { AZUL, PRETO_40, VERDE } from '../../../../styles/variaveis';
 
-export const Content = styled.section`
+const Content = styled.section`
   .aba-ja-preenchida {
     a {
       background-color: ${VERDE} !important;
@@ -20,3 +20,5 @@ export const Content = styled.section`
     }
   }
 `;
+
+export default Content;

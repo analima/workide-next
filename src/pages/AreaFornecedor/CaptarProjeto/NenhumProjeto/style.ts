@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Content = styled.div``;
+const Content = styled.div``;
 
 export const TextoNenhumProjeto = styled.div`
   display: flex;
@@ -25,3 +25,5 @@ export const ContainerAntonio = styled.div`
     justify-content: center;
   }
 `;
+
+export default Content;

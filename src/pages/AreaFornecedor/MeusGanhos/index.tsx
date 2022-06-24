@@ -1,18 +1,19 @@
-import { Layout } from '../Layout';
-import { Spacer } from '../../../components/Spacer';
-import { Ganhos } from './Ganhos';
+import Layout from '../Layout';
+import {Spacer} from '../../../components/Spacer';
+import Ganhos from './Ganhos';
 import { useEffect } from 'react';
-import { GhostButton, ContentButton, FiltrosContainer, Filtro } from './style';
+import { GhostButton, FiltrosContainer, Filtro } from './style';
+import ContentButton from './style';
 import { Titulo } from '../../../components/Titulo';
 import { PRETO_10 } from '../../../styles/variaveis';
 import { useHistory } from 'react-router';
 import { Row, Col } from 'react-bootstrap';
-import { DetalhesDosGanhos } from './DetalhesGanhos';
+import DetalhesDosGanhos from './DetalhesGanhos';
 import { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { hotjar } from 'react-hotjar';
 
-export function MeusGanhos() {
+export default function MeusGanhos() {
   const history = useHistory();
   const [filtro, setFiltro] = useState<string>('');
 

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Content = styled.section`
+const Content = styled.section`
   textarea {
     border-radius: 8px;
   }
@@ -49,3 +49,5 @@ export const Content = styled.section`
     }
   }
 `;
+
+export default Content;

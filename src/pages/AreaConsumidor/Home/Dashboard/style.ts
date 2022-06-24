@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Content = styled.div`
+const Content = styled.div`
   > div {
     min-height: 400px;
     margin-top: 16px;
@@ -25,3 +25,5 @@ export const Content = styled.div`
     padding: 8px 0;
   }
 `;
+
+export default Content;

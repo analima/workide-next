@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { AZUL, BRANCO, CINZA_50, VERDE_20 } from '../../../../styles/variaveis';
 
-export const Content = styled.section`
+const Content = styled.section`
   .container-image {
     margin-right: 20px;
   }
@@ -97,3 +97,5 @@ export const TypographyDescriptionStyled = styled.p<PropsDescription>`
   overflow: hidden;
   white-space: ${props => (props.isSpace ? 'initial' : 'nowrap')};
 `;
+
+export default Content;

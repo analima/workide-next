@@ -2,15 +2,15 @@ import { useCallback, useEffect, useState } from 'react';
 import { Col, Row, Table } from 'react-bootstrap';
 import {
   ContainerFiltro,
-  Content,
   Filtro,
   Body,
   Resultados,
   NenhumProjetoContent,
 } from './style';
+import Content from './style';
 import Image from 'next/image'
 import SeloExlusivo from '../../../../assets/exclusive.svg';
-import { Paginacao } from '../Paginacao';
+import Paginacao from '../Paginacao';
 import { oportunidades_api } from '../../../../services/oportunidades_api';
 import { Card } from '../../../../components/Card';
 import { addDays, format, parseISO } from 'date-fns';
@@ -55,7 +55,7 @@ type PropostaProps = {
   values: IPropostas[];
 };
 
-export function Propostas() {
+export default function Propostas() {
   const [enviada, setEnviada] = useState(false);
   const [aguardandoPagamento, setAguardandoPagamento] = useState(false);
   const [recusada, setRecusada] = useState(false);

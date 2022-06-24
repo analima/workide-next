@@ -10,7 +10,7 @@ interface IServicoImagemProps {
   url: string;
 }
 
-export const Content = styled.section`
+const Content = styled.section`
   height: fit-content;
 
   .voltar-botao {
@@ -224,3 +224,5 @@ export const ContainerInput = styled.div`
     width: 100%;
   }
 `;
+
+export default Content;

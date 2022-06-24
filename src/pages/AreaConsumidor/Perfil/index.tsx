@@ -4,17 +4,17 @@ import { useForm } from 'react-hook-form';
 import { InputText } from '../../../components/Form/InputText';
 import { Foto } from '../../../components/Foto';
 import { Spacer } from '../../../components/Spacer';
-import { Layout } from '../../AreaConsumidor/Layout';
+import Layout from '../../AreaConsumidor/Layout';
 import  Accordion  from '../Accordion';
 import  AccordionItem  from '../Accordion/AccordionItem';
 import * as Yup from 'yup';
 import {
-  Content,
   GhostButton,
   FotoPerfil,
   LinkFornecedor,
   Condicao,
 } from './style';
+import Content from './style';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Titulo } from '../../../components/Titulo';
 import { AZUL, PRETO_60 } from '../../../styles/variaveis';
@@ -37,7 +37,7 @@ interface IDadosCartao {
   cvv: string;
 }
 
-export function Perfil() {
+export default function Perfil() {
   const {
     control,
     // handleSubmit,

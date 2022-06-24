@@ -1,4 +1,4 @@
-export const comprasMock = [
+const comprasMock = [
   {
     id: 1,
     descricao: 'Assinatura de plano Pro',
@@ -21,3 +21,5 @@ export const comprasMock = [
     vencimento: '2021-12-01',
   },
 ];
+
+export default comprasMock;

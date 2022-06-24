@@ -7,7 +7,7 @@ import {
   PRETO,
 } from '../../../../styles/variaveis';
 
-export const Content = styled.section`
+const Content = styled.section`
   padding: 0px;
   margin: 0px;
 `;
@@ -163,3 +163,5 @@ export const ContainerLanguages = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
+export default Content;

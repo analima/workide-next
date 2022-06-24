@@ -1,10 +1,10 @@
 import { Col, Row } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
-import { Layout } from '../Layout';
+import Layout from '../Layout';
 import { Spacer } from '../../../components/Spacer';
 import { GhostButton } from '../../../components/GhostButton';
-import { Contador } from './Contador';
-import { BarraProgresso } from './BarraProgresso';
+import Contador from './Contador';
+import BarraProgresso from './BarraProgresso';
 import MeusGanhos from '../../../assets/meus-ganhos.svg';
 import AguardandoRepasse from '../../../assets/aguardando-repasse.svg';
 import PropostasEnviadas from '../../../assets/propostas-enviadas.svg';
@@ -17,11 +17,11 @@ import { pagamentos_api } from '../../../services/pagamentos_api';
 import { formatarValorParaReais } from '../../../utils/CurrencyFormat';
 
 import {
-  Cabecalho,
   Contadores,
   ContadoresTitulo,
   ContadoresSubtitulo,
 } from './style';
+import Cabecalho from './style';
 import { useEffect, useState } from 'react';
 import { oportunidades_api } from '../../../services/oportunidades_api';
 import { addMonths, endOfMonth, startOfMonth } from 'date-fns';
@@ -36,7 +36,7 @@ interface IMeusGanhos {
   repasseEnviado: number;
 }
 
-export function Dashboard() {
+export default function Dashboard() {
   const [propostas, setPropostas] = useState([]);
   const [propostasAceitas, setPropostasAceitas] = useState(0);
   const [projetosMesPassado, setProjetosMesPassado] = useState(0);

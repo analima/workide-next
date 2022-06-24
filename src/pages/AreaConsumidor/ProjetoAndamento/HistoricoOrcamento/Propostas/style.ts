@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { BRANCO, AZUL } from '../../../../../styles/variaveis';
 
-export const Content = styled.div``;
+const Content = styled.div``;
 
 export const NumeroRegistros = styled.div`
   width: 52px;
@@ -23,3 +23,6 @@ export const MobileCenter = styled.div`
     margin-top: 16px;
   }
 `;
+
+export default Content;
+

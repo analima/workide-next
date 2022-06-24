@@ -11,9 +11,10 @@ import { Spacer } from '../../../../../components/Spacer';
 import { TextArea } from '../../../../../components/Form/TextArea';
 import { Titulo } from '../../../../../components/Titulo';
 import { AZUL, CINZA_40, PRETO } from '../../../../../styles/variaveis';
-import { ItemAdicionarExtras } from './ItemAdicionarExtras';
+import ItemAdicionarExtras from './ItemAdicionarExtras';
 
-import { Button, Content, GhostButton } from './style';
+import { Button, GhostButton } from './style';
+import Content from './style';
 import { useCadastroServico } from '../../../../../hooks/cadastroServico';
 import { IoMdHelpCircle } from 'react-icons/io';
 import { InputNumber } from '../../../../../components/Form/InputNumber';
@@ -53,7 +54,7 @@ const schema = Yup.object().shape({
   acrescimo: Yup.string().required('Acrescimo é obrigatório'),
 });
 
-export function AdicionarExtras({ continuar, voltar }: IAdicionarExtrasProps) {
+export default function AdicionarExtras({ continuar, voltar }: IAdicionarExtrasProps) {
   const {
     control,
     handleSubmit,
@@ -73,14 +74,14 @@ export function AdicionarExtras({ continuar, voltar }: IAdicionarExtrasProps) {
 
   const { idServico, mostrarDicaAntonio } = useCadastroServico();
   const mensagemServicoExtra = `
-  Em sua oferta você pode incluir serviços extras que possam 
-  interessar o seu cliente e tornar o seu serviço ainda mais completo. 
-  Ou até mesmo qualquer condição que não esteja incluso na oferta 
-  original por um adicional a mais. Esses serviços extras serão 
-  oferecidos junto com a oferta principal. Isso é bom! Por exemplo: 
-  caso seu cliente compre o seu plano básico, você ainda pode incluir 
-  na oferta os serviços adicionais que estariam em um plano mais completo 
-  cobrando o adicional de cada um deles. Assim o cliente pode também 
+  Em sua oferta você pode incluir serviços extras que possam
+  interessar o seu cliente e tornar o seu serviço ainda mais completo.
+  Ou até mesmo qualquer condição que não esteja incluso na oferta
+  original por um adicional a mais. Esses serviços extras serão
+  oferecidos junto com a oferta principal. Isso é bom! Por exemplo:
+  caso seu cliente compre o seu plano básico, você ainda pode incluir
+  na oferta os serviços adicionais que estariam em um plano mais completo
+  cobrando o adicional de cada um deles. Assim o cliente pode também
   personalizar o seu serviço e negociar as condições com você.
   `;
   const loadCasesSucesso = useCallback(async () => {

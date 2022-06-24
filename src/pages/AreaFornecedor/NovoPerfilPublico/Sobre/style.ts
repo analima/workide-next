@@ -13,7 +13,7 @@ interface Props {
   isActive?: boolean;
 }
 
-export const Content = styled.section`
+const Content = styled.section`
   position: relative;
   .text-grey {
     color: ${CINZA_40};
@@ -331,3 +331,5 @@ export const LinkToScroll = styled(Link)`
     font-size: 10.8px;
   }
 `;
+
+export default Content;

@@ -4,12 +4,12 @@ import { InputCheck } from '../../../../../components/Form/InputCheck';
 import { InputText } from '../../../../../components/Form/InputText';
 import { geral_api } from '../../../../../services/geral_api';
 import {
-  Container,
   Grupo,
   GrupoResultado,
   SubAreaContainer,
   SubAreaItem,
 } from './style';
+import Container from './style';
 
 export type Subarea = {
   id: number;
@@ -360,4 +360,4 @@ const FiltroSubarea = ({
   );
 };
 
-export { FiltroSubarea };
+export default FiltroSubarea;

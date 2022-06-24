@@ -2,7 +2,8 @@ import { Col, Container, Row, Table } from 'react-bootstrap';
 import { AZUL, VERMELHO } from '../../../../styles/variaveis';
 import { formatarValor } from '../../../../utils/CurrencyFormat';
 import { useAuth } from '../../../../contexts/auth';
-import { Content, ValorTotal } from './style';
+import { ValorTotal } from './style';
+import Content from './style';
 import { AvatarCadastroIncompleto } from '../../../../components/AvatarCadastroIncompleto';
 import { useEffect, useState } from 'react';
 import { IItens, IPacoteInfo } from '../../../../interfaces/IServicoInfo';
@@ -15,7 +16,7 @@ interface OpcoesPacoteProps {
   itens?: IItens[];
 }
 
-export function OpcoesPacoteNovo({ pacotes, itens }: OpcoesPacoteProps) {
+export default function OpcoesPacoteNovo({ pacotes, itens }: OpcoesPacoteProps) {
   const { user, refreshUserData } = useAuth();
   const [showDenuncedAvatar, setShowDenuncedAvatar] = useState(false);
   const [sizePage, setSizePage] = useState(0);

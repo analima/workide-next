@@ -1,10 +1,10 @@
 import { Col, Row } from 'react-bootstrap';
 import { DadosProjeto } from '../../../../../components/DadosProjeto';
 import { EtapasProjeto } from '../../../../../components/EtapasProjeto';
-import { Layout } from '../../../Layout';
-import { Content } from './style';
+import Layout from '../../../Layout';
+import Content from './style';
 
-import { CardProposal } from '../CardProposal';
+import CardProposal from '../CardProposal';
 import { Spacer } from '../../../../../components/Spacer';
 import { UserCard } from '../../../../../components/UserCard';
 import { Titulo } from '../../../../../components/Titulo';
@@ -100,7 +100,7 @@ interface ConsumidorProps {
   ativo: boolean;
 }
 
-export function PropostaContent() {
+export default function PropostaContent() {
   const { setIdProposta, idProposta } = usePropostaFornecedor();
   const [etapas, setEtapas] = useState<EtapasProps[]>([] as EtapasProps[]);
   const [detalhesProposta, setDetalhesProposta] =

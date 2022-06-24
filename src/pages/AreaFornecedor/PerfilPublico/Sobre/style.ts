@@ -12,7 +12,7 @@ interface Props {
   isActive?: boolean;
 }
 
-export const Content = styled.section`
+const Content = styled.section`
   .text-grey {
     color: ${CINZA_40};
   }
@@ -179,3 +179,5 @@ export const Button = styled.button<Props>`
     margin: 8px 0;
   }
 `;
+
+export default Content;

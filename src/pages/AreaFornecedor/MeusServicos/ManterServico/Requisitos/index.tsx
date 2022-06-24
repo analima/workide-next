@@ -12,9 +12,10 @@ import { Spacer } from '../../../../../components/Spacer';
 import { TextArea } from '../../../../../components/Form/TextArea';
 import { Titulo } from '../../../../../components/Titulo';
 import { AZUL, CINZA_40, PRETO_10 } from '../../../../../styles/variaveis';
-import { ItemRequisito } from './ItemRequisito';
+import ItemRequisito from './ItemRequisito';
 
-import { Button, Content, GhostButton } from './style';
+import { Button, GhostButton } from './style';
+import Content from './style'
 import { useCadastroServico } from '../../../../../hooks/cadastroServico';
 import { IoMdHelpCircle } from 'react-icons/io';
 import { ModalInformation } from '../../../../../components/ModalInformation';
@@ -39,7 +40,7 @@ const schema = Yup.object().shape({
     .required('Descrição do requisito é obrigatória'),
 });
 
-export function Requisitos({ continuar, voltar }: IRequisitosProps) {
+export default function Requisitos({ continuar, voltar }: IRequisitosProps) {
   const {
     control,
     handleSubmit,
@@ -53,10 +54,10 @@ export function Requisitos({ continuar, voltar }: IRequisitosProps) {
 
   const [listaRequisitos, setListaRequisitos] = useState<IRequisito[]>([]);
   const mensagemRequisito = `
-  Se para iniciar o seu trabalho você necessita previamente 
-  de um briefing completo, histórico do cliente ou outras 
-  informações e requisitos, informe em sua oferta para que 
-  os clientes possam reunir tudo o que precisa e otimizar 
+  Se para iniciar o seu trabalho você necessita previamente
+  de um briefing completo, histórico do cliente ou outras
+  informações e requisitos, informe em sua oferta para que
+  os clientes possam reunir tudo o que precisa e otimizar
   o tempo de produção.
   `;
   const { idServico, mostrarDicaAntonio } = useCadastroServico();

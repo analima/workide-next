@@ -5,7 +5,7 @@ import { lighten } from 'polished';
 import { LARANJA, BRANCO, CINZA_40, VERMELHO } from '../../styles/variaveis';
 import { TextArea } from '../../components/TextArea';
 
-export const Content = styled.div`
+const Content = styled.div`
   display: flex;
   .modal-container {
     width: 3000px !important;
@@ -133,3 +133,5 @@ export const TextAreaDenuncia = styled(TextArea)`
     height: 100px !important;
   }
 `;
+
+export default Content;

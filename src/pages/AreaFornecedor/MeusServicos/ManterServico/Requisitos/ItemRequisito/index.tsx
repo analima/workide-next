@@ -12,7 +12,8 @@ import { TextArea } from '../../../../../../components/Form/TextArea';
 import { Titulo } from '../../../../../../components/Titulo';
 import { AZUL, CINZA_80 } from '../../../../../../styles/variaveis';
 
-import { Button, Content } from './style';
+import { Button } from './style';
+import Content from './style';
 import { ModalExcludConfirmation } from '../../../../../../components/ModalExcludConfirmation';
 import { ModalInformation } from '../../../../../../components/ModalInformation';
 
@@ -35,7 +36,7 @@ const schema = Yup.object().shape({
   descricao: Yup.string().required('Descrição do requisito é obrigatória'),
 });
 
-export function ItemRequisito({
+export default function ItemRequisito({
   item,
   indice,
   loadItens,

@@ -2,7 +2,6 @@ import { Col, Container, Modal, ModalBody, Row } from 'react-bootstrap';
 import { Titulo } from '../../../../components/Titulo';
 
 import {
-  Content,
   ContainerAcoes,
   Aprovar,
   Negar,
@@ -17,6 +16,7 @@ import {
   InputStyled,
   EnviarRequisito,
 } from './style';
+import Content from './style';
 import { AZUL, CINZA_40, VERDE, VERMELHO } from '../../../../styles/variaveis';
 import {
   BsCheckCircle,
@@ -72,7 +72,7 @@ interface ListPerguntasProps {
   texto: string;
 }
 
-export function ModalAnalise({
+export default function ModalAnalise({
   showModal,
   setShowModal,
   dadosEntregavel,

@@ -11,7 +11,7 @@ import {
   PRETO_60,
 } from '../../../../../styles/variaveis';
 
-export const Content = styled.section`
+const Content = styled.section`
   .text--only-padding-top {
     padding-bottom: 0px;
     padding-left: 0px;
@@ -227,3 +227,5 @@ export const AjudaCalculadora = styled.a`
     text-decoration: underline;
   }
 `;
+
+export default Content;

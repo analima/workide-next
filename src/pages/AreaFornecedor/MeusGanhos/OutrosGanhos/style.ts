@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { AZUL, CINZA_10, PRETO_10 } from '../../../../styles/variaveis';
 
-export const Content = styled.div`
+const Content = styled.div`
   .detalhes {
     display: flex;
   }
@@ -113,3 +113,5 @@ export const CardContent = styled.div`
       color: ${PRETO_10};
   }
 `;
+
+export default Content;

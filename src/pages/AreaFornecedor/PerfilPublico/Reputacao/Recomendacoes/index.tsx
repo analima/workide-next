@@ -1,11 +1,10 @@
 import {
   Recomendacao,
-  Content,
   RecomendacaoTexto,
   RecomendacaoRodape,
   NenhumaRecomendacaoContent,
 } from './style';
-
+import Content from './style';
 import { useAuth } from '../../../../../contexts/auth';
 import { Titulo } from '../../../../../components/Titulo';
 import { LARANJA } from '../../../../../styles/variaveis';
@@ -23,7 +22,7 @@ interface IRecomendacao {
   fixa?: boolean;
 }
 
-export function Recomendacoes({ idPessoa }: { idPessoa?: number }) {
+export default function Recomendacoes({ idPessoa }: { idPessoa?: number }) {
   const { user } = useAuth();
   const [recomendacoes, setRecomendacoes] = useState<IRecomendacao[]>([]);
 

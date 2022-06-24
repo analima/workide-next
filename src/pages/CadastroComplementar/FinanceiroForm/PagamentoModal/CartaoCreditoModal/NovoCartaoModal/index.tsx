@@ -12,7 +12,8 @@ import { InputNumber } from '../../../../../../components/Form/InputNumber';
 import { InputText } from '../../../../../../components/Form/InputText';
 import { Titulo } from '../../../../../../components/Titulo';
 import { AZUL } from '../../../../../../styles/variaveis';
-import { ContainerAcoes, Content } from './style';
+import { ContainerAcoes } from './style';
+import Content from './style';
 import { pagamentos_api } from '../../../../../../services/pagamentos_api';
 import { handleFormatDocument } from '../../../../../../helpers/formatsHelper';
 import { useAuth } from '../../../../../../contexts/auth';
@@ -46,7 +47,7 @@ declare global {
   }
 }
 
-export function NovoCartaoModal({ show, setShow }: IModal) {
+export default function NovoCartaoModal({ show, setShow }: IModal) {
   const schema = Yup.object().shape({
     nome_cartao: Yup.string().required('Nome é obrigatório'),
     numero_cartao: Yup.string().required('Número do cartão é obrigatório'),

@@ -1,30 +1,29 @@
 import { Col, Container, Row, Card as NewCard } from 'react-bootstrap';
 import { Card } from '../../../../components/Card';
 import { Titulo } from '../../../../components/Titulo';
-import { Layout } from '../../../AreaConsumidor/Layout';
+import Layout from '../../../AreaConsumidor/Layout';
 import { useParams, useHistory } from 'react-router-dom';
 import { useLimitacoesPlanos } from '../../../../contexts/planLimitations';
 import { AvatarRegrasPlano } from '../../../../components/AvatarRegrasPlano';
 
 import {
-  Content,
   LinkReportAnuncio,
   ServicoImagem,
   ContentButton,
   Button,
 } from '../style';
+import Content from '../style';
 import { AZUL, PRETO_10 } from '../../../../styles/variaveis';
-import { TooltipDescricao } from '../TooltipDescricao';
+import TooltipDescricao from '../TooltipDescricao';
 import { useCallback, useEffect, useState } from 'react';
 import { Spacer } from '../../../../components/Spacer';
 import { VitrineServico } from '../../../../components/VitrineServico';
 
-import { ModalDenuncia } from '../../../ModalDenuncia';
+import ModalDenuncia from '../../../ModalDenuncia';
 import { geral_api } from '../../../../services/geral_api';
 import { ModalRecomendacao } from '../../../../components/ModalRecomendacao';
 import { ofertas_api } from '../../../../services/ofertas_api';
 import {
-  TypographyStyled,
   ContentPrimary,
   ContentUser,
   Avatar,
@@ -37,7 +36,7 @@ import {
   RequisitoContent,
   RequisitoLabel,
 } from './styled';
-
+import TypographyStyled from './styled';
 import { pessoas_api } from '../../../../services/pessoas_api';
 import { IServicoInfo } from '../../../../interfaces/IServicoInfo';
 import { useAuth } from '../../../../contexts/auth';
@@ -47,11 +46,11 @@ import { SEO } from '../../../../components/SEO';
 import EstrelaOff  from '../../../../assets/estrela-off.svg';
 import Estrela from '../../../../assets/estrela.svg';
 import { FaCheckCircle } from 'react-icons/fa';
-import { Pontuacao } from '../../../AreaFornecedor/Home/MinhaReputacao/Pontuacao';
+import Pontuacao from '../../../AreaFornecedor/Home/MinhaReputacao/Pontuacao';
 import { CardComentario } from '../../../../components/CardComentario';
-import { NovoPerfil } from '../NovoPerfil';
-import { TooltipPacotes } from '../TooltipPacotes';
-import { OpcoesPacoteNovo } from '../OpcoesPacoteNovo';
+import NovoPerfil from '../NovoPerfil';
+import TooltipPacotes from '../TooltipPacotes';
+import OpcoesPacoteNovo from '../OpcoesPacoteNovo';
 import { Skeleton } from '../../../../components/Skeleton';
 import { IoIosArrowDropdown, IoIosArrowDropup } from 'react-icons/io';
 
@@ -72,7 +71,7 @@ interface IServicoConsumidorPublicoParams {
   str_servico: string;
 }
 
-export function ServicoConsumidorPublico() {
+export default function ServicoConsumidorPublico() {
   const [vitrineData, setVitrineData] = useState<IServicoInfo[]>([]);
   const [showModalDenuncia, setShowModalDenuncia] = useState(false);
   const [pessoa, setPessoa] = useState<IPessoa>({} as IPessoa);

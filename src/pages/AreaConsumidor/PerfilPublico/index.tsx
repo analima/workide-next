@@ -1,20 +1,20 @@
 import { Col, Row } from 'react-bootstrap';
 import {
-  Content,
   ContentButtons,
   ButtonEditPerfil,
   GhostButton,
   LinkReportPerfil,
 } from './style';
-import { Sobre } from './Sobre';
+import Content from './style';
+import Sobre from './Sobre';
 import { Spacer } from '../../../components/Spacer';
-import { ProjetosCriados } from './ProjetosCriados';
-import { DizendoSobre } from './DizendoSobre';
+import ProjetosCriados from './ProjetosCriados';
+import DizendoSobre from './DizendoSobre';
 import { useEffect, useState } from 'react';
-import { ModalDenuncia } from '../../ModalDenuncia';
+import ModalDenuncia from '../../ModalDenuncia';
 import { useAuth } from '../../../contexts/auth';
 import { geral_api } from '../../../services/geral_api';
-import { Layout } from '../Layout';
+import Layout from '../Layout';
 import { useHistory } from 'react-router';
 import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
@@ -45,7 +45,7 @@ interface PerfilConsumidorProps {
   };
 }
 
-export function PerfilPublico() {
+export default function PerfilPublico() {
   const history = useHistory();
   const [showModalDenuncia, setShowModalDenuncia] = useState(false);
   const [urlAtual, setUrlAtual] = useState('');

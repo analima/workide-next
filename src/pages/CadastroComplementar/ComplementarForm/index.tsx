@@ -19,12 +19,12 @@ import { Button } from '../../../components/Form/Button';
 import { IoMdHelpCircle } from 'react-icons/io';
 
 import {
-  Content,
   Subtitulo,
   Actions,
   ContainerCausas,
   SkipButton,
 } from './style';
+import Content from './style';
 import { FiXCircle } from 'react-icons/fi';
 
 import { TextArea } from '../../../components/Form/TextArea';
@@ -44,7 +44,7 @@ import { InputNumber } from '../../../components/Form/InputNumber';
 import { ModalInformation } from '../../../components/ModalInformation';
 import { check18YearsOld } from '../../../utils/DateValidator';
 import { useGAEventsTracker } from '../../../hooks/useGAEventsTracker';
-import { UploadProfilePhoto } from './UploadProfilePhoto';
+import UploadProfilePhoto from './UploadProfilePhoto';
 
 interface IIuguCLienteData {
   email: string;
@@ -187,12 +187,12 @@ const schema = Yup.object().shape({
   }),
 });
 
-export function ComplementarForm() {
+export default function ComplementarForm() {
   const { user, refreshUserData } = useAuth();
   const { setAbaSelecionada, setMensagemAvatar, handleShowAvatar } =
     useCadastroComplementar();
-  const mensagemApelido = `A primeira impressão é a que fica não é verdade?! A foto que você escolher deve refletir o seu trabalho e o sentimento que você 
-    transmite com ele. Por exemplo, se trabalha com criatividade, experimente fotos únicas e inovadoras ou se deseja 
+  const mensagemApelido = `A primeira impressão é a que fica não é verdade?! A foto que você escolher deve refletir o seu trabalho e o sentimento que você
+    transmite com ele. Por exemplo, se trabalha com criatividade, experimente fotos únicas e inovadoras ou se deseja
     trabalhar com o meio empresarial, escolha uma foto espontânea, mas séria.*
 
     Além disso, você receberá dicas, informações e notificações em seu e-mail ou telefone, então adicione seu melhor contato para não perder nada.*

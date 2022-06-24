@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import { ContainerRecontratar } from '../../../../../../../components/Vitrine/style';
 import { BRANCO } from '../../../../../../../styles/variaveis';
 
-export const Container = styled.div`
+const Container = styled.div`
   width: 187px;
   height: 296px;
   border-radius: 5px;
@@ -76,3 +77,5 @@ export const ContentFooter = styled.div`
     -webkit-box-orient: vertical;
   }
 `;
+
+export default Container;

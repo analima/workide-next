@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Card } from '../../../../components/Card';
-import { ButtonCancel, Content } from './style';
-
-import { Layout } from '../../Layout';
+import { ButtonCancel } from './style';
+import Content from './style';
+import Layout from '../../Layout';
 import { Titulo } from '../../../../components/Titulo';
 import { Spacer } from '../../../../components/Spacer';
 import { ModalExcludConfirmation } from '../../../../components/ModalExcludConfirmation';
 import { UserPanel } from '../../../../components/UserPanel';
 import { ProgressBar } from '../../../../components/ProgessBar';
-import { listItems } from './configuration';
+
 import { ProposalCard } from '../../../../components/ProposalCard';
 import { UserCard } from '../../../../components/UserCard';
 import { RequirementsList } from '../../../../components/RequirementsList';
@@ -16,12 +16,12 @@ import { SearchProject } from '../../../../components/SearchProject';
 import { Helmet } from 'react-helmet';
 import { hotjar } from 'react-hotjar';
 
-export const Manter = (): JSX.Element => {
+const Manter = (): JSX.Element => {
   const [showModalConfirmation, setShowModalConfirmation] =
     useState<boolean>(false);
 
   const handleProjects = () => {};
-
+  const listItems = ['Requisito 01', 'Requisito 02', 'Requisito 03', 'Requisito 04']
   useEffect(() => {
     hotjar.initialize(
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
@@ -57,9 +57,9 @@ export const Manter = (): JSX.Element => {
           <Spacer size={20} />
           <Titulo titulo="CardProjectDuplicate" tamanho={28} />
           <Spacer size={20} />
-          {/* <CardProjectDuplicate 
+          {/* <CardProjectDuplicate
             nameProject="Nome do Projeto"
-            hours="12:00"  
+            hours="12:00"
             text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pharetra eu pulvinar mauris risus. Aliquam eget nunc ac natoque ac pharetra."
             arraySubArea={arraySubArea}
             handleClick={handlePublish}
@@ -159,3 +159,5 @@ export const Manter = (): JSX.Element => {
     </Content>
   );
 };
+
+export default Manter;

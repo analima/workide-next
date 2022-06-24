@@ -2,7 +2,7 @@ import { lighten } from 'polished';
 import styled from 'styled-components';
 import { AZUL } from '../../../../styles/variaveis';
 
-export const Content = styled.section`
+const Content = styled.section`
   .form-switch {
     display: flex;
     justify-content: space-between;
@@ -44,3 +44,5 @@ export const Content = styled.section`
     }
   }
 `;
+
+export default Content;

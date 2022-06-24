@@ -22,12 +22,11 @@ import {
 } from '../../../../styles/variaveis';
 
 import { dataValidation } from '../../../../utils/DateValidator';
-import { ModalConcluir } from '../ModalConcluir';
+import ModalConcluir from '../ModalConcluir';
 import {
   ArquivoAnexadoContainer,
   ButtonOrange,
   ContainerAcoes,
-  Content,
   TextoNegrito,
   Descricao,
   ContentChatStyled,
@@ -47,6 +46,7 @@ import {
   ContentQuantidadeHora,
   CondicoesGeraisContent,
 } from './style';
+import Content from './style';
 import IconeVoluntario from '../../../../assets/icon-voluntare.svg';
 
 import { pessoas_api } from '../../../../services/pessoas_api';
@@ -114,7 +114,7 @@ type DetalhesProps = {
 
 const schema = Yup.object().shape({});
 
-export function Detalhes({ getProjeto }: DetalhesProps) {
+export default function Detalhes({ getProjeto }: DetalhesProps) {
   const history = useHistory();
   const [loadingAnexo, setLoadingAnexo] = useState<boolean>(false);
   const [combinarNovamente, setCombinarNovamente] = useState(false);

@@ -5,7 +5,8 @@ import { AZUL, LARANJA, VERDE } from '../../../../styles/variaveis';
 import { formatarValor } from '../../../../utils/CurrencyFormat';
 import { useHistory } from 'react-router-dom';
 import { useAuth } from '../../../../contexts/auth';
-import { Content, Button, ValorTotal, ItemTipo } from './style';
+import { Button, ValorTotal, ItemTipo } from './style';
+import Content from './style';
 import { AvatarCadastroIncompleto } from '../../../../components/AvatarCadastroIncompleto';
 import { useEffect, useState } from 'react';
 import {
@@ -21,7 +22,7 @@ interface OpcoesPacoteProps {
   servicoInfo: IServicoInfo;
 }
 
-export function OpcoesPacote({
+export default function OpcoesPacote({
   pacotes,
   itens,
   servicoInfo,

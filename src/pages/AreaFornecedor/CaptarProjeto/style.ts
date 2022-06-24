@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { AZUL, BRANCO, LARANJA } from '../../../styles/variaveis';
 
-export const Content = styled.section`
+const Content = styled.section`
 `;
 
 export const CardContent = styled.div`
@@ -40,7 +40,7 @@ export const CardContent = styled.div`
 
   @media (max-width: 468px) {
     .oportunidade {
-      
+
       h4 {
         font-size: 14px;
         margin-bottom: 6px;
@@ -81,3 +81,4 @@ export const Button = styled.button`
   }
 `;
 
+export default Content;

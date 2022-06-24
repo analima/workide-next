@@ -1,9 +1,9 @@
 import { InformacoesFinanceirasProvider } from '../../../../hooks/informacoesFinanceiras';
-import { MeusBeneficiosContent } from './MeusBeneficiosContent';
+import MeusBeneficiosContent from './MeusBeneficiosContent';
 import { hotjar } from 'react-hotjar';
 import { useEffect } from 'react';
 
-export function MeusBeneficios(): JSX.Element {
+export default function MeusBeneficios(): JSX.Element {
   useEffect(() => {
     hotjar.initialize(
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,

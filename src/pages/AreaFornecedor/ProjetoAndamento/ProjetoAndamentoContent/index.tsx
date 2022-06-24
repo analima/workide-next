@@ -11,12 +11,12 @@ import {
   usePropostaFornecedor,
 } from '../../../../hooks/propostaFornecedor';
 import { oportunidades_api } from '../../../../services/oportunidades_api';
-import { Layout } from '../../Layout';
-import { Contratante } from '../Contratante';
-import { Detalhes } from '../Detalhes';
-import { Content } from './style';
+import Layout from '../../Layout';
+import Contratante from '../Contratante';
+import Detalhes from '../Detalhes';
+import Content from './style';
 
-export function ProjetoAndamentoContent() {
+export default function ProjetoAndamentoContent() {
   const location = useLocation();
   const { state }: { state: any } = location;
   const { project, setProject, etapas, setEtapas } = usePropostaFornecedor();

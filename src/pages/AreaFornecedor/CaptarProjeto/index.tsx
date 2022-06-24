@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet';
 import { CaptarProjetoFornecedorProvider } from '../../../hooks/captarProjetoFornecedor';
 import  CaptarProjetoContent  from './CaptarProjetoContent';
-import { Content } from './style';
+import Content from './style';
 import { hotjar } from 'react-hotjar';
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -26,7 +26,7 @@ import { useState } from 'react';
       <Helmet>
         <title>Gyan - Buscar oportunidades</title>
       </Helmet>
-      
+
       {!isLoading ? (
         <CaptarProjetoFornecedorProvider>
         <CaptarProjetoContent

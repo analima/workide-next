@@ -1,14 +1,15 @@
 import { Card } from '../../../../components/Card';
 import { Titulo } from '../../../../components/Titulo';
 import { PRETO_10 } from '../../../../styles/variaveis';
-import { Content, CardContent } from './style';
+import { CardContent } from './style';
+import Content from './style';
 import 'rc-steps/assets/index.css';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import { Spacer } from '../../../../components/Spacer';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export function GraficoDosGanhos() {
+export default function GraficoDosGanhos() {
   const dados = [
     {
       status: 'Aguardando pagamento',

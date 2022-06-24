@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { AZUL, AZUL_60 } from '../../../../styles/variaveis';
 
-export const Content = styled.div`
+const Content = styled.div`
   .form-switch > label {
     font-size: 24px;
     font-weight: bold;
@@ -42,3 +42,5 @@ export const RequisitoContainer = styled.div`
 `;
 
 export const RequisitoLabel = styled.div``;
+
+export default Content;

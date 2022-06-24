@@ -3,11 +3,11 @@ import { Card } from '../../../../components/Card';
 import { Titulo } from '../../../../components/Titulo';
 import { PRETO_10 } from '../../../../styles/variaveis';
 import {
-  Content,
   DetalhesGanhos,
   CardContent,
   NenhumRepasseEnviado,
 } from './style';
+import Content from './style';
 import { pagamentos_api } from '../../../../services/pagamentos_api';
 import { oportunidades_api } from '../../../../services/oportunidades_api';
 import { useAuth } from '../../../../contexts/auth';
@@ -38,7 +38,7 @@ interface IDadosConsumidor {
   id: number;
 }
 
-export function DetalhesDosGanhos() {
+export default function DetalhesDosGanhos() {
   const { user } = useAuth();
   const [dados, setDados] = useState<Array<IDadosRepasse>>(
     [] as IDadosRepasse[],

@@ -28,7 +28,7 @@ import {
   VERDE,
 } from '../../../../styles/variaveis';
 import { dataValidation } from '../../../../utils/DateValidator';
-import { ModalConcluir } from '../ModalConcluir';
+import ModalConcluir from '../ModalConcluir';
 import { ModalDesistir } from '../../../../components/ModalDesistir';
 
 import {
@@ -36,7 +36,6 @@ import {
   ArquivoAnexadoContainer,
   ButtonDesistir,
   ContainerAcoes,
-  Content,
   TextoNegrito,
   TextoDescricao,
   ContentChatStyled,
@@ -55,6 +54,7 @@ import {
   ContentQuantidadeHora,
   CondicoesGeraisContent,
 } from './style';
+import Content from './style';
 import { pessoas_api } from '../../../../services/pessoas_api';
 import { oportunidades_api } from '../../../../services/oportunidades_api';
 import { useHistory } from 'react-router';
@@ -68,7 +68,7 @@ import { ModalReviewConclusao } from '../../../../components/ModalReviewConclusa
 import { typeFile } from '../../../../utils/typeFile';
 import { ModalManagePayment } from '../../../../components/ModalManagePayment';
 import { useAuth } from '../../../../contexts/auth';
-import { ModalCreateSubaccount } from './ModalCreateSubaccount';
+import ModalCreateSubaccount from './ModalCreateSubaccount';
 import IconeVoluntario from '../../../../assets/icon-voluntare.svg';
 import { Skeleton } from '../../../../components/Skeleton';
 import ModalCancelProject from '../../../../components/ModalCancelProject';
@@ -115,7 +115,7 @@ type Props = {
   getProjeto: () => void;
 };
 
-export function Detalhes({ getProjeto }: Props) {
+export default function Detalhes({ getProjeto }: Props) {
   const history = useHistory();
   const [modalDesistir, setModalDesistir] = useState(false);
   const [modalConcluir, setModalConcluir] = useState(false);

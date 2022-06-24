@@ -6,7 +6,6 @@ import {
   NomeTitulo,
   Avaliacao,
   Button,
-  Content,
   FotoPerfil,
   ContentImg,
   CapaProps,
@@ -17,6 +16,7 @@ import {
   LinkToScroll,
   ContentSpinnerLoading,
 } from './style';
+import Content from './style';
 import Image from 'next/image'
 import EstrelaOff from '../../../../assets/estrela-off.svg';
 import Estrela from '../../../../assets/estrela.svg';
@@ -38,7 +38,7 @@ import { AvatarErroGeral } from '../../../../components/AvatarErroGeral';
 import { FiXCircle } from 'react-icons/fi';
 import { Spacer } from '../../../../components/Spacer';
 import CapaDefault from '../../../../assets/capa-default.png';
-import { UploadCapaPhoto } from '../UploadCapaPhoto';
+import UploadCapaPhoto from '../UploadCapaPhoto';
 import { Spinner } from '../../../../components/Spinner';
 
 type PropsPage = {
@@ -47,7 +47,7 @@ type PropsPage = {
   getProvider: () => void;
 };
 
-export function Sobre({ dataProps, getProvider, imageLoaded }: PropsPage) {
+export default function Sobre({ dataProps, getProvider, imageLoaded }: PropsPage) {
   const [showRecommendationModal, setShowRecommendationModal] = useState(false);
   const [idFornecedores, setIdFornecedores] = useState<number[]>([]);
   const [isFavorite, setIsFavorite] = useState(false);

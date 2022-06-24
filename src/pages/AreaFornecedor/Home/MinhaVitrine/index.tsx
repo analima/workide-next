@@ -3,13 +3,14 @@ import { VitrineServico } from '../../../../components/VitrineServico';
 
 import { Card } from '../../../../components/Card';
 import { Titulo } from '../../../../components/Titulo';
-import { Content, ContentButton, Button } from './style';
+import { ContentButton, Button } from './style';
+import Content from './style';
 import { ofertas_api } from '../../../../services/ofertas_api';
 
 import { useAuth } from '../../../../contexts/auth';
 import { IServicoInfo } from '../../../../interfaces/IServicoInfo';
 
-export function MinhaVitrine() {
+export default function MinhaVitrine() {
   const [vitrineData, setVitrineData] = useState([] as IServicoInfo[]);
   const { user } = useAuth();
 

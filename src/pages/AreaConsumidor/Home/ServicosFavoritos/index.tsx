@@ -4,13 +4,13 @@ import { VitrineServico } from '../../../../components/VitrineServico';
 
 import { Card } from '../../../../components/Card';
 import { Titulo } from '../../../../components/Titulo';
-import { Content } from './style';
+import Content from './style';
 import { PRETO_10 } from '../../../../styles/variaveis';
 
 import { ofertas_api } from '../../../../services/ofertas_api';
 import { IServicoInfo } from '../../../../interfaces/IServicoInfo';
 
-export function ServicosFavoritos() {
+export default function ServicosFavoritos() {
   const [vitrineData, setVitrineData] = useState([] as IServicoInfo[]);
   const query = useQuery();
 

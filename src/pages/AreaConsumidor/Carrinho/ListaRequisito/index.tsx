@@ -6,13 +6,13 @@ import { Titulo } from '../../../../components/Titulo';
 import { useCarrinhoConsumidor } from '../../../../hooks/carrinhoConsumidor';
 import { AZUL } from '../../../../styles/variaveis';
 import {
-  Content,
   RequisitoContainer,
   RequisitoLabel,
   RequisitoVazio,
 } from './style';
+import Content from './style';
 
-export function ListaRequisito() {
+export default function ListaRequisito() {
   const { control, servicoInfo } = useCarrinhoConsumidor();
 
   return (

@@ -15,7 +15,7 @@ interface GhostButtonProps {
   opacity?: number;
 }
 
-export const Content = styled.div`
+const Content = styled.div`
   background-color: ${AZUL};
   height: 76px;
   display: flex;
@@ -379,3 +379,5 @@ export const ContainerHeader = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
+
+export default Content;

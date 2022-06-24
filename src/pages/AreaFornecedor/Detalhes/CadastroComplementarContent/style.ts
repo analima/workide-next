@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { AZUL, BRANCO } from '../../../../styles/variaveis';
+import { Containe } from '../../../AreaConsumidor/Layout/HeaderPublico/style';
 
-export const Container = styled.div`
+const Container = styled.div`
   .panel-toggle {
 
     width: 100%;
@@ -25,7 +26,7 @@ export const Container = styled.div`
     color: rgba(0, 143, 229, 1);
 
     border-color:  rgba(0, 143, 229, 1);
-   
+
 
   }
 
@@ -74,7 +75,7 @@ export const Container = styled.div`
       width: 213px;
       height: 56px;
       border-radius: 8px;
-      color: rgba(0, 143, 229, 1);     
+      color: rgba(0, 143, 229, 1);
       border-color: rgba(0, 143, 229, 1);
 
       border: 1px solid rgba(0, 143, 229, 1);;
@@ -119,3 +120,5 @@ export const Button = styled(Link)`
     margin-top: 16px;
   }
 `;
+
+export default Container;

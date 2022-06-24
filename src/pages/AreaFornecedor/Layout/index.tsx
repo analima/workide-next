@@ -6,13 +6,14 @@ import { Rodape } from '../../../components/Rodape';
 import { Spacer } from '../../../components/Spacer';
 import { Titulo } from '../../../components/Titulo';
 
-import { Navbar as NavbarFornecedor } from '../../AreaFornecedor/Layout/Navbar/index';
-import { Navbar as NavbarConsumidor } from '../../AreaConsumidor/Layout/Navbar/index';
-import { Sidebar as SidebarFornecedor } from '../../AreaFornecedor/Layout/Sidebar/index';
-import { Sidebar as SidebarConsumidor } from '../../AreaConsumidor/Layout/Sidebar/index';
-import { Content, Subtitulo } from './style';
+import NavbarFornecedor from '../../AreaFornecedor/Layout/Navbar/index';
+import NavbarConsumidor from '../../AreaConsumidor/Layout/Navbar/index';
+import SidebarFornecedor from '../../AreaFornecedor/Layout/Sidebar/index';
+import SidebarConsumidor from '../../AreaConsumidor/Layout/Sidebar/index';
+import { Subtitulo } from './style';
+import Content from './style';
 import { useAuth } from '../../../contexts/auth';
-import { HeaderPublico } from '../../AreaConsumidor/Layout/HeaderPublico';
+import HeaderPublico from '../../AreaConsumidor/Layout/HeaderPublico';
 import { FeedbackChat } from '../../../components/FeedbackChat';
 import { IPessoa } from '../../../interfaces/IPessoa';
 
@@ -25,7 +26,7 @@ interface LayoutProps {
   isConsumidor?: boolean;
 }
 
-export function Layout({
+export default function Layout({
   subtitulo,
   titulo,
   titleIsNotBold,
@@ -35,7 +36,7 @@ export function Layout({
 }: LayoutProps) {
   const [sidebar, setSidebar] = useState(false);
   let { user } = useAuth();
-  
+
   if(!user){
     user = {} as IPessoa;
   }

@@ -2,7 +2,7 @@ import { LARANJA } from '../../../../../styles/variaveis';
 import styled from 'styled-components';
 import { BRANCO, CINZA_40 } from '../../../../../styles/variaveis';
 
-export const Content = styled.div``;
+const Content = styled.div``;
 
 interface IDica {
   mostrarAvatar: boolean;
@@ -100,3 +100,5 @@ export const ButtonCancel = styled.button`
   border: none;
   font-weight: bold;
 `;
+
+export default Content;

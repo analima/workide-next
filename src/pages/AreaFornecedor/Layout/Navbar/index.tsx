@@ -5,7 +5,6 @@ import { pt } from 'date-fns/locale';
 import { Container, Dropdown, ModalBody } from 'react-bootstrap';
 import { useAuth } from '../../../../contexts/auth';
 import {
-  Content,
   ContentSession,
   GhostButton,
   AcaoBell,
@@ -19,6 +18,7 @@ import {
   ContentButton,
   ContainerHeader,
 } from './style';
+import Content from './style';
 import Home  from '../../../../assets/House.svg';
 import { BsCircleFill } from 'react-icons/bs';
 import { AZUL, CINZA_40 } from '../../../../styles/variaveis';
@@ -43,7 +43,7 @@ interface INotification {
   link?: string;
 }
 
-export function Navbar({ toggleSidebar, hinddenOportunidades }: INavbar) {
+export default function Navbar({ toggleSidebar, hinddenOportunidades }: INavbar) {
   const history = useHistory();
   const { user } = useAuth();
   const [notifications, setNotifications] = useState<INotification[]>([]);

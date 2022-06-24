@@ -2,7 +2,7 @@ import { lighten } from 'polished';
 import styled from 'styled-components';
 import { AZUL, BRANCO } from '../../../../../styles/variaveis';
 
-export const Content = styled.section`
+const Content = styled.section`
   .acoes {
     svg {
       margin-left: 16px;
@@ -52,3 +52,5 @@ export const GhostButton = styled.button`
     font-size: 12px;
   }
 `;
+
+export default Content;

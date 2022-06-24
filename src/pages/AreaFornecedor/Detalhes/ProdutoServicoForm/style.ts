@@ -2,7 +2,7 @@ import { lighten } from 'polished';
 import styled from 'styled-components';
 import { AZUL, BRANCO } from '../../../../styles/variaveis';
 
-export const Content = styled.section`
+const Content = styled.section`
   .avatar {
     div {
       background-color: ${BRANCO};
@@ -81,3 +81,5 @@ export const Content = styled.section`
     padding: 6px 20px;
   }
 `;
+
+export default Content;

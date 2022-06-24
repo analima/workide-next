@@ -12,7 +12,7 @@ interface ProgressBarProp {
   status: string;
 }
 
-export const Content = styled.div`
+const Content = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -91,3 +91,5 @@ export const ContainerPaymentFree = styled.div`
     }
   }
 `;
+
+export default Content;

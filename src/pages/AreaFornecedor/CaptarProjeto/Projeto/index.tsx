@@ -10,14 +10,13 @@ import {
   VERDE,
 } from '../../../../styles/variaveis';
 import  Exclusivo from '../../../../assets/exclusive.svg';
-import { ModalDenuncia } from '../../../ModalDenuncia';
+import ModalDenuncia from '../../../ModalDenuncia';
 import IconeVoluntario  from '../../../../assets/icon-voluntare.svg';
 import EstrelaOff  from '../../../../assets/estrela-off.svg';
 import Estrela  from '../../../../assets/estrela.svg';
 import userPhoto from '../../../../assets/user.png';
 
 import {
-  Content,
   ContainerProjeto,
   ProjetoHeader,
   ProjetoBody,
@@ -44,7 +43,7 @@ import {
   ContentFooter,
   ContentTrash,
 } from './style';
-
+import Content from './style';
 import { Card } from '../../../../components/Card';
 import { Label } from '../../../../components/Label';
 import {
@@ -90,7 +89,7 @@ type ProjetoProps = {
   totalFavoritos?: number;
 };
 
-export function Projeto({ tipo, projeto, totalFavoritos = 0 }: ProjetoProps) {
+export default function Projeto({ tipo, projeto, totalFavoritos = 0 }: ProjetoProps) {
   let { user } = useAuth();
   let { limitacoesPlano } = useLimitacoesPlanos();
   if(!user){
@@ -318,9 +317,9 @@ export function Projeto({ tipo, projeto, totalFavoritos = 0 }: ProjetoProps) {
                     </div>
                   ) : (
                     <div style={{margin: '15px'}}>
-                    <Image style={{margin: '100px !important'}} src={CoracaoOff} onClick={handleFavoritar} /> 
-                    </div> 
-                  ))} 
+                    <Image style={{margin: '100px !important'}} src={CoracaoOff} onClick={handleFavoritar} />
+                    </div>
+                  ))}
 
                 {tipo === 'exclusivo' && (
                   <Exclusivo className="icon-exclusivo" />
@@ -347,11 +346,11 @@ export function Projeto({ tipo, projeto, totalFavoritos = 0 }: ProjetoProps) {
                     </DataPublicacao>
                   )}
                 </HeaderSecondary>
-              </TituloContainer> 
+              </TituloContainer>
 
                {projeto.proBono ? (
                 <FaixaProBono>
-                  <Image src={IconeVoluntario} /> 
+                  <Image src={IconeVoluntario} />
                   <div className="voluntariado">
                     {projeto.escopo === 'ABERTO' && (
                       <FaixaPrecoLabel right>Por hora</FaixaPrecoLabel>
@@ -378,8 +377,8 @@ export function Projeto({ tipo, projeto, totalFavoritos = 0 }: ProjetoProps) {
                     <p>Quantidade de horas: {projeto.totalHoras}h</p>
                   )}
                 </FaixaPrecoContainer>
-              )} 
-            </HeaderContent> 
+              )}
+            </HeaderContent>
           </ProjetoHeader>
 
           <ProjetoBody>
@@ -406,7 +405,7 @@ export function Projeto({ tipo, projeto, totalFavoritos = 0 }: ProjetoProps) {
                     <div style={{margin: '0px 10px'}}>
                     <Image style={{borderRadius: '100%'}}  src={consumidor.arquivo?.url || userPhoto} width={45} height={45} alt={consumidor.nome_tratamento} />
                     </div>
-                   
+
                   ) : (
                      <Skeleton width="45px" height="45px" radius="50%" />
                   )}
@@ -498,7 +497,7 @@ export function Projeto({ tipo, projeto, totalFavoritos = 0 }: ProjetoProps) {
             </ContainerInfo>
           </ProjetoFooter>
         </ContainerProjeto>
-      </Card> 
+      </Card>
 
       <ModalInformation
         showModal={showModalInformation}

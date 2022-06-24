@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { PRETO_10 } from '../../../styles/variaveis';
 
-export const Cabecalho = styled.section`
+const Cabecalho = styled.section`
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -49,3 +49,5 @@ export const ContadoresSubtitulo = styled.p`
   font-size: 1.5rem;
   color: ${PRETO_10};
 `;
+
+export default Cabecalho;

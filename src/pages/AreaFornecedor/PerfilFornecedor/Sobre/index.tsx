@@ -9,13 +9,13 @@ import {
   Ranking,
   Avaliacao,
   Button,
-  Content,
   FotoPerfil,
   Frame,
   GhostButton,
   Medalhas,
   SobreDrescricao,
 } from './style';
+import Content from './style';
 
 import EstrelaOff from '../../../../assets/estrela-off.svg';
 import Estrela from '../../../../assets/estrela.svg';
@@ -54,7 +54,7 @@ type UserProps = {
   tipo: string;
 };
 
-export function Sobre({ dataProps, isPreview = false }: PerfilFornecedorProps) {
+export default function Sobre({ dataProps, isPreview = false }: PerfilFornecedorProps) {
   const { user, refreshUserData } = useAuth();
   const [hasFundadorMedal, setHasFundadorMedal] = useState(false);
   const [hasVerificadoMedal, setHasVerificadoMedal] = useState(false);

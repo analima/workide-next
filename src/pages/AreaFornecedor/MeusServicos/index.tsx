@@ -7,19 +7,18 @@ import { useHistory } from 'react-router-dom';
 import { ofertas_api } from '../../../services/ofertas_api';
 import { useAuth } from '../../../contexts/auth';
 import { Spacer } from '../../../components/Spacer';
-import { Layout } from '../Layout';
+import Layout from '../Layout';
 import { Card } from '../../../components/Card';
 import { Titulo } from '../../../components/Titulo';
 import { AZUL, CINZA_10, LARANJA, PRETO_60 } from '../../../styles/variaveis';
 import { AiFillDownCircle, AiOutlineDownCircle } from 'react-icons/ai';
-import { ModalAdicionar } from './ModalAdicionar';
-import { ModalExcluir } from './ModalExcluir';
+import ModalAdicionar from './ModalAdicionar';
+import ModalExcluir from './ModalExcluir';
 import { formatDate } from '../../../helpers/DateHelper';
 import { AvatarCadastroIncompleto } from '../../../components/AvatarCadastroIncompleto';
 import { useLimitacoesPlanos } from '../../../contexts/planLimitations';
 
 import {
-  Content,
   Button,
   LabelCheck,
   Organizar,
@@ -35,6 +34,7 @@ import {
   Paginacao,
   ContainerInput,
 } from './style';
+import Content from './style';
 import { IoMdHelpCircle } from 'react-icons/io';
 import { Antonio } from '../../../components/Antonio';
 import { SearchInput } from '../../../components/SearchInput';
@@ -77,7 +77,7 @@ interface IPacote {
   tipo: string;
 }
 
-export function MeusServicos() {
+export default function MeusServicos() {
   const { user } = useAuth();
   const history = useHistory();
 
@@ -106,7 +106,7 @@ export function MeusServicos() {
   }
 
   const mensagem = `
-    Adicione e gerencie suas ofertas.* 
+    Adicione e gerencie suas ofertas.*
     Na Gyan o projeto é realmente seu: te damos a liberdade para deixá-lo a sua cara. Em cada oferta, você pode oferecer um ou três pacotes  totalmente configuráveis.  Por exemplo: Em cada pacote, você pode configurar plano de pagamento com diferentes preços e que contemplem diferentes entregas do projeto criado por você.*
     Ainda ficou com dúvida? Vamos juntos, tenho certeza que você vai curtir. Te vejo na próxima tela.
     `;

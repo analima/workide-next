@@ -9,12 +9,13 @@ import { Spacer } from '../../../../../components/Spacer';
 import { useCadastroServico } from '../../../../../hooks/cadastroServico';
 import { AZUL, CINZA_30, VERDE } from '../../../../../styles/variaveis';
 // import { AdicionarExtras } from '../AdicionarExtras';
-import { CaseSucesso } from '../CaseSucesso';
-import { Compartilhe } from '../Compartilhe';
-import { OpcoesPacote } from '../OpcoesPacote';
-import { Requisitos } from '../Requisitos';
+import CaseSucesso from '../CaseSucesso';
+import Compartilhe from '../Compartilhe';
+import OpcoesPacote from '../OpcoesPacote';
+import Requisitos from '../Requisitos';
 
-import { Content, NavButton } from './style';
+import { NavButton } from './style';
+import Content from './style';
 
 interface IManterServicoContentProps {
   aba?: number;
@@ -24,7 +25,7 @@ interface ILocationProps {
   id_servico?: number;
 }
 
-export function ManterServicoContent({ aba = 0 }: IManterServicoContentProps) {
+export default function ManterServicoContent({ aba = 0 }: IManterServicoContentProps) {
   const location = useLocation<ILocationProps>();
 
   const {

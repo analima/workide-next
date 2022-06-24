@@ -17,16 +17,17 @@ import OtherButton from '../../../components/Button';
 import { Accordion } from '../../../components/Accordion';
 import { AccordionItem } from '../../../components/Accordion/AccordionItem';
 import { InputTag } from '../../../components/Form/InputTag';
-import { RedesSociais } from './RedesSociais';
-import { Certificacoes } from './Certificacoes';
+import RedesSociais from './RedesSociais';
+import Certificacoes from './Certificacoes';
 import { IoMdHelpCircle } from 'react-icons/io';
 import { FiXCircle } from 'react-icons/fi';
 
-import { Content, Actions } from './style';
-import { Profissoes } from '../ComplementarForm/Profissoes';
-import { Graduacoes } from '../ComplementarForm/Graduacoes';
-import { PosGraduacoes } from '../ComplementarForm/PosGraduacoes';
-import { Cursos } from '../ComplementarForm/Cursos';
+import { Actions } from './style';
+import Content from './style';
+import Profissoes from '../ComplementarForm/Profissoes';
+import Graduacoes from '../ComplementarForm/Graduacoes';
+import PosGraduacoes from '../ComplementarForm/PosGraduacoes';
+import Cursos from '../ComplementarForm/Cursos';
 import { AZUL, PRETO_60 } from '../../../styles/variaveis';
 import { Titulo } from '../../../components/Titulo';
 import { UserData } from '../../../interfaces/userInterface';
@@ -48,7 +49,7 @@ import { AvatarAssinaturaInicial } from '../../../components/AvatarAssinaturaIni
 import { useGAEventsTracker } from '../../../hooks/useGAEventsTracker';
 import { useHistory } from 'react-router-dom';
 import { Spinner } from '../../../components/Spinner';
-import { Idioma } from '../ComplementarForm/Idioma';
+import Idioma from '../ComplementarForm/Idioma';
 
 interface IFormProps {
   resumo_profissional: string;
@@ -82,7 +83,7 @@ interface ISubareaSelecionada {
 
 const schema = Yup.object().shape({});
 
-export function TurbineForm() {
+export default function TurbineForm() {
   const { user, refreshUserData } = useAuth();
   const GAEventsTracker = useGAEventsTracker('Cadastro Complementar');
   const {
@@ -126,25 +127,25 @@ export function TurbineForm() {
   const { limitacoesPlano, buscarLimitacoes } = useLimitacoesPlanos();
   const mensagemVideo = `Entre diversos recursos para personalização de perfil, nós temos o vídeo de apresentação voltado para os profissionais. Ele é valioso por ser intuitivo, interessante e informativo para os clientes que os assistem. Mas se você, profissional, não sabe nem por onde começar, aqui vão 4 sugestões.*
     1) Um bom plano é escrever um roteiro.*
-    Para qualquer vídeo de qualidade é preciso ter planejado e escrito tudo o que você precisa falar, isso transmite confiança e profissionalismo. No roteiro você pode resumir suas formações e capacitações, experiências de trabalho e de vida, habilidades inusitadas, enfim, tudo que o seu potencial cliente precisará saber. 
-    Para escrever um bom roteiro, você pode testar as falas enquanto escreve, usar frases que se conectam entre si, imaginar como ficará o produto final e com qual entonação você vai expressar as palavras.* 
-   
+    Para qualquer vídeo de qualidade é preciso ter planejado e escrito tudo o que você precisa falar, isso transmite confiança e profissionalismo. No roteiro você pode resumir suas formações e capacitações, experiências de trabalho e de vida, habilidades inusitadas, enfim, tudo que o seu potencial cliente precisará saber.
+    Para escrever um bom roteiro, você pode testar as falas enquanto escreve, usar frases que se conectam entre si, imaginar como ficará o produto final e com qual entonação você vai expressar as palavras.*
+
     2)	Muito importante também é ter ideia de duração.*
-    Sabemos que o tanto de atenção que alguém dá para um vídeo diminui conforme sua duração se estende. É chave, portanto, saber comprimir as informações num vídeo curto, de forma que fique natural e não se torne maçante. É um verdadeiro desafio atingir eficácia na dualidade entre conteúdo e duração, mas com testes de gravação e atuação interativa é possível alcançar o melhor dos dois mundos. 
+    Sabemos que o tanto de atenção que alguém dá para um vídeo diminui conforme sua duração se estende. É chave, portanto, saber comprimir as informações num vídeo curto, de forma que fique natural e não se torne maçante. É um verdadeiro desafio atingir eficácia na dualidade entre conteúdo e duração, mas com testes de gravação e atuação interativa é possível alcançar o melhor dos dois mundos.
     E falando em testes, as últimas dicas são para a hora da gravação.*
 
     3) Atenção ao ângulo.*
-    É bom manter a câmera estável e apontada para o seu rosto durante a gravação do vídeo. Um tripé é a melhor opção, mas caso não tenha um, apoie em livros ou em objetos retos e pesados.* 
-    
+    É bom manter a câmera estável e apontada para o seu rosto durante a gravação do vídeo. Um tripé é a melhor opção, mas caso não tenha um, apoie em livros ou em objetos retos e pesados.*
+
     4) Atenção ao áudio.*
     Enquanto a qualidade de imagem não é tão importante para a imersão do cliente, a do áudio é. Investir no som que vai para o produto final é interessante. A melhor alternativa é o uso de um microfone, mas caso não tenha um, você também pode utilizar o microfone no cabo do fone de ouvido que acompanha vários celulares, gravar em um espaço com baixo eco,  falar em direção a câmera e desligar aparelhos que podem interferir com barulho, como o ar condicionado.*
-    
-    Anotou? Vamos recapitular: 
+
+    Anotou? Vamos recapitular:
     1) Roteiro
     2) Duração
     3) Ângulo
     4) Áudio*
-     
+
     Agora é hora de arrasar!
     `;
   const mensagemCategoria = `
@@ -166,13 +167,13 @@ export function TurbineForm() {
   const mensagemProfissao = `
     Preencha esse campo com sua profissão, nos conte com o que você trabalha!*
     Que tal alguns exemplos:*
-    Arquiteto de redes, Ciência de dados, desenvolvedor mobile, Programador web, Analista de Negócios, Agente Publicitário, Estrategista de Marketing Digital e muitas outras.*  
+    Arquiteto de redes, Ciência de dados, desenvolvedor mobile, Programador web, Analista de Negócios, Agente Publicitário, Estrategista de Marketing Digital e muitas outras.*
     Você pode adicionar mais de uma profissão.
     `;
 
   const mensagemGraduacao = `
     Você deu duro para chegar até aqui, nos conte o que aprendeu.*
-    Toda capacitação tem seu valor, aqui você pode mostrar a todos tudo o que já fez para aperfeiçoar seu trabalho. Valorizamos sua especialização e o tempo que você levou para atingi-la, utilize esse espaço para se destacar!   
+    Toda capacitação tem seu valor, aqui você pode mostrar a todos tudo o que já fez para aperfeiçoar seu trabalho. Valorizamos sua especialização e o tempo que você levou para atingi-la, utilize esse espaço para se destacar!
     `;
 
   const mensagemHabilidades = `

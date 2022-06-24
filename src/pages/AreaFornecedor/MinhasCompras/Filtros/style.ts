@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { AZUL, BRANCO } from '../../../../styles/variaveis';
 
-export const Content = styled.div``;
+const Content = styled.div``;
 
 export const ContainerFiltro = styled.div`
   display: flex;
@@ -63,3 +63,5 @@ export const Filtrar = styled.button`
   justify-content: center;
   white-space: nowrap;
 `;
+
+export default Content;

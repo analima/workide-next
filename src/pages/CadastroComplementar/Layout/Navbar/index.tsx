@@ -4,7 +4,6 @@ import {
   AcaoBell,
   ButtonNotifications,
   ContainerHeader,
-  Content,
   ContentButton,
   ContentModal,
   ContentModalNotifications,
@@ -15,6 +14,7 @@ import {
   Notification,
   TitleNotification,
 } from './style';
+import Content from './style';
 import Home from '../../../../assets/House.svg';
 import { Dropdown, ModalBody } from 'react-bootstrap';
 import { Titulo } from '../../../../components/Titulo';
@@ -43,7 +43,7 @@ interface INotification {
   parsedNotificacao: string;
 }
 
-export function Navbar({ toggleSidebar, isConsumidor }: INavbar) {
+export default function Navbar({ toggleSidebar, isConsumidor }: INavbar) {
   const history = useHistory();
   const [notifications, setNotifications] = useState<INotification[]>([]);
   const [unreadNotifications, setUnreadNotifications] = useState<number>(0);

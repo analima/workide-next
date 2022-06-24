@@ -17,7 +17,6 @@ import { useAuth } from '../../../../contexts/auth';
 import { AvatarModeracao } from '../../../../components/AvatarModeracao';
 
 import {
-  Content,
   DiasCorridosContainer,
   Error,
   Load,
@@ -26,13 +25,14 @@ import {
   AjudaCalculadora,
   TitleCondicoes,
 } from './style';
+import Content from './style';
 import { ModalInformation } from '../../../../components/ModalInformation';
 import { formatToPrice } from '../../../../helpers/formatsHelper';
 import { InputMoney } from '../../../../components/Form/InputMoney';
 import { useLimitacoesPlanos } from '../../../../contexts/planLimitations';
 import { ModalCalculadora } from '../../../../components/ModalCalculadora';
 
-export function Enviar() {
+export default function Enviar() {
   const {
     control,
     errors,

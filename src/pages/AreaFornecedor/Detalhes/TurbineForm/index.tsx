@@ -15,7 +15,7 @@ import { TextArea } from '../../../../components/TextArea';
 
 import { FaPlus } from 'react-icons/fa';
 import DeleteButton from '../../../../assets/coolicon.svg';
-import { Content } from './style';
+import Content from './style';
 import { useCallback } from 'react';
 import { LabelCheck } from '../../../../components/LabelCheck';
 import { InputTag } from '../../../../components/Form/InputTag';
@@ -39,7 +39,7 @@ interface ISubareaSelecionada {
   id_subarea_interesse: number;
 }
 
-export function TurbineForm() {
+export default function TurbineForm() {
   const { user } = useAuth();
   const { pessoa, setPessoa, updateFornecedor, setAbaSelecionada } =
     useCadastroComplementar();

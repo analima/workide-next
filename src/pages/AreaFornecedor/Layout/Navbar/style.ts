@@ -11,7 +11,7 @@ import {
   PRETO,
 } from '../../../../styles/variaveis';
 
-export const Content = styled.div`
+const Content = styled.div`
   padding: 16px 40px;
   background-color: ${LARANJA};
 
@@ -356,3 +356,5 @@ export const ContainerHeader = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
+
+export default Content;

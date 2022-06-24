@@ -8,7 +8,8 @@ import { Spacer } from '../../../../components/Spacer';
 import { Titulo } from '../../../../components/Titulo';
 import { usePropostaConsumidor } from '../../../../hooks/propostaConsumidor';
 import { LARANJA, VERDE } from '../../../../styles/variaveis';
-import { Content, NumeroRegistros } from './style';
+import { NumeroRegistros } from './style';
+import Content from './style';
 
 interface IPergunta {
   perguntas: IPerguntaRespostaProps[];
@@ -34,7 +35,7 @@ interface IRespostaProps {
   autor?: string;
 }
 
-export function Perguntas({ perguntas }: IPergunta) {
+export default function Perguntas({ perguntas }: IPergunta) {
   const [loading, setLoading] = useState(true);
   const { control, getValues } = usePropostaConsumidor();
 
