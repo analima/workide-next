@@ -9,10 +9,8 @@ import React, {
 } from 'react';
 
 import { consultas_api } from '../services/consultas_api';
-import {
-  IFiltroOferta,
-} from '../pages/AreaConsumidor/Busca/Filtro';
-import IFiltroFornecedor from '../pages/AreaConsumidor/Busca/Filtro';
+import { IFiltroOferta } from '../components/AreaConsumidor/Busca/Filtro';
+import IFiltroFornecedor from '../components/AreaConsumidor/Busca/Filtro';
 import { useQuery } from './geral';
 import {
   Control,
@@ -154,7 +152,9 @@ const BuscaFornecedorOferta = createContext<BuscaFornecedorOfertaProps>(
   {} as BuscaFornecedorOfertaProps,
 );
 
-export const BuscaFornecedorOfertaProvider: React.FC<GlobalLayoutProps>= ({ children }) => {
+export const BuscaFornecedorOfertaProvider: React.FC<GlobalLayoutProps> = ({
+  children,
+}) => {
   const query = useQuery();
 
   const [volunteers, setVolunteers] = useState<boolean>(false);
@@ -297,7 +297,6 @@ export const BuscaFornecedorOfertaProvider: React.FC<GlobalLayoutProps>= ({ chil
           ...ofertasQuery,
         })
         .then(({ data }) => {
-
           setService(data.values);
           setTotalPaginas(data.pages);
         });
