@@ -15,7 +15,7 @@ import {
 import { CardProjectDuplicate } from '../CardProjectDuplicate';
 import { oportunidades_api } from '../../services/oportunidades_api';
 import { useCadastroProjeto } from '../../hooks/cadastroProjetos';
-import { Subarea } from '../../pages/AreaConsumidor/Busca/Filtro/FiltroSubarea';
+import { Subarea } from '../AreaConsumidor/Busca/Filtro/FiltroSubarea';
 import { LARANJA, PRETO_10 } from '../../styles/variaveis';
 
 interface IModalRecomendacao {

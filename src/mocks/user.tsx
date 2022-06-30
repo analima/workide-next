@@ -1,4 +1,4 @@
-export const user = {
+const user = {
   arquivo: {
     id: 'e660fd99-4df8-4844-b085-3b979fdb0f22',
     nome: 'a2b6e78a03221fe852ad-2021-11-26.png',
@@ -70,3 +70,5 @@ export const user = {
   visitante: false,
   voluntariado: true,
 };
+
+export default user;
