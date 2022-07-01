@@ -2,13 +2,13 @@ name= "gyan-next"
 env= "hom"
 region = "us-west-2" 
 vpc="vpc-0ff531caadea3c221"
-container_port=3333
+container_port=3000
 cidr="10.142.80.0/21"
 health_check_path="/"
 alb_tls_cert_arn="arn:aws:acm:us-west-2:812671651954:certificate/621cf05e-6f6d-4d33-bd60-c4f276e8c7fb"
 container_image="812671651954.dkr.ecr.us-west-2.amazonaws.com/gyan-next-hom:latest"
 container_environment=[ {"name": "APP_HOST", "value": "0.0.0.0"},
-                        {"name": "APP_PORT", "value": "3333"},
+                        {"name": "APP_PORT", "value": "3000"},
                         {"name": "TYPEORM_CONNECTION", "value": "postgres"},
                         {"name": "TYPEORM_HOST", "value": "gyan-hom.cyv2jz21vs4m.us-west-2.rds.amazonaws.com"},
                         {"name": "TYPEORM_DATABASE", "value": "gyan"},
