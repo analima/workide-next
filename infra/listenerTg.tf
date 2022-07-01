@@ -1,19 +1,33 @@
-resource "aws_lb_target_group" "nlb" {
-  name        = "arquivos-tg-nlb-${var.env}"
-  port        = 8085
-  protocol    = "TCP"
+resource "aws_alb_target_group" "main" {
+  name        = "next-tg-${var.env}"
+  port        = 80
+  protocol    = "HTTP"
   vpc_id      = var.vpc
   target_type = "ip"
  
+  health_check {
+   healthy_threshold   = "3"
+   interval            = "30"
+   protocol            = "HTTP"
+   matcher             = "200-401"
+   timeout             = "3"
+   path                = var.health_check_path
+   unhealthy_threshold = "2"
+  }
 }
 
-resource "aws_lb_listener" "front_end" {
-  load_balancer_arn = var.nlb_arn
-  port              = "8085"
-  protocol          = "TCP"
+resource "aws_alb_listener_rule" "next" {
+  listener_arn = var.listener_arn
+  priority     = 110
 
-  default_action {
+  action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.nlb.arn
+    target_group_arn = aws_alb_target_group.main.arn
+  }
+
+  condition {
+    path_pattern {
+      values = ["/*"]
+    }
   }
 }
