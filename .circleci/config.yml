@@ -1,0 +1,353 @@
+version: 2.1
+
+orbs:
+  aws-ecr: circleci/aws-ecr@7.0.0
+  slack: circleci/slack@4.4.2
+  
+jobs:
+  build-push-hom:
+    working_directory: /tmp/project
+    docker:
+      - image: 'cimg/base:stable'
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: false
+          version: 19.03.13
+      - run:
+          name: buil & push ecr
+          command: |
+            cd /tmp/project/app/
+      - aws-ecr/build-and-push-image: 
+            account-url: AWS_ECR_ACCOUNT_URL
+            aws-access-key-id: AWS_ACCESS_KEY_ID
+            aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+            create-repo: false
+            dockerfile: Dockerfile
+            path: ./app
+            region: AWS_REGION
+            repo: arquivos-api-hom
+            tag: "$CIRCLE_SHA1,latest"
+      - slack/notify:
+            event: fail
+            mentions: '@suporte'
+            template: basic_fail_1
+  
+  build-push-ppr:
+    working_directory: /tmp/project
+    docker:
+      - image: 'cimg/base:stable'
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: false
+          version: 19.03.13
+      - run:
+          name: buil & push ecr
+          command: |
+            cd /tmp/project/app/
+      - aws-ecr/build-and-push-image: 
+            account-url: AWS_ECR_ACCOUNT_URL
+            aws-access-key-id: AWS_ACCESS_KEY_ID
+            aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+            create-repo: false
+            dockerfile: Dockerfile
+            path: ./app
+            region: AWS_REGION
+            repo: arquivos-api-ppr
+            tag: "$CIRCLE_SHA1,latest"
+      - slack/notify:
+            event: fail
+            mentions: '@suporte'
+            template: basic_fail_1
+
+  build-push-prod:
+    working_directory: /tmp/project
+    docker:
+      - image: 'cimg/base:stable'
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: false
+          version: 19.03.13
+      - run:
+          name: buil & push ecr
+          command: |
+            cd /tmp/project/app/
+      - aws-ecr/build-and-push-image: 
+            account-url: AWS_ECR_ACCOUNT_URL
+            aws-access-key-id: AWS_ACCESS_KEY_ID
+            aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+            create-repo: false
+            dockerfile: Dockerfile
+            path: ./app
+            region: AWS_REGION
+            repo: arquivos-api-prod
+            tag: "$CIRCLE_SHA1,latest"
+      - slack/notify:
+            event: fail
+            mentions: '@suporte'
+            template: basic_fail_1
+
+        
+  plan-apply-hom:
+    working_directory: /tmp/project
+    docker:
+      - image: docker.mirror.hashicorp.services/hashicorp/terraform:light
+    steps:
+      - checkout
+      - run:
+          name: terraform init & plan
+          command: |
+            apk add curl
+            apk add jq
+            cd /tmp/project/infra
+            export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+            export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+            terraform init -var-file=./inventory/hom/var.tfvars
+            terraform workspace select hom
+            terraform plan -out tfapplyhom -var-file="./inventory/hom/var.tfvars"
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+      - slack/notify:
+            event: fail
+            mentions: '@suporte'
+            template: basic_fail_1
+      
+  apply-hom:
+    working_directory: /tmp/project
+    docker:
+      - image: docker.mirror.hashicorp.services/hashicorp/terraform:light
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: terraform
+          command: |
+            apk add curl
+            apk add jq
+            cd /tmp/project/infra
+            export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+            export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+            terraform apply -auto-approve tfapplyhom
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+      - slack/notify:
+            event: fail
+            mentions: '@suporte'
+            template: basic_fail_1
+      
+      - slack/notify:
+            event: pass
+            template: basic_success_1  
+
+  plan-apply-ppr:
+    working_directory: /tmp/project
+    docker:
+      - image: docker.mirror.hashicorp.services/hashicorp/terraform:light
+    steps:
+      - checkout
+      - run:
+          name: terraform init & plan
+          command: |
+            apk add curl
+            apk add jq
+            cd /tmp/project/infra
+            export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+            export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+            terraform init -var-file=./inventory/ppr/var.tfvars
+            terraform workspace select ppr
+            terraform plan -out tfapplyppr -var-file="./inventory/ppr/var.tfvars"
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+      - slack/notify:
+            event: fail
+            mentions: '@suporte'
+            template: basic_fail_1
+      
+  apply-ppr:
+    working_directory: /tmp/project
+    docker:
+      - image: docker.mirror.hashicorp.services/hashicorp/terraform:light
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: terraform
+          command: |
+            apk add curl
+            apk add jq
+            cd /tmp/project/infra
+            export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+            export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+            terraform apply -auto-approve tfapplyppr
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+      - slack/notify:
+            event: fail
+            mentions: '@suporte'
+            template: basic_fail_1
+      
+      - slack/notify:
+            event: pass
+            template: basic_success_1
+
+  plan-apply:
+    working_directory: /tmp/project
+    docker:
+      - image: docker.mirror.hashicorp.services/hashicorp/terraform:light
+    steps:
+      - checkout
+      - run:
+          name: terraform init & plan
+          command: |
+            apk add curl
+            apk add jq
+            cd /tmp/project/infra
+            export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+            export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+            terraform init -var-file=./inventory/prod/var.tfvars
+            terraform workspace select prod
+            terraform plan -out tfapply -var-file=./inventory/prod/var.tfvars
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+      - slack/notify:
+            event: fail
+            mentions: '@suporte'
+            template: basic_fail_1
+
+  apply:
+    working_directory: /tmp/project
+    docker:
+      - image: docker.mirror.hashicorp.services/hashicorp/terraform:light
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: terraform
+          command: |
+            apk add curl
+            apk add jq
+            cd /tmp/project/infra
+            export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+            export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+            terraform apply -auto-approve tfapply
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+      - slack/notify:
+            event: fail
+            mentions: '@suporte'
+            template: basic_fail_1
+      
+      - slack/notify:
+            event: pass
+            template: basic_success_1  
+
+
+workflows:
+  build_and_push_image:
+    jobs:
+      - build-push-hom: 
+          context: homolog
+          name: ecr-hom
+          filters:  # using regex filters requires the entire branch to match
+            branches:
+              only:
+                - develop
+          
+      - plan-apply-hom:
+          context: homolog
+          requires:
+            - ecr-hom
+          filters:  # using regex filters requires the entire branch to match
+            branches:
+              only:
+                - develop    
+      - apply-hom:
+          context: homolog
+          requires:
+            - plan-apply-hom
+          filters:  # using regex filters requires the entire branch to match
+            branches:
+              only:
+                - develop
+
+      - build-push-ppr: 
+          context: ppr
+          name: ecr-ppr
+          filters:  # using regex filters requires the entire branch to match
+            branches:
+              only:
+                - HotFix
+          
+      - plan-apply-ppr:
+          context: ppr
+          requires:
+            - ecr-ppr
+          filters:  # using regex filters requires the entire branch to match
+            branches:
+              only:
+                - HotFix    
+      - apply-ppr:
+          context: ppr
+          requires:
+            - plan-apply-ppr
+          filters:  # using regex filters requires the entire branch to match
+            branches:
+              only:
+                - HotFix
+                
+      - build-push-prod:
+          context: production
+          name: ecr-prod
+          filters:  # using regex filters requires the entire branch to match
+            branches:
+              only:
+                - master
+      
+      - plan-apply:
+          context: production
+          requires: 
+            - ecr-prod
+          filters:  # using regex filters requires the entire branch to match
+            branches:
+              only:
+                - master
+      - slack/on-hold:
+          context: production
+          mentions: '@suporte'
+          requires:
+            - plan-apply
+          filters:  # using regex filters requires the entire branch to match
+            branches:
+              only:
+                - master
+      - hold-apply:
+          context: production
+          type: approval
+          requires:
+            - plan-apply
+          filters:  # using regex filters requires the entire branch to match
+            branches:
+              only:
+                - master
+      - apply:
+          context: production
+          requires:
+            - hold-apply
+          filters:  # using regex filters requires the entire branch to match
+            branches:
+              only:
+                - master

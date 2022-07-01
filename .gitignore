@@ -33,3 +33,15 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+.DS_Store
+.env
+.vscode/
+node_modules
+coverage/
+build/
+dist/
+app/tmp/*.*
+app/tmp/uploads/*
+!app/tmp/.gitkeep
+!app/tmp/uploads/.gitkeep
+.terraform*
