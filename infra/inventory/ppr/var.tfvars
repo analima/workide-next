@@ -1,12 +1,12 @@
-name= "arquivos-api"
+name= "gyan-next"
 env= "ppr"
 region = "us-west-2" 
 vpc="vpc-0ff531caadea3c221"
 container_port=3333
 cidr="10.142.80.0/21"
-health_check_path="/arquivos/health"
+health_check_path="/"
 alb_tls_cert_arn="arn:aws:acm:us-west-2:812671651954:certificate/621cf05e-6f6d-4d33-bd60-c4f276e8c7fb"
-container_image="812671651954.dkr.ecr.us-west-2.amazonaws.com/arquivos-api-ppr:latest"
+container_image="812671651954.dkr.ecr.us-west-2.amazonaws.com/gyan-next-ppr:latest"
 container_environment=[ {"name": "APP_HOST", "value": "0.0.0.0"},
                         {"name": "APP_PORT", "value": "3333"},
                         {"name": "TYPEORM_CONNECTION", "value": "postgres"},

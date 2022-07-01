@@ -15,7 +15,7 @@ data "aws_ecr_image" "backend" {
 
 
 resource "aws_ecs_task_definition" "backend" {
-  family = "td-arquivos-api-${var.env}"
+  family = "td-gyan-next-${var.env}"
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
   cpu                      = var.cpu
@@ -27,18 +27,6 @@ resource "aws_ecs_task_definition" "backend" {
    image       = "${var.container_image}@${data.aws_ecr_image.backend.image_digest}"
    essential   = true
    environment = var.container_environment
-   "secrets" = [{
-                  "name": "TYPEORM_USERNAME",
-                  "valueFrom": "${var.secret_id}:username::"
-                },
-                {
-                  "name": "TYPEORM_PASSWORD",
-                  "valueFrom": "${var.secret_id}:password::"
-                },
-                {
-                  "name": "APP_JWK",
-                  "valueFrom": "${var.parameter_id}"
-                }]
    portMappings = [{
      protocol      = "tcp"
      containerPort = var.container_port
