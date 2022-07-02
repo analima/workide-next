@@ -45,7 +45,7 @@ variable "subnets" {
   
 }
 
-variable "listener_arn" {
+variable "nlb_arn" {
   
 }
 
@@ -74,5 +74,9 @@ variable "memory" {
 }
 
 variable "parameter_id" {
+  
+}
+
+variable "acm_arn" {
   
 }

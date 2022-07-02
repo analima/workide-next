@@ -12,7 +12,6 @@ container_environment=[ {"name": "APP_HOST", "value": "0.0.0.0"},
                         ]
 cluster_name="cluster-gyan-hom"
 subnets=["subnet-088f25a4bb7af05d9","subnet-071a0c615343f69f4","subnet-059a5378d9503100d","subnet-03657454904b0bf66"]
-listener_arn="arn:aws:elasticloadbalancing:us-west-2:812671651954:listener/app/nextalbhom/898149bf7f67f3fb/43901740840d6ca4"
 retention=14
 health_check_grace_period_seconds=300
 secret_id="arn:aws:secretsmanager:us-west-2:812671651954:secret:dbinfo-hom-FC7vSR"
@@ -20,3 +19,5 @@ parameter_id="arn:aws:ssm:us-west-2:812671651954:parameter/APP_JWK-HOM"
 bucket_name="files-gyan-hom"
 cpu=256
 memory=1024
+acm_arn="arn:aws:acm:us-west-2:812671651954:certificate/621cf05e-6f6d-4d33-bd60-c4f276e8c7fb"
+nlb_arn="arn:aws:elasticloadbalancing:us-west-2:812671651954:loadbalancer/net/next-nlb-hom/13c1377e3b6dad12"
