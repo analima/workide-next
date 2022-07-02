@@ -1,9 +1,10 @@
 resource "aws_alb_target_group" "main" {
   name        = "next-tg-${var.env}"
-  port        = 80
+  port        = 3000
   protocol    = "HTTP"
   vpc_id      = var.vpc
   target_type = "ip"
+  deregistration_delay = 60
  
   health_check {
    healthy_threshold   = "3"
