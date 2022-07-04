@@ -4,12 +4,11 @@ const nextConfig = {
   images: {
     domains: ['files-gyan-hom.s3.amazonaws.com'],
   },
-  //pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js'],
+  pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js'],
   env:{
-    SKIP_PREFLIGHT_CHECK:true,
-    APP_HOST:'localhost',
-    APP_PORT:3000,
-    SKIP_PREFLIGHT_CHECK:true,
+    SKIP_PREFLIGHT_CHECK:process.env.SKIP_PREFLIGHT_CHECK,
+    APP_HOST:process.env.APP_HOST,
+    APP_PORT:process.env.APP_PORT,
     REACT_APP_URL:process.env.REACT_APP_URL,
     REACT_APP_SEGURANCA_API:process.envREACT_APP_SEGURANCA_API,
     REACT_APP_GERAL_API:process.env.REACT_APP_GERAL_API,
@@ -33,7 +32,7 @@ const nextConfig = {
       },
       {
         source: '/:path*',
-        destination: process.env.REACT_APP_PROXY_HOST+':path*'
+        destination: process.env.REACT_APP_PROXY_HOST+'/:path*'
       }
     ]
 
