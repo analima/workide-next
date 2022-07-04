@@ -10,7 +10,7 @@ const nextConfig = {
     APP_HOST:process.env.APP_HOST,
     APP_PORT:process.env.APP_PORT,
     REACT_APP_URL:process.env.REACT_APP_URL,
-    REACT_APP_SEGURANCA_API:process.envREACT_APP_SEGURANCA_API,
+    REACT_APP_SEGURANCA_API:process.env.REACT_APP_SEGURANCA_API,
     REACT_APP_GERAL_API:process.env.REACT_APP_GERAL_API,
     REACT_APP_OPORTUNIDADES_API:process.env.REACT_APP_OPORTUNIDADES_API,
     REACT_APP_PESSOAS_API:process.env.REACT_APP_PESSOAS_API,
@@ -32,7 +32,7 @@ const nextConfig = {
       },
       {
         source: '/:path*',
-        destination: process.env.REACT_APP_PROXY_HOST+'/:path*'
+        destination: 'https://'+process.env.REACT_APP_PROXY_HOST+'/:path*'
       }
     ]
 
