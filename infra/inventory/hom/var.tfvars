@@ -35,4 +35,4 @@ parameter_id="arn:aws:ssm:us-west-2:812671651954:parameter/APP_JWK-HOM"
 bucket_name="files-gyan-hom"
 cpu=256
 memory=1024
-listener_arn="arn:aws:elasticloadbalancing:us-west-2:812671651954:listener/app/next-alb-hom/7f118f8e490c3836/fe8388f161a0d581"
+listener_arn="arn:aws:elasticloadbalancing:us-west-2:812671651954:listener/app/next-alb-hom/7f118f8e490c3836/925e7514282c9475"
