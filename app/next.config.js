@@ -32,7 +32,7 @@ const nextConfig = {
       },
       {
         source: '/:path*',
-        destination: 'https://'+process.env.REACT_APP_PROXY_HOST+'/:path*'
+        destination: `https://react-hom.gyan.com.br/:path*`
       }
     ]
 
