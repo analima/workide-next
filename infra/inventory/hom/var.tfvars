@@ -22,7 +22,7 @@ container_environment=[ {"name": "APP_HOST", "value": "0.0.0.0"},
                         {"name": "REACT_APP_EMAILS_API", "value": "https://api-hom.gyan.com.br"},
                         {"name": "REACT_APP_API_URL", "value": "https://api-hom.gyan.com.br"},
                         {"name": "REACT_APP_CHAT_API", "value": "https://api-hom.gyan.com.br"},
-                        {"name": "REACT_APP_PROXY_HOST", "value": "https://react-hom.gyan.com.br"}
+                        {"name": "REACT_APP_PROXY_HOST", "value": "react-hom.gyan.com.br"}
                         ]
 cluster_name="cluster-gyan-hom"
 subnets=["subnet-088f25a4bb7af05d9","subnet-071a0c615343f69f4","subnet-059a5378d9503100d","subnet-03657454904b0bf66"]
