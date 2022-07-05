@@ -22,6 +22,8 @@ const nextConfig = {
     REACT_APP_EMAILS_API:process.env.REACT_APP_EMAILS_API,
     REACT_APP_API_URL:process.env.REACT_APP_API_URL,
     REACT_APP_CHAT_API:process.env.REACT_APP_CHAT_API,
+    REACT_APP_AWS_COGNITO_CLIENT_ID:process.env.REACT_APP_AWS_COGNITO_CLIENT_ID,
+    REACT_APP_AWS_COGNITO_CLIENT_DOMAIN:process.env.REACT_APP_AWS_COGNITO_CLIENT_DOMAIN
   },
 
   rewrites() {
@@ -32,7 +34,7 @@ const nextConfig = {
       },
       {
         source: '/:path*',
-        destination:process.env.REACT_APP_PROXY_HOST
+        destination: 'https://'+process.env.REACT_APP_PROXY_HOST
       }
     ]
 

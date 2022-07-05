@@ -22,7 +22,9 @@ container_environment=[ {"name": "APP_HOST", "value": "0.0.0.0"},
                         {"name": "REACT_APP_EMAILS_API", "value": "https://api-hom.gyan.com.br"},
                         {"name": "REACT_APP_API_URL", "value": "https://api-hom.gyan.com.br"},
                         {"name": "REACT_APP_CHAT_API", "value": "https://api-hom.gyan.com.br"},
-                        {"name": "REACT_APP_PROXY_HOST", "value": "https://react-hom.gyan.com.br/:path*"}
+                        {"name": "REACT_APP_AWS_COGNITO_CLIENT_ID", "value": "6kuke6p0o87j3qrgbh21fnluhk"},
+                        {"name": "REACT_APP_AWS_COGNITO_CLIENT_DOMAIN", "value": "https://gyan-hom.auth.us-west-2.amazoncognito.com"},
+                        {"name": "REACT_APP_PROXY_HOST", "value": "react-hom.gyan.com.br/:path*"}
                         ]
 cluster_name="cluster-gyan-hom"
 subnets=["subnet-088f25a4bb7af05d9","subnet-071a0c615343f69f4","subnet-059a5378d9503100d","subnet-03657454904b0bf66"]
@@ -33,5 +35,4 @@ parameter_id="arn:aws:ssm:us-west-2:812671651954:parameter/APP_JWK-HOM"
 bucket_name="files-gyan-hom"
 cpu=256
 memory=1024
-acm_arn="arn:aws:acm:us-west-2:812671651954:certificate/621cf05e-6f6d-4d33-bd60-c4f276e8c7fb"
-nlb_arn="arn:aws:elasticloadbalancing:us-west-2:812671651954:loadbalancer/net/next-nlb-hom/13c1377e3b6dad12"
+listener_arn="arn:aws:elasticloadbalancing:us-west-2:812671651954:listener/app/next-alb-hom/7f118f8e490c3836/fe8388f161a0d581"

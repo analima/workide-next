@@ -1,21 +1,33 @@
-resource "aws_lb_target_group" "nlb" {
-  name        = "next-tg-nlb-${var.env}"
+resource "aws_alb_target_group" "main" {
+  name        = "next-tg-${var.env}"
   port        = 80
-  protocol    = "TCP"
+  protocol    = "HTTP"
   vpc_id      = var.vpc
   target_type = "ip"
  
+  health_check {
+   healthy_threshold   = "3"
+   interval            = "15"
+   protocol            = "HTTP"
+   matcher             = "200-401"
+   timeout             = "3"
+   path                = var.health_check_path
+   unhealthy_threshold = "2"
+  }
 }
 
-resource "aws_lb_listener" "front_end" {
-  load_balancer_arn = var.nlb_arn
-  port              = "443"
-  protocol          = "TLS"
-  ssl_policy        = "ELBSecurityPolicy-2016-08"
-  certificate_arn   = var.acm_arn
+resource "aws_alb_listener_rule" "next" {
+  listener_arn = var.listener_arn
+  priority     = 110
 
-  default_action {
+  action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.nlb.arn
+    target_group_arn = aws_alb_target_group.main.arn
+  }
+
+  condition {
+    path_pattern {
+      values = ["/*"]
+    }
   }
 }
