@@ -404,7 +404,7 @@ export function CadastroBasico({
             <Spacer size={12} />
             <ContentModal showModal={showModal}>
               <ItemPolitica>
-                <Boia className="icon-politica" />
+                <Image src={Boia} className="icon-politica" />
                 <p>
                   Não compartilhamos seus dados com terceiros sem que você saiba
                   e concorde.
@@ -412,7 +412,7 @@ export function CadastroBasico({
               </ItemPolitica>
 
               <ItemPolitica>
-                <Chave className="icon-politica" />
+                <Image src={Chave} className="icon-politica" />
                 <p>
                   Temos controles e medidas de segurança para evitarmos
                   vazamento de dados.
@@ -420,7 +420,7 @@ export function CadastroBasico({
               </ItemPolitica>
 
               <ItemPolitica>
-                <GuardaChuva className="icon-politica" />
+                <Image src={GuardaChuva} className="icon-politica" />
                 <p>
                   O tratamento que damos ao seus dados é sempre informado e
                   fundamentado em bases legais.
@@ -428,7 +428,7 @@ export function CadastroBasico({
               </ItemPolitica>
 
               <ItemPolitica>
-                <Escudinho className="icon-politica" />
+                <Image src={Escudinho} className="icon-politica" />
                 <p>Garantimos e defendemos seus direitos sobre seus dados.</p>
               </ItemPolitica>
             </ContentModal>

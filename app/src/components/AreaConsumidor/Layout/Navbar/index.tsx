@@ -2,7 +2,6 @@ import { useCallback, useEffect, useState } from 'react';
 import { formatDistance } from 'date-fns';
 import { pt } from 'date-fns/locale';
 import { useAuth } from '../../../../contexts/auth';
-import { Link } from 'react-router-dom';
 import Home from '../../../../assets/House.svg';
 import { Container, Dropdown, ModalBody } from 'react-bootstrap';
 import { BsCircleFill } from 'react-icons/bs';
@@ -11,6 +10,7 @@ import { Titulo } from '../../../Titulo';
 import { Button } from '../../../Form/Button';
 import { notificacoes_api } from '../../../../services/notificacoes_api';
 import { FiBell, FiMenu } from 'react-icons/fi';
+import Link from 'next/link'
 import {
   ContentSession,
   GhostButton,
@@ -114,7 +114,7 @@ export default function Navbar({
         <div className="icones">
           {activeMenu && <FiMenu onClick={toggleSidebar} />}
 
-          <Link to="/consumidor/home">
+          <Link href="/consumidor/home">
             <Home />
           </Link>
         </div>

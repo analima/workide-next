@@ -23,7 +23,8 @@ import {
   AreasInteresse,
   InfoFooter,
 } from './style';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import Link from 'next/link'
 import { ModalFullRecordGuidance } from '../ModalFullRecordGuidance';
 import { useState } from 'react';
 import { useAuth } from '../../contexts/auth';
@@ -145,7 +146,7 @@ export function UserProfileCard({
 
           <div className="botoes">
             <EyeContent>
-              <Link to="/fornecedor/perfil">
+              <Link href="/fornecedor/perfil">
                 <FiEye size={30} color={AZUL_60} />
               </Link>
               <p>Veja como estão te vendo</p>

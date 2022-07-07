@@ -1,0 +1,11 @@
+### Variaveis
+@client_id=11kgqfu97v0nbv37d7a2m3i9fs
+@redirect=http://localhost:3000/cadastroGoogle
+@domain=https://gyanklebero.auth.us-east-1.amazoncognito.com
+
+@code=5fc50afa-abe9-44fe-8d99-46455ffd0cfc
+
+####
+#POST {{domain}}/oauth2/token?grant_type=authorization_code&client_id={{client_id}}&redirect_uri={{redirect}}&code={{code}}
+POST https://gyanklebero.auth.us-east-1.amazoncognito.com/oauth2/token?grant_type=authorization_code&client_id=11kgqfu97v0nbv37d7a2m3i9fs&redirect_uri=http://localhost:3000/cadastroGoogle&code=5fc50afa-abe9-44fe-8d99-46455ffd0cfc
+Content-Type: application/x-www-form-urlencoded

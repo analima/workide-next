@@ -7,6 +7,8 @@ import { ofertas_api } from '../../services/ofertas_api';
 import { LARANJA } from '../../styles/variaveis';
 import { formatarValor } from '../../utils/CurrencyFormat';
 import { Skeleton } from '../Skeleton';
+import EstrelaOff  from '../../assets/estrela-off.svg';
+import Estrela  from '../../assets/estrela.svg';
 import Image from 'next/image'
 
 import {
@@ -71,6 +73,23 @@ export function ServiceCard({
         });
     }
   }, [service]);
+
+  function handleShowStars(numberOfStars: number) {
+    const stars = [];
+    for (let i = 1; i <= 5; i += 1) {
+      if (i <= numberOfStars) {
+        if (numberOfStars === 0)
+          stars.push(
+            <EstrelaOff className="estrela" key={i + Math.random()} />,
+          );
+        else
+          stars.push(<Estrela className="estrela" key={i + Math.random()} />);
+      } else {
+        stars.push(<EstrelaOff className="estrela" key={i + Math.random()} />);
+      }
+    }
+    return stars;
+  }
 
   return service ? (
     <Content>
@@ -191,14 +210,16 @@ export function ServiceCard({
               <Image
                 src={service?.fornecedor?.foto.url}
                 alt={service?.fornecedor?.nome_tratamento}
+                width={'100px'}
+                height={'100px'}
               />
             </div>
 
             <div>
               <span>{service.fornecedor.nome_tratamento}</span>
-              <AvaliacaoFornecedor
-                notaMedia={Number(service.fornecedor?.ranking?.nota_media || 0)}
-              />
+
+               <span>{Number(service.fornecedor?.ranking?.nota_media || 0)?.toFixed(2)}</span>
+              {handleShowStars(Number(service.fornecedor?.ranking?.nota_media || 0) || 0)}
             </div>
           </ContainerProfile>
         )}
@@ -206,14 +227,15 @@ export function ServiceCard({
         {dadosFornec?.arquivo?.url && (
           <ContainerProfile>
             <div>
-              <Image src={dadosFornec?.arquivo?.url} alt="" />
+              <Image src={dadosFornec?.arquivo?.url} alt=""
+                width={'100px'}
+                height={'100px'} />
             </div>
 
             <div>
               <span>{dadosFornec.nome_tratamento}</span>
-              <AvaliacaoFornecedor
-                notaMedia={Number(dadosFornec?.ranking?.notaMedia || 0)}
-              />
+               <span>{Number(dadosFornec?.ranking?.notaMedia || 0)?.toFixed(2)}</span>
+              {Number(dadosFornec?.ranking?.notaMedia || 0)}
             </div>
           </ContainerProfile>
         )}
