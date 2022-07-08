@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { BRANCO, CINZA_10, PRETO_10 } from '../../styles/variaveis';
+import { BRANCO, CINZA_50, PRETO_10 } from '../../styles/variaveis';
 
 export const Container = styled.div`
   background-color: ${BRANCO};
@@ -19,7 +19,7 @@ export const ContentHowItWorks = styled.div`
     }
 
     span {
-      color: ${CINZA_10};
+      color: ${CINZA_50};
 
       a {
         text-decoration: none;

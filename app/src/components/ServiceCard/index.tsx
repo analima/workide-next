@@ -210,8 +210,8 @@ export function ServiceCard({
               <Image
                 src={service?.fornecedor?.foto.url}
                 alt={service?.fornecedor?.nome_tratamento}
-                width={'100px'}
-                height={'100px'}
+                width={'40px'}
+                height={'40px'}
               />
             </div>
 
@@ -228,8 +228,8 @@ export function ServiceCard({
           <ContainerProfile>
             <div>
               <Image src={dadosFornec?.arquivo?.url} alt=""
-                width={'100px'}
-                height={'100px'} />
+                width={'40px'}
+                height={'40px'} />
             </div>
 
             <div>

@@ -15,7 +15,7 @@ export const Content = styled.section`
 
 export const ContentBanner = styled.div`
   margin: 0 60px;
-  background-image: url(${IMG});
+  background-image: url(${IMG.src});
   background-size: cover;
   background-position: center;
   height: 1000px;
@@ -192,7 +192,7 @@ export const ContentBanner = styled.div`
   }
 
   @media (max-width: 478px) {
-    background-image: url(${IMG2});
+    background-image: url(${IMG2.src});
     border-radius: 0;
 
     .content-titles {
