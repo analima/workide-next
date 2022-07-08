@@ -7,7 +7,7 @@ import {
   ContainerButtons,
   ButtonConfirm,
 } from './style';
-import Image from 'next/image'
+import Image from 'next/image';
 import andre from '../../assets/andre-full-regras-plano-png.png';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
 import { AZUL } from '../../styles/variaveis';

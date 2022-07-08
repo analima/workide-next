@@ -17,4 +17,12 @@ export const ContainerAvaliacao = styled.div<Props>`
     color: ${LARANJA};
     margin-right: 8px;
   }
+
+  div {
+    display: flex;
+
+    > span {
+      margin: 0;
+    }
+  }
 `;

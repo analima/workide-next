@@ -12,6 +12,7 @@ export const CINZA_30 = '#868e96';
 export const CINZA_40 = '#666666';
 export const CINZA_50 = '#6e6e6e';
 export const CINZA_80 = '#cccccc';
+export const CINZA_90 = '#d9d9d9';
 export const LARANJA = '#FA7C49';
 export const LARANJA_10 = '#FB6B60';
 export const LARANJA_80 = '#FEE5DB';

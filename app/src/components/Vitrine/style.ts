@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { lighten } from 'polished';
 import Slider from 'react-slick';
 import styled from 'styled-components';
@@ -70,9 +71,10 @@ export const NameTitulo = styled.h1`
 `;
 
 export const FotoPerfil = styled.div`
-  object-fit: cover;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
+  min-width: 96px;
+  height: 96px;
 
   @media (max-width: 991px) {
     width: 80px;
@@ -80,9 +82,7 @@ export const FotoPerfil = styled.div`
   }
 `;
 
-export const Foto = styled.img`
-  width: 96px;
-  height: 94px;
+export const Foto = styled(Image)`
   border-radius: 8px;
   object-fit: cover;
 
