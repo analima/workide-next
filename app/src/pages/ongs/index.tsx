@@ -16,46 +16,17 @@ import {
   IPerguntasAreasProps,
 } from '../../interfaces/IDetalheAreaProps';
 import { geral_api } from '../../services/geral_api';
+import { BannerOngs } from '../../components/BannerOngs';
+import { RequirementInstituition } from '../../components/RequirementInstituition';
+import { ConnectOngs } from '../../components/ConnectOngs';
 
 export default function DetalheArea() {
-  const { query }: any = useRouter();
-  const [areas, setAreas] = useState<IAreaProps[]>([]);
-  const [dataArea, setDataArea] = useState<IPerguntasAreasProps>(
-    {} as IPerguntasAreasProps,
-  );
-
-  useEffect(() => {
-    if (query) {
-      const areaFilter = perguntaAreas.find(i =>
-        i.nome.trim().toLowerCase().includes(query.area),
-      );
-
-      if (areaFilter) setDataArea(areaFilter);
-    } else {
-      const areaFilter = perguntaAreas.find(i =>
-        i.nome.trim().toLowerCase().includes('escrita'),
-      );
-      if (areaFilter) setDataArea(areaFilter);
-    }
-  }, [query]);
-
   useEffect(() => {
     hotjar.initialize(
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
-    hotjar.stateChange('/detalhe-area');
-  }, []);
-
-  useEffect(() => {
-    geral_api
-      .get<IAreaProps[]>('/areas')
-      .then(({ data }) => {
-        setAreas(data);
-      })
-      .catch(() => {
-        setAreas([]);
-      });
+    hotjar.stateChange('/ongs');
   }, []);
 
   return (
@@ -67,19 +38,9 @@ export default function DetalheArea() {
       </Helmet>
       <Header />
       <Container>
-        <BannerArea item={dataArea} />
-        <MainCategories
-          area={
-            areas.find(i => i.descricao === dataArea.nome) || areas[dataArea.id]
-          }
-        />
-        <ProfessionalShowCase />
-        <FrequentQuestions item={dataArea} />
-        <MoreCategories
-          area={
-            areas.find(i => i.descricao === dataArea.nome) || areas[dataArea.id]
-          }
-        />
+        <BannerOngs />
+        <RequirementInstituition />
+        <ConnectOngs />
         <Footer />
       </Container>
     </>

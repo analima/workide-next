@@ -130,25 +130,12 @@ export const FooterSocial = styled.section`
       background-color: ${BRANCO};
       opacity: 10;
     }
-
-    a {
-      img {
-        width: 94px;
-        height: 94px;
-        object-fit: cover;
-      }
-    }
   }
 
   .content-version {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    img {
-      width: 122px;
-      height: 48px;
-    }
 
     p {
       font-size: 16px;
