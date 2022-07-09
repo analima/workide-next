@@ -4,7 +4,7 @@ import { AZUL, BRANCO, LARANJA, PRETO_10, VERDE } from '../../styles/variaveis';
 export const Container = styled.section`
   background-color: ${BRANCO};
   margin: 0 auto;
-  width: 1200px;
+  max-width: 1200px;
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -14,10 +14,24 @@ export const Content = styled.section`
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 63px;
+  justify-content: center;
+  gap: 60px;
+
+  .image-container {
+    width: 683px;
+    height: 683px;
+    position: relative;
+
+    .image {
+      width: 100%;
+      height: 100%;
+      position: relative !important;
+      object-fit: contain;
+    }
+  }
 
   .info {
-    width: 389px;
+    max-width: 389px;
     display: flex;
     flex-direction: column;
     gap: 48px;
@@ -37,6 +51,121 @@ export const Content = styled.section`
       width: 289px;
       color: ${PRETO_10};
       margin-bottom: 16px;
+    }
+  }
+
+  @media (max-width: 1060px) {
+    gap: 20px;
+
+    .image-container {
+      width: 660px;
+      height: 660px;
+    }
+
+    .info {
+      max-width: 350px;
+    }
+  }
+
+  @media (max-width: 991px) {
+    gap: 20px;
+
+    .image-container {
+      width: 540px;
+      height: 540px;
+    }
+
+    .info {
+      max-width: 300px;
+
+      h1 {
+        font-size: 32px;
+      }
+    }
+  }
+
+  @media (max-width: 870px) {
+    gap: 20px;
+
+    .image-container {
+      width: 480px;
+      height: 480px;
+    }
+
+    .info {
+      max-width: 280px;
+
+      h1 {
+        font-size: 28px;
+      }
+
+      span {
+        width: 200px;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+
+    .image-container {
+      width: 600px;
+      height: 600px;
+    }
+
+    .info {
+      max-width: 100%;
+      padding: 0 8px;
+
+      h1 {
+        font-size: 31.25px;
+      }
+
+      span {
+        width: 100%;
+      }
+    }
+  }
+
+  @media (max-width: 630px) {
+    .image-container {
+      width: 480px;
+      height: 480px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .image-container {
+      width: 400px;
+      height: 400px;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .image-container {
+      width: 360px;
+      height: 360px;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .image-container {
+      width: 320px;
+      height: 320px;
+    }
+  }
+
+  @media (max-width: 340px) {
+    .image-container {
+      width: 280px;
+      height: 280px;
+    }
+  }
+
+  @media (max-width: 300px) {
+    .image-container {
+      width: 260px;
+      height: 260px;
     }
   }
 `;
@@ -77,10 +206,6 @@ export const ContentConect = styled.section`
 
   @media (max-width: 478px) {
     padding: 0px 8px;
-
-    h1 {
-      text-align: left;
-    }
   }
 `;
 

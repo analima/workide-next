@@ -15,10 +15,6 @@ export const Content = styled.section`
     display: block;
     color: ${PRETO_10};
     text-align: center;
-
-    a {
-      text-decoration: none;
-    }
   }
 
   @media (max-width: 768px) {
@@ -32,7 +28,7 @@ export const Content = styled.section`
   @media (max-width: 478px) {
     padding: 0px 8px;
 
-    h1 {
+    span {
       text-align: left;
     }
   }
@@ -51,8 +47,10 @@ export const ContentLabel = styled.div`
   @media (max-width: 991px) {
   }
 
-  @media (max-width: 530px) {
-    gap: 8px;
+  @media (max-width: 478px) {
+    padding-top: 32px;
+    justify-content: flex-start;
+    gap: 10px;
   }
 `;
 

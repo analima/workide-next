@@ -53,7 +53,8 @@ export default function DetalheArea() {
       .then(({ data }) => {
         setAreas(data);
       })
-      .catch(() => {
+      .catch(err => {
+        console.log(err);
         setAreas([]);
       });
   }, []);

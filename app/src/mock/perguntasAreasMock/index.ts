@@ -1,13 +1,17 @@
-import Img1 from '../../assets/areasImg/branding(1).png';
-import Img2 from '../../assets/areasImg/branding(2).png';
-import Img3 from '../../assets/areasImg/branding(3).png';
-import Img4 from '../../assets/areasImg/branding(4).png';
+import ImgGrafico from '../../assets/area-grafico.jpg';
+import ImgMark from '../../assets/area-mkt.jpg';
+import ImgEscrita from '../../assets/area-escrita.jpg';
+import ImgVideo from '../../assets/area-video.jpg';
+import ImgTech from '../../assets/area-tech.jpg';
+import ImgLegal from '../../assets/area-legal.jpg';
+import ImgAdm from '../../assets/area-adm.jpg';
+import ImgFinan from '../../assets/area-financ.jpg';
 
 export const perguntaAreas = [
   {
     id: 1,
     nome: 'Gráficos & Design',
-    image: Img1,
+    image: ImgGrafico,
     perguntas: [
       {
         id: 1,
@@ -50,7 +54,7 @@ export const perguntaAreas = [
   {
     id: 2,
     nome: 'Marketing',
-    image: Img2,
+    image: ImgMark,
     perguntas: [
       {
         id: 1,
@@ -82,7 +86,7 @@ export const perguntaAreas = [
   {
     id: 3,
     nome: 'Escrita & Tradução',
-    image: Img3,
+    image: ImgEscrita,
     perguntas: [
       {
         id: 1,
@@ -116,7 +120,7 @@ export const perguntaAreas = [
   {
     id: 4,
     nome: 'Vídeo & Animação',
-    image: Img4,
+    image: ImgVideo,
     perguntas: [
       {
         id: 1,
@@ -155,7 +159,7 @@ export const perguntaAreas = [
   {
     id: 5,
     nome: 'Tecnologia da Informação',
-    image: Img1,
+    image: ImgTech,
     perguntas: [
       {
         id: 1,
@@ -194,10 +198,11 @@ export const perguntaAreas = [
       },
     ],
   },
+
   {
     id: 6,
     nome: 'Legal',
-    image: Img1,
+    image: ImgLegal,
     perguntas: [
       {
         id: 1,
@@ -240,7 +245,7 @@ export const perguntaAreas = [
   {
     id: 7,
     nome: 'Administração',
-    image: Img2,
+    image: ImgAdm,
     perguntas: [
       {
         id: 1,
@@ -282,7 +287,7 @@ export const perguntaAreas = [
   {
     id: 8,
     nome: 'Finanças & Contabilidade',
-    image: Img3,
+    image: ImgFinan,
     perguntas: [
       {
         id: 1,

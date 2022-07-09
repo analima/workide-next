@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { Content, ContentButton, Container, ContentConect } from './styles';
-import IMG from '../../assets/img-home2.png';
+import IMG from '../../assets/img-secundary-ong.jpg';
 import Image from 'next/image';
 export function ConnectOngs() {
   const router = useRouter();
@@ -8,7 +8,9 @@ export function ConnectOngs() {
   return (
     <Container>
       <Content>
-        <Image alt="" layout="intrinsic" width={663} height={663} src={IMG} />
+        <div className="image-container">
+          <Image alt="img-ong" layout="fill" className={'image'} src={IMG} />
+        </div>
         <div className="info">
           <h1>
             Cadastre sua instituição
@@ -23,6 +25,7 @@ export function ConnectOngs() {
           </span>
         </div>
       </Content>
+
       <ContentConect>
         <h1>Conecte-se com quem ajudará você a ajudar ainda mais</h1>
         <span>

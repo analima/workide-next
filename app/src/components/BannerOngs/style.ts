@@ -13,6 +13,10 @@ export const Container = styled.section<IImgProps>`
 
   @media (max-width: 768px) {
     padding: 0 8px;
+
+    background-position-x: center;
+    background-repeat: no-repeat;
+    height: 783px;
   }
 `;
 
@@ -44,16 +48,35 @@ export const Content = styled.section`
     font-size: 16px;
     color: ${BRANCO};
   }
+
   @media (max-width: 991px) {
-    gap: 24px;
-  }
-  @media (max-width: 768px) {
-    flex-direction: column-reverse;
-    align-items: center;
+    /* gap: 24px; */
   }
 
-  @media (max-width: 630px) {
-    padding-top: 0;
-    align-items: flex-start;
+  @media (max-width: 768px) {
+    align-items: center;
+    width: 100%;
+    height: 462px;
+    left: 0;
+
+    h1 {
+      font-size: 40px;
+    }
+  }
+
+  @media (max-width: 478px) {
+    padding: 16px;
+    h1 {
+      font-weight: 400;
+      font-size: 31.25px;
+    }
+  }
+
+  @media (max-width: 320px) {
+    padding: 10px;
+    h1 {
+      font-weight: 400;
+      font-size: 28px;
+    }
   }
 `;
