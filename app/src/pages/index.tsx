@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { Conheca } from '../components/Home/Conheca';
 import { Header } from '../components/Header';
 import { Rodape } from '../components/Rodape';
-import { useHistory, useLocation } from 'react-router';
 import { Helmet } from 'react-helmet';
 import { hotjar } from 'react-hotjar';
 import { useAuth } from '../contexts/auth';
@@ -18,9 +17,6 @@ import { useQuery } from '../hooks/geral';
 import { useRouter } from "next/router"
 import { IPessoa } from '../interfaces/IPessoa';
 
-interface stateProps  {
-  noRedirect?: boolean;
-}
 export default function Home() {
   const router = useRouter();
 

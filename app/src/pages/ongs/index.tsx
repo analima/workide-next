@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { hotjar } from 'react-hotjar';
-import DetalhesArea from 'src/components/DetalhesArea';
+import PageOng from 'src/components/PageOng';
 
-const DetalheArea: React.FC = () => {
+const Ongs: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -11,7 +11,7 @@ const DetalheArea: React.FC = () => {
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
-    hotjar.stateChange('/detalhe-area');
+    hotjar.stateChange('/ongs');
     if (typeof window !== 'undefined') {
       setIsLoading(false);
     }
@@ -24,9 +24,9 @@ const DetalheArea: React.FC = () => {
           Gyan - Conectando pessoas incríveis com projetos apaixonantes
         </title>
       </Helmet>
-      {!isLoading ? <DetalhesArea /> : <p>aguarde</p>}
+      {!isLoading ? <PageOng /> : <p>aguarde</p>}
     </>
   );
 };
 
-export default DetalheArea;
+export default Ongs;

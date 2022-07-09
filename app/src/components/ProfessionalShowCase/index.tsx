@@ -25,8 +25,8 @@ export function ProfessionalShowCase() {
 
   const settingsSlider = {
     speed: 500,
-    // autoplay: true,
-    // autoplaySpeed: 2500,
+    autoplay: true,
+    autoplaySpeed: 2500,
     slidesToShow: 3.2,
     className: 'container-slider',
     initialSlide: 1,
