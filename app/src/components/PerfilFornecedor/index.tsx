@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
 import { FiHeart, FiShare2 } from 'react-icons/fi';
 
-import  EstrelaOff  from '../../assets/estrela-off.svg';
-import  Estrela  from '../../assets/estrela.svg';
+import EstrelaOff from '../../assets/estrela-off.svg';
+import Estrela from '../../assets/estrela.svg';
 
 import { AZUL_60, LARANJA } from '../../styles/variaveis';
 import defaultImage from '../../assets/profileImage.svg';
@@ -23,7 +23,7 @@ import { pessoas_api } from '../../services/pessoas_api';
 import { useAuth } from '../../contexts/auth';
 import { AvatarCadastroIncompleto } from '../../components/AvatarCadastroIncompleto';
 import { AvatarErroGeral } from '../AvatarErroGeral';
-import Image from 'next/image'
+import Image from 'next/image';
 
 type PerfilFornecedorProps = {
   dataProps: {

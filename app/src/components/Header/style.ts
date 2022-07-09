@@ -135,6 +135,12 @@ export const Content = styled.section<IMobileProp>`
     justify-content: space-between;
     width: 100%;
 
+    div {
+      .logo {
+        cursor: pointer;
+      }
+    }
+
     .menu {
       display: flex;
       flex-direction: row;

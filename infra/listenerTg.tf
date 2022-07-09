@@ -26,8 +26,9 @@ resource "aws_alb_listener_rule" "next" {
   }
 
   condition {
-    path_pattern {
-      values = ["/*"]
+    http_header {
+      http_header_name = "X-Custom-Header"
+      values           = ["${var.name}-${var.env}"]
     }
   }
 }

@@ -16,15 +16,18 @@ import { AZUL, BRANCO, PRETO } from '../../styles/variaveis';
 import { Button } from '../Form/Button';
 import { IPessoa } from '../../interfaces/IPessoa';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 export function Header(): JSX.Element {
   const history = useHistory();
   const [esconder, setEsconder] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [mostrarMenu, setMostrarMenu] = useState(false);
+
   const { signOut } = useAuth();
+  const router = useRouter();
   const [sizePage, setSizePage] = useState(0);
-    let { user } = useAuth();
+  let { user } = useAuth();
 
   if (!user) {
     user = {} as IPessoa;
@@ -71,25 +74,32 @@ export function Header(): JSX.Element {
           <FiMenu onClick={handleToggleMenu} color={AZUL} size={24} />
         </ContainerMenuMobile>
       )}
-      {/* {open === false && ( */}
+
+
       <Container isMobile={isMobile} mostrarMenu={mostrarMenu}>
         <Content isMobile={isMobile} mostrarMenu={mostrarMenu}>
           <nav>
-            <div className="logo">
-              <Image src={Logo} alt="Gyan" />
+            <div>
+              <Image
+                src={Logo}
+                className="logo"
+                alt="Gyan"
+                onClick={() => router.push('/')}
+              />
             </div>
 
             <div className="menu">
-              <Link href="fornecedor/captar-projetos">Fornecedores</Link>
+              <Link href="/fornecedor/captar-projetos">Fornecedores</Link>
 
               <Link href="/consumidor/busca">Empresas</Link>
               <Link href="/consumidor/busca?voluntario=true">Voluntários</Link>
 
-              <Link href="/login" >
+
+              <Link href="/login" onClick={handleToggleMenu}>
                 Login
               </Link>
 
-              {user.email ? (
+              {user?.email ? (
                 <ContainerLogin>
                   <Link
                     className="link-user-login"
