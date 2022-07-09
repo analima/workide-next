@@ -30,7 +30,7 @@ export function SearchInputHome({
   }, []);
 
   const handleEnterKey = useCallback(
-    event => {
+    (event: any) => {
       if (event.key === 'Enter' && onChange) {
         onChange(term);
       }
@@ -46,7 +46,7 @@ export function SearchInputHome({
   }, [onChange, term]);
 
   const handleChange = useCallback(
-    event => {
+    (event: any) => {
       setTerm(event.target.value);
       if (variation === 'no-button' && onChange) {
         onChange(event.target.value);

@@ -102,7 +102,7 @@ export const Content = styled.div`
   @media (max-width: 478px) {
     height: 100%;
     flex-direction: column;
-    background-image: url(${IMG2});
+    background-image: url(${IMG2.src});
     background-size: 100%;
     background-position: center;
     padding: 16px;
