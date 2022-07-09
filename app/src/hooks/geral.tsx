@@ -1,10 +1,9 @@
 import React from "react";
-import {
-    useLocation
-} from "react-router-dom";
+import { useRouter } from "next/router"
 
 export function useQuery() {
-    const { search } = useLocation();
+  const router = useRouter()
+    const { query: {search} } = router;
 
-    return React.useMemo(() => new URLSearchParams(search), [search]);
+    return React.useMemo(() => new URLSearchParams(search as any), [search]);
 }

@@ -1,10 +1,10 @@
-/** @type {import('next').NextConfig} */
+/* @type {import('next').NextConfig} */
 
 const nextConfig = {
   images: {
     domains: ['files-gyan-hom.s3.amazonaws.com'],
   },
-  pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js'],
+  //pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js'],
   env:{
     SKIP_PREFLIGHT_CHECK:process.env.SKIP_PREFLIGHT_CHECK,
     APP_HOST:process.env.APP_HOST,

@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 import { hotjar } from 'react-hotjar';
 import { BannerArea } from '../../components/BannerArea';
 import { Header } from '../../components/Header';
-import { Container } from './styles';
+import { Container } from '../../components/DetalhesArea/styles';
 import { Footer } from '../../components/Footer';
 import { MainCategories } from '../../components/MainCategories';
 import { ProfessionalShowCase } from '../../components/ProfessionalShowCase';
