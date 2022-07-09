@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Link from 'next/link'
 import { useHistory } from 'react-router';
 import { FiLogOut, FiMenu, FiX } from 'react-icons/fi';
 import { BiUserCircle } from 'react-icons/bi';
@@ -13,18 +14,24 @@ import Logo from '../../assets/logo.svg';
 import { useAuth } from '../../contexts/auth';
 import { AZUL, BRANCO, PRETO } from '../../styles/variaveis';
 import { Button } from '../Form/Button';
+import { IPessoa } from '../../interfaces/IPessoa';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 
 export function Header(): JSX.Element {
   const history = useHistory();
   const [esconder, setEsconder] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [mostrarMenu, setMostrarMenu] = useState(false);
-  const { user, signOut } = useAuth();
-  const [sizePage, setSizePage] = useState(0);
+
+  const { signOut } = useAuth();
   const router = useRouter();
+  const [sizePage, setSizePage] = useState(0);
+  let { user } = useAuth();
+
+  if (!user) {
+    user = {} as IPessoa;
+  }
 
   function handleToggleMenu() {
     setIsMobile(prevState => !prevState);
@@ -67,6 +74,8 @@ export function Header(): JSX.Element {
           <FiMenu onClick={handleToggleMenu} color={AZUL} size={24} />
         </ContainerMenuMobile>
       )}
+
+
       <Container isMobile={isMobile} mostrarMenu={mostrarMenu}>
         <Content isMobile={isMobile} mostrarMenu={mostrarMenu}>
           <nav>
@@ -84,6 +93,7 @@ export function Header(): JSX.Element {
 
               <Link href="/consumidor/busca">Empresas</Link>
               <Link href="/consumidor/busca?voluntario=true">Voluntários</Link>
+
 
               <Link href="/login" onClick={handleToggleMenu}>
                 Login

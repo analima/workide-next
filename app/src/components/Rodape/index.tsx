@@ -6,14 +6,12 @@ import Whatsapp from '../../assets/whatsapp.svg';
 import Facebook from '../../assets/facebook.svg';
 import Linkedin from '../../assets/linkedin.svg';
 import Instagram from '../../assets/instagram.svg';
-import { useHistory } from 'react-router';
 import { useRouter } from 'next/router';
 import { useAuth } from '../../contexts/auth';
 import { useValorProjetoPago } from '../../contexts/valorProjetoPago';
 import { IPessoa } from '../../interfaces/IPessoa';
 
 export function Rodape() {
-  const history = useHistory();
   const router = useRouter();
   let { user, signOut } = useAuth();
   if(!user){
@@ -51,7 +49,7 @@ export function Rodape() {
                   <>
                     <li
                       className="li-click"
-                      onClick={() => history.push('/login')}
+                      onClick={() => router.push('/login')}
                     >
                       Login
                     </li>

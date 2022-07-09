@@ -1,32 +1,20 @@
-import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { hotjar } from 'react-hotjar';
-import { BannerArea } from '../../components/BannerArea';
-import { Header } from '../../components/Header';
-import { Container } from './styles';
-import { Footer } from '../../components/Footer';
-import { MainCategories } from '../../components/MainCategories';
-import { ProfessionalShowCase } from '../../components/ProfessionalShowCase';
-import { FrequentQuestions } from '../../components/FrequentQuestions';
-import { MoreCategories } from '../../components/MoreCategories';
-import { perguntaAreas } from '../../mock/perguntasAreasMock';
-import {
-  IAreaProps,
-  IPerguntasAreasProps,
-} from '../../interfaces/IDetalheAreaProps';
-import { geral_api } from '../../services/geral_api';
-import { BannerOngs } from '../../components/BannerOngs';
-import { RequirementInstituition } from '../../components/RequirementInstituition';
-import { ConnectOngs } from '../../components/ConnectOngs';
+import PageOng from 'src/components/PageOng';
 
-export default function DetalheArea() {
+const Ongs: React.FC = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     hotjar.initialize(
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
     hotjar.stateChange('/ongs');
+    if (typeof window !== 'undefined') {
+      setIsLoading(false);
+    }
   }, []);
 
   return (
@@ -36,19 +24,9 @@ export default function DetalheArea() {
           Gyan - Conectando pessoas incríveis com projetos apaixonantes
         </title>
       </Helmet>
-      <Header />
-      <Container>
-        <BannerOngs />
-        <RequirementInstituition />
-        <ConnectOngs />
-        <Footer />
-      </Container>
+      {!isLoading ? <PageOng /> : <p>aguarde</p>}
     </>
   );
-}
+};
 
-export function getStaticProps() {
-  return {
-    props: {},
-  };
-}
+export default Ongs;
