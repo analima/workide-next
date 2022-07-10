@@ -4,7 +4,8 @@ import { Content, ContentCard, CardArea, Carrousel } from './styles';
 import { AiFillStar } from 'react-icons/ai';
 import { AMARELO } from '../../styles/variaveis';
 import { geral_api } from '../../services/geral_api';
-import Link from 'next/link'
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 interface IArea {
   id: number;
@@ -19,6 +20,8 @@ interface ISubarea {
 }
 
 export function CardCategory() {
+  const router = useRouter();
+
   const [areas, setAreas] = useState<IArea[]>([]);
   const [sizePage, setSizePage] = useState(0);
 
@@ -88,7 +91,9 @@ export function CardCategory() {
         <ContentCard>
           {areas.map(area => (
             <li key={area.id}>
-              <CardArea>
+              <CardArea
+                onClick={() => router.push(`/detalhe-area?area=${area.id}`)}
+              >
                 <h2>{area.descricao}</h2>
 
                 <div className="subareas">
@@ -109,7 +114,9 @@ export function CardCategory() {
         <Carrousel {...settingsSlider}>
           {areas.map(area => (
             <li key={area.id}>
-              <CardArea>
+              <CardArea
+                onClick={() => router.push(`/detalhe-area?area=${area.id}`)}
+              >
                 <h2>{area.descricao}</h2>
 
                 <div className="subareas">

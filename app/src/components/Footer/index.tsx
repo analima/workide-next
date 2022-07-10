@@ -196,12 +196,12 @@ export function Footer() {
               href="https://api.whatsapp.com/send/?phone=55061991053691"
               rel="noreferrer"
             >
-              <Image src={Whatsapp} alt="Whatsapp" />
+              <Image width={94} height={94} src={Whatsapp} alt="Whatsapp" />
             </a>
           </div>
 
           <div className="content-version">
-            <Image src={LogoGyan} alt="Logo da GYAN" />
+            <Image width={122} height={48} src={LogoGyan} alt="Logo da GYAN" />
             <p>v{process.env.REACT_APP_VERSION}</p>
           </div>
         </FooterSocial>

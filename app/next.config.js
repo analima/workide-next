@@ -31,7 +31,7 @@ const nextConfig = {
     return [
       {
         source: '/:path*',
-        destination: '/:path*'
+        destination: '/:path*',
       },
       {
         source: '/:path*',
@@ -40,6 +40,6 @@ const nextConfig = {
     ]
 
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
