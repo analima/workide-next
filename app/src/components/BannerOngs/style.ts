@@ -5,15 +5,16 @@ interface IImgProps {
   img: string;
 }
 export const Container = styled.section<IImgProps>`
-  max-width: 1440px;
+  width: 100%;
   height: 683px;
   margin-top: 16px;
   position: relative;
   background-image: url(${props => props.img});
+  background-repeat: no-repeat;
+  background-size: cover;
 
   @media (max-width: 768px) {
     padding: 0 8px;
-
     background-position-x: center;
     background-repeat: no-repeat;
     height: 783px;
