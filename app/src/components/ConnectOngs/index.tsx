@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { Content, ContentButton, Container, ContentConect } from './styles';
-import IMG from '../../assets/img-secundary-ong.jpg';
+import IMG from '../../../public/assets/img-secundary-ong.jpg';
 import Image from 'next/image';
 export function ConnectOngs() {
   const router = useRouter();

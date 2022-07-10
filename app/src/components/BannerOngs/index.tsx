@@ -1,9 +1,4 @@
-import Image from 'next/image';
 import { Container, Content } from './style';
-import { CINZA_90 } from '../../styles/variaveis';
-import { BsFillArrowDownCircleFill } from 'react-icons/bs';
-import { IPerguntasAreasProps } from '../../interfaces/IDetalheAreaProps';
-import { useEffect, useState } from 'react';
 
 export function BannerOngs() {
   return (
