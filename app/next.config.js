@@ -23,7 +23,8 @@ const nextConfig = {
     REACT_APP_API_URL:process.env.REACT_APP_API_URL,
     REACT_APP_CHAT_API:process.env.REACT_APP_CHAT_API,
     REACT_APP_AWS_COGNITO_CLIENT_ID:process.env.REACT_APP_AWS_COGNITO_CLIENT_ID,
-    REACT_APP_AWS_COGNITO_CLIENT_DOMAIN:process.env.REACT_APP_AWS_COGNITO_CLIENT_DOMAIN
+    REACT_APP_AWS_COGNITO_CLIENT_DOMAIN: process.env.REACT_APP_AWS_COGNITO_CLIENT_DOMAIN,
+    REACT_APP_PROXY_HOST: process.env.REACT_APP_PROXY_HOST
   },
 
   rewrites() {
@@ -34,7 +35,7 @@ const nextConfig = {
       },
       {
         source: '/:path*',
-        destination: `https://react-hom.gyan.com.br/:path*`
+        destination: `${ process.env.REACT_APP_PROXY_HOST}/:path*`
       }
     ]
 
