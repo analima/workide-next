@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Link from 'next/link'
+import Link from 'next/link';
 import { useHistory } from 'react-router';
 import { FiLogOut, FiMenu, FiX } from 'react-icons/fi';
 import { BiUserCircle } from 'react-icons/bi';
@@ -75,7 +75,6 @@ export function Header(): JSX.Element {
         </ContainerMenuMobile>
       )}
 
-
       <Container isMobile={isMobile} mostrarMenu={mostrarMenu}>
         <Content isMobile={isMobile} mostrarMenu={mostrarMenu}>
           <nav>
@@ -94,10 +93,7 @@ export function Header(): JSX.Element {
               <Link href="/consumidor/busca">Empresas</Link>
               <Link href="/consumidor/busca?voluntario=true">Voluntários</Link>
 
-
-              <Link href="/login" onClick={handleToggleMenu}>
-                Login
-              </Link>
+              <Link href="/login">Login</Link>
 
               {user?.email ? (
                 <ContainerLogin>

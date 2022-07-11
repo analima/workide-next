@@ -15,7 +15,7 @@ import {
 import Alisson from '../../../assets/alisson.jpeg';
 import Luiz from '../../../assets/luiz.png';
 import Afonso from '../../../assets/afonso.jpeg';
-import Image from 'next/image'
+import Image from 'next/image';
 
 import NosConheca from '../../../assets/nosconheca.svg';
 import CadastreSe from '../../../assets/cadastrese.svg';
@@ -210,7 +210,7 @@ export function Profissional(): JSX.Element {
           <ComoFunciona>
             {outrosDados.map(item => (
               <CardComoFunciona key={item.id}>
-                <img src={item.img} alt="Imagem" />
+                <Image src={item.img} alt="Imagem" />
                 <h1>{item.titulo}</h1>
                 <p>{item.descricao}</p>
               </CardComoFunciona>

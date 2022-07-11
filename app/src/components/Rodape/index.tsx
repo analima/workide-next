@@ -1,6 +1,6 @@
 import { Container } from 'react-bootstrap';
 import { Footer, Content, FooterInfo, FooterSocial } from './style';
-import Image from 'next/image'
+import Image from 'next/image';
 import LogoGyan from '../../assets/logo-offset.svg';
 import Whatsapp from '../../assets/whatsapp.svg';
 import Facebook from '../../assets/facebook.svg';
@@ -14,7 +14,7 @@ import { IPessoa } from '../../interfaces/IPessoa';
 export function Rodape() {
   const router = useRouter();
   let { user, signOut } = useAuth();
-  if(!user){
+  if (!user) {
     user = {} as IPessoa;
   }
   const { apagarLocalStorage } = useValorProjetoPago();
@@ -27,10 +27,7 @@ export function Rodape() {
             <article>
               <h2>Menu</h2>
               <ul>
-                <li
-                  className="li-click"
-                  onClick={() => router.push('/')}
-                >
+                <li className="li-click" onClick={() => router.push('/')}>
                   Home
                 </li>
                 {user.id_pessoa && (
@@ -127,17 +124,25 @@ export function Rodape() {
             <article>
               <h2>Fale conosco</h2>
               <ul>
-                <li style={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}>
+                <li
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                >
                   <a
                     target="_blank"
                     href="https://api.whatsapp.com/send/?phone=55061991053691"
                     rel="noreferrer"
                   >
-                    <Image className="new" src={Whatsapp} width={45} height={45} alt="Whatsapp" />
+                    <Image
+                      className="new"
+                      src={Whatsapp}
+                      width={45}
+                      height={45}
+                      alt="Whatsapp"
+                    />
                   </a>
                   Clique aqui e fale com a gente
                 </li>
