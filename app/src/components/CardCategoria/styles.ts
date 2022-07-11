@@ -118,8 +118,12 @@ export const CardArea = styled.div`
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
+  -webkit-transition: -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease;
 
   :hover {
+    -webkit-transform: scale(1.03);
+    transform: scale(1.03);
     .labels {
       visibility: visible;
       opacity: 1;
