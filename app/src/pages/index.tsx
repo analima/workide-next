@@ -14,18 +14,21 @@ import { CardConhecaComoFunciona } from '../components/CardConhecaComoFunciona';
 import { CardCountUp } from '../components/CardCountUp';
 import { CardProjetosMaisBuscados } from '../components/CardProjetosMaisBuscados';
 import { useQuery } from '../hooks/geral';
-import { useRouter } from "next/router"
+import { useRouter } from 'next/router';
 import { IPessoa } from '../interfaces/IPessoa';
+import { Footer } from 'src/components/Footer';
 
 export default function Home() {
   const router = useRouter();
 
-  const { query: { state }, } = router
+  const {
+    query: { state },
+  } = router;
   const query = useQuery();
   let { user } = useAuth();
 
   if (!user) {
-    user = {} as IPessoa
+    user = {} as IPessoa;
   }
 
   useEffect(() => {
@@ -78,7 +81,7 @@ export default function Home() {
         <Conheca />
         <CardCountUp />
         <CardProjetosMaisBuscados />
-        <Rodape />
+        <Footer />
       </Container>
     </>
   );

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { useState } from 'react';
 import { Carousel, Col, Container, Row } from 'react-bootstrap';
 import Estrela from '../../../assets/estrela.svg';
@@ -20,7 +21,7 @@ export function Clientes() {
         </Row>
 
         <Row>
-          <Col lg={12}> 
+          <Col lg={12}>
             <Carousel activeIndex={index} onSelect={handleSelect}>
               <Carousel.Item>
                 <Row>
@@ -29,11 +30,11 @@ export function Clientes() {
                       <h3>Alex Goulart</h3>
                       <h3>Chefe de operações - TD52F</h3>
 
-                      <img src={Estrela} alt="Estrela" />
-                      <img src={Estrela} alt="Estrela" />
-                      <img src={Estrela} alt="Estrela" />
-                      <img src={Estrela} alt="Estrela" />
-                      <img src={Estrela} alt="Estrela" />
+                      <Image src={Estrela} alt="Estrela" />
+                      <Image src={Estrela} alt="Estrela" />
+                      <Image src={Estrela} alt="Estrela" />
+                      <Image src={Estrela} alt="Estrela" />
+                      <Image src={Estrela} alt="Estrela" />
 
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -64,11 +65,11 @@ export function Clientes() {
                       <h3>Jeff Bezos</h3>
                       <h3>CEO Amazon</h3>
 
-                      <img src={Estrela} alt="Estrela" />
-                      <img src={Estrela} alt="Estrela" />
-                      <img src={Estrela} alt="Estrela" />
-                      <img src={Estrela} alt="Estrela" />
-                      <img src={Estrela} alt="Estrela" />
+                      <Image src={Estrela} alt="Estrela" />
+                      <Image src={Estrela} alt="Estrela" />
+                      <Image src={Estrela} alt="Estrela" />
+                      <Image src={Estrela} alt="Estrela" />
+                      <Image src={Estrela} alt="Estrela" />
 
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.

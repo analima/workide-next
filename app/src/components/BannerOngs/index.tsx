@@ -1,8 +1,9 @@
 import { Container, Content } from './style';
+import ImgOng from '@public/img-ong.png';
 
 export function BannerOngs() {
   return (
-    <Container img={'/assets/img-ong.png'}>
+    <Container img={ImgOng.src}>
       <Content>
         <h1>Contribuir com sua causa social é muito importante para a Gyan</h1>
         <span>

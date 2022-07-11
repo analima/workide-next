@@ -11,9 +11,10 @@ import {
 } from 'react-icons/fa';
 import { useState } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 export function Footer() {
-  const history = useHistory();
   const { user, signOut } = useAuth();
   const { apagarLocalStorage } = useValorProjetoPago();
   const [abrirOpcoesMenu, setAbrirOpcoesMenu] = useState<string>('abrir');
@@ -21,7 +22,7 @@ export function Footer() {
   const [abrirOpcoesPoliticas, setAbrirOpcoesPoliticas] =
     useState<string>('abrir');
   const [abrirOpcoesSuporte, setAbrirOpcoesSuporte] = useState<string>('abrir');
-
+  const router = useRouter();
   return (
     <FooterBody>
       <Content>
@@ -37,10 +38,7 @@ export function Footer() {
               Menu
             </h2>
             <ul className={abrirOpcoesMenu}>
-              <li
-                className="li-click"
-                onClick={() => history.push('/', { noRedirect: true })}
-              >
+              <li className="li-click" onClick={() => router.push('/')}>
                 Home
               </li>
               {user?.id_pessoa && (
@@ -59,29 +57,27 @@ export function Footer() {
                 <>
                   <li
                     className="li-click"
-                    onClick={() => history.push('/login')}
+                    onClick={() => router.push('/login')}
                   >
                     Login
                   </li>
 
                   <li
                     className="li-click"
-                    onClick={() => history.push('/cadastro-basico')}
+                    onClick={() => router.push('/cadastro-basico')}
                   >
                     Cadastre-se
                   </li>
 
                   <li
                     className="li-click"
-                    onClick={() => history.push('/quem-somos')}
+                    onClick={() => router.push('/quem-somos')}
                   >
                     Quem Somos
                   </li>
 
                   <li>
-                    <a href="/?section=como-funciona" className="como-funciona">
-                      Como funciona
-                    </a>
+                    <Link href="/?section=como-funciona">Como funciona</Link>
                   </li>
                 </>
               )}
@@ -99,19 +95,19 @@ export function Footer() {
               Áreas
             </h2>
             <ul className={abrirOpcoesAreas}>
-              <li className="li-click" onClick={() => history.push('/areas')}>
+              <li className="li-click" onClick={() => router.push('/areas')}>
                 Gráficos e Design
               </li>
-              <li className="li-click" onClick={() => history.push('/areas')}>
+              <li className="li-click" onClick={() => router.push('/areas')}>
                 Marketing Digital
               </li>
-              <li className="li-click" onClick={() => history.push('/areas')}>
+              <li className="li-click" onClick={() => router.push('/areas')}>
                 Escrita e Tradução
               </li>
-              <li className="li-click" onClick={() => history.push('/areas')}>
+              <li className="li-click" onClick={() => router.push('/areas')}>
                 Vídeo e Animação
               </li>
-              <li className="li-click" onClick={() => history.push('/areas')}>
+              <li className="li-click" onClick={() => router.push('/areas')}>
                 Programação & Tecnologia
               </li>
             </ul>
@@ -130,19 +126,19 @@ export function Footer() {
             <ul className={abrirOpcoesPoliticas}>
               <li
                 className="li-click"
-                onClick={() => history.push('/termos-de-uso')}
+                onClick={() => router.push('/termos-de-uso')}
               >
                 Termos de Uso
               </li>
               <li
                 className="li-click"
-                onClick={() => history.push('/politicas-de-privacidade')}
+                onClick={() => router.push('/politicas-de-privacidade')}
               >
                 Políticas de Privacidade
               </li>
               <li
                 className="li-click"
-                onClick={() => history.push('/politicas-de-cookies')}
+                onClick={() => router.push('/politicas-de-cookies')}
               >
                 Políticas de Cookies
               </li>
@@ -160,7 +156,7 @@ export function Footer() {
               Suporte
             </h2>
             <ul className={abrirOpcoesSuporte}>
-              <li className="li-click" onClick={() => history.push('/faq')}>
+              <li className="li-click" onClick={() => router.push('/faq')}>
                 FAQ
               </li>
             </ul>
@@ -194,7 +190,7 @@ export function Footer() {
             <a
               target="_blank"
               href="https://api.whatsapp.com/send/?phone=55061991053691"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
               <Image width={94} height={94} src={Whatsapp} alt="Whatsapp" />
             </a>
