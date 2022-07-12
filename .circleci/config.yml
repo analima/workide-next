@@ -339,18 +339,18 @@ jobs:
 workflows:
   build_and_push_image:
     jobs:
-      #- build-push-hom: 
-      #    context: homolog
-      #    name: ecr-hom
-      #    filters:  # using regex filters requires the entire branch to match
-      #      branches:
-      #        only:
-      #          - develop
+      - build-push-hom: 
+          context: homolog
+          name: ecr-hom
+          filters:  # using regex filters requires the entire branch to match
+            branches:
+              only:
+                - develop
           
       - plan-apply-hom:
           context: homolog
-       #   requires:
-        #    - ecr-hom
+          requires:
+            - ecr-hom
           filters:  # using regex filters requires the entire branch to match
             branches:
               only:
