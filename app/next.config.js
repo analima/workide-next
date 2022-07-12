@@ -36,7 +36,7 @@ const nextConfig = {
       },
       {
         source: '/:path*',
-        destination: `https://${process.env.REACT_APP_PROXY_HOST}/:path*`,
+        destination: `${process.env.REACT_APP_PROXY_HOST}/:path*`,
       },
     ];
   },
