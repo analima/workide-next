@@ -18,6 +18,30 @@ jobs:
           name: buil & push ecr
           command: |
             cd /tmp/project/app/
+            rm -rf .env
+            echo "REACT_APP_URL=https://$APP_URL" >> .env
+            echo "REACT_APP_AWS_COGNITO_CLIENT_ID=$AWS_COGNITO_CLIENT_ID" >> .env
+            echo "REACT_APP_IUGU_TEST_MODE=$IUGU_TEST_MODE" >> .env
+            echo "REACT_APP_AWS_COGNITO_CLIENT_DOMAIN=$AWS_COGNITO_CLIENT_DOMAIN" >> .env
+            echo "SKIP_PREFLIGHT_CHECK=true" >> .env
+            echo "REACT_APP_ARQUIVOS_API=https://$API_HOST" >> .env
+            echo "REACT_APP_CHAT_API=https://$CHAT_URL" >> .env
+            echo "REACT_APP_OFERTAS_API=https://$API_HOST" >> .env
+            echo "REACT_APP_GERAL_API=https://$API_HOST" >> .env
+            echo "REACT_APP_SEGURANCA_API=https://$API_HOST" >> .env
+            echo "REACT_APP_PESSOAS_API=https://$API_HOST" >> .env
+            echo "REACT_APP_EMAILS_API=https://$API_HOST" >> .env
+            echo "REACT_APP_CONSULTAS_API=https://$API_HOST" >> .env
+            echo "REACT_APP_PAGAMENTOS_API=https://$API_HOST" >> .env
+            echo "REACT_APP_OPORTUNIDADES_API=https://$API_HOST" >> .env
+            echo "REACT_APP_NOTIFICACOES_API=https://$API_HOST" >> .env
+            echo "REACT_APP_PROXY_HOST=https://$APP_URL" >> .env
+            echo "REACT_APP_API_URL=https://$API_HOST/" >> .env
+            echo "REACT_APP_IUGU_CADASTRO_CARTAO=$IUGU_CADASTRO_CARTAO" >> .env
+            echo "REACT_APP_ID_IUGU=$ID_IUGU" >> .env
+            echo "REACT_APP_GA_TRACKING_CODE=$APP_GA_TRACKING_CODE" >> .env  
+            echo "REACT_APP_HOTJAR_ID=$APP_HOTJAR_ID" >> .env  
+            echo "REACT_APP_HOTJAR_SV=$APP_HOTJAR_SV" >> .env
       - aws-ecr/build-and-push-image: 
             account-url: AWS_ECR_ACCOUNT_URL
             aws-access-key-id: AWS_ACCESS_KEY_ID
@@ -46,6 +70,29 @@ jobs:
           name: buil & push ecr
           command: |
             cd /tmp/project/app/
+            echo "REACT_APP_URL=https://$APP_URL" >> .env
+            echo "REACT_APP_AWS_COGNITO_CLIENT_ID=$AWS_COGNITO_CLIENT_ID" >> .env
+            echo "REACT_APP_IUGU_TEST_MODE=$IUGU_TEST_MODE" >> .env
+            echo "REACT_APP_AWS_COGNITO_CLIENT_DOMAIN=$AWS_COGNITO_CLIENT_DOMAIN" >> .env
+            echo "SKIP_PREFLIGHT_CHECK=true" >> .env
+            echo "REACT_APP_ARQUIVOS_API=https://$API_HOST" >> .env
+            echo "REACT_APP_CHAT_API=https://$CHAT_URL" >> .env
+            echo "REACT_APP_OFERTAS_API=https://$API_HOST" >> .env
+            echo "REACT_APP_GERAL_API=https://$API_HOST" >> .env
+            echo "REACT_APP_SEGURANCA_API=https://$API_HOST" >> .env
+            echo "REACT_APP_PESSOAS_API=https://$API_HOST" >> .env
+            echo "REACT_APP_EMAILS_API=https://$API_HOST" >> .env
+            echo "REACT_APP_CONSULTAS_API=https://$API_HOST" >> .env
+            echo "REACT_APP_PAGAMENTOS_API=https://$API_HOST" >> .env
+            echo "REACT_APP_OPORTUNIDADES_API=https://$API_HOST" >> .env
+            echo "REACT_APP_NOTIFICACOES_API=https://$API_HOST" >> .env
+            echo "REACT_APP_PROXY_HOST=https://$APP_URL" >> .env
+            echo "REACT_APP_API_URL=https://$API_HOST/" >> .env
+            echo "REACT_APP_IUGU_CADASTRO_CARTAO=$IUGU_CADASTRO_CARTAO" >> .env
+            echo "REACT_APP_ID_IUGU=$ID_IUGU" >> .env
+            echo "REACT_APP_GA_TRACKING_CODE=$APP_GA_TRACKING_CODE" >> .env  
+            echo "REACT_APP_HOTJAR_ID=$APP_HOTJAR_ID" >> .env  
+            echo "REACT_APP_HOTJAR_SV=$APP_HOTJAR_SV" >> .env
       - aws-ecr/build-and-push-image: 
             account-url: AWS_ECR_ACCOUNT_URL
             aws-access-key-id: AWS_ACCESS_KEY_ID
@@ -74,6 +121,29 @@ jobs:
           name: buil & push ecr
           command: |
             cd /tmp/project/app/
+            echo "REACT_APP_URL=https://$APP_URL" >> .env
+            echo "REACT_APP_AWS_COGNITO_CLIENT_ID=$AWS_COGNITO_CLIENT_ID" >> .env
+            echo "REACT_APP_IUGU_TEST_MODE=$IUGU_TEST_MODE" >> .env
+            echo "REACT_APP_AWS_COGNITO_CLIENT_DOMAIN=$AWS_COGNITO_CLIENT_DOMAIN" >> .env
+            echo "SKIP_PREFLIGHT_CHECK=true" >> .env
+            echo "REACT_APP_ARQUIVOS_API=https://$API_HOST" >> .env
+            echo "REACT_APP_CHAT_API=https://$CHAT_URL" >> .env
+            echo "REACT_APP_OFERTAS_API=https://$API_HOST" >> .env
+            echo "REACT_APP_GERAL_API=https://$API_HOST" >> .env
+            echo "REACT_APP_SEGURANCA_API=https://$API_HOST" >> .env
+            echo "REACT_APP_PESSOAS_API=https://$API_HOST" >> .env
+            echo "REACT_APP_EMAILS_API=https://$API_HOST" >> .env
+            echo "REACT_APP_CONSULTAS_API=https://$API_HOST" >> .env
+            echo "REACT_APP_PAGAMENTOS_API=https://$API_HOST" >> .env
+            echo "REACT_APP_OPORTUNIDADES_API=https://$API_HOST" >> .env
+            echo "REACT_APP_NOTIFICACOES_API=https://$API_HOST" >> .env
+            echo "REACT_APP_PROXY_HOST=https://$APP_URL" >> .env
+            echo "REACT_APP_API_URL=https://$API_HOST/" >> .env
+            echo "REACT_APP_IUGU_CADASTRO_CARTAO=$IUGU_CADASTRO_CARTAO" >> .env
+            echo "REACT_APP_ID_IUGU=$ID_IUGU" >> .env
+            echo "REACT_APP_GA_TRACKING_CODE=$APP_GA_TRACKING_CODE" >> .env  
+            echo "REACT_APP_HOTJAR_ID=$APP_HOTJAR_ID" >> .env  
+            echo "REACT_APP_HOTJAR_SV=$APP_HOTJAR_SV" >> .env
       - aws-ecr/build-and-push-image: 
             account-url: AWS_ECR_ACCOUNT_URL
             aws-access-key-id: AWS_ACCESS_KEY_ID
