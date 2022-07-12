@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { Conheca } from '../components/Home/Conheca';
 import { Header } from '../components/Header';
-import { Rodape } from '../components/Rodape';
 import { Helmet } from 'react-helmet';
 import { hotjar } from 'react-hotjar';
 import { useAuth } from '../contexts/auth';

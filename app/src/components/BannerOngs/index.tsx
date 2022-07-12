@@ -1,5 +1,5 @@
 import { Container, Content } from './style';
-import ImgOng from '@public/img-ong.png';
+import ImgOng from '@public/img-ong.webp';
 
 export function BannerOngs() {
   return (
