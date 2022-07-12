@@ -9,11 +9,18 @@ export function ConnectOngs() {
     <Container>
       <Content>
         <div className="image-container">
-          <Image
+          {/* <Image
             alt="img-ong"
             layout="fill"
             className={'image'}
             src={IMG.src}
+          /> */}
+
+          <Image
+            alt="img-ong"
+            layout="intrinsic"
+            className={'image'}
+            src={IMG}
           />
         </div>
         <div className="info">

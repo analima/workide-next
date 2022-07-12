@@ -32,7 +32,7 @@ export const ContentHowItWorks = styled.div`
     align-items: center;
     justify-content: space-between;
     gap: 16px;
-    margin-top: 210px;
+    margin-top: 120px;
   }
 
   @media (max-width: 991px) {
