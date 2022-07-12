@@ -32,8 +32,8 @@ export function ProfessionalShowCase() {
     initialSlide: 1,
     slidesToScroll: 1,
     Infinity: true,
-    nextArrow: <IoMdArrowDroprightCircle size={60} color={LARANJA} />,
-    prevArrow: <IoMdArrowDropleftCircle size={60} color={LARANJA} />,
+    nextArrow: <IoMdArrowDroprightCircle size={32} color={LARANJA} />,
+    prevArrow: <IoMdArrowDropleftCircle size={32} color={LARANJA} />,
 
     responsive: [
       {
