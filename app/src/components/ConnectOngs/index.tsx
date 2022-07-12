@@ -19,6 +19,7 @@ export function ConnectOngs() {
           <Image
             alt="img-ong"
             layout="intrinsic"
+            objectFit="cover"
             className={'image'}
             src={IMG}
           />
