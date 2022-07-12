@@ -3,6 +3,7 @@ version: 2.1
 orbs:
   aws-ecr: circleci/aws-ecr@7.0.0
   slack: circleci/slack@4.4.2
+  aws-cli: circleci/aws-cli@3.1
   
 jobs:
   build-push-hom:
@@ -202,7 +203,6 @@ jobs:
             export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
             export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
             terraform apply -auto-approve tfapplyhom
-            aws cloudfront create-invalidation --distribution-id E3V86R2RP7S15N --paths "/*"
       - persist_to_workspace:
           root: .
           paths:
@@ -324,7 +324,13 @@ jobs:
       
       - slack/notify:
             event: pass
-            template: basic_success_1  
+            template: basic_success_1
+  
+  cloudfront:
+    executor: aws-cli/default
+    steps:
+      - run: >-
+          aws cloudfront create-invalidation --distribution-id E3V86R2RP7S15N --paths "/*"
 
 
 workflows:
@@ -350,6 +356,14 @@ workflows:
           context: homolog
           requires:
             - plan-apply-hom
+          filters:  # using regex filters requires the entire branch to match
+            branches:
+              only:
+                - develop
+      - cloudfront:
+          context: homolog
+          requires:
+            - apply-hom
           filters:  # using regex filters requires the entire branch to match
             branches:
               only:
