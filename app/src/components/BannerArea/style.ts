@@ -35,19 +35,16 @@ export const Content = styled.section`
 export const ContentDescription = styled.div`
   background-color: ${BRANCO};
   max-width: 516px;
-  display: flex;
-  flex-direction: column;
-  gap: 72px;
   z-index: 9999;
 
   h1 {
     font-size: 39px;
     color: ${BRANCO};
-    line-height: 46.87px;
-    font-family: Renner;
     padding: 22px 39px;
     background-color: ${LARANJA};
     border-radius: 37px;
+    display: inline-block;
+    margin-bottom: 72px;
   }
 
   .breach-chumb {
@@ -55,6 +52,7 @@ export const ContentDescription = styled.div`
     font-size: 12.8px;
     display: flex;
     gap: 7px;
+    margin-bottom: 72px;
 
     span {
       color: ${PRETO_10};
@@ -64,7 +62,6 @@ export const ContentDescription = styled.div`
 
   h2 {
     text-align: left;
-
     font-size: 48.83px;
     color: ${PRETO_10};
   }
@@ -78,13 +75,17 @@ export const ContentDescription = styled.div`
 
   @media (max-width: 768px) {
     width: 100%;
-    gap: 24px;
     margin-top: 16px;
+
+    .breach-chumb {
+      margin-bottom: 24px;
+    }
 
     h1 {
       font-size: 20px;
       padding: 12px 39px;
       font-weight: bold;
+      margin-bottom: 24px;
     }
 
     h2 {
@@ -102,11 +103,6 @@ export const ContentDescription = styled.div`
 `;
 
 export const ContentBox = styled.div`
-  @media (max-width: 991px) {
-    img {
-    }
-  }
-
   @media (max-width: 768px) {
     display: none;
   }

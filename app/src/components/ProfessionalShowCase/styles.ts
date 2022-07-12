@@ -11,10 +11,8 @@ export const Content = styled.section`
     font-size: 39px;
     color: ${PRETO_10};
   }
-
   .container {
   }
-
   button {
     padding: 16px 65.5px;
     color: ${BRANCO};
@@ -63,12 +61,14 @@ export const ContentButton = styled.div`
 export const CardCarrousel = styled.div`
   padding: 10px 16px;
   max-width: 1200px;
-  height: 400px;
+  height: 440px;
   position: relative;
 `;
 
 export const Carrousel = styled(Slider)`
   overflow: hidden;
+  padding: 24px;
+  height: 100%;
 
   .slick-slide {
     display: flex;
@@ -82,10 +82,10 @@ export const Carrousel = styled(Slider)`
   }
 
   svg.slick-arrow.slick-next {
-    position: absolute;
     bottom: 0;
     right: 0;
     cursor: pointer;
+    position: absolute;
 
     :hover {
       opacity: 0.8;
@@ -95,7 +95,7 @@ export const Carrousel = styled(Slider)`
   svg.slick-arrow.slick-prev {
     position: absolute;
     bottom: 0;
-    right: 34px;
+    left: 0;
     cursor: pointer;
 
     :hover {
