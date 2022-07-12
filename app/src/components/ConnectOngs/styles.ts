@@ -22,12 +22,12 @@ export const Content = styled.section`
     height: 683px;
     position: relative;
 
-    .image {
+    /* .image {
       width: 100%;
       height: 100%;
       position: relative !important;
       object-fit: contain;
-    }
+    } */
   }
 
   .info {

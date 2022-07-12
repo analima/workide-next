@@ -73,7 +73,7 @@ export function BannerArea({ item }: IProps) {
           )}
         </ContentBox>
       </Content>
-      ;
+
       <BsFillArrowDownCircleFill size={36} color={CINZA_90} />
     </Container>
   );

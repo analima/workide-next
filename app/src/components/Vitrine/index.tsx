@@ -179,7 +179,9 @@ export function ItemVitrine({
             <Foto
               width={96}
               height={96}
-              layout="responsive"
+              layout="intrinsic"
+              objectFit="cover"
+              quality={75}
               src={item.urlArquivo}
               alt={item.nome}
             />
