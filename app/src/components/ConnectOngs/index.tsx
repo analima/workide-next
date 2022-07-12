@@ -4,13 +4,17 @@ import { Content, ContentButton, Container, ContentConect } from './styles';
 import IMG from '@public/img-secundary-ong.webp';
 export function ConnectOngs() {
   const router = useRouter();
-  console.log(IMG);
 
   return (
     <Container>
       <Content>
         <div className="image-container">
-          <Image alt="img-ong" layout="fill" className={'image'} src={IMG} />
+          <Image
+            alt="img-ong"
+            layout="fill"
+            className={'image'}
+            src={IMG.src}
+          />
         </div>
         <div className="info">
           <h1>
