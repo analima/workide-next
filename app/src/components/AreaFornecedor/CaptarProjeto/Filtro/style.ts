@@ -4,6 +4,7 @@ import {
   AZUL,
   BRANCO,
   BRANCO_GELO,
+  CINZA_80,
   PRETO_10,
   PRETO_40,
 } from '../../../../styles/variaveis';
@@ -14,21 +15,63 @@ interface IFiltroInputCheck {
 
 interface IFiltroProps {
   filtro: boolean;
+  sizeFilter?: string;
 }
 
 const Content = styled.section<IFiltroProps>`
-  display: ${props => (props.filtro ? 'flex' : 'none')};
-  flex-direction: column;
-  z-index: 1;
+  border: 1px solid ${PRETO_40};
+  padding: ${({ sizeFilter }) => (sizeFilter === 'small' ? '0px' : '8px')};
+  border-radius: 8px;
+  width: ${({ sizeFilter }) => (sizeFilter === 'small' ? '100%' : '357px')};
 
   h4 {
     font-size: 16px;
+  }
+
+  @media (max-width: 990px) {
+    width: 100% !important;
+  }
+
+  @media (max-width: 900px) {
+    margin: 10px 0;
+  }
+  @media (max-width: 178px) {
+    width: 100%;
   }
 `;
 
 export const CloseModal = styled.span`
   display: flex;
   justify-content: flex-start;
+`;
+
+export const ContentIcon = styled.div<IFiltroProps>`
+  display: flex;
+  justify-content: ${({ sizeFilter }: IFiltroProps) =>
+    sizeFilter === 'small' ? 'space-around' : 'space-between'};
+  align-items: center;
+  gap: 2px;
+  margin-bottom: ${({ sizeFilter }: IFiltroProps) =>
+    sizeFilter === 'small' ? '0px' : '16px'};
+  padding: 4px;
+
+  @media (max-width: 995px) {
+    padding: 0;
+    margin: 0;
+  }
+
+  > svg {
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  span {
+    font-size: 12px;
+    color: ${PRETO_40};
+  }
 `;
 
 export const Favoritos = styled.button`
@@ -86,11 +129,21 @@ export const CardInput = styled.div`
 `;
 
 export const CardFiltro = styled.div`
-  padding: 1rem;
+  border: 1px solid ${CINZA_80};
+  padding: 8px;
   border-radius: 8px;
-  margin-bottom: 1rem;
-  border: 1px solid ${PRETO_40};
-  border-radius: 8px;
+  margin-bottom: 16px;
+
+  @media (max-width: 995px) {
+    margin: 4px 0;
+    padding: 2px 2px;
+  }
+
+  @media (max-width: 400px) {
+    padding: 6px 0;
+    margin: 1px 0;
+    font-size: 16px;
+  }
 
   .content-toggle {
     display: flex;
@@ -181,7 +234,6 @@ export const FiltroInputCheck = styled.div<IFiltroInputCheck>`
     width: 100%;
     display: flex;
     align-items: center;
-    padding: 0 0 0 4px;
   }
 
   .form-check {
@@ -264,5 +316,4 @@ export const Button = styled.button`
   @media (max-width: 478px) {
   }
 `;
-
 export default Content;

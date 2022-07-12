@@ -62,6 +62,8 @@ interface CaptarProjetoFornecedorContextProps {
   setMudar: Dispatch<SetStateAction<boolean>>;
   causas: CausaProp[];
   setCausas: Dispatch<SetStateAction<CausaProp[]>>;
+  sizeFilter: string;
+  setSizeFilter: Dispatch<SetStateAction<string>>;
 }
 
 type AreaInteresse = {
@@ -121,7 +123,9 @@ const CaptarProjetoFornecedorContext =
     {} as CaptarProjetoFornecedorContextProps,
   );
 
-export const CaptarProjetoFornecedorProvider: React.FC<GlobalLayoutProps> = ({ children }) => {
+export const CaptarProjetoFornecedorProvider: React.FC<GlobalLayoutProps> = ({
+  children,
+}) => {
   const [id, setId] = useState<number | undefined>(undefined);
   const [pagina, setPagina] = useState(1);
   const [totalPaginas, setTotalPaginas] = useState(1);
@@ -140,12 +144,13 @@ export const CaptarProjetoFornecedorProvider: React.FC<GlobalLayoutProps> = ({ c
   const [escopo, setEscopo] = useState('');
   const [mudar, setMudar] = useState(false);
   const [causas, setCausas] = useState<CausaProp[]>([]);
+  const [sizeFilter, setSizeFilter] = useState('large');
 
   let { user } = useAuth();
   const schema = Yup.object().shape({});
-    if(!user){
-      user = {} as IPessoa;
-    }
+  if (!user) {
+    user = {} as IPessoa;
+  }
   const {
     control,
     handleSubmit,
@@ -160,7 +165,6 @@ export const CaptarProjetoFornecedorProvider: React.FC<GlobalLayoutProps> = ({ c
   });
 
   const obterProjetos = useCallback(async () => {
-    
     setLoadingProjetos(true);
     const formData: {
       [key: string]: string | string[] | number | number[] | Date;
@@ -178,7 +182,7 @@ export const CaptarProjetoFornecedorProvider: React.FC<GlobalLayoutProps> = ({ c
 
     const niveisExperiencia: string[] = [];
 
-    if (getValues('nivel_basico')) niveisExperiencia.push('BASICO');
+    if (getValues('nivel_basico')) niveisExperiencia.push('INICIANTE');
     if (getValues('nivel_intermediario'))
       niveisExperiencia.push('INTERMEDIARIO');
     if (getValues('nivel_avancado')) niveisExperiencia.push('AVANCADO');
@@ -214,7 +218,6 @@ export const CaptarProjetoFornecedorProvider: React.FC<GlobalLayoutProps> = ({ c
         ...formData,
       },
     );
-    console.log('ta rolando? ',data)
     setProjetos(data.values);
     setTotalPaginas(data.pages);
     setLoadingProjetos(false);
@@ -260,12 +263,11 @@ export const CaptarProjetoFornecedorProvider: React.FC<GlobalLayoutProps> = ({ c
       console.error(error.response);
     }
   }, []);
-  
+
   const obterProjetosExclusivos = useCallback(async () => {
-    
     if (!user.id_pessoa) return;
     setLoadingProjetosExclusivos(true);
-    
+
     const { data } = await oportunidades_api.get(`/projetos/selecionados`);
     setProjetosExclusivos(
       data.values
@@ -291,7 +293,6 @@ export const CaptarProjetoFornecedorProvider: React.FC<GlobalLayoutProps> = ({ c
 
     setTotalPaginasExclusivo(data.pages);
     setLoadingProjetosExclusivos(false);
-   
   }, [user.id_pessoa]);
 
   const proximaPagina = () => {
@@ -353,6 +354,8 @@ export const CaptarProjetoFornecedorProvider: React.FC<GlobalLayoutProps> = ({ c
         setMudar,
         causas,
         setCausas,
+        sizeFilter,
+        setSizeFilter,
       }}
     >
       {children}

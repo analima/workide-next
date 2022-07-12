@@ -7,6 +7,10 @@ const Content = styled.section`
     font-weight: bold;
     color: ${AZUL};
     margin: 32px 0 16px;
+
+    @media (max-width: 400px) {
+      font-size: 16px;
+    }
   }
 `;
 
@@ -27,17 +31,16 @@ export const Button = styled.button`
     color: ${BRANCO};
   }
 
-  @media (max-width: 478px) {
-    width: 100%;
-    margin-top: 16px;
-    margin-bottom: 8px;
+  @media (max-width: 900px) {
+    margin: 10px 0;
   }
 `;
 
 export const AcordeonContent = styled(Accordion)`
   display: none;
+  margin-left: 10px;
 
-  @media (max-width: 991px) {
+  @media (max-width: 900px) {
     display: block;
   }
 `;
@@ -47,8 +50,15 @@ export const AcordeonToggle = styled(Accordion.Toggle)`
 `;
 
 export const FiltroTelaCheia = styled.div`
-  @media (max-width: 991px) {
-    display: none;
+  display: flex;
+`;
+
+export const ContainerFiltro = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
   }
 `;
 

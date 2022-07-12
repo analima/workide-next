@@ -1,8 +1,13 @@
 import { Titulo } from '../../../../components/Titulo';
-import { PRETO_60 } from '../../../../styles/variaveis';
+import { PRETO_40, PRETO_60 } from '../../../../styles/variaveis';
 
-import { CardFiltro, FiltroGroup, FiltroInputCheck } from './style';
 import Content from './style';
+import {
+  CardFiltro,
+  FiltroGroup,
+  FiltroInputCheck,
+  ContentIcon,
+} from './style';
 import { Col, Row } from 'react-bootstrap';
 import { Spacer } from '../../../../components/Spacer';
 
@@ -10,10 +15,11 @@ import { useCaptarProjetoFornecedor } from '../../../../hooks/captarProjetoForne
 import { InputNumber } from '../../../../components/Form/InputNumber';
 import { Subarea } from '../../../AreaConsumidor/Busca/Filtro/FiltroSubarea';
 import FiltroSubarea from '../../../AreaConsumidor/Busca/Filtro/FiltroSubarea';
-import { Dispatch, SetStateAction, useCallback } from 'react';
-import FiltroHabilidades  from '../../../AreaConsumidor/Busca/Filtro/FiltroHabilidades';
+import { Dispatch, SetStateAction, useCallback, useState } from 'react';
+import FiltroHabilidades from '../../../AreaConsumidor/Busca/Filtro/FiltroHabilidades';
 import { InputCheck } from '../../../../components/Form/InputCheck';
 import FiltroCausas from '../../../AreaConsumidor/Busca/Filtro/FiltroCausas';
+import { FiArrowDownLeft, FiArrowUpRight, FiFilter } from 'react-icons/fi';
 
 interface IProp {
   filtroEnviado: boolean;
@@ -32,6 +38,8 @@ export default function Filtro({ filtroEnviado, setFiltroEnviado }: IProp) {
     escopo,
     setEscopo,
     setCausas,
+    setSizeFilter,
+    sizeFilter,
   } = useCaptarProjetoFornecedor();
   const volutario = watch('toggle_volutarios');
   const nivelBasico = watch('nivel_basico');
@@ -73,8 +81,26 @@ export default function Filtro({ filtroEnviado, setFiltroEnviado }: IProp) {
   );
 
   return (
-    <Content filtro={!filtroEnviado}>
-      {volutario && (
+    <Content filtro={!filtroEnviado} sizeFilter={sizeFilter}>
+      <ContentIcon sizeFilter={sizeFilter} filtro={!filtroEnviado}>
+        <FiFilter size={20} color={PRETO_40} />
+        {sizeFilter === 'small' ? (
+          <FiArrowUpRight
+            onClick={() => setSizeFilter('large')}
+            color={PRETO_40}
+            size={20}
+            data-toggle="tooltip"
+            title="Clique aqui para exibir opções de busca"
+          />
+        ) : (
+          <FiArrowDownLeft
+            onClick={() => setSizeFilter('small')}
+            color={PRETO_40}
+            size={20}
+          />
+        )}
+      </ContentIcon>
+      {sizeFilter === 'large' && volutario && (
         <CardFiltro>
           <Row>
             <Col lg={12}>
@@ -93,289 +119,299 @@ export default function Filtro({ filtroEnviado, setFiltroEnviado }: IProp) {
           </Row>
         </CardFiltro>
       )}
-
-      <CardFiltro>
-        <Row>
-          <Col lg={12}>
-            <Titulo
-              titulo="Área do Projeto"
-              cor={PRETO_60}
-              tamanho={20}
-              negrito
-            />
-            <FiltroSubarea
-              control={control}
-              onChange={handleChangeSubareas}
-              page="captar"
-            />
-          </Col>
-        </Row>
-      </CardFiltro>
-
-      <CardFiltro>
-        <Row>
-          <Col lg={12}>
-            <Titulo titulo="Habilidades" cor={PRETO_60} tamanho={20} negrito />
-            <FiltroHabilidades
-              control={control}
-              page="captar"
-              onChange={handleChangeHabilidades}
-            />
-          </Col>
-        </Row>
-      </CardFiltro>
-
-      <CardFiltro>
-        <Row>
-          <Col lg={12}>
-            <Titulo
-              titulo="Nível de experiência"
-              cor={PRETO_60}
-              negrito
-              tamanho={20}
-            />
-          </Col>
-        </Row>
-
-        <Spacer size={24} />
-
-        <Row>
-          <Col lg={12}>
-            <FiltroGroup>
-              <FiltroInputCheck checked={nivelBasico}>
-                <input
-                  type="checkbox"
-                  name="basico"
-                  id="basico"
-                  checked={nivelBasico}
-                  onClick={handleSubmit(onSubmit)}
-                  onChange={() => setValue('nivel_basico', !nivelBasico)}
+      {sizeFilter === 'large' && (
+        <>
+          <CardFiltro>
+            <Row>
+              <Col lg={12}>
+                <Titulo
+                  titulo="Área do Projeto"
+                  cor={PRETO_60}
+                  tamanho={20}
+                  negrito
                 />
-                <label htmlFor="basico">Iniciante</label>
-              </FiltroInputCheck>
-              <FiltroInputCheck checked={nivelIntermediario}>
-                <input
-                  type="checkbox"
-                  name="intermediario"
-                  id="intermediario"
-                  checked={nivelIntermediario}
-                  onClick={handleSubmit(onSubmit)}
-                  onChange={() =>
-                    setValue('nivel_intermediario', !nivelIntermediario)
-                  }
+                <FiltroSubarea
+                  control={control}
+                  onChange={handleChangeSubareas}
+                  page="captar"
                 />
-                <label htmlFor="intermediario">Intermediário</label>
-              </FiltroInputCheck>
-            </FiltroGroup>
-            <FiltroGroup>
-              <FiltroInputCheck checked={nivelAvancado}>
-                <input
-                  type="checkbox"
-                  name="avancado"
-                  id="avancado"
-                  checked={nivelAvancado}
-                  onClick={handleSubmit(onSubmit)}
-                  onChange={() => setValue('nivel_avancado', !nivelAvancado)}
+              </Col>
+            </Row>
+          </CardFiltro>
+
+          <CardFiltro>
+            <Row>
+              <Col lg={12}>
+                <Titulo
+                  titulo="Habilidades"
+                  cor={PRETO_60}
+                  tamanho={20}
+                  negrito
                 />
-                <label htmlFor="avancado">Avançado</label>
-              </FiltroInputCheck>
-              <FiltroInputCheck checked={nivelEspecialista}>
-                <input
-                  type="checkbox"
-                  name="especialista"
-                  id="especialista"
-                  checked={nivelEspecialista}
-                  onClick={handleSubmit(onSubmit)}
-                  onChange={() =>
-                    setValue('nivel_especialista', !nivelEspecialista)
-                  }
+                <FiltroHabilidades
+                  control={control}
+                  page="captar"
+                  onChange={handleChangeHabilidades}
                 />
-                <label htmlFor="especialista">Especialista</label>
-              </FiltroInputCheck>
-            </FiltroGroup>
-          </Col>
-        </Row>
-      </CardFiltro>
+              </Col>
+            </Row>
+          </CardFiltro>
 
-      {!volutario && (
-        <CardFiltro>
-          <Row>
-            <Col lg={12}>
-              <Titulo
-                titulo="Faixa de Preço"
-                cor={PRETO_60}
-                tamanho={20}
-                negrito
-              />
-            </Col>
-          </Row>
+          <CardFiltro>
+            <Row>
+              <Col lg={12}>
+                <Titulo
+                  titulo="Nível de experiência"
+                  cor={PRETO_60}
+                  negrito
+                  tamanho={20}
+                />
+              </Col>
+            </Row>
 
-          <Row className="mt-2">
-            <Col lg={6}>
-              <InputNumber
-                name="preco_minimo"
-                control={control}
-                placeholder="R$"
-                label="De:"
-                onBlur={handleSubmit(onSubmit)}
-                onKeyUp={(e: any) => {
-                  if (e.keyCode === 13) {
-                    obterProjetos();
-                  }
-                }}
+            <Spacer size={24} />
 
-                // error={errors.nome_tratamento}
-              />
-            </Col>
-            <Col lg={6}>
-              <InputNumber
-                name="preco_maximo"
-                control={control}
-                placeholder="R$"
-                label="Até:"
-                onBlur={handleSubmit(onSubmit)}
-                onKeyUp={(e: any) => {
-                  if (e.keyCode === 13) {
-                    obterProjetos();
-                  }
-                }}
-                // error={errors.nome_tratamento}
-              />
-            </Col>
-          </Row>
-        </CardFiltro>
+            <Row>
+              <Col lg={12}>
+                <FiltroGroup>
+                  <FiltroInputCheck checked={nivelBasico}>
+                    <input
+                      type="checkbox"
+                      name="basico"
+                      id="basico"
+                      checked={nivelBasico}
+                      onClick={handleSubmit(onSubmit)}
+                      onChange={() => setValue('nivel_basico', !nivelBasico)}
+                    />
+                    <label htmlFor="basico">Iniciante</label>
+                  </FiltroInputCheck>
+                  <FiltroInputCheck checked={nivelIntermediario}>
+                    <input
+                      type="checkbox"
+                      name="intermediario"
+                      id="intermediario"
+                      checked={nivelIntermediario}
+                      onClick={handleSubmit(onSubmit)}
+                      onChange={() =>
+                        setValue('nivel_intermediario', !nivelIntermediario)
+                      }
+                    />
+                    <label htmlFor="intermediario">Intermediário</label>
+                  </FiltroInputCheck>
+                </FiltroGroup>
+                <FiltroGroup>
+                  <FiltroInputCheck checked={nivelAvancado}>
+                    <input
+                      type="checkbox"
+                      name="avancado"
+                      id="avancado"
+                      checked={nivelAvancado}
+                      onClick={handleSubmit(onSubmit)}
+                      onChange={() =>
+                        setValue('nivel_avancado', !nivelAvancado)
+                      }
+                    />
+                    <label htmlFor="avancado">Avançado</label>
+                  </FiltroInputCheck>
+                  <FiltroInputCheck checked={nivelEspecialista}>
+                    <input
+                      type="checkbox"
+                      name="especialista"
+                      id="especialista"
+                      checked={nivelEspecialista}
+                      onClick={handleSubmit(onSubmit)}
+                      onChange={() =>
+                        setValue('nivel_especialista', !nivelEspecialista)
+                      }
+                    />
+                    <label htmlFor="especialista">Especialista</label>
+                  </FiltroInputCheck>
+                </FiltroGroup>
+              </Col>
+            </Row>
+          </CardFiltro>
+
+          {!volutario && (
+            <CardFiltro>
+              <Row>
+                <Col lg={12}>
+                  <Titulo
+                    titulo="Faixa de Preço"
+                    cor={PRETO_60}
+                    tamanho={20}
+                    negrito
+                  />
+                </Col>
+              </Row>
+
+              <Row className="mt-2">
+                <Col lg={6}>
+                  <InputNumber
+                    name="preco_minimo"
+                    control={control}
+                    placeholder="R$"
+                    label="De:"
+                    onBlur={handleSubmit(onSubmit)}
+                    onKeyUp={(e: any) => {
+                      if (e.keyCode === 13) {
+                        obterProjetos();
+                      }
+                    }}
+
+                    // error={errors.nome_tratamento}
+                  />
+                </Col>
+                <Col lg={6}>
+                  <InputNumber
+                    name="preco_maximo"
+                    control={control}
+                    placeholder="R$"
+                    label="Até:"
+                    onBlur={handleSubmit(onSubmit)}
+                    onKeyUp={(e: any) => {
+                      if (e.keyCode === 13) {
+                        obterProjetos();
+                      }
+                    }}
+                    // error={errors.nome_tratamento}
+                  />
+                </Col>
+              </Row>
+            </CardFiltro>
+          )}
+
+          <CardFiltro>
+            <Row>
+              <Col lg={12}>
+                <Titulo
+                  titulo="Avaliação do Cliente"
+                  cor={PRETO_60}
+                  negrito
+                  tamanho={20}
+                />
+              </Col>
+            </Row>
+
+            <Spacer size={24} />
+
+            <Row>
+              <Col lg={12}>
+                <FiltroGroup>
+                  <FiltroInputCheck checked={avaliacao === 3}>
+                    <div>
+                      <InputCheck
+                        control={control}
+                        name="avaliacao"
+                        type="radio"
+                        checked={avaliacao === 3}
+                        onClick={() => {
+                          setAvaliacao(3);
+                          handleSubmit(onSubmit);
+                        }}
+                        label="3 estrelas"
+                      />
+                    </div>
+                  </FiltroInputCheck>
+                  <FiltroInputCheck checked={avaliacao === 4}>
+                    <div>
+                      <InputCheck
+                        control={control}
+                        name="avaliacao"
+                        type="radio"
+                        checked={avaliacao === 4}
+                        onClick={() => {
+                          setAvaliacao(4);
+                          handleSubmit(onSubmit);
+                        }}
+                        label="4 estrelas"
+                      />
+                    </div>
+                  </FiltroInputCheck>
+                </FiltroGroup>
+                <FiltroGroup>
+                  <FiltroInputCheck checked={avaliacao === 5}>
+                    <div>
+                      <InputCheck
+                        control={control}
+                        name="avaliacao"
+                        type="radio"
+                        checked={avaliacao === 5}
+                        onClick={() => {
+                          setAvaliacao(5);
+                          handleSubmit(onSubmit);
+                        }}
+                        label="5 estrelas"
+                      />
+                    </div>
+                  </FiltroInputCheck>
+                  <FiltroInputCheck checked={avaliacao === 0}>
+                    <div>
+                      <InputCheck
+                        control={control}
+                        name="avaliacao"
+                        type="radio"
+                        checked={avaliacao === 0}
+                        onClick={() => {
+                          setAvaliacao(0);
+                          handleSubmit(onSubmit);
+                        }}
+                        label="Indiferente"
+                      />
+                    </div>
+                  </FiltroInputCheck>
+                </FiltroGroup>
+              </Col>
+            </Row>
+          </CardFiltro>
+
+          <CardFiltro>
+            <Row>
+              <Col lg={12}>
+                <Titulo
+                  titulo="Tipo de escopo"
+                  cor={PRETO_60}
+                  negrito
+                  tamanho={20}
+                />
+              </Col>
+            </Row>
+
+            <Spacer size={24} />
+
+            <Row>
+              <Col lg={12}>
+                <FiltroInputCheck checked={escopo === 'FECHADO'}>
+                  <InputCheck
+                    control={control}
+                    name="escopo"
+                    type="radio"
+                    checked={escopo === 'FECHADO'}
+                    onClick={() => {
+                      setEscopo('FECHADO');
+                      handleSubmit(onSubmit);
+                    }}
+                    label="Escopo Fechado"
+                  />
+                </FiltroInputCheck>
+
+                <FiltroInputCheck checked={escopo === 'ABERTO'}>
+                  <InputCheck
+                    control={control}
+                    name="escopo"
+                    type="radio"
+                    checked={escopo === 'ABERTO'}
+                    onClick={() => {
+                      setEscopo('ABERTO');
+                      handleSubmit(onSubmit);
+                    }}
+                    label="Escopo Aberto (por horas)"
+                  />
+                </FiltroInputCheck>
+              </Col>
+            </Row>
+          </CardFiltro>
+        </>
       )}
-
-      <CardFiltro>
-        <Row>
-          <Col lg={12}>
-            <Titulo
-              titulo="Avaliação do Cliente"
-              cor={PRETO_60}
-              negrito
-              tamanho={20}
-            />
-          </Col>
-        </Row>
-
-        <Spacer size={24} />
-
-        <Row>
-          <Col lg={12}>
-            <FiltroGroup>
-              <FiltroInputCheck checked={avaliacao === 3}>
-                <div>
-                  <InputCheck
-                    control={control}
-                    name="avaliacao"
-                    type="radio"
-                    checked={avaliacao === 3}
-                    onClick={() => {
-                      setAvaliacao(3);
-                      handleSubmit(onSubmit);
-                    }}
-                    label="3 estrelas"
-                  />
-                </div>
-              </FiltroInputCheck>
-              <FiltroInputCheck checked={avaliacao === 4}>
-                <div>
-                  <InputCheck
-                    control={control}
-                    name="avaliacao"
-                    type="radio"
-                    checked={avaliacao === 4}
-                    onClick={() => {
-                      setAvaliacao(4);
-                      handleSubmit(onSubmit);
-                    }}
-                    label="4 estrelas"
-                  />
-                </div>
-              </FiltroInputCheck>
-            </FiltroGroup>
-            <FiltroGroup>
-              <FiltroInputCheck checked={avaliacao === 5}>
-                <div>
-                  <InputCheck
-                    control={control}
-                    name="avaliacao"
-                    type="radio"
-                    checked={avaliacao === 5}
-                    onClick={() => {
-                      setAvaliacao(5);
-                      handleSubmit(onSubmit);
-                    }}
-                    label="5 estrelas"
-                  />
-                </div>
-              </FiltroInputCheck>
-              <FiltroInputCheck checked={avaliacao === 0}>
-                <div>
-                  <InputCheck
-                    control={control}
-                    name="avaliacao"
-                    type="radio"
-                    checked={avaliacao === 0}
-                    onClick={() => {
-                      setAvaliacao(0);
-                      handleSubmit(onSubmit);
-                    }}
-                    label="Indiferente"
-                  />
-                </div>
-              </FiltroInputCheck>
-            </FiltroGroup>
-          </Col>
-        </Row>
-      </CardFiltro>
-
-      <CardFiltro>
-        <Row>
-          <Col lg={12}>
-            <Titulo
-              titulo="Tipo de escopo"
-              cor={PRETO_60}
-              negrito
-              tamanho={20}
-            />
-          </Col>
-        </Row>
-
-        <Spacer size={24} />
-
-        <Row>
-          <Col lg={12}>
-            <FiltroInputCheck checked={escopo === 'FECHADO'}>
-              <InputCheck
-                control={control}
-                name="escopo"
-                type="radio"
-                checked={escopo === 'FECHADO'}
-                onClick={() => {
-                  setEscopo('FECHADO');
-                  handleSubmit(onSubmit);
-                }}
-                label="Escopo Fechado"
-              />
-            </FiltroInputCheck>
-
-            <FiltroInputCheck checked={escopo === 'ABERTO'}>
-              <InputCheck
-                control={control}
-                name="escopo"
-                type="radio"
-                checked={escopo === 'ABERTO'}
-                onClick={() => {
-                  setEscopo('ABERTO');
-                  handleSubmit(onSubmit);
-                }}
-                label="Escopo Aberto (por horas)"
-              />
-            </FiltroInputCheck>
-          </Col>
-        </Row>
-      </CardFiltro>
     </Content>
   );
 }
