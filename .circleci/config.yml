@@ -329,25 +329,28 @@ jobs:
   cloudfront:
     executor: aws-cli/default
     steps:
-      - run: >-
-          aws cloudfront create-invalidation --distribution-id E3V86R2RP7S15N --paths "/*"
+      - checkout
+      - aws-cli/setup:
+          aws-access-key-id: $AWS_ACCESS_KEY_ID
+          aws-secret-access-key: $AWS_SECRET_ACCESS_KEY
+      - run: aws cloudfront create-invalidation --distribution-id $DISTRIBUTION --paths "/*"
 
 
 workflows:
   build_and_push_image:
     jobs:
-      - build-push-hom: 
-          context: homolog
-          name: ecr-hom
-          filters:  # using regex filters requires the entire branch to match
-            branches:
-              only:
-                - develop
+      #- build-push-hom: 
+      #    context: homolog
+      #    name: ecr-hom
+      #    filters:  # using regex filters requires the entire branch to match
+      #      branches:
+      #        only:
+      #          - develop
           
       - plan-apply-hom:
           context: homolog
-          requires:
-            - ecr-hom
+       #   requires:
+        #    - ecr-hom
           filters:  # using regex filters requires the entire branch to match
             branches:
               only:
