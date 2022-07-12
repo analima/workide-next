@@ -182,7 +182,7 @@ export const CaptarProjetoFornecedorProvider: React.FC<GlobalLayoutProps> = ({
 
     const niveisExperiencia: string[] = [];
 
-    if (getValues('nivel_basico')) niveisExperiencia.push('INICIANTE');
+    if (getValues('nivel_basico')) niveisExperiencia.push('BASICO');
     if (getValues('nivel_intermediario'))
       niveisExperiencia.push('INTERMEDIARIO');
     if (getValues('nivel_avancado')) niveisExperiencia.push('AVANCADO');

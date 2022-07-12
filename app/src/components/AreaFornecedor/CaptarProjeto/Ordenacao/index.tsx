@@ -166,7 +166,9 @@ export default function Ordenacao() {
             {filtrosAplicados.niveis_experiencia?.length > 0 && (
               <>
                 {filtrosAplicados.niveis_experiencia?.map((niv: any) => (
-                  <Label key={niv.id}>{niv}</Label>
+                  <Label key={niv.id}>
+                    {niv === 'BASICO' ? 'INICIANTE' : niv}
+                  </Label>
                 ))}
               </>
             )}
