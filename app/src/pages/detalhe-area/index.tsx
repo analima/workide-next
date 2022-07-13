@@ -1,5 +1,5 @@
+import Head from 'next/head';
 import { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet';
 import { hotjar } from 'react-hotjar';
 import DetalhesArea from 'src/components/DetalhesArea';
 
@@ -19,11 +19,11 @@ const DetalheArea: React.FC = () => {
 
   return (
     <>
-      <Helmet>
+      <Head>
         <title>
           Gyan - Conectando pessoas incríveis com projetos apaixonantes
         </title>
-      </Helmet>
+      </Head>
       {!isLoading ? <DetalhesArea /> : <p>aguarde</p>}
     </>
   );

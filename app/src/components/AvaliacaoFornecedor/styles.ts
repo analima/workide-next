@@ -25,4 +25,9 @@ export const ContainerAvaliacao = styled.div<Props>`
       margin: 0;
     }
   }
+
+  @media (max-width: 478px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;

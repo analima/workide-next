@@ -5,11 +5,13 @@ import { consultas_api } from '../../services/consultas_api';
 import { useEffect, useState } from 'react';
 import { ItemVitrine } from '../../components/Vitrine';
 import { Container } from 'react-bootstrap';
-import {
-  IoMdArrowDropleftCircle,
-  IoMdArrowDroprightCircle,
-} from 'react-icons/io';
 import { useRouter } from 'next/router';
+
+interface SampleArrowProps {
+  className?: string;
+  style?: React.CSSProperties;
+  onClick?: () => void;
+}
 
 export function ProfessionalShowCase() {
   const [fornecedores, setFornecedores] = useState<PessoaProp[]>([]);
@@ -32,8 +34,8 @@ export function ProfessionalShowCase() {
     initialSlide: 1,
     slidesToScroll: 1,
     Infinity: true,
-    nextArrow: <IoMdArrowDroprightCircle size={32} color={LARANJA} />,
-    prevArrow: <IoMdArrowDropleftCircle size={32} color={LARANJA} />,
+    nextArrow: <SampleArrow />,
+    prevArrow: <SampleArrow />,
 
     responsive: [
       {
@@ -69,7 +71,7 @@ export function ProfessionalShowCase() {
       {
         breakpoint: 468,
         settings: {
-          slidesToShow: 1.1,
+          slidesToShow: 1,
           slidesToScroll: 1,
         },
       },
@@ -82,6 +84,22 @@ export function ProfessionalShowCase() {
       },
     ],
   };
+
+  function SampleArrow({ className, style, onClick }: SampleArrowProps) {
+    return (
+      <div
+        className={className}
+        style={{
+          ...style,
+          display: 'block',
+          background: LARANJA,
+          borderRadius: '50%',
+          border: `1px solid ${LARANJA}`,
+        }}
+        onClick={onClick}
+      />
+    );
+  }
 
   return (
     <Content>
