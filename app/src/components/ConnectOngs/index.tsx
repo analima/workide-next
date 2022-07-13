@@ -15,6 +15,8 @@ export function ConnectOngs() {
             objectFit="cover"
             className={'image'}
             src={IMG}
+            width={683}
+            height={683}
           />
         </div>
         <div className="info">

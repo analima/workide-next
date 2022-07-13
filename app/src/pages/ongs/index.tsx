@@ -1,5 +1,5 @@
+import Head from 'next/head';
 import { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet';
 import { hotjar } from 'react-hotjar';
 import PageOng from 'src/components/PageOng';
 
@@ -19,12 +19,14 @@ const Ongs: React.FC = () => {
 
   return (
     <>
-      <Helmet>
+      <Head>
         <title>
           Gyan - Conectando pessoas incríveis com projetos apaixonantes
         </title>
-      </Helmet>
-      {!isLoading ? <PageOng /> : <p>aguarde</p>}
+
+        <meta name="description" content="Pagina de ongs" />
+      </Head>
+      {!isLoading && <PageOng />}
     </>
   );
 };
