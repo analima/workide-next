@@ -59,47 +59,19 @@ export const ContentButton = styled.div`
 `;
 
 export const CardCarrousel = styled.div`
-  padding: 10px 16px;
-  max-width: 1200px;
-  height: 440px;
-  position: relative;
+  padding: 10px 8px;
 `;
 
 export const Carrousel = styled(Slider)`
-  overflow: hidden;
-  padding: 24px;
-  height: 100%;
-
   .slick-slide {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 500px;
   }
 
   .slick-track {
     display: flex;
     flex-direction: row-reverse;
-  }
-
-  svg.slick-arrow.slick-next {
-    bottom: 0;
-    right: 0;
-    cursor: pointer;
-    position: absolute;
-
-    :hover {
-      opacity: 0.8;
-    }
-  }
-
-  svg.slick-arrow.slick-prev {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    cursor: pointer;
-
-    :hover {
-      opacity: 0.8;
-    }
   }
 `;

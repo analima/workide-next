@@ -181,7 +181,7 @@ export function ItemVitrine({
               height={96}
               layout="intrinsic"
               objectFit="cover"
-              quality={75}
+              className="image"
               src={item.urlArquivo}
               alt={item.nome}
             />

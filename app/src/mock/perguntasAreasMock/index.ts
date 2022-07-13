@@ -118,7 +118,7 @@ export const perguntaAreas = [
       },
       {
         id: 4,
-        pergunta: 'Porque posso precisar de um profissional de tradução?',
+        pergunta: 'Porque posso precisar de um profissional de transcrição?',
         resposta:
           'Um profissional de transcrição pode trazer muitas vantagens para você e para a sua empresa. Por exemplo, a acessibilidade geral. A transcrição permite que portadores de necessidades especiais como surdos consumam seu conteúdo tornando-o mais inclusivo e abrangente. Também é o primeiro passo para produzir legendas no idioma nativo ou em outros idiomas. Outro ponto importante é que as transcrições garantem que seu conteúdo de antes estava apenas no formato de áudio ou vídeo apareça nos mecanismos de pesquisas aumentando o alcance do seu público alvo.',
       },
