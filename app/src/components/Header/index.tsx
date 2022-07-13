@@ -84,6 +84,8 @@ export function Header(): JSX.Element {
                 className="logo"
                 alt="Gyan"
                 onClick={() => router.push('/')}
+                width={200}
+                height={50}
               />
             </div>
 
