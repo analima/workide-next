@@ -1,11 +1,11 @@
-import ImgGrafico from '../../assets/area-grafico.jpg';
-import ImgMark from '../../assets/area-mkt.jpg';
-import ImgEscrita from '../../assets/area-escrita.jpg';
-import ImgVideo from '../../assets/area-video.jpg';
-import ImgTech from '../../assets/area-tech.jpg';
-import ImgLegal from '../../assets/area-legal.jpg';
-import ImgAdm from '../../assets/area-adm.jpg';
-import ImgFinan from '../../assets/area-financ.jpg';
+import ImgGrafico from '../../assets/area-grafico.webp';
+import ImgMark from '../../assets/area-mkt.webp';
+import ImgEscrita from '../../assets/area-escrita.webp';
+import ImgVideo from '../../assets/area-video.webp';
+import ImgTech from '../../assets/area-tech.webp';
+import ImgLegal from '../../assets/area-legal.webp';
+import ImgAdm from '../../assets/area-adm.webp';
+import ImgFinan from '../../assets/area-financ.webp';
 
 export const perguntaAreas = [
   {
