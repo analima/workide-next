@@ -23,8 +23,10 @@ const DetalheArea: React.FC = () => {
         <title>
           Gyan - Conectando pessoas incríveis com projetos apaixonantes
         </title>
+
+        <meta name="description" content="Pagina de detalhes da area" />
       </Head>
-      {!isLoading ? <DetalhesArea /> : <p>aguarde</p>}
+      {!isLoading && <DetalhesArea />}
     </>
   );
 };

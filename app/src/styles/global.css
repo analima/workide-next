@@ -1,8 +1,8 @@
 @font-face {
   font-family: 'Renner';
   src: url('./fonts/Renner.ttf');
+  font-display: swap;
 }
-
 * {
   scroll-behavior: smooth;
 }
