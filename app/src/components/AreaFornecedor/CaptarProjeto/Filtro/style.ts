@@ -20,16 +20,12 @@ interface IFiltroProps {
 
 const Content = styled.section<IFiltroProps>`
   border: 1px solid ${PRETO_40};
-  padding: ${({ sizeFilter }) => (sizeFilter === 'small' ? '0px' : '8px')};
+  padding: ${({ sizeFilter }) => (sizeFilter === 'small' ? '8px' : '8px')};
   border-radius: 8px;
-  width: ${({ sizeFilter }) => (sizeFilter === 'small' ? '100%' : '357px')};
+  width: ${({ sizeFilter }) => (sizeFilter === 'small' ? '80px' : '357px')};
 
   h4 {
     font-size: 16px;
-  }
-
-  @media (max-width: 990px) {
-    width: 100% !important;
   }
 
   @media (max-width: 900px) {
