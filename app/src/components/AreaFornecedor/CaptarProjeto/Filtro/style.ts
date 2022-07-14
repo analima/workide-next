@@ -68,6 +68,14 @@ export const ContentIcon = styled.div<IFiltroProps>`
     font-size: 12px;
     color: ${PRETO_40};
   }
+
+  div {
+    display: flex;
+
+    span {
+      margin-right: 10px;
+    }
+  }
 `;
 
 export const Favoritos = styled.button`

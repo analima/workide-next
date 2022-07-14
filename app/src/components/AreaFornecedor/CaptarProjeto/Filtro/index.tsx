@@ -93,11 +93,14 @@ export default function Filtro({ filtroEnviado, setFiltroEnviado }: IProp) {
             title="Clique aqui para exibir opções de busca"
           />
         ) : (
-          <FiArrowDownLeft
-            onClick={() => setSizeFilter('small')}
-            color={PRETO_40}
-            size={20}
-          />
+          <div>
+            <span>Clique aqui para ocultar opções de busca</span>
+            <FiArrowDownLeft
+              onClick={() => setSizeFilter('small')}
+              color={PRETO_40}
+              size={20}
+            />
+          </div>
         )}
       </ContentIcon>
       {sizeFilter === 'large' && volutario && (
