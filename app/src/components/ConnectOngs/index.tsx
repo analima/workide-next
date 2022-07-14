@@ -43,7 +43,7 @@ export function ConnectOngs() {
         </span>
 
         <ContentButton>
-          <button onClick={() => router.push('/consumidor/busca')}>
+          <button onClick={() => router.push('/cadastro-basico')}>
             CADASTRAR MINHA INSTITUIÇÃO
           </button>
         </ContentButton>

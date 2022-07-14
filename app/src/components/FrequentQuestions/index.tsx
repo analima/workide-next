@@ -18,7 +18,6 @@ export function FrequentQuestions({ item }: IProps) {
   const [area, setArea] = useState<IPerguntasAreasProps>(
     {} as IPerguntasAreasProps,
   );
-  console.log(area);
   useEffect(() => {
     if (!item) setArea({} as IPerguntasAreasProps);
     if (item) setArea(item);

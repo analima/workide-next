@@ -60,7 +60,7 @@ export const Info = styled.div`
   gap: 4px;
 `;
 
-export const NameTitulo = styled.h3`
+export const NameTitulo = styled.span`
   font-size: 16px;
   font-weight: bold;
   color: ${PRETO_10};

@@ -16,10 +16,9 @@ import { AZUL, BRANCO, PRETO } from '../../styles/variaveis';
 import { Button } from '../Form/Button';
 import { IPessoa } from '../../interfaces/IPessoa';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
+import { Router, useRouter } from 'next/router';
 
 export function Header(): JSX.Element {
-  const history = useHistory();
   const [esconder, setEsconder] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [mostrarMenu, setMostrarMenu] = useState(false);
@@ -126,7 +125,7 @@ export function Header(): JSX.Element {
                   </Link>
                   <FiLogOut
                     onClick={() => {
-                      history.push('/');
+                      router.push('/');
                       signOut();
                     }}
                     size={24}
@@ -136,9 +135,7 @@ export function Header(): JSX.Element {
               ) : (
                 <Button
                   label="CADASTRE-SE"
-                  onClick={() =>
-                    history.push('/cadastro-basico', { noRedirect: true })
-                  }
+                  onClick={() => router.push('/cadastro-basico')}
                 />
               )}
             </div>
