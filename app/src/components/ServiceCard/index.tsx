@@ -24,7 +24,6 @@ import {
   ContainerProfile,
   ContentInfoSecundary,
 } from './style';
-import { AvaliacaoFornecedor } from '../AvaliacaoFornecedor';
 import { pessoas_api } from '../../services/pessoas_api';
 
 interface ServiceProps {
@@ -68,7 +67,7 @@ export function ServiceCard({
       pessoas_api
         .get<ServiceProps>(`/pessoas/${service.idPessoa || service.id_pessoa}`)
         .then(response => {
-          setDadosFornec(response.data);
+
           setDadosFornec(response.data);
         });
     }
@@ -78,14 +77,15 @@ export function ServiceCard({
     const stars = [];
     for (let i = 1; i <= 5; i += 1) {
       if (i <= numberOfStars) {
+
         if (numberOfStars === 0)
           stars.push(
-            <EstrelaOff className="estrela" key={i + Math.random()} />,
+            <Image src={EstrelaOff}  alt={'avaliação'} className="estrela" key={i + Math.random()} />,
           );
         else
-          stars.push(<Estrela className="estrela" key={i + Math.random()} />);
+          stars.push(<Image src={Estrela} alt={'avaliação'} className="estrela" key={i + Math.random()} />);
       } else {
-        stars.push(<EstrelaOff className="estrela" key={i + Math.random()} />);
+        stars.push(<Image src={EstrelaOff} alt={'avaliação'} className="estrela" key={i + Math.random()} />);
       }
     }
     return stars;
@@ -233,9 +233,9 @@ export function ServiceCard({
             </div>
 
             <div>
-              <span>{dadosFornec.nome_tratamento}</span>
-               <span>{Number(dadosFornec?.ranking?.notaMedia || 0)?.toFixed(2)}</span>
-              {Number(dadosFornec?.ranking?.notaMedia || 0)}
+              <span>{dadosFornec.nome_tratamento}</span><br />
+               <span className="numberStarts">{Number(dadosFornec?.ranking?.notaMedia || 0)?.toFixed(2)}</span>
+              {handleShowStars(Number(dadosFornec?.ranking?.notaMedia || 0) || 0)}
             </div>
           </ContainerProfile>
         )}

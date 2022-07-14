@@ -8,7 +8,7 @@ import {
 } from '../../styles/variaveis';
 
 export const Content = styled.div`
-  width: calc(237px + 2px);
+  width: calc(310px + 2px);
   height: 364px;
   border: solid 1px ${CINZA_10};
   transition: all 0.2s;
@@ -45,8 +45,8 @@ export const FillBlack = styled.div`
 `;
 
 export const ImageProfile = styled.img`
-  width: 240px;
-  height: 182px;
+  width: 100%;
+  height: 160px;
 
   object-fit: cover;
 `;
@@ -57,6 +57,7 @@ export const ImageContainerInfos = styled.div`
 
   position: absolute;
   top: 10px;
+  padding:
   left: 10px;
   width: 100%;
   z-index: 2;
@@ -117,11 +118,12 @@ export const ContentInfoSecundary = styled.div`
   flex-direction: column;
   justify-content: space-between;
   height: 172px;
-  padding: 4px;
+  padding: 10px;
 `;
 
 export const ContainerDados = styled.div`
   flex: 1;
+  margin-top: 8px
 `;
 
 export const ContainerProfile = styled.div`
@@ -131,7 +133,7 @@ export const ContainerProfile = styled.div`
   gap: 16px;
 
   span {
-    font-size: 12px;
+    font-size: 15px;
   }
 
   img {
@@ -139,5 +141,10 @@ export const ContainerProfile = styled.div`
     height: 32px;
     border-radius: 50%;
     object-fit: cover;
+  }
+
+  .numberStarts{
+    margin: 0px 8px 0px 0px;
+    color: rgb(250, 124, 73);
   }
 `;
