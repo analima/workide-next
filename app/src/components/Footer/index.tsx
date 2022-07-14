@@ -1,7 +1,12 @@
-import { FooterBody, Content, FooterInfo, FooterSocial } from './style';
+import {
+  FooterBody,
+  Content,
+  FooterInfo,
+  FooterSocial,
+  LinkToScroll,
+} from './style';
 import LogoGyan from '../../assets/logo-branca.svg';
 import Whatsapp from '../../assets/whatsapp-borda.svg';
-import { useHistory } from 'react-router';
 import { useAuth } from '../../contexts/auth';
 import { useValorProjetoPago } from '../../contexts/valorProjetoPago';
 import {
@@ -12,7 +17,6 @@ import {
 import { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 
 export function Footer() {
   const { user, signOut } = useAuth();
@@ -77,7 +81,16 @@ export function Footer() {
                   </li>
 
                   <li>
-                    <Link href="/?section=como-funciona">Como funciona</Link>
+                    <LinkToScroll
+                      activeClass="active"
+                      to="como-funciona"
+                      spy={true}
+                      smooth={true}
+                      offset={-100}
+                      duration={500}
+                    >
+                      Como funciona
+                    </LinkToScroll>
                   </li>
                 </>
               )}

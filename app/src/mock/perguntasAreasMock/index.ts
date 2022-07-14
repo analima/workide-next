@@ -206,13 +206,13 @@ export const perguntaAreas = [
         id: 2,
         pergunta: 'Por que as empresas necessitam de um Administrador?',
         resposta:
-          'Para que a empresa tenha um direcionamento estratégico que leve ela a patamares maiores, para que os recursos sejam bem alocados, para que cada área tenha a quem se direcionar.',
+          'Os motivos são muitos. Mas podemos alistar em três principais: (1) Para que a empresa tenha um direcionamento estratégico e possa evoluir, (2) para que os recursos sejam bem gerenciados e (3) para que cada área tenha a quem se direcionar.',
       },
       {
         id: 3,
         pergunta: 'Qual o perfil que o Administrador deve possuir?',
         resposta:
-          'O perfil que o administrador do século XXI deve ter princípios éticos, criatividade, controle emocional, liderança, empatia, humildade e curiosidade.',
+          'As principais características do perfil que o administrador atualmente deve ter são princípios éticos, criatividade, liderança, empatia, humildade, curiosidade e principalmente controle emocional.',
       },
       {
         id: 4,
@@ -230,8 +230,7 @@ export const perguntaAreas = [
     perguntas: [
       {
         id: 1,
-        pergunta:
-          'Qual o perfil ideal para o gestor financeiro da minha empresa e por que ter um?Por que preciso de um gestor financeiro?',
+        pergunta: 'Por que preciso de um gestor financeiro?',
         resposta:
           'Se as finanças não é seu forte, a gestão desses processos logo pode se tornar um problema para a empresa. Por outro lado, se você entende bastante de finanças, logo não vai poder dar a devida atenção a isso – afinal, outros setores também precisam de você. Por isso, em algum momento, uma pessoa dedicada à área será fundamental para seu negócio conseguir crescer.',
       },

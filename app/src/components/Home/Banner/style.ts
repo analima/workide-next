@@ -21,6 +21,7 @@ interface BannerProps {
 
 export const Content = styled.section<BannerProps>`
   background-image: url(${({ img }) => img});
+  background-color: #dedecc;
   background-size: cover;
   background-position: center;
   height: 100%;
@@ -29,7 +30,6 @@ export const Content = styled.section<BannerProps>`
   flex-direction: column;
   padding: 0px 40px;
   position: relative;
-
   opacity: 0;
   animation: fade-in 1s normal forwards ease-in-out;
 
