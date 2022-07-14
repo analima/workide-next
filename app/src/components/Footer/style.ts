@@ -1,3 +1,4 @@
+import { Link } from 'react-scroll';
 import styled from 'styled-components';
 import { PRETO_10, VERDE, AZUL, BRANCO } from '../../styles/variaveis';
 
@@ -191,5 +192,19 @@ export const FooterCopyright = styled.section`
       color: ${VERDE};
       text-decoration: none;
     }
+  }
+`;
+
+export const LinkToScroll = styled(Link)`
+  cursor: pointer;
+  font-size: 12.8px;
+  text-decoration: none;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  @media (max-width: 409px) {
+    font-size: 10.8px;
   }
 `;

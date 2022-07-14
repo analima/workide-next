@@ -1,10 +1,10 @@
+import { useRouter } from 'next/router';
 import { FiArrowRight } from 'react-icons/fi';
-import { useHistory } from 'react-router';
 import { BRANCO } from '../../styles/variaveis';
 import { Container, Content } from './styles';
 
 export function CardBoasIdeias() {
-  const history = useHistory();
+  const router = useRouter();
 
   return (
     <Container>
@@ -18,13 +18,15 @@ export function CardBoasIdeias() {
 
         <div className="content-button">
           <button
-            onClick={() => {
-              history.push('/consumidor/busca?voluntario=true');
-            }}
+            onClick={() => router.push('/consumidor/busca?voluntario=true')}
           >
             BUSCAR VOLUNTÁRIOS
           </button>
-          <FiArrowRight size={24} color={BRANCO} />
+          <FiArrowRight
+            size={24}
+            color={BRANCO}
+            onClick={() => router.push('/consumidor/busca?voluntario=true')}
+          />
         </div>
       </Content>
     </Container>
