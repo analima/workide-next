@@ -114,6 +114,7 @@ export const ContentBox = styled.div`
 
 export const ContentBoxMobile = styled.div`
   display: none;
+  position: relative;
 
   @media (max-width: 768px) {
     display: block;

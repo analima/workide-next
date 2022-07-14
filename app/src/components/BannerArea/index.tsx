@@ -41,12 +41,13 @@ export function BannerArea({ item }: IProps) {
           <ContentBoxMobile>
             {area.image && (
               <Image
-                layout="intrinsic"
                 width={587}
                 height={631}
                 src={area.image}
                 alt={area.nome}
                 objectFit="contain"
+                loading="eager"
+                layout="fill"
               />
             )}
           </ContentBoxMobile>
