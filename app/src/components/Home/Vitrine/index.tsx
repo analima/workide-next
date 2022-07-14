@@ -14,6 +14,7 @@ import { IServicoInfo } from '../../../interfaces/IServicoInfo';
 import { ServiceCard } from '../../ServiceCard';
 import { LARANJA } from '../../../styles/variaveis';
 import { useHistory } from 'react-router';
+import { useRouter } from 'next/router'
 
 interface SampleArrowProps {
   className?: string;
@@ -24,7 +25,7 @@ interface SampleArrowProps {
 export function Vitrine() {
   const [vitrineData, setVitrineData] = useState([] as IServicoInfo[]);
   const [sizePage, setSizePage] = useState(0);
-  const history = useHistory();
+  const router = useRouter();
   useEffect(() => {
     consultas_api.post(`/consulta/ofertas?limit=12`).then(({ data }) => {
       setVitrineData(data.values);
@@ -139,7 +140,7 @@ export function Vitrine() {
           </Carrousel>
         </CardCarrousel>
         <ContainerButton>
-          <Button onClick={() => history.push('/consumidor/busca')}>
+          <Button onClick={() => router.push('/consumidor/busca')}>
             <span>VER TODOS</span>
           </Button>
         </ContainerButton>
