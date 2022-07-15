@@ -4,6 +4,10 @@ const nextConfig = {
     domains: ['files-gyan-hom.s3.amazonaws.com'],
   },
   //pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js'],
+  i18n: {
+    locales: ["pt_br"],
+    defaultLocale: "pt_br",
+  },
   env: {
     SKIP_PREFLIGHT_CHECK: process.env.SKIP_PREFLIGHT_CHECK,
     APP_HOST: process.env.APP_HOST,
