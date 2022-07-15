@@ -77,7 +77,7 @@ export function Header(): JSX.Element {
       <Container isMobile={isMobile} mostrarMenu={mostrarMenu}>
         <Content isMobile={isMobile} mostrarMenu={mostrarMenu}>
           <nav>
-            <div>
+            <div className="content-logo">
               <Image
                 src={Logo}
                 className="logo"

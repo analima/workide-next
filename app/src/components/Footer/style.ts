@@ -133,12 +133,18 @@ export const FooterSocial = styled.section`
       background-color: ${BRANCO};
       opacity: 10;
     }
+
+    a {
+      width: 94px;
+      height: 94px;
+    }
   }
 
   .content-version {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
 
     p {
       font-size: 16px;

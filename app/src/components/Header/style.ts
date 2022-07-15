@@ -135,7 +135,8 @@ export const Content = styled.section<IMobileProp>`
     justify-content: space-between;
     width: 100%;
 
-    div {
+    .content-logo {
+      width: 200px;
       .logo {
         cursor: pointer;
       }

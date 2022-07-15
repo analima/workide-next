@@ -182,15 +182,21 @@ export function Footer() {
               <div>
                 <span>Siga-nos</span>
                 <a
+                  aria-label="Facebook"
                   href="https://www.facebook.com/Gyan-101972215654187"
                   target="blank"
                 >
                   <FaFacebookSquare size={30} color="#fff" />
                 </a>
-                <a href="https://www.instagram.com/gyan.br/" target="blank">
+                <a
+                  href="https://www.instagram.com/gyan.br/"
+                  aria-label="Instagram"
+                  target="blank"
+                >
                   <FaInstagramSquare size={30} color="#fff" />
                 </a>
                 <a
+                  aria-label="Linkedin"
                   href="https://www.linkedin.com/company/gyan-plataforma-de-servi%C3%A7os/?viewAsMember=true"
                   target="blank"
                 >
@@ -202,6 +208,7 @@ export function Footer() {
 
             <a
               target="_blank"
+              aria-label="WhatsApp"
               href="https://api.whatsapp.com/send/?phone=55061991053691"
               rel="noopener noreferrer"
             >
