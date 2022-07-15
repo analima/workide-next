@@ -14,7 +14,7 @@ import { IServicoInfo } from '../../../interfaces/IServicoInfo';
 import { ServiceCard } from '../../ServiceCard';
 import { LARANJA } from '../../../styles/variaveis';
 import { useHistory } from 'react-router';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 
 interface SampleArrowProps {
   className?: string;
@@ -140,7 +140,7 @@ export function Vitrine() {
           </Carrousel>
         </CardCarrousel>
         <ContainerButton>
-          <Button onClick={() => router.push('/consumidor/busca')}>
+          <Button onClick={() => router.push('/consumidor/busca?oferta=true')}>
             <span>VER TODOS</span>
           </Button>
         </ContainerButton>
