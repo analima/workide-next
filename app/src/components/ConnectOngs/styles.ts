@@ -21,6 +21,7 @@ export const Content = styled.section`
     width: 683px;
     height: 683px;
     position: relative;
+    padding: 8px;
   }
 
   .info {
