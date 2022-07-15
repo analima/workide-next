@@ -3,8 +3,8 @@ import Publique from '../../assets/group-publique1.png';
 import Contrate from '../../assets/group-contrate1.png';
 import Pague from '../../assets/group-pague1.png';
 import { AZUL, LARANJA, LARANJA_10 } from '../../styles/variaveis';
-import Link from 'next/link'
-import Image from 'next/image'
+import Link from 'next/link';
+import Image from 'next/image';
 
 export function CardConhecaComoFunciona() {
   return (
@@ -17,7 +17,7 @@ export function CardConhecaComoFunciona() {
             Anuncie o seu trabalho facilmente, {''}
             <Link href="/consumidor/busca">
               <>
-              contrate <br /> freelancers e pague com segurança.
+                contrate <br /> freelancers e pague com segurança.
               </>
             </Link>
           </span>
@@ -25,18 +25,32 @@ export function CardConhecaComoFunciona() {
 
         <div className="content-images">
           <ImagesHowItWork color={AZUL}>
-            <Image src={Publique.src} width="120px" height="160px" alt="publique" />
+            <div className="imagem">
+              <Image
+                src={Publique.src}
+                width={193}
+                height={201}
+                alt="publique"
+              />
+            </div>
             <h2>Publique um projeto</h2>
-            <span>
+            <p className="text">
               Publique a sua vaga para milhares de profissionais. Você irá
               receber propostas de freelancers talentosos em poucos minutos.
-            </span>
+            </p>
 
-            <span className="number-circle">1</span>
+            <p className="number-circle">1</p>
           </ImagesHowItWork>
 
           <ImagesHowItWork color={LARANJA}>
-            <Image src={Contrate.src} width="120px" height="160px" alt="contrate" />
+            <div className="imagem">
+              <Image
+                src={Contrate.src}
+                width={179}
+                height={211}
+                alt="contrate"
+              />
+            </div>
             <h2>Contrate um profissional</h2>
             <span>
               Analise o histórico de trabalho, feedback de clientes e
@@ -47,7 +61,9 @@ export function CardConhecaComoFunciona() {
           </ImagesHowItWork>
 
           <ImagesHowItWork color={LARANJA_10}>
-            <Image src={Pague.src} width="120px" height="160px" alt="pague" />
+            <div className="imagem">
+              <Image src={Pague.src} width={151} height={202} alt="pague" />
+            </div>
             <h2>Pague com segurança</h2>
 
             <span>

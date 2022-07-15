@@ -32,7 +32,7 @@ export const ContentHowItWorks = styled.div`
     align-items: center;
     justify-content: space-between;
     gap: 16px;
-    margin-top: 120px;
+    margin-top: 204px;
   }
 
   @media (max-width: 991px) {
@@ -69,10 +69,9 @@ export const ImagesHowItWork = styled.div<ImageProps>`
   padding: 48px 20px;
   position: relative;
 
-  img {
+  .imagem {
     position: absolute;
     top: -164px;
-    object-fit: contain;
   }
 
   h2 {

@@ -8,10 +8,11 @@ import {
 
 import { FiArrowRight } from 'react-icons/fi';
 import { AZUL, BRANCO, LARANJA, VERDE } from '../../../styles/variaveis';
-import { useHistory } from 'react-router';
+import { useRouter } from 'next/router';
 
 export function Conheca() {
-  const history = useHistory();
+  const router = useRouter();
+
   return (
     <Content>
       <ContentBanner>
@@ -41,7 +42,7 @@ export function Conheca() {
               <FiArrowRight
                 color={BRANCO}
                 size={16}
-                onClick={() => history.push('/consumidor/busca')}
+                onClick={() => router.push('/consumidor/busca')}
               />
             </span>
           </div>
@@ -54,7 +55,7 @@ export function Conheca() {
               <FiArrowRight
                 color={BRANCO}
                 size={16}
-                onClick={() => history.push('/fornecedor/captar-projetos')}
+                onClick={() => router.push('/consumidor/busca?oferta=true')}
               />
             </span>
           </div>
@@ -69,11 +70,11 @@ export function Conheca() {
             <h2>Patricia Felix, proprietária da jsfelix.dev</h2>
 
             <p>
-              `&quot;`Tive uma ótima experiência na contratação de profissionais pela
-              plataforma da GYAN para composição de nossos squads. O processo é
-              muito rápido, toda a comunicação é realizada pelo site, com toda
-              segurança e transparência. Os profissionais da plataforma são
-              experts em suas áreas!`&quot;`
+              `&quot;`Tive uma ótima experiência na contratação de profissionais
+              pela plataforma da GYAN para composição de nossos squads. O
+              processo é muito rápido, toda a comunicação é realizada pelo site,
+              com toda segurança e transparência. Os profissionais da plataforma
+              são experts em suas áreas!`&quot;`
             </p>
           </CardComent>
 
@@ -81,10 +82,10 @@ export function Conheca() {
             <h2>Alison Cau , Freenlancer UI Designer</h2>
 
             <p>
-             `&quot;`Encontrei com muita facilidade o projeto que precisava para
-              alavancar minha carreira profissional! Além disso, a segurança com
-              os pagamentos e o gerenciamento das entregas é fenomenal. Melhor
-              plataforma pra trabalhar`&quot;`.
+              `&quot;`Encontrei com muita facilidade o projeto que precisava
+              para alavancar minha carreira profissional! Além disso, a
+              segurança com os pagamentos e o gerenciamento das entregas é
+              fenomenal. Melhor plataforma pra trabalhar`&quot;`.
             </p>
           </CardComent>
 
