@@ -8,7 +8,7 @@ import Image from 'next/image';
 
 export function CardConhecaComoFunciona() {
   return (
-    <Container id="como-funciona">
+    <Container id="/como-funciona">
       <ContentHowItWorks>
         <div className="content-title">
           <h1>Como funciona?</h1>
@@ -34,12 +34,12 @@ export function CardConhecaComoFunciona() {
               />
             </div>
             <h2>Publique um projeto</h2>
-            <p className="text">
+            <span>
               Publique a sua vaga para milhares de profissionais. Você irá
               receber propostas de freelancers talentosos em poucos minutos.
-            </p>
+            </span>
 
-            <p className="number-circle">1</p>
+            <span className="number-circle">1</span>
           </ImagesHowItWork>
 
           <ImagesHowItWork color={LARANJA}>
