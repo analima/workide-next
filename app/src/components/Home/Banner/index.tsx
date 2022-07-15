@@ -11,10 +11,10 @@ import { CadastroBasico } from '../../CadastroBasico';
 import { AZUL, LARANJA, VERDE } from '../../../styles/variaveis';
 import { SearchInputHome } from '../../SearchInputHome';
 import { useRouter } from 'next/router';
-import IMG1 from '@public/capa-home1.png'
-import IMG2 from '@public/capa-home2.png'
-import IMG3 from '@public/capa-home3.png'
-import IMG5 from '@public/capa-home5.png'
+import IMG1 from '@public/capa-home1.webp';
+import IMG2 from '@public/capa-home2.webp';
+import IMG3 from '@public/capa-home3.webp';
+import IMG5 from '@public/capa-home5.webp';
 
 const dados = [
   {

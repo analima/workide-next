@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { AZUL, BRANCO, PRETO_10 } from '../../../styles/variaveis';
-import IMG from '../../../assets/banner-quem-somos.png';
-import IMG2 from '../../../assets/banner-quem-somos2.png';
+import IMG from '../../../assets/banner-quem-somos.webp';
+import IMG2 from '../../../assets/banner-quem-somos2.webp';
 
 export const Content = styled.section`
   @media (max-width: 768px) {

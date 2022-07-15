@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import IMG from '../../assets/banner-group.png';
-import IMG2 from '../../assets/banner-group2.png';
+import IMG from '../../assets/banner-group.webp';
+import IMG2 from '../../assets/banner-group2.webp';
 import { BRANCO, VERDE_40 } from '../../styles/variaveis';
 
 export const Container = styled.div`

@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Accordion, Col, Row } from 'react-bootstrap';
-import { useHistory } from 'react-router-dom';
 import { useRouter } from 'next/router';
 import { Spacer } from '../../../../components/Spacer';
 
@@ -23,7 +22,6 @@ const CaptarProjetoContent: React.FC = () => {
   const projetosRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   let { user } = useAuth();
-  const history = useHistory();
   const router = useRouter();
   if (!user) {
     user = {} as IPessoa;

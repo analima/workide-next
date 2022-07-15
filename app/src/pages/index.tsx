@@ -16,6 +16,7 @@ import { useQuery } from '../hooks/geral';
 import { useRouter } from 'next/router';
 import { IPessoa } from '../interfaces/IPessoa';
 import { Footer } from 'src/components/Footer';
+import Head from 'next/head';
 
 export default function Home() {
   const router = useRouter();
@@ -69,6 +70,14 @@ export default function Home() {
           Gyan - Conectando pessoas incríveis com projetos apaixonantes
         </title>
       </Helmet>
+
+      <Head>
+        <title>
+          Gyan - Conectando pessoas incríveis com projetos apaixonantes
+        </title>
+
+        <meta name="description" content="Home Gyan" />
+      </Head>
       <Header />
 
       <Container>
