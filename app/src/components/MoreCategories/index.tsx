@@ -18,12 +18,7 @@ export function MoreCategories({ area }: IArea) {
         <h1>Mais categorias</h1>
 
         {area?.descricao && (
-          <span>
-            Veja todas as categorias de {''}
-            <Link href="#" target="blank">
-              {area.descricao}
-            </Link>
-          </span>
+          <span>Veja todas as categorias de {area.descricao}</span>
         )}
 
         {area?.subareas && (

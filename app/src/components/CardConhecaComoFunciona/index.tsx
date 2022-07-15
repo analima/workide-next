@@ -8,7 +8,7 @@ import Image from 'next/image';
 
 export function CardConhecaComoFunciona() {
   return (
-    <Container id="/como-funciona">
+    <Container>
       <ContentHowItWorks>
         <div className="content-title">
           <h1>Como funciona?</h1>

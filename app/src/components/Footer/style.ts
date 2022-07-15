@@ -99,13 +99,6 @@ export const FooterInfo = styled.section`
 export const FooterSocial = styled.section`
   padding-bottom: 20px;
 
-  .new {
-    max-width: 80px !important;
-    max-height: 55px !important;
-    width: auto !important;
-    height: auto !important;
-  }
-
   .content-fale-conosco {
     display: flex;
     flex-direction: column;
@@ -179,38 +172,5 @@ export const FooterSocial = styled.section`
         }
       }
     }
-  }
-`;
-
-export const FooterCopyright = styled.section`
-  background-color: #fff;
-  border-bottom-right-radius: -540px;
-  border-bottom-left-radius: -100px;
-  padding: 30px 0;
-
-  p {
-    font-size: 18px;
-    color: ${PRETO_10};
-    margin: 0;
-    text-align: center;
-
-    a {
-      color: ${VERDE};
-      text-decoration: none;
-    }
-  }
-`;
-
-export const LinkToScroll = styled(Link)`
-  cursor: pointer;
-  font-size: 12.8px;
-  text-decoration: none;
-
-  &:hover {
-    opacity: 0.8;
-  }
-
-  @media (max-width: 409px) {
-    font-size: 10.8px;
   }
 `;
