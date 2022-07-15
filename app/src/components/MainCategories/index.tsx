@@ -12,7 +12,7 @@ export function MainCategories({ area }: IArea) {
       <h1>Conheça as principais categorias</h1>
       <span>
         Procurando algo mais?{' '}
-        <Link href="#" target="blank">
+        <Link href="/fornecedor/busca" target="blank">
           Veja mais habilidades
         </Link>
       </span>

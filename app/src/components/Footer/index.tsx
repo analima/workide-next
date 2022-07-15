@@ -1,10 +1,7 @@
-import {
-  FooterBody,
-  Content,
-  FooterInfo,
-  FooterSocial,
-  LinkToScroll,
-} from './style';
+import { useState } from 'react';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { FooterBody, Content, FooterInfo, FooterSocial } from './style';
 import LogoGyan from '../../assets/logo-branca.svg';
 import Whatsapp from '../../assets/whatsapp-borda.svg';
 import { useAuth } from '../../contexts/auth';
@@ -14,9 +11,6 @@ import {
   FaInstagramSquare,
   FaLinkedin,
 } from 'react-icons/fa';
-import { useState } from 'react';
-import Image from 'next/image';
-import { useRouter } from 'next/router';
 
 export function Footer() {
   const { user, signOut } = useAuth();
@@ -78,19 +72,6 @@ export function Footer() {
                     onClick={() => router.push('/quem-somos')}
                   >
                     Quem Somos
-                  </li>
-
-                  <li>
-                    <LinkToScroll
-                      activeClass="active"
-                      to="/como-funciona"
-                      spy={true}
-                      smooth={true}
-                      offset={-100}
-                      duration={500}
-                    >
-                      Como funciona
-                    </LinkToScroll>
                   </li>
                 </>
               )}
