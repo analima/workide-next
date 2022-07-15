@@ -5,14 +5,15 @@ const nextConfig = {
   },
   //pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js'],
   i18n: {
-    locales: ["pt_br"],
-    defaultLocale: "pt_br",
+    locales: ['pt_br'],
+    defaultLocale: 'pt_br',
   },
   env: {
     SKIP_PREFLIGHT_CHECK: process.env.SKIP_PREFLIGHT_CHECK,
     APP_HOST: process.env.APP_HOST,
     APP_PORT: process.env.APP_PORT,
     REACT_APP_URL: process.env.REACT_APP_URL,
+    REACT_APP_REDIRECT_URL: process.env.REACT_APP_REDIRECT_URL,
     REACT_APP_SEGURANCA_API: process.env.REACT_APP_SEGURANCA_API,
     REACT_APP_GERAL_API: process.env.REACT_APP_GERAL_API,
     REACT_APP_OPORTUNIDADES_API: process.env.REACT_APP_OPORTUNIDADES_API,

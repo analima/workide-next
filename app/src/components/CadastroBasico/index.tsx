@@ -210,7 +210,7 @@ export function CadastroBasico({
     var url =
       process.env.REACT_APP_AWS_COGNITO_CLIENT_DOMAIN +
       '/login?redirect_uri=' +
-      process.env.REACT_APP_URL +
+      process.env.REACT_APP_REDIRECT_URL +
       '/cadastroGoogle/signUp&response_type=code&client_id=' +
       process.env.REACT_APP_AWS_COGNITO_CLIENT_ID +
       '&scope=profile+email+aws.cognito.signin.user.admin+openid';
