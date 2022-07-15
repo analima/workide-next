@@ -36,20 +36,12 @@ export const ContentHowItWorks = styled.div`
   }
 
   @media (max-width: 991px) {
-    margin-top: 100px;
-
-    .content-images {
-      margin-top: 140px;
-    }
-  }
-
-  @media (max-width: 991px) {
     margin-top: 48px;
 
     .content-images {
       flex-wrap: wrap;
       justify-content: center;
-      margin-top: 20px;
+      margin-top: 180px;
     }
   }
 `;
@@ -106,7 +98,7 @@ export const ImagesHowItWork = styled.div<ImageProps>`
   }
 
   @media (max-width: 991px) {
-    margin-top: 116px;
+    margin-bottom: 200px;
 
     img {
       width: 120px;

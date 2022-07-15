@@ -83,7 +83,7 @@ export function Footer() {
                   <li>
                     <LinkToScroll
                       activeClass="active"
-                      to="como-funciona"
+                      to="/como-funciona"
                       spy={true}
                       smooth={true}
                       offset={-100}
