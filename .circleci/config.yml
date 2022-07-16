@@ -21,6 +21,7 @@ jobs:
             cd /tmp/project/app/
             rm -rf .env
             echo "REACT_APP_URL=https://$APP_URL" >> .env
+            echo "REACT_APP_REDIRECT_URL=https://$APP_REDIRECT_URL" >> .env
             echo "REACT_APP_AWS_COGNITO_CLIENT_ID=$AWS_COGNITO_CLIENT_ID" >> .env
             echo "REACT_APP_IUGU_TEST_MODE=$IUGU_TEST_MODE" >> .env
             echo "REACT_APP_AWS_COGNITO_CLIENT_DOMAIN=$AWS_COGNITO_CLIENT_DOMAIN" >> .env
@@ -72,6 +73,7 @@ jobs:
           command: |
             cd /tmp/project/app/
             echo "REACT_APP_URL=https://$APP_URL" >> .env
+            echo "REACT_APP_REDIRECT_URL=https://$APP_REDIRECT_URL" >> .env
             echo "REACT_APP_AWS_COGNITO_CLIENT_ID=$AWS_COGNITO_CLIENT_ID" >> .env
             echo "REACT_APP_IUGU_TEST_MODE=$IUGU_TEST_MODE" >> .env
             echo "REACT_APP_AWS_COGNITO_CLIENT_DOMAIN=$AWS_COGNITO_CLIENT_DOMAIN" >> .env
