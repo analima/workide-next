@@ -4,12 +4,12 @@ orbs:
   aws-ecr: circleci/aws-ecr@7.0.0
   slack: circleci/slack@4.4.2
   aws-cli: circleci/aws-cli@3.1
-  
+
 jobs:
   build-push-hom:
     working_directory: /tmp/project
     docker:
-      - image: 'cimg/base:stable'
+      - image: "cimg/base:stable"
     steps:
       - checkout
       - setup_remote_docker:
@@ -43,25 +43,25 @@ jobs:
             echo "REACT_APP_GA_TRACKING_CODE=$APP_GA_TRACKING_CODE" >> .env  
             echo "REACT_APP_HOTJAR_ID=$APP_HOTJAR_ID" >> .env  
             echo "REACT_APP_HOTJAR_SV=$APP_HOTJAR_SV" >> .env
-      - aws-ecr/build-and-push-image: 
-            account-url: AWS_ECR_ACCOUNT_URL
-            aws-access-key-id: AWS_ACCESS_KEY_ID
-            aws-secret-access-key: AWS_SECRET_ACCESS_KEY
-            create-repo: false
-            dockerfile: Dockerfile
-            path: ./app
-            region: AWS_REGION
-            repo: gyan-next-hom
-            tag: "$CIRCLE_SHA1,latest"
+      - aws-ecr/build-and-push-image:
+          account-url: AWS_ECR_ACCOUNT_URL
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          create-repo: false
+          dockerfile: Dockerfile
+          path: ./app
+          region: AWS_REGION
+          repo: gyan-next-hom
+          tag: "$CIRCLE_SHA1,latest"
       - slack/notify:
-            event: fail
-            mentions: '@suporte'
-            template: basic_fail_1
-  
+          event: fail
+          mentions: "@suporte"
+          template: basic_fail_1
+
   build-push-ppr:
     working_directory: /tmp/project
     docker:
-      - image: 'cimg/base:stable'
+      - image: "cimg/base:stable"
     steps:
       - checkout
       - setup_remote_docker:
@@ -94,25 +94,25 @@ jobs:
             echo "REACT_APP_GA_TRACKING_CODE=$APP_GA_TRACKING_CODE" >> .env  
             echo "REACT_APP_HOTJAR_ID=$APP_HOTJAR_ID" >> .env  
             echo "REACT_APP_HOTJAR_SV=$APP_HOTJAR_SV" >> .env
-      - aws-ecr/build-and-push-image: 
-            account-url: AWS_ECR_ACCOUNT_URL
-            aws-access-key-id: AWS_ACCESS_KEY_ID
-            aws-secret-access-key: AWS_SECRET_ACCESS_KEY
-            create-repo: false
-            dockerfile: Dockerfile
-            path: ./app
-            region: AWS_REGION
-            repo: gyan-next-ppr
-            tag: "$CIRCLE_SHA1,latest"
+      - aws-ecr/build-and-push-image:
+          account-url: AWS_ECR_ACCOUNT_URL
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          create-repo: false
+          dockerfile: Dockerfile
+          path: ./app
+          region: AWS_REGION
+          repo: gyan-next-ppr
+          tag: "$CIRCLE_SHA1,latest"
       - slack/notify:
-            event: fail
-            mentions: '@suporte'
-            template: basic_fail_1
+          event: fail
+          mentions: "@suporte"
+          template: basic_fail_1
 
   build-push-prod:
     working_directory: /tmp/project
     docker:
-      - image: 'cimg/base:stable'
+      - image: "cimg/base:stable"
     steps:
       - checkout
       - setup_remote_docker:
@@ -123,6 +123,7 @@ jobs:
           command: |
             cd /tmp/project/app/
             echo "REACT_APP_URL=https://$APP_URL" >> .env
+            echo "REACT_APP_REDIRECT_URL=https://$APP_REDIRECT_URL" >> .env
             echo "REACT_APP_AWS_COGNITO_CLIENT_ID=$AWS_COGNITO_CLIENT_ID" >> .env
             echo "REACT_APP_IUGU_TEST_MODE=$IUGU_TEST_MODE" >> .env
             echo "REACT_APP_AWS_COGNITO_CLIENT_DOMAIN=$AWS_COGNITO_CLIENT_DOMAIN" >> .env
@@ -145,22 +146,21 @@ jobs:
             echo "REACT_APP_GA_TRACKING_CODE=$APP_GA_TRACKING_CODE" >> .env  
             echo "REACT_APP_HOTJAR_ID=$APP_HOTJAR_ID" >> .env  
             echo "REACT_APP_HOTJAR_SV=$APP_HOTJAR_SV" >> .env
-      - aws-ecr/build-and-push-image: 
-            account-url: AWS_ECR_ACCOUNT_URL
-            aws-access-key-id: AWS_ACCESS_KEY_ID
-            aws-secret-access-key: AWS_SECRET_ACCESS_KEY
-            create-repo: false
-            dockerfile: Dockerfile
-            path: ./app
-            region: AWS_REGION
-            repo: gyan-next-prod
-            tag: "$CIRCLE_SHA1,latest"
+      - aws-ecr/build-and-push-image:
+          account-url: AWS_ECR_ACCOUNT_URL
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          create-repo: false
+          dockerfile: Dockerfile
+          path: ./app
+          region: AWS_REGION
+          repo: gyan-next-prod
+          tag: "$CIRCLE_SHA1,latest"
       - slack/notify:
-            event: fail
-            mentions: '@suporte'
-            template: basic_fail_1
+          event: fail
+          mentions: "@suporte"
+          template: basic_fail_1
 
-        
   plan-apply-hom:
     working_directory: /tmp/project
     docker:
@@ -183,10 +183,10 @@ jobs:
           paths:
             - .
       - slack/notify:
-            event: fail
-            mentions: '@suporte'
-            template: basic_fail_1
-      
+          event: fail
+          mentions: "@suporte"
+          template: basic_fail_1
+
   apply-hom:
     working_directory: /tmp/project
     docker:
@@ -208,13 +208,13 @@ jobs:
           paths:
             - .
       - slack/notify:
-            event: fail
-            mentions: '@suporte'
-            template: basic_fail_1
-      
+          event: fail
+          mentions: "@suporte"
+          template: basic_fail_1
+
       - slack/notify:
-            event: pass
-            template: basic_success_1  
+          event: pass
+          template: basic_success_1
 
   plan-apply-ppr:
     working_directory: /tmp/project
@@ -238,10 +238,10 @@ jobs:
           paths:
             - .
       - slack/notify:
-            event: fail
-            mentions: '@suporte'
-            template: basic_fail_1
-      
+          event: fail
+          mentions: "@suporte"
+          template: basic_fail_1
+
   apply-ppr:
     working_directory: /tmp/project
     docker:
@@ -263,13 +263,13 @@ jobs:
           paths:
             - .
       - slack/notify:
-            event: fail
-            mentions: '@suporte'
-            template: basic_fail_1
-      
+          event: fail
+          mentions: "@suporte"
+          template: basic_fail_1
+
       - slack/notify:
-            event: pass
-            template: basic_success_1
+          event: pass
+          template: basic_success_1
 
   plan-apply:
     working_directory: /tmp/project
@@ -293,9 +293,9 @@ jobs:
           paths:
             - .
       - slack/notify:
-            event: fail
-            mentions: '@suporte'
-            template: basic_fail_1
+          event: fail
+          mentions: "@suporte"
+          template: basic_fail_1
 
   apply:
     working_directory: /tmp/project
@@ -318,14 +318,14 @@ jobs:
           paths:
             - .
       - slack/notify:
-            event: fail
-            mentions: '@suporte'
-            template: basic_fail_1
-      
+          event: fail
+          mentions: "@suporte"
+          template: basic_fail_1
+
       - slack/notify:
-            event: pass
-            template: basic_success_1
-  
+          event: pass
+          template: basic_success_1
+
   cloudfront:
     executor: aws-cli/default
     steps:
@@ -335,31 +335,30 @@ jobs:
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
       - run: aws cloudfront create-invalidation --distribution-id $DISTRIBUTION --paths "/*"
 
-
 workflows:
   build_and_push_image:
     jobs:
-      - build-push-hom: 
+      - build-push-hom:
           context: homolog
           name: ecr-hom
-          filters:  # using regex filters requires the entire branch to match
+          filters: # using regex filters requires the entire branch to match
             branches:
               only:
                 - develop
-          
+
       - plan-apply-hom:
           context: homolog
           requires:
             - ecr-hom
-          filters:  # using regex filters requires the entire branch to match
+          filters: # using regex filters requires the entire branch to match
             branches:
               only:
-                - develop    
+                - develop
       - apply-hom:
           context: homolog
           requires:
             - plan-apply-hom
-          filters:  # using regex filters requires the entire branch to match
+          filters: # using regex filters requires the entire branch to match
             branches:
               only:
                 - develop
@@ -367,58 +366,58 @@ workflows:
           context: homolog
           requires:
             - apply-hom
-          filters:  # using regex filters requires the entire branch to match
+          filters: # using regex filters requires the entire branch to match
             branches:
               only:
                 - develop
 
-      - build-push-ppr: 
+      - build-push-ppr:
           context: ppr
           name: ecr-ppr
-          filters:  # using regex filters requires the entire branch to match
+          filters: # using regex filters requires the entire branch to match
             branches:
               only:
                 - HotFix
-          
+
       - plan-apply-ppr:
           context: ppr
           requires:
             - ecr-ppr
-          filters:  # using regex filters requires the entire branch to match
+          filters: # using regex filters requires the entire branch to match
             branches:
               only:
-                - HotFix    
+                - HotFix
       - apply-ppr:
           context: ppr
           requires:
             - plan-apply-ppr
-          filters:  # using regex filters requires the entire branch to match
+          filters: # using regex filters requires the entire branch to match
             branches:
               only:
                 - HotFix
-                
+
       - build-push-prod:
           context: production
           name: ecr-prod
-          filters:  # using regex filters requires the entire branch to match
+          filters: # using regex filters requires the entire branch to match
             branches:
               only:
                 - master
-      
+
       - plan-apply:
           context: production
-          requires: 
+          requires:
             - ecr-prod
-          filters:  # using regex filters requires the entire branch to match
+          filters: # using regex filters requires the entire branch to match
             branches:
               only:
                 - master
       - slack/on-hold:
           context: production
-          mentions: '@suporte'
+          mentions: "@suporte"
           requires:
             - plan-apply
-          filters:  # using regex filters requires the entire branch to match
+          filters: # using regex filters requires the entire branch to match
             branches:
               only:
                 - master
@@ -427,7 +426,7 @@ workflows:
           type: approval
           requires:
             - plan-apply
-          filters:  # using regex filters requires the entire branch to match
+          filters: # using regex filters requires the entire branch to match
             branches:
               only:
                 - master
@@ -435,7 +434,7 @@ workflows:
           context: production
           requires:
             - hold-apply
-          filters:  # using regex filters requires the entire branch to match
+          filters: # using regex filters requires the entire branch to match
             branches:
               only:
                 - master
