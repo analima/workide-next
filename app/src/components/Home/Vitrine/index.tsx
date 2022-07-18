@@ -13,7 +13,6 @@ import { consultas_api } from '../../../services/consultas_api';
 import { IServicoInfo } from '../../../interfaces/IServicoInfo';
 import { ServiceCard } from '../../ServiceCard';
 import { LARANJA } from '../../../styles/variaveis';
-import { useHistory } from 'react-router';
 import { useRouter } from 'next/router';
 
 interface SampleArrowProps {
