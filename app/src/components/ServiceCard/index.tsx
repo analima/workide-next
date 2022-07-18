@@ -1,14 +1,14 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
-import { useHistory } from 'react-router';
 import { IServicoInfo } from '../../interfaces/IServicoInfo';
 import { ofertas_api } from '../../services/ofertas_api';
 import { LARANJA } from '../../styles/variaveis';
 import { formatarValor } from '../../utils/CurrencyFormat';
 import { Skeleton } from '../Skeleton';
 import EstrelaOff  from '../../assets/estrela-off.svg';
-import Estrela  from '../../assets/estrela.svg';
+import Estrela from '../../assets/estrela.svg';
+import { useRouter } from 'next/router'
 import Image from 'next/image'
 
 import {
@@ -45,7 +45,7 @@ export function ServiceCard({
   isFavorite: boolean;
   setIsFavorite?: (isFavorite: boolean) => void;
 }) {
-  const history = useHistory();
+  const router = useRouter()
   const [dadosFornec, setDadosFornec] = useState<ServiceProps>(
     {} as ServiceProps,
   );
@@ -62,6 +62,7 @@ export function ServiceCard({
     const fee = price / (1 - 0.12) - price;
     return price + (fee > 14 ? fee : 14);
   }
+
   useEffect(() => {
     if (service?.fornecedor === undefined) {
       pessoas_api
@@ -128,12 +129,12 @@ export function ServiceCard({
             <ImageProfile
               onClick={() =>
                 visao === 'consumidor'
-                  ? history.push(
+                  ? router.push(
                       `/consumidor/servico/${
                         service.id_pessoa || service.idPessoa
                       }/${service.id}`,
                     )
-                  : history.push(
+                  : router.push(
                       `/fornecedor/servico/${
                         service.id_pessoa || service.idPessoa
                       }/${service.id}`,
@@ -150,12 +151,12 @@ export function ServiceCard({
             <FillBlack
               onClick={() =>
                 visao === 'consumidor'
-                  ? history.push(
+                  ? router.push(
                       `/consumidor/servico/${
                         service.id_pessoa || service.idPessoa
                       }/${service.id}`,
                     )
-                  : history.push(
+                  : router.push(
                       `/fornecedor/servico/${
                         service.id_pessoa || service.idPessoa
                       }/${service.id}`,
