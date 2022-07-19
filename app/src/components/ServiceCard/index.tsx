@@ -6,10 +6,10 @@ import { ofertas_api } from '../../services/ofertas_api';
 import { LARANJA } from '../../styles/variaveis';
 import { formatarValor } from '../../utils/CurrencyFormat';
 import { Skeleton } from '../Skeleton';
-import EstrelaOff  from '../../assets/estrela-off.svg';
+import EstrelaOff from '../../assets/estrela-off.svg';
 import Estrela from '../../assets/estrela.svg';
-import { useRouter } from 'next/router'
-import Image from 'next/image'
+import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 import {
   Content,
@@ -45,7 +45,7 @@ export function ServiceCard({
   isFavorite: boolean;
   setIsFavorite?: (isFavorite: boolean) => void;
 }) {
-  const router = useRouter()
+  const router = useRouter();
   const [dadosFornec, setDadosFornec] = useState<ServiceProps>(
     {} as ServiceProps,
   );
@@ -58,17 +58,11 @@ export function ServiceCard({
     }
   }, [service, isFavorite]);
 
-  function handleGetServicePrice(price: number) {
-    const fee = price / (1 - 0.12) - price;
-    return price + (fee > 14 ? fee : 14);
-  }
-
   useEffect(() => {
     if (service?.fornecedor === undefined) {
       pessoas_api
         .get<ServiceProps>(`/pessoas/${service.idPessoa || service.id_pessoa}`)
         .then(response => {
-
           setDadosFornec(response.data);
         });
     }
@@ -78,15 +72,33 @@ export function ServiceCard({
     const stars = [];
     for (let i = 1; i <= 5; i += 1) {
       if (i <= numberOfStars) {
-
         if (numberOfStars === 0)
           stars.push(
-            <Image src={EstrelaOff}  alt={'avaliação'} className="estrela" key={i + Math.random()} />,
+            <Image
+              src={EstrelaOff}
+              alt={'avaliação'}
+              className="estrela"
+              key={i + Math.random()}
+            />,
           );
         else
-          stars.push(<Image src={Estrela} alt={'avaliação'} className="estrela" key={i + Math.random()} />);
+          stars.push(
+            <Image
+              src={Estrela}
+              alt={'avaliação'}
+              className="estrela"
+              key={i + Math.random()}
+            />,
+          );
       } else {
-        stars.push(<Image src={EstrelaOff} alt={'avaliação'} className="estrela" key={i + Math.random()} />);
+        stars.push(
+          <Image
+            src={EstrelaOff}
+            alt={'avaliação'}
+            className="estrela"
+            key={i + Math.random()}
+          />,
+        );
       }
     }
     return stars;
@@ -194,13 +206,15 @@ export function ServiceCard({
           <ContainerServicePrice>
             Valor: a partir de {''}
             {formatarValor(
-              handleGetServicePrice(
-                service.precoMinimo ||
-                  Math.min.apply(
-                    null,
-                    service.pacotes.map(i => Number(i.preco)),
+              service.precoMinimo ||
+                Math.min.apply(
+                  null,
+                  service.pacotes.map(i =>
+                    Number(i.preco) / (1 - 0.12) - Number(i.preco) > 14
+                      ? Number(i.preco) / (1 - 0.12)
+                      : Number(i.preco) + 14,
                   ),
-              ),
+                ),
             )}
           </ContainerServicePrice>
         </ContainerDados>
@@ -219,8 +233,14 @@ export function ServiceCard({
             <div>
               <span>{service.fornecedor.nome_tratamento}</span>
 
-               <span>{Number(service.fornecedor?.ranking?.nota_media || 0)?.toFixed(2)}</span>
-              {handleShowStars(Number(service.fornecedor?.ranking?.nota_media || 0) || 0)}
+              <span>
+                {Number(service.fornecedor?.ranking?.nota_media || 0)?.toFixed(
+                  2,
+                )}
+              </span>
+              {handleShowStars(
+                Number(service.fornecedor?.ranking?.nota_media || 0) || 0,
+              )}
             </div>
           </ContainerProfile>
         )}
@@ -228,15 +248,23 @@ export function ServiceCard({
         {dadosFornec?.arquivo?.url && (
           <ContainerProfile>
             <div>
-              <Image src={dadosFornec?.arquivo?.url} alt=""
+              <Image
+                src={dadosFornec?.arquivo?.url}
+                alt=""
                 width={'40px'}
-                height={'40px'} />
+                height={'40px'}
+              />
             </div>
 
             <div>
-              <span>{dadosFornec.nome_tratamento}</span><br />
-               <span className="numberStarts">{Number(dadosFornec?.ranking?.notaMedia || 0)?.toFixed(2)}</span>
-              {handleShowStars(Number(dadosFornec?.ranking?.notaMedia || 0) || 0)}
+              <span>{dadosFornec.nome_tratamento}</span>
+              <br />
+              <span className="numberStarts">
+                {Number(dadosFornec?.ranking?.notaMedia || 0)?.toFixed(2)}
+              </span>
+              {handleShowStars(
+                Number(dadosFornec?.ranking?.notaMedia || 0) || 0,
+              )}
             </div>
           </ContainerProfile>
         )}
