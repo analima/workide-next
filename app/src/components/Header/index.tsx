@@ -89,7 +89,7 @@ export function Header(): JSX.Element {
             </div>
 
             <div className="menu">
-              <Link href="/fornecedor/captar-projetos">Fornecedores</Link>
+              <Link href="/fornecedor/captar-projetos">Profissional</Link>
 
               <Link href="/consumidor/busca">Empresas</Link>
               <Link href="/consumidor/busca?voluntario=true">Voluntários</Link>
