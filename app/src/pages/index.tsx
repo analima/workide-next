@@ -78,19 +78,23 @@ export default function Home() {
 
         <meta name="description" content="Home Gyan" />
       </Head>
-      <Header />
+      {typeof window !== 'undefined' && (
+        <>
+          <Header />
 
-      <Container>
-        <Banner />
-        <CardCategory />
-        <CardBoasIdeias />
-        <CardConhecaComoFunciona />
-        <Vitrine />
-        <Conheca />
-        <CardCountUp />
-        <CardProjetosMaisBuscados />
-        <Footer />
-      </Container>
+          <Container>
+            <Banner />
+            <CardCategory />
+            <CardBoasIdeias />
+            <CardConhecaComoFunciona />
+            <Vitrine />
+            <Conheca />
+            <CardCountUp />
+            <CardProjetosMaisBuscados />
+            <Footer />
+          </Container>
+        </>
+      )}
     </>
   );
 }
