@@ -135,7 +135,7 @@ export default function ContentBusca() {
               <div>
                 <label className="label-busca">Quero buscar por:</label>
                 <ToggleSwitch
-                  labelLeft="Fornecedor"
+                  labelLeft="Profissionais"
                   label="Oferta"
                   change={() => {
                     setOfertaFiltro(!ofertaFiltro);

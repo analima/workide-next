@@ -63,7 +63,7 @@ export default function HeaderPublico(): JSX.Element {
 
           <nav className={open ? 'active' : ''}>
             <Link id="nav-to-part-1" href="/fornecedor/captar-projetos">
-              Fornecedores
+              Profissionais
             </Link>
             <Link id="nav-to-part-2" href="/consumidor/busca">
               Clientes
