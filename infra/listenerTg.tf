@@ -7,7 +7,7 @@ resource "aws_alb_target_group" "main" {
  
   health_check {
    healthy_threshold   = "3"
-   interval            = "30"
+   interval            = "15"
    protocol            = "HTTP"
    matcher             = "200-401"
    timeout             = "3"
@@ -26,8 +26,9 @@ resource "aws_alb_listener_rule" "next" {
   }
 
   condition {
-    path_pattern {
-      values = ["/*"]
+    http_header {
+      http_header_name = "X-Custom-Header"
+      values           = ["${var.name}-${var.env}"]
     }
   }
 }

@@ -17,4 +17,17 @@ export const ContainerAvaliacao = styled.div<Props>`
     color: ${LARANJA};
     margin-right: 8px;
   }
+
+  div {
+    display: flex;
+
+    > span {
+      margin: 0;
+    }
+  }
+
+  @media (max-width: 478px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;

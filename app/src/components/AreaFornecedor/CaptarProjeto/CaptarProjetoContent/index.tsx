@@ -1,20 +1,13 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Accordion, Col, Row } from 'react-bootstrap';
-import { useHistory } from 'react-router-dom';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 import { Spacer } from '../../../../components/Spacer';
 
-
 import Layout from '../../Layout';
-import {
-  Button,
-  AcordeonContent,
-  AcordeonToggle,
-  FiltroTelaCheia,
-} from './style';
+import { Button, FiltroTelaCheia } from './style';
 import Content from './style';
 import NenhumProjeto from '../NenhumProjeto';
-import Projeto  from '../Projeto';
+import Projeto from '../Projeto';
 import { useCaptarProjetoFornecedor } from '../../../../hooks/captarProjetoFornecedor';
 import { Paginacao } from '../../../../components/Paginacao';
 import { Titulo } from '../../../../components/Titulo';
@@ -25,15 +18,12 @@ import { SearchInput } from '../../../../components/Form/SearchInput';
 import { useAuth } from '../../../../contexts/auth';
 import { IPessoa } from '../../../../interfaces/IPessoa';
 
-
-
 const CaptarProjetoContent: React.FC = () => {
   const projetosRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   let { user } = useAuth();
-  const history = useHistory();
-  const router = useRouter()
-  if(!user){
+  const router = useRouter();
+  if (!user) {
     user = {} as IPessoa;
   }
   const {
@@ -56,12 +46,13 @@ const CaptarProjetoContent: React.FC = () => {
     obterProjetosFavoritos,
     projetosExclusivos,
     loadingProjetos,
+    setSizeFilter,
+    sizeFilter,
   } = useCaptarProjetoFornecedor();
 
   const favorito = watch('favorito');
   const toggleVolutarios = watch('toggle_volutarios');
   const [filtroEnviado, setFiltroEnviado] = useState(false);
-
   const scrollProjetos = useCallback(() => {
     if (projetosRef?.current && !loadingProjetos) {
       window.scrollTo(0, projetosRef.current.offsetTop);
@@ -112,9 +103,18 @@ const CaptarProjetoContent: React.FC = () => {
     toggleVolutarios,
   ]);
 
-  function goHome(){
+  function goHome() {
     router.back();
-   }
+  }
+
+  const handleResize = useCallback(() => {
+    if (window.innerWidth <= 991) setSizeFilter('small');
+    if (window.innerWidth > 991) setSizeFilter('large');
+  }, [setSizeFilter]);
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+  }, [handleResize]);
 
   return (
     <Content ref={contentRef}>
@@ -158,20 +158,7 @@ const CaptarProjetoContent: React.FC = () => {
         <Spacer size={32} />
 
         <Row>
-          <Col lg={4} className="mb-4">
-            <AcordeonContent>
-              <AcordeonToggle eventKey="0">
-                <Button>EXIBIR FILTROS</Button>
-              </AcordeonToggle>
-
-              <Accordion.Collapse eventKey="0">
-                <Filtro
-                  filtroEnviado={filtroEnviado}
-                  setFiltroEnviado={setFiltroEnviado}
-                />
-              </Accordion.Collapse>
-            </AcordeonContent>
-
+          <Col lg={sizeFilter === 'large' ? 4 : 1} className="mb-4">
             <FiltroTelaCheia>
               <Filtro
                 filtroEnviado={filtroEnviado}
@@ -180,7 +167,7 @@ const CaptarProjetoContent: React.FC = () => {
             </FiltroTelaCheia>
           </Col>
 
-          <Col ref={projetosRef} lg={8}>
+          <Col ref={projetosRef} lg={sizeFilter === 'large' ? 8 : 11}>
             {!favorito && (
               <>
                 <Row>
@@ -217,7 +204,7 @@ const CaptarProjetoContent: React.FC = () => {
 
             <Row>
               <Col lg={12}>
-                 {!!projetos.length && !favorito && !loadingProjetos && (
+                {!!projetos.length && !favorito && !loadingProjetos && (
                   <Row>
                     {projetos.map((projeto, index) => (
                       <Col key={index} lg={12} className="mb-3">
@@ -268,7 +255,6 @@ const CaptarProjetoContent: React.FC = () => {
       </Layout>
     </Content>
   );
-}
-
+};
 
 export default CaptarProjetoContent;

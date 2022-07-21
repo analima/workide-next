@@ -93,6 +93,10 @@ export const ContentFilter = styled.div`
   align-items: center;
   margin-bottom: 4px;
 
+  @media (max-width: 578px) {
+    flex-direction: column-reverse;
+  }
+
   p {
     margin: 0;
   }

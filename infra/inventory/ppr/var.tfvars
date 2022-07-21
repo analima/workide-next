@@ -31,4 +31,3 @@ parameter_id="arn:aws:ssm:us-west-2:812671651954:parameter/APP_JWK-PPR"
 bucket_name="files-gyan-ppr"
 cpu=256
 memory=512
-nlb_arn="arn:aws:elasticloadbalancing:us-west-2:812671651954:loadbalancer/net/backend-nlb-ppr/40dc36e171f06a87"

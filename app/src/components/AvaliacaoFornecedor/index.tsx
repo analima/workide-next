@@ -1,33 +1,24 @@
 import { ContainerAvaliacao } from './styles';
-import EstrelaOff  from '../../assets/estrela-off.svg';
-import Estrela  from '../../assets/estrela.svg';
+import ReactStars from 'react-stars';
+import { LARANJA } from '../../styles/variaveis';
 
 interface IProps {
   notaMedia: number;
 }
 
 export function AvaliacaoFornecedor({ notaMedia }: IProps) {
-  function handleShowStars(numberOfStars: number) {
-    const stars = [];
-    for (let i = 1; i <= 5; i += 1) {
-      if (i <= numberOfStars) {
-        if (numberOfStars === 0)
-          stars.push(
-            <EstrelaOff className="estrela" key={i + Math.random()} />,
-          );
-        else
-          stars.push(<Estrela className="estrela" key={i + Math.random()} />);
-      } else {
-        stars.push(<EstrelaOff className="estrela" key={i + Math.random()} />);
-      }
-    }
-    return stars;
-  }
-
   return (
     <ContainerAvaliacao>
       <span>{notaMedia?.toFixed(2)}</span>
-      {handleShowStars(notaMedia || 0)}
+      <div>
+        <ReactStars
+          value={notaMedia}
+          count={5}
+          size={22}
+          edit={false}
+          color2={LARANJA}
+        />
+      </div>
     </ContainerAvaliacao>
   );
 }

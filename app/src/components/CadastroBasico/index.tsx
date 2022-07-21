@@ -18,13 +18,13 @@ import { Spacer } from '../../components/Spacer';
 import { FiX } from 'react-icons/fi';
 import { pessoas_api } from '../../services/pessoas_api';
 import Boia from '../../assets/boia.svg';
-import Chave  from '../../assets/chave.svg';
+import Chave from '../../assets/chave.svg';
 import GuardaChuva from '../../assets/guardachuva.svg';
-import Escudinho  from '../../assets/escudinho.svg';
+import Escudinho from '../../assets/escudinho.svg';
 import { ModalInformation } from '../ModalInformation';
 import { VERMELHO } from '../../styles/variaveis';
 import { useGAEventsTracker } from '../../hooks/useGAEventsTracker';
-import Image from 'next/image'
+import Image from 'next/image';
 
 interface User {
   name: string;
@@ -210,7 +210,7 @@ export function CadastroBasico({
     var url =
       process.env.REACT_APP_AWS_COGNITO_CLIENT_DOMAIN +
       '/login?redirect_uri=' +
-      process.env.REACT_APP_URL +
+      process.env.REACT_APP_REDIRECT_URL +
       '/cadastroGoogle/signUp&response_type=code&client_id=' +
       process.env.REACT_APP_AWS_COGNITO_CLIENT_ID +
       '&scope=profile+email+aws.cognito.signin.user.admin+openid';
@@ -404,7 +404,7 @@ export function CadastroBasico({
             <Spacer size={12} />
             <ContentModal showModal={showModal}>
               <ItemPolitica>
-                <Boia className="icon-politica" />
+                <Image src={Boia} className="icon-politica" alt="icon-boia" />
                 <p>
                   Não compartilhamos seus dados com terceiros sem que você saiba
                   e concorde.
@@ -412,7 +412,11 @@ export function CadastroBasico({
               </ItemPolitica>
 
               <ItemPolitica>
-                <Chave className="icon-politica" />
+                <Image
+                  src={Chave}
+                  className="icon-politica"
+                  alt="icon-politica"
+                />
                 <p>
                   Temos controles e medidas de segurança para evitarmos
                   vazamento de dados.
@@ -420,7 +424,11 @@ export function CadastroBasico({
               </ItemPolitica>
 
               <ItemPolitica>
-                <GuardaChuva className="icon-politica" />
+                <Image
+                  src={GuardaChuva}
+                  className="icon-politica"
+                  alt="icon-guarda-chuva"
+                />
                 <p>
                   O tratamento que damos ao seus dados é sempre informado e
                   fundamentado em bases legais.
@@ -428,7 +436,11 @@ export function CadastroBasico({
               </ItemPolitica>
 
               <ItemPolitica>
-                <Escudinho className="icon-politica" />
+                <Image
+                  src={Escudinho}
+                  className="icon-politica"
+                  alt="icon-escudo"
+                />
                 <p>Garantimos e defendemos seus direitos sobre seus dados.</p>
               </ItemPolitica>
             </ContentModal>

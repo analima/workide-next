@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Col, Form, Row, Button } from 'react-bootstrap';
 
-import ContainerLogin from './style';
+import ContainerLogin from '../../components/Login/style';
 
 import Google from '../../assets/google.svg';
 import Logo from '../../assets/logo.svg';
@@ -173,7 +173,7 @@ export default class Login extends React.Component<any, any> {
     var url =
       process.env.REACT_APP_AWS_COGNITO_CLIENT_DOMAIN +
       '/login?redirect_uri=' +
-      process.env.REACT_APP_URL +
+      process.env.REACT_APP_REDIRECT_URL +
       '/cadastroGoogle/signIn&response_type=code&client_id=' +
       process.env.REACT_APP_AWS_COGNITO_CLIENT_ID +
       '&scope=profile+email+aws.cognito.signin.user.admin+openid';
