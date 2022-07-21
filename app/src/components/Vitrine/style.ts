@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { lighten } from 'polished';
 import Slider from 'react-slick';
 import styled from 'styled-components';
@@ -49,6 +50,7 @@ export const Body = styled.div`
 
   @media (max-width: 478px) {
     width: 100%;
+    gap: 8px;
   }
 `;
 
@@ -58,37 +60,47 @@ export const Info = styled.div`
   gap: 4px;
 `;
 
-export const NameTitulo = styled.h1`
+export const NameTitulo = styled.span`
   font-size: 16px;
   font-weight: bold;
   color: ${PRETO_10};
   margin: 0;
 
   @media (max-width: 991px) {
-    font-size: 14px;
+  }
+
+  @media (max-width: 478px) {
   }
 `;
 
 export const FotoPerfil = styled.div`
-  object-fit: cover;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  min-width: 96px;
+  height: 96px;
+
+  @media (max-width: 991px) {
+    width: 80px;
+    height: 78px;
+  }
+
+  @media (max-width: 478px) {
+    width: 60px;
+    height: 58px;
+  }
+`;
+
+export const Foto = styled(Image)`
   border-radius: 8px;
 
   @media (max-width: 991px) {
     width: 80px;
     height: 78px;
   }
-`;
 
-export const Foto = styled.img`
-  width: 96px;
-  height: 94px;
-  border-radius: 8px;
-  object-fit: cover;
-
-  @media (max-width: 991px) {
-    width: 80px;
-    height: 78px;
+  @media (max-width: 478px) {
+    width: 60px;
+    height: 58px;
   }
 `;
 
@@ -317,7 +329,7 @@ export const ContainerItemVitrine = styled.div`
   flex-direction: column;
   gap: 8px;
   width: 310px;
-  height: 342px;
+  height: 372px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   padding: 16px;
@@ -330,7 +342,6 @@ export const ContainerItemVitrine = styled.div`
   }
 
   @media (max-width: 1200px) {
-    width: 98%;
   }
 
   @media (max-width: 768px) {
@@ -338,7 +349,14 @@ export const ContainerItemVitrine = styled.div`
   }
 
   @media (max-width: 478px) {
-    padding: 16px;
+    padding: 8px;
+    width: 260px;
+    height: 380px;
+  }
+
+  @media (max-width: 330px) {
+    padding: 8px;
+    width: 224px;
   }
 `;
 

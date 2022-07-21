@@ -2,7 +2,6 @@
   font-family: 'Renner';
   src: url('./fonts/Renner.ttf');
 }
-
 * {
   scroll-behavior: smooth;
 }

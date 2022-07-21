@@ -1,5 +1,5 @@
 import { Col, Row } from 'react-bootstrap';
-import Image from 'next/image'
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { Titulo } from '../../../../components/Titulo';
 import {
@@ -9,11 +9,11 @@ import {
   LARANJA,
   VERDE,
 } from '../../../../styles/variaveis';
-import  Exclusivo from '../../../../assets/exclusive.svg';
+import Exclusivo from '../../../../assets/exclusive.svg';
 import ModalDenuncia from '../../../ModalDenuncia';
-import IconeVoluntario  from '../../../../assets/icon-voluntare.svg';
-import EstrelaOff  from '../../../../assets/estrela-off.svg';
-import Estrela  from '../../../../assets/estrela.svg';
+import IconeVoluntario from '../../../../assets/icon-voluntare.svg';
+import EstrelaOff from '../../../../assets/estrela-off.svg';
+import Estrela from '../../../../assets/estrela.svg';
 import userPhoto from '../../../../assets/user.png';
 
 import {
@@ -51,12 +51,15 @@ import {
   useCaptarProjetoFornecedor,
 } from '../../../../hooks/captarProjetoFornecedor';
 
-import Coracao  from '../../../../assets/coracao.svg';
-import CoracaoOff  from '../../../../assets/coracao-off.svg';
+import Coracao from '../../../../assets/coracao.svg';
+import CoracaoOff from '../../../../assets/coracao-off.svg';
 import { useCallback, useEffect, useState } from 'react';
 import { pessoas_api } from '../../../../services/pessoas_api';
 import { oportunidades_api } from '../../../../services/oportunidades_api';
-import { PlanLimits, useLimitacoesPlanos } from '../../../../contexts/planLimitations';
+import {
+  PlanLimits,
+  useLimitacoesPlanos,
+} from '../../../../contexts/planLimitations';
 import { AvatarRegrasPlano } from '../../../../components/AvatarRegrasPlano';
 import { format, formatDistance } from 'date-fns';
 import { pt } from 'date-fns/locale';
@@ -89,18 +92,22 @@ type ProjetoProps = {
   totalFavoritos?: number;
 };
 
-export default function Projeto({ tipo, projeto, totalFavoritos = 0 }: ProjetoProps) {
+export default function Projeto({
+  tipo,
+  projeto,
+  totalFavoritos = 0,
+}: ProjetoProps) {
   let { user } = useAuth();
   let { limitacoesPlano } = useLimitacoesPlanos();
-  if(!user){
+  if (!user) {
     user = {} as IPessoa;
   }
 
-  if(!limitacoesPlano){
+  if (!limitacoesPlano) {
     limitacoesPlano = {} as PlanLimits;
   }
 
-  const router = useRouter()
+  const router = useRouter();
 
   const { projetosFavoritos, obterProjetosFavoritos, obterProjetosExclusivos } =
     useCaptarProjetoFornecedor();
@@ -157,7 +164,6 @@ export default function Projeto({ tipo, projeto, totalFavoritos = 0 }: ProjetoPr
       return;
     }
 
-
     const response = await oportunidades_api.get('/projetos/favoritos');
     const numeroFavoritos = response.data.length;
 
@@ -177,7 +183,7 @@ export default function Projeto({ tipo, projeto, totalFavoritos = 0 }: ProjetoPr
     user.id_pessoa,
     limitacoesPlano.favoritarProjetos,
     projeto.id,
-    history,
+    router,
     handleShowAvatarRegrasPlano,
     obterProjetosFavoritos,
   ]);
@@ -222,12 +228,31 @@ export default function Projeto({ tipo, projeto, totalFavoritos = 0 }: ProjetoPr
       if (i <= numberOfStars) {
         if (numberOfStars === 0)
           stars.push(
-            <Image src={EstrelaOff} className="estrela" key={i + Math.random()} />,
+            <Image
+              src={EstrelaOff}
+              className="estrela"
+              key={i + Math.random()}
+              alt="estrela-apagada"
+            />,
           );
         else
-          stars.push(<Image src={Estrela} className="estrela" key={i + Math.random()} />);
+          stars.push(
+            <Image
+              src={Estrela}
+              className="estrela"
+              key={i + Math.random()}
+              alt="estrela"
+            />,
+          );
       } else {
-        stars.push(<Image src={EstrelaOff} className="estrela" key={i + Math.random()} />);
+        stars.push(
+          <Image
+            src={EstrelaOff}
+            className="estrela"
+            key={i + Math.random()}
+            alt="estrela-apagada"
+          />,
+        );
       }
     }
     return stars;
@@ -305,19 +330,29 @@ export default function Projeto({ tipo, projeto, totalFavoritos = 0 }: ProjetoPr
         setShowModal={setShowRecommendationModal}
         link={link}
       />
-       <Card>
+      <Card>
         <ContainerProjeto>
           <ProjetoHeader>
             <HeaderContent>
               <TituloContainer>
-                 {tipo === 'normal' &&
+                {tipo === 'normal' &&
                   (projetoFavorito ? (
-                    <div style={{margin: '15px'}}>
-                    <Image style={{margin: '100px !important'}} src={Coracao} onClick={handleDesfavoritar} />
+                    <div style={{ margin: '15px' }}>
+                      <Image
+                        style={{ margin: '100px !important' }}
+                        src={Coracao}
+                        onClick={handleDesfavoritar}
+                        alt="coracao-on"
+                      />
                     </div>
                   ) : (
-                    <div style={{margin: '15px'}}>
-                    <Image style={{margin: '100px !important'}} src={CoracaoOff} onClick={handleFavoritar} />
+                    <div style={{ margin: '15px' }}>
+                      <Image
+                        style={{ margin: '100px !important' }}
+                        src={CoracaoOff}
+                        onClick={handleFavoritar}
+                        alt="coracao-off"
+                      />
                     </div>
                   ))}
 
@@ -348,9 +383,9 @@ export default function Projeto({ tipo, projeto, totalFavoritos = 0 }: ProjetoPr
                 </HeaderSecondary>
               </TituloContainer>
 
-               {projeto.proBono ? (
+              {projeto.proBono ? (
                 <FaixaProBono>
-                  <Image src={IconeVoluntario} />
+                  <Image src={IconeVoluntario} alt="icone-voluntario" />
                   <div className="voluntariado">
                     {projeto.escopo === 'ABERTO' && (
                       <FaixaPrecoLabel right>Por hora</FaixaPrecoLabel>
@@ -402,12 +437,17 @@ export default function Projeto({ tipo, projeto, totalFavoritos = 0 }: ProjetoPr
               <Col lg={6}>
                 <Consumidor>
                   {consumidor.arquivo?.url ? (
-                    <div style={{margin: '0px 10px'}}>
-                    <Image style={{borderRadius: '100%'}}  src={consumidor.arquivo?.url || userPhoto} width={45} height={45} alt={consumidor.nome_tratamento} />
+                    <div style={{ margin: '0px 10px' }}>
+                      <Image
+                        style={{ borderRadius: '100%' }}
+                        src={consumidor.arquivo?.url || userPhoto}
+                        width={45}
+                        height={45}
+                        alt={consumidor.nome_tratamento}
+                      />
                     </div>
-
                   ) : (
-                     <Skeleton width="45px" height="45px" radius="50%" />
+                    <Skeleton width="45px" height="45px" radius="50%" />
                   )}
                   <Info>
                     <Titulo
@@ -470,7 +510,7 @@ export default function Projeto({ tipo, projeto, totalFavoritos = 0 }: ProjetoPr
 
                       router.push({
                         pathname: `/detalhes-projeto/${projeto.id}`,
-                        query: {tipo: tipo === 'exclusivo'},
+                        query: { tipo: tipo === 'exclusivo' },
                       });
                     }}
                   >
@@ -489,7 +529,7 @@ export default function Projeto({ tipo, projeto, totalFavoritos = 0 }: ProjetoPr
                         onClick={() => handleExcluirProjeto(projeto.id)}
                       />
                     ) : (
-                     <Spinner />
+                      <Spinner />
                     )}
                   </span>
                 </ContentTrash>

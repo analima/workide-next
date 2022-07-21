@@ -77,6 +77,4 @@ variable "parameter_id" {
   
 }
 
-variable "nlb_arn" {
-  
-}
+

@@ -1,22 +1,20 @@
 import { Container } from 'react-bootstrap';
 import { Footer, Content, FooterInfo, FooterSocial } from './style';
-import Image from 'next/image'
+import Image from 'next/image';
 import LogoGyan from '../../assets/logo-offset.svg';
 import Whatsapp from '../../assets/whatsapp.svg';
 import Facebook from '../../assets/facebook.svg';
 import Linkedin from '../../assets/linkedin.svg';
 import Instagram from '../../assets/instagram.svg';
-import { useHistory } from 'react-router';
 import { useRouter } from 'next/router';
 import { useAuth } from '../../contexts/auth';
 import { useValorProjetoPago } from '../../contexts/valorProjetoPago';
 import { IPessoa } from '../../interfaces/IPessoa';
 
 export function Rodape() {
-  const history = useHistory();
   const router = useRouter();
   let { user, signOut } = useAuth();
-  if(!user){
+  if (!user) {
     user = {} as IPessoa;
   }
   const { apagarLocalStorage } = useValorProjetoPago();
@@ -29,10 +27,7 @@ export function Rodape() {
             <article>
               <h2>Menu</h2>
               <ul>
-                <li
-                  className="li-click"
-                  onClick={() => router.push('/')}
-                >
+                <li className="li-click" onClick={() => router.push('/')}>
                   Home
                 </li>
                 {user.id_pessoa && (
@@ -51,7 +46,7 @@ export function Rodape() {
                   <>
                     <li
                       className="li-click"
-                      onClick={() => history.push('/login')}
+                      onClick={() => router.push('/login')}
                     >
                       Login
                     </li>
@@ -129,17 +124,25 @@ export function Rodape() {
             <article>
               <h2>Fale conosco</h2>
               <ul>
-                <li style={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}>
+                <li
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                >
                   <a
                     target="_blank"
                     href="https://api.whatsapp.com/send/?phone=55061991053691"
                     rel="noreferrer"
                   >
-                    <Image className="new" src={Whatsapp} width={45} height={45} alt="Whatsapp" />
+                    <Image
+                      className="new"
+                      src={Whatsapp}
+                      width={45}
+                      height={45}
+                      alt="Whatsapp"
+                    />
                   </a>
                   Clique aqui e fale com a gente
                 </li>

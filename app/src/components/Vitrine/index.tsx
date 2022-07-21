@@ -96,6 +96,7 @@ export function ItemVitrine({
   const { user } = useAuth();
 
   useEffect(() => {
+    if (!user) return;
     const load = async () => {
       try {
         const { data: favorites } = await pessoas_api.get(
@@ -175,14 +176,24 @@ export function ItemVitrine({
       <ContainerItemVitrine onClick={() => handleOpenPerson(item.id)}>
         <Body>
           <FotoPerfil>
-            <Foto src={item.urlArquivo} alt={item.nome} />
+            <Foto
+              width={96}
+              height={96}
+              layout="intrinsic"
+              objectFit="cover"
+              className="image"
+              src={item.urlArquivo}
+              alt={item.nome}
+            />
             {item.inVoluntariado && <BannerVoluntario />}
           </FotoPerfil>
           <Info>
             <NameTitulo>{item.tratamento}</NameTitulo>
-
-            <AvaliacaoFornecedor notaMedia={item.notaMedia} />
-
+            {item?.notaMedia ? (
+              <AvaliacaoFornecedor notaMedia={item.notaMedia} />
+            ) : (
+              <AvaliacaoFornecedor notaMedia={0} />
+            )}
             <TextoMenor>Ranking: {item.ranking}</TextoMenor>
             <TextoMenor>Nº de projetos {numeroProjetos}</TextoMenor>
             <TextoMenor>#{item.nivelExperiencia}</TextoMenor>
@@ -218,22 +229,25 @@ export function ItemVitrine({
             </>
           )}
         </Footer>
-        <ContainerItensFooter>
-          {user.id !== item.id && (
-            <Favorito
-              isLogado={user.id ? true : false}
-              onClick={event => {
-                if (user.id) handleFavorite(event, item.id);
-              }}
-            >
-              {favoriteItem.find(element => element === item.id) ? (
-                <CoracaoOn />
-              ) : (
-                <CoracaoOff />
-              )}
-            </Favorito>
-          )}
-        </ContainerItensFooter>
+
+        {user && (
+          <ContainerItensFooter>
+            {user?.id !== item.id && (
+              <Favorito
+                isLogado={user?.id ? true : false}
+                onClick={event => {
+                  if (user.id) handleFavorite(event, item.id);
+                }}
+              >
+                {favoriteItem.find(element => element === item.id) ? (
+                  <CoracaoOn />
+                ) : (
+                  <CoracaoOff />
+                )}
+              </Favorito>
+            )}
+          </ContainerItensFooter>
+        )}
       </ContainerItemVitrine>
 
       {recontract && (

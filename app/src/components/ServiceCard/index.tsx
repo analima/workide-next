@@ -1,13 +1,15 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
-import { useHistory } from 'react-router';
 import { IServicoInfo } from '../../interfaces/IServicoInfo';
 import { ofertas_api } from '../../services/ofertas_api';
 import { LARANJA } from '../../styles/variaveis';
 import { formatarValor } from '../../utils/CurrencyFormat';
 import { Skeleton } from '../Skeleton';
-import Image from 'next/image'
+import EstrelaOff from '../../assets/estrela-off.svg';
+import Estrela from '../../assets/estrela.svg';
+import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 import {
   Content,
@@ -22,7 +24,6 @@ import {
   ContainerProfile,
   ContentInfoSecundary,
 } from './style';
-import { AvaliacaoFornecedor } from '../AvaliacaoFornecedor';
 import { pessoas_api } from '../../services/pessoas_api';
 
 interface ServiceProps {
@@ -44,7 +45,7 @@ export function ServiceCard({
   isFavorite: boolean;
   setIsFavorite?: (isFavorite: boolean) => void;
 }) {
-  const history = useHistory();
+  const router = useRouter();
   const [dadosFornec, setDadosFornec] = useState<ServiceProps>(
     {} as ServiceProps,
   );
@@ -57,20 +58,51 @@ export function ServiceCard({
     }
   }, [service, isFavorite]);
 
-  function handleGetServicePrice(price: number) {
-    const fee = price / (1 - 0.12) - price;
-    return price + (fee > 14 ? fee : 14);
-  }
   useEffect(() => {
     if (service?.fornecedor === undefined) {
       pessoas_api
         .get<ServiceProps>(`/pessoas/${service.idPessoa || service.id_pessoa}`)
         .then(response => {
           setDadosFornec(response.data);
-          setDadosFornec(response.data);
         });
     }
   }, [service]);
+
+  function handleShowStars(numberOfStars: number) {
+    const stars = [];
+    for (let i = 1; i <= 5; i += 1) {
+      if (i <= numberOfStars) {
+        if (numberOfStars === 0)
+          stars.push(
+            <Image
+              src={EstrelaOff}
+              alt={'avaliação'}
+              className="estrela"
+              key={i + Math.random()}
+            />,
+          );
+        else
+          stars.push(
+            <Image
+              src={Estrela}
+              alt={'avaliação'}
+              className="estrela"
+              key={i + Math.random()}
+            />,
+          );
+      } else {
+        stars.push(
+          <Image
+            src={EstrelaOff}
+            alt={'avaliação'}
+            className="estrela"
+            key={i + Math.random()}
+          />,
+        );
+      }
+    }
+    return stars;
+  }
 
   return service ? (
     <Content>
@@ -109,12 +141,12 @@ export function ServiceCard({
             <ImageProfile
               onClick={() =>
                 visao === 'consumidor'
-                  ? history.push(
+                  ? router.push(
                       `/consumidor/servico/${
                         service.id_pessoa || service.idPessoa
                       }/${service.id}`,
                     )
-                  : history.push(
+                  : router.push(
                       `/fornecedor/servico/${
                         service.id_pessoa || service.idPessoa
                       }/${service.id}`,
@@ -131,12 +163,12 @@ export function ServiceCard({
             <FillBlack
               onClick={() =>
                 visao === 'consumidor'
-                  ? history.push(
+                  ? router.push(
                       `/consumidor/servico/${
                         service.id_pessoa || service.idPessoa
                       }/${service.id}`,
                     )
-                  : history.push(
+                  : router.push(
                       `/fornecedor/servico/${
                         service.id_pessoa || service.idPessoa
                       }/${service.id}`,
@@ -174,13 +206,15 @@ export function ServiceCard({
           <ContainerServicePrice>
             Valor: a partir de {''}
             {formatarValor(
-              handleGetServicePrice(
-                service.precoMinimo ||
-                  Math.min.apply(
-                    null,
-                    service.pacotes.map(i => Number(i.preco)),
+              service.precoMinimo ||
+                Math.min.apply(
+                  null,
+                  service.pacotes.map(i =>
+                    Number(i.preco) / (1 - 0.12) - Number(i.preco) > 14
+                      ? Number(i.preco) / (1 - 0.12)
+                      : Number(i.preco) + 14,
                   ),
-              ),
+                ),
             )}
           </ContainerServicePrice>
         </ContainerDados>
@@ -191,14 +225,22 @@ export function ServiceCard({
               <Image
                 src={service?.fornecedor?.foto.url}
                 alt={service?.fornecedor?.nome_tratamento}
+                width={'40px'}
+                height={'40px'}
               />
             </div>
 
             <div>
               <span>{service.fornecedor.nome_tratamento}</span>
-              <AvaliacaoFornecedor
-                notaMedia={Number(service.fornecedor?.ranking?.nota_media || 0)}
-              />
+
+              <span>
+                {Number(service.fornecedor?.ranking?.nota_media || 0)?.toFixed(
+                  2,
+                )}
+              </span>
+              {handleShowStars(
+                Number(service.fornecedor?.ranking?.nota_media || 0) || 0,
+              )}
             </div>
           </ContainerProfile>
         )}
@@ -206,14 +248,23 @@ export function ServiceCard({
         {dadosFornec?.arquivo?.url && (
           <ContainerProfile>
             <div>
-              <Image src={dadosFornec?.arquivo?.url} alt="" />
+              <Image
+                src={dadosFornec?.arquivo?.url}
+                alt=""
+                width={'40px'}
+                height={'40px'}
+              />
             </div>
 
             <div>
               <span>{dadosFornec.nome_tratamento}</span>
-              <AvaliacaoFornecedor
-                notaMedia={Number(dadosFornec?.ranking?.notaMedia || 0)}
-              />
+              <br />
+              <span className="numberStarts">
+                {Number(dadosFornec?.ranking?.notaMedia || 0)?.toFixed(2)}
+              </span>
+              {handleShowStars(
+                Number(dadosFornec?.ranking?.notaMedia || 0) || 0,
+              )}
             </div>
           </ContainerProfile>
         )}

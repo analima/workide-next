@@ -32,7 +32,6 @@ parameter_id="arn:aws:ssm:us-east-1:812671651954:parameter/APP_JWK-PROD"
 bucket_name="files-gyan-prod"
 cpu=256
 memory=512
-nlb_arn="arn:aws:elasticloadbalancing:us-east-1:812671651954:loadbalancer/net/backend-nlb-prod/8c65307acea7b66e"
 
 
 

@@ -45,3 +45,4 @@ app/tmp/uploads/*
 !app/tmp/.gitkeep
 !app/tmp/uploads/.gitkeep
 .terraform*
+.next*

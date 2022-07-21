@@ -241,8 +241,6 @@ type ButtonProps = {
 export const Compartilhar = styled.a`
   padding: 16px 40px;
   width: 236px;
-  font-weight: bold;
-  font-size: 16px;
   border: none;
   text-decoration: none;
   border-radius: 8px;
@@ -250,6 +248,11 @@ export const Compartilhar = styled.a`
   display: flex;
   align-items: center;
   cursor: pointer;
+  font-family: 'Renner';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 150%;
 
   svg {
     margin-right: 8px;
@@ -275,15 +278,18 @@ export const Compartilhar = styled.a`
 
 export const Button = styled.button<ButtonProps>`
   padding: 16px 40px;
-  font-weight: bold;
   color: ${BRANCO};
   background-color: ${props => (props.notInterested ? LARANJA : AZUL)};
   border-radius: 8px;
   border: 1px solid ${props => (props.notInterested ? LARANJA : AZUL)};
-  font-size: 12px;
   text-decoration: none;
   text-align: center;
   white-space: nowrap;
+  font-family: 'Renner';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 150%;
   transition: background-color 0.2s;
   display: ${props => {
     return props.isMesmoUsuario ? 'block' : 'none';
