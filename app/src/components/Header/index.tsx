@@ -61,7 +61,7 @@ export function Header(): JSX.Element {
           <div>
             <p>
               Na Gyan, seus projetos podem ser publicados gratuitamente. Não
-              cobramos pela divulgação de projetos de fornecedores, ONGs e
+              cobramos pela divulgação de projetos de profissionais, ONGs e
               empresas.
             </p>
           </div>
