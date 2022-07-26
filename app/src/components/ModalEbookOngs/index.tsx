@@ -30,8 +30,6 @@ export function ModalEbookOngs({
   setShowModal,
 }: IModalRecomendacao) {
   const schema = Yup.object().shape({});
-  const [taxaAdministrativa, setTaxaAdministrativa] = useState(12);
-  const [valorLiquido, setValorLiquido] = useState(0);
 
   const { control, watch, setValue } = useForm({
     mode: 'all',
@@ -81,7 +79,6 @@ export function ModalEbookOngs({
                 name="input-instituicao"
                 control={control}
                 required={true}
-                isString={true}
               />
             </Row>
             <Row>
@@ -92,7 +89,6 @@ export function ModalEbookOngs({
                 name="input-telefone"
                 control={control}
                 required={true}
-                isString={true}
               />
             </Row>
             <Row>
@@ -103,7 +99,6 @@ export function ModalEbookOngs({
                 name="input-email"
                 control={control}
                 required={true}
-                isString={true}
               />
             </Row>
             <Row>
