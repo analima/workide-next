@@ -3,7 +3,7 @@ import ReactWordcloud from 'react-wordcloud';
 import Content from './style';
 
 import { useCallback, useEffect, useState } from 'react';
-import { pessoas_api } from '../../../../../services/pessoas_api';
+import { pessoas_api } from '../../../../services/pessoas_api';
 
 interface IHabilidade {
   text: string;

@@ -24,7 +24,7 @@ import { pessoas_api } from '../../../../services/pessoas_api';
 import ModalRecomendacao from './ModalRecomendacao';
 
 import { LARANJA } from '../../../../styles/variaveis';
-import HabilidadesPercebidas from '../../PerfilPublico/Reputacao/HabilidadesPercebidas';
+import HabilidadesPercebidas from '../../../../pages/fornecedor/___perfilantigo/Reputacao/HabilidadesPercebidas';
 
 interface IProps {
   pontuacao?: boolean;

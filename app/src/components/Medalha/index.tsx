@@ -3,6 +3,7 @@ import { Selos } from './selos';
 
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
+import Image from 'next/image'
 
 interface IMedalha {
   chave: string;
@@ -17,7 +18,7 @@ interface ISelo {
 
 export function Medalha({ chave, isActive }: IMedalha) {
   const [selo, setSelo] = useState({} as ISelo);
-
+  console.log(selo)
   useEffect(() => {
     Selos.forEach(selo => selo.chave === chave && setSelo(selo));
   }, [chave]);
@@ -30,7 +31,7 @@ export function Medalha({ chave, isActive }: IMedalha) {
           <Tooltip id={`tooltip-${selo.chave}`}>{selo.descricao}</Tooltip>
         }
       >
-        <div>{selo.chave && <selo.componente />}</div>
+        <div>{selo.chave && <Image id={selo.chave} src={selo.componente.src} width={'25px'} height={'25px'} />}</div>
       </OverlayTrigger>
     </Content>
   );
