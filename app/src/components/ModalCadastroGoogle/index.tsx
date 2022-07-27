@@ -5,7 +5,7 @@ import  Boia  from '../../assets/boia.svg';
 import  Chave  from '../../assets/chave.svg';
 import  GuardaChuva  from '../../assets/guardachuva.svg';
 import  Escudinho  from '../../assets/escudinho.svg';
-import  Button  from '../Form/Button';
+import  {Button}  from '../Form/Button';
 
 import {
   Content,

@@ -31,7 +31,7 @@ export function Medalha({ chave, isActive }: IMedalha) {
           <Tooltip id={`tooltip-${selo.chave}`}>{selo.descricao}</Tooltip>
         }
       >
-        <div>{selo.chave && <Image id={selo.chave} src={selo.componente.src} width={'25px'} height={'25px'} />}</div>
+        <div>{selo.chave && <Image id={selo.chave} src={selo.componente as any} width={'25px'} height={'25px'} alt="perfil-image" />}</div>
       </OverlayTrigger>
     </Content>
   );

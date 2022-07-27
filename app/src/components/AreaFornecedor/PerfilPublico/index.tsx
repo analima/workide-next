@@ -1,14 +1,15 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { hotjar } from 'react-hotjar';
 import { Col, Row } from 'react-bootstrap';
+import { useHistory, useParams } from 'react-router';
 import { Spacer } from '../../../components/Spacer';
 import { useAuth } from '../../../contexts/auth';
 import { IProvider } from '../../../interfaces/IProvider';
 import { pessoas_api } from '../../../services/pessoas_api';
-import ModalDenuncia from '../../../components/ModalDenuncia';
-import Layout from '../../../components/AreaFornecedor/Layout';
-import {useRouter} from 'next/router'
-import Sobre from '../../../components/AreaFornecedor/NovoPerfilPublico/Sobre';
+import ModalDenuncia from '../../ModalDenuncia';
+import Layout from '../Layout';
+import Reputacao from './Reputacao';
+import Sobre from './Sobre';
 import {
   ButtonVoltar,
   ContentButton,
@@ -16,45 +17,36 @@ import {
   LinkReportPerfil,
   Button,
   GhostButton,
-} from '../../../components/AreaFornecedor/NovoPerfilPublico/style';
-import Content from '../../../components/AreaFornecedor/NovoPerfilPublico/style';
+} from './style';
+import Content from './style';
+import Vitrine from './Vitrine';
 import { SEO } from '../../../components/SEO';
-import OutrasInformacoes from '../../../components/AreaFornecedor/NovoPerfilPublico/OutrasInformacoes';
-import assert from 'assert';
-import { IPessoa } from 'src/interfaces/IPessoa';
 
 interface IServicoConsumidorPublicoParams {
   strUsuario: string;
 }
 
-export default function NovoPerfilPublico() {
-  const router = useRouter();
+export default function PerfilPublico() {
   const [showModalDenuncia, setShowModalDenuncia] = useState(false);
   const [urlAtual, setUrlAtual] = useState('');
   const [dataProvider, setDataProvider] = useState<IProvider>({} as IProvider);
   const [idPessoa, setIdPessoa] = useState(0);
-  let query = router.query.strUsuario as unknown;
-  const params = query as IServicoConsumidorPublicoParams
-  let { user } = useAuth();
-   if(!user){
-     user = {} as IPessoa;
-     user.id_pessoa = 0
-   }
-  if (!user.id_pessoa) {
-    user.id_pessoa = 0
-  }
+  const history = useHistory();
+  const params = useParams<IServicoConsumidorPublicoParams>();
+  const { user } = useAuth();
   const [imageLoaded, setImageLoaded] = useState(true);
+
   useEffect(() => {
-    if (params) {
-      setIdPessoa(Number(params));
+    if (params.strUsuario) {
+      setIdPessoa(Number(params.strUsuario.split('-')[0]));
     } else if (user && user.id_pessoa) {
       setIdPessoa(user.id_pessoa ? user.id_pessoa : 0);
     } else {
-      router.push('/');
+      history.push('/');
     }
-  }, [params, user, router]);
+  }, [params.strUsuario, user, history]);
 
-  const getProvider = useCallback(async () => {
+  useEffect(() => {
     if (idPessoa) {
       pessoas_api
         .get(`/pessoas/${idPessoa}`)
@@ -63,17 +55,12 @@ export default function NovoPerfilPublico() {
           setImageLoaded(false);
         })
         .catch(error => {
-          if (error) {
-            console.log(error)
-            debugger
+          if (error.response.data.message === 'Pessoa não encontrada') {
+            history.push('/');
           }
         });
     }
-  }, [idPessoa, router]);
-
-  useEffect(() => {
-    getProvider();
-  }, [getProvider]);
+  }, [idPessoa, history]);
 
   useEffect(() => {
     let url_atual = window.location.href;
@@ -100,7 +87,7 @@ export default function NovoPerfilPublico() {
             : 'https://hom.gyan.com.br/gyan.png'
         }
       />
-      <Layout>
+      <Layout isConsumidor={true}>
         {(user ? user.id_pessoa : 0) === idPessoa && (
           <Row>
             <Col className="d-flex align-items-center" lg={6}>
@@ -113,15 +100,14 @@ export default function NovoPerfilPublico() {
               <ContentButton>
                 <Button
                   onClick={() =>
-                    router.push({
-                      pathname: '/cadastro-complementar',
-                      query: { cadastroCompleto: true }
+                    history.push('/cadastro-complementar', {
+                      cadastroCompleto: true,
                     })
                   }
                 >
                   EDITAR PERFIL
                 </Button>
-                <GhostButton onClick={() => router.back()}>
+                <GhostButton onClick={() => history.goBack()}>
                   VOLTAR
                 </GhostButton>
               </ContentButton>
@@ -133,17 +119,23 @@ export default function NovoPerfilPublico() {
 
         <Row>
           <Col lg={12}>
-            <Sobre
-              dataProps={dataProvider}
-              getProvider={getProvider}
-              imageLoaded={imageLoaded}
-            />
+            <Sobre dataProps={dataProvider} imageLoaded={imageLoaded} />
           </Col>
         </Row>
 
+        <Spacer size={40} />
+
         <Row>
           <Col lg={12}>
-            <OutrasInformacoes imageLoaded={imageLoaded} data={dataProvider} />
+            <Vitrine id={idPessoa} />
+          </Col>
+        </Row>
+
+        <Spacer size={40} />
+
+        <Row>
+          <Col lg={12}>
+            <Reputacao idPessoa={dataProvider.id} />
           </Col>
         </Row>
 
@@ -169,7 +161,7 @@ export default function NovoPerfilPublico() {
         <Row>
           <Col lg={12}>
             <ContentButton>
-              <ButtonVoltar onClick={() => router.back()}>
+              <ButtonVoltar onClick={() => history.goBack()}>
                 VOLTAR
               </ButtonVoltar>
             </ContentButton>
