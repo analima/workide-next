@@ -1,9 +1,6 @@
-import { useCallback, useState } from 'react';
-import { Col, ModalBody, Row } from 'react-bootstrap';
-import { InputMoney } from '../Form/InputMoney';
-
+import { useEffect, useState } from 'react';
+import { ModalBody, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
@@ -11,14 +8,13 @@ import {
   Content,
   ModalConfirmation,
   Container,
-  ContentModalEbook,
   Title,
   ContentButton,
 } from './style';
-import { Button } from '../Form/Button';
 import { Spacer } from '../Spacer';
-import { formatarValor } from '../../utils/CurrencyFormat';
 import { InputText } from '../Form/InputText';
+import { InputMask } from '../Form/InputMask';
+import { pessoas_api } from 'src/services/pessoas_api';
 
 interface IModalRecomendacao {
   showModal: boolean;
@@ -31,11 +27,59 @@ export function ModalEbookOngs({
 }: IModalRecomendacao) {
   const schema = Yup.object().shape({});
 
+  const [errorName, setErrorName] = useState<string>('');
+  const [errorTelephone, setErrorTelephone] = useState<string>('');
+  const [errorEmail, setErrorEmail] = useState<string>('');
+  const [errorInstitution, setErrorInstitution] = useState<string>('');
+  const [loading, setLoading] = useState(false);
   const { control, watch, setValue } = useForm({
     mode: 'all',
     shouldFocusError: true,
     resolver: yupResolver(schema),
   });
+
+  useEffect(() => {
+    setErrorName('');
+    setErrorEmail('');
+    setErrorInstitution('');
+    setErrorTelephone('');
+  }, []);
+
+  const download = async () => {
+    try {
+      setLoading(true);
+      if (!control._formValues.inputNome)
+        setErrorName('Por favor, informe um nome.');
+      else setErrorName('');
+      if (!control._formValues.inputInstituicao)
+        setErrorInstitution('Por favor, informe a instituição.');
+      else setErrorInstitution('');
+      if (!control._formValues.inputTelefone)
+        setErrorTelephone('Por favor, informe um telefone.');
+      else setErrorTelephone('');
+      if (!control._formValues.inputEmail)
+        setErrorEmail('Por favor, informe um email.');
+      else setErrorEmail('');
+
+      if (
+        errorEmail !== '' ||
+        errorInstitution !== '' ||
+        errorName !== '' ||
+        errorTelephone
+      )
+        return;
+      await pessoas_api.post(`/dados-ebook`, {
+        nome: control._formValues.inputNome,
+        instituicao: control._formValues.inputInstituicao,
+        email: control._formValues.inputEmail,
+        telefone: control._formValues.inputTelefone,
+      });
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <Content>
@@ -65,10 +109,11 @@ export function ModalEbookOngs({
               <InputText
                 label="Nome"
                 placeholder="Obrigatório"
-                name="input-nome"
+                name="inputNome"
                 control={control}
                 required={true}
                 isString={true}
+                error={errorName}
               />
             </Row>
             <Row>
@@ -76,19 +121,22 @@ export function ModalEbookOngs({
               <InputText
                 label="Instituição"
                 placeholder="Obrigatório"
-                name="input-instituicao"
+                name="inputInstituicao"
                 control={control}
                 required={true}
+                error={errorInstitution}
               />
             </Row>
             <Row>
               <Spacer size={10} />
-              <InputText
+              <InputMask
                 label="Telefone"
                 placeholder="Obrigatório"
-                name="input-telefone"
+                name="inputTelefone"
                 control={control}
                 required={true}
+                error={errorTelephone}
+                mask="(99) 99999-9999"
               />
             </Row>
             <Row>
@@ -96,14 +144,17 @@ export function ModalEbookOngs({
               <InputText
                 label="Email"
                 placeholder="Obrigatório"
-                name="input-email"
+                name="inputEmail"
                 control={control}
                 required={true}
+                error={errorEmail}
               />
             </Row>
             <Row>
               <ContentButton>
-                <button>Fazer download</button>
+                <button onClick={download}>
+                  {loading ? 'Carregando...' : 'Fazer download'}
+                </button>
               </ContentButton>
             </Row>
           </Container>
