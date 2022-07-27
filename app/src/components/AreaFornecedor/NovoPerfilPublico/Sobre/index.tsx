@@ -40,6 +40,7 @@ import { Spacer } from '../../../../components/Spacer';
 import CapaDefault from '../../../../assets/capa-default.png';
 import UploadCapaPhoto from '../UploadCapaPhoto';
 import { Spinner } from '../../../../components/Spinner';
+import { IPessoa } from 'src/interfaces/IPessoa';
 
 type PropsPage = {
   imageLoaded: boolean;
@@ -52,7 +53,11 @@ export default function Sobre({ dataProps, getProvider, imageLoaded }: PropsPage
   const [idFornecedores, setIdFornecedores] = useState<number[]>([]);
   const [isFavorite, setIsFavorite] = useState(false);
   const [link, setLink] = useState('');
-  const { user, refreshUserData } = useAuth();
+  const { refreshUserData } = useAuth();
+  let { user } = useAuth();
+  if (!user) {
+    user = {} as IPessoa;
+  }
   const history = useHistory();
   const [showAvatarCadastroIncompleto, setShowAvatarCadastroIncompleto] =
     useState(false);
@@ -157,9 +162,9 @@ export default function Sobre({ dataProps, getProvider, imageLoaded }: PropsPage
     setShowRecommendationModal(true);
   }, [dataProps?.id, dataProps?.nome_tratamento, linkUrlAmbiente]);
 
-  useEffect(() => {
-    refreshUserData();
-  }, [refreshUserData]);
+  // useEffect(() => {
+  //   refreshUserData();
+  // }, [refreshUserData]);
 
   const handleSave = useCallback(async () => {
     setLoadingCapa(true);
