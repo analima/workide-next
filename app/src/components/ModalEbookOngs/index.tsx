@@ -10,6 +10,8 @@ import {
   Container,
   Title,
   ContentButton,
+  AlertError,
+  ButtonDownload,
 } from './style';
 import { Spacer } from '../Spacer';
 import { InputText } from '../Form/InputText';
@@ -26,12 +28,16 @@ export function ModalEbookOngs({
   setShowModal,
 }: IModalRecomendacao) {
   const schema = Yup.object().shape({});
-
+  const [error, setError] = useState('');
   const [errorName, setErrorName] = useState<string>('');
   const [errorTelephone, setErrorTelephone] = useState<string>('');
   const [errorEmail, setErrorEmail] = useState<string>('');
   const [errorInstitution, setErrorInstitution] = useState<string>('');
   const [loading, setLoading] = useState(false);
+  const [linkDownload, setLinkDownload] = useState<string>(
+    'http://www2.ic.uff.br/~vanessa/material/ed2/01-Apresentacao2011.2.pdf',
+  );
+  const [authorizedDownload, setAuthorizedDownload] = useState<boolean>(false);
   const { control, watch, setValue } = useForm({
     mode: 'all',
     shouldFocusError: true,
@@ -39,43 +45,92 @@ export function ModalEbookOngs({
   });
 
   useEffect(() => {
+    watch(() => {
+      if (
+        control._formValues.inputEmail !== undefined &&
+        control._formValues.inputInstituicao !== undefined &&
+        control._formValues.inputNome !== undefined &&
+        control._formValues.inputTelefone !== undefined
+      )
+        setAuthorizedDownload(true);
+      else setAuthorizedDownload(false);
+    });
+  }, [
+    control._formValues.inputEmail,
+    control._formValues.inputInstituicao,
+    control._formValues.inputNome,
+    control._formValues.inputTelefone,
+    watch,
+  ]);
+
+  useEffect(() => {
+    setError('');
     setErrorName('');
     setErrorEmail('');
     setErrorInstitution('');
     setErrorTelephone('');
+    setAuthorizedDownload(false);
+    setLinkDownload(
+      'http://www2.ic.uff.br/~vanessa/material/ed2/01-Apresentacao2011.2.pdf',
+    );
   }, []);
+
+  const validatingFields = () => {
+    if (
+      !control._formValues.inputNome ||
+      control._formValues.inputNome === undefined
+    )
+      setErrorName('Por favor, informe um nome.');
+    else setErrorName('');
+    if (
+      !control._formValues.inputInstituicao ||
+      control._formValues.inputInstituicao === undefined
+    )
+      setErrorInstitution('Por favor, informe a instituição.');
+    else setErrorInstitution('');
+    if (
+      !control._formValues.inputTelefone ||
+      control._formValues.inputTelefone === undefined
+    )
+      setErrorTelephone('Por favor, informe um telefone.');
+    else setErrorTelephone('');
+    if (
+      !control._formValues.inputEmail ||
+      control._formValues.inputEmail === undefined
+    )
+      setErrorEmail('Por favor, informe um email.');
+    else setErrorEmail('');
+
+    if (
+      control._formValues.inputEmail === undefined ||
+      control._formValues.inputInstituicao === undefined ||
+      control._formValues.inputNome === undefined ||
+      control._formValues.inputTelefone === undefined
+    )
+      return true;
+    return false;
+  };
 
   const download = async () => {
     try {
       setLoading(true);
-      if (!control._formValues.inputNome)
-        setErrorName('Por favor, informe um nome.');
-      else setErrorName('');
-      if (!control._formValues.inputInstituicao)
-        setErrorInstitution('Por favor, informe a instituição.');
-      else setErrorInstitution('');
-      if (!control._formValues.inputTelefone)
-        setErrorTelephone('Por favor, informe um telefone.');
-      else setErrorTelephone('');
-      if (!control._formValues.inputEmail)
-        setErrorEmail('Por favor, informe um email.');
-      else setErrorEmail('');
-
-      if (
-        errorEmail !== '' ||
-        errorInstitution !== '' ||
-        errorName !== '' ||
-        errorTelephone
-      )
-        return;
+      if (validatingFields()) return;
       await pessoas_api.post(`/dados-ebook`, {
         nome: control._formValues.inputNome,
         instituicao: control._formValues.inputInstituicao,
         email: control._formValues.inputEmail,
         telefone: control._formValues.inputTelefone,
       });
-    } catch (error) {
+      setAuthorizedDownload(true);
+      setShowModal(false);
+      setValue('inputEmail', '');
+      setValue('inputTelefone', '');
+      setValue('inputInstituicao', '');
+      setValue('inputNome', '');
+    } catch (error: any) {
       console.error(error);
+      setError(error.reponse?.message);
+      setAuthorizedDownload(false);
     } finally {
       setLoading(false);
     }
@@ -150,10 +205,27 @@ export function ModalEbookOngs({
                 error={errorEmail}
               />
             </Row>
+            {error !== '' && (
+              <Row>
+                <AlertError>{error}</AlertError>
+              </Row>
+            )}
             <Row>
-              <ContentButton>
-                <button onClick={download}>
-                  {loading ? 'Carregando...' : 'Fazer download'}
+              <ContentButton onClick={download}>
+                <button disabled={authorizedDownload}>
+                  {authorizedDownload ? (
+                    <ButtonDownload
+                      download
+                      href={linkDownload}
+                      target="_blank"
+                    >
+                      {loading ? 'Carregando...' : 'Fazer download'}
+                    </ButtonDownload>
+                  ) : (
+                    <ButtonDownload>
+                      {loading ? 'Carregando...' : 'Fazer download'}
+                    </ButtonDownload>
+                  )}
                 </button>
               </ContentButton>
             </Row>

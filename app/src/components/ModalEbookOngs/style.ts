@@ -1,7 +1,13 @@
 import styled from 'styled-components';
 
 import { Modal } from 'react-bootstrap';
-import { AZUL, BRANCO, PRETO_10, PRETO_60 } from '../../styles/variaveis';
+import {
+  AZUL,
+  BRANCO,
+  LARANJA_10,
+  PRETO_10,
+  PRETO_60,
+} from '../../styles/variaveis';
 
 export const ModalConfirmation = styled(Modal)`
   background-color: transparent !important;
@@ -94,5 +100,21 @@ export const ContentButton = styled.div`
     :hover {
       opacity: 0.8;
     }
+  }
+`;
+
+export const AlertError = styled.span`
+  font-size: 14px;
+  color: ${LARANJA_10};
+  margin: 10px auto;
+`;
+
+export const ButtonDownload = styled.a`
+  text-decoration: none;
+  cursor: pointer;
+  color: ${BRANCO};
+
+  :hover {
+    color: ${BRANCO};
   }
 `;
