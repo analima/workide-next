@@ -11,6 +11,8 @@ import {
 export const Content = styled.section`
   min-height: 530px;
   scroll-behavior: smooth;
+  max-width: 1440px;
+  margin: 0 auto;
 
   h1 {
     margin-top: 60px;
