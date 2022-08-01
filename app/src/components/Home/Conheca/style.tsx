@@ -4,6 +4,8 @@ import IMG from '../../../assets/banner-quem-somos.webp';
 import IMG2 from '../../../assets/banner-quem-somos2.webp';
 
 export const Content = styled.section`
+  margin: 0 auto;
+  max-width: 1440px;
   @media (max-width: 768px) {
     padding: 0px 20px;
   }

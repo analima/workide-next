@@ -34,18 +34,36 @@ export const Content = styled.div`
       font-size: 32px;
       font-weight: bold;
       color: ${LARANJA};
+      transform: rotate(0deg) scale(1);
+
+      :hover {
+        cursor: pointer;
+        transform: rotate(0deg) scale(1.3);
+      }
     }
 
     h3 {
       font-size: 24px;
       font-weight: bold;
       color: ${LARANJA};
+      transform: rotate(0deg) scale(1);
+
+      :hover {
+        cursor: pointer;
+        transform: rotate(0deg) scale(1.3);
+      }
     }
 
     h4 {
       font-size: 20px;
       font-weight: bold;
       color: ${LARANJA};
+      transform: rotate(0deg) scale(1);
+
+      :hover {
+        cursor: pointer;
+        transform: rotate(0deg) scale(1.3);
+      }
     }
   }
 
