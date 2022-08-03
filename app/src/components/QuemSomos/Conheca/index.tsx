@@ -15,7 +15,7 @@ export function Conheca() {
         </BoxContent>
 
         <BoxContent color={LARANJA}>
-          <button>Fornecedores</button>
+          <button>Profissionais</button>
           <span>
             Seus projetos, ofertas de jobs e compartilhamento de suas
             habilidades podem ser divulgados sem nenhum custo.
