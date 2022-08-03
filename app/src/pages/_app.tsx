@@ -1,5 +1,5 @@
 import type { AppProps } from 'next/app';
-import { createGlobalStyle, ThemeProvider } from 'styled-components'
+import {  ThemeProvider } from 'styled-components'
 import '../styles/global.css'
 import "bootstrap/dist/css/bootstrap.css";
 import Head from 'next/head'
@@ -10,7 +10,7 @@ interface ThemeInterface {
   }
 }
 
-const Global = global
+
 
 const theme: ThemeInterface = {
   colors: {
