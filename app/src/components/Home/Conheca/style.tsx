@@ -26,10 +26,12 @@ export const ContentBanner = styled.div`
 
   @media (max-width: 1920px) {
     height: 950px;
+    max-width: 1440px;
   }
 
   @media (max-width: 1340px) {
     height: 692px;
+    max-width: 1300px
   }
 
   .content-titles {
@@ -97,6 +99,7 @@ export const ContentBanner = styled.div`
   }
 
   @media (max-width: 991px) {
+    max-width: 900px
     padding: 80px 20px;
 
     .content-titles {
@@ -143,6 +146,7 @@ export const ContentBanner = styled.div`
   }
 
   @media (max-width: 768px) {
+    max-width: 95%;
     gap: 16px;
     .content-titles {
       width: 100%;
