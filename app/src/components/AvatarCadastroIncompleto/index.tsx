@@ -64,7 +64,7 @@ export function AvatarCadastroIncompleto({
 
   return (
     <Content animation={false} show={mostrar}>
-      <AndreContainer mostrarAvatar={mostrar}>
+      {/* <AndreContainer mostrarAvatar={mostrar}>
         <AndreIconClose>
           <IoMdCloseCircleOutline
             onClick={() => {
@@ -141,7 +141,7 @@ export function AvatarCadastroIncompleto({
         <AndrePersonagem>
           <Andre className="avatar-upgrade" />
         </AndrePersonagem>
-      </AndreContainer>
+      </AndreContainer> */}
     </Content>
   );
 }
