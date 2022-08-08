@@ -8,7 +8,7 @@ import { IProvider } from '../../../interfaces/IProvider';
 import { pessoas_api } from '../../../services/pessoas_api';
 import ModalDenuncia from '../../ModalDenuncia';
 import Layout from '../Layout';
-import Sobre from './Sobre';
+import {Sobre} from './Sobre';
 import {
   ButtonVoltar,
   ContentButton,
@@ -124,7 +124,6 @@ export default function NovoPerfilPublico() {
           <Col lg={12}>
             <Sobre
               dataProps={dataProvider}
-              getProvider={getProvider}
               imageLoaded={imageLoaded}
             />
           </Col>
