@@ -8,7 +8,7 @@ import { pessoas_api } from '../../../services/pessoas_api';
 import ModalDenuncia from '../../../components/ModalDenuncia';
 import Layout from '../../../components/AreaFornecedor/Layout';
 import {useRouter} from 'next/router'
-import Sobre from '../../../components/AreaFornecedor/NovoPerfilPublico/Sobre';
+import { Sobre } from '../../../components/AreaFornecedor/NovoPerfilPublico/Sobre';
 import {
   ButtonVoltar,
   ContentButton,
@@ -39,9 +39,13 @@ export default function NovoPerfilPublico() {
    if(!user){
      user = {} as IPessoa;
      user.id_pessoa = 0
+     console.log('olar')
    }
   if (!user.id_pessoa) {
     user.id_pessoa = 0
+  }
+  if (user) {
+    console.log('olaaar')
   }
   const [imageLoaded, setImageLoaded] = useState(true);
   useEffect(() => {
@@ -49,8 +53,6 @@ export default function NovoPerfilPublico() {
       setIdPessoa(Number(params));
     } else if (user && user.id_pessoa) {
       setIdPessoa(user.id_pessoa ? user.id_pessoa : 0);
-    } else {
-      router.push('/');
     }
   }, [params, user, router]);
 
@@ -135,7 +137,6 @@ export default function NovoPerfilPublico() {
           <Col lg={12}>
             <Sobre
               dataProps={dataProvider}
-              getProvider={getProvider}
               imageLoaded={imageLoaded}
             />
           </Col>

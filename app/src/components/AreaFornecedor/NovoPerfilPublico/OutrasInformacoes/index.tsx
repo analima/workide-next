@@ -346,7 +346,7 @@ export default function OutrasInformacoes({ data, imageLoaded }: Props) {
                       })
                       ?.map(item => (
                         <li key={item.id}>
-                          <Image src={item.url} alt={item.descricao} />
+                          <Image src={item.url} alt={item.descricao} layout="fill" />
                         </li>
                       ))}
                   </Carrousel>

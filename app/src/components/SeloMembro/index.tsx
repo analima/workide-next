@@ -2,6 +2,7 @@ import { OverlayTrigger } from 'react-bootstrap';
 import Selo  from '../../assets/selo-membro.svg';
 import SeloVideo  from '../../assets/selo-membro-without-shadow.svg';
 import { Content, TooltipMember } from './style';
+import Image from 'next/image'
 
 interface Props {
   id: number;
@@ -19,7 +20,7 @@ export function SeloMembro({ id, isViewVideo }: Props) {
           </TooltipMember>
         }
       >
-        {isViewVideo ? <SeloVideo /> : <Selo />}
+        {isViewVideo ? <Image src={SeloVideo} alt="selo video" /> : <Image src={Selo} alt="selo"/>}
       </OverlayTrigger>
     </Content>
   );

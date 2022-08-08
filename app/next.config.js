@@ -1,7 +1,7 @@
 /* @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['files-gyan-hom.s3.amazonaws.com', 'files-gyan-ppr.s3.amazonaws.com', 'files-gyan-prod.s3.amazonaws.com'],
+    domains: ['files-gyan-hom.s3.amazonaws.com', 'files-gyan-ppr.s3.amazonaws.com', 'files-gyan-prod.s3.amazonaws.com', 'gyan-sp-public.s3.sa-east-1.amazonaws.com'],
   },
   i18n: {
     locales: ['pt_br'],

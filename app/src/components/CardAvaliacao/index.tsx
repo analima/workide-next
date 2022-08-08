@@ -56,12 +56,31 @@ export function CardAvaliacao({ id }: IProps) {
       if (i <= numberOfStars) {
         if (numberOfStars === 0)
           stars.push(
-            <EstrelaOff className="estrela" key={i + Math.random()} />,
+             <Image
+              src={EstrelaOff}
+              className="estrela"
+              key={i + Math.random()}
+              alt="estrela-apagada"
+            />,
           );
         else
-          stars.push(<Estrela className="estrela" key={i + Math.random()} />);
+         stars.push(
+            <Image
+              src={Estrela}
+              className="estrela"
+              key={i + Math.random()}
+              alt="estrela"
+            />,
+          );
       } else {
-        stars.push(<EstrelaOff className="estrela" key={i + Math.random()} />);
+        stars.push(
+          <Image
+            src={EstrelaOff}
+            className="estrela"
+            key={i + Math.random()}
+            alt="estrela-apagada"
+          />,
+        );
       }
     }
     return stars;
@@ -131,6 +150,7 @@ export function CardAvaliacao({ id }: IProps) {
                   <ContainerCardUsuario>
                     <AvaliacaoCliente>
                       <Image
+                        layout={'fill'}
                         src={
                           obj?.projeto?.pessoaConsumidor?.arquivo?.url ||
                           PlaceholderImg
@@ -144,7 +164,8 @@ export function CardAvaliacao({ id }: IProps) {
                       </span>
                       <ContentNota>
                         <span>{obj.nota}</span>
-                        {handleShowStars(obj.nota)}
+
+                        {obj.nota ? handleShowStars(5) : handleShowStars(obj.nota || 0) }
                       </ContentNota>
                     </div>
                   </ContainerCardUsuario>
