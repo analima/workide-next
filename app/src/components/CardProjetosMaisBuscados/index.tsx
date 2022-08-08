@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { BsArrowDown, BsArrowRight } from 'react-icons/bs';
 import { VERDE } from '../../styles/variaveis';
 import { Container, Content } from './styles';
-
+import { useRouter } from 'next/router';
 export function CardProjetosMaisBuscados() {
   const [sizePage, setSizePage] = useState(0);
 
@@ -14,11 +14,11 @@ export function CardProjetosMaisBuscados() {
     setSizePage(window.innerWidth);
     window.addEventListener('resize', handleResize);
   }, []);
-
+  const router = useRouter()
   return (
     <Container>
       <Content>
-        <h1>
+        <h1 onClick={() => {router.push('/fornecedor/captar-projetos')}}>
           Projetos mais buscados
           {sizePage > 478 ? (
             <BsArrowRight color={VERDE} size={32} />

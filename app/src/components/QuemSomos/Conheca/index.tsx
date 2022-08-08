@@ -1,13 +1,17 @@
 import { AZUL, LARANJA, VERDE } from '../../../styles/variaveis';
 import { Content, ContentConheca, BoxContent } from './styles';
+import {useRouter} from 'next/router'
 
 export function Conheca() {
+  const router = useRouter();
   return (
     <Content>
       <h1>Conheças os benefícios em se cadastrar na plataforma:</h1>
       <ContentConheca>
         <BoxContent color={AZUL}>
-          <button>Empresas</button>
+          <button
+            onClick={() => {router.push('/consumidor/busca')}}
+          >Empresas</button>
           <span>
             Livre acesso ao nosso espaço para encontrar talentos independentes
             para atuar em projetos de tecnologia.
@@ -15,7 +19,7 @@ export function Conheca() {
         </BoxContent>
 
         <BoxContent color={LARANJA}>
-          <button>Profissionais</button>
+          <button  onClick={() => {router.push('/fornecedor/captar-projetos')}} >Profissionais</button>
           <span>
             Seus projetos, ofertas de jobs e compartilhamento de suas
             habilidades podem ser divulgados sem nenhum custo.
@@ -23,7 +27,9 @@ export function Conheca() {
         </BoxContent>
 
         <BoxContent color={VERDE}>
-          <button>Voluntários</button>
+          <button
+            onClick={() => {router.push('/consumidor/busca?voluntario=true')}}
+          >Voluntários</button>
           <span>
             Na Gyan, você pode encontrar uma ONG em busca de voluntários com o
             seu perfil e que desperte seu interesse em ajudar.
@@ -31,7 +37,9 @@ export function Conheca() {
         </BoxContent>
 
         <BoxContent color={VERDE}>
-          <button>ONGs</button>
+          <button
+          onClick={() => {router.push('/consumidor/busca?ong=true')}}
+          >ONGs</button>
           <span>
             Visibilidade para divulgar seus projetos sociais e atrair
             voluntários de diferentes lugares do Brasil.
