@@ -13,7 +13,7 @@ interface Props {
   isActive?: boolean;
 }
 
-const Content = styled.section`
+export const Content = styled.section`
   position: relative;
   .text-grey {
     color: ${CINZA_40};
@@ -29,6 +29,30 @@ const Content = styled.section`
     &:hover {
       opacity: 0.7;
     }
+  }
+`;
+export const Ranking = styled.span`
+  font-size: 16px;
+  color: ${PRETO_10};
+  font-weight: bold;
+`;
+
+export const Frame = styled.iframe`
+  width: 280px;
+  height: 280px;
+
+  @media (max-width: 1200px) {
+    width: 210px;
+    height: 210px;
+  }
+  @media (max-width: 500px) {
+    width: 144px;
+    height: 144px;
+  }
+
+  @media (max-width: 762px) {
+    width: 200px;
+    height: 200px;
   }
 `;
 
@@ -332,4 +356,4 @@ export const LinkToScroll = styled(Link)`
   }
 `;
 
-export default Content;
+

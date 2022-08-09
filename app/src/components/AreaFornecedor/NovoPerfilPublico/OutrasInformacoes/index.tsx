@@ -36,6 +36,7 @@ import { ofertas_api } from '../../../../services/ofertas_api';
 import { VitrineServico } from '../../../../components/VitrineServico';
 import { Skeleton } from '../../../../components/Skeleton';
 import { CardRecomendation } from '../../../../components/CardRecomendacao';
+import { IPessoa } from 'src/interfaces/IPessoa';
 
 type ConsultaRankingType = {
   idUsuario: number;
@@ -50,7 +51,10 @@ interface Props {
 }
 
 export default function OutrasInformacoes({ data, imageLoaded }: Props) {
-  const { user } = useAuth();
+  let { user } = useAuth();
+  if (!user) {
+    user = {} as IPessoa;
+  }
   const [verMaisSubareas, setVerMaisSubareas] = useState(false);
   const [verMaisCapacitacao, setVerMaisCapacitacao] = useState(false);
   const [vitrineData, setVitrineData] = useState([] as IServicoInfo[]);
@@ -342,7 +346,7 @@ export default function OutrasInformacoes({ data, imageLoaded }: Props) {
                       })
                       ?.map(item => (
                         <li key={item.id}>
-                          <Image src={item.url} alt={item.descricao} />
+                          <Image src={item.url} alt={item.descricao} layout="fill" />
                         </li>
                       ))}
                   </Carrousel>

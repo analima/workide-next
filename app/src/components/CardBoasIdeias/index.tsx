@@ -12,7 +12,8 @@ export function CardBoasIdeias() {
         <div className="content-info">
           <h1>Tem um projeto social e precisa de boas ideias?</h1>
           <span>
-            Encontre aqui pessoas dispostas a fazer a diferença como volutárias.
+            Encontre aqui pessoas dispostas a fazer a diferença como
+            voluntárias.
           </span>
         </div>
 

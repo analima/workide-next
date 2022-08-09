@@ -73,6 +73,10 @@ export function Footer() {
                   >
                     Quem Somos
                   </li>
+
+                  <li className="li-click" onClick={() => router.push('/ongs')}>
+                    Para Ongs
+                  </li>
                 </>
               )}
             </ul>
