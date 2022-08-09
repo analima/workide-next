@@ -10,20 +10,31 @@ export function BannerQuemSomos() {
           <h1>Quem somos</h1>
           <div className="descricao">
             <p>
-              A Gyan é uma plataforma que elimina barreiras geográficas, unindo
-              freelancers, empresas, ONGs e pessoas interessadas em uma nova
-              forma de trabalho. É dirigida a profissionais em busca de
-              <b> desafios instigantes</b> e que com eles, possam gerar uma
-              renda extra com rápida negociação.
+              <b>
+                A Gyan conecta pessoas incríveis a projetos e causas
+                apaixonantes.
+              </b>
+              Nossa plataforma elimina barreiras geográficas e permite a conexão
+              entre profissionais, empresas e ONGs.
             </p>
             <p>
-              Nosso propósito é conectar pessoas incríveis com projetos e causas
-              apaixonantes para viabilizar objetivos e realizar sonhos, em
-              qualquer lugar do mundo.
+              Profissionais que já trabalham neste novo modelo, que querem fazer
+              uma renda extra ou que se dispõem ao trabalho voluntário pro bono
+              cadastram sua disponibilidade, conhecimento e experiência de
+              atuação.
             </p>
             <p>
-              Curiosidade: Gyan vem do sânscrito que significa Caminho do
-              Conhecimento e a sua pronúncia é Guiã.
+              Empresas que buscam uma forma flexível de contratação cadastram
+              seus projetos para atrair os profissionais que precisam.
+            </p>
+            <p>
+              As ONGs e instituições sem fins lucrativos sabem que o trabalho
+              pro bono é a forma mais efetiva de voluntariado!
+            </p>
+            <p>
+              Na Gyan, acreditamos muito no bom senso e na capacidade de
+              entendimento das pessoas. Criar relações de confiança é
+              fundamental para nós.
             </p>
           </div>
           <h1 className="title-border">
