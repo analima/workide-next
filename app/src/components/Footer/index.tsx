@@ -77,6 +77,13 @@ export function Footer() {
                   <li className="li-click" onClick={() => router.push('/ongs')}>
                     Para Ongs
                   </li>
+
+                  <li
+                    className="li-click"
+                    onClick={() => router.push('https://blog.gyan.com.br/')}
+                  >
+                    Blog Gyan
+                  </li>
                 </>
               )}
             </ul>
