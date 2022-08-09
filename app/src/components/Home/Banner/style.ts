@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import { BRANCO, BRANCO_GELO } from '../../../styles/variaveis';
 export const Container = styled.section`
+  margin: 0 auto;
+  max-width: 1440px;
+  width: 100%;
   height: 100vh;
   padding: 0px 60px;
   background-color: ${BRANCO};

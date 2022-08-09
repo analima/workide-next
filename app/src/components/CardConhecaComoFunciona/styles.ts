@@ -3,10 +3,12 @@ import { BRANCO, CINZA_50, PRETO_10 } from '../../styles/variaveis';
 
 export const Container = styled.div`
   background-color: ${BRANCO};
+  max-width: 1440px;
+  margin: 0 auto;
 `;
 
 export const ContentHowItWorks = styled.div`
-  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
 
   .content-title {

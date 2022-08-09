@@ -1,14 +1,14 @@
 import { useCallback, useEffect, useState } from 'react';
 import { hotjar } from 'react-hotjar';
 import { Col, Row } from 'react-bootstrap';
-import { useHistory, useParams } from 'react-router';
 import { Spacer } from '../../../components/Spacer';
 import { useAuth } from '../../../contexts/auth';
 import { IProvider } from '../../../interfaces/IProvider';
 import { pessoas_api } from '../../../services/pessoas_api';
-import ModalDenuncia from '../../ModalDenuncia';
-import Layout from '../Layout';
-import {Sobre} from './Sobre';
+import ModalDenuncia from '../../../components/ModalDenuncia';
+import Layout from '../../../components/AreaFornecedor/Layout';
+import {useRouter} from 'next/router'
+import { Sobre } from '../../../components/AreaFornecedor/NovoPerfilPublico/Sobre';
 import {
   ButtonVoltar,
   ContentButton,
@@ -16,34 +16,45 @@ import {
   LinkReportPerfil,
   Button,
   GhostButton,
-} from './style';
-import Content from './style';
+} from '../../../components/AreaFornecedor/NovoPerfilPublico/style';
+import Content from '../../../components/AreaFornecedor/NovoPerfilPublico/style';
 import { SEO } from '../../../components/SEO';
-import OutrasInformacoes from './OutrasInformacoes';
+import OutrasInformacoes from '../../../components/AreaFornecedor/NovoPerfilPublico/OutrasInformacoes';
+import assert from 'assert';
+import { IPessoa } from 'src/interfaces/IPessoa';
 
 interface IServicoConsumidorPublicoParams {
   strUsuario: string;
 }
 
 export default function NovoPerfilPublico() {
+  const router = useRouter();
   const [showModalDenuncia, setShowModalDenuncia] = useState(false);
   const [urlAtual, setUrlAtual] = useState('');
   const [dataProvider, setDataProvider] = useState<IProvider>({} as IProvider);
   const [idPessoa, setIdPessoa] = useState(0);
-  const history = useHistory();
-  const params = useParams<IServicoConsumidorPublicoParams>();
-  const { user } = useAuth();
+  let query = router.query.strUsuario as unknown;
+  const params = query as IServicoConsumidorPublicoParams
+  let { user } = useAuth();
+   if(!user){
+     user = {} as IPessoa;
+     user.id_pessoa = 0
+     console.log('olar')
+   }
+  if (!user.id_pessoa) {
+    user.id_pessoa = 0
+  }
+  if (user) {
+    console.log('olaaar')
+  }
   const [imageLoaded, setImageLoaded] = useState(true);
-
   useEffect(() => {
-    if (params.strUsuario) {
-      setIdPessoa(Number(params.strUsuario.split('-')[0]));
+    if (params) {
+      setIdPessoa(Number(params));
     } else if (user && user.id_pessoa) {
       setIdPessoa(user.id_pessoa ? user.id_pessoa : 0);
-    } else {
-      history.push('/');
     }
-  }, [params.strUsuario, user, history]);
+  }, [params, user, router]);
 
   const getProvider = useCallback(async () => {
     if (idPessoa) {
@@ -55,11 +66,12 @@ export default function NovoPerfilPublico() {
         })
         .catch(error => {
           if (error) {
-            history.push('/');
+            console.log(error)
+            debugger
           }
         });
     }
-  }, [idPessoa, history]);
+  }, [idPessoa, router]);
 
   useEffect(() => {
     getProvider();
@@ -103,14 +115,15 @@ export default function NovoPerfilPublico() {
               <ContentButton>
                 <Button
                   onClick={() =>
-                    history.push('/cadastro-complementar', {
-                      cadastroCompleto: true,
+                    router.push({
+                      pathname: '/cadastro-complementar',
+                      query: { cadastroCompleto: true }
                     })
                   }
                 >
                   EDITAR PERFIL
                 </Button>
-                <GhostButton onClick={() => history.goBack()}>
+                <GhostButton onClick={() => router.back()}>
                   VOLTAR
                 </GhostButton>
               </ContentButton>
@@ -157,7 +170,7 @@ export default function NovoPerfilPublico() {
         <Row>
           <Col lg={12}>
             <ContentButton>
-              <ButtonVoltar onClick={() => history.goBack()}>
+              <ButtonVoltar onClick={() => router.back()}>
                 VOLTAR
               </ButtonVoltar>
             </ContentButton>

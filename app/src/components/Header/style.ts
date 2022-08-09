@@ -13,6 +13,7 @@ export const HeaderInfo = styled.div`
   div {
     width: 100%;
     text-align: center;
+    max-width: 1440px;
   }
 
   p {
