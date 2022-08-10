@@ -30,6 +30,7 @@ const nextConfig = {
     REACT_APP_AWS_COGNITO_CLIENT_DOMAIN:
       process.env.REACT_APP_AWS_COGNITO_CLIENT_DOMAIN,
     REACT_APP_PROXY_HOST: process.env.REACT_APP_PROXY_HOST,
+    REACT_APP_VERSION: process.env.REACT_APP_VERSION
   },
 
   rewrites() {
