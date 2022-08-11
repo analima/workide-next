@@ -33,7 +33,7 @@ export const ContentBanner = styled.div`
 
   @media (max-width: 1340px) {
     height: 692px;
-    max-width: 1300px
+    max-width: 1300px;
   }
 
   .content-titles {
@@ -101,7 +101,7 @@ export const ContentBanner = styled.div`
   }
 
   @media (max-width: 991px) {
-    max-width: 900px
+    max-width: 900px;
     padding: 80px 20px;
 
     .content-titles {
@@ -272,6 +272,8 @@ export const ContentConheca = styled.div`
 
 export const ContentComents = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   margin-top: 24px;
   gap: 24px;
 

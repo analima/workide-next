@@ -89,12 +89,15 @@ export function Header(): JSX.Element {
             </div>
 
             <div className="menu">
+              <Link href="https://blog.gyan.com.br/">
+                <a target="_blank">Blog</a>
+              </Link>
               <Link href="/fornecedor/captar-projetos">Profissionais</Link>
 
               <Link href="/consumidor/busca">Empresas</Link>
               <Link href="/consumidor/busca?voluntario=true">Voluntários</Link>
 
-              <Link href="/login">Login</Link>
+              {!user?.email && <Link href="/login">Login</Link>}
 
               {user?.email ? (
                 <ContainerLogin>
