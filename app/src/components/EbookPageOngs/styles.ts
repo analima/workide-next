@@ -41,10 +41,23 @@ export const Content = styled.section`
       }
     }
 
+    h4 {
+      font-family: 'Renner';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 150%;
+      color: ${PRETO_10};
+    }
+
     span {
       width: 289px;
       color: ${PRETO_10};
       margin-bottom: 16px;
+
+      .emphasis {
+        color: ${LARANJA};
+      }
     }
   }
 
