@@ -8,6 +8,7 @@ import { Card } from '../../../../Card';
 import { ItemVitrine } from '../../../../Vitrine';
 import { Col, Row } from 'react-bootstrap';
 import Paginacao from '../../../Home/MeusProjetos/Paginacao';
+import Image from 'next/image'
 import {
   AvatarContainer,
   ContentAvatar,
@@ -16,13 +17,17 @@ import {
 import Avatar from '../../../../CadastroComplementar/Apresentacao/style';
 import Carol from '../../../../../assets/carol-full.svg';
 import { useBuscaFornecedorOferta } from '../../../../../hooks/buscaConsumidor';
+import { IPessoa } from 'src/interfaces/IPessoa';
 
 export default function Fornecedor() {
   const history = useHistory();
   const { people, paginaPerfis, setPaginaPerfis, totalPaginasPerfis } =
     useBuscaFornecedorOferta();
 
-  const { user } = useAuth();
+  let { user } = useAuth();
+  if(!user){
+    user = {} as IPessoa
+  }
   const [showAvatarCadastroIncompleto, setShowAvatarCadastroIncompleto] =
     useState(false);
 
@@ -66,7 +71,7 @@ export default function Fornecedor() {
             </>
           ) : (
             <Card>
-              <AvatarContainer full>
+               <AvatarContainer full>
                 <Dialogo>
                   <ContentAvatar>
                     <p>
@@ -80,7 +85,8 @@ export default function Fornecedor() {
                   </ContentAvatar>
                 </Dialogo>
                 <Avatar>
-                  <Carol />
+                  <Image src={Carol} alt="avatar carol" />
+           
                 </Avatar>
               </AvatarContainer>
             </Card>
