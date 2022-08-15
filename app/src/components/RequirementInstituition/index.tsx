@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { necessity } from '../../mock/ongsMock';
-import { Content, ContentLabel, Label } from './styles';
+import { Content, ContentButton, ContentLabel, Label } from './styles';
 
 export function RequirementInstituition() {
   return (
@@ -18,6 +18,10 @@ export function RequirementInstituition() {
           ))}
         </ContentLabel>
       )}
+
+      <ContentButton>
+        <button onClick={() => {}}>CONTRATE UM VOLUNTÁRIO AGORA</button>
+      </ContentButton>
     </Content>
   );
 }
