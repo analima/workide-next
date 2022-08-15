@@ -24,6 +24,7 @@ import { ToggleSwitch } from '../../../ToggleSwitch';
 import { SearchInput } from '../../../SearchInput';
 import { useBuscaFornecedorOferta } from '../../../../hooks/buscaConsumidor';
 import { formatarValor } from '../../../../utils/CurrencyFormat';
+import { IPessoa } from 'src/interfaces/IPessoa';
 
 type Cases = {
   titulo: string;
@@ -79,7 +80,10 @@ export default function ContentBusca() {
     causas,
   } = useBuscaFornecedorOferta();
 
-  const { user } = useAuth();
+  let { user } = useAuth();
+  if(!user){
+    user = {} as IPessoa
+  }
   const activeMenu = true;
 
   const handleRedirect = (type: string) => {
@@ -123,7 +127,7 @@ export default function ContentBusca() {
       <AvatarCadastroIncompleto
         mostrar={showAvatarCadastroIncompleto}
         esconderAvatar={handleShowAvatarCadastroIncompleto}
-        porcentagem={user.percentageRegisterConsumer || 33}
+        porcentagem={user.percentageRegisterConsumer? user.percentageRegisterConsumer :33}
         isConsumer={true}
       />
       <Spacer size={24} />

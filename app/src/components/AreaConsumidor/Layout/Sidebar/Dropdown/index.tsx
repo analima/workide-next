@@ -11,6 +11,7 @@ import {
 } from './style';
 import Content from './style';
 import { useAuth } from '../../../../../contexts/auth';
+import { useRouter } from 'next/router'
 
 interface Item {
   link: string;
@@ -30,15 +31,18 @@ export default function Dropdown({ titulo, itens }: IDropdown) {
   const [state, setState] = useState(true);
   const history = useHistory();
   //assigning location variable
-  const location = useLocation();
+  const router = useRouter();
   const [showModal, setShowModal] = useState(false);
   const { user } = useAuth();
 
+  
   //destructuring pathname from location
-  const { pathname } = location;
+  if(router.query.pathname){
+    const { pathname } = router.query;
+  } 
 
   //Javascript split method to get the name of the path in array
-  const splitLocation = pathname.split('/');
+  //const splitLocation = pathname.split('/');
 
   function toggle() {
     setState(!state);
@@ -46,7 +50,7 @@ export default function Dropdown({ titulo, itens }: IDropdown) {
 
   return (
     <Content open={state}>
-      <TituloDropdown onClick={toggle}>
+      {/* <TituloDropdown onClick={toggle}>
         {titulo} <FiChevronDown color={AZUL} />
       </TituloDropdown>
       <NavDropdown open={state}>
@@ -89,6 +93,9 @@ export default function Dropdown({ titulo, itens }: IDropdown) {
           tipo={'Consumidor'}
         />
       </NavDropdown>
-    </Content>
+      */}
+<p>teste</p>
+    </Content> 
+    
   );
 }

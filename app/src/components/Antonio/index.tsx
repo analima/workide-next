@@ -23,7 +23,7 @@ export function Antonio({ mensagem, dica, setDica }: AntonioProps) {
 
   return (
     <Content>
-      <AntonioContainer showDica={dica}>
+      {/* <AntonioContainer showDica={dica}>
         <AntonioIconClose>
           <IoMdCloseCircleOutline
             onClick={() => setDica(false)}
@@ -43,7 +43,8 @@ export function Antonio({ mensagem, dica, setDica }: AntonioProps) {
         <AntonioPersonagem>
           <AntonioSuperior />
         </AntonioPersonagem>
-      </AntonioContainer>
+      </AntonioContainer> */}
+      <p>QUem é antonio?</p>
     </Content>
   );
 }
