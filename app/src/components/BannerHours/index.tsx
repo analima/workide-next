@@ -2,8 +2,11 @@ import { Container, ContainerText, Content, ContentButton } from './style';
 import ImgBanner from '@public/banner-hours.jpg';
 import { FiArrowRight } from 'react-icons/fi';
 import { BRANCO } from 'src/styles/variaveis';
+import { useRouter } from 'next/router';
 
 export function BannerHours() {
+  const router = useRouter();
+
   return (
     <Container img={ImgBanner.src}>
       <Content>
@@ -15,7 +18,9 @@ export function BannerHours() {
           </span>
         </ContainerText>
         <ContentButton>
-          <button>Seja um voluntário online</button>
+          <button onClick={() => router.push('/fornecedor/captar-projetos')}>
+            Seja um voluntário online
+          </button>
           <FiArrowRight color={BRANCO} size={30} />
         </ContentButton>
       </Content>

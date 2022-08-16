@@ -1,8 +1,11 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { necessity } from '../../mock/ongsMock';
 import { Content, ContentButton, ContentLabel, Label } from './styles';
 
 export function RequirementInstituition() {
+  const router = useRouter();
+
   return (
     <Content>
       <h1>Quais são as necessidades de sua instituição?</h1>
@@ -20,7 +23,11 @@ export function RequirementInstituition() {
       )}
 
       <ContentButton>
-        <button onClick={() => {}}>CONTRATE UM VOLUNTÁRIO AGORA</button>
+        <button
+          onClick={() => router.push(`/consumidor/busca?voluntario=true`)}
+        >
+          CONTRATE UM VOLUNTÁRIO AGORA
+        </button>
       </ContentButton>
     </Content>
   );
