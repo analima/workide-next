@@ -4,6 +4,9 @@ import { Footer } from '../Footer';
 import { BannerOngs } from '../BannerOngs';
 import { RequirementInstituition } from '../RequirementInstituition';
 import { ConnectOngs } from '../ConnectOngs';
+import { EbookPageOngs } from '../EbookPageOngs';
+import { MeetOurBlog } from '../MeetOurBlog';
+import { BannerHours } from '../BannerHours';
 
 const PageOng: React.FC = () => {
   return (
@@ -11,8 +14,11 @@ const PageOng: React.FC = () => {
       <Header />
       <Container>
         <BannerOngs />
+        <EbookPageOngs />
         <RequirementInstituition />
         <ConnectOngs />
+        <BannerHours />
+        <MeetOurBlog />
         <Footer />
       </Container>
     </>
