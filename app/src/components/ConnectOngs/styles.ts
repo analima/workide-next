@@ -210,13 +210,19 @@ export const ContentButton = styled.div`
 
   button {
     padding: 16px 65.5px;
-    color: ${BRANCO};
-    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.08);
-    border-radius: 80px;
-    background-color: ${AZUL};
+    width: 100%;
+    height: 56px;
+    background-color: transparent;
+    border-radius: 8px;
+    text-transform: uppercase;
+    color: ${AZUL};
+    font-family: 'Renner';
     font-size: 16px;
-    font-weight: bold;
-    border: none;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: center;
+    border: 2px solid ${AZUL};
 
     :hover {
       opacity: 0.8;

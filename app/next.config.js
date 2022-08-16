@@ -1,7 +1,13 @@
 /* @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['files-gyan-hom.s3.amazonaws.com', 'files-gyan-ppr.s3.amazonaws.com', 'files-gyan-prod.s3.amazonaws.com', 'gyan-sp-public.s3.sa-east-1.amazonaws.com'],
+    domains: [
+      'files-gyan-hom.s3.amazonaws.com',
+      'files-gyan-ppr.s3.amazonaws.com',
+      'files-gyan-prod.s3.amazonaws.com',
+      'gyan-sp-public.s3.sa-east-1.amazonaws.com',
+      'blog-gyan-hom.s3.us-west-2.amazonaws.com',
+    ],
   },
   i18n: {
     locales: ['pt_br'],
@@ -24,13 +30,15 @@ const nextConfig = {
     REACT_APP_OFERTAS_API: process.env.REACT_APP_OFERTAS_API,
     REACT_APP_EMAILS_API: process.env.REACT_APP_EMAILS_API,
     REACT_APP_API_URL: process.env.REACT_APP_API_URL,
+    REACT_APP_BLOG_API: process.env.REACT_APP_BLOG_API,
+    REACT_APP_TOKEN_BLOG: process.env.REACT_APP_TOKEN_BLOG,
     REACT_APP_CHAT_API: process.env.REACT_APP_CHAT_API,
     REACT_APP_AWS_COGNITO_CLIENT_ID:
       process.env.REACT_APP_AWS_COGNITO_CLIENT_ID,
     REACT_APP_AWS_COGNITO_CLIENT_DOMAIN:
       process.env.REACT_APP_AWS_COGNITO_CLIENT_DOMAIN,
     REACT_APP_PROXY_HOST: process.env.REACT_APP_PROXY_HOST,
-    REACT_APP_VERSION: process.env.REACT_APP_VERSION
+    REACT_APP_VERSION: process.env.REACT_APP_VERSION,
   },
 
   rewrites() {

@@ -186,18 +186,18 @@ export const ContentButton = styled.div`
     width: 100%;
     max-width: 338px;
     height: 56px;
-    background-color: ${AZUL};
+    background-color: transparent;
     border-radius: 8px;
     padding: 16px, 40px;
     text-transform: uppercase;
-    color: ${BRANCO};
+    color: ${AZUL};
     font-family: 'Renner';
     font-size: 16px;
     font-weight: 700;
     line-height: 24px;
     letter-spacing: 0em;
     text-align: center;
-    border: 0;
+    border: 2px solid ${AZUL};
 
     :hover {
       opacity: 0.8;
