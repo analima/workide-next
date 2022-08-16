@@ -11,6 +11,7 @@ import {
   FaInstagramSquare,
   FaLinkedin,
 } from 'react-icons/fa';
+import Link from 'next/link';
 
 export function Footer() {
   const { user, signOut } = useAuth();
@@ -100,20 +101,34 @@ export function Footer() {
               Áreas
             </h2>
             <ul className={abrirOpcoesAreas}>
-              <li className="li-click" onClick={() => router.push('/areas')}>
-                Gráficos e Design
+              <li className="li-click">
+                <Link href="/detalhe-area?area=1">Gráficos e Design</Link>
               </li>
-              <li className="li-click" onClick={() => router.push('/areas')}>
-                Marketing Digital
+              <li className="li-click">
+                <Link href="/detalhe-area?area=2">Marketing</Link>
               </li>
-              <li className="li-click" onClick={() => router.push('/areas')}>
-                Escrita e Tradução
+              <li className="li-click">
+                <Link href="/detalhe-area?area=3">Escrita e Tradução</Link>
               </li>
-              <li className="li-click" onClick={() => router.push('/areas')}>
-                Vídeo e Animação
+
+              <li className="li-click">
+                <Link href="/detalhe-area?area=4">Vídeo e Animação</Link>
               </li>
-              <li className="li-click" onClick={() => router.push('/areas')}>
-                Programação & Tecnologia
+              <li className="li-click">
+                <Link href="/detalhe-area?area=5">
+                  Tecnologia da Informação
+                </Link>
+              </li>
+              <li className="li-click">
+                <Link href="/detalhe-area?area=6">Legal</Link>
+              </li>
+              <li className="li-click">
+                <Link href="/detalhe-area?area=7">Administração</Link>
+              </li>
+              <li className="li-click">
+                <Link href="/detalhe-area?area=8">
+                  Finanças e Contabilidade
+                </Link>
               </li>
             </ul>
           </article>
