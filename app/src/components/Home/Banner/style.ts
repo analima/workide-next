@@ -4,7 +4,7 @@ export const Container = styled.section`
   margin: 0 auto;
   max-width: 1440px;
   width: 100%;
-  height: 100vh;
+  height: calc(86vh - 116px);
   padding: 0px 60px;
   background-color: ${BRANCO};
 
@@ -63,7 +63,7 @@ export const Content = styled.section<BannerProps>`
 export const ContentDescription = styled.div`
   width: 603px;
   height: 150px;
-  margin: 116px 144px 116px 90px;
+  margin: 60px 144px 116px 90px;
 
   h1 {
     font-size: 45px;

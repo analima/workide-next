@@ -28,8 +28,8 @@ export function CardConhecaComoFunciona() {
             <div className="imagem">
               <Image
                 src={Publique.src}
-                width={193}
-                height={201}
+                width={154}
+                height={160}
                 alt="publique"
               />
             </div>
@@ -46,8 +46,8 @@ export function CardConhecaComoFunciona() {
             <div className="imagem">
               <Image
                 src={Contrate.src}
-                width={179}
-                height={211}
+                width={143}
+                height={168}
                 alt="contrate"
               />
             </div>
@@ -62,7 +62,7 @@ export function CardConhecaComoFunciona() {
 
           <ImagesHowItWork color={LARANJA_10}>
             <div className="imagem">
-              <Image src={Pague.src} width={151} height={202} alt="pague" />
+              <Image src={Pague.src} width={120} height={161} alt="pague" />
             </div>
             <h2>Pague com segurança</h2>
 
