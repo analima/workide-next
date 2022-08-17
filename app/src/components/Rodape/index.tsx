@@ -10,6 +10,7 @@ import { useRouter } from 'next/router';
 import { useAuth } from '../../contexts/auth';
 import { useValorProjetoPago } from '../../contexts/valorProjetoPago';
 import { IPessoa } from '../../interfaces/IPessoa';
+import Link from 'next/link';
 
 export function Rodape() {
   const router = useRouter();
@@ -70,20 +71,46 @@ export function Rodape() {
             <article>
               <h2>Áreas</h2>
               <ul>
-                <li className="li-click" onClick={() => router.push('/areas')}>
-                  Gráficos e Design
+                <li className="li-click">
+                  <Link href="https://gyan.com.br/detalhe-area?area=1">
+                    Gráficos e Design
+                  </Link>
                 </li>
-                <li className="li-click" onClick={() => router.push('/areas')}>
-                  Marketing Digital
+                <li className="li-click">
+                  <Link href="https://gyan.com.br/detalhe-area?area=2">
+                    Marketing
+                  </Link>
                 </li>
-                <li className="li-click" onClick={() => router.push('/areas')}>
-                  Escrita e Tradução
+                <li className="li-click">
+                  <Link href="https://gyan.com.br/detalhe-area?area=3">
+                    Escrita e Tradução
+                  </Link>
                 </li>
-                <li className="li-click" onClick={() => router.push('/areas')}>
-                  Vídeo e Animação
+
+                <li className="li-click">
+                  <Link href="https://gyan.com.br/detalhe-area?area=4">
+                    Vídeo e Animação
+                  </Link>
                 </li>
-                <li className="li-click" onClick={() => router.push('/areas')}>
-                  Programação & Tecnologia
+                <li className="li-click">
+                  <Link href="https://gyan.com.br/detalhe-area?area=5">
+                    Tecnologia da Informação
+                  </Link>
+                </li>
+                <li className="li-click">
+                  <Link href="https://gyan.com.br/detalhe-area?area=6">
+                    Legal
+                  </Link>
+                </li>
+                <li className="li-click">
+                  <Link href="https://gyan.com.br/detalhe-area?area=7">
+                    Administração
+                  </Link>
+                </li>
+                <li className="li-click">
+                  <Link href="https://gyan.com.br/detalhe-area?area=8">
+                    Finanças e Contabilidade
+                  </Link>
                 </li>
               </ul>
             </article>
