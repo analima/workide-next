@@ -102,7 +102,7 @@ export function MeetOurBlog() {
 
   return (
     <Container>
-      <h2>Conhaça nosso blog</h2>
+      <h2>Conheça nosso blog</h2>
       <h4>Postagens relacionadas</h4>
       <Carrousel {...settingsSlider}>
         {posts.map(item => {
