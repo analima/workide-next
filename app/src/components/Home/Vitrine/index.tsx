@@ -45,7 +45,7 @@ export function Vitrine() {
     dots: vitrineData.length > 10 && sizePage > 500 ? true : false,
     autoplay: true,
     autoplaySpeed: 2500,
-    slidesToShow: 3.5,
+    slidesToShow: 3.4,
     className: 'container-slider',
     initialSlide: 1,
     slidesToScroll: 2,
