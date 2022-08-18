@@ -89,15 +89,14 @@ export default function ContentBusca() {
   }
   const activeMenu = true;
 
-  const { search } = window.location;
-
   useEffect(() => {
-    if (!search) return;
+    const { search } = window.location;
+    if (search == '') return;
     const formataBusca = search?.split('filter');
     const buscaFormatada = formataBusca[1]?.split('=')[1];
     setFilter(decodeURI(buscaFormatada));
     setTerm(decodeURI(buscaFormatada));
-  }, [search, setFilter, setTerm]);
+  }, [ setFilter, setTerm]);
 
   const handleRedirect = (type: string) => {
     if (type === 'geral') {
