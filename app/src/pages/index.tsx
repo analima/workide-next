@@ -67,7 +67,7 @@ export default function Home() {
     <>
       <Helmet>
         <title>
-          Gyan - Conectando pessoas incríveis com projetos apaixonantes
+          Gyan - Contrate um freelancer em poucos cliques
         </title>
       </Helmet>
 
