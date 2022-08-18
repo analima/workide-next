@@ -60,9 +60,7 @@ export function Header(): JSX.Element {
         <HeaderInfo>
           <div>
             <p>
-              Na Gyan, seus projetos podem ser publicados gratuitamente. Não
-              cobramos pela divulgação de projetos de freelancers, ONGs e
-              empresas.
+            A Gyan une profissionais freelancer e voluntários em uma única plataforma. Contratação rápida, gratuita e segura. Programadores, web designers, redatores e o que mais você precisar para o seu negócio.
             </p>
           </div>
           <FiX onClick={() => setEsconder(true)} color={BRANCO} size={12} />
