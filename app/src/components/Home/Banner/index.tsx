@@ -18,11 +18,11 @@ import IMG5 from '@public/capa-home5.webp';
 
 const dados = [
   {
-    title: 'Profissionais',
+    title: 'Freelancers',
     id: 1,
     img: IMG3.src,
     color: AZUL,
-    text: 'Contrate profissionais com rapidez, flexibilidade e segurança',
+    text: 'Contrate freelancers com rapidez, flexibilidade e segurança',
     subText: 'Cadastre gratuitamente os projetos da sua empresa.',
   },
   {
