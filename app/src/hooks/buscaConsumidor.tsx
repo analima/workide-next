@@ -100,6 +100,8 @@ interface BuscaFornecedorOfertaProps {
   setIsMudar: Dispatch<SetStateAction<boolean>>;
   causas: CausaProp[];
   setCausas: Dispatch<SetStateAction<CausaProp[]>>;
+  filter: string;
+  setFilter: Dispatch<SetStateAction<string>>;
 }
 
 export type CausaProp = {
@@ -196,6 +198,7 @@ export const BuscaFornecedorOfertaProvider: React.FC<GlobalLayoutProps> = ({
   const [niveisExperiencia, setNiveisExperiencia] = useState<string[]>([]);
   const [allFilters, setAllFilters] = useState<any>({});
   const [causas, setCausas] = useState<CausaProp[]>([]);
+  const [filter, setFilter] = useState<string>('');
 
   function handleShowAvatarCadastroIncompleto() {
     setShowAvatarCadastroIncompleto(!showAvatarCadastroIncompleto);
@@ -373,6 +376,7 @@ export const BuscaFornecedorOfertaProvider: React.FC<GlobalLayoutProps> = ({
   );
   const handleSearch = (value: string) => {
     setTerm(value);
+    setFilter(value);
   };
 
   return (
@@ -451,6 +455,8 @@ export const BuscaFornecedorOfertaProvider: React.FC<GlobalLayoutProps> = ({
         setIsMudar,
         setCausas,
         causas,
+        setFilter,
+        filter,
       }}
     >
       {children}

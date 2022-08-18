@@ -73,7 +73,9 @@ export default function HeaderPublico(): JSX.Element {
             </Link>
 
             <ContainerLogin>
-              <span onClick={() => handleShowOverlay()}>Cadastre-se</span>
+              <span onClick={() => router.push('/cadastro-basico')}>
+                Cadastre-se
+              </span>
 
               <span>
                 <div
