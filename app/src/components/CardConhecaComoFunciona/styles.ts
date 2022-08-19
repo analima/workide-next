@@ -65,7 +65,7 @@ export const ImagesHowItWork = styled.div<ImageProps>`
 
   .imagem {
     position: absolute;
-    top: -164px;
+    top: -124px;
   }
 
   h2 {
@@ -100,7 +100,11 @@ export const ImagesHowItWork = styled.div<ImageProps>`
   }
 
   @media (max-width: 991px) {
-    margin-bottom: 200px;
+    margin-bottom: 172px;
+
+    :last-child {
+      margin-bottom: 64px;
+    }
 
     img {
       width: 120px;

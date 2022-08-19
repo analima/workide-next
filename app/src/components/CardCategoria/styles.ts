@@ -10,7 +10,7 @@ import {
 import Slider from 'react-slick';
 
 export const Content = styled.section`
-  padding: 124px 60px 0px 60px;
+  padding: 100px 60px 0px 60px;
   display: flex;
   flex-direction: column;
   align-items: center;

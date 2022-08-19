@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { BRANCO, LARANJA, PRETO_10 } from '../../styles/variaveis';
+import { AZUL, BRANCO, LARANJA, PRETO_10 } from '../../styles/variaveis';
 
 export const Content = styled.section`
   background-color: ${BRANCO};
@@ -63,5 +63,33 @@ export const Label = styled.label`
 
   @media (max-width: 768px) {
     font-size: 16px;
+  }
+`;
+
+export const ContentButton = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 0 20px;
+
+  button {
+    padding: 16px 65.5px;
+    color: ${BRANCO};
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.08);
+    border-radius: 80px;
+    background-color: ${AZUL};
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+
+    :hover {
+      opacity: 0.8;
+    }
+  }
+
+  @media (max-width: 991px) {
+  }
+
+  @media (max-width: 530px) {
   }
 `;

@@ -24,6 +24,7 @@ import { ToggleSwitch } from '../../../ToggleSwitch';
 import { SearchInput } from '../../../SearchInput';
 import { useBuscaFornecedorOferta } from '../../../../hooks/buscaConsumidor';
 import { formatarValor } from '../../../../utils/CurrencyFormat';
+import { IPessoa } from 'src/interfaces/IPessoa';
 
 type Cases = {
   titulo: string;
@@ -77,10 +78,25 @@ export default function ContentBusca() {
     allFilters,
     limparFiltros,
     causas,
+    setTerm,
+    setFilter,
+    filter,
   } = useBuscaFornecedorOferta();
 
-  const { user } = useAuth();
+  let { user } = useAuth();
+  if (!user) {
+    user = {} as IPessoa;
+  }
   const activeMenu = true;
+
+  useEffect(() => {
+    const { search } = window.location;
+    if (search == '') return;
+    const formataBusca = search?.split('filter');
+    const buscaFormatada = formataBusca[1]?.split('=')[1];
+    setFilter(decodeURI(buscaFormatada));
+    setTerm(decodeURI(buscaFormatada));
+  }, [ setFilter, setTerm]);
 
   const handleRedirect = (type: string) => {
     if (type === 'geral') {
@@ -123,7 +139,9 @@ export default function ContentBusca() {
       <AvatarCadastroIncompleto
         mostrar={showAvatarCadastroIncompleto}
         esconderAvatar={handleShowAvatarCadastroIncompleto}
-        porcentagem={user.percentageRegisterConsumer || 33}
+        porcentagem={
+          user.percentageRegisterConsumer ? user.percentageRegisterConsumer : 33
+        }
         isConsumer={true}
       />
       <Spacer size={24} />
@@ -181,7 +199,8 @@ export default function ContentBusca() {
             <Col lg={12} className="mb-4">
               <SearchInput
                 placeholder="Pesquise por uma solução"
-                onChange={value => handleSearch(value)}
+                onChange={value => handleSearch}
+                value={filter}
               />
               <Spacer size={8} />
 

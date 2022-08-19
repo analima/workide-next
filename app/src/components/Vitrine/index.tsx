@@ -33,6 +33,7 @@ import { useAuth } from '../../contexts/auth';
 import Carol from '../../assets/carol-full.svg';
 import Avatar from '../../components/CadastroComplementar/Apresentacao/style';
 import { useHistory } from 'react-router';
+import { useRouter } from 'next/router'
 import { ModalLoading } from '../ModalLoading';
 import { Button } from '../Form/Button';
 
@@ -94,6 +95,7 @@ export function ItemVitrine({
   const [showModalLoadding, setShowModalLoadding] = useState(false);
   const [numeroProjetos, setNumeroProjetos] = useState(0);
   const { user } = useAuth();
+  const router = useRouter();
 
   useEffect(() => {
     if (!user) return;
@@ -122,9 +124,9 @@ export function ItemVitrine({
         setShowAvatar(true);
         return;
       }
-      history.push(`/fornecedor/perfil-publico/${idPessoa}`, {
-        item,
-      });
+      router.push({pathname: `/fornecedor/perfil-publico/${idPessoa}`, query:{
+     
+      }});
     },
     [history, item, publico, setShowAvatar],
   );
@@ -255,9 +257,8 @@ export function ItemVitrine({
           <Button
             label="RECONTRATAR"
             onClick={() =>
-              history.push(`/consumidor/projetos/exclusivo/${item.idUsuario}`, {
-                id_fornecedor: item.id,
-              })
+              router.push(`/consumidor/projetos/exclusivo/${item.idUsuario}`
+            )
             }
           />
         </ContainerRecontratar>
