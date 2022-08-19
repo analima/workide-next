@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { Content, Container, ContentButton } from './styles';
-import IMG from '@public/img-ongs-ebook.jpg';
+import IMG from '@public/img-ebook.png';
 import { useState } from 'react';
 import { ModalEbookOngs } from '../ModalEbookOngs';
 export function EbookPageOngs() {
@@ -18,12 +18,16 @@ export function EbookPageOngs() {
       <Content>
         <div className="info">
           <h1>
-            Para te ajudar, preparamos um{' '}
-            <span>E-book com muitas informações legais.</span>
+            Utilize a <span>tecnologia</span> de forma estratégica na sua{' '}
+            <span>ONG</span> para expandir seus recursos
           </h1>
           <span>
-            O E-book é gratuito. Para ter acesso, basta clicar no botão abaixo
-            que logo você será redirecionado para download.
+            <h4>Saiba como:</h4>
+            Leia o <b>E-book é gratuito</b> e aprenda como{' '}
+            <span className="emphasis">
+              se conectar a freelancers voluntários que acreditam na sua causa.
+            </span>
+            Para ter acesso, basta clicar no botão abaixo.
           </span>
           <ContentButton onClick={openModal}>
             <button>Quero ter acesso ao e-book</button>

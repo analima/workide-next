@@ -2,7 +2,6 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { Content, ContentButton, Container, ContentConect } from './styles';
 import IMG from '@public/img-secundary-ong.webp';
-import { EbookPageOngs } from '../EbookPageOngs';
 export function ConnectOngs() {
   const router = useRouter();
 
@@ -34,8 +33,6 @@ export function ConnectOngs() {
           </span>
         </div>
       </Content>
-
-      <EbookPageOngs />
 
       <ContentConect>
         <h1>Conecte-se com quem ajudará você a ajudar ainda mais</h1>
