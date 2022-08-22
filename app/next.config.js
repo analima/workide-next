@@ -8,6 +8,7 @@ const nextConfig = {
       'gyan-sp-public.s3.sa-east-1.amazonaws.com',
       'blog-gyan-hom.s3.us-west-2.amazonaws.com',
       'blog-gyan-prod.s3.us-west-2.amazonaws.com',
+      'blog-gyan-prod.s3.amazonaws.com',
     ],
   },
   i18n: {
