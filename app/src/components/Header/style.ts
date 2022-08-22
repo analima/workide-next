@@ -126,7 +126,7 @@ interface IMobileProp {
 export const Content = styled.section<IMobileProp>`
   display: flex;
   flex-direction: column;
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
   nav {
     border-bottom: 1px solid #c6c6c6;
