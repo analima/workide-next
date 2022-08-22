@@ -56,6 +56,17 @@ export default function Home() {
   }, [query]);
 
   useEffect(() => {
+    function loadSorage() {
+      if (!state) {
+        const storageUser = localStorage.getItem('@Gyan:id_token');
+        console.log('Storage::',storageUser)
+        if (!!user.id_pessoa === true && storageUser !== null) {
+          return router.push('/persona');
+        }
+        router.push('/');
+      }
+    }
+    loadSorage();
     hotjar.initialize(
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
       Number(process.env.REACT_APP_HOTJAR_SV),
