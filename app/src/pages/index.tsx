@@ -66,9 +66,7 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>
-          Gyan - Contrate um freelancer em poucos cliques
-        </title>
+        <title>Gyan - Contrate um freelancer em poucos cliques</title>
       </Helmet>
 
       <Head>

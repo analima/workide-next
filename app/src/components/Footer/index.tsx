@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { FooterBody, Content, FooterInfo, FooterSocial } from './style';
-import LogoGyan from '../../assets/logo-branca.svg';
+import LogoGyan from '../../assets/gyan-logo-cinza.png';
 import Whatsapp from '../../assets/whatsapp-borda.svg';
 import { useAuth } from '../../contexts/auth';
 import { useValorProjetoPago } from '../../contexts/valorProjetoPago';
@@ -193,21 +193,21 @@ export function Footer() {
                   href="https://www.facebook.com/Gyan-101972215654187"
                   target="blank"
                 >
-                  <FaFacebookSquare size={30} color="#fff" />
+                  <FaFacebookSquare size={30} color="#6E6E6E" />
                 </a>
                 <a
                   href="https://www.instagram.com/gyan.br/"
                   aria-label="Instagram"
                   target="blank"
                 >
-                  <FaInstagramSquare size={30} color="#fff" />
+                  <FaInstagramSquare size={30} color="#6E6E6E" />
                 </a>
                 <a
                   aria-label="Linkedin"
                   href="https://www.linkedin.com/company/gyan-plataforma-de-servi%C3%A7os/?viewAsMember=true"
                   target="blank"
                 >
-                  <FaLinkedin size={30} color="#fff" />
+                  <FaLinkedin size={30} color="#6E6E6E" />
                 </a>
               </div>
               <hr />
@@ -225,7 +225,7 @@ export function Footer() {
 
           <div className="content-version">
             <Image width={122} height={48} src={LogoGyan} alt="Logo da GYAN" />
-            <p>v{process.env.REACT_APP_VERSION}</p>
+            <p>{process.env.REACT_APP_VERSION}</p>
           </div>
         </FooterSocial>
       </Content>
