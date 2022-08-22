@@ -42,6 +42,7 @@ import {
   Compartilhar,
   ContentFooter,
   ContentTrash,
+  TextoPublicacao,
 } from './style';
 import Content from './style';
 import { Card } from '../../../../components/Card';
@@ -413,6 +414,27 @@ export default function Projeto({
                   )}
                 </FaixaPrecoContainer>
               )}
+              <TextoPublicacao>
+                <span>
+                  Publicado há{' '}
+                  {formatDistance(
+                    new Date(projeto.dataHoraCriacao),
+                    new Date(),
+                    {
+                      locale: pt,
+                    },
+                  )}
+                </span>
+                {projeto.dataHoraUltimaAtualizacao && (
+                  <span>
+                    Última atualização em {''}
+                    {format(
+                      new Date(projeto.dataHoraUltimaAtualizacao),
+                      "dd/MM/yyyy ' às ' HH:mm:ss",
+                    )}
+                  </span>
+                )}
+              </TextoPublicacao>
             </HeaderContent>
           </ProjetoHeader>
 

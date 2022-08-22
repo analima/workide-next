@@ -43,6 +43,9 @@ export const HeaderContent = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
   }
+  @media (max-width: 578px) {
+    width: 100%;
+  }
 `;
 
 export const HeaderSecondary = styled.div`
@@ -54,6 +57,27 @@ export const HeaderSecondary = styled.div`
     font-weight: bold;
     color: ${PRETO_10};
     margin: 0;
+  }
+  @media (max-width: 578px) {
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    text-align: left;
+  }
+`;
+
+export const TextoPublicacao = styled.div`
+  display: none;
+
+  @media (max-width: 578px) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    span {
+      font-size: 12px;
+      color: ${PRETO_60};
+    }
   }
 `;
 
@@ -69,6 +93,12 @@ export const TituloContainer = styled.div`
   .icon-exclusivo {
     width: 80px;
     height: 80px;
+  }
+
+  @media (max-width: 578px) {
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    width: 100%;
   }
 
   @media (max-width: 478px) {
@@ -93,6 +123,11 @@ export const FaixaPrecoContainer = styled.div`
 
   @media (max-width: 768px) {
     margin-top: 16px;
+  }
+
+  @media (max-width: 578px) {
+    align-items: flex-end;
+    justify-content: flex-end;
   }
 `;
 
@@ -154,6 +189,11 @@ export const ValorServico = styled.div`
       font-size: 16px;
     }
   }
+
+  @media (max-width: 578px) {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
 `;
 
 type FaixaProps = {
@@ -175,6 +215,10 @@ export const FaixaPrecoLabel = styled.label<FaixaProps>`
 export const DataPublicacao = styled.span`
   font-size: 12px;
   color: ${PRETO_60};
+
+  @media (max-width: 578px) {
+    display: none;
+  }
 `;
 
 export const ProjetoBody = styled.div``;
