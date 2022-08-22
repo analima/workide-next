@@ -34,6 +34,10 @@ export const Button = styled.button`
   @media (max-width: 900px) {
     margin: 10px 0;
   }
+
+  @media (max-width: 578px) {
+    margin: 10px auto;
+  }
 `;
 
 export const AcordeonContent = styled(Accordion)`
