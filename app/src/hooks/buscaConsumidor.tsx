@@ -187,7 +187,7 @@ export const BuscaFornecedorOfertaProvider: React.FC<GlobalLayoutProps> = ({
   const [service, setService] = useState([]);
   const [showAvatarCadastroIncompleto, setShowAvatarCadastroIncompleto] =
     useState(false);
-  const [sizeFilter, setSizeFilter] = useState('large');
+  const [sizeFilter, setSizeFilter] = useState('small');
 
   const [basic, setBasic] = useState(false);
   const [intermediary, setIntermediary] = useState(false);
