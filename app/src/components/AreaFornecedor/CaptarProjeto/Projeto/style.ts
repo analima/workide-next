@@ -66,10 +66,10 @@ export const HeaderSecondary = styled.div`
 `;
 
 export const TextoPublicacao = styled.div`
-  display: none;
+  display: none !important;
 
   @media (max-width: 578px) {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
