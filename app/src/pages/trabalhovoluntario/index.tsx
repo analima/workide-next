@@ -42,7 +42,7 @@ export default function Home() {
       }
     }
     loadSorage();
-  }, [state, user.id_pessoa]);
+  }, [router, state, user.id_pessoa]);
 
   useEffect(() => {
     const section = query.get('section');
@@ -66,9 +66,7 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>
-          Gyan - Contrate um freelancer em poucos cliques
-        </title>
+        <title>Gyan - Contrate um freelancer em poucos cliques</title>
       </Helmet>
 
       <Head>

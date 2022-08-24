@@ -85,6 +85,13 @@ export function Footer() {
                   >
                     Blog Gyan
                   </li>
+
+                  <li
+                    className="li-click"
+                    onClick={() => router.push('/como-funciona')}
+                  >
+                    Como funciona
+                  </li>
                 </>
               )}
             </ul>
