@@ -11,6 +11,7 @@ const nextConfig = {
       'blog-gyan-prod.s3.amazonaws.com',
     ],
   },
+  swcMinify: true,
   i18n: {
     locales: ['pt_br'],
     defaultLocale: 'pt_br',

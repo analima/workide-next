@@ -1,4 +1,3 @@
-import { Link } from 'react-scroll';
 import styled from 'styled-components';
 import { BRANCO, CINZA_10, PRETO_10, VERDE } from '../../styles/variaveis';
 

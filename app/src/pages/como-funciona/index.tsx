@@ -12,6 +12,7 @@ import { Vitrine } from 'src/components/Home/Vitrine';
 import { FrequentQuestions } from 'src/components/FrequentQuestions';
 import { perguntaComoFunciona } from '../../mock/perguntasFrequentesMock';
 import { Footer } from 'src/components/Footer';
+import Head from 'next/head';
 
 export default function ComoFunciona() {
   useEffect(() => {
@@ -29,17 +30,28 @@ export default function ComoFunciona() {
           Gyan - Conectando pessoas incríveis com projetos apaixonantes
         </title>
       </Helmet>
-      <Header />
-      <Container>
-        <BannerComoFunciona />
-        <ComoCadastrar />
-        <ConhecaComoFunciona />
-        <CardRecomendacao />
-        <Vitrine />
-        <FrequentQuestions item={perguntaComoFunciona[0]} />
-        <CardProjetosMaisBuscados />
-        <Footer />
-      </Container>
+      <Head>
+        <title>
+          Gyan - Conectando pessoas incríveis com projetos apaixonantes
+        </title>
+
+        <meta name="description" content="Como funciona" />
+      </Head>
+      {typeof window !== 'undefined' && (
+        <>
+          <Header />
+          <Container>
+            <BannerComoFunciona />
+            <ComoCadastrar />
+            <ConhecaComoFunciona />
+            <CardRecomendacao />
+            <Vitrine />
+            <FrequentQuestions item={perguntaComoFunciona[0]} />
+            <CardProjetosMaisBuscados />
+            <Footer />
+          </Container>
+        </>
+      )}
     </>
   );
 }

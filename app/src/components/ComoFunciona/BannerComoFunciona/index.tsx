@@ -1,7 +1,6 @@
 import { Container, Content, Box, ContentBox } from './style';
 import { FiArrowDown } from 'react-icons/fi';
 import { PRETO_10 } from 'src/styles/variaveis';
-import { Link } from 'react-scroll';
 
 export function BannerComoFunciona() {
   return (
@@ -37,17 +36,7 @@ export function BannerComoFunciona() {
               </span>
             </Box>
           </div>
-          <Link
-            activeClass="active"
-            to="cadastrar"
-            spy={true}
-            smooth={true}
-            offset={-100}
-            duration={200}
-            href=""
-          >
-            <FiArrowDown color={PRETO_10} />
-          </Link>
+          <FiArrowDown color={PRETO_10} />
         </ContentBox>
       </Content>
     </Container>
