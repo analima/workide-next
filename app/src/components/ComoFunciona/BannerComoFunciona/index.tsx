@@ -44,6 +44,7 @@ export function BannerComoFunciona() {
             smooth={true}
             offset={-100}
             duration={200}
+            href=""
           >
             <FiArrowDown color={PRETO_10} />
           </Link>
