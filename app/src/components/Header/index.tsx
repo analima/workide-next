@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { useHistory } from 'react-router';
 import { FiLogOut, FiMenu, FiX } from 'react-icons/fi';
 import { BiUserCircle } from 'react-icons/bi';
 import {
@@ -60,7 +59,10 @@ export function Header(): JSX.Element {
         <HeaderInfo>
           <div>
             <p>
-            A Gyan une profissionais freelancer e voluntários em uma única plataforma. Contratação rápida, gratuita e segura. Programadores, web designers, redatores e o que mais você precisar para o seu negócio.
+              A Gyan une profissionais freelancer e voluntários em uma única
+              plataforma. Contratação rápida, gratuita e segura. Programadores,
+              web designers, redatores e o que mais você precisar para o seu
+              negócio.
             </p>
           </div>
           <FiX onClick={() => setEsconder(true)} color={BRANCO} size={12} />
