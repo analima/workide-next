@@ -4,7 +4,7 @@ import ImgEllipse2 from '../../../assets/elipse-2.webp';
 import ImgEllipse3 from '../../../assets/elipse-3.webp';
 import ImgEllipse4 from '../../../assets/elipse-4.webp';
 import Image from 'next/image';
-import { AZUL, CINZA_90, LARANJA, VERDE } from 'src/styles/variaveis';
+import { AZUL, LARANJA, VERDE } from 'src/styles/variaveis';
 
 export function ComoCadastrar() {
   return (
@@ -13,13 +13,14 @@ export function ComoCadastrar() {
         <h1>Como cadastrar?</h1>
         <ContentBox>
           <Box color={LARANJA}>
-            <div id="cadastrar" className="content-img">
+            <div className="content-img">
               <Image
                 alt="com funciona"
                 width={262}
                 height={262}
                 src={ImgEllipse1}
                 quality={100}
+                blurDataURL='"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPU0NS8CAACSAFN02dlbQAAAABJRU5ErkJggg=="'
               />
             </div>
 
@@ -39,6 +40,7 @@ export function ComoCadastrar() {
                 width={262}
                 height={262}
                 src={ImgEllipse2}
+                blurDataURL='"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPU0NS8CAACSAFN02dlbQAAAABJRU5ErkJggg=="'
                 quality={100}
               />
             </div>
@@ -58,6 +60,7 @@ export function ComoCadastrar() {
                 className="imag"
                 width={262}
                 height={262}
+                blurDataURL='"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPU0NS8CAACSAFN02dlbQAAAABJRU5ErkJggg=="'
                 src={ImgEllipse3}
                 quality={100}
               />
@@ -78,6 +81,7 @@ export function ComoCadastrar() {
                 className="imag"
                 width={262}
                 height={262}
+                blurDataURL='"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPU0NS8CAACSAFN02dlbQAAAABJRU5ErkJggg=="'
                 src={ImgEllipse4}
                 quality={100}
               />
