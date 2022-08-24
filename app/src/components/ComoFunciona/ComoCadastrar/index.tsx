@@ -1,7 +1,7 @@
 import { Container, Content, Box, ContentBox } from './style';
-import ImgEllipse1 from '../../../assets/elipse-1.webp';
-import ImgEllipse2 from '../../../assets/elipse-2.webp';
-import ImgEllipse3 from '../../../assets/elipse-3.webp';
+import ImgEllipse1 from '../../../assets/elipse-1.png';
+import ImgEllipse2 from '../../../assets/elipse-2.png';
+import ImgEllipse3 from '../../../assets/elipse-3.png';
 import ImgEllipse4 from '../../../assets/elipse-4.png';
 import Image from 'next/image';
 import { AZUL, LARANJA, VERDE } from 'src/styles/variaveis';
