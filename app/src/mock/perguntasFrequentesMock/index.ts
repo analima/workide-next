@@ -262,3 +262,49 @@ export const perguntaAreas = [
     ],
   },
 ];
+
+export const perguntaComoFunciona = [
+  {
+    id: 1,
+    nome: 'Como funciona',
+    image: ImgGrafico,
+    perguntas: [
+      {
+        id: 1,
+        pergunta: 'Quanto pago para utilizar a plataforma?',
+        resposta: 'A Gyan é totalmente grátis e não cobramos assinatura.',
+      },
+      {
+        id: 2,
+        pergunta: 'Desistir do projeto, quando vou ser reembolsado?',
+        resposta:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin risus nulla, sodales nec turpis nec, efficitur volutpat ante. Proin fermentum maximus ipsum, sit amet accumsan turpis tempus at.',
+      },
+      {
+        id: 3,
+        pergunta: 'Meu projeto foi cancelado. Quando foi ser reembolsado?',
+        resposta:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin risus nulla, sodales nec turpis nec, efficitur volutpat ante. Proin fermentum maximus ipsum, sit amet accumsan turpis tempus at.',
+      },
+      {
+        id: 4,
+        pergunta: 'Como escrevo um bom briefing?',
+        resposta:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin risus nulla, sodales nec turpis nec, efficitur volutpat ante. Proin fermentum maximus ipsum, sit amet accumsan turpis tempus at.',
+      },
+      {
+        id: 5,
+        pergunta:
+          'O cliente desistiu do projeto, mas realizei entregas parciais, como fica meu pagamento?',
+        resposta:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin risus nulla, sodales nec turpis nec, efficitur volutpat ante. Proin fermentum maximus ipsum, sit amet accumsan turpis tempus at.',
+      },
+      {
+        id: 6,
+        pergunta: 'Qual valor da taxa de intermediação?',
+        resposta:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin risus nulla, sodales nec turpis nec, efficitur volutpat ante. Proin fermentum maximus ipsum, sit amet accumsan turpis tempus at.',
+      },
+    ],
+  },
+];

@@ -33,7 +33,7 @@ import { useAuth } from '../../contexts/auth';
 import Carol from '../../assets/carol-full.svg';
 import Avatar from '../../components/CadastroComplementar/Apresentacao/style';
 import { useHistory } from 'react-router';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 import { ModalLoading } from '../ModalLoading';
 import { Button } from '../Form/Button';
 
@@ -91,7 +91,6 @@ export function ItemVitrine({
   recontract,
 }: IItemVitrineProps) {
   const [favoriteItem, setFavoriteItem] = useState<Array<Number>>([]);
-  const history = useHistory();
   const [showModalLoadding, setShowModalLoadding] = useState(false);
   const [numeroProjetos, setNumeroProjetos] = useState(0);
   const { user } = useAuth();
@@ -124,11 +123,12 @@ export function ItemVitrine({
         setShowAvatar(true);
         return;
       }
-      router.push({pathname: `/fornecedor/perfil-publico/${idPessoa}`, query:{
-     
-      }});
+      router.push({
+        pathname: `/fornecedor/perfil-publico/${idPessoa}`,
+        query: {},
+      });
     },
-    [history, item, publico, setShowAvatar],
+    [publico, router, setShowAvatar],
   );
 
   const handleFavorite = (event: React.MouseEvent, idPessoa: number) => {
@@ -257,8 +257,7 @@ export function ItemVitrine({
           <Button
             label="RECONTRATAR"
             onClick={() =>
-              router.push(`/consumidor/projetos/exclusivo/${item.idUsuario}`
-            )
+              router.push(`/consumidor/projetos/exclusivo/${item.idUsuario}`)
             }
           />
         </ContainerRecontratar>
