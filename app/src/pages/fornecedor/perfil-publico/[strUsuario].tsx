@@ -66,7 +66,7 @@ export default function NovoPerfilPublico() {
         })
         .catch(error => {
           if (error) {
-            console.log(error)
+            console.log('error do catch: ',error)
             debugger
           }
         });

@@ -35,14 +35,14 @@ export default function Home() {
   useEffect(() => {
     function loadSorage() {
       if (!state) {
-        
+         
         const storageUser = localStorage.getItem('@Gyan:id_token');
         console.log('achouuu',storageUser)
         if (!user.id_pessoa === true && storageUser !== null) {
-          console.log(user)
+
           return router.push('/');
         }
-        console.log(user)
+
         router.push('/');
       }
     }
