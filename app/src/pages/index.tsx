@@ -29,20 +29,27 @@ export default function Home() {
 
   if (!user) {
     user = {} as IPessoa;
+    console.log('não encontrou o usuario mesmo...')
   }
 
   useEffect(() => {
     function loadSorage() {
       if (!state) {
+        
         const storageUser = localStorage.getItem('@Gyan:id_token');
-        if (!!user.id_pessoa === true && storageUser !== null) {
-          return router.push('/persona');
+        console.log('achouuu',storageUser)
+        if (!user.id_pessoa === true && storageUser !== null) {
+          console.log(user)
+          return router.push('/');
         }
+        console.log(user)
         router.push('/');
       }
     }
     loadSorage();
   }, [state, user.id_pessoa]);
+
+
 
   useEffect(() => {
     const section = query.get('section');
@@ -72,6 +79,7 @@ export default function Home() {
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
     hotjar.stateChange('/');
+    
   }, []);
 
   return (

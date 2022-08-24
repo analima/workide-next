@@ -35,7 +35,7 @@ export default function Home() {
     function loadSorage() {
       if (!state) {
         const storageUser = localStorage.getItem('@Gyan:id_token');
-        if (!!user.id_pessoa === true && storageUser !== null) {
+        if (!user.id_pessoa === true && storageUser !== null) {
           return router.push('/persona');
         }
         router.push('/');
