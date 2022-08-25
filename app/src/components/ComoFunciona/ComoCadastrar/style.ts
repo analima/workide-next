@@ -41,7 +41,7 @@ interface ColorProps {
 
 export const Box = styled.div<ColorProps>`
   max-width: 262px;
-  height: 503px;
+  max-height: 503px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -105,12 +105,6 @@ export const ContentBox = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-
-  .content-box {
-    display: flex;
-    align-items: center;
-    gap: 60px;
-  }
 
   svg {
     border: 1px solid ${CINZA_90};
