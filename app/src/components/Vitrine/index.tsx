@@ -33,7 +33,7 @@ import { useAuth } from '../../contexts/auth';
 import Carol from '../../assets/carol-full.svg';
 import Avatar from '../../components/CadastroComplementar/Apresentacao/style';
 import { useHistory } from 'react-router';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 import { ModalLoading } from '../ModalLoading';
 import { Button } from '../Form/Button';
 
@@ -113,7 +113,6 @@ export function ItemVitrine({
         console.error(error.response?.data || error);
       }
     };
-    countProjects();
     load();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [item]);
@@ -124,11 +123,12 @@ export function ItemVitrine({
         setShowAvatar(true);
         return;
       }
-      router.push({pathname: `/fornecedor/perfil-publico/${idPessoa}`, query:{
-     
-      }});
+      router.push({
+        pathname: `/fornecedor/perfil-publico/${idPessoa}`,
+        query: {},
+      });
     },
-    [history, item, publico, setShowAvatar],
+    [publico, router, setShowAvatar],
   );
 
   const handleFavorite = (event: React.MouseEvent, idPessoa: number) => {
@@ -157,7 +157,7 @@ export function ItemVitrine({
     load();
   };
 
-  async function countProjects() {
+  const countProjects = useCallback(async () => {
     try {
       const response = await pessoas_api.get(
         `/projetos/count?idPessoaFornecedor=${item.id}`,
@@ -166,7 +166,11 @@ export function ItemVitrine({
     } catch (error: any) {
       console.error(error.response);
     }
-  }
+  }, [item.id]);
+
+  useEffect(() => {
+    countProjects();
+  }, [countProjects]);
 
   return (
     <>
@@ -257,8 +261,7 @@ export function ItemVitrine({
           <Button
             label="RECONTRATAR"
             onClick={() =>
-              router.push(`/consumidor/projetos/exclusivo/${item.idUsuario}`
-            )
+              router.push(`/consumidor/projetos/exclusivo/${item.idUsuario}`)
             }
           />
         </ContainerRecontratar>
