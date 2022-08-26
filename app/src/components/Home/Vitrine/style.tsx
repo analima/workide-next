@@ -61,6 +61,15 @@ export const Carrousel = styled(Slider)`
     display: flex;
     flex-direction: row-reverse;
   }
+
+  @media (max-width: 478px) {
+    .slick-slide {
+    }
+
+    .slick-track {
+      flex-direction: row;
+    }
+  }
 `;
 
 export const ContainerButton = styled.div`
