@@ -14,7 +14,6 @@ import { IServicoInfo } from '../../../interfaces/IServicoInfo';
 import { ServiceCard } from '../../ServiceCard';
 import { LARANJA } from '../../../styles/variaveis';
 import { useRouter } from 'next/router';
-import { Spacer } from 'src/components/Spacer';
 
 interface SampleArrowProps {
   className?: string;
@@ -94,7 +93,28 @@ export function Vitrine() {
       {
         breakpoint: 390,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 0.85,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 340,
+        settings: {
+          slidesToShow: 0.8,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 320,
+        settings: {
+          slidesToShow: 0.75,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 310,
+        settings: {
+          slidesToShow: 0.65,
           slidesToScroll: 1,
         },
       },

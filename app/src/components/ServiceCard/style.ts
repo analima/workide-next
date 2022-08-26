@@ -23,7 +23,7 @@ export const Content = styled.div`
   }
 
   @media (max-width: 478px) {
-    width: 100%;
+    min-width: 280px;
   }
 `;
 
@@ -58,7 +58,6 @@ export const ImageProfile = styled.img`
 export const ImageContainerInfos = styled.div`
   display: flex;
   justify-content: space-between;
-
   position: absolute;
   top: 10px;
   padding-left: 10px;
