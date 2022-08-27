@@ -91,6 +91,13 @@ export function Vitrine() {
         },
       },
       {
+        breakpoint: 410,
+        settings: {
+          slidesToShow: 0.9,
+          slidesToScroll: 1,
+        },
+      },
+      {
         breakpoint: 390,
         settings: {
           slidesToShow: 0.85,
