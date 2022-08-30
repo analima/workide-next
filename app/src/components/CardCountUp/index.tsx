@@ -37,7 +37,6 @@ export function CardCountUp() {
 
   useEffect(() => {
     consultas_api.get<Props>('/consulta/estatisticas').then(({ data }) => {
-      console.log(data);
       setTotalUsuarios(data.usuarios);
       setTotalHoras(data.horas);
       setTotalProfissionaisVoluntarios(data.voluntarios);
