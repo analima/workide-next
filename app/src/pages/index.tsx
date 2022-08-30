@@ -37,7 +37,7 @@ export default function Home() {
       if (!state) {
          
         const storageUser = localStorage.getItem('@Gyan:id_token');
-        console.log('achouuu',storageUser)
+       
         if (!user.id_pessoa === true && storageUser !== null) {
 
           return router.push('/');
