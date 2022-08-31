@@ -17,6 +17,7 @@ import { useRouter } from 'next/router';
 import { IPessoa } from '../interfaces/IPessoa';
 import { Footer } from 'src/components/Footer';
 import Head from 'next/head';
+import { selecionarRotaHome } from 'src/utils/selecionarRotaHome';
 
 export default function Home() {
   const router = useRouter();
@@ -29,17 +30,15 @@ export default function Home() {
 
   if (!user) {
     user = {} as IPessoa;
-    console.log('não encontrou o usuario mesmo...')
+    console.log('não encontrou o usuario mesmo...');
   }
 
   useEffect(() => {
     function loadSorage() {
       if (!state) {
-         
         const storageUser = localStorage.getItem('@Gyan:id_token');
-       
-        if (!user.id_pessoa === true && storageUser !== null) {
 
+        if (!user.id_pessoa === true && storageUser !== null) {
           return router.push('/');
         }
 
@@ -48,8 +47,6 @@ export default function Home() {
     }
     loadSorage();
   }, [state, user.id_pessoa]);
-
-
 
   useEffect(() => {
     const section = query.get('section');
@@ -66,9 +63,9 @@ export default function Home() {
     function loadSorage() {
       if (!state) {
         const storageUser = localStorage.getItem('@Gyan:id_token');
-        console.log('Storage::',storageUser)
+        console.log('Storage::', storageUser);
         if (!!user.id_pessoa === true && storageUser !== null) {
-          return router.push('/persona');
+          return router.push(selecionarRotaHome(user));
         }
         router.push('/');
       }
@@ -79,7 +76,6 @@ export default function Home() {
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
     hotjar.stateChange('/');
-    
   }, []);
 
   return (

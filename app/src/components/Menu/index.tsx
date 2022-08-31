@@ -1,16 +1,16 @@
 import { Container, Nav, Navbar } from 'react-bootstrap';
-import Image from 'next/image'
+import Image from 'next/image';
 import userIcon from '../../assets/user_circle.svg';
 import separator from '../../assets/separador.svg';
 import logOutIcon from '../../assets/logout.svg';
-import  Center  from '../../assets/center.svg';
+import Center from '../../assets/center.svg';
 import separador from '../../assets/separador.svg';
 import Logo from '../../assets/logo.svg';
 
 import { NavCustom, ButtonToggle, NavLink } from './style';
 import { CadastroBasico } from '../CadastroBasico';
 import { useHistory } from 'react-router-dom';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 
 import { useEffect, useState } from 'react';
 import { ModalCentralMenu } from '../ModalCentralMenu';
@@ -18,6 +18,7 @@ import { useValorProjetoPago } from '../../contexts/valorProjetoPago';
 import { useAuth } from '../../contexts/auth';
 import { IPessoa } from 'src/interfaces/IPessoa';
 import { pessoas_api } from '../../services/pessoas_api';
+import { selecionarRotaHome } from 'src/utils/selecionarRotaHome';
 
 export function Menu({
   hiddenCenterMenu,
@@ -37,16 +38,16 @@ export function Menu({
   const background = 'transparent';
   const [name, setName] = useState('');
   const { apagarLocalStorage } = useValorProjetoPago();
-  
+
   const [user, setUser] = useState({} as IPessoa);
   const [isAuthDataLoading, setIsAuthDataLoading] = useState(true);
   const [idToken, setIdToken] = useState('');
 
   const refreshUserData = async (ID_TOKEN: any) => {
-    console.log('entrou')
+    console.log('entrou');
     const newIdToken = localStorage.getItem(ID_TOKEN);
     setIdToken(newIdToken || '');
-    console.log(newIdToken)
+    console.log(newIdToken);
     if (newIdToken) {
       const res = await pessoas_api.get('/pessoas/me', {
         headers: {
@@ -54,7 +55,6 @@ export function Menu({
         },
       });
       if (res) {
-        
         const { data: newUser } = res;
         setUser({
           ...newUser,
@@ -65,17 +65,15 @@ export function Menu({
         });
       }
     }
-   
-  }
+  };
 
   useEffect(() => {
-    let local = localStorage.getItem('@Gyan:id_token')
-    if(local){
-      const ID_TOKEN = '@Gyan:id_token'
-      refreshUserData(ID_TOKEN)
+    let local = localStorage.getItem('@Gyan:id_token');
+    if (local) {
+      const ID_TOKEN = '@Gyan:id_token';
+      refreshUserData(ID_TOKEN);
     }
-    
-  }, [])
+  }, []);
 
   const handleResize = (e: any) => {
     setSizePage(window.innerWidth);
@@ -147,20 +145,18 @@ export function Menu({
         <ModalCentralMenu showModal={showModal} setShowModal={setShowModal} />
         <Navbar expand="md">
           <Container className="nav-container">
-            <Navbar.Brand
-              className="logo"
-              onClick={() => router.push('/')}
-            >
+            <Navbar.Brand className="logo" onClick={() => router.push('/')}>
               <Image src={Logo} alt="Gyan" />
             </Navbar.Brand>
 
             {!user.visitante && user.email && !hiddenCenterMenu && (
-              <Image src={Center}className="icone-center"
-              onClick={() => {
-                setShowModal(!showModal);
-              }} />
-            
-        
+              <Image
+                src={Center}
+                className="icone-center"
+                onClick={() => {
+                  setShowModal(!showModal);
+                }}
+              />
             )}
 
             <Navbar.Toggle aria-controls="navbarScroll" />
@@ -174,7 +170,7 @@ export function Menu({
                   <Image className="separator" src={separator} alt="perfil" />
                   <Nav.Link
                     className="container-profile"
-                    onClick={() => router.push('/persona')}
+                    onClick={() => router.push(selecionarRotaHome(user))}
                   >
                     <Image className="profile" src={userIcon} alt="perfil" />
                     {name}
@@ -263,7 +259,6 @@ export function Menu({
                 <Nav.Link href="/login">
                   <Image src={user_circle} alt="login icon" />
                 </Nav.Link> */}
-
               </Navbar.Collapse>
             )}
           </Container>
