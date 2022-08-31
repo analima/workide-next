@@ -28,18 +28,18 @@ interface IDropdown {
 
 export default function Dropdown({ titulo, itens }: IDropdown) {
   const [state, setState] = useState(true);
-  const { user } = useAuth();
+  //const { user } = useAuth();
 
   const history = useHistory();
   //assigning location variable
-  const location = useLocation();
+  //const location = useLocation();
   const [showModal, setShowModal] = useState(false);
 
   //destructuring pathname from location
-  const { pathname } = location;
+  //const { pathname } = location;
 
   //Javascript split method to get the name of the path in array
-  const splitLocation = pathname.split('/');
+  //const splitLocation = pathname.split('/');
 
   function toggle() {
     setState(!state);
@@ -50,7 +50,7 @@ export default function Dropdown({ titulo, itens }: IDropdown) {
       <TituloDropdown onClick={toggle}>
         {titulo} <FiChevronDown color={LARANJA} />
       </TituloDropdown>
-      <NavDropdown open={state}>
+      {/* <NavDropdown open={state}>
         {itens.map((item, index) => {
           if (item.isButton) {
             return (
@@ -103,7 +103,7 @@ export default function Dropdown({ titulo, itens }: IDropdown) {
           setShowModal={setShowModal}
           id_usuario={user.id_usuario}
         />
-      </NavDropdown>
+      </NavDropdown> */}
     </Content>
   );
 }
