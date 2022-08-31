@@ -52,7 +52,6 @@ export const AuthProvider: React.FC = ({ children }: any) => {
   }, []);
 
   const refreshUserData = useCallback(async () => {
-    
     const newIdToken = localStorage.getItem(ID_TOKEN);
     setIdToken(newIdToken || '');
     if (newIdToken) {

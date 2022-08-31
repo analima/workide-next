@@ -66,7 +66,7 @@ export function Header(): JSX.Element {
     }
   }, [])
 
-  console.log({user})
+
 
   function handleToggleMenu() {
     setIsMobile(prevState => !prevState);

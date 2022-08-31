@@ -10,10 +10,9 @@ import { Titulo } from '../../../Titulo';
 import { Button } from '../../../Form/Button';
 import { notificacoes_api } from '../../../../services/notificacoes_api';
 import { FiBell, FiMenu } from 'react-icons/fi';
-import Link from 'next/link'
+import Image from 'next/image'
 import {
   ContentSession,
-  GhostButton,
   AcaoBell,
   Notification,
   ContentNotifications,
@@ -26,6 +25,10 @@ import {
   ContainerHeader,
 } from './style';
 import Content from './style';
+import { IPessoa } from 'src/interfaces/IPessoa';
+import { pessoas_api } from 'src/services/pessoas_api';
+import { Router } from 'react-router-dom';
+import {useRouter} from 'next/router'
 
 interface INavbar {
   toggleSidebar: () => void;
@@ -49,11 +52,51 @@ export default function Navbar({
   activeMenu,
   maisSolucoesIsNotVisible,
 }: INavbar) {
-  const { user, refreshUserData } = useAuth();
+
   const [showModal, setShowModal] = useState(false);
   const [notifications, setNotifications] = useState<INotification[]>([]);
   const [unreadNotifications, setUnreadNotifications] = useState<number>(0);
+  const [user, setUser] = useState({} as IPessoa);
+  const [isAuthDataLoading, setIsAuthDataLoading] = useState(true);
+  const [idToken, setIdToken] = useState('');
+  const router = useRouter();
 
+  const refreshUserData = async (ID_TOKEN: any) => {
+    console.log('entrou')
+    const newIdToken = localStorage.getItem(ID_TOKEN);
+    setIdToken(newIdToken || '');
+    console.log(newIdToken)
+    if (newIdToken) {
+      const res = await pessoas_api.get('/pessoas/me', {
+        headers: {
+          Authorization: `Bearer ${newIdToken}`,
+        },
+      });
+      if (res) {
+        
+        const { data: newUser } = res;
+        setUser({
+          ...newUser,
+          id_pessoa: newUser.id,
+          email: newUser.usuario?.email,
+          url_avatar: newUser.arquivo?.url,
+          admin: newUser.usuario?.admin,
+        });
+      }
+    }
+   
+  }
+
+  useEffect(() => {
+    //NewAuth()
+    let local = localStorage.getItem('@Gyan:id_token')
+    if(local){
+      const ID_TOKEN = '@Gyan:id_token'
+      refreshUserData(ID_TOKEN)
+    }
+  }, [])
+
+  
   const loadNotifications = useCallback(async () => {
     try {
       const { data } = await notificacoes_api.get<{ values: INotification[] }>(
@@ -104,9 +147,7 @@ export default function Navbar({
     [loadNotifications, user.id_pessoa],
   );
 
-  useEffect(() => {
-    refreshUserData();
-  }, [refreshUserData]);
+  
 
   return (
     <Content>
@@ -114,18 +155,17 @@ export default function Navbar({
         <div className="icones">
           {activeMenu && <FiMenu onClick={toggleSidebar} />}
 
-          <Link href="/consumidor/home">
-            <Home />
-          </Link>
+          <Image src={Home} alt={'home-image'} style={{'cursor': 'pointer'}} onClick={() => {router.push('/consumidor/home')}} />
+        
         </div>
 
         <ContentSession>
-          <GhostButton
+          {/* <GhostButton
             to="/consumidor/busca"
             opacity={maisSolucoesIsNotVisible ? 0 : 1}
           >
             BUSCAR SOLUÇÕES
-          </GhostButton>
+          </GhostButton> */}
 
           <AcaoBell>
             <Dropdown
