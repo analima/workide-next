@@ -20,14 +20,15 @@ import AntonioToggleImage from '../../../assets/antonio.svg';
 import CarolToggleImage from '../../../assets/carol.svg';
 import CarolImage from '../../../assets/carol-full.svg';
 import AntonioImage from '../../../assets/antonio-full.svg';
-import ThaisImage  from '../../../assets/thais-full.svg';
-import AndreImage  from '../../../assets/andre-full.svg';
+import ThaisImage from '../../../assets/thais-full.svg';
+import AndreImage from '../../../assets/andre-full.svg';
 import { Template } from '../../../components/Template';
 import { AZUL, CINZA_40, LARANJA } from '../../../styles/variaveis';
 import { useEffect, useState } from 'react';
 import { useAuth } from '../../../contexts/auth';
 import { Helmet } from 'react-helmet';
 import { hotjar } from 'react-hotjar';
+import { selecionarRotaHome } from 'src/utils/selecionarRotaHome';
 
 export default function Aprensetacao() {
   const [selectedAvatar, setSelectedAvatar] = useState<
@@ -38,23 +39,23 @@ export default function Aprensetacao() {
   const history = useHistory();
 
   const avatares = {
-  CAROL: {
-    description:
-      'Olá, eu sou a Carol. Meu sonho é poder ajudar as pessoas. Sempre estou em busca de ser a minha melhor versão, posso te dar várias dicas para seu aperfeiçoamento pessoal e profissional.',
-  },
-  THAIS: {
-    description:
-      'Olá eu sou a Thais!Adoro me aventurar em novos desafios. Não vejo a hora de receber seus feedbacks com sugestões e críticas. Meu objetivo é melhorar sua jornada de trabalho através de uma boa experiência dentro da nossa plataforma.',
-  },
-  ANTONIO: {
-    description:
-      'Olá eu sou o António! Minhas maiores paixões são aprender e ensinar. Estarei te esperando na etapa de cadastro, sempre disponível para tirar suas dúvidas. Até logo!',
-  },
-  ANDRE: {
-    description:
-      'Olá, eu sou o André! Meu objetivo é proteger nossos usuários. Espero te ajudar no entendimento das regras que foram criadas para sua segurança e facilidade.',
-  },
-};
+    CAROL: {
+      description:
+        'Olá, eu sou a Carol. Meu sonho é poder ajudar as pessoas. Sempre estou em busca de ser a minha melhor versão, posso te dar várias dicas para seu aperfeiçoamento pessoal e profissional.',
+    },
+    THAIS: {
+      description:
+        'Olá eu sou a Thais!Adoro me aventurar em novos desafios. Não vejo a hora de receber seus feedbacks com sugestões e críticas. Meu objetivo é melhorar sua jornada de trabalho através de uma boa experiência dentro da nossa plataforma.',
+    },
+    ANTONIO: {
+      description:
+        'Olá eu sou o António! Minhas maiores paixões são aprender e ensinar. Estarei te esperando na etapa de cadastro, sempre disponível para tirar suas dúvidas. Até logo!',
+    },
+    ANDRE: {
+      description:
+        'Olá, eu sou o André! Meu objetivo é proteger nossos usuários. Espero te ajudar no entendimento das regras que foram criadas para sua segurança e facilidade.',
+    },
+  };
 
   useEffect(() => {
     const load = async () => {
@@ -62,7 +63,7 @@ export default function Aprensetacao() {
       if (percentageRegister > 20 && percentageRegister < 40) {
         history.push('/cadastro-complementar', { cadastroCompleto: false });
       } else if (percentageRegister >= 40) {
-        history.push('/persona');
+        history.push(selecionarRotaHome(user));
       }
     };
     load();
