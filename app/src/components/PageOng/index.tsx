@@ -1,28 +1,32 @@
-import { Header } from '../Header';
 import { Container } from './styles';
 import { Footer } from '../Footer';
 import { BannerOngs } from '../BannerOngs';
-import { RequirementInstituition } from '../RequirementInstituition';
-import { ConnectOngs } from '../ConnectOngs';
-import { EbookPageOngs } from '../EbookPageOngs';
+import { BannerSecundaryOngs } from '../BannerSecundaryOngs';
 import { MeetOurBlog } from '../MeetOurBlog';
-import { BannerHours } from '../BannerHours';
+import { WhyInvestInVolunteers } from '../WhyInvestInVolunteers';
+import { Depositions } from '../Depositions';
+import { ImpactfulProject } from '../ImpactfulProject';
+import { DataThatProvesSuccess } from '../DataThatProvesSuccess';
+import { ConnectOngs } from '../ConnectOngs';
+import { IPostProps, IStatsProps } from 'src/interfaces/IPostProps';
 
-const PageOng: React.FC = () => {
+interface PostProps {
+  posts: IPostProps[];
+  stats: IStatsProps;
+}
+
+export default function PageOng({ posts, stats }: PostProps) {
   return (
-    <>
-      <Header />
-      <Container>
-        <BannerOngs />
-        <EbookPageOngs />
-        <RequirementInstituition />
-        <ConnectOngs />
-        <BannerHours />
-        <MeetOurBlog />
-        <Footer />
-      </Container>
-    </>
+    <Container>
+      <BannerOngs />
+      <BannerSecundaryOngs />
+      <WhyInvestInVolunteers />
+      <Depositions />
+      <ImpactfulProject />
+      <DataThatProvesSuccess stats={stats} />
+      <MeetOurBlog posts={posts} />
+      <ConnectOngs />
+      <Footer />
+    </Container>
   );
-};
-
-export default PageOng;
+}

@@ -4,10 +4,8 @@ import { BRANCO } from '../../styles/variaveis';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 54px;
   background-color: ${BRANCO};
 
   @media (max-width: 478px) {
-    gap: 32px;
   }
 `;

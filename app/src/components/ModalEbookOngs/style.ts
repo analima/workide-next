@@ -12,6 +12,7 @@ import {
 export const ModalConfirmation = styled(Modal)`
   background-color: transparent !important;
   border-radius: 16px;
+
   .modal-content {
     border-radius: 16px;
 
@@ -25,7 +26,7 @@ export const Content = styled.div``;
 
 export const Container = styled.div`
   /* height: 240px; */
-  padding: 16px;
+  padding: 16px 0;
   margin-bottom: 20px;
 
   strong {

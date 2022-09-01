@@ -1,6 +1,5 @@
 import { Content, ContentConheca, ContentComents, CardComent } from './style';
-
-import { AZUL, BRANCO, LARANJA, VERDE } from '../../../styles/variaveis';
+import { AZUL, LARANJA, VERDE } from '../../../styles/variaveis';
 
 export function CardRecomendacao() {
   return (

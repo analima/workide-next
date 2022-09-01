@@ -5,10 +5,8 @@ import { hotjar } from 'react-hotjar';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import CaptarProjetoContent from '../../../components/AreaFornecedor/CaptarProjeto/CaptarProjetoContent';
-
 const CaptarProjeto: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
-  console.log(isLoading);
 
   useEffect(() => {
     hotjar.initialize(

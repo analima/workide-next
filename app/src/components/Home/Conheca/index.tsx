@@ -70,11 +70,11 @@ export function Conheca() {
             <h2>Patricia Felix, proprietária da jsfelix.dev</h2>
 
             <p>
-              `&quot;`Tive uma ótima experiência na contratação de profissionais
-              pela plataforma da GYAN para composição de nossos squads. O
-              processo é muito rápido, toda a comunicação é realizada pelo site,
-              com toda segurança e transparência. Os profissionais da plataforma
-              são experts em suas áreas!`&quot;`
+              “Tive uma ótima experiência na contratação de profissionais pela
+              plataforma da GYAN para composição de nossos squads. O processo é
+              muito rápido, toda a comunicação é realizada pelo site, com toda
+              segurança e transparência. Os profissionais da plataforma são
+              experts em suas áreas!“.
             </p>
           </CardComent>
 
@@ -82,10 +82,10 @@ export function Conheca() {
             <h2>Alison Cau , Freenlancer UI Designer</h2>
 
             <p>
-              `&quot;`Encontrei com muita facilidade o projeto que precisava
-              para alavancar minha carreira profissional! Além disso, a
-              segurança com os pagamentos e o gerenciamento das entregas é
-              fenomenal. Melhor plataforma pra trabalhar`&quot;`.
+              “Encontrei com muita facilidade o projeto que precisava para
+              alavancar minha carreira profissional! Além disso, a segurança com
+              os pagamentos e o gerenciamento das entregas é fenomenal. Melhor
+              plataforma pra trabalhar“.
             </p>
           </CardComent>
 
@@ -93,10 +93,10 @@ export function Conheca() {
             <h2>George Fialkovitz, Executive Director ONG ABRAMTI</h2>
 
             <p>
-              `&quot;`Sempre tivemos muita dificuldade em encontrar pessoas
+              “Sempre tivemos muita dificuldade em encontrar pessoas
               qualificadas para nos ajudar. Na Gyan encontrei voluntários
               incríveis e com certificação profissional. A dedicação destas
-              pessoas fez toda a diferença na qualidade do material`&quot;`.
+              pessoas fez toda a diferença na qualidade do material“.
             </p>
           </CardComent>
         </ContentComents>

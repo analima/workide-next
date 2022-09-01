@@ -272,38 +272,39 @@ export const perguntaComoFunciona = [
       {
         id: 1,
         pergunta: 'Quanto pago para utilizar a plataforma?',
-        resposta: 'A Gyan é totalmente grátis e não cobramos assinatura.',
+        resposta:
+          ' A Gyan é totalmente grátis e não cobra mensalidade para sua utilização, você utilizar dos benefícios por tempo indefinido sem nenhum gasto.',
       },
       {
         id: 2,
         pergunta: 'Desistir do projeto, quando vou ser reembolsado?',
         resposta:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin risus nulla, sodales nec turpis nec, efficitur volutpat ante. Proin fermentum maximus ipsum, sit amet accumsan turpis tempus at.',
+          'Após a negociação entre as partes o reembolso vai depender do tipo que foi utilizado no pagamento do projeto. Em caso de cartão o estorno ocorrerá em até 60 dias a depender da operadora do seu cartão de crédito. No caso do Pix, o estorno poderá ocorrer em até 190 conforme regras do Bacen. Para boleto, após a solicitação do cancelamento o reembolso ocorrerá em até 4 dias úteis.',
       },
       {
         id: 3,
-        pergunta: 'Meu projeto foi cancelado. Quando foi ser reembolsado?',
+        pergunta: 'Meu projeto foi cancelado. Quando vou ser reembolsado?',
         resposta:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin risus nulla, sodales nec turpis nec, efficitur volutpat ante. Proin fermentum maximus ipsum, sit amet accumsan turpis tempus at.',
+          'Isso depende do tipo que foi utilizado no pagamento do projeto. Em caso de cartão o estorno ocorrerá em até 60 dias a depender da operadora do seu cartão de crédito. No caso do Pix, o estorno poderá ocorrer em até 190 conforme regras do Bacen. Para boleto, após a solicitação do cancelamento o reembolso ocorrerá em até 4 dias úteis.',
       },
       {
         id: 4,
         pergunta: 'Como escrevo um bom briefing?',
         resposta:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin risus nulla, sodales nec turpis nec, efficitur volutpat ante. Proin fermentum maximus ipsum, sit amet accumsan turpis tempus at.',
+          'O resumo deve refletir suas experiências, conhecimentos e motivações, descrevendo de maneira sucinta pontos, porém ele não deve ter a estrutura de um currículo, inscreva no formato de texto, descrevendo sua estrada profissional e o que almeja para o futuro.',
       },
       {
         id: 5,
         pergunta:
           'O cliente desistiu do projeto, mas realizei entregas parciais, como fica meu pagamento?',
         resposta:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin risus nulla, sodales nec turpis nec, efficitur volutpat ante. Proin fermentum maximus ipsum, sit amet accumsan turpis tempus at.',
+          'Neste caso, é necessário que se realize uma negociação entre as partes e cheguem em um consenso sobre o percentual de pagamento que será realizado. Vale lembrar que será creditado o valor referente ao percentual negociado com seu cliente e deste valor será debitada a taxa de intermediação.',
       },
       {
         id: 6,
         pergunta: 'Qual valor da taxa de intermediação?',
         resposta:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin risus nulla, sodales nec turpis nec, efficitur volutpat ante. Proin fermentum maximus ipsum, sit amet accumsan turpis tempus at.',
+          ' Atualmente temos uma taxa de intermediação de 12% em cima do valor do projeto, que é o valor cobrado ́ do fornecedor pela plataforma pelo serviço de intermediação de negócios entre Fornecedores e Clientes. Atualmente, para a intermediação da contratação de projetos, esta taxa é de 12% sobre o Valor Total Pago pelo Cliente, sendo R$14,00 a taxa mínima para projetos inferiores a 100,000. Para a intermediação da venda de ofertas prontas, promocionalmente, esta taxa também será de 12% sobre o Valor Total Pago pelo Cliente, sendo R$ sendo R$14,00 a taxa mínima para ofertas até 100,000.',
       },
     ],
   },

@@ -1,21 +1,47 @@
-import { Container, Content } from './style';
+import { Container, Content, ContentButton } from './style';
 import ImgOng from '@public/img-ong.webp';
+import Logo from '../../assets/logo-branca.svg';
+import Image from 'next/image';
+import { ModalEbookOngs } from '../ModalEbookOngs';
+import { useState } from 'react';
+import { useRouter } from 'next/router';
 
 export function BannerOngs() {
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const router = useRouter();
   return (
     <Container img={ImgOng.src}>
+      <ModalEbookOngs showModal={showModal} setShowModal={setShowModal} />
+
       <Content>
-        <h1>Contribuir com sua causa social é muito importante para a Gyan</h1>
+        <div className="content-logo">
+          <Image
+            src={Logo}
+            className="logo"
+            alt="Gyan"
+            width={152}
+            height={38}
+            onClick={() => router.push('/')}
+          />
+        </div>
+        <h1>Sua ONG precisa de trabalho digital voluntário?</h1>
         <span>
-          Como voluntários da sua ONG, queremos promover a conexão entre seus
-          projetos e profissionais que estão ansiosos para oferecer seus
-          serviços em prol do bem-estar coletivo.
-          <br />
-          <br />
-          No atual cenário, marcado por contínuos avanços no universo digital,
-          nossa plataforma se apresenta como uma ponte entre você e freelancers
-          especialistas em tecnologia.
+          Está em busca de voluntários para colaborar com a sua causa, venha
+          fazer parte da GYAN, e encontre os profissionais qualificados para
+          solucionar os problemas que sua ONG passa no dia a dia.
         </span>
+
+        <ContentButton>
+          <button
+            onClick={() => router.push('/cadastro-basico')}
+            className="btn-cadastrar"
+          >
+            CADASTRAR ONG
+          </button>
+          <button onClick={() => setShowModal(true)} className="btn-ebook">
+            E-BOOK GRATUITO
+          </button>
+        </ContentButton>
       </Content>
     </Container>
   );
