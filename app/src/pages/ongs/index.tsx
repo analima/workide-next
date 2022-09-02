@@ -37,10 +37,10 @@ export default function Ongs({ posts, stats }: PostProps) {
 export const getStaticProps: GetStaticProps = async () => {
   const getAllPostsOngs = async (): Promise<IPostProps[]> => {
     const posts = await fetch(
-      `${process.env.NEXT_APP_BLOG_API}/articles?populate=deep&filters[category][slug][$eq]=ongs`,
+      `${process.env.REACT_APP_BLOG_API}/articles?populate=deep&filters[category][slug][$eq]=ongs`,
       {
         headers: {
-          Authorization: `Bearer ${process.env.NEXT_APP_TOKEN_BLOG}`,
+          Authorization: `Bearer ${process.env.REACT_APP_TOKEN_BLOG}`,
         },
       },
     );
