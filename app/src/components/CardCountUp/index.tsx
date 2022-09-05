@@ -24,6 +24,7 @@ interface Props {
   horas: number;
   voluntarios: number;
   projetosVoluntarios: number;
+  ongs: number;
 }
 export function CardCountUp() {
   const [totalProjetos, setTotalProjetos] = useState(0);
@@ -32,14 +33,14 @@ export function CardCountUp() {
 
   const [totalProfissionaisVoluntarios, setTotalProfissionaisVoluntarios] =
     useState(0);
-  const [totalProjetosVoluntarios, setTotalProjetosVoluntarios] = useState(0);
+  const [totalOngs, setTotalOngs] = useState(0);
 
   useEffect(() => {
     consultas_api.get<Props>('/consulta/estatisticas').then(({ data }) => {
       setTotalUsuarios(data.usuarios);
       setTotalHoras(data.horas);
       setTotalProfissionaisVoluntarios(data.voluntarios);
-      setTotalProjetosVoluntarios(data.projetosVoluntarios);
+      setTotalOngs(data.ongs);
       setTotalProjetos(data.projetos);
     });
   }, []);
@@ -121,7 +122,7 @@ export function CardCountUp() {
             <Image src={Instituicoes} alt="Icon-Foguete" />
 
             <Contador>
-              <CountUp end={totalProjetosVoluntarios} delay={1} redraw={true}>
+              <CountUp end={totalOngs} delay={1} redraw={true}>
                 {({ countUpRef, start }) => (
                   <VisibilitySensor onChange={start} delayedCall>
                     <strong ref={countUpRef} />
