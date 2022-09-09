@@ -24,8 +24,8 @@ export function ToggleSwitch({
   const router = useRouter();
 
   useEffect(() => {
-    const { filter } = router.query;
-    if (filter === 'voluntarios' && typeof window !== 'undefined') {
+    const { voluntario } = router.query;
+    if (voluntario && typeof window !== 'undefined') {
       const element = document.getElementById('flexSwitchCheckDefault');
       if (element) element.click();
     }

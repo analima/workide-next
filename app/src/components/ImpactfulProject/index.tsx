@@ -18,7 +18,7 @@ export function ImpactfulProject() {
         <ContentButton>
           <button
             onClick={() =>
-              router.push('/fornecedor/captar-projetos?filter=voluntarios')
+              router.push('/fornecedor/captar-projetos?voluntario=true')
             }
           >
             Seja voluntário
