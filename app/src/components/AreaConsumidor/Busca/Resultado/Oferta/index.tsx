@@ -36,7 +36,7 @@ export default function Oferta() {
 
   useEffect(() => {
     const load = async () => {
-      if (!user.id_pessoa) return;
+      if (!user?.id_pessoa) return;
       const indexArr: number[] = await handleServiceFavoriteIndex(service);
       handleServiceIsFavorite(indexArr, service);
     };
@@ -117,7 +117,7 @@ export default function Oferta() {
           />
         </>
       )}
-      {services.length === 0 && (
+      {!services && (
         <AvatarContainer full>
           <Dialogo>
             <ContentAvatar>
