@@ -8,7 +8,7 @@ import { Card } from '../../../../Card';
 import { ItemVitrine } from '../../../../Vitrine';
 import { Col, Row } from 'react-bootstrap';
 import Paginacao from '../../../Home/MeusProjetos/Paginacao';
-import Image from 'next/image'
+import Image from 'next/image';
 import {
   AvatarContainer,
   ContentAvatar,
@@ -23,10 +23,10 @@ export default function Fornecedor() {
   const history = useHistory();
   const { people, paginaPerfis, setPaginaPerfis, totalPaginasPerfis } =
     useBuscaFornecedorOferta();
-
+  console.log(people);
   let { user } = useAuth();
-  if(!user){
-    user = {} as IPessoa
+  if (!user) {
+    user = {} as IPessoa;
   }
   const [showAvatarCadastroIncompleto, setShowAvatarCadastroIncompleto] =
     useState(false);
@@ -52,12 +52,11 @@ export default function Fornecedor() {
       />
       <Row className="d-flex align-items-center justify-content-center">
         <Col lg={11}>
-          {people.length > 0 ? (
+          {people && people.length > 0 ? (
             <>
               <CardContainer quantidadeItem={people.length}>
-                {people.map(item => (
-                  <ItemVitrine item={item} key={item.id} />
-                ))}
+                {people &&
+                  people.map(item => <ItemVitrine item={item} key={item.id} />)}
               </CardContainer>
               <Row className="mt-3">
                 <Col lg={12}>
@@ -71,7 +70,7 @@ export default function Fornecedor() {
             </>
           ) : (
             <Card>
-               <AvatarContainer full>
+              <AvatarContainer full>
                 <Dialogo>
                   <ContentAvatar>
                     <p>
@@ -86,7 +85,6 @@ export default function Fornecedor() {
                 </Dialogo>
                 <Avatar>
                   <Image src={Carol} alt="avatar carol" />
-           
                 </Avatar>
               </AvatarContainer>
             </Card>
