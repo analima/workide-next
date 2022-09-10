@@ -96,7 +96,7 @@ export default function ContentBusca() {
     const buscaFormatada = formataBusca[1]?.split('=')[1];
     setFilter(decodeURI(buscaFormatada));
     setTerm(decodeURI(buscaFormatada));
-  }, [ setFilter, setTerm]);
+  }, [setFilter, setTerm]);
 
   const handleRedirect = (type: string) => {
     if (type === 'geral') {
