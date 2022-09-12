@@ -32,7 +32,6 @@ import { pessoas_api } from '../../services/pessoas_api';
 import { useAuth } from '../../contexts/auth';
 import Carol from '../../assets/carol-full.svg';
 import Avatar from '../../components/CadastroComplementar/Apresentacao/style';
-import { useHistory } from 'react-router';
 import { useRouter } from 'next/router';
 import { ModalLoading } from '../ModalLoading';
 import { Button } from '../Form/Button';
@@ -215,14 +214,15 @@ export function ItemVitrine({
 
         {!!user.id_pessoa && (
           <ContainerItensFooter>
-            {user?.id_pessoa !== item.id && (
+            {user?.id_pessoa !== item?.id && (
               <Favorito
                 isLogado={user?.id ? true : false}
                 onClick={event => {
-                  if (user.id) handleFavorite(event, item.id);
+                  if (user?.id) handleFavorite(event, item.id);
                 }}
               >
-                {favoriteItem.find(element => element === item.id) ? (
+                {favoriteItem.length > 0 &&
+                favoriteItem?.find(element => element === item?.id) ? (
                   <CoracaoOn />
                 ) : (
                   <CoracaoOff />

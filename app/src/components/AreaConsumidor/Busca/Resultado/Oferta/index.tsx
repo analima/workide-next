@@ -117,7 +117,7 @@ export default function Oferta() {
           />
         </>
       )}
-      {services.length === 0 && (
+      {!services && (
         <AvatarContainer full>
           <Dialogo>
             <ContentAvatar>
