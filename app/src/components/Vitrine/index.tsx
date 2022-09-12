@@ -36,6 +36,7 @@ import { useHistory } from 'react-router';
 import { useRouter } from 'next/router';
 import { ModalLoading } from '../ModalLoading';
 import { Button } from '../Form/Button';
+import { PessoaProp } from 'src/hooks/buscaConsumidor';
 
 export interface IVitrine {
   nome: string;
@@ -63,26 +64,6 @@ interface IItemVitrineProps {
   setShowAvatar?: (showAvatar: boolean) => void;
   recontract?: boolean;
 }
-
-type PessoaProp = {
-  urlArquivo: string;
-  tratamento: string;
-  ranking: number;
-  notaMedia: number;
-  profissoes: string[];
-  categoriasEspecialidades: string[];
-  nivelExperiencia: string;
-  id: number;
-  nome: string;
-  idUsuario: number;
-  numProjetos: number;
-  inVoluntariado: boolean;
-  areasInteresse: AreaProp[];
-};
-
-type AreaProp = {
-  descricao: string;
-};
 
 export function ItemVitrine({
   item,
@@ -222,7 +203,7 @@ export function ItemVitrine({
                 negrito={false}
               />
               <AreasInteresse>
-                {item.areasInteresse.map((area: AreaProp) => (
+                {item.areasInteresse.map(area => (
                   <Area key={area.descricao}>
                     <span>{area.descricao}</span>
                   </Area>
@@ -232,9 +213,9 @@ export function ItemVitrine({
           )}
         </Footer>
 
-        {user && (
+        {!!user.id_pessoa && (
           <ContainerItensFooter>
-            {user?.id !== item.id && (
+            {user?.id_pessoa !== item.id && (
               <Favorito
                 isLogado={user?.id ? true : false}
                 onClick={event => {

@@ -268,8 +268,7 @@ export const BuscaFornecedorOfertaProvider: React.FC<GlobalLayoutProps> = ({
           },
         )
         .then(({ data }) => {
-          console.log(data);
-          if (data) setPeople(data?.values);
+          setPeople(data?.values);
           setTotalPaginasPerfis(data?.pages);
         });
 

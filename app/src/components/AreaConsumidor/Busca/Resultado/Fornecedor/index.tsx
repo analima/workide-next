@@ -23,7 +23,6 @@ export default function Fornecedor() {
   const history = useHistory();
   const { people, paginaPerfis, setPaginaPerfis, totalPaginasPerfis } =
     useBuscaFornecedorOferta();
-  console.log(people);
   let { user } = useAuth();
   if (!user) {
     user = {} as IPessoa;
