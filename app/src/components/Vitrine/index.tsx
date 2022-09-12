@@ -112,7 +112,6 @@ export function ItemVitrine({
         console.error(error.response?.data || error);
       }
     };
-    countProjects();
     load();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [item]);
@@ -157,7 +156,7 @@ export function ItemVitrine({
     load();
   };
 
-  async function countProjects() {
+  const countProjects = useCallback(async () => {
     try {
       const response = await pessoas_api.get(
         `/projetos/count?idPessoaFornecedor=${item.id}`,
@@ -166,7 +165,11 @@ export function ItemVitrine({
     } catch (error: any) {
       console.error(error.response);
     }
-  }
+  }, [item.id]);
+
+  useEffect(() => {
+    countProjects();
+  }, [countProjects]);
 
   return (
     <>
