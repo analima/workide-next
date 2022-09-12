@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { hotjar } from 'react-hotjar';
 import { useEffect } from 'react';
 import { BuscaFornecedorOfertaProvider } from '../../../hooks/buscaConsumidor';
-import  ContentBusca  from '../../../components/AreaConsumidor/Busca/ContentBusca';
+import ContentBusca from '../../../components/AreaConsumidor/Busca/ContentBusca';
 import Content from '../../../components/AreaConsumidor/Busca/style';
 
 export default function Busca() {
@@ -12,16 +12,18 @@ export default function Busca() {
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
-    hotjar.stateChange('/fornecedor/captar-projetos');
+    hotjar.stateChange('/consumidor/busca');
   }, []);
   return (
     <Content>
       <Helmet>
         <title>Gyan - Buscar oportunidades</title>
       </Helmet>
-      <BuscaFornecedorOfertaProvider>
-        <ContentBusca />
-      </BuscaFornecedorOfertaProvider>
+      {typeof window !== 'undefined' && (
+        <BuscaFornecedorOfertaProvider>
+          <ContentBusca />
+        </BuscaFornecedorOfertaProvider>
+      )}
     </Content>
   );
 }

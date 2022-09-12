@@ -1,4 +1,4 @@
-import { useState, ReactNode, useEffect } from 'react';
+import { useState, ReactNode, useEffect, useCallback } from 'react';
 import { Container } from 'react-bootstrap';
 import { FeedbackChat } from '../../FeedbackChat';
 
@@ -7,7 +7,6 @@ import { Rodape } from '../../Rodape';
 import { Spacer } from '../../Spacer';
 import { Titulo } from '../../Titulo';
 import { useAuth } from '../../../contexts/auth';
-import { IPessoa } from '../../../interfaces/IPessoa';
 import HeaderPublico from './HeaderPublico';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
@@ -33,53 +32,52 @@ export default function Layout({
   navbarIsNotVisible,
 }: LayoutProps) {
   const [sidebar, setSidebar] = useState(false);
-
+  const [dataStorage, setDataStorage] = useState(false);
   function toggleSidebar() {
     sidebar && setSidebar(!sidebar);
   }
-
-  const [user, setUser] = useState({} as IPessoa);
+  const { setUser, user } = useAuth();
   const [isAuthDataLoading, setIsAuthDataLoading] = useState(true);
   const [idToken, setIdToken] = useState('');
 
-
-  const refreshUserData = async (ID_TOKEN: any) => {
-    console.log('entrou')
-    const newIdToken = localStorage.getItem(ID_TOKEN);
-    setIdToken(newIdToken || '');
-    console.log(newIdToken)
-    if (newIdToken) {
-      const res = await pessoas_api.get('/pessoas/me', {
-        headers: {
-          Authorization: `Bearer ${newIdToken}`,
-        },
-      });
-      if (res) {
-        
-        const { data: newUser } = res;
-        setUser({
-          ...newUser,
-          id_pessoa: newUser.id,
-          email: newUser.usuario?.email,
-          url_avatar: newUser.arquivo?.url,
-          admin: newUser.usuario?.admin,
+  const refreshUserData = useCallback(
+    async (ID_TOKEN: any) => {
+      const newIdToken = localStorage.getItem(ID_TOKEN);
+      setIdToken(newIdToken || '');
+      if (newIdToken) {
+        const res = await pessoas_api.get('/pessoas/me', {
+          headers: {
+            Authorization: `Bearer ${newIdToken}`,
+          },
         });
+        if (res) {
+          const { data: newUser } = res;
+          setUser({
+            ...newUser,
+            id_pessoa: newUser.id,
+            email: newUser.usuario?.email,
+            url_avatar: newUser.arquivo?.url,
+            admin: newUser.usuario?.admin,
+          });
+        }
       }
-    }
-   
-  }
+    },
+    [setUser],
+  );
 
   useEffect(() => {
-    let local = localStorage.getItem('@Gyan:id_token')
-    if(local){
-      const ID_TOKEN = '@Gyan:id_token'
-      refreshUserData(ID_TOKEN)
+    const local = localStorage.getItem('@Gyan:id_token');
+
+    setDataStorage(!!local);
+    if (local) {
+      const ID_TOKEN = '@Gyan:id_token';
+      refreshUserData(ID_TOKEN);
     }
-  }, [])
+  }, [refreshUserData]);
 
   return (
     <Content>
-      {!user.id_pessoa ? (
+      {!dataStorage && typeof window !== 'undefined' && !user?.id_pessoa ? (
         <>
           <HeaderPublico />
           <Spacer size={60} />
@@ -95,13 +93,12 @@ export default function Layout({
               activeMenu={activeMenu}
               maisSolucoesIsNotVisible={maisSolucoesIsNotVisible}
             />
-           
           )}
         </>
       )}
       {activeMenu && <Sidebar open={sidebar} />}
       <Container onClick={toggleSidebar}>
-        <Spacer size={user.id_pessoa ? 10 : 90} />
+        <Spacer size={user?.id_pessoa ? 10 : 90} />
         <Subtitulo>{subtitulo}</Subtitulo>
         <Titulo titulo={titulo} />
         {children}
