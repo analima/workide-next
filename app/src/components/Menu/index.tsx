@@ -172,7 +172,7 @@ export function Menu({
                   <Nav.Link
                     className="container-profile"
                     onClick={() =>
-                      router.push(selecionarRotaHome(user.tipoPerfil))
+                      router.push(selecionarRotaHome(user?.tipoPerfil))
                     }
                   >
                     <Image className="profile" src={userIcon} alt="perfil" />

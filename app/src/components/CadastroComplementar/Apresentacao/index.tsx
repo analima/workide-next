@@ -63,11 +63,11 @@ export default function Aprensetacao() {
       if (percentageRegister > 20 && percentageRegister < 40) {
         history.push('/cadastro-complementar', { cadastroCompleto: false });
       } else if (percentageRegister >= 40) {
-        history.push(selecionarRotaHome(user.tipoPerfil));
+        history.push(selecionarRotaHome(user?.tipoPerfil));
       }
     };
     load();
-  }, [user.tipoPerfil, user.percentageRegisterProvider, history]);
+  }, [user?.tipoPerfil, user.percentageRegisterProvider, history]);
 
   useEffect(() => {
     hotjar.initialize(

@@ -66,7 +66,7 @@ export default function Home() {
         const storageUser = localStorage.getItem('@Gyan:id_token');
         console.log('Storage::', storageUser);
         if (!!user.id_pessoa === true && storageUser !== null) {
-          return router.push(selecionarRotaHome(user.tipoPerfil));
+          return router.push(selecionarRotaHome(user?.tipoPerfil));
         }
         router.push('/');
       }
@@ -78,7 +78,7 @@ export default function Home() {
     );
     hotjar.stateChange('/');
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state, user.tipoPerfil, user.id_pessoa]);
+  }, [state, user?.tipoPerfil, user.id_pessoa]);
 
   return (
     <>

@@ -136,7 +136,7 @@ export default function CondicaoGeralForm({
           setAbaSelecionada({ indice: 3, porcentagem: 75 });
         } else if (cadastroCompleto)
           setAbaSelecionada({ indice: 2, porcentagem: 75 });
-        else history.push(selecionarRotaHome(user.tipoPerfil));
+        else history.push(selecionarRotaHome(user?.tipoPerfil));
       } catch (error: any) {
         console.log(error.response);
       }
