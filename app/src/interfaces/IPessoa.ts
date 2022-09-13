@@ -71,4 +71,5 @@ export interface IPessoa {
     pontuacaoTotal: number;
     notaMedia: number;
   };
+  tipoPerfil?: string;
 }

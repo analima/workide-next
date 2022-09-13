@@ -151,6 +151,7 @@ export function Menu({
 
             {!user.visitante && user.email && !hiddenCenterMenu && (
               <Image
+                alt=""
                 src={Center}
                 className="icone-center"
                 onClick={() => {
@@ -170,7 +171,9 @@ export function Menu({
                   <Image className="separator" src={separator} alt="perfil" />
                   <Nav.Link
                     className="container-profile"
-                    onClick={() => router.push(selecionarRotaHome(user))}
+                    onClick={() =>
+                      router.push(selecionarRotaHome(user?.tipoPerfil))
+                    }
                   >
                     <Image className="profile" src={userIcon} alt="perfil" />
                     {name}

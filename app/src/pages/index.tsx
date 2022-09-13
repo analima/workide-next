@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { Conheca } from '../components/Home/Conheca';
 import { Header } from '../components/Header';
 import { Helmet } from 'react-helmet';
@@ -66,7 +66,7 @@ export default function Home() {
         const storageUser = localStorage.getItem('@Gyan:id_token');
         console.log('Storage::', storageUser);
         if (!!user.id_pessoa === true && storageUser !== null) {
-          return router.push(selecionarRotaHome(user));
+          return router.push(selecionarRotaHome(user?.tipoPerfil));
         }
         router.push('/');
       }
@@ -78,7 +78,7 @@ export default function Home() {
     );
     hotjar.stateChange('/');
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state, user]);
+  }, [state, user?.tipoPerfil, user.id_pessoa]);
 
   return (
     <>
