@@ -45,7 +45,8 @@ export default function Home() {
       }
     }
     loadSorage();
-  }, [router, state, user.id_pessoa]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state, user.id_pessoa]);
 
   useEffect(() => {
     const section = query.get('section');
@@ -74,7 +75,8 @@ export default function Home() {
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
     hotjar.stateChange('/');
-  }, [router, state, user]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state, user]);
 
   return (
     <>
