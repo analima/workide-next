@@ -154,7 +154,9 @@ export default class Login extends React.Component<any, any> {
           loading: false,
         });
         if (pessoaResponse.data.percentageRegisterProvider > 20)
-          window.location.replace(selecionarRotaHome(pessoaResponse.data));
+          window.location.replace(
+            selecionarRotaHome(pessoaResponse.data.tipoPerfil),
+          );
         else window.location.replace('/apresentacao');
       })
       .catch(async error => {

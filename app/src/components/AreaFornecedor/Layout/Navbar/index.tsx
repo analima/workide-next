@@ -3,9 +3,9 @@ import { Link, Router, useHistory } from 'react-router-dom';
 import { formatDistance } from 'date-fns';
 import { pt } from 'date-fns/locale';
 import { Container, Dropdown, ModalBody } from 'react-bootstrap';
-import {useRouter} from 'next/router'
+import { useRouter } from 'next/router';
 import { useAuth } from '../../../../contexts/auth';
-import Image from 'next/image'
+import Image from 'next/image';
 import { pessoas_api } from '../../../../services/pessoas_api';
 import {
   ContentSession,
@@ -22,7 +22,7 @@ import {
   ContainerHeader,
 } from './style';
 import Content from './style';
-import Home  from '../../../../assets/House.svg';
+import Home from '../../../../assets/House.svg';
 import { BsCircleFill } from 'react-icons/bs';
 import { AZUL, CINZA_40 } from '../../../../styles/variaveis';
 import { Titulo } from '../../../../components/Titulo';
@@ -47,7 +47,10 @@ interface INotification {
   link?: string;
 }
 
-export default function Navbar({ toggleSidebar, hinddenOportunidades }: INavbar) {
+export default function Navbar({
+  toggleSidebar,
+  hinddenOportunidades,
+}: INavbar) {
   const history = useHistory();
   const [notifications, setNotifications] = useState<INotification[]>([]);
   const [unreadNotifications, setUnreadNotifications] = useState<number>(0);
@@ -58,13 +61,12 @@ export default function Navbar({ toggleSidebar, hinddenOportunidades }: INavbar)
   const [isAuthDataLoading, setIsAuthDataLoading] = useState(true);
   const [idToken, setIdToken] = useState('');
 
-  const router = useRouter()
+  const router = useRouter();
 
   const refreshUserData = async (ID_TOKEN: any) => {
-   
     const newIdToken = localStorage.getItem(ID_TOKEN);
     setIdToken(newIdToken || '');
-   
+
     if (newIdToken) {
       const res = await pessoas_api.get('/pessoas/me', {
         headers: {
@@ -72,7 +74,6 @@ export default function Navbar({ toggleSidebar, hinddenOportunidades }: INavbar)
         },
       });
       if (res) {
-        
         const { data: newUser } = res;
         setUser({
           ...newUser,
@@ -83,17 +84,15 @@ export default function Navbar({ toggleSidebar, hinddenOportunidades }: INavbar)
         });
       }
     }
-   
-  }
+  };
 
   useEffect(() => {
-    let local = localStorage.getItem('@Gyan:id_token')
-    if(local){
-      const ID_TOKEN = '@Gyan:id_token'
-      refreshUserData(ID_TOKEN)
+    let local = localStorage.getItem('@Gyan:id_token');
+    if (local) {
+      const ID_TOKEN = '@Gyan:id_token';
+      refreshUserData(ID_TOKEN);
     }
-    
-  }, [])
+  }, []);
 
   const handleCloseOrOpenNotifications = useCallback(async () => {
     setShowModal(oldShowModal => {
@@ -149,12 +148,19 @@ export default function Navbar({ toggleSidebar, hinddenOportunidades }: INavbar)
     <Content>
       <Container>
         <div className="icones">
-            {/* <Image src={FiMenu} onClick={toggleSidebar}/> */}
+          {/* <Image src={FiMenu} onClick={toggleSidebar}/> */}
           <FiMenu onClick={toggleSidebar} />
 
           {/* <Link to="/fornecedor/home"> */}
-            <Image src={Home} className="fi-icon-home" onClick={() => {router.push('/fornecedor/home')}} style={{cursor: 'pointer'}} />
-          
+          <Image
+            alt="Home fornecedor"
+            src={Home}
+            className="fi-icon-home"
+            onClick={() => {
+              router.push('/fornecedor/home');
+            }}
+            style={{ cursor: 'pointer' }}
+          />
         </div>
 
         <ContentSession>
@@ -165,8 +171,8 @@ export default function Navbar({ toggleSidebar, hinddenOportunidades }: INavbar)
             BUSCAR OPORTUNIDADES
           </GhostButton>
 
-         <AcaoBell>
-             <Dropdown
+          <AcaoBell>
+            <Dropdown
               onToggle={isOpen => {
                 if (!isOpen) {
                   handleReadNotificationFromIdPessoa(user.id_pessoa || 0);
