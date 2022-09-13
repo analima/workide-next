@@ -20,7 +20,6 @@ interface IAuthProps {
 
 interface IAuthContextProps {
   user: IPessoa;
-  setUser: React.Dispatch<React.SetStateAction<IPessoa>>;
   idToken: string;
   isAuthDataLoading: boolean;
   saveAuthData(data: IAuthProps): Promise<void>;
@@ -28,13 +27,10 @@ interface IAuthContextProps {
   signOut(): void;
 }
 
-interface IProps {
-  children: React.ReactNode;
-}
-
 const AuthContext = createContext<IAuthContextProps>({} as IAuthContextProps);
 
-export function AuthProvider({ children }: IProps) {
+export const AuthProvider: React.FC = ({ children }: any) => {
+  debugger
   const [user, setUser] = useState({} as IPessoa);
   const [isAuthDataLoading, setIsAuthDataLoading] = useState(true);
   const [idToken, setIdToken] = useState('');
@@ -75,6 +71,8 @@ export function AuthProvider({ children }: IProps) {
         });
       }
     }
+  
+  
   }, []);
 
   useEffect(() => {
@@ -84,7 +82,6 @@ export function AuthProvider({ children }: IProps) {
     <AuthContext.Provider
       value={{
         user,
-        setUser,
         idToken,
         isAuthDataLoading,
         saveAuthData,
@@ -95,7 +92,7 @@ export function AuthProvider({ children }: IProps) {
       {children}
     </AuthContext.Provider>
   );
-}
+};
 
 export function useAuth(): IAuthContextProps {
   const context = useContext(AuthContext);
