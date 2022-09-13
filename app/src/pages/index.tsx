@@ -30,6 +30,7 @@ export default function Home() {
 
   if (!user) {
     user = {} as IPessoa;
+    console.log('não encontrou o usuario mesmo...');
   }
 
   useEffect(() => {
@@ -63,6 +64,7 @@ export default function Home() {
     function loadSorage() {
       if (!state) {
         const storageUser = localStorage.getItem('@Gyan:id_token');
+        console.log('Storage::', storageUser);
         if (!!user.id_pessoa === true && storageUser !== null) {
           return router.push(selecionarRotaHome(user));
         }

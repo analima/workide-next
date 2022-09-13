@@ -32,10 +32,10 @@ import { pessoas_api } from '../../services/pessoas_api';
 import { useAuth } from '../../contexts/auth';
 import Carol from '../../assets/carol-full.svg';
 import Avatar from '../../components/CadastroComplementar/Apresentacao/style';
+import { useHistory } from 'react-router';
 import { useRouter } from 'next/router';
 import { ModalLoading } from '../ModalLoading';
 import { Button } from '../Form/Button';
-import { PessoaProp } from 'src/hooks/buscaConsumidor';
 
 export interface IVitrine {
   nome: string;
@@ -63,6 +63,26 @@ interface IItemVitrineProps {
   setShowAvatar?: (showAvatar: boolean) => void;
   recontract?: boolean;
 }
+
+type PessoaProp = {
+  urlArquivo: string;
+  tratamento: string;
+  ranking: number;
+  notaMedia: number;
+  profissoes: string[];
+  categoriasEspecialidades: string[];
+  nivelExperiencia: string;
+  id: number;
+  nome: string;
+  idUsuario: number;
+  numProjetos: number;
+  inVoluntariado: boolean;
+  areasInteresse: AreaProp[];
+};
+
+type AreaProp = {
+  descricao: string;
+};
 
 export function ItemVitrine({
   item,
@@ -205,7 +225,7 @@ export function ItemVitrine({
                 negrito={false}
               />
               <AreasInteresse>
-                {item.areasInteresse.map(area => (
+                {item.areasInteresse.map((area: AreaProp) => (
                   <Area key={area.descricao}>
                     <span>{area.descricao}</span>
                   </Area>
@@ -215,17 +235,16 @@ export function ItemVitrine({
           )}
         </Footer>
 
-        {!!user.id_pessoa && (
+        {user && (
           <ContainerItensFooter>
-            {user?.id_pessoa !== item?.id && (
+            {user?.id !== item.id && (
               <Favorito
                 isLogado={user?.id ? true : false}
                 onClick={event => {
-                  if (user?.id) handleFavorite(event, item.id);
+                  if (user.id) handleFavorite(event, item.id);
                 }}
               >
-                {favoriteItem.length > 0 &&
-                favoriteItem?.find(element => element === item?.id) ? (
+                {favoriteItem.find(element => element === item.id) ? (
                   <CoracaoOn />
                 ) : (
                   <CoracaoOff />
