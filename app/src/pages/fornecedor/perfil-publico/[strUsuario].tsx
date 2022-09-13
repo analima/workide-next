@@ -7,7 +7,7 @@ import { IProvider } from '../../../interfaces/IProvider';
 import { pessoas_api } from '../../../services/pessoas_api';
 import ModalDenuncia from '../../../components/ModalDenuncia';
 import Layout from '../../../components/AreaFornecedor/Layout';
-import {useRouter} from 'next/router'
+import { useRouter } from 'next/router';
 import { Sobre } from '../../../components/AreaFornecedor/NovoPerfilPublico/Sobre';
 import {
   ButtonVoltar,
@@ -34,18 +34,18 @@ export default function NovoPerfilPublico() {
   const [dataProvider, setDataProvider] = useState<IProvider>({} as IProvider);
   const [idPessoa, setIdPessoa] = useState(0);
   let query = router.query.strUsuario as unknown;
-  const params = query as IServicoConsumidorPublicoParams
+  const params = query as IServicoConsumidorPublicoParams;
   let { user } = useAuth();
-   if(!user){
-     user = {} as IPessoa;
-     user.id_pessoa = 0
-     console.log('olar')
-   }
+  if (!user) {
+    user = {} as IPessoa;
+    user.id_pessoa = 0;
+    console.log('olar');
+  }
   if (!user.id_pessoa) {
-    user.id_pessoa = 0
+    user.id_pessoa = 0;
   }
   if (user) {
-    console.log('olaaar')
+    console.log('olaaar');
   }
   const [imageLoaded, setImageLoaded] = useState(true);
   useEffect(() => {
@@ -66,12 +66,12 @@ export default function NovoPerfilPublico() {
         })
         .catch(error => {
           if (error) {
-            console.log('error do catch: ',error)
-            debugger
+            console.log('error do catch: ', error);
+            debugger;
           }
         });
     }
-  }, [idPessoa, router]);
+  }, [idPessoa]);
 
   useEffect(() => {
     getProvider();
@@ -117,15 +117,13 @@ export default function NovoPerfilPublico() {
                   onClick={() =>
                     router.push({
                       pathname: '/cadastro-complementar',
-                      query: { cadastroCompleto: true }
+                      query: { cadastroCompleto: true },
                     })
                   }
                 >
                   EDITAR PERFIL
                 </Button>
-                <GhostButton onClick={() => router.back()}>
-                  VOLTAR
-                </GhostButton>
+                <GhostButton onClick={() => router.back()}>VOLTAR</GhostButton>
               </ContentButton>
             </Col>
           </Row>
@@ -135,10 +133,7 @@ export default function NovoPerfilPublico() {
 
         <Row>
           <Col lg={12}>
-            <Sobre
-              dataProps={dataProvider}
-              imageLoaded={imageLoaded}
-            />
+            <Sobre dataProps={dataProvider} imageLoaded={imageLoaded} />
           </Col>
         </Row>
 
@@ -170,13 +165,24 @@ export default function NovoPerfilPublico() {
         <Row>
           <Col lg={12}>
             <ContentButton>
-              <ButtonVoltar onClick={() => router.back()}>
-                VOLTAR
-              </ButtonVoltar>
+              <ButtonVoltar onClick={() => router.back()}>VOLTAR</ButtonVoltar>
             </ContentButton>
           </Col>
         </Row>
       </Layout>
     </Content>
   );
+}
+
+export async function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: false,
+  };
+}
+
+export async function getStaticProps() {
+  return {
+    props: { post: {} },
+  };
 }

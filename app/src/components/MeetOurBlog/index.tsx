@@ -59,7 +59,7 @@ export function MeetOurBlog({ posts }: PostProps) {
       <h2>Conheça nosso blog</h2>
       <h4>Postagens relacionadas</h4>
       <Carrousel {...settingsSlider}>
-        {posts.map(item => {
+        {posts?.map(item => {
           return (
             <Posts
               key={item.id}
