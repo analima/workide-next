@@ -239,6 +239,8 @@ export const CaptarProjetoFornecedorProvider: React.FC<GlobalLayoutProps> = ({
     setValue('preco_minimo', '');
     setValue('preco_maximo', '');
 
+    setValue('pesquisa', '');
+
     obterProjetos();
   }, [mudar, obterProjetos, setValue]);
 
