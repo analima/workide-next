@@ -166,7 +166,20 @@ export function ItemVitrine({
       const { data: countIniciado } = await oportunidades_api.get(
         `/projetos/count?idPessoaFornecedor=${item.id}&status=INICIADO`,
       );
-      setNumeroProjetos(countConcluido + countIniciado);
+
+      const { data: countAguardandoInicio } = await oportunidades_api.get(
+        `/projetos/count?idPessoaFornecedor=${item.id}&status=AGUARDANDO_INICIO`,
+      );
+
+      const { data: countConcluidoParcialmente } = await oportunidades_api.get(
+        `/projetos/count?idPessoaFornecedor=${item.id}&status=CONCLUIDO_PARCIALMENTE`,
+      );
+      setNumeroProjetos(
+        countConcluido +
+          countIniciado +
+          countAguardandoInicio +
+          countConcluidoParcialmente,
+      );
     } catch (error: any) {
       console.error(error.response);
     }
