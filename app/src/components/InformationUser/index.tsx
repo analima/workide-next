@@ -33,7 +33,7 @@ export function InformationUser({ page }: IProps) {
         )}
         <div className="info-user">
           <span>
-            {user?.ong && <strong>ONG</strong> + ' -'} {user?.nome}
+            {user?.ong && <strong>ONG</strong>} {user?.nome}
           </span>
           <p>Bem-Vindo(a), comece a cadastrar suas necessidades</p>
         </div>
