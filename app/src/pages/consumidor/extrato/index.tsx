@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
 import { hotjar } from 'react-hotjar';
 import Extrato from 'src/Containers/Extrato';
+import { useAuth } from 'src/contexts/auth';
+import { IPessoa } from 'src/interfaces/IPessoa';
 
 export default function Extratos() {
   useEffect(() => {

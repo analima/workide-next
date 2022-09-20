@@ -23,6 +23,8 @@ import { Select } from 'src/components/Form/Select';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
+import { useAuth } from 'src/contexts/auth';
+import { IPessoa } from 'src/interfaces/IPessoa';
 
 interface TypeProfileProps {
   type: string;
@@ -32,6 +34,9 @@ export default function Extrato({ type }: TypeProfileProps) {
   const router = useRouter();
   const schema = Yup.object().shape({});
 
+  let { user } = useAuth();
+
+  console.log(user);
   const { control, getValues, watch } = useForm({
     resolver: yupResolver(schema),
   });
