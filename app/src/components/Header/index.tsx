@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { useHistory } from 'react-router';
 import { FiLogOut, FiMenu, FiX } from 'react-icons/fi';
 import { BiUserCircle } from 'react-icons/bi';
+import { pessoas_api } from '../../services/pessoas_api';
 import {
   HeaderInfo,
   Container,
@@ -11,7 +11,7 @@ import {
   ContainerMenuMobile,
 } from './style';
 import Logo from '../../assets/logo.svg';
-import { useAuth } from '../../contexts/auth';
+import { useAuth} from '../../contexts/auth';
 import { AZUL, BRANCO, PRETO } from '../../styles/variaveis';
 import { Button } from '../Form/Button';
 import { IPessoa } from '../../interfaces/IPessoa';
@@ -26,11 +26,47 @@ export function Header(): JSX.Element {
   const { signOut } = useAuth();
   const router = useRouter();
   const [sizePage, setSizePage] = useState(0);
-  let { user } = useAuth();
 
-  if (!user) {
-    user = {} as IPessoa;
+  const [user, setUser] = useState({} as IPessoa);
+  const [isAuthDataLoading, setIsAuthDataLoading] = useState(true);
+  const [idToken, setIdToken] = useState('');
+
+  const refreshUserData = async (ID_TOKEN: any) => {
+    console.log('entrou')
+    const newIdToken = localStorage.getItem(ID_TOKEN);
+    setIdToken(newIdToken || '');
+    console.log(newIdToken)
+    if (newIdToken) {
+      const res = await pessoas_api.get('/pessoas/me', {
+        headers: {
+          Authorization: `Bearer ${newIdToken}`,
+        },
+      });
+      if (res) {
+        
+        const { data: newUser } = res;
+        setUser({
+          ...newUser,
+          id_pessoa: newUser.id,
+          email: newUser.usuario?.email,
+          url_avatar: newUser.arquivo?.url,
+          admin: newUser.usuario?.admin,
+        });
+      }
+    }
+   
   }
+
+  useEffect(() => {
+    //NewAuth()
+    let local = localStorage.getItem('@Gyan:id_token')
+    if(local){
+      const ID_TOKEN = '@Gyan:id_token'
+      refreshUserData(ID_TOKEN)
+    }
+  }, [])
+
+
 
   function handleToggleMenu() {
     setIsMobile(prevState => !prevState);
@@ -60,7 +96,10 @@ export function Header(): JSX.Element {
         <HeaderInfo>
           <div>
             <p>
-            A Gyan une profissionais freelancer e voluntários em uma única plataforma. Contratação rápida, gratuita e segura. Programadores, web designers, redatores e o que mais você precisar para o seu negócio.
+              A Gyan une profissionais freelancer e voluntários em uma única
+              plataforma. Contratação rápida, gratuita e segura. Programadores,
+              web designers, redatores e o que mais você precisar para o seu
+              negócio.
             </p>
           </div>
           <FiX onClick={() => setEsconder(true)} color={BRANCO} size={12} />
@@ -107,7 +146,7 @@ export function Header(): JSX.Element {
                     }}
                   >
                     <BiUserCircle size={24} />
-                    {user.nome && (
+                    {/* {user.nome && (
                       <>
                         {user.nome?.indexOf('@') !== -1 && (
                           <>
@@ -122,7 +161,7 @@ export function Header(): JSX.Element {
                         )}
                         {user.nome?.indexOf('@') === -1 && <>{user.nome}</>}
                       </>
-                    )}
+                    )} */}
                   </Link>
                   <FiLogOut
                     onClick={() => {

@@ -12,6 +12,7 @@ export const Content = styled.section`
   min-height: 530px;
   scroll-behavior: smooth;
   width: 100%;
+  max-width: 1440px;
   margin: 0 auto;
 
   h1 {
@@ -59,6 +60,15 @@ export const Carrousel = styled(Slider)`
   .slick-track {
     display: flex;
     flex-direction: row-reverse;
+  }
+
+  @media (max-width: 478px) {
+    .slick-slide {
+    }
+
+    .slick-track {
+      flex-direction: row;
+    }
   }
 `;
 

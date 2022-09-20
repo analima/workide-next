@@ -151,6 +151,8 @@ export function ModalEbookOngs({
             width: '100%',
             maxWidth: '400px',
             margin: '0 auto',
+            paddingLeft: '0',
+            paddingRight: '0',
           }}
         >
           <Container>

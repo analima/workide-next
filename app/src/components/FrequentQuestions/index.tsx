@@ -42,11 +42,13 @@ export function FrequentQuestions({ item }: IProps) {
                 >
                   <span>{i.pergunta}</span>
 
-                  {idx.includes(index) ? (
-                    <IoIosArrowDown size={20} color={PRETO_10} />
-                  ) : (
-                    <IoIosArrowUp size={20} color={PRETO_10} />
-                  )}
+                  <div className="icon">
+                    {idx.includes(index) ? (
+                      <IoIosArrowUp size={20} color={PRETO_10} />
+                    ) : (
+                      <IoIosArrowDown size={20} color={PRETO_10} />
+                    )}
+                  </div>
                 </AccordionSecondary>
 
                 <AccordionPrimary.Collapse eventKey={String(index)}>

@@ -92,7 +92,6 @@ export function ItemVitrine({
   recontract,
 }: IItemVitrineProps) {
   const [favoriteItem, setFavoriteItem] = useState<Array<Number>>([]);
-  const history = useHistory();
   const [showModalLoadding, setShowModalLoadding] = useState(false);
   const [numeroProjetos, setNumeroProjetos] = useState(0);
   const { user } = useAuth();

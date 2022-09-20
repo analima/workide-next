@@ -15,6 +15,7 @@ import Content from './style';
 import { Button } from '../../../components/Form/Button';
 import { ToggleSwitch } from '../../../components/Form/ToggleSwitch';
 import { useGAEventsTracker } from '../../../hooks/useGAEventsTracker';
+import { selecionarRotaHome } from 'src/utils/selecionarRotaHome';
 
 interface IFormProps {
   email_novidades: boolean;
@@ -43,7 +44,10 @@ interface IProps {
   isConsumidor: boolean;
 }
 
-export default function CondicaoGeralForm({ cadastroCompleto, isConsumidor }: IProps) {
+export default function CondicaoGeralForm({
+  cadastroCompleto,
+  isConsumidor,
+}: IProps) {
   const { user, refreshUserData } = useAuth();
   const { setAbaSelecionada } = useCadastroComplementar();
   const history = useHistory();
@@ -132,7 +136,7 @@ export default function CondicaoGeralForm({ cadastroCompleto, isConsumidor }: IP
           setAbaSelecionada({ indice: 3, porcentagem: 75 });
         } else if (cadastroCompleto)
           setAbaSelecionada({ indice: 2, porcentagem: 75 });
-        else history.push('/persona');
+        else history.push(selecionarRotaHome(user?.tipoPerfil));
       } catch (error: any) {
         console.log(error.response);
       }
@@ -146,6 +150,7 @@ export default function CondicaoGeralForm({ cadastroCompleto, isConsumidor }: IP
       cadastroCompleto,
       setAbaSelecionada,
       history,
+      user.tipoPerfil,
     ],
   );
 

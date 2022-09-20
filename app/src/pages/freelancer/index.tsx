@@ -1,30 +1,20 @@
 import { useEffect } from 'react';
-import { Conheca } from '../../components/Home/Conheca';
+import ImgBanner from '../../assets/em-construcao.png';
+
 import { Header } from '../../components/Header';
 import { Helmet } from 'react-helmet';
 import { hotjar } from 'react-hotjar';
 import { useAuth } from '../../contexts/auth';
-import { Banner } from '../../components/Home/Banner';
-import { Vitrine } from '../../components/Home/Vitrine';
 import { Container } from '../../components/Home/styles';
-import { CardCategory } from '../../components/CardCategoria';
-import { CardBoasIdeias } from '../../components/CardBoasIdeias';
-import { CardConhecaComoFunciona } from '../../components/CardConhecaComoFunciona';
-import { CardCountUp } from '../../components/CardCountUp';
-import { CardProjetosMaisBuscados } from '../../components/CardProjetosMaisBuscados';
-import { useQuery } from '../../hooks/geral';
 import { useRouter } from 'next/router';
 import { IPessoa } from '../../interfaces/IPessoa';
 import { Footer } from 'src/components/Footer';
 import Head from 'next/head';
+import Image from 'next/image';
 
-export default function Home() {
+export default function Freelancer() {
   const router = useRouter();
 
-  const {
-    query: { state },
-  } = router;
-  const query = useQuery();
   let { user } = useAuth();
 
   if (!user) {
@@ -32,43 +22,17 @@ export default function Home() {
   }
 
   useEffect(() => {
-    function loadSorage() {
-      if (!state) {
-        const storageUser = localStorage.getItem('@Gyan:id_token');
-        if (!!user.id_pessoa === true && storageUser !== null) {
-          return router.push('/persona');
-        }
-        router.push('/');
-      }
-    }
-    loadSorage();
-  }, [state, user.id_pessoa]);
-
-  useEffect(() => {
-    const section = query.get('section');
-    if (section === 'como-funciona') {
-      if (window.innerWidth > 768) {
-        window.scrollTo(0, 1700);
-      } else {
-        window.scrollTo(0, 1000);
-      }
-    }
-  }, [query]);
-
-  useEffect(() => {
     hotjar.initialize(
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
-    hotjar.stateChange('/');
+    hotjar.stateChange('/freelancer');
   }, []);
 
   return (
     <>
       <Helmet>
-        <title>
-          Gyan - Contrate um freelancer em poucos cliques
-        </title>
+        <title>Gyan - Contrate um freelancer em poucos cliques</title>
       </Helmet>
 
       <Head>
@@ -83,14 +47,15 @@ export default function Home() {
           <Header />
 
           <Container>
-            <Banner />
-            <CardCategory />
-            <CardBoasIdeias />
-            <CardConhecaComoFunciona />
-            <Vitrine />
-            <Conheca />
-            <CardCountUp />
-            <CardProjetosMaisBuscados />
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <Image
+                alt="Em construção"
+                layout="fixed"
+                width={500}
+                height={500}
+                src={ImgBanner}
+              />
+            </div>
             <Footer />
           </Container>
         </>

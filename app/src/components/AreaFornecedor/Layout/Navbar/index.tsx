@@ -1,9 +1,12 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, Router, useHistory } from 'react-router-dom';
 import { formatDistance } from 'date-fns';
 import { pt } from 'date-fns/locale';
 import { Container, Dropdown, ModalBody } from 'react-bootstrap';
+import { useRouter } from 'next/router';
 import { useAuth } from '../../../../contexts/auth';
+import Image from 'next/image';
+import { pessoas_api } from '../../../../services/pessoas_api';
 import {
   ContentSession,
   GhostButton,
@@ -19,13 +22,14 @@ import {
   ContainerHeader,
 } from './style';
 import Content from './style';
-import Home  from '../../../../assets/House.svg';
+import Home from '../../../../assets/House.svg';
 import { BsCircleFill } from 'react-icons/bs';
 import { AZUL, CINZA_40 } from '../../../../styles/variaveis';
 import { Titulo } from '../../../../components/Titulo';
 import { Button } from '../../../../components/Form/Button';
 import { notificacoes_api } from '../../../../services/notificacoes_api';
 import { FiMenu, FiBell } from 'react-icons/fi';
+import { IPessoa } from 'src/interfaces/IPessoa';
 
 interface INavbar {
   toggleSidebar: () => void;
@@ -43,13 +47,52 @@ interface INotification {
   link?: string;
 }
 
-export default function Navbar({ toggleSidebar, hinddenOportunidades }: INavbar) {
+export default function Navbar({
+  toggleSidebar,
+  hinddenOportunidades,
+}: INavbar) {
   const history = useHistory();
-  const { user } = useAuth();
   const [notifications, setNotifications] = useState<INotification[]>([]);
   const [unreadNotifications, setUnreadNotifications] = useState<number>(0);
 
   const [showModal, setShowModal] = useState(false);
+
+  const [user, setUser] = useState({} as IPessoa);
+  const [isAuthDataLoading, setIsAuthDataLoading] = useState(true);
+  const [idToken, setIdToken] = useState('');
+
+  const router = useRouter();
+
+  const refreshUserData = async (ID_TOKEN: any) => {
+    const newIdToken = localStorage.getItem(ID_TOKEN);
+    setIdToken(newIdToken || '');
+
+    if (newIdToken) {
+      const res = await pessoas_api.get('/pessoas/me', {
+        headers: {
+          Authorization: `Bearer ${newIdToken}`,
+        },
+      });
+      if (res) {
+        const { data: newUser } = res;
+        setUser({
+          ...newUser,
+          id_pessoa: newUser.id,
+          email: newUser.usuario?.email,
+          url_avatar: newUser.arquivo?.url,
+          admin: newUser.usuario?.admin,
+        });
+      }
+    }
+  };
+
+  useEffect(() => {
+    let local = localStorage.getItem('@Gyan:id_token');
+    if (local) {
+      const ID_TOKEN = '@Gyan:id_token';
+      refreshUserData(ID_TOKEN);
+    }
+  }, []);
 
   const handleCloseOrOpenNotifications = useCallback(async () => {
     setShowModal(oldShowModal => {
@@ -105,23 +148,31 @@ export default function Navbar({ toggleSidebar, hinddenOportunidades }: INavbar)
     <Content>
       <Container>
         <div className="icones">
+          {/* <Image src={FiMenu} onClick={toggleSidebar}/> */}
           <FiMenu onClick={toggleSidebar} />
 
           {/* <Link to="/fornecedor/home"> */}
-            <Home className="fi-icon-home" />
-          {/* </Link> */}
+          <Image
+            alt="Home fornecedor"
+            src={Home}
+            className="fi-icon-home"
+            onClick={() => {
+              router.push('/fornecedor/home');
+            }}
+            style={{ cursor: 'pointer' }}
+          />
         </div>
 
         <ContentSession>
           <GhostButton
-            onClick={() => history.push('/fornecedor/captar-projetos')}
+            onClick={() => router.push('/fornecedor/captar-projetos')}
             opacity={hinddenOportunidades ? 0 : 1}
           >
             BUSCAR OPORTUNIDADES
           </GhostButton>
 
-         <AcaoBell>
-             <Dropdown
+          <AcaoBell>
+            <Dropdown
               onToggle={isOpen => {
                 if (!isOpen) {
                   handleReadNotificationFromIdPessoa(user.id_pessoa || 0);

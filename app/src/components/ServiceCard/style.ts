@@ -21,6 +21,10 @@ export const Content = styled.div`
     -webkit-box-shadow: 0px 4px 16px -3px rgba(0, 0, 0, 0.29);
     box-shadow: 0px 4px 16px -3px rgba(0, 0, 0, 0.29);
   }
+
+  @media (max-width: 478px) {
+    min-width: 280px;
+  }
 `;
 
 export const ImageContainer = styled.div`
@@ -54,11 +58,9 @@ export const ImageProfile = styled.img`
 export const ImageContainerInfos = styled.div`
   display: flex;
   justify-content: space-between;
-
   position: absolute;
   top: 10px;
-  padding:
-  left: 10px;
+  padding-left: 10px;
   width: 100%;
   z-index: 2;
   cursor: pointer;
@@ -123,7 +125,7 @@ export const ContentInfoSecundary = styled.div`
 
 export const ContainerDados = styled.div`
   flex: 1;
-  margin-top: 8px
+  margin-top: 8px;
 `;
 
 export const ContainerProfile = styled.div`
@@ -143,7 +145,7 @@ export const ContainerProfile = styled.div`
     object-fit: cover;
   }
 
-  .numberStarts{
+  .numberStarts {
     margin: 0px 8px 0px 0px;
     color: rgb(250, 124, 73);
   }
