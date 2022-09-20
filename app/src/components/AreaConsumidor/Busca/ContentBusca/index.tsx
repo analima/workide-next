@@ -2,12 +2,9 @@ import { useCallback, useEffect } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { Spacer } from '../../../Spacer';
 import Layout from '../../Layout';
-import Filtro from '../Filtro';
 import Fornecedor from '../Resultado/Fornecedor';
 import Oferta from '../Resultado/Oferta';
 import {
-  Button,
-  ContainerHeader,
   ContentFilterHeader,
   ContentFilter,
   Label,
@@ -74,12 +71,10 @@ export default function ContentBusca() {
     handleShowAvatarCadastroIncompleto,
     handleChangeVolunteers,
     handleSearch,
-    sizeFilter,
     setSizeFilter,
     atualizaBusca,
     allFilters,
     limparFiltros,
-    causas,
     setTerm,
     setFilter,
     filter,
@@ -208,94 +203,22 @@ export default function ContentBusca() {
 
         <br />
         <Row>
-          <Col lg={12}></Col>
-
-          <Col lg={12}>
+          {allFilters?.subareas?.length > 0 && (
             <Col lg={12} className="mb-4">
-              <Spacer size={8} />
-
-              <Col lg={12}>
-                <ContentFilter>
-                  <p>Filtros aplicados: </p>
-                  <ButtonClear onClick={() => limparFiltros()}>
-                    LIMPAR FILTROS
-                  </ButtonClear>
-                </ContentFilter>
-                <FiltrosAplicados>
-                  {!!causas && (
-                    <>
-                      {causas.map((filtro: any) => (
-                        <Label key={filtro.id}>{filtro.causasSociais}</Label>
-                      ))}
-                    </>
-                  )}
-
-                  {!!allFilters.categorias && (
-                    <>
-                      {allFilters.categorias.map((filtro: any) => (
-                        <Label key={filtro}>{filtro}</Label>
-                      ))}
-                    </>
-                  )}
-
-                  {!!allFilters.niveis_experiencia && (
-                    <>
-                      {allFilters.niveis_experiencia.map((filtro: any) => (
-                        <Label key={filtro}>{filtro}</Label>
-                      ))}
-                    </>
-                  )}
-
-                  {allFilters.avaliacao_fornecedor && (
-                    <Label> Nota: {allFilters.avaliacao_fornecedor}</Label>
-                  )}
-
-                  {!!allFilters.subareas && (
-                    <>
-                      {allFilters.subareas.map((filtro: any) => (
-                        <Label key={filtro}>{filtro}</Label>
-                      ))}
-                    </>
-                  )}
-
-                  {!!allFilters.habilidades && (
-                    <>
-                      {allFilters.habilidades.map((filtro: any) => (
-                        <Label key={filtro}>{filtro}</Label>
-                      ))}
-                    </>
-                  )}
-
-                  {!!allFilters.habilidades_tecnicas && (
-                    <>
-                      {allFilters.habilidades_tecnicas.map((filtro: any) => (
-                        <Label key={filtro}>{filtro}</Label>
-                      ))}
-                    </>
-                  )}
-
-                  {!!allFilters.prazo && (
-                    <Label>Prazo: {allFilters.prazo} dias</Label>
-                  )}
-
-                  {!!allFilters.preco_minimo && (
-                    <Label>
-                      Preço mínimo:{' '}
-                      {formatarValor(Number(allFilters.preco_minimo))}
-                    </Label>
-                  )}
-
-                  {!!allFilters.preco_maximo && (
-                    <Label>
-                      Preço máximo:{' '}
-                      {formatarValor(Number(allFilters.preco_maximo))}
-                    </Label>
-                  )}
-                </FiltrosAplicados>
-              </Col>
+              <ContentFilter>
+                <p>Filtros aplicados: </p>
+                <ButtonClear onClick={() => limparFiltros()}>
+                  LIMPAR FILTROS
+                </ButtonClear>
+              </ContentFilter>
+              <FiltrosAplicados>
+                {allFilters.subareas.map((filtro: any) => (
+                  <Label key={filtro}>{filtro}</Label>
+                ))}
+              </FiltrosAplicados>
             </Col>
-            {ofertaFiltro ? <Oferta /> : <Fornecedor />}
-          </Col>
+          )}
+          <Col lg={12}>{ofertaFiltro ? <Oferta /> : <Fornecedor />}</Col>
         </Row>
       </Content>
     </Layout>

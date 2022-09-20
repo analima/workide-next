@@ -17,6 +17,8 @@ import {
 } from '../../../../Vitrine/style';
 import Avatar from '../../../../CadastroComplementar/Apresentacao/style';
 import Carol from '../../../../../assets/carol-full.svg';
+import iconSelectPosition from '../../../../../assets/IconSelectPositionGrey.svg';
+
 import { useBuscaFornecedorOferta } from '../../../../../hooks/buscaConsumidor';
 import { IPessoa } from 'src/interfaces/IPessoa';
 
@@ -61,6 +63,29 @@ export default function Fornecedor() {
         <Col lg={12}>
           {people.length > 0 ? (
             <>
+              <div className="ordenation">
+                <div className="nivel">
+                  <Image
+                    className="icone"
+                    src={iconSelectPosition}
+                    alt="Ordernation"
+                    width={20}
+                    height={20}
+                  />
+                  <span>Nível de Experiência</span>
+                </div>
+
+                <div className="avaliation">
+                  <Image
+                    className="icone"
+                    src={iconSelectPosition}
+                    alt="Ordernation"
+                    width={20}
+                    height={20}
+                  />
+                  <span>Avaliações</span>
+                </div>
+              </div>
               <CardContainer ref={parent} quantidadeItem={people.length}>
                 {people.map(item => (
                   <ItemVitrine item={item} key={item.id} />

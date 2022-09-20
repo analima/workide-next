@@ -1,16 +1,16 @@
 import Image from 'next/image';
-import { useHistory } from 'react-router';
 import { useAuth } from '../../contexts/auth';
 import { Button } from '../Form/Button';
 import { Content } from './style';
 import PlaceholderImage from '../../assets/placeholderImg.png';
+import { useRouter } from 'next/router';
 
 interface IProps {
   page: string;
 }
 export function InformationUser({ page }: IProps) {
   const { user } = useAuth();
-  const history = useHistory();
+  const router = useRouter();
   return (
     <Content>
       <div className="infos">
@@ -33,7 +33,8 @@ export function InformationUser({ page }: IProps) {
         )}
         <div className="info-user">
           <span>
-            {user?.ong && <strong>ONG</strong>} {user?.nome}
+            {user.ong && <strong>ONG</strong>} {' - '}
+            {user.nome}
           </span>
           <p>Bem-Vindo(a), comece a cadastrar suas necessidades</p>
         </div>
@@ -41,18 +42,50 @@ export function InformationUser({ page }: IProps) {
 
       <div className="buttons">
         {page === 'busca' && (
-          <span>Cadastre um projeto e receba propostas da comunidade.</span>
+          <>
+            <span>Cadastre um projeto e receba propostas da comunidade.</span>
+            <Button
+              label="CADASTRAR PROJETO"
+              onClick={() => router.push('/consumidor/projetos/geral')}
+            />
+          </>
         )}
 
-        <Button
-          label="CADASTRAR PROJETO"
-          onClick={() => history.push('/consumidor/projetos/geral')}
-        />
+        {page === 'projeto-exclusivo' && (
+          <div className="projeto-exclusivo">
+            <p>Solicitar Proposta</p>
+            <span>
+              Nesta etapa você pode convidar este profissional para participar
+              de uma concorrência de um projeto existente na plataforma ou
+              cadastrar um novo projeto.
+            </span>
+          </div>
+        )}
+
         {page === 'home' && (
-          <Button
-            label="BUSCAR PROFISSIONAIS"
-            onClick={() => history.push('/consumidor/busca')}
-          />
+          <>
+            <Button
+              label="CADASTRAR PROJETO"
+              onClick={() => router.push('/consumidor/projetos/geral')}
+            />
+            <Button
+              label="BUSCAR PROFISSIONAIS"
+              onClick={() => router.push('/consumidor/busca')}
+            />
+          </>
+        )}
+
+        {page === 'fornecedor/home' && (
+          <>
+            <Button
+              label="CADASTRAR OFERTA"
+              onClick={() => router.push('/fornecedor/novo-servico')}
+            />
+            <Button
+              label="BUSCAR OPORTUNIDADES"
+              onClick={() => router.push('/fornecedor/captar-projetos')}
+            />
+          </>
         )}
       </div>
     </Content>
