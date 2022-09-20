@@ -16,7 +16,6 @@ export const Content = styled.section`
 `;
 
 export const ContentBanner = styled.div`
-  margin: 0 60px;
   background-image: url(${IMG.src});
   background-size: cover;
   background-position: center;
@@ -29,11 +28,14 @@ export const ContentBanner = styled.div`
   @media (max-width: 1920px) {
     height: 950px;
     max-width: 1440px;
+    min-width: 1439px;
   }
 
   @media (max-width: 1340px) {
     height: 692px;
     max-width: 1300px;
+    min-width: 90%;
+    margin: 0 20px;
   }
 
   .content-titles {

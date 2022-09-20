@@ -26,6 +26,7 @@ const CaptarProjetoContent: React.FC = () => {
   if (!user) {
     user = {} as IPessoa;
   }
+
   const {
     control,
     watch,

@@ -1,60 +1,14 @@
-import { useEffect, useState } from 'react';
 import { ArrowSlider, Carrousel, Container, Posts } from './style';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { blog_api } from 'src/services/blog_api';
+import { IPostProps } from 'src/interfaces/IPostProps';
 
-interface IAttributesCover {
-  attributes: {
-    size: number;
-    url: string;
-    width: number;
-    height: number;
-    provider: string;
-    providerUrl: string;
-  };
+interface PostProps {
+  posts: IPostProps[];
 }
 
-interface IPropsCover {
-  data: IAttributesCover;
-}
-interface IAttributes {
-  createdAt: string;
-  description: string;
-  publishedAt: string;
-  slug: string;
-  title: string;
-  updatedAt: string;
-  viewsCount: string;
-  cover: IPropsCover;
-}
-interface IPropsPosts {
-  attributes: IAttributes;
-  id: number;
-}
-
-export function MeetOurBlog() {
-  const [posts, setPosts] = useState<Array<IPropsPosts>>([] as IPropsPosts[]);
+export function MeetOurBlog({ posts }: PostProps) {
   const router = useRouter();
-
-  useEffect(() => {
-    const loadPosts = async () => {
-      try {
-        const { data: articles } = await blog_api.get(
-          '/articles?populate=deep&filters[category][slug][$eq]=ongs',
-          {
-            headers: {
-              Authorization: `Bearer ${process.env.REACT_APP_TOKEN_BLOG}`,
-            },
-          },
-        );
-        setPosts(articles.data);
-      } catch (error: any) {
-        console.error(error);
-      }
-    };
-    loadPosts();
-  }, []);
 
   const settingsSlider = {
     speed: 500,
@@ -105,7 +59,7 @@ export function MeetOurBlog() {
       <h2>Conheça nosso blog</h2>
       <h4>Postagens relacionadas</h4>
       <Carrousel {...settingsSlider}>
-        {posts.map(item => {
+        {posts?.map(item => {
           return (
             <Posts
               key={item.id}

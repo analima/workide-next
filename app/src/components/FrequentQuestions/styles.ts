@@ -67,6 +67,7 @@ export const AccordionSecondary = styled(Accordion.Toggle)`
   justify-content: space-between;
   background-color: ${BRANCO};
   width: 100%;
+  gap: 8px;
 
   span {
     font-size: 24px;
@@ -76,6 +77,7 @@ export const AccordionSecondary = styled(Accordion.Toggle)`
   @media (max-width: 768px) {
     span {
       font-size: 16px;
+      text-align: start;
     }
   }
 `;

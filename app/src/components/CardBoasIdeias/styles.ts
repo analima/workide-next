@@ -17,7 +17,7 @@ export const Content = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   height: 202px;
-  max-width: 1320px;
+  max-width: 1440px;
   border-radius: 8px;
 
   .content-info {

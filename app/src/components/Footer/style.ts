@@ -1,9 +1,8 @@
-import { Link } from 'react-scroll';
 import styled from 'styled-components';
-import { PRETO_10, VERDE, AZUL, BRANCO } from '../../styles/variaveis';
+import { BRANCO, CINZA_10, PRETO_10, VERDE } from '../../styles/variaveis';
 
 export const FooterBody = styled.footer`
-  background-color: ${AZUL};
+  background-color: ${CINZA_10};
   padding: 0 60px;
 
   @media (max-width: 768px) {
@@ -21,16 +20,16 @@ export const FooterInfo = styled.section`
 
   .como-funciona {
     text-decoration: none;
-    color: ${BRANCO};
+    color: ${PRETO_10};
   }
 
   article {
-    color: ${BRANCO};
+    color: ${PRETO_10};
 
     a {
       cursor: pointer;
       text-decoration: none;
-      color: ${BRANCO};
+      color: ${PRETO_10};
 
       &:hover {
         opacity: 0.8;
@@ -111,7 +110,7 @@ export const FooterSocial = styled.section`
     span {
       margin-right: 8px;
       font-size: 16px;
-      color: ${BRANCO};
+      color: ${PRETO_10};
     }
   }
 
@@ -123,13 +122,16 @@ export const FooterSocial = styled.section`
     hr {
       width: 100%;
       height: 2px;
-      background-color: ${BRANCO};
+      background-color: ${PRETO_10};
       opacity: 10;
     }
 
     a {
-      width: 94px;
-      height: 94px;
+      img {
+        width: 94px;
+        height: 94px;
+        object-fit: cover;
+      }
     }
   }
 
@@ -139,9 +141,14 @@ export const FooterSocial = styled.section`
     justify-content: space-between;
     width: 100%;
 
+    img {
+      width: 122px;
+      height: 48px;
+    }
+
     p {
       font-size: 16px;
-      color: ${BRANCO};
+      color: ${PRETO_10};
     }
   }
 
@@ -171,6 +178,25 @@ export const FooterSocial = styled.section`
           object-fit: cover;
         }
       }
+    }
+  }
+`;
+
+export const FooterCopyright = styled.section`
+  background-color: ${BRANCO};
+  border-bottom-right-radius: -540px;
+  border-bottom-left-radius: -100px;
+  padding: 30px 0;
+
+  p {
+    font-size: 18px;
+    color: ${PRETO_10};
+    margin: 0;
+    text-align: center;
+
+    a {
+      color: ${VERDE};
+      text-decoration: none;
     }
   }
 `;

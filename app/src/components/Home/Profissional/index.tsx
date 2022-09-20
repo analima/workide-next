@@ -188,7 +188,7 @@ export function Profissional(): JSX.Element {
             {dados.map(item => (
               <li key={item.id}>
                 <ContentFeedback>
-                  <Image src={item.image} alt="Imagem" />
+                  {/* <Image src={item.image} alt="Imagem" /> */}
                   <div>
                     <p>
                       `&quot;`{item.descricao}`&quot;` - {item.nome}

@@ -8,7 +8,7 @@ import { MainCategories } from '../../components/MainCategories';
 import { ProfessionalShowCase } from '../../components/ProfessionalShowCase';
 import { FrequentQuestions } from '../../components/FrequentQuestions';
 import { MoreCategories } from '../../components/MoreCategories';
-import { perguntaAreas } from '../../mock/perguntasAreasMock';
+import { perguntaAreas } from '../../mock/perguntasFrequentesMock';
 import {
   IAreaProps,
   IPerguntasAreasProps,

@@ -1,20 +1,24 @@
 import { Container, Nav, Navbar } from 'react-bootstrap';
-import Image from 'next/image'
+import Image from 'next/image';
 import userIcon from '../../assets/user_circle.svg';
 import separator from '../../assets/separador.svg';
 import logOutIcon from '../../assets/logout.svg';
-import  Center  from '../../assets/center.svg';
+import Center from '../../assets/center.svg';
 import separador from '../../assets/separador.svg';
 import Logo from '../../assets/logo.svg';
 
 import { NavCustom, ButtonToggle, NavLink } from './style';
 import { CadastroBasico } from '../CadastroBasico';
 import { useHistory } from 'react-router-dom';
+import { useRouter } from 'next/router';
 
 import { useEffect, useState } from 'react';
 import { ModalCentralMenu } from '../ModalCentralMenu';
 import { useValorProjetoPago } from '../../contexts/valorProjetoPago';
 import { useAuth } from '../../contexts/auth';
+import { IPessoa } from 'src/interfaces/IPessoa';
+import { pessoas_api } from '../../services/pessoas_api';
+import { selecionarRotaHome } from 'src/utils/selecionarRotaHome';
 
 export function Menu({
   hiddenCenterMenu,
@@ -28,11 +32,48 @@ export function Menu({
   const [showModal, setShowModal] = useState<boolean>(false);
   const [sizePage, setSizePage] = useState(0);
 
-  const { user, signOut } = useAuth();
+  const { signOut } = useAuth();
   const history = useHistory();
+  const router = useRouter();
   const background = 'transparent';
   const [name, setName] = useState('');
   const { apagarLocalStorage } = useValorProjetoPago();
+
+  const [user, setUser] = useState({} as IPessoa);
+  const [isAuthDataLoading, setIsAuthDataLoading] = useState(true);
+  const [idToken, setIdToken] = useState('');
+
+  const refreshUserData = async (ID_TOKEN: any) => {
+    console.log('entrou');
+    const newIdToken = localStorage.getItem(ID_TOKEN);
+    setIdToken(newIdToken || '');
+    console.log(newIdToken);
+    if (newIdToken) {
+      const res = await pessoas_api.get('/pessoas/me', {
+        headers: {
+          Authorization: `Bearer ${newIdToken}`,
+        },
+      });
+      if (res) {
+        const { data: newUser } = res;
+        setUser({
+          ...newUser,
+          id_pessoa: newUser.id,
+          email: newUser.usuario?.email,
+          url_avatar: newUser.arquivo?.url,
+          admin: newUser.usuario?.admin,
+        });
+      }
+    }
+  };
+
+  useEffect(() => {
+    let local = localStorage.getItem('@Gyan:id_token');
+    if (local) {
+      const ID_TOKEN = '@Gyan:id_token';
+      refreshUserData(ID_TOKEN);
+    }
+  }, []);
 
   const handleResize = (e: any) => {
     setSizePage(window.innerWidth);
@@ -84,11 +125,11 @@ export function Menu({
     link: 'find-solution' | 'who-we-are' | 'how-it-works',
   ) {
     if (link === 'find-solution') {
-      history.push(`/#find-solution`);
+      router.push(`/#find-solution`);
     } else if (link === 'who-we-are') {
-      history.push(`/#who-we-are`);
+      router.push(`/#who-we-are`);
     } else if (link === 'how-it-works') {
-      history.push(`/#how-it-works`);
+      router.push(`/#how-it-works`);
     }
   }
 
@@ -104,15 +145,14 @@ export function Menu({
         <ModalCentralMenu showModal={showModal} setShowModal={setShowModal} />
         <Navbar expand="md">
           <Container className="nav-container">
-            <Navbar.Brand
-              className="logo"
-              onClick={() => history.push('/', { noRedirect: true })}
-            >
+            <Navbar.Brand className="logo" onClick={() => router.push('/')}>
               <Image src={Logo} alt="Gyan" />
             </Navbar.Brand>
 
             {!user.visitante && user.email && !hiddenCenterMenu && (
-              <Center
+              <Image
+                alt=""
+                src={Center}
                 className="icone-center"
                 onClick={() => {
                   setShowModal(!showModal);
@@ -131,7 +171,9 @@ export function Menu({
                   <Image className="separator" src={separator} alt="perfil" />
                   <Nav.Link
                     className="container-profile"
-                    onClick={() => history.push('/persona')}
+                    onClick={() =>
+                      router.push(selecionarRotaHome(user?.tipoPerfil))
+                    }
                   >
                     <Image className="profile" src={userIcon} alt="perfil" />
                     {name}
@@ -140,7 +182,7 @@ export function Menu({
                     className="container-log-out"
                     href="#"
                     onClick={() => {
-                      history.push('/');
+                      router.push('/');
                       signOut();
                       apagarLocalStorage();
                     }}
@@ -220,7 +262,6 @@ export function Menu({
                 <Nav.Link href="/login">
                   <Image src={user_circle} alt="login icon" />
                 </Nav.Link> */}
-
               </Navbar.Collapse>
             )}
           </Container>

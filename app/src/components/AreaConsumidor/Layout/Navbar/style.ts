@@ -1,5 +1,5 @@
 import { Modal } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import Link from 'next/link'
 import styled from 'styled-components';
 
 import {
@@ -101,30 +101,30 @@ const Content = styled.div`
   }
 `;
 
-export const GhostButton = styled(Link)<GhostButtonProps>`
-  background-color: rgba(0, 0, 0, 0);
-  transition: all 0.4s ease-in-out;
-  padding: 16px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 80px;
-  border: 2px solid ${BRANCO};
-  color: ${BRANCO};
-  font-size: 12px;
-  font-weight: bold;
-  opacity: ${props => props.opacity};
+// export const GhostButton = styled(Link)<GhostButtonProps>`
+//   background-color: rgba(0, 0, 0, 0);
+//   transition: all 0.4s ease-in-out;
+//   padding: 16px 24px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   border-radius: 80px;
+//   border: 2px solid ${BRANCO};
+//   color: ${BRANCO};
+//   font-size: 12px;
+//   font-weight: bold;
+//   opacity: ${props => props.opacity};
 
-  &:hover {
-    color: ${LARANJA};
-    background-color: ${BRANCO};
-    border-color: ${LARANJA};
-  }
+//   &:hover {
+//     color: ${LARANJA};
+//     background-color: ${BRANCO};
+//     border-color: ${LARANJA};
+//   }
 
-  @media (max-width: 767px) {
-    display: none;
-  }
-`;
+//   @media (max-width: 767px) {
+//     display: none;
+//   }
+// `;
 
 export const ContentSession = styled.div`
   display: flex;

@@ -11,7 +11,8 @@ import { pessoas_api } from '../../services/pessoas_api';
 import { updateToken } from '../../services';
 import { AZUL } from '../../styles/variaveis';
 import { Helmet } from 'react-helmet';
-import Image from 'next/image'
+import Image from 'next/image';
+import { selecionarRotaHome } from 'src/utils/selecionarRotaHome';
 
 export default class Login extends React.Component<any, any> {
   constructor(props: any) {
@@ -153,7 +154,9 @@ export default class Login extends React.Component<any, any> {
           loading: false,
         });
         if (pessoaResponse.data.percentageRegisterProvider > 20)
-          window.location.replace('/persona');
+          window.location.replace(
+            selecionarRotaHome(pessoaResponse.data.tipoPerfil),
+          );
         else window.location.replace('/apresentacao');
       })
       .catch(async error => {

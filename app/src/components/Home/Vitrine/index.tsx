@@ -91,9 +91,37 @@ export function Vitrine() {
         },
       },
       {
+        breakpoint: 410,
+        settings: {
+          slidesToShow: 0.9,
+          slidesToScroll: 1,
+        },
+      },
+      {
         breakpoint: 390,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 0.85,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 340,
+        settings: {
+          slidesToShow: 0.8,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 320,
+        settings: {
+          slidesToShow: 0.75,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 310,
+        settings: {
+          slidesToShow: 0.65,
           slidesToScroll: 1,
         },
       },

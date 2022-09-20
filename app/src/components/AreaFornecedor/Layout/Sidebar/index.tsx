@@ -9,6 +9,8 @@ import {
 import Content from './style';
 import { useAuth } from '../../../../contexts/auth';
 import { useHistory } from 'react-router-dom';
+import { IPessoa } from '../../../../interfaces/IPessoa';
+import { pessoas_api } from '../../../../services/pessoas_api';
 
 import DropdownMenu from './Dropdown';
 
@@ -17,7 +19,7 @@ interface ISidebar {
 }
 
 export default function Sidebar({ open }: ISidebar) {
-  const { user } = useAuth();
+ 
   const [display, setDisplay] = useState(open);
   const history = useHistory();
 
@@ -26,6 +28,48 @@ export default function Sidebar({ open }: ISidebar) {
       setDisplay(open);
     }, 400);
   }, [open]);
+
+  const [user, setUser] = useState({} as IPessoa);
+  const [isAuthDataLoading, setIsAuthDataLoading] = useState(true);
+  const [idToken, setIdToken] = useState('');
+
+
+  const refreshUserData = async (ID_TOKEN: any) => {
+    console.log('entrou')
+
+    const newIdToken = localStorage.getItem(ID_TOKEN);
+    
+    setIdToken(newIdToken || '');
+    console.log(newIdToken)
+    if (newIdToken) {
+      const res = await pessoas_api.get('/pessoas/me', {
+        headers: {
+          Authorization: `Bearer ${newIdToken}`,
+        },
+      });
+      if (res) {
+        
+        const { data: newUser } = res;
+        setUser({
+          ...newUser,
+          id_pessoa: newUser.id,
+          email: newUser.usuario?.email,
+          url_avatar: newUser.arquivo?.url,
+          admin: newUser.usuario?.admin,
+        });
+      }
+    }
+   
+  }
+
+  useEffect(() => {
+    let local = localStorage.getItem('@Gyan:id_token')
+    if(local){
+      const ID_TOKEN = '@Gyan:id_token'
+      refreshUserData(ID_TOKEN)
+    }
+    
+  }, [])
 
   return (
     <Content open={open} display={display}>

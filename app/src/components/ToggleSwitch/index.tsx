@@ -1,3 +1,6 @@
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import { useBuscaFornecedorOferta } from 'src/hooks/buscaConsumidor';
 import { Content, LabelStyled } from './style';
 
 interface Consumidor {
@@ -15,6 +18,19 @@ export function ToggleSwitch({
   isGreenLabel,
   labelLeft,
 }: Consumidor) {
+  const router = useRouter();
+  const { setVolunteers } = useBuscaFornecedorOferta();
+
+  useEffect(() => {
+    const { filter } = router.query;
+    console.log(filter);
+    if (filter === 'voluntarios' && typeof window !== 'undefined') {
+      setTimeout(() => {
+        setVolunteers(true);
+      }, 2000);
+    }
+  }, [router.query, setVolunteers]);
+
   return (
     <Content>
       <div className="form-check form-switch">

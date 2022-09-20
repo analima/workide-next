@@ -6,9 +6,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 100%;
   padding: 10px 20px;
-  max-width: 1200px;
   margin: 0 auto;
 
   h2 {

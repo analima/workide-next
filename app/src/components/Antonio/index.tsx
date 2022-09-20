@@ -44,7 +44,7 @@ export function Antonio({ mensagem, dica, setDica }: AntonioProps) {
           <AntonioSuperior />
         </AntonioPersonagem>
       </AntonioContainer> */}
-      <p>QUem é antonio?</p>
+      <p></p>
     </Content>
   );
 }

@@ -1,3 +1,5 @@
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import { Controller } from 'react-hook-form';
 
 import { Content } from './style';
@@ -19,6 +21,16 @@ export function ToggleSwitch({
   change,
   disabled,
 }: Consumidor) {
+  const router = useRouter();
+
+  useEffect(() => {
+    const { voluntario } = router.query;
+    if (voluntario && typeof window !== 'undefined') {
+      const element = document.getElementById('flexSwitchCheckDefault');
+      if (element) element.click();
+    }
+  }, [router.query]);
+
   return (
     <Content>
       <Controller
