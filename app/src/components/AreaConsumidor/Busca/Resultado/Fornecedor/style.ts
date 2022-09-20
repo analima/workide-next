@@ -2,7 +2,38 @@ import { lighten } from 'polished';
 import styled from 'styled-components';
 import { AZUL, BRANCO } from '../../../../../styles/variaveis';
 
-const Content = styled.div``;
+const Content = styled.div`
+  background-color: ${BRANCO};
+  padding: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+
+  .ordenation {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    padding: 24px 0;
+
+    .nivel {
+      display: flex;
+      align-items: center;
+    }
+
+    .avaliation {
+      display: flex;
+      align-items: center;
+    }
+
+    span {
+      font-weight: 600;
+      font-size: 16px;
+      color: #767676;
+      img {
+        cursor: pointer;
+      }
+    }
+  }
+`;
 
 export const ContainerHeader = styled.div`
   margin-top: 40px;
@@ -21,9 +52,9 @@ type Props = {
 
 export const CardContainer = styled.div<Props>`
   display: ${props => (props.quantidadeItem > 3 ? 'grid' : 'flex')};
-  place-items: center;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  grid-gap: 32px;
+  grid-template-columns: repeat(auto-fill, minmax(269px, auto));
+  grid-gap: 8px;
+  justify-items: center;
 `;
 
 export const Button = styled.button`

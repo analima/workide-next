@@ -1,5 +1,10 @@
 export interface IPessoa {
   id?: number;
+  arquivo?: {
+    id: string;
+    nome: string;
+    url: string;
+  };
   nome?: string;
   email?: string;
   id_usuario?: number;

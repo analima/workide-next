@@ -328,8 +328,8 @@ export const ContainerItemVitrine = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  width: 310px;
-  height: 372px;
+  width: 269px;
+  height: 359px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   padding: 16px;

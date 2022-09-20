@@ -260,9 +260,7 @@ export const BuscaFornecedorOfertaProvider: React.FC<GlobalLayoutProps> = ({
 
       consultas_api
         .post<{ values: PessoaProp[]; pages: number }>(
-          `/consulta/fornecedores?limit=${
-            sizeFilter === 'small' ? '9' : 8
-          }&page=${paginaPerfis}`,
+          `/consulta/fornecedores?limit=16&page=${paginaPerfis}`,
           {
             ...fornecedoresQuery,
           },
@@ -296,7 +294,7 @@ export const BuscaFornecedorOfertaProvider: React.FC<GlobalLayoutProps> = ({
       setAllFilters(ofertasQuery);
 
       consultas_api
-        .post(`/consulta/ofertas?limit=12&page=${pagina}`, {
+        .post(`/consulta/ofertas?limit=16&page=${pagina}`, {
           ...ofertasQuery,
         })
         .then(({ data }) => {
@@ -316,7 +314,6 @@ export const BuscaFornecedorOfertaProvider: React.FC<GlobalLayoutProps> = ({
     filtroOferta,
     pagina,
     paginaPerfis,
-    sizeFilter,
     basic,
     intermediary,
     advanced,
