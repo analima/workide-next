@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import CoracaoOn from '../../assets/coracao.svg';
 import CoracaoOff from '../../assets/coracao-off.svg';
 import { AvaliacaoFornecedor } from '../AvaliacaoFornecedor';
@@ -32,10 +32,10 @@ import { pessoas_api } from '../../services/pessoas_api';
 import { useAuth } from '../../contexts/auth';
 import Carol from '../../assets/carol-full.svg';
 import Avatar from '../../components/CadastroComplementar/Apresentacao/style';
-import { useHistory } from 'react-router';
 import { useRouter } from 'next/router';
 import { ModalLoading } from '../ModalLoading';
 import { Button } from '../Form/Button';
+import autoAnimate from '@formkit/auto-animate';
 
 export interface IVitrine {
   nome: string;
@@ -93,6 +93,7 @@ export function ItemVitrine({
   const [favoriteItem, setFavoriteItem] = useState<Array<Number>>([]);
   const [showModalLoadding, setShowModalLoadding] = useState(false);
   const [numeroProjetos, setNumeroProjetos] = useState(0);
+  const parent = useRef(null);
   const { user } = useAuth();
   const router = useRouter();
 
@@ -171,6 +172,10 @@ export function ItemVitrine({
     countProjects();
   }, [countProjects]);
 
+  useEffect(() => {
+    parent.current && autoAnimate(parent.current);
+  }, [parent]);
+
   return (
     <>
       <ModalLoading
@@ -178,8 +183,11 @@ export function ItemVitrine({
         setShowModal={setShowModalLoadding}
       />
 
-      <ContainerItemVitrine onClick={() => handleOpenPerson(item.id)}>
-        <Body>
+      <ContainerItemVitrine
+        ref={parent}
+        onClick={() => handleOpenPerson(item.id)}
+      >
+        <Body ref={parent}>
           <FotoPerfil>
             <Foto
               width={96}

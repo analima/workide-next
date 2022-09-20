@@ -25,6 +25,8 @@ import { SearchInput } from '../../../SearchInput';
 import { useBuscaFornecedorOferta } from '../../../../hooks/buscaConsumidor';
 import { formatarValor } from '../../../../utils/CurrencyFormat';
 import { IPessoa } from 'src/interfaces/IPessoa';
+import { InformationUser } from 'src/components/InformationUser';
+import NovoFiltro from '../NovoFiltro';
 
 type Cases = {
   titulo: string;
@@ -128,11 +130,8 @@ export default function ContentBusca() {
   }, [handleResize]);
 
   return (
-    <Layout
-      titulo="Buscando Soluções"
-      activeMenu={activeMenu}
-      maisSolucoesIsNotVisible={true}
-    >
+    <Layout titulo="" activeMenu={activeMenu} maisSolucoesIsNotVisible={true}>
+      {user.id_pessoa && <InformationUser page="busca" />}
       <Helmet>
         <title>Gyan - Buscando soluções</title>
       </Helmet>
@@ -150,67 +149,70 @@ export default function ContentBusca() {
         <Row>
           <Col lg={12} className="d-flex align-items-center">
             <ContentFilterHeader>
-              <div>
-                <label className="label-busca">Quero buscar por:</label>
-                <ToggleSwitch
-                  labelLeft="Profissionais"
-                  label="Oferta"
-                  change={() => {
-                    setOfertaFiltro(!ofertaFiltro);
-                    limparFiltros();
-                  }}
-                  checked={ofertaFiltro}
-                />
+              <label className="label-busca">Estou em busca de:</label>
+
+              <div className="content-filters">
+                <div className="filter-check">
+                  <div className="check">
+                    <label htmlFor="profissionais">Profissionais</label>
+                    <input
+                      type="checkbox"
+                      name="profissionais"
+                      id="profissionais"
+                      checked={!ofertaFiltro}
+                      onChange={() => {
+                        setOfertaFiltro(!ofertaFiltro);
+                        limparFiltros();
+                      }}
+                    />
+                  </div>
+                  <div className="check">
+                    <label htmlFor="ofertas">Ofertas</label>
+                    <input
+                      type="checkbox"
+                      name="ofertas"
+                      id="ofertas"
+                      checked={ofertaFiltro}
+                      onChange={() => {
+                        setOfertaFiltro(!ofertaFiltro);
+                        limparFiltros();
+                      }}
+                    />
+                  </div>
+                  <div className="check">
+                    <label htmlFor="vol">Voluntários</label>
+                    <input
+                      type="checkbox"
+                      name="vol"
+                      id="vol"
+                      checked={volunteers}
+                      onChange={handleChangeVolunteers}
+                      disabled={ofertaFiltro}
+                    />
+                  </div>
+                </div>
+                <div className="search">
+                  <SearchInput
+                    placeholder="Pesquise por area ou profissional"
+                    onChangeValue={handleSearch}
+                    value={filter}
+                    className="input"
+                  />
+                </div>
               </div>
 
-              <ContainerHeader>
-                <p>Não encontrou o que procurava ?</p>
-                <Button
-                  onClick={() => {
-                    if (!user.id_pessoa) {
-                      history.push('/cadastro-basico');
-                      return;
-                    }
-                    if (
-                      user.percentageRegisterConsumer &&
-                      user.percentageRegisterConsumer < 66
-                    ) {
-                      handleShowAvatarCadastroIncompleto();
-                      return;
-                    }
-
-                    handleRedirect('geral');
-                  }}
-                >
-                  PUBLIQUE UM NOVO PROJETO
-                </Button>
-              </ContainerHeader>
+              <NovoFiltro />
             </ContentFilterHeader>
           </Col>
         </Row>
 
         <br />
         <Row>
-          <Col lg={sizeFilter === 'large' ? 4 : 1}>
-            <Filtro />
-          </Col>
+          <Col lg={12}></Col>
 
-          <Col lg={sizeFilter === 'large' ? 8 : 11}>
+          <Col lg={12}>
             <Col lg={12} className="mb-4">
-              <SearchInput
-                placeholder="Pesquise por uma solução"
-                onChange={value => handleSearch}
-                value={filter}
-              />
               <Spacer size={8} />
-
-              {!ofertaFiltro && (
-                <ToggleSwitch
-                  label="Ver apenas profissionais voluntários"
-                  change={handleChangeVolunteers}
-                  checked={volunteers}
-                />
-              )}
 
               <Col lg={12}>
                 <ContentFilter>

@@ -7,7 +7,7 @@ type Props = {
 const Content = styled.div<Props>`
   padding: 0px;
   border-radius: 5px;
-  display: ${props => (props.isEmpty ? 'block' : 'grid')};
+  display: grid;
 `;
 
 export const Avatar = styled.div`
@@ -16,8 +16,8 @@ export const Avatar = styled.div`
 `;
 
 export const ContainerCard = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 8px;
   align-items: center;
   justify-content: space-between;

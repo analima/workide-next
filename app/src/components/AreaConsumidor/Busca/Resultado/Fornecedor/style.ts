@@ -21,9 +21,9 @@ type Props = {
 
 export const CardContainer = styled.div<Props>`
   display: ${props => (props.quantidadeItem > 3 ? 'grid' : 'flex')};
-  place-items: center;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  grid-gap: 32px;
+  grid-template-columns: repeat(auto-fill, minmax(269px, auto));
+  grid-gap: 10px;
+  justify-items: center;
 `;
 
 export const Button = styled.button`

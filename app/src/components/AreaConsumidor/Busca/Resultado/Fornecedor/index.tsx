@@ -1,14 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router';
 import { ContainerHeader, Button, CardContainer } from './style';
 import Content from './style';
 import { useAuth } from '../../../../../contexts/auth';
 import { AvatarCadastroIncompleto } from '../../../../AvatarCadastroIncompleto';
 import { Card } from '../../../../Card';
+import autoAnimate from '@formkit/auto-animate';
 import { ItemVitrine } from '../../../../Vitrine';
 import { Col, Row } from 'react-bootstrap';
 import Paginacao from '../../../Home/MeusProjetos/Paginacao';
-import Image from 'next/image'
+import Image from 'next/image';
 import {
   AvatarContainer,
   ContentAvatar,
@@ -20,13 +21,14 @@ import { useBuscaFornecedorOferta } from '../../../../../hooks/buscaConsumidor';
 import { IPessoa } from 'src/interfaces/IPessoa';
 
 export default function Fornecedor() {
+  const parent = useRef(null);
   const history = useHistory();
   const { people, paginaPerfis, setPaginaPerfis, totalPaginasPerfis } =
     useBuscaFornecedorOferta();
 
   let { user } = useAuth();
-  if(!user){
-    user = {} as IPessoa
+  if (!user) {
+    user = {} as IPessoa;
   }
   const [showAvatarCadastroIncompleto, setShowAvatarCadastroIncompleto] =
     useState(false);
@@ -42,6 +44,11 @@ export default function Fornecedor() {
       history.push('/consumidor/projetos/exclusivo');
     }
   };
+
+  useEffect(() => {
+    parent.current && autoAnimate(parent.current);
+  }, [parent]);
+
   return (
     <Content>
       <AvatarCadastroIncompleto
@@ -51,10 +58,10 @@ export default function Fornecedor() {
         isConsumer={true}
       />
       <Row className="d-flex align-items-center justify-content-center">
-        <Col lg={11}>
+        <Col lg={12}>
           {people.length > 0 ? (
             <>
-              <CardContainer quantidadeItem={people.length}>
+              <CardContainer ref={parent} quantidadeItem={people.length}>
                 {people.map(item => (
                   <ItemVitrine item={item} key={item.id} />
                 ))}
@@ -71,7 +78,7 @@ export default function Fornecedor() {
             </>
           ) : (
             <Card>
-               <AvatarContainer full>
+              <AvatarContainer full>
                 <Dialogo>
                   <ContentAvatar>
                     <p>
@@ -86,7 +93,6 @@ export default function Fornecedor() {
                 </Dialogo>
                 <Avatar>
                   <Image src={Carol} alt="avatar carol" />
-           
                 </Avatar>
               </AvatarContainer>
             </Card>
