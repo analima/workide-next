@@ -36,6 +36,7 @@ import { useRouter } from 'next/router';
 import { ModalLoading } from '../ModalLoading';
 import { Button } from '../Form/Button';
 import autoAnimate from '@formkit/auto-animate';
+import { oportunidades_api } from 'src/services/oportunidades_api';
 
 export interface IVitrine {
   nome: string;
@@ -159,10 +160,26 @@ export function ItemVitrine({
 
   const countProjects = useCallback(async () => {
     try {
-      const response = await pessoas_api.get(
-        `/projetos/count?idPessoaFornecedor=${item.id}`,
+      const { data: countConcluido } = await oportunidades_api.get(
+        `/projetos/count?idPessoaFornecedor=${item.id}&status=CONCLUIDO`,
       );
-      setNumeroProjetos(response.data);
+      const { data: countIniciado } = await oportunidades_api.get(
+        `/projetos/count?idPessoaFornecedor=${item.id}&status=INICIADO`,
+      );
+
+      const { data: countAguardandoInicio } = await oportunidades_api.get(
+        `/projetos/count?idPessoaFornecedor=${item.id}&status=AGUARDANDO_INICIO`,
+      );
+
+      const { data: countConcluidoParcialmente } = await oportunidades_api.get(
+        `/projetos/count?idPessoaFornecedor=${item.id}&status=CONCLUIDO_PARCIALMENTE`,
+      );
+      setNumeroProjetos(
+        countConcluido +
+          countIniciado +
+          countAguardandoInicio +
+          countConcluidoParcialmente,
+      );
     } catch (error: any) {
       console.error(error.response);
     }
