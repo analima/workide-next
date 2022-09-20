@@ -3,6 +3,7 @@ import { useHistory } from 'react-router';
 import { useAuth } from '../../contexts/auth';
 import { Button } from '../Form/Button';
 import { Content } from './style';
+import PlaceholderImage from '../../assets/placeholderImg.png';
 
 interface IProps {
   page: string;
@@ -13,12 +14,21 @@ export function InformationUser({ page }: IProps) {
   return (
     <Content>
       <div className="infos">
-        {user?.arquivo && (
+        {user?.arquivo ? (
           <Image
             src={user?.arquivo?.url}
             alt={user.arquivo?.nome}
-            width={200}
-            height={200}
+            width={87}
+            height={87}
+            blurDataURL='"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPU0NS8CAACSAFN02dlbQAAAABJRU5ErkJggg=="'
+          />
+        ) : (
+          <Image
+            src={PlaceholderImage}
+            alt="placeholeder"
+            width={87}
+            height={87}
+            blurDataURL='"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPU0NS8CAACSAFN02dlbQAAAABJRU5ErkJggg=="'
           />
         )}
         <div className="info-user">
