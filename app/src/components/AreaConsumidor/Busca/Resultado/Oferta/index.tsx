@@ -12,6 +12,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { IServicoInfo } from '../../../../../interfaces/IServicoInfo';
 import { ofertas_api } from '../../../../../services/ofertas_api';
 import autoAnimate from '@formkit/auto-animate';
+import iconSelectPosition from '../../../../../assets/IconSelectPositionGrey.svg';
 import { ServiceCard } from '../../../../ServiceCard';
 import { useAuth } from '../../../../../contexts/auth';
 import { useBuscaFornecedorOferta } from '../../../../../hooks/buscaConsumidor';
@@ -29,7 +30,6 @@ interface IService extends IServicoInfo {
 
 export default function Oferta() {
   const [services, setServices] = useState<IService[]>([] as IService[]);
-  console.log(services.length > 0);
   const parent = useRef(null);
   const { user } = useAuth();
   const { service, pagina, totalPaginas, setPagina } =
@@ -99,6 +99,18 @@ export default function Oferta() {
     <Content isEmpty={services.length === 0}>
       {services.length > 0 ? (
         <>
+          <div className="ordenation">
+            <div className="avaliation">
+              <Image
+                className="icone"
+                src={iconSelectPosition}
+                alt="Ordernation"
+                width={20}
+                height={20}
+              />
+              <span>Avaliações</span>
+            </div>
+          </div>
           <ContainerCard>
             {services.map(item => (
               <>

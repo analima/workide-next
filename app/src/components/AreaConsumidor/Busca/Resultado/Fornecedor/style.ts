@@ -4,7 +4,7 @@ import { AZUL, BRANCO } from '../../../../../styles/variaveis';
 
 const Content = styled.div`
   background-color: ${BRANCO};
-  padding: 8px;
+  padding: 8px 8px 24px 8px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
 

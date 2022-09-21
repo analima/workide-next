@@ -24,6 +24,8 @@ export const FooterInfo = styled.section`
 
     a {
       cursor: pointer;
+      text-decoration: none;
+      color: ${PRETO_10};
 
       &:hover {
         opacity: 0.8;
