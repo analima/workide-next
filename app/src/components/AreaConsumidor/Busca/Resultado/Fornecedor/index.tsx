@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router';
-import { ContainerHeader, Button, CardContainer } from './style';
+import { CardContainer } from './style';
 import Content from './style';
 import { useAuth } from '../../../../../contexts/auth';
 import { AvatarCadastroIncompleto } from '../../../../AvatarCadastroIncompleto';
@@ -19,7 +19,10 @@ import Avatar from '../../../../CadastroComplementar/Apresentacao/style';
 import Carol from '../../../../../assets/carol-full.svg';
 import iconSelectPosition from '../../../../../assets/IconSelectPositionGrey.svg';
 
-import { useBuscaFornecedorOferta } from '../../../../../hooks/buscaConsumidor';
+import {
+  PessoaProp,
+  useBuscaFornecedorOferta,
+} from '../../../../../hooks/buscaConsumidor';
 import { IPessoa } from 'src/interfaces/IPessoa';
 
 export default function Fornecedor() {
@@ -124,28 +127,6 @@ export default function Fornecedor() {
           )}
         </Col>
       </Row>
-      <ContainerHeader>
-        <p>Não encontrou o que procurava ?</p>
-        <Button
-          onClick={() => {
-            if (!user.id_pessoa) {
-              history.push('/cadastro-basico');
-
-              return;
-            }
-            if (
-              user.percentageRegisterConsumer &&
-              user.percentageRegisterConsumer < 66
-            ) {
-              handleShowAvatarCadastroIncompleto();
-              return;
-            }
-            handleRedirect('geral');
-          }}
-        >
-          PUBLIQUE UM NOVO PROJETO
-        </Button>
-      </ContainerHeader>
     </Content>
   );
 }

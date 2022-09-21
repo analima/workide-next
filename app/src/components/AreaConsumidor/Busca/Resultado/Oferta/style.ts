@@ -1,3 +1,4 @@
+import { BRANCO } from 'src/styles/variaveis';
 import styled from 'styled-components';
 
 type Props = {
@@ -5,9 +6,32 @@ type Props = {
 };
 
 const Content = styled.div<Props>`
-  padding: 0px;
-  border-radius: 5px;
   display: grid;
+  background-color: ${BRANCO};
+  padding: 8px 8px 24px 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+
+  .ordenation {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    padding: 24px 0;
+
+    .avaliation {
+      display: flex;
+      align-items: center;
+    }
+
+    span {
+      font-weight: 600;
+      font-size: 16px;
+      color: #767676;
+      img {
+        cursor: pointer;
+      }
+    }
+  }
 `;
 
 export const Avatar = styled.div`
