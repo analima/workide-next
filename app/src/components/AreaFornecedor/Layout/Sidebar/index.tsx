@@ -1,11 +1,5 @@
 import { useState, useEffect } from 'react';
-import {
-  NavItem,
-  NavLink,
-  Nav,
-  BotaoCaptar,
-  NavButton,
-} from './style';
+import { NavItem, NavLink, Nav, BotaoCaptar, NavButton } from './style';
 import Content from './style';
 import { useAuth } from '../../../../contexts/auth';
 import { useHistory } from 'react-router-dom';
@@ -19,7 +13,6 @@ interface ISidebar {
 }
 
 export default function Sidebar({ open }: ISidebar) {
- 
   const [display, setDisplay] = useState(open);
   const history = useHistory();
 
@@ -33,14 +26,10 @@ export default function Sidebar({ open }: ISidebar) {
   const [isAuthDataLoading, setIsAuthDataLoading] = useState(true);
   const [idToken, setIdToken] = useState('');
 
-
   const refreshUserData = async (ID_TOKEN: any) => {
-    console.log('entrou')
-
     const newIdToken = localStorage.getItem(ID_TOKEN);
-    
+
     setIdToken(newIdToken || '');
-    console.log(newIdToken)
     if (newIdToken) {
       const res = await pessoas_api.get('/pessoas/me', {
         headers: {
@@ -48,7 +37,6 @@ export default function Sidebar({ open }: ISidebar) {
         },
       });
       if (res) {
-        
         const { data: newUser } = res;
         setUser({
           ...newUser,
@@ -59,17 +47,15 @@ export default function Sidebar({ open }: ISidebar) {
         });
       }
     }
-   
-  }
+  };
 
   useEffect(() => {
-    let local = localStorage.getItem('@Gyan:id_token')
-    if(local){
-      const ID_TOKEN = '@Gyan:id_token'
-      refreshUserData(ID_TOKEN)
+    let local = localStorage.getItem('@Gyan:id_token');
+    if (local) {
+      const ID_TOKEN = '@Gyan:id_token';
+      refreshUserData(ID_TOKEN);
     }
-    
-  }, [])
+  }, []);
 
   return (
     <Content open={open} display={display}>

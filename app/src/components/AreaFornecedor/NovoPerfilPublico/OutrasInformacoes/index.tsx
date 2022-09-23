@@ -52,7 +52,6 @@ interface IRedeSocialProps {
 }
 
 export function OutrasInformacoes({ data, imageLoaded }: Props) {
-  console.log(data);
   const { user } = useAuth();
   const history = useHistory();
   const [verMaisSubareas, setVerMaisSubareas] = useState(false);

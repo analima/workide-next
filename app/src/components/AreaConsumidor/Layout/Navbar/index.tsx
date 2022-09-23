@@ -53,7 +53,6 @@ export default function Navbar({
   const [notifications, setNotifications] = useState<INotification[]>([]);
   const [unreadNotifications, setUnreadNotifications] = useState<number>(0);
   const { user } = useAuth();
-  console.log('aquu');
   const router = useRouter();
 
   const loadNotifications = useCallback(async () => {

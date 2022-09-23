@@ -81,7 +81,6 @@ export default function ContentBusca() {
   } = useBuscaFornecedorOferta();
 
   const { user } = useAuth();
-  console.log('user', user);
 
   const activeMenu = true;
 
