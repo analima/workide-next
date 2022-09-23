@@ -37,6 +37,7 @@ import { ModalLoading } from '../ModalLoading';
 import { Button } from '../Form/Button';
 import autoAnimate from '@formkit/auto-animate';
 import { oportunidades_api } from 'src/services/oportunidades_api';
+import Image from 'next/image';
 
 export interface IVitrine {
   nome: string;
@@ -99,7 +100,7 @@ export function ItemVitrine({
   const router = useRouter();
 
   useEffect(() => {
-    if (!user) return;
+    if (!user.id_pessoa) return;
     const load = async () => {
       try {
         const { data: favorites } = await pessoas_api.get(
@@ -134,6 +135,7 @@ export function ItemVitrine({
 
   const handleFavorite = (event: React.MouseEvent, idPessoa: number) => {
     event.stopPropagation();
+    if (!user.id_pessoa) return;
     const load = async () => {
       setShowModalLoadding(true);
       const check = favoriteItem.find(item => item === idPessoa);
@@ -260,19 +262,19 @@ export function ItemVitrine({
           )}
         </Footer>
 
-        {user && (
+        {user?.id_pessoa && (
           <ContainerItensFooter>
-            {user?.id !== item.id && (
+            {user?.id_pessoa !== item?.id && (
               <Favorito
                 isLogado={user?.id ? true : false}
                 onClick={event => {
-                  if (user.id) handleFavorite(event, item.id);
+                  if (user?.id) handleFavorite(event, item?.id);
                 }}
               >
-                {favoriteItem.find(element => element === item.id) ? (
-                  <CoracaoOn />
+                {favoriteItem?.find(element => element === item?.id) ? (
+                  <Image src={CoracaoOn} width={20} height={20} alt="off" />
                 ) : (
-                  <CoracaoOff />
+                  <Image src={CoracaoOff} width={20} height={20} alt="off" />
                 )}
               </Favorito>
             )}

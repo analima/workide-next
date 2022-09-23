@@ -10,7 +10,7 @@ interface IProps {
   handleSave: () => void;
 }
 
-export default function UploadCapaPhoto({
+export function UploadCapaPhoto({
   fotoId,
   setFotoId,
   fotoUrl,

@@ -1,65 +1,78 @@
 import { useCallback, useEffect, useState } from 'react';
 import { hotjar } from 'react-hotjar';
 import { Col, Row } from 'react-bootstrap';
-import { useHistory, useParams } from 'react-router';
+import { useHistory } from 'react-router';
 import { Spacer } from '../../../components/Spacer';
 import { useAuth } from '../../../contexts/auth';
 import { IProvider } from '../../../interfaces/IProvider';
 import { pessoas_api } from '../../../services/pessoas_api';
-import ModalDenuncia from '../../ModalDenuncia';
-import Layout from '../Layout';
-import {Sobre} from './Sobre';
+import { Sobre } from './Sobre';
 import {
   ButtonVoltar,
+  Content,
   ContentButton,
   InfoPerfil,
   LinkReportPerfil,
   Button,
   GhostButton,
 } from './style';
-import Content from './style';
 import { SEO } from '../../../components/SEO';
-import OutrasInformacoes from './OutrasInformacoes';
+import { OutrasInformacoes } from './OutrasInformacoes';
+import Layout from '../Layout';
+import ModalDenuncia from 'src/components/ModalDenuncia';
+import { useRouter } from 'next/router';
 
 interface IServicoConsumidorPublicoParams {
   strUsuario: string;
 }
 
-export default function NovoPerfilPublico() {
+export function NovoPerfilPublico() {
   const [showModalDenuncia, setShowModalDenuncia] = useState(false);
   const [urlAtual, setUrlAtual] = useState('');
   const [dataProvider, setDataProvider] = useState<IProvider>({} as IProvider);
   const [idPessoa, setIdPessoa] = useState(0);
+  const router = useRouter();
   const history = useHistory();
-  const params = useParams<IServicoConsumidorPublicoParams>();
   const { user } = useAuth();
   const [imageLoaded, setImageLoaded] = useState(true);
 
   useEffect(() => {
-    if (params.strUsuario) {
-      setIdPessoa(Number(params.strUsuario.split('-')[0]));
-    } else if (user && user.id_pessoa) {
-      setIdPessoa(user.id_pessoa ? user.id_pessoa : 0);
+    if (router.query.strUsuario) {
+      setIdPessoa(Number(router.query.strUsuario));
+    } else if (user && user?.id_pessoa) {
+      setIdPessoa(user?.id_pessoa ? user?.id_pessoa : 0);
     } else {
-      history.push('/');
+      // router.push('/');
     }
-  }, [params.strUsuario, user, history]);
+  }, [router, user]);
 
   const getProvider = useCallback(async () => {
     if (idPessoa) {
       pessoas_api
         .get(`/pessoas/${idPessoa}`)
-        .then(({ data }: { data: IProvider }) => {
+        .then(({ data }) => {
           setDataProvider(data);
           setImageLoaded(false);
         })
         .catch(error => {
           if (error) {
-            history.push('/');
+            // router.push('/');
           }
         });
     }
-  }, [idPessoa, history]);
+  }, [idPessoa]);
+
+  useEffect(() => {
+    if (dataProvider.nome_tratamento) {
+      window.history.pushState(
+        dataProvider.id,
+        'perfil publico',
+        `/fornecedor/perfil-publico/${
+          dataProvider.id
+        }-${dataProvider.nome_tratamento.replaceAll(' ', '-')}`,
+      );
+    }
+  }, [dataProvider]);
 
   useEffect(() => {
     getProvider();
@@ -92,38 +105,40 @@ export default function NovoPerfilPublico() {
       />
       <Layout>
         {(user ? user.id_pessoa : 0) === idPessoa && (
-          <Row>
-            <Col className="d-flex align-items-center" lg={6}>
-              <InfoPerfil>
-                Esta página é apenas um preview de como outros estão te vendo
-              </InfoPerfil>
-            </Col>
+          <>
+            <Row>
+              <Col className="d-flex align-items-center" lg={6}>
+                <InfoPerfil>
+                  Esta página é apenas um preview de como outros estão te vendo
+                </InfoPerfil>
+              </Col>
 
-            <Col className="d-flex justify-content-end" lg={6}>
-              <ContentButton>
-                <Button
-                  onClick={() =>
-                    history.push('/cadastro-complementar', {
-                      cadastroCompleto: true,
-                    })
-                  }
-                >
-                  EDITAR PERFIL
-                </Button>
-                <GhostButton onClick={() => history.goBack()}>
-                  VOLTAR
-                </GhostButton>
-              </ContentButton>
-            </Col>
-          </Row>
+              <Col className="d-flex justify-content-end" lg={6}>
+                <ContentButton>
+                  <Button
+                    onClick={() =>
+                      history.push('/cadastro-complementar', {
+                        cadastroCompleto: true,
+                      })
+                    }
+                  >
+                    EDITAR PERFIL
+                  </Button>
+                  <GhostButton onClick={() => router.back()}>
+                    VOLTAR
+                  </GhostButton>
+                </ContentButton>
+              </Col>
+            </Row>
+            <Spacer size={30} />
+          </>
         )}
-
-        <Spacer size={30} />
 
         <Row>
           <Col lg={12}>
             <Sobre
               dataProps={dataProvider}
+              getProvider={getProvider}
               imageLoaded={imageLoaded}
             />
           </Col>
@@ -157,9 +172,7 @@ export default function NovoPerfilPublico() {
         <Row>
           <Col lg={12}>
             <ContentButton>
-              <ButtonVoltar onClick={() => history.goBack()}>
-                VOLTAR
-              </ButtonVoltar>
+              <ButtonVoltar onClick={() => router.back()}>VOLTAR</ButtonVoltar>
             </ContentButton>
           </Col>
         </Row>

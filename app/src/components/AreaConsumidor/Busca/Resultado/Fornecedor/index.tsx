@@ -31,10 +31,9 @@ export default function Fornecedor() {
   const { people, paginaPerfis, setPaginaPerfis, totalPaginasPerfis } =
     useBuscaFornecedorOferta();
 
-  let { user } = useAuth();
-  if (!user) {
-    user = {} as IPessoa;
-  }
+  console.log(people);
+  const { user } = useAuth();
+
   const [showAvatarCadastroIncompleto, setShowAvatarCadastroIncompleto] =
     useState(false);
 
@@ -90,9 +89,8 @@ export default function Fornecedor() {
                 </div>
               </div>
               <CardContainer ref={parent} quantidadeItem={people.length}>
-                {people.map(item => (
-                  <ItemVitrine item={item} key={item.id} />
-                ))}
+                {people.length > 0 &&
+                  people.map(item => <ItemVitrine item={item} key={item.id} />)}
               </CardContainer>
               <Row className="mt-3">
                 <Col lg={12}>

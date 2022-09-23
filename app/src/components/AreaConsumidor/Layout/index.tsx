@@ -42,12 +42,9 @@ export default function Layout({
   const [isAuthDataLoading, setIsAuthDataLoading] = useState(true);
   const [idToken, setIdToken] = useState('');
 
-
   const refreshUserData = async (ID_TOKEN: any) => {
-    console.log('entrou')
     const newIdToken = localStorage.getItem(ID_TOKEN);
     setIdToken(newIdToken || '');
-    console.log(newIdToken)
     if (newIdToken) {
       const res = await pessoas_api.get('/pessoas/me', {
         headers: {
@@ -55,7 +52,6 @@ export default function Layout({
         },
       });
       if (res) {
-        
         const { data: newUser } = res;
         setUser({
           ...newUser,
@@ -66,16 +62,15 @@ export default function Layout({
         });
       }
     }
-   
-  }
+  };
 
   useEffect(() => {
-    let local = localStorage.getItem('@Gyan:id_token')
-    if(local){
-      const ID_TOKEN = '@Gyan:id_token'
-      refreshUserData(ID_TOKEN)
+    let local = localStorage.getItem('@Gyan:id_token');
+    if (local) {
+      const ID_TOKEN = '@Gyan:id_token';
+      refreshUserData(ID_TOKEN);
     }
-  }, [])
+  }, []);
 
   return (
     <Content>
@@ -95,7 +90,6 @@ export default function Layout({
               activeMenu={activeMenu}
               maisSolucoesIsNotVisible={maisSolucoesIsNotVisible}
             />
-           
           )}
         </>
       )}

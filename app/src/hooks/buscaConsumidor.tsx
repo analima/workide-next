@@ -24,7 +24,7 @@ import {
 } from 'react-hook-form';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { GlobalLayoutProps } from '../interfaces/globalLayoutProps';
+import { GlobalLayoutProps } from 'src/interfaces/globalLayoutProps';
 
 interface BuscaFornecedorOfertaProps {
   control: Control<FieldValues, object>;
@@ -154,9 +154,7 @@ const BuscaFornecedorOferta = createContext<BuscaFornecedorOfertaProps>(
   {} as BuscaFornecedorOfertaProps,
 );
 
-export const BuscaFornecedorOfertaProvider: React.FC<GlobalLayoutProps> = ({
-  children,
-}) => {
+export function BuscaFornecedorOfertaProvider({ children }: GlobalLayoutProps) {
   const query = useQuery();
 
   const [volunteers, setVolunteers] = useState<boolean>(false);
@@ -266,7 +264,7 @@ export const BuscaFornecedorOfertaProvider: React.FC<GlobalLayoutProps> = ({
           },
         )
         .then(({ data }) => {
-          setPeople(data.values);
+          setPeople(data?.values);
           setTotalPaginasPerfis(data.pages);
         });
 
@@ -459,7 +457,7 @@ export const BuscaFornecedorOfertaProvider: React.FC<GlobalLayoutProps> = ({
       {children}
     </BuscaFornecedorOferta.Provider>
   );
-};
+}
 
 export function useBuscaFornecedorOferta(): BuscaFornecedorOfertaProps {
   const context = useContext(BuscaFornecedorOferta);

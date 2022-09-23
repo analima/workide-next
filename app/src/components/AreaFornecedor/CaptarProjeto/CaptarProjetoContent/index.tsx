@@ -23,9 +23,6 @@ const CaptarProjetoContent: React.FC = () => {
   const contentRef = useRef<HTMLDivElement>(null);
   let { user } = useAuth();
   const router = useRouter();
-  if (!user) {
-    user = {} as IPessoa;
-  }
 
   const {
     control,

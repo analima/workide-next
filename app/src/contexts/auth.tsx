@@ -25,12 +25,15 @@ interface IAuthContextProps {
   saveAuthData(data: IAuthProps): Promise<void>;
   refreshUserData(): Promise<void>;
   signOut(): void;
+  setUser: React.Dispatch<React.SetStateAction<IPessoa>>;
+}
+interface IProps {
+  children: React.ReactNode;
 }
 
 const AuthContext = createContext<IAuthContextProps>({} as IAuthContextProps);
 
-export const AuthProvider: React.FC = ({ children }: any) => {
-  debugger
+export function AuthProvider({ children }: IProps) {
   const [user, setUser] = useState({} as IPessoa);
   const [isAuthDataLoading, setIsAuthDataLoading] = useState(true);
   const [idToken, setIdToken] = useState('');
@@ -71,17 +74,17 @@ export const AuthProvider: React.FC = ({ children }: any) => {
         });
       }
     }
-  
-  
   }, []);
 
   useEffect(() => {
     refreshUserData().then(() => setIsAuthDataLoading(false));
   }, [refreshUserData]);
+
   return (
     <AuthContext.Provider
       value={{
         user,
+        setUser,
         idToken,
         isAuthDataLoading,
         saveAuthData,
@@ -92,7 +95,7 @@ export const AuthProvider: React.FC = ({ children }: any) => {
       {children}
     </AuthContext.Provider>
   );
-};
+}
 
 export function useAuth(): IAuthContextProps {
   const context = useContext(AuthContext);

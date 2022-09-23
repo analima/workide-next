@@ -80,10 +80,8 @@ export default function ContentBusca() {
     filter,
   } = useBuscaFornecedorOferta();
 
-  let { user } = useAuth();
-  if (!user) {
-    user = {} as IPessoa;
-  }
+  const { user } = useAuth();
+
   const activeMenu = true;
 
   useEffect(() => {
