@@ -8,12 +8,16 @@ import Content from './style';
 import Carol from '../../../../../assets/carol-full.svg';
 import Avatar from '../../../../CadastroComplementar/Apresentacao/style';
 import Paginacao from '../../../Home/MeusProjetos/Paginacao';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { IServicoInfo } from '../../../../../interfaces/IServicoInfo';
 import { ofertas_api } from '../../../../../services/ofertas_api';
+import autoAnimate from '@formkit/auto-animate';
+import iconSelectPosition from '../../../../../assets/IconSelectPositionGrey.svg';
 import { ServiceCard } from '../../../../ServiceCard';
 import { useAuth } from '../../../../../contexts/auth';
 import { useBuscaFornecedorOferta } from '../../../../../hooks/buscaConsumidor';
+import { Card } from 'src/components/Card';
+import Image from 'next/image';
 
 export interface IUsuario {
   id?: number;
@@ -26,6 +30,7 @@ interface IService extends IServicoInfo {
 
 export default function Oferta() {
   const [services, setServices] = useState<IService[]>([] as IService[]);
+  const parent = useRef(null);
   const { user } = useAuth();
   const { service, pagina, totalPaginas, setPagina } =
     useBuscaFornecedorOferta();
@@ -86,10 +91,26 @@ export default function Oferta() {
     await handleServiceIsFavorite(indexArr, service);
   }, [service]);
 
+  useEffect(() => {
+    parent.current && autoAnimate(parent.current);
+  }, [parent]);
+
   return (
     <Content isEmpty={services.length === 0}>
-      {services.length !== 0 && (
+      {services.length > 0 ? (
         <>
+          <div className="ordenation">
+            <div className="avaliation">
+              <Image
+                className="icone"
+                src={iconSelectPosition}
+                alt="Ordernation"
+                width={20}
+                height={20}
+              />
+              <span>Avaliações</span>
+            </div>
+          </div>
           <ContainerCard>
             {services.map(item => (
               <>
@@ -116,25 +137,26 @@ export default function Oferta() {
             setPagina={setPagina}
           />
         </>
-      )}
-      {!services && (
-        <AvatarContainer full>
-          <Dialogo>
-            <ContentAvatar>
-              <p>
-                Opa.. Parece que não encontramos uma solução pro seu problema
-                agora. O que acha de fazer uma nova busca ?!
-                <br />
-                <br />
-                Ou se o seu problema for bem específico fique a vontade para
-                publicar um novo projeto.
-              </p>
-            </ContentAvatar>
-          </Dialogo>
-          <Avatar>
-            <Carol />
-          </Avatar>
-        </AvatarContainer>
+      ) : (
+        <Card>
+          <AvatarContainer full>
+            <Dialogo>
+              <ContentAvatar>
+                <p>
+                  Opa.. Parece que não encontramos uma solução pro seu problema
+                  agora. O que acha de fazer uma nova busca ?!
+                  <br />
+                  <br />
+                  Ou se o seu problema for bem específico fique a vontade para
+                  publicar um novo projeto.
+                </p>
+              </ContentAvatar>
+            </Dialogo>
+            <Avatar>
+              <Image src={Carol} alt="avatar carol" />
+            </Avatar>
+          </AvatarContainer>
+        </Card>
       )}
     </Content>
   );

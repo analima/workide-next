@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { LARANJA } from '../../../../styles/variaveis';
 
-const Content = styled.div`
+export const Content = styled.div`
   span {
     font-size: 20px;
     font-weight: bold;
@@ -9,5 +9,3 @@ const Content = styled.div`
     margin-top: 16px;
   }
 `;
-
-export default Content;

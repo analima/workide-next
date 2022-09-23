@@ -52,7 +52,7 @@ const nextConfig = {
       },
       {
         source: '/:path*',
-        destination: `http://localhost:4001/:path*`,
+        destination: `http://localhost:4000/:path*`,
       },
     ];
   },

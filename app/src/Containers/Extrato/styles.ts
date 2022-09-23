@@ -19,7 +19,6 @@ export const Wrapper = styled.div`
   select {
     width: 389px;
     height: 50px;
-    border: 1px solid red;
   }
 `;
 
@@ -27,10 +26,18 @@ export const ContentFilter = styled.div`
   width: 993px;
   display: flex;
   flex-direction: column;
+  margin-bottom: 16px;
 
   .content-buttons-filters {
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    div {
+      > select {
+        max-width: 180px;
+      }
+    }
   }
 `;
 

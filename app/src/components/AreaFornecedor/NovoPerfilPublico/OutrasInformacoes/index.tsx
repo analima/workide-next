@@ -1,5 +1,4 @@
-/* eslint-disable no-loop-func */
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { Spacer } from '../../../../components/Spacer';
 import { Titulo } from '../../../../components/Titulo';
@@ -8,88 +7,84 @@ import {
   IPosGraduacao,
   IProvider,
 } from '../../../../interfaces/IProvider';
-import Image from 'next/image'
-import { consultas_api } from '../../../../services/consultas_api';
 import { AZUL, PRETO_10 } from '../../../../styles/variaveis';
 import { IGraduacao } from '../../../../interfaces/IProvider';
 import {
+  Content,
   InfoSection,
   Container,
   Wrapper,
-  Ranking,
   Carrousel,
-  ArrowSlider,
   Frame,
-  TitleVideoNotFound,
+  ArrowSlider,
+  CardCertificado,
 } from './style';
-import Content from './style';
 import { Card } from '../../../../components/Card';
 import { useAuth } from '../../../../contexts/auth';
-import { oportunidades_api } from '../../../../services/oportunidades_api';
-import { MedalhasFornecedor } from '../../../../components/MedalhasFornecedor';
 import { nivel_experiencia } from '../../../../utils/nivelExperiencia';
 import { Label } from '../../../../components/Label';
-import HabilidadesPercebidas from '../HabilidadesPercebidas';
+import { HabilidadesPercebidas } from '../HabilidadesPercebidas';
 import { CardAvaliacao } from '../../../../components/CardAvaliacao';
 import { IServicoInfo } from '../../../../interfaces/IServicoInfo';
 import { ofertas_api } from '../../../../services/ofertas_api';
 import { VitrineServico } from '../../../../components/VitrineServico';
 import { Skeleton } from '../../../../components/Skeleton';
 import { CardRecomendation } from '../../../../components/CardRecomendacao';
-import { IPessoa } from 'src/interfaces/IPessoa';
-
-type ConsultaRankingType = {
-  idUsuario: number;
-  ranking: number;
-  notaMedia: number;
-  pontuacao: number;
-};
+import { SemConteudo } from '../../../../components/SemConteudo';
+import { oportunidades_api } from '../../../../services/oportunidades_api';
+import { Certificado } from '../../../../interfaces/IProject';
+import { useHistory } from 'react-router';
+import { FaBehance } from 'react-icons/fa';
+import { pessoas_api } from '../../../../services/pessoas_api';
+import { AiOutlineGlobal } from 'react-icons/ai';
+import Link from 'next/link';
+import Image from 'next/image';
 
 interface Props {
   data: IProvider;
   imageLoaded: boolean;
 }
 
-export default function OutrasInformacoes({ data, imageLoaded }: Props) {
-  let { user } = useAuth();
-  if (!user) {
-    user = {} as IPessoa;
-  }
+interface IRedeSocialProps {
+  id: number;
+  tipo: string;
+  url: string;
+}
+
+export function OutrasInformacoes({ data, imageLoaded }: Props) {
+  console.log(data);
+  const { user } = useAuth();
+  const history = useHistory();
   const [verMaisSubareas, setVerMaisSubareas] = useState(false);
   const [verMaisCapacitacao, setVerMaisCapacitacao] = useState(false);
   const [vitrineData, setVitrineData] = useState([] as IServicoInfo[]);
-  const [projectsCount, setProjectsCount] = useState(0);
-  const [sizePage, setSizePage] = useState(2.5);
+  const [urlVideo, setUrlVideo] = useState('');
+  const [sizePage, setSizePage] = useState(1.8);
+  const [certificados, setCertificados] = useState<Certificado[]>([]);
+  const [redesSociais, setRedesSociais] = useState<IRedeSocialProps[]>([]);
 
-  const [consultaRanking, setConsultaRanking] = useState<ConsultaRankingType>(
-    {} as ConsultaRankingType,
-  );
-
-  useEffect(() => {
-    if (data?.id_usuario) {
-      consultas_api
-        .get<ConsultaRankingType>(
-          `/consulta/fornecedores/${data?.id_usuario}/ranking`,
-        )
-        .then(res => {
-          setConsultaRanking(res.data);
-        });
-    }
-  }, [data?.id_usuario]);
+  const loadRedesSociais = useCallback(async () => {
+    const response = await pessoas_api.get(`/pessoas/${data.id}/redes-sociais`);
+    setRedesSociais(response.data);
+  }, [data.id]);
 
   useEffect(() => {
-    if (!user.id_pessoa) return;
+    loadRedesSociais();
+  }, [loadRedesSociais]);
 
-    const load = async () => {
-      const { data: count } = await oportunidades_api.get(
-        `/projetos/count?idPessoaFornecedor=${data.id}`,
+  useEffect(() => {
+    if (data.url_video_apresentacao) {
+      var urlAtual = data.url_video_apresentacao.split(
+        /(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/,
       );
-      setProjectsCount(count);
-    };
-    if (data && data.id) {
-      load();
+      const rlAtual =
+        urlAtual[2] !== undefined
+          ? urlAtual[2].split(/[^0-9a-z_-]/i)[0]
+          : urlAtual[0];
+
+      setUrlVideo(`https://www.youtube.com/embed/${rlAtual}`);
     }
-  }, [data, user]);
+  }, [data.url_video_apresentacao]);
 
   useEffect(() => {
     async function handleData() {
@@ -98,51 +93,61 @@ export default function OutrasInformacoes({ data, imageLoaded }: Props) {
       );
       setVitrineData(response.data.data);
     }
+    async function buscarCertificados() {
+      try {
+        const response = await oportunidades_api.get(
+          `/certificados?id_pessoa=${user.id_pessoa}`,
+        );
+        setCertificados(response.data);
+      } catch (error: any) {
+        console.error(error);
+      }
+    }
     handleData();
-  }, [data.id]);
+    buscarCertificados();
+  }, [data.id, user.id_pessoa]);
 
-  const settingsSlider = {
-    speed: 500,
-    dots: true,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    slidesToShow:
-      data.causasSociais?.length > 3 ? 3 : data.causasSociais?.length,
-    className: 'container-slider',
-    initialSlide: 1,
-    slidesToScroll: 1,
-    nextArrow: <ArrowSlider />,
-    prevArrow: <ArrowSlider />,
-    responsive: [
-      {
-        breakpoint: 991,
-        settings: {
-          slidesToShow:
-            data.causasSociais?.length > 3 ? 3.5 : data.causasSociais?.length,
-          slidesToScroll: 2,
+  function settingSlider(data: any[]) {
+    return {
+      speed: 500,
+      dots: true,
+      autoplay: true,
+      autoplaySpeed: 2000,
+      slidesToShow: data?.length > 3 ? 3 : data?.length,
+      className: 'container-slider',
+      initialSlide: 1,
+      slidesToScroll: 1,
+      nextArrow: <ArrowSlider />,
+      prevArrow: <ArrowSlider />,
+      responsive: [
+        {
+          breakpoint: 991,
+          settings: {
+            slidesToShow: data?.length > 3 ? 3.5 : data?.length,
+            slidesToScroll: 2,
+          },
         },
-      },
-      {
-        breakpoint: 580,
-        settings: {
-          slidesToShow:
-            data.causasSociais?.length > 3 ? 3 : data.causasSociais?.length,
+        {
+          breakpoint: 580,
+          settings: {
+            slidesToShow: data?.length > 3 ? 2.2 : data?.length,
 
-          slidesToScroll: 2,
+            slidesToScroll: 2,
+          },
         },
-      },
-    ],
-  };
+      ],
+    };
+  }
 
   const handleResize = () => {
     if (window.innerWidth > 1200) {
-      setSizePage(2.5);
+      setSizePage(1.6);
     } else if (window.innerWidth < 1200) {
-      setSizePage(1.8);
+      setSizePage(1.5);
     } else if (window.innerWidth < 991) {
-      setSizePage(2.5);
+      setSizePage(1.5);
     } else if (window.innerWidth < 768) {
-      setSizePage(1.8);
+      setSizePage(1);
     }
   };
 
@@ -150,13 +155,48 @@ export default function OutrasInformacoes({ data, imageLoaded }: Props) {
     window.addEventListener('resize', handleResize);
   }, []);
 
+  function handleRedes(item: IRedeSocialProps) {
+    switch (item.tipo) {
+      case 'github':
+        return;
+      case 'linkedin-pessoal':
+        return;
+      case 'linkedin-empresa':
+        return;
+      case 'facebook':
+        return;
+      case 'twitter':
+        return;
+      case 'behance':
+        return (
+          <Link
+            href={item.url}
+            title={item.tipo}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaBehance size={28} color="#000" />
+          </Link>
+        );
+
+      default:
+        return (
+          <Link href={item.url}>
+            <a title={item.tipo} target="_blank" rel="noreferrer">
+              <AiOutlineGlobal size={28} color="#000" />
+            </a>
+          </Link>
+        );
+    }
+  }
+
   return (
     <Content>
       <Container>
         {!imageLoaded ? (
           <Row>
             <Col lg={5} className="mb-4">
-              <Card>
+              <Card isShadow={false}>
                 <Wrapper>
                   <Titulo
                     titulo="Apresentação"
@@ -164,33 +204,17 @@ export default function OutrasInformacoes({ data, imageLoaded }: Props) {
                     negrito
                     tamanho={16}
                   />
-                  {consultaRanking && (
-                    <Ranking>Ranking: {consultaRanking.ranking}</Ranking>
-                  )}
                   <span>
                     {data?.endereco?.municipio?.nome},{' '}
                     {data?.endereco?.municipio?.uf} - Brasil
                   </span>
                   <span>{data.resumo_profissional}</span>
-
-                  <span>
-                    idiomas:{' '}
-                    {data?.idiomas?.map(
-                      language => `${language.idioma.descricao} -
-                  ${language.nivel}. `,
-                    )}
-                  </span>
-
-                  <span>N° de projetos: {projectsCount}</span>
-
-                  <span>Medalhas conquistadas:</span>
-                  <MedalhasFornecedor id={data?.id} />
                 </Wrapper>
               </Card>
 
               <Spacer size={16} />
 
-              <Card id="professional">
+              <Card id="professional" isShadow={false}>
                 <Wrapper>
                   <Titulo
                     titulo="Profissional"
@@ -224,11 +248,36 @@ export default function OutrasInformacoes({ data, imageLoaded }: Props) {
                     {data?.profissoes &&
                       data?.profissoes.map(p => p.descricao).join(', ')}
                   </span>
+                  {data?.idiomas.length > 0 && (
+                    <span className="esconderMobile">
+                      idiomas:{' '}
+                      {data?.idiomas?.map(
+                        language => `${language.idioma.descricao} -
+                  ${language.nivel}. `,
+                      )}
+                    </span>
+                  )}
                 </Wrapper>
               </Card>
 
               <Spacer size={16} />
-              <Card id="interest">
+
+              <Card id="portfolio" isShadow={false}>
+                <Wrapper>
+                  <Titulo
+                    titulo="Portfólio Externo"
+                    cor={AZUL}
+                    negrito
+                    tamanho={16}
+                  />
+                  <div className="redes">
+                    {redesSociais.map(item => handleRedes(item))}
+                  </div>
+                </Wrapper>
+              </Card>
+
+              <Spacer size={16} />
+              <Card id="interest" isShadow={false}>
                 <Wrapper>
                   <Titulo
                     titulo="Áreas de interesse"
@@ -265,7 +314,7 @@ export default function OutrasInformacoes({ data, imageLoaded }: Props) {
               </Card>
 
               <Spacer size={16} />
-              <Card id="training">
+              <Card id="training" isShadow={false}>
                 <Wrapper>
                   <Titulo
                     titulo="Capacitação"
@@ -324,7 +373,7 @@ export default function OutrasInformacoes({ data, imageLoaded }: Props) {
               </Card>
 
               <Spacer size={16} />
-              <Card id="causes">
+              <Card id="causes" isShadow={false}>
                 <Wrapper>
                   <Titulo
                     titulo="Causas sociais"
@@ -333,7 +382,7 @@ export default function OutrasInformacoes({ data, imageLoaded }: Props) {
                     tamanho={16}
                   />
 
-                  <Carrousel {...settingsSlider}>
+                  <Carrousel {...settingSlider(data.causasSociais)}>
                     {data.causasSociais
                       ?.sort(function (a: any, b: any) {
                         if (a.id < b.id) {
@@ -346,16 +395,49 @@ export default function OutrasInformacoes({ data, imageLoaded }: Props) {
                       })
                       ?.map(item => (
                         <li key={item.id}>
-                          <Image src={item.url} alt={item.descricao} layout="fill" />
+                          <Image
+                            width={120}
+                            height={120}
+                            src={item.url}
+                            alt={item.descricao}
+                          />
                         </li>
                       ))}
+                  </Carrousel>
+                </Wrapper>
+              </Card>
+
+              <Spacer size={16} />
+              <Card id="certified" isShadow={false}>
+                <Wrapper>
+                  <Titulo
+                    titulo="Certificados em causas sociais"
+                    cor={AZUL}
+                    negrito
+                    tamanho={16}
+                  />
+
+                  <Carrousel {...settingSlider(certificados)}>
+                    {certificados?.map(certificado => (
+                      <CardCertificado key={certificado.id}>
+                        <p
+                          onClick={() =>
+                            history.push('/projetos/imprimir-certificado', {
+                              ...certificado,
+                            })
+                          }
+                        >
+                          {certificado.instituicao.nome}
+                        </p>
+                      </CardCertificado>
+                    ))}
                   </Carrousel>
                 </Wrapper>
               </Card>
             </Col>
 
             <Col lg={7}>
-              <Card>
+              <Card isShadow={false}>
                 <Wrapper>
                   <Titulo titulo="Vídeo" cor={AZUL} negrito tamanho={16} />
 
@@ -363,24 +445,23 @@ export default function OutrasInformacoes({ data, imageLoaded }: Props) {
                     <Frame
                       frameBorder="0"
                       allowFullScreen
-                      src={`https://www.youtube.com/embed/${
-                        data?.url_video_apresentacao.split('=')[1]
-                      }?controls=0`}
+                      src={urlVideo}
                       title={data?.nome_tratamento}
                     />
                   ) : (
-                    <TitleVideoNotFound>
-                      {!user || data.id !== user.id_pessoa
-                        ? data?.nome_tratamento
-                        : 'Você'}{' '}
-                      ainda não possui vídeo de apresentação.
-                    </TitleVideoNotFound>
+                    <SemConteudo
+                      mensagem={`${
+                        !user || data.id !== user.id_pessoa
+                          ? data?.nome_tratamento
+                          : 'Você'
+                      } ainda não possui vídeo de apresentação.`}
+                    />
                   )}
                 </Wrapper>
               </Card>
               <Spacer size={20} />
 
-              <Card>
+              <Card isShadow={false}>
                 <Wrapper>
                   <Titulo
                     titulo="Minhas Habilidades"
@@ -394,7 +475,7 @@ export default function OutrasInformacoes({ data, imageLoaded }: Props) {
               </Card>
 
               <Spacer size={20} />
-              <Card>
+              <Card isShadow={false}>
                 <Wrapper>
                   <Titulo titulo="Vitrine" cor={AZUL} negrito tamanho={16} />
                   <VitrineServico
@@ -405,7 +486,7 @@ export default function OutrasInformacoes({ data, imageLoaded }: Props) {
               </Card>
               <Spacer size={20} />
 
-              <Card>
+              <Card isShadow={false}>
                 <Wrapper>
                   <Titulo
                     titulo="Recomendações"
@@ -419,7 +500,7 @@ export default function OutrasInformacoes({ data, imageLoaded }: Props) {
 
               <Spacer size={20} />
 
-              <Card>
+              <Card isShadow={false}>
                 <Wrapper>
                   <Titulo titulo="Avaliações" cor={AZUL} negrito tamanho={16} />
                   <CardAvaliacao id={data.id} />

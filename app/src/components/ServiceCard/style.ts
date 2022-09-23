@@ -8,8 +8,8 @@ import {
 } from '../../styles/variaveis';
 
 export const Content = styled.div`
-  width: calc(310px + 2px);
-  height: 364px;
+  width: calc(267px + 2px);
+  height: 358px;
   border: solid 1px ${CINZA_10};
   transition: all 0.2s;
   border-radius: 8px;

@@ -37,7 +37,6 @@ export default function Layout({
 }: LayoutProps) {
   const [sidebar, setSidebar] = useState(false);
   const { user } = useAuth();
-  console.log(user, '<<USER>>');
 
   function toggleSidebar() {
     sidebar && setSidebar(!sidebar);

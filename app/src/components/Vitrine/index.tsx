@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import CoracaoOn from '../../assets/coracao.svg';
 import CoracaoOff from '../../assets/coracao-off.svg';
 import { AvaliacaoFornecedor } from '../AvaliacaoFornecedor';
@@ -32,10 +32,12 @@ import { pessoas_api } from '../../services/pessoas_api';
 import { useAuth } from '../../contexts/auth';
 import Carol from '../../assets/carol-full.svg';
 import Avatar from '../../components/CadastroComplementar/Apresentacao/style';
-import { useHistory } from 'react-router';
 import { useRouter } from 'next/router';
 import { ModalLoading } from '../ModalLoading';
 import { Button } from '../Form/Button';
+import autoAnimate from '@formkit/auto-animate';
+import { oportunidades_api } from 'src/services/oportunidades_api';
+import Image from 'next/image';
 
 export interface IVitrine {
   nome: string;
@@ -93,11 +95,12 @@ export function ItemVitrine({
   const [favoriteItem, setFavoriteItem] = useState<Array<Number>>([]);
   const [showModalLoadding, setShowModalLoadding] = useState(false);
   const [numeroProjetos, setNumeroProjetos] = useState(0);
+  const parent = useRef(null);
   const { user } = useAuth();
   const router = useRouter();
 
   useEffect(() => {
-    if (!user) return;
+    if (!user.id_pessoa) return;
     const load = async () => {
       try {
         const { data: favorites } = await pessoas_api.get(
@@ -132,6 +135,7 @@ export function ItemVitrine({
 
   const handleFavorite = (event: React.MouseEvent, idPessoa: number) => {
     event.stopPropagation();
+    if (!user.id_pessoa) return;
     const load = async () => {
       setShowModalLoadding(true);
       const check = favoriteItem.find(item => item === idPessoa);
@@ -158,10 +162,26 @@ export function ItemVitrine({
 
   const countProjects = useCallback(async () => {
     try {
-      const response = await pessoas_api.get(
-        `/projetos/count?idPessoaFornecedor=${item.id}`,
+      const { data: countConcluido } = await oportunidades_api.get(
+        `/projetos/count?idPessoaFornecedor=${item.id}&status=CONCLUIDO`,
       );
-      setNumeroProjetos(response.data);
+      const { data: countIniciado } = await oportunidades_api.get(
+        `/projetos/count?idPessoaFornecedor=${item.id}&status=INICIADO`,
+      );
+
+      const { data: countAguardandoInicio } = await oportunidades_api.get(
+        `/projetos/count?idPessoaFornecedor=${item.id}&status=AGUARDANDO_INICIO`,
+      );
+
+      const { data: countConcluidoParcialmente } = await oportunidades_api.get(
+        `/projetos/count?idPessoaFornecedor=${item.id}&status=CONCLUIDO_PARCIALMENTE`,
+      );
+      setNumeroProjetos(
+        countConcluido +
+          countIniciado +
+          countAguardandoInicio +
+          countConcluidoParcialmente,
+      );
     } catch (error: any) {
       console.error(error.response);
     }
@@ -171,6 +191,10 @@ export function ItemVitrine({
     countProjects();
   }, [countProjects]);
 
+  useEffect(() => {
+    parent.current && autoAnimate(parent.current);
+  }, [parent]);
+
   return (
     <>
       <ModalLoading
@@ -178,8 +202,11 @@ export function ItemVitrine({
         setShowModal={setShowModalLoadding}
       />
 
-      <ContainerItemVitrine onClick={() => handleOpenPerson(item.id)}>
-        <Body>
+      <ContainerItemVitrine
+        ref={parent}
+        onClick={() => handleOpenPerson(item.id)}
+      >
+        <Body ref={parent}>
           <FotoPerfil>
             <Foto
               width={96}
@@ -235,19 +262,19 @@ export function ItemVitrine({
           )}
         </Footer>
 
-        {user && (
+        {user?.id_pessoa && (
           <ContainerItensFooter>
-            {user?.id !== item.id && (
+            {user?.id_pessoa !== item?.id && (
               <Favorito
                 isLogado={user?.id ? true : false}
                 onClick={event => {
-                  if (user.id) handleFavorite(event, item.id);
+                  if (user?.id) handleFavorite(event, item?.id);
                 }}
               >
-                {favoriteItem.find(element => element === item.id) ? (
-                  <CoracaoOn />
+                {favoriteItem?.find(element => element === item?.id) ? (
+                  <Image src={CoracaoOn} width={20} height={20} alt="off" />
                 ) : (
-                  <CoracaoOff />
+                  <Image src={CoracaoOff} width={20} height={20} alt="off" />
                 )}
               </Favorito>
             )}

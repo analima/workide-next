@@ -13,9 +13,10 @@ import {
 
 export const Content = styled.section`
   width: 100%;
-  height: 102px;
+  height: 120px;
   padding: 10px 16px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-content: space-between;
   align-items: center;
   background-color: ${BRANCO};
@@ -33,11 +34,16 @@ export const Content = styled.section`
   .collunm-1 {
     gap: 8px;
     h1 {
-      font-weight: 400;
-      font-size: 12.8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.5px;
       color: ${AZUL};
-      text-decoration-line: underline;
       margin: 0;
+
+      :hover {
+        text-decoration: underline;
+      }
     }
 
     p {
@@ -55,15 +61,37 @@ export const Content = styled.section`
       gap: 10px;
       border-radius: 8px;
 
-      background-color: ${AMARELO};
       font-weight: 700;
       font-size: 16px;
       color: ${BRANCO};
     }
+
+    .andamento {
+      background-color: ${AMARELO};
+    }
+
+    .aguardando-inicio {
+      background-color: #159700;
+    }
+
+    .parcialmente {
+      background-color: ${AZUL};
+    }
+
+    .concluido {
+      background-color: ${AZUL};
+    }
+
+    .cancelado {
+      color: ${PRETO_10};
+      background-color: #c8c8c8;
+    }
   }
 
   .collunm-2 {
-    span {
+    text-align: center;
+    span,
+    p {
       color: ${PRETO_10};
       font-style: normal;
       font-weight: 400;
@@ -72,19 +100,12 @@ export const Content = styled.section`
   }
 
   .collunm-3 {
+    text-align: right;
     span {
       font-style: normal;
       color: ${PRETO_10};
-      font-weight: 400;
+      font-weight: 600;
       font-size: 12.8px;
-    }
-
-    p {
-      font-style: normal;
-      color: ${PRETO_10};
-      font-weight: 500;
-      font-size: 10.24px;
-      margin: 0;
     }
   }
 
@@ -92,17 +113,17 @@ export const Content = styled.section`
     text-align: right;
     .pago {
       color: ${AZUL};
-      font-weight: 400;
+      font-weight: 600;
       font-size: 12.8px;
     }
     .taxa {
       color: ${VERMELHO};
-      font-weight: 500;
-      font-size: 10.24px;
+      font-weight: 600;
+      font-size: 12.8px;
     }
     .repasee {
       color: ${VERDE};
-      font-weight: 400;
+      font-weight: 600;
       font-size: 12.8px;
     }
   }

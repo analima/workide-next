@@ -1,6 +1,31 @@
+import { useEffect, useMemo, useState } from 'react';
+import { formatToPrice } from 'src/helpers/formatsHelper';
+import { IExtratoProps } from 'src/interfaces/IExtratoProps';
 import { Content, ContentCard } from './styles';
 
-export function CardTotalExtrato() {
+interface ITotalProps {
+  dados: IExtratoProps[];
+}
+export function CardTotalExtrato({ dados }: ITotalProps) {
+  const [totalLiberado, setTotalLiberado] = useState(0);
+  const [totalPrevisto, setTotalPrevisto] = useState(0);
+  const [totalAguardando, setTotalAguardando] = useState(0);
+  const [totalTaxa, setTotalTaxa] = useState(0);
+
+  useEffect(() => {
+    const total_liberado = dados.reduce((accumulator, extrato) => {
+      const valor = extrato.vlrConsumidor;
+      return accumulator + valor;
+    }, 0);
+    setTotalLiberado(total_liberado);
+
+    const total1 = dados.reduce((accumulator, product) => {
+      const productsQuantity = product.vlrTaxa;
+      return accumulator + productsQuantity;
+    }, 0);
+    console.log(total1);
+  }, [dados]);
+
   return (
     <Content>
       <span>Nos últimos 7 dias</span>
@@ -13,10 +38,12 @@ export function CardTotalExtrato() {
         </div>
 
         <div className="valores">
-          <span className="total-liberado">R$ 500,00</span>
-          <span className="total-previsto">R$ 500,00</span>
-          <span className="total-aguardando">R$ 500,00</span>
-          <span className="total-taxa">R$ 50,00</span>
+          <span className="total-liberado">{formatToPrice(totalLiberado)}</span>
+          <span className="total-previsto">{formatToPrice(totalLiberado)}</span>
+          <span className="total-aguardando">
+            {formatToPrice(totalLiberado)}
+          </span>
+          <span className="total-taxa">{formatToPrice(totalLiberado)}</span>
         </div>
       </div>
     </Content>

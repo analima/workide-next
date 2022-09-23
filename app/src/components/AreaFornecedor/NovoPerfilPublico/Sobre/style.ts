@@ -29,36 +29,16 @@ export const Content = styled.section`
     &:hover {
       opacity: 0.7;
     }
-  }
-`;
-export const Ranking = styled.span`
-  font-size: 16px;
-  color: ${PRETO_10};
-  font-weight: bold;
-`;
 
-export const Frame = styled.iframe`
-  width: 280px;
-  height: 280px;
-
-  @media (max-width: 1200px) {
-    width: 210px;
-    height: 210px;
-  }
-  @media (max-width: 500px) {
-    width: 144px;
-    height: 144px;
-  }
-
-  @media (max-width: 762px) {
-    width: 200px;
-    height: 200px;
+    @media (max-width: 578px) {
+      margin: 3px !important;
+    }
   }
 `;
 
 export const ContentImg = styled.div`
   position: relative;
-  bottom: 152px;
+  bottom: 100px;
   width: 214px;
   height: 214px;
 
@@ -74,20 +54,13 @@ export const ContentImg = styled.div`
     }
   }
 
-  @media (max-width: 768px) {
-    width: 164px;
-    height: 164px;
-    bottom: 120px;
-  }
-
-  @media (max-width: 468px) {
-    width: 140px;
-    height: 140px;
-    bottom: 100px;
+  @media (max-width: 578px) {
+    margin: 0 auto;
+    bottom: 125px;
   }
 `;
 
-export interface CapaProps {
+interface CapaProps {
   CapaDefault: string;
 }
 
@@ -97,7 +70,7 @@ export const ContentSpinnerLoading = styled.div<CapaProps>`
   align-items: center;
   width: 100%;
   height: 100%;
-  background-image: url(${props => props.CapaDefault});
+  background-image: url(${({ CapaDefault }) => CapaDefault});
   background-size: cover;
 `;
 
@@ -109,8 +82,12 @@ export const Avaliacao = styled.div`
   .nota {
     color: ${LARANJA};
     margin-right: 8px;
-    font-weight: bold;
+    font-family: 'Renner';
     font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: center;
   }
 
   .estrela {
@@ -174,10 +151,6 @@ export const NomeTitulo = styled.h2`
   font-weight: bold;
   font-size: 16px;
   margin: 0;
-
-  @media (max-width: 468px) {
-    font-size: 12.8px;
-  }
 `;
 
 export const FotoPerfil = styled.img`
@@ -188,15 +161,30 @@ export const FotoPerfil = styled.img`
   background-position: center;
   border-radius: 8px;
   border: 2px solid ${BRANCO};
+`;
 
-  @media (max-width: 768px) {
-    width: 164px;
-    height: 164px;
-  }
+export const BannerVoluntario = styled.div`
+  position: absolute;
+  margin-top: 50px;
+  width: 100%;
 
-  @media (max-width: 468px) {
-    width: 140px;
-    height: 140px;
+  &::after {
+    content: '#EUSOUVOLUNTÁRIO';
+    width: 100%;
+    text-align: center;
+    background: rgba(0, 192, 158, 0.83);
+    color: #fff;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    padding: 13px 20.5px;
+    position: absolute;
+    bottom: 0;
+    transform: translate(0, -100%);
+    border-bottom: 1px solid rgba(0, 192, 158, 0.83);
+    font-family: 'Renner';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
   }
 `;
 
@@ -267,6 +255,13 @@ export const ContentInfo = styled.div`
   justify-content: space-between;
   height: 148px;
 
+  @media (max-width: 578px) {
+    flex-direction: column;
+    padding: 5px;
+    height: auto;
+    box-sizing: border-box;
+  }
+
   @media (max-width: 468px) {
     gap: 8px;
   }
@@ -283,20 +278,36 @@ export const ContentOtherInfo = styled.div`
     margin: 0;
 
     span {
-      font-size: 12px;
+      font-size: 13px;
       color: ${PRETO_10};
       font-weight: bold;
     }
   }
 
+  .informacoes {
+    font-family: 'Renner';
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+    color: ${PRETO_10};
+  }
+
   @media (max-width: 768px) {
     flex-direction: column;
     padding: 8px 0;
+  }
+
+  @media (max-width: 578px) {
+    justify-content: center;
+    align-items: center;
+    margin-top: -110px;
 
     section {
-      span {
-        font-size: 10px;
-      }
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
   }
 `;
@@ -356,4 +367,4 @@ export const LinkToScroll = styled(Link)`
   }
 `;
 
-
+export const ContainerMedalhas = styled.div``;

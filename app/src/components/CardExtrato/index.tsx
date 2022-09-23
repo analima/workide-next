@@ -1,28 +1,49 @@
+import { formatDate } from 'src/helpers/DateHelper';
+import { formatToPrice } from 'src/helpers/formatsHelper';
+import { IExtratoProps } from 'src/interfaces/IExtratoProps';
 import { Content, ContentCard } from './styles';
 
-export function CardExtrato() {
+interface IDadosExtratoProps {
+  item: IExtratoProps;
+  type: string;
+}
+export function CardExtrato({ item, type }: IDadosExtratoProps) {
+  function handleColorStatus(status: string) {
+    if (status === 'Projeto em andamento') return 'andamento';
+    if (status === 'Concluído parcialmente') return 'parcialmente';
+    if (status === 'Projeto concluído') return 'concluido';
+    if (status === 'Projeto cancelado') return 'cancelado';
+    if (status === 'Aguardando início') return 'aguardando-inicio';
+  }
   return (
     <Content>
       <div className="collunm-1">
-        <h1>Nome do projeto para Internet</h1>
-        <p>Roberto Carlos de Oliveira</p>
-        <span>Em andamento (99%)</span>
+        <h1>{item.nomeProjeto}</h1>
+        <p>{item.nomeConsumidor}</p>
+        <span className={handleColorStatus(item.statusProjeto)}>
+          {item.statusProjeto + ' ' + item.percentualConclusao.toFixed(1)}%
+        </span>
       </div>
 
       <div className="collunm-2">
-        <span>Aguardando conclusão</span>
+        <span>{item.statusPagamento}</span>
+        <p>
+          {type === 'consumer'
+            ? formatDate(item.dataPagamentoFornecedor)
+            : formatDate(item.dataPagamentoConsumidor)}
+        </p>
       </div>
 
       <div className="collunm-3">
-        <span>Pago pelo cliente via boleto</span>
-        <p>Taxa administrativa</p>
+        <span>Pago pelo cliente via {item.meioPagamento}</span>
+        <span>Taxa administrativa</span>
         <span>Repasse</span>
       </div>
 
       <div className="collunm-4">
-        <span className="pago">R$ + 100,00</span>
-        <span className="taxa">R$ - 10,00</span>
-        <span className="repasee">R$ + 90,00</span>
+        <span className="pago">{formatToPrice(item.vlrConsumidor)}</span>
+        <span className="taxa">{formatToPrice(item.vlrTaxa)}</span>
+        <span className="repasee">{formatToPrice(item.vlrFornecedor)}</span>
       </div>
     </Content>
   );

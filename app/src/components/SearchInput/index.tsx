@@ -1,4 +1,10 @@
-import { InputHTMLAttributes, useCallback, useRef, useState } from 'react';
+import {
+  InputHTMLAttributes,
+  SetStateAction,
+  useCallback,
+  useRef,
+  useState,
+} from 'react';
 import { IoMdSearch } from 'react-icons/io';
 import { Container } from './style';
 
@@ -7,6 +13,7 @@ interface SearchInputProps extends InputHTMLAttributes<HTMLInputElement> {
   variation?: 'default' | 'no-button';
   className?: string;
   onChange?: (value: any) => void;
+  onChangeValue?: (value: any) => void;
 }
 
 export function SearchInput({
@@ -14,6 +21,7 @@ export function SearchInput({
   onChange,
   className,
   variation = 'default',
+  onChangeValue,
   ...rest
 }: SearchInputProps) {
   const inputRef = useRef<HTMLInputElement>({} as HTMLInputElement);
@@ -29,7 +37,7 @@ export function SearchInput({
   }, []);
 
   const handleEnterKey = useCallback(
-    (event: any) => {
+    (event: { key: string }) => {
       if (event.key === 'Enter' && onChange) {
         onChange(term);
       }
@@ -45,13 +53,16 @@ export function SearchInput({
   }, [onChange, term]);
 
   const handleChange = useCallback(
-    (event: any) => {
+    (event: { target: { value: SetStateAction<string> } }) => {
       setTerm(event.target.value);
       if (variation === 'no-button' && onChange) {
         onChange(event.target.value);
       }
+      if (onChangeValue) {
+        onChangeValue(event.target.value);
+      }
     },
-    [variation, onChange],
+    [onChange, variation, onChangeValue],
   );
 
   return (
