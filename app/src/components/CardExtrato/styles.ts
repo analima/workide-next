@@ -3,6 +3,7 @@ import {
   AMARELO,
   AZUL,
   BRANCO,
+  CINZA_10,
   CINZA_40,
   CINZA_60,
   LARANJA,
@@ -11,7 +12,11 @@ import {
   VERMELHO,
 } from '../../styles/variaveis';
 
-export const Content = styled.section`
+interface IStatusProps {
+  status: boolean;
+}
+
+export const Content = styled.section<IStatusProps>`
   width: 100%;
   height: 120px;
   padding: 10px 16px;
@@ -19,7 +24,7 @@ export const Content = styled.section`
   grid-template-columns: 1fr 1fr 1fr 1fr;
   justify-content: space-between;
   align-items: center;
-  background-color: ${BRANCO};
+  background-color: ${({ status }) => (status ? CINZA_10 : BRANCO)};
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
 
@@ -34,16 +39,16 @@ export const Content = styled.section`
   .collunm-1 {
     gap: 8px;
     h1 {
-      cursor: pointer;
+      /* cursor: pointer; */
       font-weight: 600;
       font-size: 14px;
       letter-spacing: 0.5px;
       color: ${AZUL};
       margin: 0;
 
-      :hover {
+      /* :hover {
         text-decoration: underline;
-      }
+      } */
     }
 
     p {
@@ -53,10 +58,10 @@ export const Content = styled.section`
       margin: 0;
     }
 
-    span {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
+    > span {
+      text-align: center;
+
+      width: auto;
       padding: 2px 8px;
       gap: 10px;
       border-radius: 8px;
@@ -89,6 +94,9 @@ export const Content = styled.section`
   }
 
   .collunm-2 {
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
     text-align: center;
     span,
     p {
@@ -121,7 +129,7 @@ export const Content = styled.section`
       font-weight: 600;
       font-size: 12.8px;
     }
-    .repasee {
+    .repase {
       color: ${VERDE};
       font-weight: 600;
       font-size: 12.8px;
@@ -129,6 +137,29 @@ export const Content = styled.section`
   }
 
   @media (max-width: 768px) {
+    height: auto;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 8px;
+
+    .collunm-1 {
+      > span {
+        font-size: 12px;
+      }
+    }
+
+    .collunm-2 {
+      flex-direction: column;
+    }
+
+    .collunm-3 {
+      text-align: left;
+      margin-top: 16px;
+    }
+
+    .collunm-4 {
+      margin-top: 16px;
+      text-align: left;
+    }
   }
 
   @media (max-width: 530px) {

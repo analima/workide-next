@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { PRETO_10 } from 'src/styles/variaveis';
-import Layout from 'src/components/AreaFornecedor/Layout';
+import { AZUL, PRETO_10 } from 'src/styles/variaveis';
 import { Titulo } from 'src/components/Titulo';
 import {
   ButtonFilter,
@@ -26,6 +25,7 @@ import Paginacao from 'src/components/AreaFornecedor/MeusProjetos/Paginacao';
 import { ID_TOKEN, useAuth } from 'src/contexts/auth';
 import { consultas_api } from 'src/services/consultas_api';
 import { InputDate } from 'src/components/Form/inputDate';
+import { FaRegCalendarAlt } from 'react-icons/fa';
 
 interface TypeProfileProps {
   type: string;
@@ -40,12 +40,13 @@ export default function Extrato({ type }: TypeProfileProps) {
   const { user } = useAuth();
   const router = useRouter();
   const schema = Yup.object().shape({});
-  const [dataSelect, setDataSelect] = useState<IDadosSelect[]>([]);
   const [extractData, setExtractData] = useState<IExtratoProps[]>([]);
   const [filterUser, setFilterUser] = useState(0);
   const [pagina, setPagina] = useState(1);
   const [periodo, setPeriodo] = useState(0);
   const [totalPaginas, setTotalPaginas] = useState(1);
+  const [filter, setFilter] = useState('todos');
+  const [dadosUserFilter, setDadosUserFilter] = useState<IDadosSelect[]>([]);
   const { control, watch } = useForm({
     resolver: yupResolver(schema),
   });
@@ -61,9 +62,9 @@ export default function Extrato({ type }: TypeProfileProps) {
               values: IExtratoProps[];
               pages: number;
             }>(
-              `/consulta/extrato/fornecedor/${user?.id_pessoa}?limit=10&page=${pagina}`,
+              `/consulta/extrato/fornecedor/${user?.id_pessoa}?limit=10&page=${pagina}&order=statusProjeto`,
               {
-                idPessoaConsumidor: filterUser,
+                idPessoaConsumidor: filterUser || 0,
                 periodo: periodo || 0,
               },
               {
@@ -74,6 +75,23 @@ export default function Extrato({ type }: TypeProfileProps) {
             );
             setTotalPaginas(data.pages);
             setExtractData(data.values);
+
+            let dadosSelect: IDadosSelect[] = [];
+            dadosSelect = data.values.map(item => ({
+              value: String(item.idPessoaConsumidor),
+              label: item.nomeConsumidor,
+            }));
+
+            const parsed_array = dadosSelect.map(val => {
+              return JSON.stringify(val);
+            });
+            const filtered_array = parsed_array
+              .filter((value, ind) => parsed_array.indexOf(value) == ind)
+              .map(val => {
+                return JSON.parse(val);
+              });
+
+            setDadosUserFilter(filtered_array);
           }
 
           if (type === 'consumer') {
@@ -81,9 +99,9 @@ export default function Extrato({ type }: TypeProfileProps) {
               values: IExtratoProps[];
               pages: number;
             }>(
-              `/consulta/extrato/consumidor/${user?.id_pessoa}?limit=10&page=${pagina}`,
+              `/consulta/extrato/consumidor/${user?.id_pessoa}?limit=10&page=${pagina}&order=statusProjeto`,
               {
-                idPessoaFornecedor: filterUser,
+                idPessoaFornecedor: filterUser || 0,
                 periodo: periodo || 0,
               },
               {
@@ -94,6 +112,23 @@ export default function Extrato({ type }: TypeProfileProps) {
             );
             setTotalPaginas(data.pages);
             setExtractData(data.values);
+
+            let dadosSelect: IDadosSelect[] = [];
+            dadosSelect = data.values.map(item => ({
+              value: String(item.idPessoaFornecedor),
+              label: item.nomeFornecedor,
+            }));
+
+            const parsed_array = dadosSelect.map(val => {
+              return JSON.stringify(val);
+            });
+            const filtered_array = parsed_array
+              .filter((value, ind) => parsed_array.indexOf(value) == ind)
+              .map(val => {
+                return JSON.parse(val);
+              });
+
+            setDadosUserFilter(filtered_array);
           }
         }
       }
@@ -102,25 +137,8 @@ export default function Extrato({ type }: TypeProfileProps) {
   }, [filterUser, pagina, periodo, router, type, user.id_pessoa]);
 
   useEffect(() => {
-    if (extractData) {
-      let dadosSelect: IDadosSelect[] = [];
-      dadosSelect = extractData.map(item => ({
-        value: String(item.idPessoaConsumidor),
-        label: item.nomeConsumidor,
-      }));
-
-      const parsed_array = dadosSelect.map(val => {
-        return JSON.stringify(val);
-      });
-      const filtered_array = parsed_array
-        .filter((value, ind) => parsed_array.indexOf(value) == ind)
-        .map(val => {
-          return JSON.parse(val);
-        });
-
-      setDataSelect(filtered_array);
-    }
-  }, [extractData]);
+    setTimeout(() => {}, 2000);
+  }, []);
 
   useEffect(() => {
     watch((value: any) => {
@@ -132,7 +150,11 @@ export default function Extrato({ type }: TypeProfileProps) {
 
   useEffect(() => {
     watch((value: any) => {
-      if (value.data === 'Selecione...' || value.data === undefined)
+      if (
+        value.data === 'Selecione...' ||
+        value.data === undefined ||
+        value.data === NaN
+      )
         setPeriodo(0);
       setPeriodo(Number(value.data));
     });
@@ -164,7 +186,8 @@ export default function Extrato({ type }: TypeProfileProps) {
           <Select
             control={control}
             name="user"
-            options={dataSelect}
+            noValueOption="Todos"
+            options={dadosUserFilter}
             label={type === 'consumer' ? 'Fornecedores' : 'Clientes'}
           />
 
@@ -172,17 +195,45 @@ export default function Extrato({ type }: TypeProfileProps) {
             <div className="buttons">
               <span>ver por: </span>
 
-              <ButtonFilter active={false} onClick={() => console.log('click')}>
+              <ButtonFilter
+                active={filter === 'todos'}
+                onClick={() => setFilter('todos')}
+              >
                 Todos
               </ButtonFilter>
+
+              <ButtonFilter
+                active={filter === 'previsao'}
+                onClick={() => setFilter('previsao')}
+              >
+                Com previsão
+              </ButtonFilter>
+
+              <ButtonFilter
+                active={filter === 'recebido'}
+                onClick={() => setFilter('recebido')}
+              >
+                Recebido
+              </ButtonFilter>
+
+              <ButtonFilter
+                onClick={() => setFilter('cancelado')}
+                active={filter === 'cancelado'}
+              >
+                Cancelado
+              </ButtonFilter>
             </div>
-            <Select
-              control={control}
-              name="data"
-              className="input-date"
-              options={dayFilter}
-              label="Período"
-            />
+
+            <div className="calendar">
+              <FaRegCalendarAlt color={AZUL} size={24} />
+              <Select
+                control={control}
+                name="data"
+                className="input-date"
+                options={dayFilter}
+                label="Período"
+              />
+            </div>
           </div>
         </ContentFilter>
 
@@ -198,7 +249,7 @@ export default function Extrato({ type }: TypeProfileProps) {
             />
           </ContentCardExtrato>
 
-          <CardTotalExtrato dados={extractData} />
+          <CardTotalExtrato dados={extractData} type={type} periodo={periodo} />
 
           {type === 'provider' && (
             <ContentEntendaMelhor>

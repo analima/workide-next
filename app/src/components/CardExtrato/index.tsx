@@ -1,7 +1,7 @@
 import { formatDate } from 'src/helpers/DateHelper';
 import { formatToPrice } from 'src/helpers/formatsHelper';
 import { IExtratoProps } from 'src/interfaces/IExtratoProps';
-import { Content, ContentCard } from './styles';
+import { Content } from './styles';
 
 interface IDadosExtratoProps {
   item: IExtratoProps;
@@ -15,23 +15,34 @@ export function CardExtrato({ item, type }: IDadosExtratoProps) {
     if (status === 'Projeto cancelado') return 'cancelado';
     if (status === 'Aguardando início') return 'aguardando-inicio';
   }
+
+  function handleDatePagamento(status: string) {
+    if (status === 'Previsto') return true;
+    if (status === 'Liberado em') return true;
+    if (status === 'Cancelado') return true;
+  }
+
   return (
-    <Content>
+    <Content status={item.statusProjeto === 'Projeto cancelado'}>
       <div className="collunm-1">
         <h1>{item.nomeProjeto}</h1>
-        <p>{item.nomeConsumidor}</p>
+        <p>{type === 'provider' ? item.nomeConsumidor : item.nomeFornecedor}</p>
         <span className={handleColorStatus(item.statusProjeto)}>
-          {item.statusProjeto + ' ' + item.percentualConclusao.toFixed(1)}%
+          {item.statusProjeto}
+          {item.statusProjeto === 'Projeto em andamento' &&
+            ' ' + item.percentualConclusao.toFixed(1) + '%'}
         </span>
       </div>
 
       <div className="collunm-2">
         <span>{item.statusPagamento}</span>
-        <p>
-          {type === 'consumer'
-            ? formatDate(item.dataPagamentoFornecedor)
-            : formatDate(item.dataPagamentoConsumidor)}
-        </p>
+        {handleDatePagamento(item.statusPagamento) && (
+          <p>
+            {type === 'provider'
+              ? formatDate(item.dataPagamentoConsumidor)
+              : formatDate(item.dataPagamentoFornecedor)}
+          </p>
+        )}
       </div>
 
       <div className="collunm-3">
@@ -41,9 +52,19 @@ export function CardExtrato({ item, type }: IDadosExtratoProps) {
       </div>
 
       <div className="collunm-4">
-        <span className="pago">{formatToPrice(item.vlrConsumidor)}</span>
-        <span className="taxa">{formatToPrice(item.vlrTaxa)}</span>
-        <span className="repasee">{formatToPrice(item.vlrFornecedor)}</span>
+        <span className="pago">
+          +{' '}
+          {formatToPrice(
+            type === 'provider' ? item.vlrConsumidor : item.vlrFornecedor,
+          )}
+        </span>
+        <span className="taxa">- {formatToPrice(item.vlrTaxa)}</span>
+        <span className="repase">
+          +{' '}
+          {formatToPrice(
+            type === 'provider' ? item.vlrFornecedor : item.vlrConsumidor,
+          )}
+        </span>
       </div>
     </Content>
   );
