@@ -59,6 +59,15 @@ export const Content = styled.section`
   }
 
   @media (max-width: 478px) {
+    flex-direction: column;
+    justify-content: flex-start;
+
+    .info-total {
+      .textos,
+      .valores {
+        text-align: start;
+      }
+    }
   }
 `;
 

@@ -7,10 +7,21 @@ interface IButtonProps {
 
 export const Container = styled.div``;
 
-export const Header = styled.div``;
+export const Header = styled.div`
+  width: 100%;
+
+  @media (max-width: 768px) {
+    h2:first-child {
+      font-size: 24px;
+    }
+
+    h2:last-child {
+      font-size: 16px;
+    }
+  }
+`;
 
 export const Wrapper = styled.div`
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,6 +49,32 @@ export const ContentFilter = styled.div`
         max-width: 180px;
       }
     }
+
+    .calendar {
+      display: flex;
+      align-items: flex-end;
+      gap: 16px;
+    }
+  }
+
+  @media (max-width: 1199px) {
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    select {
+      width: 100%;
+    }
+    .content-buttons-filters {
+      margin-top: 16px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+
+      .calendar {
+        flex-direction: row-reverse;
+      }
+    }
   }
 `;
 
@@ -52,12 +89,16 @@ export const Main = styled.div`
     flex-direction: column;
     gap: 8px;
   }
+
+  @media (max-width: 1199px) {
+    width: 100%;
+  }
 `;
 
 export const ContentCardExtrato = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 16px;
 `;
 
 export const ButtonFilter = styled.button<IButtonProps>`
