@@ -51,7 +51,6 @@ export default function Extrato({ type }: TypeProfileProps) {
   });
 
   useEffect(() => {
-    if (!user.id_pessoa) router.push('/');
     async function load() {
       if (user.id_pessoa) {
         const newIdToken = localStorage.getItem(ID_TOKEN);
@@ -133,7 +132,6 @@ export default function Extrato({ type }: TypeProfileProps) {
 
   useEffect(() => {
     watch((value: any) => {
-      console.log(value.data);
       if (value.data === 'Selecione...' || value.data === undefined)
         setPeriodo(0);
       setPeriodo(Number(value.data));

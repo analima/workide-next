@@ -39,6 +39,7 @@ import {
   FaDribbble,
   FaFigma,
   FaGithub,
+  FaPinterest,
   FaYoutube,
 } from 'react-icons/fa';
 import { pessoas_api } from '../../../../services/pessoas_api';
@@ -68,10 +69,22 @@ export function OutrasInformacoes({ data, imageLoaded }: Props) {
   const [certificados, setCertificados] = useState<Certificado[]>([]);
   const [redesSociais, setRedesSociais] = useState<IRedeSocialProps[]>([]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const redes = [
+    'instagram',
+    'facebook',
+    'twitter',
+    'linkedin-empresa',
+    'linkedin-pessoal',
+  ];
+
   const loadRedesSociais = useCallback(async () => {
     const response = await pessoas_api.get(`/pessoas/${data.id}/redes-sociais`);
-    setRedesSociais(response.data);
-  }, [data.id]);
+    const redesFiltered = response.data.filter(
+      (i: IRedeSocialProps) => !redes.includes(i.tipo),
+    );
+    setRedesSociais(redesFiltered);
+  }, [data.id, redes]);
 
   useEffect(() => {
     loadRedesSociais();
@@ -166,6 +179,12 @@ export function OutrasInformacoes({ data, imageLoaded }: Props) {
         return (
           <a href={item.url} title={item.tipo} target="_blank" rel="noreferrer">
             <FaGithub size={28} color="#000" />
+          </a>
+        );
+      case 'pinterest':
+        return (
+          <a href={item.url} title={item.tipo} target="_blank" rel="noreferrer">
+            <FaPinterest size={28} color="#000" />
           </a>
         );
       case 'instagram':
