@@ -44,10 +44,8 @@ export function Menu({
   const [idToken, setIdToken] = useState('');
 
   const refreshUserData = async (ID_TOKEN: any) => {
-    console.log('entrou');
     const newIdToken = localStorage.getItem(ID_TOKEN);
     setIdToken(newIdToken || '');
-    console.log(newIdToken);
     if (newIdToken) {
       const res = await pessoas_api.get('/pessoas/me', {
         headers: {
