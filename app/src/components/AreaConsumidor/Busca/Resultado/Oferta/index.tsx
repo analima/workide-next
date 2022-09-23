@@ -99,18 +99,6 @@ export default function Oferta() {
     <Content isEmpty={services.length === 0}>
       {services.length > 0 ? (
         <>
-          <div className="ordenation">
-            <div className="avaliation">
-              <Image
-                className="icone"
-                src={iconSelectPosition}
-                alt="Ordernation"
-                width={20}
-                height={20}
-              />
-              <span>Avaliações</span>
-            </div>
-          </div>
           <ContainerCard>
             {services.map(item => (
               <>

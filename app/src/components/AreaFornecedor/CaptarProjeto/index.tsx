@@ -1,14 +1,13 @@
 import { Helmet } from 'react-helmet';
 import { CaptarProjetoFornecedorProvider } from '../../../hooks/captarProjetoFornecedor';
-import  CaptarProjetoContent  from './CaptarProjetoContent';
+import CaptarProjetoContent from './CaptarProjetoContent';
 import Content from './style';
 import { hotjar } from 'react-hotjar';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
- const CaptarProjeto: React.FC = () => {
-  const [isLoading, setIsLoading] = useState(true)
-  console.log(isLoading)
+const CaptarProjeto: React.FC = () => {
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     hotjar.initialize(
@@ -17,7 +16,7 @@ import { useState } from 'react';
     );
     hotjar.stateChange('/AreaFornecedor/CaptarProjeto');
     if (typeof window !== 'undefined') {
-      setIsLoading(false)
+      setIsLoading(false);
     }
   }, []);
 
@@ -29,12 +28,13 @@ import { useState } from 'react';
 
       {!isLoading ? (
         <CaptarProjetoFornecedorProvider>
-        <CaptarProjetoContent
-        />
-      </CaptarProjetoFornecedorProvider>
-      ): <p>aguarde</p>}
+          <CaptarProjetoContent />
+        </CaptarProjetoFornecedorProvider>
+      ) : (
+        <p>aguarde</p>
+      )}
     </Content>
   );
-}
+};
 
 export default CaptarProjeto;

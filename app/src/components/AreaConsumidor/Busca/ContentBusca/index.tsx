@@ -17,13 +17,11 @@ import { useAuth } from '../../../../contexts/auth';
 import { AvatarCadastroIncompleto } from '../../../AvatarCadastroIncompleto';
 import { Helmet } from 'react-helmet';
 import { hotjar } from 'react-hotjar';
-import { ToggleSwitch } from '../../../ToggleSwitch';
 import { SearchInput } from '../../../SearchInput';
 import { useBuscaFornecedorOferta } from '../../../../hooks/buscaConsumidor';
-import { formatarValor } from '../../../../utils/CurrencyFormat';
-import { IPessoa } from 'src/interfaces/IPessoa';
 import { InformationUser } from 'src/components/InformationUser';
 import NovoFiltro from '../NovoFiltro';
+import { useRouter } from 'next/router';
 
 type Cases = {
   titulo: string;
@@ -62,9 +60,11 @@ export type ServiceProps = {
 
 export default function ContentBusca() {
   const history = useHistory();
+  const { query } = useRouter();
 
   const {
     volunteers,
+    setVolunteers,
     ofertaFiltro,
     setOfertaFiltro,
     showAvatarCadastroIncompleto,
@@ -81,12 +81,40 @@ export default function ContentBusca() {
   } = useBuscaFornecedorOferta();
 
   const { user } = useAuth();
-
   const activeMenu = true;
 
   useEffect(() => {
+    if (query.ofertas) {
+      setTimeout(() => {
+        setOfertaFiltro(true);
+        if (query.voluntarios) {
+          setVolunteers(true);
+        }
+      }, 2000);
+    }
+
+    if (query.voluntarios) {
+      setTimeout(() => {
+        setOfertaFiltro(true);
+        setVolunteers(true);
+      }, 1500);
+    }
+  }, [
+    query.ofertas,
+    query.voluntarios,
+    setFilter,
+    setOfertaFiltro,
+    setVolunteers,
+  ]);
+
+  useEffect(() => {
     const { search } = window.location;
-    if (search == '') return;
+    if (
+      search === '' ||
+      search === '?voluntarios=true' ||
+      search === '?ofertas=true'
+    )
+      return;
     const formataBusca = search?.split('filter');
     const buscaFormatada = formataBusca[1]?.split('=')[1];
     setFilter(decodeURI(buscaFormatada));
@@ -149,7 +177,7 @@ export default function ContentBusca() {
                   <div className="check">
                     <label htmlFor="profissionais">Profissionais</label>
                     <input
-                      type="checkbox"
+                      type="radio"
                       name="profissionais"
                       id="profissionais"
                       checked={!ofertaFiltro}
@@ -162,7 +190,7 @@ export default function ContentBusca() {
                   <div className="check">
                     <label htmlFor="ofertas">Ofertas</label>
                     <input
-                      type="checkbox"
+                      type="radio"
                       name="ofertas"
                       id="ofertas"
                       checked={ofertaFiltro}
@@ -175,7 +203,7 @@ export default function ContentBusca() {
                   <div className="check">
                     <label htmlFor="vol">Voluntários</label>
                     <input
-                      type="checkbox"
+                      type="radio"
                       name="vol"
                       id="vol"
                       checked={volunteers}

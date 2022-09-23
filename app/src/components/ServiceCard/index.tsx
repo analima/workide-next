@@ -109,8 +109,6 @@ export function ServiceCard({
     parent.current && autoAnimate(parent.current);
   }, [parent]);
 
-  console.log(!!service.nome);
-
   return service ? (
     <Content>
       <Row ref={parent}>

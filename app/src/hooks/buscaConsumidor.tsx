@@ -102,6 +102,8 @@ interface BuscaFornecedorOfertaProps {
   setCausas: Dispatch<SetStateAction<CausaProp[]>>;
   filter: string;
   setFilter: Dispatch<SetStateAction<string>>;
+  order: string;
+  setOrder: Dispatch<SetStateAction<string>>;
 }
 
 export type CausaProp = {
@@ -186,7 +188,7 @@ export function BuscaFornecedorOfertaProvider({ children }: GlobalLayoutProps) {
   const [showAvatarCadastroIncompleto, setShowAvatarCadastroIncompleto] =
     useState(false);
   const [sizeFilter, setSizeFilter] = useState('small');
-
+  const [order, setOrder] = useState('');
   const [basic, setBasic] = useState(false);
   const [intermediary, setIntermediary] = useState(false);
   const [advanced, setAdvanced] = useState(false);
@@ -258,7 +260,7 @@ export function BuscaFornecedorOfertaProvider({ children }: GlobalLayoutProps) {
 
       consultas_api
         .post<{ values: PessoaProp[]; pages: number }>(
-          `/consulta/fornecedores?limit=16&page=${paginaPerfis}`,
+          `/consulta/fornecedores?limit=16&page=${paginaPerfis}${order}`,
           {
             ...fornecedoresQuery,
           },
@@ -317,6 +319,7 @@ export function BuscaFornecedorOfertaProvider({ children }: GlobalLayoutProps) {
     advanced,
     specialist,
     avaliacao,
+    order,
   ]);
 
   const limparFiltros = useCallback(() => {
@@ -347,6 +350,7 @@ export function BuscaFornecedorOfertaProvider({ children }: GlobalLayoutProps) {
   }, [isMudar]);
 
   const handleChangeVolunteers = useCallback(() => {
+    setOfertaFiltro(false);
     setVolunteers(oldVolunteers => !oldVolunteers);
   }, []);
 
@@ -384,7 +388,8 @@ export function BuscaFornecedorOfertaProvider({ children }: GlobalLayoutProps) {
         errors,
         setValue,
         getValues,
-
+        order,
+        setOrder,
         volunteers,
         setVolunteers,
         ofertaFiltro,

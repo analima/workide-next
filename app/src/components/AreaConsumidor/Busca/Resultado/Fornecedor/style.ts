@@ -17,11 +17,21 @@ const Content = styled.div`
     .nivel {
       display: flex;
       align-items: center;
+      cursor: pointer;
+
+      :hover {
+        opacity: 0.8;
+      }
     }
 
     .avaliation {
       display: flex;
       align-items: center;
+      cursor: pointer;
+
+      :hover {
+        opacity: 0.8;
+      }
     }
 
     span {

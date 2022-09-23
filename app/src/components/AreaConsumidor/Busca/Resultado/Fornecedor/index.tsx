@@ -18,20 +18,20 @@ import {
 import Avatar from '../../../../CadastroComplementar/Apresentacao/style';
 import Carol from '../../../../../assets/carol-full.svg';
 import iconSelectPosition from '../../../../../assets/IconSelectPositionGrey.svg';
-
-import {
-  PessoaProp,
-  useBuscaFornecedorOferta,
-} from '../../../../../hooks/buscaConsumidor';
-import { IPessoa } from 'src/interfaces/IPessoa';
+import { useBuscaFornecedorOferta } from '../../../../../hooks/buscaConsumidor';
 
 export default function Fornecedor() {
   const parent = useRef(null);
-  const history = useHistory();
-  const { people, paginaPerfis, setPaginaPerfis, totalPaginasPerfis } =
-    useBuscaFornecedorOferta();
+  const [typeOrdenation, setTypeOrdenation] = useState(false);
 
-  console.log(people);
+  const history = useHistory();
+  const {
+    people,
+    paginaPerfis,
+    setOrder,
+    setPaginaPerfis,
+    totalPaginasPerfis,
+  } = useBuscaFornecedorOferta();
   const { user } = useAuth();
 
   const [showAvatarCadastroIncompleto, setShowAvatarCadastroIncompleto] =
@@ -53,6 +53,16 @@ export default function Fornecedor() {
     parent.current && autoAnimate(parent.current);
   }, [parent]);
 
+  function handleOrderXp(ordered: boolean) {
+    if (ordered) setOrder('&order=nivelExperienciaPeso=asc');
+    if (!ordered) setOrder('&order=nivelExperienciaPeso=desc');
+  }
+
+  function handleOrder(ordered: boolean) {
+    if (ordered) setOrder('&order=avaliacaoFornecedor=asc');
+    if (!ordered) setOrder('&order=avaliacaoFornecedor=desc');
+  }
+
   return (
     <Content>
       <AvatarCadastroIncompleto
@@ -66,7 +76,13 @@ export default function Fornecedor() {
           {people.length > 0 ? (
             <>
               <div className="ordenation">
-                <div className="nivel">
+                <div
+                  className="nivel"
+                  onClick={() => {
+                    setTypeOrdenation(!typeOrdenation);
+                    handleOrderXp(typeOrdenation);
+                  }}
+                >
                   <Image
                     className="icone"
                     src={iconSelectPosition}
@@ -84,6 +100,10 @@ export default function Fornecedor() {
                     alt="Ordernation"
                     width={20}
                     height={20}
+                    onClick={() => {
+                      setTypeOrdenation(!typeOrdenation);
+                      handleOrder(typeOrdenation);
+                    }}
                   />
                   <span>Avaliações</span>
                 </div>

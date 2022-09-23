@@ -23,7 +23,6 @@ export function CardTotalExtrato({ dados }: ITotalProps) {
       const productsQuantity = product.vlrTaxa;
       return accumulator + productsQuantity;
     }, 0);
-    console.log(total1);
   }, [dados]);
 
   return (
