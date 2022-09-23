@@ -37,13 +37,8 @@ export function NovoPerfilPublico() {
   const [imageLoaded, setImageLoaded] = useState(true);
 
   useEffect(() => {
-    if (router.query.strUsuario) {
-      setIdPessoa(Number(router.query.strUsuario));
-    } else if (user && user?.id_pessoa) {
-      setIdPessoa(user?.id_pessoa ? user?.id_pessoa : 0);
-    } else {
-      // router.push('/');
-    }
+    const id = `${router.query.strUsuario}`.split('-')[0];
+    setIdPessoa(Number(id));
   }, [router, user]);
 
   const getProvider = useCallback(async () => {
