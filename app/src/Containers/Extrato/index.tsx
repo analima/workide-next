@@ -51,6 +51,7 @@ export default function Extrato({ type }: TypeProfileProps) {
   });
 
   useEffect(() => {
+    if (!user.id_pessoa) router.push('/');
     async function load() {
       if (user.id_pessoa) {
         const newIdToken = localStorage.getItem(ID_TOKEN);
@@ -99,7 +100,7 @@ export default function Extrato({ type }: TypeProfileProps) {
       }
     }
     load();
-  }, [filterUser, pagina, periodo, type, user.id_pessoa]);
+  }, [filterUser, pagina, periodo, router, type, user.id_pessoa]);
 
   useEffect(() => {
     if (extractData) {

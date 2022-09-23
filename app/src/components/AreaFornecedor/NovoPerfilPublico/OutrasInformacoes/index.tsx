@@ -34,7 +34,13 @@ import { SemConteudo } from '../../../../components/SemConteudo';
 import { oportunidades_api } from '../../../../services/oportunidades_api';
 import { Certificado } from '../../../../interfaces/IProject';
 import { useHistory } from 'react-router';
-import { FaBehance } from 'react-icons/fa';
+import {
+  FaBehance,
+  FaDribbble,
+  FaFigma,
+  FaGithub,
+  FaYoutube,
+} from 'react-icons/fa';
 import { pessoas_api } from '../../../../services/pessoas_api';
 import { AiOutlineGlobal } from 'react-icons/ai';
 import Link from 'next/link';
@@ -157,34 +163,58 @@ export function OutrasInformacoes({ data, imageLoaded }: Props) {
   function handleRedes(item: IRedeSocialProps) {
     switch (item.tipo) {
       case 'github':
+        return (
+          <a href={item.url} title={item.tipo} target="_blank" rel="noreferrer">
+            <FaGithub size={28} color="#000" />
+          </a>
+        );
+      case 'instagram':
         return;
+
       case 'linkedin-pessoal':
         return;
+
       case 'linkedin-empresa':
         return;
+
       case 'facebook':
         return;
-      case 'twitter':
-        return;
+
       case 'behance':
         return (
-          <Link
-            href={item.url}
-            title={item.tipo}
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href={item.url} title={item.tipo} target="_blank" rel="noreferrer">
             <FaBehance size={28} color="#000" />
-          </Link>
+          </a>
         );
 
+      case 'figma':
+        return (
+          <a href={item.url} title={item.tipo} target="_blank" rel="noreferrer">
+            <FaFigma size={28} color="#000" />
+          </a>
+        );
+
+      case 'dribbble':
+        return (
+          <a href={item.url} title={item.tipo} target="_blank" rel="noreferrer">
+            <FaDribbble size={28} color="#000" />
+          </a>
+        );
+
+      case 'youtube':
+        return (
+          <a href={item.url} title={item.tipo} target="_blank" rel="noreferrer">
+            <FaYoutube size={28} color="#000" />
+          </a>
+        );
+
+      case 'twitter':
+        return;
       default:
         return (
-          <Link href={item.url}>
-            <a title={item.tipo} target="_blank" rel="noreferrer">
-              <AiOutlineGlobal size={28} color="#000" />
-            </a>
-          </Link>
+          <a href={item.url} title={item.tipo} target="_blank" rel="noreferrer">
+            <AiOutlineGlobal size={28} color="#000" />
+          </a>
         );
     }
   }
