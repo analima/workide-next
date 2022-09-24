@@ -23,6 +23,7 @@ const CaptarProjetoContent: React.FC = () => {
   const contentRef = useRef<HTMLDivElement>(null);
   let { user } = useAuth();
   const router = useRouter();
+  const { query } = router;
 
   const {
     control,
@@ -46,6 +47,7 @@ const CaptarProjetoContent: React.FC = () => {
     loadingProjetos,
     setSizeFilter,
     sizeFilter,
+    setValue,
   } = useCaptarProjetoFornecedor();
 
   const favorito = watch('favorito');
@@ -113,6 +115,10 @@ const CaptarProjetoContent: React.FC = () => {
   useEffect(() => {
     window.addEventListener('resize', handleResize);
   }, [handleResize]);
+
+  useEffect(() => {
+    if (query.filter) setValue('pesquisa', query.filter);
+  }, [query.filter, setValue]);
 
   return (
     <Content ref={contentRef}>
