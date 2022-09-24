@@ -4,6 +4,7 @@ import '../styles/global.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Head from 'next/head';
 import { AuthProvider } from 'src/contexts/auth';
+import { Loading } from 'src/components/Loading';
 
 interface ThemeInterface {
   colors: {
@@ -55,7 +56,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       <html lang="pt_br">
         <ThemeProvider theme={theme}>
           <AuthProvider>
-            <Component {...pageProps} />
+            <Loading>
+              <Component {...pageProps} />
+            </Loading>
           </AuthProvider>
         </ThemeProvider>
       </html>

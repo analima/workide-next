@@ -15,7 +15,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { ModalCentralMenu } from '../ModalCentralMenu';
 import { useValorProjetoPago } from '../../contexts/valorProjetoPago';
-import { useAuth } from '../../contexts/auth';
+import { ID_TOKEN, useAuth } from '../../contexts/auth';
 import { IPessoa } from 'src/interfaces/IPessoa';
 import { pessoas_api } from '../../services/pessoas_api';
 import { selecionarRotaHome } from 'src/utils/selecionarRotaHome';
@@ -160,7 +160,7 @@ export function Menu({
 
             <Navbar.Toggle aria-controls="navbarScroll" />
 
-            {user.email ? (
+            {localStorage.getItem(ID_TOKEN) ? (
               <>
                 <Navbar.Collapse
                   id="navbarScroll"
@@ -182,7 +182,6 @@ export function Menu({
                     onClick={() => {
                       router.push('/');
                       signOut();
-                      apagarLocalStorage();
                     }}
                   >
                     <Image src={logOutIcon} alt="Sair" />
