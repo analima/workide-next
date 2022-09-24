@@ -126,7 +126,7 @@ export function Header(): JSX.Element {
               <Link href="/fornecedor/captar-projetos">Freelancers</Link>
 
               <Link href="/consumidor/busca">Empresas</Link>
-              <Link href="/consumidor/busca?voluntario=true">Voluntários</Link>
+              <Link href="/consumidor/busca?voluntarios=true">Voluntários</Link>
 
               {!user?.email && <Link href="/login">Login</Link>}
 
