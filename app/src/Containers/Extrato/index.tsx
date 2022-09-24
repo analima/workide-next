@@ -190,8 +190,8 @@ export default function Extrato({ type }: TypeProfileProps) {
               </ButtonFilter>
 
               <ButtonFilter
-                active={filter === 'Previsto'}
-                onClick={() => setFilter('Previsto')}
+                active={filter === 'previsto'}
+                onClick={() => setFilter('previsto')}
               >
                 Com previsão
               </ButtonFilter>

@@ -98,11 +98,8 @@ export default function Projeto({
   projeto,
   totalFavoritos = 0,
 }: ProjetoProps) {
-  let { user } = useAuth();
+  const { user } = useAuth();
   let { limitacoesPlano } = useLimitacoesPlanos();
-  if (!user) {
-    user = {} as IPessoa;
-  }
 
   if (!limitacoesPlano) {
     limitacoesPlano = {} as PlanLimits;
@@ -358,7 +355,12 @@ export default function Projeto({
                   ))}
 
                 {tipo === 'exclusivo' && (
-                  <Exclusivo className="icon-exclusivo" />
+                  <Image
+                    src={Exclusivo}
+                    width={80}
+                    height={80}
+                    alt="icon-exclusivo"
+                  />
                 )}
                 <HeaderSecondary>
                   <h1>{projeto.nome}</h1>

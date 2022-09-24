@@ -18,7 +18,7 @@ import { SearchInput } from '../../../../components/Form/SearchInput';
 import { useAuth } from '../../../../contexts/auth';
 import { IPessoa } from '../../../../interfaces/IPessoa';
 
-const CaptarProjetoContent: React.FC = () => {
+export default function CaptarProjetoContent() {
   const projetosRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   let { user } = useAuth();
@@ -132,10 +132,10 @@ const CaptarProjetoContent: React.FC = () => {
       >
         {!!projetosExclusivos.length && <Spacer size={32} />}
 
-        {user.id_pessoa && (
+        {user?.id_pessoa && (
           <Row>
             <Col lg={12}>
-              {!!projetosExclusivos.length && !loadingProjetos && (
+              {projetosExclusivos.length > 0 && (
                 <Row>
                   {projetosExclusivos.map((projetoExclusivo, index) => (
                     <Col key={index} lg={12} className="mb-3">
@@ -259,6 +259,4 @@ const CaptarProjetoContent: React.FC = () => {
       </Layout>
     </Content>
   );
-};
-
-export default CaptarProjetoContent;
+}
