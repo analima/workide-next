@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { BaseSyntheticEvent, useCallback, useRef, useState } from 'react';
 import { Controller } from 'react-hook-form';
 import { IoMdSearch } from 'react-icons/io';
@@ -22,6 +23,7 @@ export function SearchInput({
 }: SearchInputProps) {
   const inputRef = useRef<HTMLInputElement>({} as HTMLInputElement);
   const [isFocused, setIsFocused] = useState(false);
+  const { query } = useRouter();
 
   const handleInputBlur = useCallback(() => {
     setIsFocused(false);

@@ -53,84 +53,70 @@ export default function Extrato({ type }: TypeProfileProps) {
   useEffect(() => {
     async function load() {
       if (user.id_pessoa) {
-        const newIdToken = localStorage.getItem(ID_TOKEN);
+        if (type === 'provider') {
+          const { data } = await consultas_api.post<{
+            values: IExtratoProps[];
+            pages: number;
+          }>(
+            `/consulta/extrato/fornecedor/${user?.id_pessoa}?limit=10&page=${pagina}`,
+            {
+              idPessoaConsumidor: filterUser || 0,
+              periodo: periodo || 0,
+              statusPagamento: filter,
+            },
+          );
+          setTotalPaginas(data.pages);
+          setExtractData(data.values);
 
-        if (newIdToken) {
-          if (type === 'provider') {
-            const { data } = await consultas_api.post<{
-              values: IExtratoProps[];
-              pages: number;
-            }>(
-              `/consulta/extrato/fornecedor/${user?.id_pessoa}?limit=10&page=${pagina}`,
-              {
-                idPessoaConsumidor: filterUser || 0,
-                periodo: periodo || 0,
-                // statusPagamento: filter,
-              },
-              {
-                headers: {
-                  Authorization: `Bearer ${newIdToken}`,
-                },
-              },
-            );
-            setTotalPaginas(data.pages);
-            setExtractData(data.values);
+          let dadosSelect: IDadosSelect[] = [];
+          dadosSelect = data.values.map(item => ({
+            value: String(item.idPessoaConsumidor),
+            label: item.nomeConsumidor,
+          }));
 
-            let dadosSelect: IDadosSelect[] = [];
-            dadosSelect = data.values.map(item => ({
-              value: String(item.idPessoaConsumidor),
-              label: item.nomeConsumidor,
-            }));
-
-            const parsed_array = dadosSelect.map(val => {
-              return JSON.stringify(val);
+          const parsed_array = dadosSelect.map(val => {
+            return JSON.stringify(val);
+          });
+          const filtered_array = parsed_array
+            .filter((value, ind) => parsed_array.indexOf(value) == ind)
+            .map(val => {
+              return JSON.parse(val);
             });
-            const filtered_array = parsed_array
-              .filter((value, ind) => parsed_array.indexOf(value) == ind)
-              .map(val => {
-                return JSON.parse(val);
-              });
 
-            setDadosUserFilter(filtered_array);
-          }
+          setDadosUserFilter(filtered_array);
+        }
 
-          if (type === 'consumer') {
-            const { data } = await consultas_api.post<{
-              values: IExtratoProps[];
-              pages: number;
-            }>(
-              `/consulta/extrato/consumidor/${user?.id_pessoa}?limit=10&page=${pagina}`,
-              {
-                idPessoaFornecedor: filterUser || 0,
-                periodo: periodo || 0,
-                // statusPagamento: filter,
-              },
-              {
-                headers: {
-                  Authorization: `Bearer ${newIdToken}`,
-                },
-              },
-            );
-            setTotalPaginas(data.pages);
-            setExtractData(data.values);
+        if (type === 'consumer') {
+          const { data } = await consultas_api.post<{
+            values: IExtratoProps[];
+            pages: number;
+          }>(
+            `/consulta/extrato/consumidor/${user?.id_pessoa}?limit=10&page=${pagina}`,
+            {
+              idPessoaFornecedor: filterUser || 0,
+              periodo: periodo || 0,
+              statusPagamento: filter,
+            },
+          );
+          setTotalPaginas(data.pages);
+          setExtractData(data.values);
 
-            let dadosSelect: IDadosSelect[] = [];
-            dadosSelect = data.values.map(item => ({
-              value: String(item.idPessoaFornecedor),
-              label: item.nomeFornecedor,
-            }));
+          let dadosSelect: IDadosSelect[] = [];
+          dadosSelect = data.values.map(item => ({
+            value: String(item.idPessoaFornecedor),
+            label: item.nomeFornecedor,
+          }));
 
-            const parsed_array = dadosSelect.map(val => {
-              return JSON.stringify(val);
+          const parsed_array = dadosSelect.map(val => {
+            return JSON.stringify(val);
+          });
+          const filtered_array = parsed_array
+            .filter((value, ind) => parsed_array.indexOf(value) == ind)
+            .map(val => {
+              return JSON.parse(val);
             });
-            const filtered_array = parsed_array
-              .filter((value, ind) => parsed_array.indexOf(value) == ind)
-              .map(val => {
-                return JSON.parse(val);
-              });
 
-            setDadosUserFilter(filtered_array);
-          }
+          setDadosUserFilter(filtered_array);
         }
       }
     }

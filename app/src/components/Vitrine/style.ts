@@ -337,8 +337,8 @@ export const ContainerItemVitrine = styled.div`
   justify-content: space-between;
   gap: 8px;
   width: 269px;
+  border: 1px solid #fa7c4965;
   height: 370px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   padding: 16px;
   cursor: pointer;

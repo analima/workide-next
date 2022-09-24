@@ -1,9 +1,7 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { hotjar } from 'react-hotjar';
 import Layout from 'src/components/AreaConsumidor/Layout';
 import Extrato from 'src/Containers/Extrato';
-import { useAuth } from 'src/contexts/auth';
-import { IPessoa } from 'src/interfaces/IPessoa';
 
 export default function Extratos() {
   useEffect(() => {

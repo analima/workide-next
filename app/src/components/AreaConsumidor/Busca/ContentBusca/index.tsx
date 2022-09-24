@@ -87,39 +87,31 @@ export default function ContentBusca() {
     if (query.ofertas) {
       setTimeout(() => {
         setOfertaFiltro(true);
-        if (query.voluntarios) {
-          setVolunteers(true);
-        }
-      }, 2000);
+      }, 1000);
     }
 
     if (query.voluntarios) {
       setTimeout(() => {
-        setOfertaFiltro(true);
+        setOfertaFiltro(false);
         setVolunteers(true);
-      }, 1500);
+      }, 750);
+    }
+
+    if (query.filter) {
+      setTimeout(() => {
+        setFilter(String(query.filter));
+        setTerm(String(query.filter));
+      }, 1000);
     }
   }, [
+    query.filter,
     query.ofertas,
     query.voluntarios,
     setFilter,
     setOfertaFiltro,
+    setTerm,
     setVolunteers,
   ]);
-
-  useEffect(() => {
-    const { search } = window.location;
-    if (
-      search === '' ||
-      search === '?voluntarios=true' ||
-      search === '?ofertas=true'
-    )
-      return;
-    const formataBusca = search?.split('filter');
-    const buscaFormatada = formataBusca[1]?.split('=')[1];
-    setFilter(decodeURI(buscaFormatada));
-    setTerm(decodeURI(buscaFormatada));
-  }, [setFilter, setTerm]);
 
   const handleRedirect = (type: string) => {
     if (type === 'geral') {
