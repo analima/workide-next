@@ -19,7 +19,7 @@ export function CardBoasIdeias() {
 
         <div className="content-button">
           <button
-            onClick={() => router.push('/consumidor/busca?voluntario=true')}
+            onClick={() => router.push('/consumidor/busca?voluntarios=true')}
           >
             BUSCAR VOLUNTÁRIOS
           </button>

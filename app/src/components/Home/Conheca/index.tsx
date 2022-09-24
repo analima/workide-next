@@ -55,7 +55,7 @@ export function Conheca() {
               <FiArrowRight
                 color={BRANCO}
                 size={16}
-                onClick={() => router.push('/consumidor/busca?oferta=true')}
+                onClick={() => router.push('/consumidor/busca?ofertas=true')}
               />
             </span>
           </div>
