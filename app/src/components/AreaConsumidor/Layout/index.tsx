@@ -6,7 +6,7 @@ import { Menu } from '../../Menu';
 import { Rodape } from '../../Rodape';
 import { Spacer } from '../../Spacer';
 import { Titulo } from '../../Titulo';
-import { useAuth } from '../../../contexts/auth';
+import { ID_TOKEN, useAuth } from '../../../contexts/auth';
 import { IPessoa } from '../../../interfaces/IPessoa';
 import HeaderPublico from './HeaderPublico';
 import Navbar from './Navbar';
@@ -33,18 +33,16 @@ export default function Layout({
   navbarIsNotVisible,
 }: LayoutProps) {
   const [sidebar, setSidebar] = useState(false);
+  const { idToken, isAuthDataLoading } = useAuth();
 
   function toggleSidebar() {
     sidebar && setSidebar(!sidebar);
   }
 
   const [user, setUser] = useState({} as IPessoa);
-  const [isAuthDataLoading, setIsAuthDataLoading] = useState(true);
-  const [idToken, setIdToken] = useState('');
 
   const refreshUserData = async (ID_TOKEN: any) => {
     const newIdToken = localStorage.getItem(ID_TOKEN);
-    setIdToken(newIdToken || '');
     if (newIdToken) {
       const res = await pessoas_api.get('/pessoas/me', {
         headers: {
@@ -74,12 +72,7 @@ export default function Layout({
 
   return (
     <Content>
-      {!user.id_pessoa ? (
-        <>
-          <HeaderPublico />
-          <Spacer size={60} />
-        </>
-      ) : (
+      {localStorage.getItem(ID_TOKEN) ? (
         <>
           <Menu />
 
@@ -91,6 +84,11 @@ export default function Layout({
               maisSolucoesIsNotVisible={maisSolucoesIsNotVisible}
             />
           )}
+        </>
+      ) : (
+        <>
+          <HeaderPublico />
+          <Spacer size={60} />
         </>
       )}
       {activeMenu && <Sidebar open={sidebar} />}

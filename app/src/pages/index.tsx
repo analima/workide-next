@@ -30,7 +30,6 @@ export default function Home() {
 
   if (!user) {
     user = {} as IPessoa;
-    console.log('não encontrou o usuario mesmo...');
   }
 
   useEffect(() => {
