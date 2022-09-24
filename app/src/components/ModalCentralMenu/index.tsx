@@ -12,11 +12,11 @@ import {
 } from './style';
 import { infoCard, infoProvider } from './configuration/configuration';
 import { Card } from './components/Container';
-import { useHistory } from 'react-router';
 import { Spacer } from '../Spacer';
 import { useAuth } from '../../contexts/auth';
 import { ModalRecomendacao } from '../../components/ModalRecomendacao';
 import { AZUL, LARANJA } from '../../styles/variaveis';
+import { useRouter } from 'next/router';
 
 interface IModalRecomendacao {
   showModal: boolean;
@@ -27,7 +27,7 @@ export function ModalCentralMenu({
   showModal,
   setShowModal,
 }: IModalRecomendacao) {
-  const history = useHistory();
+  const router = useRouter();
   const [link, setLink] = useState('');
   const [showRecomendacaoModal, setShowRecomendacaoModal] = useState(false);
   const { user } = useAuth();
@@ -47,19 +47,19 @@ export function ModalCentralMenu({
     switch (selected) {
       case 'home':
         setShowModal(false);
-        history.push('/fornecedor/home');
+        router.push('/fornecedor/home');
         break;
       case 'homeProvider':
         setShowModal(false);
-        history.push('/consumidor/home');
+        router.push('/consumidor/home');
         break;
       case 'editProfile':
         setShowModal(false);
-        history.push('/cadastro-complementar', { cadastroCompleto: true });
+        router.push('/cadastro-complementar');
         break;
       case 'myProjects':
         setShowModal(false);
-        history.push('/fornecedor/meus-projetos');
+        router.push('/fornecedor/meus-projetos');
         break;
       case 'shareMe':
         setShowModal(false);
@@ -70,35 +70,32 @@ export function ModalCentralMenu({
           setLink(handleLink);
           setShowRecomendacaoModal(true);
         } else {
-          history.push('/login');
+          router.push('/login');
         }
         break;
       case 'myFavorite':
         setShowModal(false);
-        history.push('/consumidor/home?section=favoritos');
+        router.push('/consumidor/home?section=favoritos');
         break;
 
       case 'campaigns':
         setShowModal(false);
-        history.push('/fornecedor/meus-servicos');
+        router.push('/fornecedor/meus-servicos');
         break;
 
       case 'editProfileProvider':
         setShowModal(false);
-        history.push('/cadastro-complementar', {
-          cadastroCompleto: true,
-          isConsumidor: true,
-        });
+        router.push('/cadastro-complementar');
         break;
 
       case 'myProjectsProvider':
         setShowModal(false);
-        history.push('/consumidor/home?section=meus-projetos');
+        router.push('/consumidor/home?section=meus-projetos');
         break;
 
       default:
         setShowModal(false);
-        history.push('/consumidor/home');
+        router.push('/consumidor/home');
     }
   };
 
