@@ -4,11 +4,10 @@ import {
   AZUL,
   BRANCO,
   CINZA_10,
-  CINZA_40,
-  CINZA_60,
   LARANJA,
   PRETO_10,
   VERDE,
+  VERDE_100,
   VERMELHO,
 } from '../../styles/variaveis';
 
@@ -91,6 +90,14 @@ export const Content = styled.section<IStatusProps>`
       color: ${PRETO_10};
       background-color: #c8c8c8;
     }
+
+    .conclusao-solicitada {
+      background-color: ${VERDE_100};
+    }
+
+    .desistencia-andamento {
+      background-color: ${LARANJA};
+    }
   }
 
   .collunm-2 {
@@ -120,18 +127,21 @@ export const Content = styled.section<IStatusProps>`
   .collunm-4 {
     text-align: right;
     .pago {
-      color: ${AZUL};
+      color: ${({ status }) => (status ? PRETO_10 : AZUL)};
       font-weight: 600;
       font-size: 12.8px;
+      text-decoration: ${({ status }) => (status ? 'line-through' : 'none')};
     }
     .taxa {
-      color: ${VERMELHO};
+      color: ${({ status }) => (status ? PRETO_10 : VERMELHO)};
       font-weight: 600;
       font-size: 12.8px;
+      text-decoration: ${({ status }) => (status ? 'line-through' : 'none')};
     }
     .repase {
-      color: ${VERDE};
+      color: ${({ status }) => (status ? PRETO_10 : VERDE)};
       font-weight: 600;
+      text-decoration: ${({ status }) => (status ? 'line-through' : 'none')};
       font-size: 12.8px;
     }
   }

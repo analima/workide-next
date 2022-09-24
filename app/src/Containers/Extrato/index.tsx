@@ -24,8 +24,7 @@ import { IExtratoProps } from 'src/interfaces/IExtratoProps';
 import Paginacao from 'src/components/AreaFornecedor/MeusProjetos/Paginacao';
 import { ID_TOKEN, useAuth } from 'src/contexts/auth';
 import { consultas_api } from 'src/services/consultas_api';
-import { InputDate } from 'src/components/Form/inputDate';
-import { FaRegCalendarAlt } from 'react-icons/fa';
+// import { FaRegCalendarAlt } from 'react-icons/fa';
 
 interface TypeProfileProps {
   type: string;
@@ -62,10 +61,11 @@ export default function Extrato({ type }: TypeProfileProps) {
               values: IExtratoProps[];
               pages: number;
             }>(
-              `/consulta/extrato/fornecedor/${user?.id_pessoa}?limit=10&page=${pagina}&order=statusProjeto`,
+              `/consulta/extrato/fornecedor/${user?.id_pessoa}?limit=10&page=${pagina}`,
               {
                 idPessoaConsumidor: filterUser || 0,
                 periodo: periodo || 0,
+                // statusPagamento: filter,
               },
               {
                 headers: {
@@ -99,10 +99,11 @@ export default function Extrato({ type }: TypeProfileProps) {
               values: IExtratoProps[];
               pages: number;
             }>(
-              `/consulta/extrato/consumidor/${user?.id_pessoa}?limit=10&page=${pagina}&order=statusProjeto`,
+              `/consulta/extrato/consumidor/${user?.id_pessoa}?limit=10&page=${pagina}`,
               {
                 idPessoaFornecedor: filterUser || 0,
                 periodo: periodo || 0,
+                // statusPagamento: filter,
               },
               {
                 headers: {
@@ -134,7 +135,7 @@ export default function Extrato({ type }: TypeProfileProps) {
       }
     }
     load();
-  }, [filterUser, pagina, periodo, router, type, user.id_pessoa]);
+  }, [filter, filterUser, pagina, periodo, router, type, user.id_pessoa]);
 
   useEffect(() => {
     setTimeout(() => {}, 2000);
@@ -197,14 +198,14 @@ export default function Extrato({ type }: TypeProfileProps) {
 
               <ButtonFilter
                 active={filter === 'todos'}
-                onClick={() => setFilter('todos')}
+                onClick={() => setFilter('')}
               >
                 Todos
               </ButtonFilter>
 
               <ButtonFilter
-                active={filter === 'previsao'}
-                onClick={() => setFilter('previsao')}
+                active={filter === 'Previsto'}
+                onClick={() => setFilter('Previsto')}
               >
                 Com previsão
               </ButtonFilter>
@@ -225,9 +226,10 @@ export default function Extrato({ type }: TypeProfileProps) {
             </div>
 
             <div className="calendar">
-              <FaRegCalendarAlt color={AZUL} size={24} />
+              {/* <FaRegCalendarAlt color={AZUL} size={24} /> */}
               <Select
                 control={control}
+                noValueOption="Todos"
                 name="data"
                 className="input-date"
                 options={dayFilter}

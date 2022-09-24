@@ -14,6 +14,8 @@ export function CardExtrato({ item, type }: IDadosExtratoProps) {
     if (status === 'Projeto concluído') return 'concluido';
     if (status === 'Projeto cancelado') return 'cancelado';
     if (status === 'Aguardando início') return 'aguardando-inicio';
+    if (status === 'Conclusão solicitada') return 'conclusao-solicitada';
+    if (status === 'Desistência em andamento ') return 'desistencia-andamento';
   }
 
   function handleDatePagamento(status: string) {
