@@ -5,7 +5,7 @@ type PropsCard = {
   isProvider?: boolean;
 };
 
-export const CardStyled = styled.div<PropsCard>`
+export const CardStyled = styled.a<PropsCard>`
   cursor: pointer;
   width: 100%;
   height: 160px;
@@ -13,6 +13,7 @@ export const CardStyled = styled.div<PropsCard>`
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 20px;
+  text-decoration: none;
   cursor: pointer;
 
   h2 {

@@ -158,6 +158,7 @@ export function ModalCentralMenu({
                 {infoCard.map((item, index) => (
                   <div className="cards" key={index}>
                     <Card
+                      link={item.link}
                       key={index}
                       typeCard={item.type}
                       text={item.text}
@@ -210,6 +211,7 @@ export function ModalCentralMenu({
                       typeCard={item.type}
                       text={item.text}
                       img={item.img}
+                      link={item.link}
                       onClick={() => setShowModal(false)}
                     />
                   </div>
