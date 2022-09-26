@@ -12,16 +12,23 @@ import searchUsersImage from '../../../../assets/search-users_white.png';
 import BeToBeImage from '../../../../assets/be_to_be_white.png';
 import { pessoas_api } from '../../../../services/pessoas_api';
 import { AZUL, LARANJA } from '../../../../styles/variaveis';
-import Image from 'next/image'
+import Image from 'next/image';
 
 type Props = {
   img: string;
   text?: string;
   typeCard?: string;
+  link: string;
   onClick(): void;
 };
 
-export function Card({ img, text, typeCard, onClick }: Props): JSX.Element {
+export function Card({
+  img,
+  text,
+  link,
+  typeCard,
+  onClick,
+}: Props): JSX.Element {
   const history = useHistory();
   const { user, refreshUserData } = useAuth();
 
@@ -108,16 +115,17 @@ export function Card({ img, text, typeCard, onClick }: Props): JSX.Element {
           if (!user.consumidor) {
             refreshUserData().then(() => {
               if (img === 'beTobe')
-                history.push('/consumidor/busca?oferta=true');
+                history.push('/consumidor/busca?ofertas=true');
               if (img === 'searchUsers') history.push('/consumidor/busca');
               if (img === 'buildingTogether')
-                history.push('/consumidor/busca?voluntario=true');
+                history.push('/consumidor/busca?voluntarios=true');
             });
           } else {
-            if (img === 'beTobe') history.push('/consumidor/busca?oferta=true');
+            if (img === 'beTobe')
+              history.push('/consumidor/busca?ofertas=true');
             if (img === 'searchUsers') history.push('/consumidor/busca');
             if (img === 'buildingTogether')
-              history.push('/consumidor/busca?voluntario=true');
+              history.push('/consumidor/busca?voluntarios=true');
           }
         });
     }
@@ -126,6 +134,7 @@ export function Card({ img, text, typeCard, onClick }: Props): JSX.Element {
 
   return (
     <CardStyled
+      href={link}
       isProvider={[typeCard].includes('Consumidor')}
       onClick={() => {
         handleChangeTypePeople(typeCard, img);

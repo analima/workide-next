@@ -167,7 +167,7 @@ export function Vitrine() {
           </Carrousel>
         </CardCarrousel>
         <ContainerButton>
-          <Button onClick={() => router.push('/consumidor/busca?oferta=true')}>
+          <Button onClick={() => router.push('/consumidor/busca?ofertas=true')}>
             <span>VER TODOS</span>
           </Button>
         </ContainerButton>

@@ -71,3 +71,20 @@ export interface IProposalRequirement {
   id: number;
   status: string;
 }
+
+export interface Certificado {
+  id: string;
+  instituicao: {
+    nome: string;
+    urlImagem: string;
+  };
+  nomeProjeto: string;
+  fornecedor: {
+    nome: string;
+    urlImagem: string;
+  };
+  areas: string[];
+  totalHoras: number;
+  tipo: string;
+  token: string;
+}

@@ -1,23 +1,41 @@
 export const infoCard = [
-  { img: 'together', text: 'Quero me voluntariar', type: 'Fornecedor' },
-  { img: 'journeyPath', text: 'Quero trabalhar', type: 'Fornecedor' },
-  { img: 'myProjects', text: 'Meus projetos', type: 'Fornecedor' },
+  {
+    img: 'together',
+    text: 'Projetos Voluntários',
+    type: 'Fornecedor',
+    link: '/fornecedor/captar-projetos?voluntarios=true',
+  },
+  {
+    img: 'journeyPath',
+    text: 'Encontre Projetos',
+    type: 'Fornecedor',
+    link: '/fornecedor/captar-projetos',
+  },
+  {
+    img: 'myProjects',
+    text: 'Meus projetos',
+    type: 'Fornecedor',
+    link: '/fornecedor/meus-projetos',
+  },
 ];
 
 export const infoProvider = [
   {
     img: 'buildingTogether',
-    text: 'Preciso de voluntários',
+    text: 'Encontre Voluntários',
     type: 'Consumidor',
+    link: '/consumidor/busca?voluntarios=true',
   },
   {
     img: 'searchUsers',
-    text: 'Quero gente para o meu projeto',
+    text: 'Encontre Profissionais',
     type: 'Consumidor',
+    link: '/consumidor/busca',
   },
   {
     img: 'beTobe',
-    text: 'Quero ver as ofertas disponíveis',
+    text: 'Encontre Ofertas',
     type: 'Consumidor',
+    link: '/consumidor/busca?ofertas=true',
   },
 ];

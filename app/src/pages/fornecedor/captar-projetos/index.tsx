@@ -3,20 +3,15 @@ import { CaptarProjetoFornecedorProvider } from '../../../hooks/captarProjetoFor
 import Content from '../../../styles/fornecedor/captar-projetos/style';
 import { hotjar } from 'react-hotjar';
 import { useEffect } from 'react';
-import { useState } from 'react';
 import CaptarProjetoContent from '../../../components/AreaFornecedor/CaptarProjeto/CaptarProjetoContent';
-const CaptarProjeto: React.FC = () => {
-  const [isLoading, setIsLoading] = useState(true);
 
+export default function CaptarProjeto() {
   useEffect(() => {
     hotjar.initialize(
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
     hotjar.stateChange('/AreaFornecedor/CaptarProjeto');
-    if (typeof window !== 'undefined') {
-      setIsLoading(false);
-    }
   }, []);
 
   return (
@@ -25,15 +20,9 @@ const CaptarProjeto: React.FC = () => {
         <title>Gyan - Buscar oportunidades</title>
       </Helmet>
 
-      {!isLoading ? (
-        <CaptarProjetoFornecedorProvider>
-          <CaptarProjetoContent />
-        </CaptarProjetoFornecedorProvider>
-      ) : (
-        <p>aguarde</p>
-      )}
+      <CaptarProjetoFornecedorProvider>
+        <CaptarProjetoContent />
+      </CaptarProjetoFornecedorProvider>
     </Content>
   );
-};
-
-export default CaptarProjeto;
+}

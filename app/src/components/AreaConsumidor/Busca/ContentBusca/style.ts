@@ -49,18 +49,58 @@ export const Button = styled.button`
 
 export const ContentFilterHeader = styled.div`
   display: flex;
+  flex-direction: column;
   width: 100%;
   justify-content: space-between;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+  padding: 8px 34px;
 
-  div {
-    align-items: center;
-    gap: 8px;
+  .label-busca {
+    font-size: 28px;
+    font-weight: bold;
+    color: #767676;
+  }
+
+  .content-filters {
     display: flex;
+    gap: 30px;
+    justify-content: space-between;
+    width: 100%;
 
-    .label-busca {
+    .search {
+      display: flex;
+      flex: 1;
+
+      .input {
+        width: 100%;
+        background: #d9d9d9;
+        border-radius: 18px;
+      }
+    }
+  }
+  .filter-check {
+    display: flex;
+    gap: 24px;
+  }
+
+  .check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    label {
       font-size: 18px;
-      font-weight: bold;
-      color: ${PRETO_10};
+      color: #767676;
+      font-weight: 500;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 8px;
+    .content-filters {
+      flex-direction: column;
+      gap: 0px;
     }
   }
 
@@ -68,8 +108,10 @@ export const ContentFilterHeader = styled.div`
     display: flex;
     flex-direction: column;
 
-    .label-busca {
-      margin-bottom: 7px;
+    .filter-check {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
     }
   }
 `;
@@ -125,4 +167,4 @@ export const ButtonClear = styled.button`
   }
 `;
 
-export  default Content;
+export default Content;

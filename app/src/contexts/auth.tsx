@@ -1,3 +1,4 @@
+import axios, { AxiosRequestConfig } from 'axios';
 import React, {
   createContext,
   useCallback,
@@ -5,6 +6,7 @@ import React, {
   useContext,
   useEffect,
 } from 'react';
+import { services } from 'src/services';
 import { IPessoa } from '../interfaces/IPessoa';
 import { pessoas_api } from '../services/pessoas_api';
 
@@ -25,12 +27,15 @@ interface IAuthContextProps {
   saveAuthData(data: IAuthProps): Promise<void>;
   refreshUserData(): Promise<void>;
   signOut(): void;
+  setUser: React.Dispatch<React.SetStateAction<IPessoa>>;
+}
+interface IProps {
+  children: React.ReactNode;
 }
 
 const AuthContext = createContext<IAuthContextProps>({} as IAuthContextProps);
 
-export const AuthProvider: React.FC = ({ children }: any) => {
-  debugger
+export function AuthProvider({ children }: IProps) {
   const [user, setUser] = useState({} as IPessoa);
   const [isAuthDataLoading, setIsAuthDataLoading] = useState(true);
   const [idToken, setIdToken] = useState('');
@@ -71,17 +76,91 @@ export const AuthProvider: React.FC = ({ children }: any) => {
         });
       }
     }
-  
-  
   }, []);
 
   useEffect(() => {
     refreshUserData().then(() => setIsAuthDataLoading(false));
   }, [refreshUserData]);
+
+  useEffect(() => {
+    services.forEach(service => {
+      service.interceptors.response.use(
+        response => {
+          return response;
+        },
+        err => {
+          return new Promise((resolve, reject) => {
+            const originalReq: AxiosRequestConfig = err.config;
+            if (
+              err.response?.status !== 401 ||
+              !err.config ||
+              err.config.__isRetryRequest
+            ) {
+              reject(err);
+              return;
+            }
+            const email = JSON.parse(localStorage.getItem(USER) || '{}').email;
+            const refreshToken = localStorage.getItem(REFRESH_TOKEN);
+
+            const res = fetch(
+              `${process.env.REACT_APP_SEGURANCA_API}/sessoes`,
+              {
+                method: 'PUT',
+                mode: 'cors',
+                cache: 'no-cache',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                redirect: 'follow',
+                referrer: 'no-referrer',
+                body: JSON.stringify({
+                  email,
+                  refresh_token: refreshToken,
+                }),
+              },
+            )
+              .then(async refreshResponse => {
+                const r = await refreshResponse.json();
+                if (originalReq.headers)
+                  originalReq.headers['Authorization'] = `Bearer ${r.id_token}`;
+                service.defaults.headers.common[
+                  'Authorization'
+                ] = `Bearer ${r.id_token}`;
+                localStorage.setItem(ID_TOKEN, r.id_token);
+                localStorage.setItem(REFRESH_TOKEN, r.refresh_token);
+                return axios(originalReq);
+              })
+              .catch(refreshError => {
+                localStorage.removeItem(ID_TOKEN);
+                localStorage.removeItem(REFRESH_TOKEN);
+                localStorage.removeItem(USER);
+                reject(refreshError);
+              });
+            resolve(res);
+          });
+        },
+      );
+    });
+
+    const updateToken = () => {
+      const idToken = localStorage.getItem(ID_TOKEN);
+      services.forEach(service => {
+        if (ID_TOKEN) {
+          service.defaults.headers.common[
+            'Authorization'
+          ] = `Bearer ${idToken}`;
+        }
+      });
+    };
+
+    updateToken();
+  }, []);
+
   return (
     <AuthContext.Provider
       value={{
         user,
+        setUser,
         idToken,
         isAuthDataLoading,
         saveAuthData,
@@ -92,7 +171,7 @@ export const AuthProvider: React.FC = ({ children }: any) => {
       {children}
     </AuthContext.Provider>
   );
-};
+}
 
 export function useAuth(): IAuthContextProps {
   const context = useContext(AuthContext);

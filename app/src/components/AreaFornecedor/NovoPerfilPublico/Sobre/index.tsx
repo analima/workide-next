@@ -1,47 +1,55 @@
 import { useCallback, useEffect, useState } from 'react';
-
-import { Alert, Col, Container, Row } from 'react-bootstrap';
+import { Alert, Col, Row } from 'react-bootstrap';
 import {
-  Info,
   Acoes,
   NomeTitulo,
-  Ranking,
   Avaliacao,
   Button,
   Content,
   FotoPerfil,
-  Frame,
-  SobreDrescricao,
   ContentImg,
+  ContentCapa,
+  ContentInfo,
+  ContentInfo3,
+  ContentOtherInfo,
+  LinkToScroll,
+  ContentSpinnerLoading,
+  ContainerMedalhas,
+  BannerVoluntario,
 } from './style';
 
-import Image from 'next/image'
 import EstrelaOff from '../../../../assets/estrela-off.svg';
-import Estrela  from '../../../../assets/estrela.svg';
-import CoracaoOff  from '../../../../assets/coracao-off.svg';
-import Coracao  from '../../../../assets/coracao.svg';
-import { Card } from '../../../../components/Card';
+import Estrela from '../../../../assets/estrela.svg';
+import CoracaoOff from '../../../../assets/coracao-off.svg';
+import Coracao from '../../../../assets/coracao.svg';
 import { GiShare } from 'react-icons/gi';
 import { AZUL } from '../../../../styles/variaveis';
 import { ModalRecomendacao } from '../../../../components/ModalRecomendacao';
 import { pessoas_api } from '../../../../services/pessoas_api';
-import { useAuth } from '../../../../contexts/auth';
+import { ID_TOKEN, useAuth } from '../../../../contexts/auth';
 import { useHistory } from 'react-router';
 import { AvatarCadastroIncompleto } from '../../../../components/AvatarCadastroIncompleto';
-import { MedalhasFornecedor } from '../../../../components/MedalhasFornecedor';
 
 import { oportunidades_api } from '../../../../services/oportunidades_api';
 import { IProvider } from '../../../../interfaces/IProvider';
-import { consultas_api } from '../../../../services/consultas_api';
-import  OutrasInformacoes  from '../OutrasInformacoes';
-import { Spacer } from '../../../../components/Spacer';
 import { Skeleton } from '../../../../components/Skeleton';
 import { SeloMembro } from '../../../../components/SeloMembro';
 import { AvatarErroGeral } from '../../../../components/AvatarErroGeral';
 import { FiXCircle } from 'react-icons/fi';
-import { nivel_experiencia } from '../../../../utils/nivelExperiencia';
-import { IPessoa } from 'src/interfaces/IPessoa';
-//const {useRouter} = 'next/router'
+import { Spacer } from '../../../../components/Spacer';
+import CapaDefault from '@public/capa-default.png';
+import { UploadCapaPhoto } from '../UploadCapaPhoto';
+import { Spinner } from '../../../../components/Spinner';
+import { MedalhasFornecedor } from '../../../../components/MedalhasFornecedor';
+import { consultas_api } from '../../../../services/consultas_api';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+
+type PropsPage = {
+  imageLoaded: boolean;
+  dataProps: IProvider;
+  getProvider: () => void;
+};
 
 type ConsultaRankingType = {
   idUsuario: number;
@@ -50,40 +58,81 @@ type ConsultaRankingType = {
   pontuacao: number;
 };
 
-type PropsPage = {
-  imageLoaded: boolean;
-  dataProps: IProvider;
-};
-
-export function Sobre({ dataProps, imageLoaded }: PropsPage) {
+export function Sobre({ dataProps, getProvider, imageLoaded }: PropsPage) {
   const [showRecommendationModal, setShowRecommendationModal] = useState(false);
   const [idFornecedores, setIdFornecedores] = useState<number[]>([]);
   const [isFavorite, setIsFavorite] = useState(false);
   const [link, setLink] = useState('');
-  const { refreshUserData } = useAuth();
-  let { user } = useAuth()
-  if (!user) {
-    user = {} as IPessoa;
-  }
-  const history = useHistory();
+  const { user, refreshUserData } = useAuth();
+  const router = useRouter();
   const [showAvatarCadastroIncompleto, setShowAvatarCadastroIncompleto] =
     useState(false);
-  const [projectsCount, setProjectsCount] = useState(0);
-  const [consultaRanking, setConsultaRanking] = useState<ConsultaRankingType>(
-    {} as ConsultaRankingType,
-  );
+  const [fotoId, setFotoId] = useState('');
+  const [fotoUrl, setFotoUrl] = useState('');
+  const [loadingCapa, setLoadingCapa] = useState(false);
   const [linkUrlAmbiente, setLinkUrlAmbiente] = useState<string>('');
   const [showDenuncedAvatar, setShowDenuncedAvatar] = useState(false);
   const [formError, setFormError] = useState('');
+  const [sizePage, setSizePage] = useState(0);
+  const [projectsCount, setProjectsCount] = useState();
+  const [consultaRanking, setConsultaRanking] = useState(0);
+  const handleResize = (e: any) => {
+    setSizePage(window.innerWidth);
+  };
+
+  useEffect(() => {
+    setSizePage(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+  }, []);
 
   function handleShowDenuncedAvatar() {
     setShowDenuncedAvatar(!showDenuncedAvatar);
   }
 
   function checkDenuncedUser() {
-    const denunciaProcedente = user.denuncias.find(obj => obj.procede === true);
-    return denunciaProcedente ? true : false;
+    return user.denuncias.length;
   }
+
+  useEffect(() => {
+    if (!dataProps.id) return;
+    const load = async () => {
+      if (user.id_pessoa) {
+        const newIdToken = localStorage.getItem(ID_TOKEN);
+
+        if (newIdToken) {
+          const { data: countConcluido } = await oportunidades_api.get(
+            `/projetos/count?idPessoaFornecedor=${dataProps.id}&status=CONCLUIDO`,
+          );
+          const { data: countIniciado } = await oportunidades_api.get(
+            `/projetos/count?idPessoaFornecedor=${dataProps.id}&status=INICIADO`,
+          );
+          const { data: countAguardandoInicio } = await oportunidades_api.get(
+            `/projetos/count?idPessoaFornecedor=${dataProps.id}&status=AGUARDANDO_INICIO`,
+          );
+          const { data: countConcluidoParcialmente } =
+            await oportunidades_api.get(
+              `/projetos/count?idPessoaFornecedor=${dataProps.id}&status=CONCLUIDO_PARCIALMENTE`,
+            );
+          setProjectsCount(
+            countConcluido +
+              countIniciado +
+              countAguardandoInicio +
+              countConcluidoParcialmente,
+          );
+          consultas_api
+            .get<ConsultaRankingType>(
+              `/consulta/fornecedores/${user.id_usuario}/ranking`,
+            )
+            .then(({ data }) => {
+              setConsultaRanking(data.ranking);
+            });
+        }
+      }
+    };
+    if (dataProps && dataProps.id) {
+      load();
+    }
+  }, [dataProps, user]);
 
   const handleLinkShare = useCallback(() => {
     const urlAtual = window.location.href;
@@ -100,33 +149,42 @@ export function Sobre({ dataProps, imageLoaded }: PropsPage) {
   }
 
   useEffect(() => {
-    try {
-      if (!user.id_pessoa) return;
+    if (user.id_pessoa) {
+      const newIdToken = localStorage.getItem(ID_TOKEN);
 
-      oportunidades_api
-        .get(`/projetos/fornecedores-contratados`)
-        .then(({ data }) => {
-          setIdFornecedores(data);
-        });
-    } catch (error) {
-      console.log(error);
+      if (newIdToken) {
+        try {
+          if (!user.id_pessoa) return;
+          oportunidades_api
+            .get(`/projetos/fornecedores-contratados`)
+            .then(({ data }) => {
+              setIdFornecedores(data);
+            });
+        } catch (error) {
+          console.log(error);
+        }
+      }
     }
   }, [user, user.id_pessoa]);
 
   useEffect(() => {
     const load = async () => {
-      if (!user.id_pessoa) return;
+      if (user.id_pessoa) {
+        const newIdToken = localStorage.getItem(ID_TOKEN);
 
-      const { data } = await pessoas_api.get(`/fornecedores/favoritos`);
-      setIsFavorite(
-        data.findIndex((f: any) => {
-          if (f && dataProps) {
-            return f.id === dataProps.id;
-          } else {
-            return false;
-          }
-        }) !== -1,
-      );
+        if (newIdToken) {
+          const { data } = await pessoas_api.get(`/fornecedores/favoritos`);
+          setIsFavorite(
+            data.findIndex((f: any) => {
+              if (f && dataProps) {
+                return f.id === dataProps.id;
+              } else {
+                return false;
+              }
+            }) !== -1,
+          );
+        }
+      }
     };
     if (dataProps !== undefined) {
       load();
@@ -139,12 +197,34 @@ export function Sobre({ dataProps, imageLoaded }: PropsPage) {
       if (i <= numberOfStars) {
         if (numberOfStars === 0)
           stars.push(
-            <EstrelaOff className="estrela" key={i + Math.random()} />,
+            <Image
+              src={EstrelaOff}
+              height={18}
+              width={18}
+              alt="estrela"
+              key={i + Math.random()}
+            />,
           );
         else
-          stars.push(<Estrela className="estrela" key={i + Math.random()} />);
+          stars.push(
+            <Image
+              src={Estrela}
+              height={18}
+              width={18}
+              alt="estrela"
+              key={i + Math.random()}
+            />,
+          );
       } else {
-        stars.push(<EstrelaOff className="estrela" key={i + Math.random()} />);
+        stars.push(
+          <Image
+            src={EstrelaOff}
+            height={18}
+            width={18}
+            alt="estrela"
+            key={i + Math.random()}
+          />,
+        );
       }
     }
     return stars;
@@ -172,34 +252,28 @@ export function Sobre({ dataProps, imageLoaded }: PropsPage) {
   }, [dataProps?.id, dataProps?.nome_tratamento, linkUrlAmbiente]);
 
   useEffect(() => {
-    if (!user.id_pessoa) return;
-
-    const load = async () => {
-      const { data: count } = await oportunidades_api.get(
-        `/projetos/count?idPessoaFornecedor=${dataProps.id}`,
-      );
-      setProjectsCount(count);
-    };
-    if (dataProps && dataProps.id) {
-      load();
-    }
-  }, [dataProps, user]);
-
-  useEffect(() => {
-    if (dataProps?.id_usuario) {
-      consultas_api
-        .get<ConsultaRankingType>(
-          `/consulta/fornecedores/${dataProps?.id_usuario}/ranking`,
-        )
-        .then(res => {
-          setConsultaRanking(res.data);
-        });
-    }
-  }, [dataProps?.id_usuario]);
-
-  useEffect(() => {
-    console.log('test: ', refreshUserData)
+    refreshUserData();
   }, [refreshUserData]);
+
+  const handleSave = useCallback(async () => {
+    setLoadingCapa(true);
+    let pessoaRequestBody = {
+      id_capa: fotoId,
+      nome: dataProps.nome,
+    };
+    try {
+      await pessoas_api.put('/pessoas/', pessoaRequestBody);
+    } catch (error: any) {
+      setFormError(error.response.data.message);
+      window.scrollTo(0, 0);
+      setLoadingCapa(false);
+      return;
+    }
+    setTimeout(() => {
+      getProvider();
+      setLoadingCapa(false);
+    }, 1000);
+  }, [dataProps.nome, fotoId, getProvider]);
 
   return (
     <Content>
@@ -214,214 +288,284 @@ export function Sobre({ dataProps, imageLoaded }: PropsPage) {
         porcentagem={user.percentageRegisterConsumer || 33}
         isConsumer={true}
       />
-      <Card>
-        <Container>
-          <Row>
-            <Col lg={12}>
-              <ModalRecomendacao
-                showModal={showRecommendationModal}
-                setShowModal={setShowRecommendationModal}
-                link={link}
+      <ModalRecomendacao
+        showModal={showRecommendationModal}
+        setShowModal={setShowRecommendationModal}
+        link={link}
+      />
+
+      {formError && (
+        <Row>
+          <Col lg={12}>
+            <Alert variant="danger">
+              {formError}
+              <FiXCircle
+                className="fechar"
+                onClick={() => setFormError('')}
+                size={20}
+                color="#c53030"
               />
-            </Col>
-          </Row>
-          {formError && (
-            <Row>
-              <Col lg={12}>
-                <Alert variant="danger">
-                  {formError}
-                  <FiXCircle
-                    className="fechar"
-                    onClick={() => setFormError('')}
-                    size={20}
-                    color="#c53030"
-                  />
-                </Alert>
-              </Col>
-            </Row>
-          )}
-          <Row>
-            <Col lg={3} className="d-flex justify-content-center">
-              {!dataProps?.url_video_apresentacao ? (
-                <>
-                  {imageLoaded ? (
-                    <Skeleton width="280px" height="280px" />
-                  ) : (
-                      <ContentImg>
-                        <Image
-                        alt={dataProps?.nome_tratamento}
-                        src={dataProps?.arquivo ? dataProps?.arquivo.url : ''}
-                      />
-                      {dataProps?.is_membro && <SeloMembro id={dataProps.id} />}
-                    </ContentImg>
-                  )}
-                </>
-              ) : (
-                <ContentImg>
-                  <Frame
-                    src={`https://www.youtube.com/embed/${
-                      dataProps?.url_video_apresentacao.split('=')[1]
-                    }`}
-                    title={dataProps?.nome_tratamento}
-                  />
-                  {dataProps?.is_membro && (
-                    <SeloMembro id={dataProps.id} isViewVideo />
-                  )}
-                </ContentImg>
-              )}
-            </Col>
+            </Alert>
+          </Col>
+        </Row>
+      )}
 
-            <Col lg={8} style={{ paddingLeft: '32px' }}>
-              <Row>
-                <Col lg={12}>
-                  <Info>
-                    <NomeTitulo>{dataProps?.nome_tratamento}</NomeTitulo>
-
-                    {consultaRanking && (
-                      <Ranking>Ranking: {consultaRanking.ranking}</Ranking>
-                    )}
-                  </Info>
-                </Col>
-              </Row>
-
-              {dataProps?.ranking && (
-                <Row>
-                  <Col lg={12}>
-                    <Avaliacao>
-                      <span>{Number(dataProps?.ranking.notaMedia)}</span>
-                      {handleShowStars(Number(dataProps?.ranking.notaMedia))}
-                    </Avaliacao>
-                  </Col>
-                </Row>
-              )}
-
-              <Row>
-                <Col lg={12}>
-                  <MedalhasFornecedor id={dataProps?.id} />
-                </Col>
-              </Row>
-
-              <Row>
-                <Col lg={12}>
-                  <span className="text-grey">
-                    N° de projetos: {projectsCount}{' '}
-                  </span>
-                  <span className="text-grey">
-                    (Este profissional está cadastrado como{' '}
-                    {dataProps?.tipo === 'PF'
-                      ? 'Pessoa Física'
-                      : 'Pessoa Jurídica'}
-                    )
-                  </span>
-                </Col>
-              </Row>
-
-              <Spacer size={10} />
-
-              <Row>
-                <Col lg={12}>
-                  <span className="text-grey">
-                    #{nivel_experiencia[dataProps.nivel_experiencia] as string}
-                  </span>
-                </Col>
-              </Row>
-
-              <Row>
-                <Col lg={12}>
-                  <SobreDrescricao>
-                    {dataProps?.resumo_profissional}
-                  </SobreDrescricao>
-                </Col>
-              </Row>
-            </Col>
-            <Col lg={1}>
+      <Row>
+        <Col lg={12}>
+          <ContentCapa>
+            {imageLoaded ? (
+              <Skeleton width="100%" height="100%" />
+            ) : (
+              <>
+                {loadingCapa ? (
+                  <ContentSpinnerLoading CapaDefault={CapaDefault.src}>
+                    <Spinner type="primary" size="24" />
+                  </ContentSpinnerLoading>
+                ) : (
+                  <div className="capa">
+                    <Image
+                      src={dataProps?.capa ? dataProps.capa.url : CapaDefault}
+                      className="coracao"
+                      layout="fill"
+                      alt="off"
+                    />
+                  </div>
+                )}
+              </>
+            )}
+            {!imageLoaded && (
               <Acoes>
                 <GiShare
-                  size={50}
+                  size={32}
                   color={AZUL}
                   onClick={() => {
                     handleOpenShareLink();
                   }}
                 />
-                {(user ? user.id_pessoa : 0) !== dataProps.id && (
+
+                {(user ? user.id_pessoa : 0) !== dataProps.id ? (
                   <div>
                     {user && user.id_pessoa ? (
                       <>
                         {!isFavorite && (
-                          <CoracaoOff
+                          <Image
+                            src={CoracaoOff}
                             onClick={handleFavorite}
                             className="coracao"
+                            width={20}
+                            height={20}
+                            alt="off"
                           />
                         )}
                         {isFavorite && (
-                          <Coracao
+                          <Image
+                            src={Coracao}
                             onClick={handleFavorite}
                             className="coracao"
+                            width={20}
+                            height={20}
+                            alt="off"
                           />
                         )}
                       </>
                     ) : (
-                      <CoracaoOff
+                      <Image
+                        src={CoracaoOff}
                         onClick={() => {
-                          history.push('/login');
+                          router.push('/login');
                         }}
                         className="coracao"
+                        width={20}
+                        height={20}
+                        alt="off"
                       />
                     )}
                   </div>
+                ) : (
+                  <UploadCapaPhoto
+                    fotoId={fotoId}
+                    setFotoId={setFotoId}
+                    fotoUrl={fotoUrl}
+                    setFotoUrl={setFotoUrl}
+                    handleSave={handleSave}
+                  />
                 )}
               </Acoes>
-            </Col>
-          </Row>
-          <Row className="d-flex justify-content-end">
-            <Col lg={3}>
-              <Button
-                isActive
-                onClick={() => {
-                  if (user?.id_usuario === dataProps?.id_usuario) {
-                    setFormError(
-                      'Você não pode enviar um orçamento para você mesmo!',
-                    );
-                    window.scrollTo(0, 0);
-                    return;
-                  }
-                  if (!user.id_pessoa) {
-                    history.push('/cadastro-basico');
-                    return;
-                  }
-                  if (
-                    user.percentageRegisterConsumer &&
-                    user.percentageRegisterConsumer < 66
-                  ) {
-                    handleShowAvatarCadastroIncompleto();
-                    return;
-                  }
-                  if (checkDenuncedUser()) {
-                    handleShowDenuncedAvatar();
-                    return;
-                  }
-                  history.push(
-                    `/consumidor/projetos/exclusivo/${dataProps?.id_usuario}`,
-                    {
-                      id_fornecedor: dataProps?.id,
-                    },
-                  );
-                }}
-              >
-                {idFornecedores.includes(dataProps?.id)
-                  ? 'RECONTRATAR'
-                  : 'SOLICITAR ORÇAMENTO'}
-              </Button>
-            </Col>
-          </Row>
-          <Spacer size={40} />
-          <Row>
-            <Col lg={12}>
-              <OutrasInformacoes data={dataProps} imageLoaded={true} />
-            </Col>
-          </Row>
-        </Container>
-      </Card>
+            )}
+          </ContentCapa>
+        </Col>
+      </Row>
+
+      <Row>
+        <Col lg={12}>
+          {!imageLoaded && (
+            <ContentInfo>
+              <ContentImg>
+                <FotoPerfil
+                  alt={dataProps?.nome_tratamento}
+                  src={dataProps?.arquivo ? dataProps?.arquivo.url : ''}
+                />
+                {dataProps?.is_membro && <SeloMembro id={dataProps.id} />}
+                {dataProps?.voluntariado && <BannerVoluntario />}
+                {sizePage > 578 && (
+                  <ContainerMedalhas>
+                    <MedalhasFornecedor id={dataProps?.id} />
+                  </ContainerMedalhas>
+                )}
+              </ContentImg>
+
+              <ContentOtherInfo>
+                <section>
+                  {sizePage <= 578 && <MedalhasFornecedor id={dataProps?.id} />}
+                  <NomeTitulo>{dataProps?.nome_tratamento}</NomeTitulo>
+                  <span>
+                    {dataProps?.profissoes &&
+                      dataProps?.profissoes[0]?.descricao}
+                  </span>
+
+                  {consultaRanking !== 0 && (
+                    <>
+                      {sizePage > 578 && <br />}
+                      <span className="informacoes">
+                        Ranking: {consultaRanking}
+                      </span>
+                    </>
+                  )}
+                  {projectsCount && (
+                    <span className="informacoes">
+                      {sizePage > 578 && <br />}
+                      Número de projetos: {projectsCount}
+                    </span>
+                  )}
+
+                  {dataProps?.ranking && (
+                    <Avaliacao>
+                      <span className="nota">
+                        {Number(dataProps?.ranking.notaMedia)}
+                      </span>
+                      {handleShowStars(Number(dataProps?.ranking?.notaMedia))}
+                    </Avaliacao>
+                  )}
+                </section>
+
+                <section>
+                  <Button
+                    isActive
+                    onClick={() => {
+                      if (user?.id_usuario === dataProps?.id_usuario) {
+                        setFormError(
+                          'Você não pode solicitar um orçamento para você mesmo!',
+                        );
+                        window.scrollTo(0, 0);
+                        return;
+                      }
+                      if (!user.id_pessoa) {
+                        router.push('/cadastro-basico');
+                        return;
+                      }
+                      if (
+                        user.percentageRegisterConsumer &&
+                        user.percentageRegisterConsumer < 66
+                      ) {
+                        handleShowAvatarCadastroIncompleto();
+                        return;
+                      }
+                      if (checkDenuncedUser()) {
+                        handleShowDenuncedAvatar();
+                        return;
+                      }
+                      router.push(
+                        `/consumidor/projetos/exclusivo/${dataProps?.id_usuario}`,
+                        {
+                          pathname: `/consumidor/projetos/exclusivo/${dataProps?.id_usuario}`,
+                          query: {
+                            id_fornecedor: dataProps?.id,
+                          },
+                        },
+                      );
+                    }}
+                  >
+                    {idFornecedores.includes(dataProps?.id)
+                      ? 'RECONTRATAR'
+                      : 'SOLICITAR PROPOSTA'}
+                  </Button>
+                </section>
+              </ContentOtherInfo>
+            </ContentInfo>
+          )}
+        </Col>
+      </Row>
+
+      {sizePage > 578 && (
+        <Row>
+          <Spacer size={15} />
+          <Col lg={12}>
+            {!imageLoaded ? (
+              <ContentInfo3>
+                <LinkToScroll
+                  activeClass="active"
+                  to="professional"
+                  spy={true}
+                  smooth={true}
+                  offset={-100}
+                  duration={500}
+                >
+                  Profissional
+                </LinkToScroll>
+
+                <LinkToScroll
+                  activeClass="active"
+                  to="portfolio"
+                  spy={true}
+                  smooth={true}
+                  offset={-100}
+                  duration={500}
+                >
+                  Portfólio
+                </LinkToScroll>
+
+                <LinkToScroll
+                  activeClass="active"
+                  to="interest"
+                  spy={true}
+                  smooth={true}
+                  offset={-100}
+                  duration={200}
+                >
+                  Áreas de interesse
+                </LinkToScroll>
+
+                <LinkToScroll
+                  activeClass="active"
+                  to="training"
+                  spy={true}
+                  smooth={true}
+                  offset={-100}
+                  duration={500}
+                >
+                  Capacitação
+                </LinkToScroll>
+
+                <LinkToScroll
+                  activeClass="active"
+                  to="causes"
+                  spy={true}
+                  smooth={true}
+                  offset={-100}
+                  duration={100}
+                >
+                  Causas sociais
+                </LinkToScroll>
+              </ContentInfo3>
+            ) : (
+              <>
+                <Spacer size={10} />
+                <Skeleton width="100%" height="36px" />
+              </>
+            )}
+          </Col>
+        </Row>
+      )}
     </Content>
   );
 }

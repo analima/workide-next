@@ -6,13 +6,13 @@ import { Titulo } from '../../../../components/Titulo';
 import { VitrineServico } from '../../../../components/VitrineServico';
 import { IServicoInfo } from '../../../../interfaces/IServicoInfo';
 import { ofertas_api } from '../../../../services/ofertas_api';
-import Content from './style';
+import { Content } from './style';
 
 interface Props {
   id: number;
 }
 
-export default function Vitrine({ id }: Props) {
+export function Vitrine({ id }: Props) {
   const [vitrineData, setVitrineData] = useState([] as IServicoInfo[]);
   useEffect(() => {
     async function handleData() {

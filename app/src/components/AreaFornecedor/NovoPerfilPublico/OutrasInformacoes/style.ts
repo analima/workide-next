@@ -1,6 +1,7 @@
 import Slider from 'react-slick';
 import styled from 'styled-components';
 import {
+  BRANCO,
   CINZA_10,
   CINZA_40,
   PRETO,
@@ -8,7 +9,7 @@ import {
   PRETO_40,
 } from '../../../../styles/variaveis';
 
-const Content = styled.section`
+export const Content = styled.section`
   padding: 0px;
   margin: 0px;
 `;
@@ -59,6 +60,17 @@ export const InfoSection = styled.div`
       margin-top: 8px;
     }
   }
+
+  @media (max-width: 578px) {
+    width: 100%;
+    .info-curso {
+      height: 75px;
+      width: 100%;
+      max-width: 312px;
+      border-radius: 8px;
+      padding: 10px, 20px, 10px, 10px;
+    }
+  }
 `;
 
 export const Ranking = styled.span`
@@ -71,6 +83,12 @@ export const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  .esconderMobile {
+    @media (max-width: 578px) {
+      display: none;
+    }
+  }
 
   span {
     font-size: 16px;
@@ -99,6 +117,8 @@ export const Wrapper = styled.section`
 
   .ver-subarea {
     text-align: right;
+    align-self: flex-end;
+    justify-self: flex-end;
     font-size: 10px;
     font-weight: bold;
     cursor: pointer;
@@ -107,19 +127,52 @@ export const Wrapper = styled.section`
       opacity: 0.8;
     }
   }
+
+  .redes {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+
+    svg {
+      cursor: pointer;
+    }
+  }
+  @media (max-width: 578px) {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
 `;
 
 export const Carrousel = styled(Slider)`
   .slick-track {
     display: flex;
     flex-direction: row-reverse;
+    margin: 0;
   }
 
   .slick-slide {
     display: flex;
-    /* align-items: center;
-    justify-content: center; */
-    width: 480px;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  @media (max-width: 578px) {
+    max-width: 578px;
+    width: 100%;
+    margin-left: 0 !important;
+    .slick-slide {
+      width: 80%;
+      margin-left: 0 !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .slick-slide {
+      margin-bottom: 15px;
+    }
   }
 
   img {
@@ -155,4 +208,29 @@ export const TitleVideoNotFound = styled.span`
   margin-top: 16px;
 `;
 
-export default Content;
+export const CardCertificado = styled.div`
+  width: 107px;
+  max-width: 107px;
+  height: 107px;
+  border-radius: 8px;
+  padding: 26px 9px;
+  overflow: hidden;
+  cursor: pointer;
+  background: linear-gradient(
+      179.65deg,
+      rgba(0, 0, 0, 0.2) 0.3%,
+      rgba(0, 0, 0, 0) 76.01%
+    ),
+    #a40000;
+
+  p {
+    color: ${BRANCO};
+    font-size: 15px;
+    font-weight: 700;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+`;
