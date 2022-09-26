@@ -180,7 +180,14 @@ export const Medalhas = styled.div`
 
 export const Footer = styled.div`
   width: 100%;
-  height: 100px;
+  height: 120px;
+  overflow: scroll;
+  overflow-y: scroll;
+  ::-webkit-scrollbar {
+    display: none; /* Chrome Safari */
+  }
+  -ms-overflow-style: none; /* IE 10+ */
+  scrollbar-width: none; /* Firefox */
 `;
 
 export const AreasInteresse = styled.div`
@@ -327,10 +334,11 @@ export const ContainerItensFooter = styled.div`
 export const ContainerItemVitrine = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 8px;
-  width: 310px;
-  height: 372px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  width: 269px;
+  border: 1px solid #fa7c4965;
+  height: 370px;
   border-radius: 8px;
   padding: 16px;
   cursor: pointer;

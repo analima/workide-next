@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { formatDate } from '../../helpers/DateHelper';
 import { oportunidades_api } from '../../services/oportunidades_api';
-import  EstrelaOff  from '../../assets/estrela-off.svg';
-import Estrela  from '../../assets/estrela.svg';
+import EstrelaOff from '../../assets/estrela-off.svg';
+import Estrela from '../../assets/estrela.svg';
 import PlaceholderImg from '../../assets/placeholderImg.png';
-import Image from 'next/image'
+import Image from 'next/image';
 
 import {
   Avaliacao,
@@ -56,7 +56,7 @@ export function CardAvaliacao({ id }: IProps) {
       if (i <= numberOfStars) {
         if (numberOfStars === 0)
           stars.push(
-             <Image
+            <Image
               src={EstrelaOff}
               className="estrela"
               key={i + Math.random()}
@@ -64,7 +64,7 @@ export function CardAvaliacao({ id }: IProps) {
             />,
           );
         else
-         stars.push(
+          stars.push(
             <Image
               src={Estrela}
               className="estrela"
@@ -150,7 +150,8 @@ export function CardAvaliacao({ id }: IProps) {
                   <ContainerCardUsuario>
                     <AvaliacaoCliente>
                       <Image
-                        layout={'fill'}
+                        width={32}
+                        height={32}
                         src={
                           obj?.projeto?.pessoaConsumidor?.arquivo?.url ||
                           PlaceholderImg
@@ -165,7 +166,9 @@ export function CardAvaliacao({ id }: IProps) {
                       <ContentNota>
                         <span>{obj.nota}</span>
 
-                        {obj.nota ? handleShowStars(5) : handleShowStars(obj.nota || 0) }
+                        {obj.nota
+                          ? handleShowStars(5)
+                          : handleShowStars(obj.nota || 0)}
                       </ContentNota>
                     </div>
                   </ContainerCardUsuario>

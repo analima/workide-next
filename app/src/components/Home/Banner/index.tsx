@@ -93,7 +93,7 @@ export function Banner() {
     }
 
     if (type === 'voluntários') {
-      router.push(`/consumidor/busca?voluntario=true&filter=${e}`);
+      router.push(`/consumidor/busca?voluntarios=true&filter=${e}`);
     }
 
     if (type === 'projetos') {
@@ -101,7 +101,7 @@ export function Banner() {
     }
 
     if (type === 'ofertas') {
-      router.push(`/consumidor/busca?oferta=true&filter=${e}`);
+      router.push(`/consumidor/busca?ofertas=true&filter=${e}`);
     }
   }
 

@@ -2,7 +2,7 @@ import { lighten } from 'polished';
 import styled from 'styled-components';
 import { AZUL, BRANCO, PRETO_60 } from '../../../styles/variaveis';
 
-const Content = styled.section``;
+export const Content = styled.section``;
 
 export const Button = styled.button`
   transition: all 0.2s ease-in-out;
@@ -98,5 +98,3 @@ export const ContentButton = styled.div`
 `;
 
 export const ButtonVoltar = styled(GhostButton)``;
-
-export default Content;

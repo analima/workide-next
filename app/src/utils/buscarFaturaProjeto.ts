@@ -11,7 +11,6 @@ export default class BuscarFaturaProjeto {
       const {
         data: { values: faturas },
       } = await pagamentos_api.get(`/faturas-servico/consumidor/${idPessoa}`);
-      console.log('FATURAS', faturas)
       const faturasFiltradas = this.filtrarFaturasPorProjeto(
         faturas,
         idProjeto,
@@ -25,7 +24,7 @@ export default class BuscarFaturaProjeto {
         valorSemTaxa: faturasFiltradas[0].vl_repasse_fornec_cent / 100,
       };
     } catch (error: any) {
-      console.log(error)
+      console.log(error);
       console.error(error.response);
     }
   }

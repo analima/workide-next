@@ -5,13 +5,14 @@ type Props = {
 };
 
 export const Content = styled.div<Props>`
+  position: absolute;
+  top: 0;
+  margin: 4px 0;
+  right: 0;
+
   svg {
     width: 50px;
     height: 68px;
-    position: absolute;
-    margin: 0 4px;
-    top: 0;
-    right: 0;
     cursor: pointer;
 
     ${({ isViewVideo }) =>

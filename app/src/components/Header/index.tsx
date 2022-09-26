@@ -11,7 +11,7 @@ import {
   ContainerMenuMobile,
 } from './style';
 import Logo from '../../assets/logo.svg';
-import { useAuth} from '../../contexts/auth';
+import { useAuth } from '../../contexts/auth';
 import { AZUL, BRANCO, PRETO } from '../../styles/variaveis';
 import { Button } from '../Form/Button';
 import { IPessoa } from '../../interfaces/IPessoa';
@@ -32,10 +32,8 @@ export function Header(): JSX.Element {
   const [idToken, setIdToken] = useState('');
 
   const refreshUserData = async (ID_TOKEN: any) => {
-    console.log('entrou')
     const newIdToken = localStorage.getItem(ID_TOKEN);
     setIdToken(newIdToken || '');
-    console.log(newIdToken)
     if (newIdToken) {
       const res = await pessoas_api.get('/pessoas/me', {
         headers: {
@@ -43,7 +41,6 @@ export function Header(): JSX.Element {
         },
       });
       if (res) {
-        
         const { data: newUser } = res;
         setUser({
           ...newUser,
@@ -54,19 +51,16 @@ export function Header(): JSX.Element {
         });
       }
     }
-   
-  }
+  };
 
   useEffect(() => {
     //NewAuth()
-    let local = localStorage.getItem('@Gyan:id_token')
-    if(local){
-      const ID_TOKEN = '@Gyan:id_token'
-      refreshUserData(ID_TOKEN)
+    let local = localStorage.getItem('@Gyan:id_token');
+    if (local) {
+      const ID_TOKEN = '@Gyan:id_token';
+      refreshUserData(ID_TOKEN);
     }
-  }, [])
-
-
+  }, []);
 
   function handleToggleMenu() {
     setIsMobile(prevState => !prevState);
@@ -132,7 +126,7 @@ export function Header(): JSX.Element {
               <Link href="/fornecedor/captar-projetos">Freelancers</Link>
 
               <Link href="/consumidor/busca">Empresas</Link>
-              <Link href="/consumidor/busca?voluntario=true">Voluntários</Link>
+              <Link href="/consumidor/busca?voluntarios=true">Voluntários</Link>
 
               {!user?.email && <Link href="/login">Login</Link>}
 
