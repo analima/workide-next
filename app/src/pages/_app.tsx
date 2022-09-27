@@ -1,8 +1,9 @@
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from 'styled-components';
-import '../styles/global.css';
+// import '../styles/global.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Head from 'next/head';
+import { GlobalStyles } from 'src/styles/global';
 
 interface ThemeInterface {
   colors: {
@@ -26,7 +27,10 @@ function MyApp({ Component, pageProps }: AppProps) {
           name="description"
           content="Olá amigo(a), como vai? Gostaria de compartilhar com você essa ideia. Estou usando uma plataforma muito legal chamada Gyan. Lá você encontrará muita coisa legal que vai te ajudar. Se cuida, abraço!"
         />
-        <meta property='og:title' content='Gyan - Contrate um freelancer em poucos cliques' />
+        <meta
+          property="og:title"
+          content="Gyan - Contrate um freelancer em poucos cliques"
+        />
         <meta name="image" content="https://static.gyan.com.br/logo.jpeg" />
         <meta
           property="og:image"
@@ -49,6 +53,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
       </Head>
       <html lang="pt_br">
+        <GlobalStyles />
+
         <ThemeProvider theme={theme}>
           <Component {...pageProps} />
         </ThemeProvider>
