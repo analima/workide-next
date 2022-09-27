@@ -21,15 +21,13 @@ interface SampleArrowProps {
   onClick?: () => void;
 }
 
-export function Vitrine() {
-  const [vitrineData, setVitrineData] = useState([] as IServicoInfo[]);
+interface IPropsData {
+  vitrineData: IServicoInfo[];
+}
+
+export function Vitrine({ vitrineData }: IPropsData) {
   const [sizePage, setSizePage] = useState(0);
   const router = useRouter();
-  useEffect(() => {
-    consultas_api.post(`/consulta/ofertas?limit=12`).then(({ data }) => {
-      setVitrineData(data.values);
-    });
-  }, []);
 
   const handleResize = (e: any) => {
     setSizePage(window.innerWidth);
@@ -42,7 +40,7 @@ export function Vitrine() {
 
   const settingsSlider = {
     speed: 500,
-    dots: vitrineData.length > 10 && sizePage > 500 ? true : false,
+    dots: vitrineData.values.length > 10 && sizePage > 500 ? true : false,
     autoplay: true,
     autoplaySpeed: 2500,
     slidesToShow: 3.4,
@@ -159,11 +157,12 @@ export function Vitrine() {
           </ContentTitles>
 
           <Carrousel {...settingsSlider}>
-            {vitrineData.map(item => (
-              <li key={item.id}>
-                <ServiceCard isFavorite={false} service={item} />
-              </li>
-            ))}
+            {vitrineData &&
+              vitrineData?.map(item => (
+                <li key={item.id}>
+                  <ServiceCard isFavorite={false} service={item} />
+                </li>
+              ))}
           </Carrousel>
         </CardCarrousel>
         <ContainerButton>
