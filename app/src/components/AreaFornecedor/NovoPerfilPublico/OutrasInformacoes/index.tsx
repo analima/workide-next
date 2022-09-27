@@ -80,11 +80,8 @@ export function OutrasInformacoes({ data, imageLoaded }: Props) {
 
   const loadRedesSociais = useCallback(async () => {
     const response = await pessoas_api.get(`/pessoas/${data.id}/redes-sociais`);
-    const redesFiltered = response.data.filter(
-      (i: IRedeSocialProps) => !redes.includes(i.tipo),
-    );
-    setRedesSociais(redesFiltered);
-  }, [data.id, redes]);
+    setRedesSociais(response.data);
+  }, [data.id]);
 
   useEffect(() => {
     loadRedesSociais();
@@ -319,7 +316,9 @@ export function OutrasInformacoes({ data, imageLoaded }: Props) {
                     tamanho={16}
                   />
                   <div className="redes">
-                    {redesSociais.map(item => handleRedes(item))}
+                    {redesSociais
+                      .filter((i: IRedeSocialProps) => !redes.includes(i.tipo))
+                      .map(item => handleRedes(item))}
                   </div>
                 </Wrapper>
               </Card>
