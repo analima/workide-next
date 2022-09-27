@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import { IServicoInfo } from '../../interfaces/IServicoInfo';
@@ -7,6 +7,7 @@ import { LARANJA } from '../../styles/variaveis';
 import { formatarValor } from '../../utils/CurrencyFormat';
 import { Skeleton } from '../Skeleton';
 import EstrelaOff from '../../assets/estrela-off.svg';
+import autoAnimate from '@formkit/auto-animate';
 import Estrela from '../../assets/estrela.svg';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
@@ -45,6 +46,7 @@ export function ServiceCard({
   isFavorite: boolean;
   setIsFavorite?: (isFavorite: boolean) => void;
 }) {
+  const parent = useRef(null);
   const router = useRouter();
   const [dadosFornec, setDadosFornec] = useState<ServiceProps>(
     {} as ServiceProps,
@@ -103,10 +105,13 @@ export function ServiceCard({
     }
     return stars;
   }
+  useEffect(() => {
+    parent.current && autoAnimate(parent.current);
+  }, [parent]);
 
   return service ? (
     <Content>
-      <Row>
+      <Row ref={parent}>
         <Col lg={12}>
           <ImageContainer>
             <ImageContainerInfos>

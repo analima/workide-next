@@ -23,7 +23,6 @@ export function ToggleSwitch({
 
   useEffect(() => {
     const { filter } = router.query;
-    console.log(filter);
     if (filter === 'voluntarios' && typeof window !== 'undefined') {
       setTimeout(() => {
         setVolunteers(true);

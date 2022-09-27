@@ -6,7 +6,7 @@ import { Menu } from '../../Menu';
 import { Rodape } from '../../Rodape';
 import { Spacer } from '../../Spacer';
 import { Titulo } from '../../Titulo';
-import { useAuth } from '../../../contexts/auth';
+import { ID_TOKEN, useAuth } from '../../../contexts/auth';
 import { IPessoa } from '../../../interfaces/IPessoa';
 import HeaderPublico from './HeaderPublico';
 import Navbar from './Navbar';
@@ -33,21 +33,16 @@ export default function Layout({
   navbarIsNotVisible,
 }: LayoutProps) {
   const [sidebar, setSidebar] = useState(false);
+  const { idToken, isAuthDataLoading } = useAuth();
 
   function toggleSidebar() {
     sidebar && setSidebar(!sidebar);
   }
 
   const [user, setUser] = useState({} as IPessoa);
-  const [isAuthDataLoading, setIsAuthDataLoading] = useState(true);
-  const [idToken, setIdToken] = useState('');
-
 
   const refreshUserData = async (ID_TOKEN: any) => {
-    console.log('entrou')
     const newIdToken = localStorage.getItem(ID_TOKEN);
-    setIdToken(newIdToken || '');
-    console.log(newIdToken)
     if (newIdToken) {
       const res = await pessoas_api.get('/pessoas/me', {
         headers: {
@@ -55,7 +50,6 @@ export default function Layout({
         },
       });
       if (res) {
-        
         const { data: newUser } = res;
         setUser({
           ...newUser,
@@ -66,25 +60,19 @@ export default function Layout({
         });
       }
     }
-   
-  }
+  };
 
   useEffect(() => {
-    let local = localStorage.getItem('@Gyan:id_token')
-    if(local){
-      const ID_TOKEN = '@Gyan:id_token'
-      refreshUserData(ID_TOKEN)
+    let local = localStorage.getItem('@Gyan:id_token');
+    if (local) {
+      const ID_TOKEN = '@Gyan:id_token';
+      refreshUserData(ID_TOKEN);
     }
-  }, [])
+  }, []);
 
   return (
     <Content>
-      {!user.id_pessoa ? (
-        <>
-          <HeaderPublico />
-          <Spacer size={60} />
-        </>
-      ) : (
+      {localStorage.getItem(ID_TOKEN) ? (
         <>
           <Menu />
 
@@ -95,8 +83,12 @@ export default function Layout({
               activeMenu={activeMenu}
               maisSolucoesIsNotVisible={maisSolucoesIsNotVisible}
             />
-           
           )}
+        </>
+      ) : (
+        <>
+          <HeaderPublico />
+          <Spacer size={60} />
         </>
       )}
       {activeMenu && <Sidebar open={sidebar} />}

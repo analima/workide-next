@@ -1,14 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router';
-import { ContainerHeader, Button, CardContainer } from './style';
+import { CardContainer } from './style';
 import Content from './style';
 import { useAuth } from '../../../../../contexts/auth';
 import { AvatarCadastroIncompleto } from '../../../../AvatarCadastroIncompleto';
 import { Card } from '../../../../Card';
+import autoAnimate from '@formkit/auto-animate';
 import { ItemVitrine } from '../../../../Vitrine';
 import { Col, Row } from 'react-bootstrap';
 import Paginacao from '../../../Home/MeusProjetos/Paginacao';
-import Image from 'next/image'
+import Image from 'next/image';
 import {
   AvatarContainer,
   ContentAvatar,
@@ -16,18 +17,23 @@ import {
 } from '../../../../Vitrine/style';
 import Avatar from '../../../../CadastroComplementar/Apresentacao/style';
 import Carol from '../../../../../assets/carol-full.svg';
+import iconSelectPosition from '../../../../../assets/IconSelectPositionGrey.svg';
 import { useBuscaFornecedorOferta } from '../../../../../hooks/buscaConsumidor';
-import { IPessoa } from 'src/interfaces/IPessoa';
 
 export default function Fornecedor() {
-  const history = useHistory();
-  const { people, paginaPerfis, setPaginaPerfis, totalPaginasPerfis } =
-    useBuscaFornecedorOferta();
+  const parent = useRef(null);
+  const [typeOrdenation, setTypeOrdenation] = useState(false);
 
-  let { user } = useAuth();
-  if(!user){
-    user = {} as IPessoa
-  }
+  const history = useHistory();
+  const {
+    people,
+    paginaPerfis,
+    setOrder,
+    setPaginaPerfis,
+    totalPaginasPerfis,
+  } = useBuscaFornecedorOferta();
+  const { user } = useAuth();
+
   const [showAvatarCadastroIncompleto, setShowAvatarCadastroIncompleto] =
     useState(false);
 
@@ -42,6 +48,21 @@ export default function Fornecedor() {
       history.push('/consumidor/projetos/exclusivo');
     }
   };
+
+  useEffect(() => {
+    parent.current && autoAnimate(parent.current);
+  }, [parent]);
+
+  function handleOrderXp(ordered: boolean) {
+    if (ordered) setOrder('&order=nivelExperienciaPeso=asc');
+    if (!ordered) setOrder('&order=nivelExperienciaPeso=desc');
+  }
+
+  function handleOrder(ordered: boolean) {
+    if (ordered) setOrder('&order=avaliacaoFornecedor=asc');
+    if (!ordered) setOrder('&order=avaliacaoFornecedor=desc');
+  }
+
   return (
     <Content>
       <AvatarCadastroIncompleto
@@ -51,13 +72,45 @@ export default function Fornecedor() {
         isConsumer={true}
       />
       <Row className="d-flex align-items-center justify-content-center">
-        <Col lg={11}>
+        <Col lg={12}>
           {people.length > 0 ? (
             <>
-              <CardContainer quantidadeItem={people.length}>
-                {people.map(item => (
-                  <ItemVitrine item={item} key={item.id} />
-                ))}
+              <div className="ordenation">
+                <div
+                  className="nivel"
+                  onClick={() => {
+                    setTypeOrdenation(!typeOrdenation);
+                    handleOrderXp(typeOrdenation);
+                  }}
+                >
+                  <Image
+                    className="icone"
+                    src={iconSelectPosition}
+                    alt="Ordernation"
+                    width={20}
+                    height={20}
+                  />
+                  <span>Nível de Experiência</span>
+                </div>
+
+                <div className="avaliation">
+                  <Image
+                    className="icone"
+                    src={iconSelectPosition}
+                    alt="Ordernation"
+                    width={20}
+                    height={20}
+                    onClick={() => {
+                      setTypeOrdenation(!typeOrdenation);
+                      handleOrder(typeOrdenation);
+                    }}
+                  />
+                  <span>Avaliações</span>
+                </div>
+              </div>
+              <CardContainer ref={parent} quantidadeItem={people.length}>
+                {people.length > 0 &&
+                  people.map(item => <ItemVitrine item={item} key={item.id} />)}
               </CardContainer>
               <Row className="mt-3">
                 <Col lg={12}>
@@ -71,7 +124,7 @@ export default function Fornecedor() {
             </>
           ) : (
             <Card>
-               <AvatarContainer full>
+              <AvatarContainer full>
                 <Dialogo>
                   <ContentAvatar>
                     <p>
@@ -86,35 +139,12 @@ export default function Fornecedor() {
                 </Dialogo>
                 <Avatar>
                   <Image src={Carol} alt="avatar carol" />
-           
                 </Avatar>
               </AvatarContainer>
             </Card>
           )}
         </Col>
       </Row>
-      <ContainerHeader>
-        <p>Não encontrou o que procurava ?</p>
-        <Button
-          onClick={() => {
-            if (!user.id_pessoa) {
-              history.push('/cadastro-basico');
-
-              return;
-            }
-            if (
-              user.percentageRegisterConsumer &&
-              user.percentageRegisterConsumer < 66
-            ) {
-              handleShowAvatarCadastroIncompleto();
-              return;
-            }
-            handleRedirect('geral');
-          }}
-        >
-          PUBLIQUE UM NOVO PROJETO
-        </Button>
-      </ContainerHeader>
     </Content>
   );
 }

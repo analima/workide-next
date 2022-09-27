@@ -24,7 +24,7 @@ import {
 } from 'react-hook-form';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { GlobalLayoutProps } from '../interfaces/globalLayoutProps';
+import { GlobalLayoutProps } from 'src/interfaces/globalLayoutProps';
 
 interface BuscaFornecedorOfertaProps {
   control: Control<FieldValues, object>;
@@ -102,6 +102,8 @@ interface BuscaFornecedorOfertaProps {
   setCausas: Dispatch<SetStateAction<CausaProp[]>>;
   filter: string;
   setFilter: Dispatch<SetStateAction<string>>;
+  order: string;
+  setOrder: Dispatch<SetStateAction<string>>;
 }
 
 export type CausaProp = {
@@ -154,9 +156,7 @@ const BuscaFornecedorOferta = createContext<BuscaFornecedorOfertaProps>(
   {} as BuscaFornecedorOfertaProps,
 );
 
-export const BuscaFornecedorOfertaProvider: React.FC<GlobalLayoutProps> = ({
-  children,
-}) => {
+export function BuscaFornecedorOfertaProvider({ children }: GlobalLayoutProps) {
   const query = useQuery();
 
   const [volunteers, setVolunteers] = useState<boolean>(false);
@@ -188,7 +188,7 @@ export const BuscaFornecedorOfertaProvider: React.FC<GlobalLayoutProps> = ({
   const [showAvatarCadastroIncompleto, setShowAvatarCadastroIncompleto] =
     useState(false);
   const [sizeFilter, setSizeFilter] = useState('small');
-
+  const [order, setOrder] = useState('');
   const [basic, setBasic] = useState(false);
   const [intermediary, setIntermediary] = useState(false);
   const [advanced, setAdvanced] = useState(false);
@@ -260,15 +260,13 @@ export const BuscaFornecedorOfertaProvider: React.FC<GlobalLayoutProps> = ({
 
       consultas_api
         .post<{ values: PessoaProp[]; pages: number }>(
-          `/consulta/fornecedores?limit=${
-            sizeFilter === 'small' ? '9' : 8
-          }&page=${paginaPerfis}`,
+          `/consulta/fornecedores?limit=16&page=${paginaPerfis}${order}`,
           {
             ...fornecedoresQuery,
           },
         )
         .then(({ data }) => {
-          setPeople(data.values);
+          setPeople(data?.values);
           setTotalPaginasPerfis(data.pages);
         });
 
@@ -296,7 +294,7 @@ export const BuscaFornecedorOfertaProvider: React.FC<GlobalLayoutProps> = ({
       setAllFilters(ofertasQuery);
 
       consultas_api
-        .post(`/consulta/ofertas?limit=12&page=${pagina}`, {
+        .post(`/consulta/ofertas?limit=16&page=${pagina}`, {
           ...ofertasQuery,
         })
         .then(({ data }) => {
@@ -316,12 +314,12 @@ export const BuscaFornecedorOfertaProvider: React.FC<GlobalLayoutProps> = ({
     filtroOferta,
     pagina,
     paginaPerfis,
-    sizeFilter,
     basic,
     intermediary,
     advanced,
     specialist,
     avaliacao,
+    order,
   ]);
 
   const limparFiltros = useCallback(() => {
@@ -352,6 +350,7 @@ export const BuscaFornecedorOfertaProvider: React.FC<GlobalLayoutProps> = ({
   }, [isMudar]);
 
   const handleChangeVolunteers = useCallback(() => {
+    setOfertaFiltro(false);
     setVolunteers(oldVolunteers => !oldVolunteers);
   }, []);
 
@@ -389,7 +388,8 @@ export const BuscaFornecedorOfertaProvider: React.FC<GlobalLayoutProps> = ({
         errors,
         setValue,
         getValues,
-
+        order,
+        setOrder,
         volunteers,
         setVolunteers,
         ofertaFiltro,
@@ -462,7 +462,7 @@ export const BuscaFornecedorOfertaProvider: React.FC<GlobalLayoutProps> = ({
       {children}
     </BuscaFornecedorOferta.Provider>
   );
-};
+}
 
 export function useBuscaFornecedorOferta(): BuscaFornecedorOfertaProps {
   const context = useContext(BuscaFornecedorOferta);
