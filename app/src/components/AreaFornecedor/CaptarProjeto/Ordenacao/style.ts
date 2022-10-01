@@ -70,38 +70,6 @@ export const OrdemGroup = styled.div`
   flex-wrap: wrap;
 `;
 
-export const Label = styled.span`
-  background-color: ${AZUL};
-  border-radius: 24px;
-  padding: 4px 12px;
-  font-size: 12px;
-  text-align: center;
-  color: ${BRANCO};
-  font-weight: bold;
-  margin-right: 4px;
-`;
-
-export const FiltrosAplicados = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-`;
-
-export const ContentFilter = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 4px;
-
-  @media (max-width: 578px) {
-    flex-direction: column-reverse;
-  }
-
-  p {
-    margin: 0;
-  }
-`;
-
 export const Button = styled.button`
   padding: 10px;
   font-weight: bold;
@@ -122,6 +90,26 @@ export const Button = styled.button`
     width: 100%;
     margin-top: 16px;
     margin-bottom: 8px;
+  }
+`;
+
+export const ExibirFavorito = styled.div`
+  padding: 8px;
+  background-color: ${AZUL};
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 24px;
+  cursor: pointer;
+
+  :hover {
+    opacity: 0.8;
+  }
+
+  span {
+    font-weight: 700;
+    font-size: 16px;
+    color: ${BRANCO};
   }
 `;
 

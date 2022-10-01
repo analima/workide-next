@@ -21,9 +21,7 @@ const Content = styled.div`
   }
 `;
 
-export const ContainerProjeto = styled.div`
-  padding: 8px;
-`;
+export const ContainerProjeto = styled.div``;
 
 export const ProjetoHeader = styled.div`
   div {
@@ -58,6 +56,13 @@ export const HeaderSecondary = styled.div`
     color: ${PRETO_10};
     margin: 0;
   }
+
+  p {
+    font-weight: 400;
+    font-size: 12.8px;
+    color: ${PRETO_10};
+    margin: 0;
+  }
   @media (max-width: 578px) {
     align-items: flex-start !important;
     justify-content: flex-start !important;
@@ -83,7 +88,18 @@ export const TextoPublicacao = styled.div`
 
 export const TituloContainer = styled.div`
   display: flex;
-  align-items: center;
+
+  .heart {
+    background-color: red;
+    cursor: pointer;
+    -webkit-transition: -webkit-transform 0.5s ease;
+    transition: transform 0.5s ease;
+
+    :hover {
+      -webkit-transform: scale(1.05);
+      transform: scale(1.05);
+    }
+  }
 
   svg {
     margin-right: 16px;
@@ -112,13 +128,15 @@ export const TituloContainer = styled.div`
 export const FaixaPrecoContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: start;
+  border: 1px solid red;
 
   p {
     font-weight: 600;
     font-size: 12px;
     color: ${PRETO_10};
+    margin: 0;
   }
 
   @media (max-width: 768px) {
@@ -149,7 +167,14 @@ export const ContentFaixa = styled.div<EscopoProps>`
 
 export const FaixaProBono = styled.div`
   display: flex;
-  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+
+  .icone-voluntario {
+    width: 76px;
+    height: 51px;
+  }
 
   .voluntariado {
     display: flex;
@@ -168,7 +193,7 @@ export const FaixaProBono = styled.div`
     }
 
     span {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: bold;
       color: ${AZUL};
     }
@@ -213,21 +238,32 @@ export const FaixaPrecoLabel = styled.label<FaixaProps>`
 `;
 
 export const DataPublicacao = styled.span`
-  font-size: 12px;
-  color: ${PRETO_60};
+  font-size: 12.8px;
+  font-weight: 400;
+  color: ${PRETO_10};
+
+  &:nth-child(3) {
+    font-weight: 500;
+    font-size: 10.24px;
+  }
 
   @media (max-width: 578px) {
     display: none;
   }
 `;
 
-export const ProjetoBody = styled.div``;
+export const ProjetoBody = styled.div`
+  .atividades-requeridas {
+    color: ${PRETO_10};
+  }
+`;
 
 export const Descricao = styled.p`
   text-align: justify;
   font-size: 16px;
   margin-bottom: 24px;
   margin-top: 16px;
+  color: ${PRETO_10};
   word-wrap: break-word;
 
   @media (max-width: 478px) {
@@ -236,7 +272,7 @@ export const Descricao = styled.p`
 `;
 
 export const ProjetoFooter = styled.div`
-  margin-top: 32px;
+  margin-top: 16px;
 `;
 
 export const Consumidor = styled.div`
@@ -283,9 +319,7 @@ type ButtonProps = {
 };
 
 export const Compartilhar = styled.a`
-  padding: 16px 40px;
-  width: 236px;
-  border: none;
+  padding: 16px 18px;
   text-decoration: none;
   border-radius: 8px;
   color: ${AZUL};
@@ -295,8 +329,12 @@ export const Compartilhar = styled.a`
   font-family: 'Renner';
   font-style: normal;
   font-weight: 700;
-  font-size: 13px;
+  font-size: 12.8px;
   line-height: 150%;
+
+  :hover {
+    opacity: 0.8;
+  }
 
   svg {
     margin-right: 8px;
@@ -339,10 +377,9 @@ export const Button = styled.button<ButtonProps>`
     return props.isMesmoUsuario ? 'block' : 'none';
   }};
 
-  &:hover {
+  :hover {
     color: ${BRANCO};
-    background-color: ${props =>
-      props.notInterested ? lighten(0.1, LARANJA) : lighten(0.1, AZUL)};
+    opacity: 0.8;
   }
 
   @media (max-width: 478px) {
@@ -381,7 +418,6 @@ export const AnuncioComErro = styled.button`
 export const ContainerInfo = styled.div`
   width: 100%;
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;

@@ -24,6 +24,7 @@ import {
   Descricao,
   Consumidor,
   FotoPerfil,
+  // AtividadesRequeridas,
   Info,
   Avaliacao,
   Button,
@@ -74,6 +75,8 @@ import { GiShare } from 'react-icons/gi';
 import { ModalRecomendacao } from '../../../../components/ModalRecomendacao';
 import { Spinner } from '../../../../components/Spinner';
 import { IPessoa } from '../../../../interfaces/IPessoa';
+import { FaRegHeart } from 'react-icons/fa';
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 
 type PessoaType = {
   id: number;
@@ -98,6 +101,7 @@ export default function Projeto({
   projeto,
   totalFavoritos = 0,
 }: ProjetoProps) {
+  console.log(projeto);
   const { user } = useAuth();
   let { limitacoesPlano } = useLimitacoesPlanos();
 
@@ -335,23 +339,9 @@ export default function Projeto({
               <TituloContainer>
                 {tipo === 'normal' &&
                   (projetoFavorito ? (
-                    <div style={{ margin: '15px' }}>
-                      <Image
-                        style={{ margin: '100px !important' }}
-                        src={Coracao}
-                        onClick={handleDesfavoritar}
-                        alt="coracao-on"
-                      />
-                    </div>
+                    <AiFillHeart size={64} color={LARANJA} />
                   ) : (
-                    <div style={{ margin: '15px' }}>
-                      <Image
-                        style={{ margin: '100px !important' }}
-                        src={CoracaoOff}
-                        onClick={handleFavoritar}
-                        alt="coracao-off"
-                      />
-                    </div>
+                    <AiOutlineHeart size={64} color={LARANJA} />
                   ))}
 
                 {tipo === 'exclusivo' && (
@@ -383,12 +373,25 @@ export default function Projeto({
                       )}
                     </DataPublicacao>
                   )}
+
+                  <p>
+                    Esse projeto recebeu {proposalAmount} proposta
+                    {proposalAmount > 1 ? 's' : ''}
+                  </p>
                 </HeaderSecondary>
               </TituloContainer>
 
               {projeto.proBono ? (
                 <FaixaProBono>
-                  <Image src={IconeVoluntario} alt="icone-voluntario" />
+                  <div className="icone-voluntario">
+                    <Image
+                      width={76}
+                      height={51}
+                      className="icone-voluntario"
+                      src={IconeVoluntario}
+                      alt="icone-voluntario"
+                    />
+                  </div>
                   <div className="voluntariado">
                     {projeto.escopo === 'ABERTO' && (
                       <FaixaPrecoLabel right>Por hora</FaixaPrecoLabel>
@@ -448,6 +451,15 @@ export default function Projeto({
             </Row>
 
             <Row>
+              <Col lg={12}>
+                <strong className="atividades-requeridas">
+                  Atividades Requeridades:
+                </strong>
+                {/* <AtividadesRequeridas>{projeto.des}</AtividadesRequeridas> */}
+              </Col>
+            </Row>
+
+            <Row>
               <Col lg={10}>
                 {projeto?.subareas?.map(subarea => (
                   <Label key={subarea} label={subarea} cor={VERDE} />
@@ -458,45 +470,33 @@ export default function Projeto({
 
           <ProjetoFooter>
             <ContainerInfo>
-              <Col lg={6}>
-                <Consumidor>
-                  {consumidor.arquivo?.url ? (
-                    <div style={{ margin: '0px 10px' }}>
-                      <Image
-                        style={{ borderRadius: '100%' }}
-                        src={consumidor.arquivo?.url || userPhoto}
-                        width={45}
-                        height={45}
-                        alt={consumidor.nome_tratamento}
-                      />
-                    </div>
-                  ) : (
-                    <Skeleton width="45px" height="45px" radius="50%" />
-                  )}
-                  <Info>
-                    <Titulo
-                      titulo={consumidor.nome_tratamento}
-                      tamanho={20}
-                      cor={CINZA_40}
+              <Consumidor>
+                {consumidor.arquivo?.url ? (
+                  <div style={{ margin: '0px 10px' }}>
+                    <Image
+                      style={{ borderRadius: '100%' }}
+                      src={consumidor.arquivo?.url || userPhoto}
+                      width={45}
+                      height={45}
+                      alt={consumidor.nome_tratamento}
                     />
-                    <Avaliacao>
-                      <span>{notaMedia?.toFixed(2)}</span>
-                      {handleShowStars(notaMedia)}
-                    </Avaliacao>
-                  </Info>
-                </Consumidor>
-              </Col>
-              <Col
-                lg={6}
-                className="d-flex justify-content-end align-items-center"
-              >
-                <p>
-                  Esse projeto recebeu {proposalAmount} proposta
-                  {proposalAmount > 1 ? 's' : ''}
-                </p>
-              </Col>
-
-              <ContentFooter>
+                  </div>
+                ) : (
+                  <Skeleton width="45px" height="45px" radius="50%" />
+                )}
+                <Info>
+                  <Titulo
+                    titulo={consumidor.nome_tratamento}
+                    tamanho={20}
+                    cor={CINZA_40}
+                  />
+                  <Avaliacao>
+                    <span>{notaMedia?.toFixed(2)}</span>
+                    {handleShowStars(notaMedia)}
+                  </Avaliacao>
+                </Info>
+              </Consumidor>
+              <ContentButton>
                 <AnuncioComErro
                   onClick={() => {
                     if (!user.id_pessoa) {
@@ -510,38 +510,37 @@ export default function Projeto({
                   Tem algo de errado com esse anúncio?
                 </AnuncioComErro>
 
+                <Compartilhar onClick={() => handleOpenShareLink()}>
+                  <GiShare color={AZUL} size={24} />
+                  COMPARTILHAR
+                </Compartilhar>
+
+                <Button
+                  isMesmoUsuario={
+                    projeto.idPessoaConsumidor === user.id ? false : true
+                  }
+                  disabled={projeto.idPessoaConsumidor === user.id}
+                  onClick={() => {
+                    if (!user.id_pessoa) {
+                      router.push('/cadastro-basico');
+                      return;
+                    }
+
+                    router.push({
+                      pathname: `/detalhes-projeto/${projeto.id}`,
+                      query: { tipo: tipo === 'exclusivo' },
+                    });
+                  }}
+                >
+                  MAIS DETALHES
+                </Button>
                 <ModalDenuncia
                   showModal={showModal}
                   setShowModal={setShowModal}
                   url={linkDenuncia}
                   idPessoaDenunciado={consumidor.id}
                 />
-                <ContentButton>
-                  <Compartilhar onClick={() => handleOpenShareLink()}>
-                    <GiShare color={AZUL} size={24} />
-                    COMPARTILHAR
-                  </Compartilhar>
-                  <Button
-                    isMesmoUsuario={
-                      projeto.idPessoaConsumidor === user.id ? false : true
-                    }
-                    disabled={projeto.idPessoaConsumidor === user.id}
-                    onClick={() => {
-                      if (!user.id_pessoa) {
-                        router.push('/cadastro-basico');
-                        return;
-                      }
-
-                      router.push({
-                        pathname: `/detalhes-projeto/${projeto.id}`,
-                        query: { tipo: tipo === 'exclusivo' },
-                      });
-                    }}
-                  >
-                    MAIS DETALHES
-                  </Button>
-                </ContentButton>
-              </ContentFooter>
+              </ContentButton>
 
               {tipo === 'exclusivo' && (
                 <ContentTrash>
