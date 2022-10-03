@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { AZUL, BRANCO } from '../../../../styles/variaveis';
 
 const Content = styled.div`
+  width: 100%;
   p {
     margin: 8px 0 0 0;
   }
@@ -66,8 +67,23 @@ export const FavoritoInput = styled.div<InputProps>`
 
 export const OrdemGroup = styled.div`
   display: flex;
+  justify-content: space-between;
   gap: 8px;
-  flex-wrap: wrap;
+
+  .inputs {
+    display: flex;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+
+  @media (max-width: 478px) {
+    .inputs {
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+  }
 `;
 
 export const Button = styled.button`
@@ -94,7 +110,7 @@ export const Button = styled.button`
 `;
 
 export const ExibirFavorito = styled.div`
-  padding: 8px;
+  padding: 8px 16px;
   background-color: ${AZUL};
   display: flex;
   align-items: center;
@@ -110,6 +126,11 @@ export const ExibirFavorito = styled.div`
     font-weight: 700;
     font-size: 16px;
     color: ${BRANCO};
+  }
+
+  @media (max-width: 768px) {
+    width: 200px;
+    justify-content: center;
   }
 `;
 

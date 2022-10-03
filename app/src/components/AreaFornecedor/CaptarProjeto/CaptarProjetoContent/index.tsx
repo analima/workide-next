@@ -197,10 +197,7 @@ export default function CaptarProjetoContent() {
               <NovoFiltro />
 
               <div className="filter-footer">
-                <div className="ordenacao">
-                  <span>Publicado em:</span>
-                  <Ordenacao setFavorito={setFavorito} favorito={favorito} />
-                </div>
+                <Ordenacao setFavorito={setFavorito} favorito={favorito} />
               </div>
             </ContentFilterHeader>
           </Col>

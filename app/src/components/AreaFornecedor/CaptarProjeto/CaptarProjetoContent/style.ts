@@ -85,16 +85,41 @@ export const ContentFilterHeader = styled.div`
   }
 
   @media (max-width: 768px) {
-    padding: 8px;
+    justify-content: flex-start;
     .content-filters {
-      flex-direction: column;
-      gap: 0px;
+      gap: 16px;
+
+      .search {
+        display: flex;
+        width: 100%;
+        flex: 1;
+
+        .input-search {
+          width: 100%;
+          background: #d9d9d9;
+          border-radius: 18px;
+        }
+      }
+    }
+
+    .filter-footer {
+      .ordenacao {
+        width: 100%;
+      }
+
+      .favorito {
+        background-color: ${AZUL};
+      }
     }
   }
 
   @media (max-width: 478px) {
     display: flex;
     flex-direction: column;
+
+    .content-filters {
+      flex-direction: column;
+    }
 
     .filter-check {
       display: flex;
@@ -126,7 +151,7 @@ export const Button = styled.button`
   }
 
   @media (max-width: 578px) {
-    margin: 10px auto;
+    padding: 10px;
   }
 `;
 
@@ -178,9 +203,9 @@ export const ContentFilter = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 4px;
+  width: 100%;
 
   @media (max-width: 578px) {
-    flex-direction: column-reverse;
   }
 
   p {

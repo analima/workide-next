@@ -110,6 +110,9 @@ export type ProjectType = {
   usuarioUltimaAtualizacao?: null | string;
   escopo: string;
   totalHoras: number;
+  descricao_escopo: string;
+  reunioes: string;
+  niveisExperiencia: string[];
 };
 
 export type CausaProp = {

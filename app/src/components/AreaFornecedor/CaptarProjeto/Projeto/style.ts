@@ -37,6 +37,7 @@ export const ProjetoHeader = styled.div`
 export const HeaderContent = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -82,15 +83,16 @@ export const TextoPublicacao = styled.div`
     span {
       font-size: 12px;
       color: ${PRETO_60};
+      text-align: left;
     }
   }
 `;
 
 export const TituloContainer = styled.div`
   display: flex;
+  gap: 8px;
 
-  .heart {
-    background-color: red;
+  svg {
     cursor: pointer;
     -webkit-transition: -webkit-transform 0.5s ease;
     transition: transform 0.5s ease;
@@ -99,11 +101,6 @@ export const TituloContainer = styled.div`
       -webkit-transform: scale(1.05);
       transform: scale(1.05);
     }
-  }
-
-  svg {
-    margin-right: 16px;
-    cursor: pointer;
   }
 
   .icon-exclusivo {
@@ -115,6 +112,11 @@ export const TituloContainer = styled.div`
     align-items: flex-start !important;
     justify-content: flex-start !important;
     width: 100%;
+
+    svg {
+      width: 48px;
+      height: 48px;
+    }
   }
 
   @media (max-width: 478px) {
@@ -128,9 +130,8 @@ export const TituloContainer = styled.div`
 export const FaixaPrecoContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: start;
-  border: 1px solid red;
 
   p {
     font-weight: 600;
@@ -144,8 +145,6 @@ export const FaixaPrecoContainer = styled.div`
   }
 
   @media (max-width: 578px) {
-    align-items: flex-end;
-    justify-content: flex-end;
   }
 `;
 
@@ -198,6 +197,10 @@ export const FaixaProBono = styled.div`
       color: ${AZUL};
     }
   }
+
+  @media (max-width: 768px) {
+    margin-top: 16px;
+  }
 `;
 
 export const ValorServico = styled.div`
@@ -211,7 +214,6 @@ export const ValorServico = styled.div`
     font-weight: bold;
 
     @media (max-width: 478px) {
-      font-size: 16px;
     }
   }
 
@@ -241,6 +243,7 @@ export const DataPublicacao = styled.span`
   font-size: 12.8px;
   font-weight: 400;
   color: ${PRETO_10};
+  text-align: left;
 
   &:nth-child(3) {
     font-weight: 500;
@@ -258,6 +261,24 @@ export const ProjetoBody = styled.div`
   }
 `;
 
+export const ContentLabels = styled.div`
+  display: flex;
+
+  .labels,
+  .niveis {
+    width: 50%;
+
+    span {
+      color: ${PRETO_10};
+      font-weight: 700;
+    }
+  }
+
+  label {
+    border-radius: 16px;
+  }
+`;
+
 export const Descricao = styled.p`
   text-align: justify;
   font-size: 16px;
@@ -267,7 +288,18 @@ export const Descricao = styled.p`
   word-wrap: break-word;
 
   @media (max-width: 478px) {
-    padding: 0 16px;
+  }
+`;
+
+export const AtividadesRequeridas = styled.p`
+  text-align: justify;
+  font-size: 16px;
+  margin-bottom: 24px;
+  margin-top: 16px;
+  color: ${PRETO_10};
+  word-wrap: break-word;
+
+  @media (max-width: 478px) {
   }
 `;
 
@@ -304,12 +336,10 @@ export const ContentButton = styled.div`
   flex-wrap: wrap;
 
   @media (max-width: 768px) {
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 
   @media (max-width: 478px) {
-    margin-top: 16px;
-    flex: 1;
   }
 `;
 
@@ -319,7 +349,7 @@ type ButtonProps = {
 };
 
 export const Compartilhar = styled.a`
-  padding: 16px 18px;
+  padding: 16px 40px;
   text-decoration: none;
   border-radius: 8px;
   color: ${AZUL};
@@ -331,6 +361,7 @@ export const Compartilhar = styled.a`
   font-weight: 700;
   font-size: 12.8px;
   line-height: 150%;
+  justify-content: center;
 
   :hover {
     opacity: 0.8;
@@ -341,20 +372,13 @@ export const Compartilhar = styled.a`
   }
 
   @media (max-width: 1200px) {
-    padding: 16px 24px;
   }
 
   @media (max-width: 768px) {
-    width: 100%;
-    padding: 16px 40px;
   }
 
   @media (max-width: 478px) {
     padding: 8px 16px;
-
-    svg {
-      display: none;
-    }
   }
 `;
 

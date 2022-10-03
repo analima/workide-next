@@ -23,8 +23,7 @@ import {
   ProjetoFooter,
   Descricao,
   Consumidor,
-  FotoPerfil,
-  // AtividadesRequeridas,
+  AtividadesRequeridas,
   Info,
   Avaliacao,
   Button,
@@ -41,9 +40,9 @@ import {
   HeaderContent,
   HeaderSecondary,
   Compartilhar,
-  ContentFooter,
   ContentTrash,
   TextoPublicacao,
+  ContentLabels,
 } from './style';
 import Content from './style';
 import { Card } from '../../../../components/Card';
@@ -53,8 +52,6 @@ import {
   useCaptarProjetoFornecedor,
 } from '../../../../hooks/captarProjetoFornecedor';
 
-import Coracao from '../../../../assets/coracao.svg';
-import CoracaoOff from '../../../../assets/coracao-off.svg';
 import { useCallback, useEffect, useState } from 'react';
 import { pessoas_api } from '../../../../services/pessoas_api';
 import { oportunidades_api } from '../../../../services/oportunidades_api';
@@ -74,8 +71,6 @@ import { FiTrash2 } from 'react-icons/fi';
 import { GiShare } from 'react-icons/gi';
 import { ModalRecomendacao } from '../../../../components/ModalRecomendacao';
 import { Spinner } from '../../../../components/Spinner';
-import { IPessoa } from '../../../../interfaces/IPessoa';
-import { FaRegHeart } from 'react-icons/fa';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 
 type PessoaType = {
@@ -101,14 +96,11 @@ export default function Projeto({
   projeto,
   totalFavoritos = 0,
 }: ProjetoProps) {
-  console.log(projeto);
   const { user } = useAuth();
   let { limitacoesPlano } = useLimitacoesPlanos();
-
   if (!limitacoesPlano) {
     limitacoesPlano = {} as PlanLimits;
   }
-
   const router = useRouter();
 
   const { projetosFavoritos, obterProjetosFavoritos, obterProjetosExclusivos } =
@@ -162,7 +154,7 @@ export default function Projeto({
 
   const handleFavoritar = useCallback(async () => {
     if (!user.id_pessoa) {
-      router.push('/cadastro-basico');
+      router.push('/login');
       return;
     }
 
@@ -339,9 +331,17 @@ export default function Projeto({
               <TituloContainer>
                 {tipo === 'normal' &&
                   (projetoFavorito ? (
-                    <AiFillHeart size={64} color={LARANJA} />
+                    <AiFillHeart
+                      size={64}
+                      onClick={handleDesfavoritar}
+                      color={LARANJA}
+                    />
                   ) : (
-                    <AiOutlineHeart size={64} color={LARANJA} />
+                    <AiOutlineHeart
+                      size={64}
+                      onClick={handleFavoritar}
+                      color={LARANJA}
+                    />
                   ))}
 
                 {tipo === 'exclusivo' && (
@@ -378,6 +378,28 @@ export default function Projeto({
                     Esse projeto recebeu {proposalAmount} proposta
                     {proposalAmount > 1 ? 's' : ''}
                   </p>
+
+                  <TextoPublicacao>
+                    <span>
+                      Publicado há{' '}
+                      {formatDistance(
+                        new Date(projeto.dataHoraCriacao),
+                        new Date(),
+                        {
+                          locale: pt,
+                        },
+                      )}
+                    </span>
+                    {projeto.dataHoraUltimaAtualizacao && (
+                      <span>
+                        Última atualização em {''}
+                        {format(
+                          new Date(projeto.dataHoraUltimaAtualizacao),
+                          "dd/MM/yyyy ' às ' HH:mm:ss",
+                        )}
+                      </span>
+                    )}
+                  </TextoPublicacao>
                 </HeaderSecondary>
               </TituloContainer>
 
@@ -419,27 +441,6 @@ export default function Projeto({
                   )}
                 </FaixaPrecoContainer>
               )}
-              <TextoPublicacao>
-                <span>
-                  Publicado há{' '}
-                  {formatDistance(
-                    new Date(projeto.dataHoraCriacao),
-                    new Date(),
-                    {
-                      locale: pt,
-                    },
-                  )}
-                </span>
-                {projeto.dataHoraUltimaAtualizacao && (
-                  <span>
-                    Última atualização em {''}
-                    {format(
-                      new Date(projeto.dataHoraUltimaAtualizacao),
-                      "dd/MM/yyyy ' às ' HH:mm:ss",
-                    )}
-                  </span>
-                )}
-              </TextoPublicacao>
             </HeaderContent>
           </ProjetoHeader>
 
@@ -452,20 +453,30 @@ export default function Projeto({
 
             <Row>
               <Col lg={12}>
-                <strong className="atividades-requeridas">
-                  Atividades Requeridades:
-                </strong>
-                {/* <AtividadesRequeridas>{projeto.des}</AtividadesRequeridas> */}
+                <AtividadesRequeridas>
+                  <strong className="atividades-requeridas">
+                    Atividades Requeridades:{' '}
+                  </strong>
+                  {projeto.descricao_escopo}
+                </AtividadesRequeridas>
               </Col>
             </Row>
 
-            <Row>
-              <Col lg={10}>
+            <ContentLabels>
+              <div className="labels">
+                <span>Áreas: </span>
                 {projeto?.subareas?.map(subarea => (
                   <Label key={subarea} label={subarea} cor={VERDE} />
                 ))}
-              </Col>
-            </Row>
+              </div>
+
+              <div className="niveis">
+                <span>Nível de experiência: </span>
+                {projeto?.niveisExperiencia?.map(nivel => (
+                  <Label key={nivel} label={nivel} cor={VERDE} />
+                ))}
+              </div>
+            </ContentLabels>
           </ProjetoBody>
 
           <ProjetoFooter>

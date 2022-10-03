@@ -8,9 +8,6 @@ export const Content = styled.section`
     font-size: 16px;
   }
 
-  @media (max-width: 900px) {
-    margin: 10px 0;
-  }
   @media (max-width: 178px) {
     width: 100%;
   }

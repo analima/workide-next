@@ -46,83 +46,80 @@ export default function Ordenacao({ setFavorito, favorito }: IProps) {
 
   return (
     <Content>
-      <Row>
-        <Col
-          lg={12}
-          className="d-flex align-items-center justify-content-between"
-        >
-          <OrdemGroup>
-            <OrdemInput checked={periodFilter === '24horas'}>
-              <label htmlFor="24horas">24 horas</label>
-              <input
-                type="checkbox"
-                id="24horas"
-                name="24horas"
-                checked={periodFilter === '24horas'}
-                onChange={() => {
-                  setPeriodFilter(oldState =>
-                    oldState === '24horas' ? '' : '24horas',
-                  );
-                }}
-              />
-            </OrdemInput>
+      <span>Publicado em:</span>
 
-            <OrdemInput checked={periodFilter === '5dias'}>
-              <label htmlFor="5dias">5 dias</label>
-              <input
-                type="checkbox"
-                id="5dias"
-                name="5dias"
-                checked={periodFilter === '5dias'}
-                onChange={() => {
-                  setPeriodFilter(oldState =>
-                    oldState === '5dias' ? '' : '5dias',
-                  );
-                }}
-              />
-            </OrdemInput>
+      <OrdemGroup>
+        <div className="inputs">
+          <OrdemInput checked={periodFilter === '24horas'}>
+            <label htmlFor="24horas">24 horas</label>
+            <input
+              type="checkbox"
+              id="24horas"
+              name="24horas"
+              checked={periodFilter === '24horas'}
+              onChange={() => {
+                setPeriodFilter(oldState =>
+                  oldState === '24horas' ? '' : '24horas',
+                );
+              }}
+            />
+          </OrdemInput>
 
-            <OrdemInput checked={periodFilter === '15dias'}>
-              <label htmlFor="15dias">15 dias</label>
-              <input
-                type="checkbox"
-                id="15dias"
-                name="15dias"
-                checked={periodFilter === '15dias'}
-                onChange={() => {
-                  setPeriodFilter(oldState =>
-                    oldState === '15dias' ? '' : '15dias',
-                  );
-                }}
-              />
-            </OrdemInput>
+          <OrdemInput checked={periodFilter === '5dias'}>
+            <label htmlFor="5dias">5 dias</label>
+            <input
+              type="checkbox"
+              id="5dias"
+              name="5dias"
+              checked={periodFilter === '5dias'}
+              onChange={() => {
+                setPeriodFilter(oldState =>
+                  oldState === '5dias' ? '' : '5dias',
+                );
+              }}
+            />
+          </OrdemInput>
 
-            <OrdemInput checked={periodFilter === 'Mais15dias'}>
-              <label htmlFor="Mais15dias">Mais de 15 dias</label>
-              <input
-                type="checkbox"
-                id="Mais15dias"
-                name="Mais15dias"
-                checked={periodFilter === 'Mais15dias'}
-                onChange={() => {
-                  setPeriodFilter(oldState =>
-                    oldState === 'Mais15dias' ? '' : 'Mais15dias',
-                  );
-                }}
-              />
-            </OrdemInput>
-          </OrdemGroup>
+          <OrdemInput checked={periodFilter === '15dias'}>
+            <label htmlFor="15dias">15 dias</label>
+            <input
+              type="checkbox"
+              id="15dias"
+              name="15dias"
+              checked={periodFilter === '15dias'}
+              onChange={() => {
+                setPeriodFilter(oldState =>
+                  oldState === '15dias' ? '' : '15dias',
+                );
+              }}
+            />
+          </OrdemInput>
 
-          <ExibirFavorito onClick={() => setFavorito(!favorito)}>
-            {favorito ? (
-              <FaHeart size={20} color={LARANJA} />
-            ) : (
-              <FaRegHeart color={LARANJA} size={20} />
-            )}
-            <span>Exibir favoritos</span>
-          </ExibirFavorito>
-        </Col>
-      </Row>
+          <OrdemInput checked={periodFilter === 'Mais15dias'}>
+            <label htmlFor="Mais15dias">Mais de 15 dias</label>
+            <input
+              type="checkbox"
+              id="Mais15dias"
+              name="Mais15dias"
+              checked={periodFilter === 'Mais15dias'}
+              onChange={() => {
+                setPeriodFilter(oldState =>
+                  oldState === 'Mais15dias' ? '' : 'Mais15dias',
+                );
+              }}
+            />
+          </OrdemInput>
+        </div>
+
+        <ExibirFavorito onClick={() => setFavorito(!favorito)}>
+          {favorito ? (
+            <FaHeart size={20} color={LARANJA} />
+          ) : (
+            <FaRegHeart color={LARANJA} size={20} />
+          )}
+          <span>Exibir favoritos</span>
+        </ExibirFavorito>
+      </OrdemGroup>
     </Content>
   );
 }
