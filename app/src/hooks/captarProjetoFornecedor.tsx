@@ -110,6 +110,9 @@ export type ProjectType = {
   usuarioUltimaAtualizacao?: null | string;
   escopo: string;
   totalHoras: number;
+  descricao_escopo: string;
+  reunioes: string;
+  niveisExperiencia: string[];
 };
 
 export type CausaProp = {
@@ -218,6 +221,7 @@ export const CaptarProjetoFornecedorProvider: React.FC<GlobalLayoutProps> = ({
         ...formData,
       },
     );
+    console.log(data);
     setProjetos(data.values);
     setTotalPaginas(data.pages);
     setLoadingProjetos(false);
