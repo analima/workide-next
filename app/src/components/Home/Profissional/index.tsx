@@ -83,48 +83,48 @@ export function Profissional(): JSX.Element {
       id: 2,
       image: 'https://avatars.githubusercontent.com/u/3003222?v=4',
       descricao:
-        'Na GYAN eu encontrei os projetos que permitiram meu progresso profissional. Plataforma incrível!',
+        'Na Freelas.town eu encontrei os projetos que permitiram meu progresso profissional. Plataforma incrível!',
       nome: 'Jefferson felix',
     },
     {
       id: 3,
       image: 'https://avatars.githubusercontent.com/u/47211806?v=4',
       descricao:
-        'A Gyan é diferenciada, aqui conectamos pessoas e empresas de uma forma rápida e segura.',
+        'A Freelas.town é diferenciada, aqui conectamos pessoas e empresas de uma forma rápida e segura.',
       nome: 'Pablo Gomes',
     },
     {
       id: 4,
       image: 'https://avatars.githubusercontent.com/u/60345415?v=4',
-      descricao: 'Gratificante fazer parte na construção da Gyan.',
+      descricao: 'Gratificante fazer parte na construção da Freelas.town.',
       nome: 'Herllon Cardoso',
     },
     {
       id: 5,
       image: 'https://avatars.githubusercontent.com/u/54159333?v=4',
       descricao:
-        'A GYAN tem uma proposta muito especial sobre projetos voluntários, é muito importante pra todos nós',
+        'A Freelas.town tem uma proposta muito especial sobre projetos voluntários, é muito importante pra todos nós',
       nome: 'Lucas Matos',
     },
     {
       id: 6,
       image: 'https://avatars.githubusercontent.com/u/45125835?v=4',
       descricao:
-        'A Gyan é um projeto de grande impacto social! Formamos uma equipe incrível. Adoro fazer parte!',
+        'A Freelas.town é um projeto de grande impacto social! Formamos uma equipe incrível. Adoro fazer parte!',
       nome: 'Caroline Goulart',
     },
     {
       id: 7,
       image: Luiz,
       descricao:
-        'Foi uma honra poder trabalhar na construção da Gyan, uma empresa comprometida com a mudança.',
+        'Foi uma honra poder trabalhar na construção da Freelas.town, uma empresa comprometida com a mudança.',
       nome: 'Luiz Henrique',
     },
     {
       id: 8,
       image: 'https://avatars.githubusercontent.com/u/72868196?v=4',
       descricao:
-        'As pessoas da Gyan são extremamente profissionais. O melhor lugar para arrumar um profissional.',
+        'As pessoas da Freelas.town são extremamente profissionais. O melhor lugar para arrumar um profissional.',
       nome: 'Theryston Santos',
     },
     {
@@ -169,7 +169,7 @@ export function Profissional(): JSX.Element {
       id: 5,
       img: Seguranca,
       descricao:
-        'Segurança para todos os envolvidos com projeto: na Gyan você tem a garantia que o pagamento será só efetuado quando o projeto estiver concluído e validado pelo fornecedor e cliente.',
+        'Segurança para todos os envolvidos com projeto: na Freelas.town você tem a garantia que o pagamento será só efetuado quando o projeto estiver concluído e validado pelo fornecedor e cliente.',
       titulo: 'SEGURANÇA',
     },
   ];
@@ -180,8 +180,8 @@ export function Profissional(): JSX.Element {
         <CardCarrousel>
           <ContentTitles>
             <h1>
-              Veja o que estão dizendo sobre a Gyan e o que você pode aproveitar
-              também
+              Veja o que estão dizendo sobre a Freelas.town e o que você pode
+              aproveitar também
             </h1>
           </ContentTitles>
           <Carrousel {...settingsSlider}>

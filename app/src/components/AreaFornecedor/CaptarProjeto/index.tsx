@@ -23,7 +23,7 @@ const CaptarProjeto: React.FC = () => {
   return (
     <Content>
       <Helmet>
-        <title>Gyan - Buscar oportunidades</title>
+        <title>Freelas.town - Buscar oportunidades</title>
       </Helmet>
 
       {!isLoading ? (

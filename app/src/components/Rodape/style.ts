@@ -91,6 +91,8 @@ export const FooterSocial = styled.section`
   }
 
   .content-fale-conosco {
+    display: flex;
+    justify-content: flex-start;
   }
 
   .content-version {

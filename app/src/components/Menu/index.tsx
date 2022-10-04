@@ -66,9 +66,9 @@ export function Menu({
   };
 
   useEffect(() => {
-    let local = localStorage.getItem('@Gyan:id_token');
+    let local = localStorage.getItem('@Freelas.town:id_token');
     if (local) {
-      const ID_TOKEN = '@Gyan:id_token';
+      const ID_TOKEN = '@Freelas.town:id_token';
       refreshUserData(ID_TOKEN);
     }
   }, []);
@@ -144,7 +144,7 @@ export function Menu({
         <Navbar expand="md">
           <Container className="nav-container">
             <Navbar.Brand className="logo" onClick={() => router.push('/')}>
-              <Image src={Logo} alt="Gyan" />
+              <Image src={Logo} alt="Freelas.town" />
             </Navbar.Brand>
 
             {!user.visitante && user.email && !hiddenCenterMenu && (

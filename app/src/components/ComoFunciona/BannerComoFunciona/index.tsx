@@ -30,9 +30,9 @@ export function BannerComoFunciona() {
               </div>
               <span>
                 Ganhe acesso total a nossa plataforma. Queremos lembrar que o
-                cadastro na Gyan é totalmente gratuito. Isso reforça nosso
-                compromisso em garantir que aqui seja um espaço de encontro
-                entre ideias, talentos e causas sociais.
+                cadastro na Freelas.town é totalmente gratuito. Isso reforça
+                nosso compromisso em garantir que aqui seja um espaço de
+                encontro entre ideias, talentos e causas sociais.
               </span>
             </Box>
           </div>

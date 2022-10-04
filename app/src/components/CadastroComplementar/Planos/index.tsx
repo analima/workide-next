@@ -4,7 +4,7 @@ import { Button, LinkBtn } from './style';
 import Content from './style';
 import CheckBranco from '../../../assets/check-branco.svg';
 import CirculoCinza from '../../../assets/circulo-cinza.svg';
-import Image from 'next/image'
+import Image from 'next/image';
 import { Template } from '../../../components/Template';
 import { useCallback, useEffect, useState } from 'react';
 import { pessoas_api } from '../../../services/pessoas_api';
@@ -50,7 +50,7 @@ export default function Planos() {
   return (
     <Template>
       <Helmet>
-        <title>Gyan - Veja os nossos planos</title>
+        <title>Freelas.town - Veja os nossos planos</title>
       </Helmet>
       <Content>
         <Container>
@@ -72,7 +72,8 @@ export default function Planos() {
                     className="descricao"
                     onClick={() => handleAlterarPlano(1)}
                   >
-                    MIGRE PARA O BASICO <Image src={CirculoCinza} alt="Circulo" />
+                    MIGRE PARA O BASICO{' '}
+                    <Image src={CirculoCinza} alt="Circulo" />
                   </div>
                 )}
                 <PlanoBasico />

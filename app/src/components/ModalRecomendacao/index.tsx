@@ -3,14 +3,14 @@ import { useState, useCallback } from 'react';
 import { Titulo } from '../Titulo';
 import { TextArea } from '../TextArea';
 import { Content, Button, Center, Middle } from './style';
-import logo from '../../assets/g-gyan.svg';
+import logo from '../../assets/logo-pequena-azul.png';
 import { ModalInformation } from '../ModalInformation';
 import { AZUL, BRANCO } from '../../styles/variaveis';
 import { FiLink } from 'react-icons/fi';
 import { ofertas_api } from '../../services/ofertas_api';
 import { useAuth } from '../../contexts/auth';
 import { IPessoa } from '../../interfaces/IPessoa';
-import Image from 'next/image'
+import Image from 'next/image';
 
 interface IModalRecomendacao {
   showModal: boolean;
@@ -28,11 +28,11 @@ export function ModalRecomendacao({
   loadServico,
 }: IModalRecomendacao) {
   const [mensagem, setMensagem] = useState(
-    'Olá amigo(a), como vai? Gostaria de compartilhar com você esse ideia. Estou usando uma plataforma muito legal chamada Gyan. Lá você encontrará muita coisa legal que vai te ajudar. Se cuida, abraço!',
+    'Olá amigo(a), como vai? Gostaria de compartilhar com você esse ideia. Estou usando uma plataforma muito legal chamada Freelas.town. Lá você encontrará muita coisa legal que vai te ajudar. Se cuida, abraço!',
   );
   let { user } = useAuth();
-  if(!user){
-    user = {} as IPessoa
+  if (!user) {
+    user = {} as IPessoa;
   }
 
   const [showSuccess, setShowSuccess] = useState(false);
@@ -90,10 +90,17 @@ export function ModalRecomendacao({
                   <Form.Label>Link</Form.Label>
                   <Form.Control name="link" value={link} readOnly />
                 </Col>
-                <Col lg={4}>
-                  <Center>
-                    <Image src={logo} alt="Gyan Logo" />
-                  </Center>
+                <Col
+                  lg={4}
+                  className="d-flex align-items-end justify-content-end"
+                >
+                  <Image
+                    src={logo}
+                    alt="Freelas.town Logo"
+                    className="logo"
+                    width={'100px'}
+                    height={'100px'}
+                  />
                 </Col>
               </Row>
             </Row>

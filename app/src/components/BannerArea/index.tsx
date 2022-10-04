@@ -30,7 +30,7 @@ export function BannerArea({ item }: IProps) {
       <Content>
         <ContentDescription>
           <div className="breach-chumb">
-            <span>Gyan</span>
+            <span>Freelas.town</span>
             {'>'}
             <span>Área de Atuação</span>
             {'>'}

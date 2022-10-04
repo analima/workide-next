@@ -11,7 +11,7 @@ export function BannerQuemSomos() {
           <div className="descricao">
             <p>
               <b>
-                A Gyan conecta pessoas incríveis a projetos e causas
+                A Freelas.town conecta pessoas incríveis a projetos e causas
                 apaixonantes.
               </b>
               Nossa plataforma elimina barreiras geográficas e permite a conexão
@@ -32,7 +32,7 @@ export function BannerQuemSomos() {
               pro bono é a forma mais efetiva de voluntariado!
             </p>
             <p>
-              Na Gyan, acreditamos muito no bom senso e na capacidade de
+              Na Freelas.town, acreditamos muito no bom senso e na capacidade de
               entendimento das pessoas. Criar relações de confiança é
               fundamental para nós.
             </p>

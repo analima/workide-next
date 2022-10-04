@@ -227,7 +227,9 @@ export default function PropostaContent() {
   return (
     <Content>
       <Helmet>
-        <title>Gyan - Proposta enviada para {dadosProjetos.nome || ''}</title>
+        <title>
+          Freelas.town - Proposta enviada para {dadosProjetos.nome || ''}
+        </title>
       </Helmet>
       <Layout
         activeMenu={true}

@@ -38,7 +38,7 @@ const Manter = (): JSX.Element => {
   return (
     <Content>
       <Helmet>
-        <title>Gyan - Tela para debug</title>
+        <title>Freelas.town - Tela para debug</title>
       </Helmet>
       <Layout titulo="ESTA TELA É APENAS PARA DEBUG" activeMenu={true}>
         <Card>

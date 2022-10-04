@@ -51,7 +51,7 @@ export default function Servico() {
   return (
     <Content>
       <Helmet>
-        <title>Gyan - Vitrine do {user.nome_tratamento || ''}</title>
+        <title>Freelas.town - Vitrine do {user.nome_tratamento || ''}</title>
       </Helmet>
       <Layout titulo="" activeMenu={true}>
         <Spacer size={62} />

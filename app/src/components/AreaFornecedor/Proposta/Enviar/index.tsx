@@ -555,7 +555,7 @@ export default function Enviar() {
             {valor > 0 && (
               <Col lg={3}>
                 <ValoresContainer>
-                  <span>Taxa Gyan</span>
+                  <span>Taxa Freelas.town</span>
                   <span>{formatToPrice(valorTaxa)}</span>
                 </ValoresContainer>
                 <ValoresContainer>

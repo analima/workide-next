@@ -55,7 +55,7 @@ export default function ModalConcluir({
         setShowModalInformation(true);
         setIsLoading(false);
         setMensagem(
-          'Não foi possível concluir o projeto, contate o suporte da Gyan.',
+          'Não foi possível concluir o projeto, contate o suporte da Freelas.town.',
         );
 
         setTimeout(() => {

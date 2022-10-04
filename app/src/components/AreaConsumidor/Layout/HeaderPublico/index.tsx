@@ -4,7 +4,7 @@ import { FiMenu } from 'react-icons/fi';
 import { BiUserCircle } from 'react-icons/bi';
 import { Containe, ContainerLogin } from './style';
 import Content from './style';
-import Logo from '../../../../assets/logo-branca.svg';
+import Logo from '../../../../assets/logo-branca-sem-fundo.svg';
 import { Container } from 'react-bootstrap';
 import { CadastroBasico } from '../../../CadastroBasico';
 import { useRouter } from 'next/router';
@@ -55,7 +55,7 @@ export default function HeaderPublico(): JSX.Element {
       <Container className="container">
         <Content>
           <Link href="/">
-            <Image src={Logo} alt="Gyan" width={200} height={60} />
+            <Image src={Logo} alt="Freelas.town" width={200} height={60} />
           </Link>
           <button type="button" onClick={handleToggleMenu}>
             <FiMenu size={34} color="#fff" />

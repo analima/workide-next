@@ -17,7 +17,7 @@ export default function MinhasComprasConsumidor() {
   return (
     <Content>
       <Helmet>
-        <title>Gyan - Minhas compras de consumidor</title>
+        <title>Freelas.town - Minhas compras de consumidor</title>
       </Helmet>
       <MinhasComprasConsumidorProvider>
         <InformacoesFinanceirasProvider>

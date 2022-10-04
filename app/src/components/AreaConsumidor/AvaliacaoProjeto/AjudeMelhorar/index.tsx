@@ -42,8 +42,8 @@ export default function AjudeMelhorar() {
       <Row className="mt-5">
         <Col lg={12}>
           <span>
-            Em uma escala de 0 a 10, quais chances de você indicar a Gyan para
-            um amigo?
+            Em uma escala de 0 a 10, quais chances de você indicar a
+            Freelas.town para um amigo?
           </span>
         </Col>
         <Col lg={12} className="d-flex">
@@ -65,7 +65,7 @@ export default function AjudeMelhorar() {
 
       <Row className="mt-5">
         <Col lg={12}>
-          <p>Avalie agora a nossa plataforma Gyan</p>
+          <p>Avalie agora a nossa plataforma Freelas.town</p>
         </Col>
         <Col lg={12}>
           <AvaliacaoContainer>

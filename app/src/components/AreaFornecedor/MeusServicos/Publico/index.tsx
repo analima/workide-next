@@ -174,7 +174,7 @@ export default function ServicoFornecedorPublico() {
   return (
     <Content>
       <Helmet>
-        <title>Gyan - Serviço {servico.nome || ''}</title>
+        <title>Freelas.town - Serviço {servico.nome || ''}</title>
       </Helmet>
       <AvatarRegrasPlano
         mostrar={showAvatar}

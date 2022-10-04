@@ -90,7 +90,7 @@ export default function Perfil() {
   return (
     <Content>
       <Helmet>
-        <title>Gyan - Editar suas informações de consumidor</title>
+        <title>Freelas.town - Editar suas informações de consumidor</title>
       </Helmet>
       <Layout titulo="Meu Perfil" activeMenu={true}>
         <Container>

@@ -18,7 +18,7 @@ export function BannerOngs() {
           <Image
             src={Logo}
             className="logo"
-            alt="Gyan"
+            alt="Freelas.town"
             width={152}
             height={38}
             onClick={() => router.push('/')}
@@ -27,8 +27,8 @@ export function BannerOngs() {
         <h1>Sua ONG precisa de trabalho digital voluntário?</h1>
         <span>
           Está em busca de voluntários para colaborar com a sua causa, venha
-          fazer parte da GYAN, e encontre os profissionais qualificados para
-          solucionar os problemas que sua ONG passa no dia a dia.
+          fazer parte da Freelas.town, e encontre os profissionais qualificados
+          para solucionar os problemas que sua ONG passa no dia a dia.
         </span>
 
         <ContentButton>

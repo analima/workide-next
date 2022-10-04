@@ -1,7 +1,7 @@
 import { Container } from 'react-bootstrap';
 import { Footer, Content, FooterInfo, FooterSocial } from './style';
 import Image from 'next/image';
-import LogoGyan from '../../assets/logo-offset.svg';
+import LogoGyan from '../../assets/logo-cinza-sem-fundo.svg';
 import Whatsapp from '../../assets/whatsapp.svg';
 import Facebook from '../../assets/facebook.svg';
 import Linkedin from '../../assets/linkedin.svg';
@@ -182,7 +182,7 @@ export function Rodape() {
       <FooterSocial>
         <Container>
           <div className="content-fale-conosco">
-            <Image src={LogoGyan} alt="Logo da GYAN" width={260} />
+            <Image src={LogoGyan} alt="Logo da Freelas.town" width={150} />
           </div>
           <div className="content-version">
             <p>v{process.env.REACT_APP_VERSION}</p>

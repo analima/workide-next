@@ -38,7 +38,7 @@ export default function Home() {
   return (
     <Layout titulo="Bem-vindo!" activeMenu={true}>
       <Helmet>
-        <title>Gyan - Home do consumidor</title>
+        <title>Freelas.town - Home do consumidor</title>
       </Helmet>
       <Spacer size={40} />
       <Subtitulo>
