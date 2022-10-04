@@ -1,5 +1,5 @@
 import Layout from '../Layout';
-import {Spacer} from '../../../components/Spacer';
+import { Spacer } from '../../../components/Spacer';
 import Ganhos from './Ganhos';
 import { useEffect } from 'react';
 import { GhostButton, FiltrosContainer, Filtro } from './style';
@@ -28,7 +28,7 @@ export default function MeusGanhos() {
   return (
     <Layout titulo="Meus Ganhos">
       <Helmet>
-        <title>Gyan - Histórico de ganhos do fornecedor</title>
+        <title>Freelas.town - Histórico de ganhos do fornecedor</title>
       </Helmet>
       <Titulo
         titulo="Aqui você pode acompanhar como está seu desempenho na plataforma, o que

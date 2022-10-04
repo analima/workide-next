@@ -23,7 +23,7 @@ export default function AvaliacaoProjeto() {
   return (
     <Content>
       <Helmet>
-        <title>Gyan - Envie uma avaliação</title>
+        <title>Freelas.town - Envie uma avaliação</title>
       </Helmet>
       <Layout titulo="Avaliação do Projeto" activeMenu>
         <Spacer size={24} />

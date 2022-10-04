@@ -26,15 +26,15 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>Gyan - Contrate um freelancer em poucos cliques</title>
+        <title>Freelas.town - Contrate um freelancer em poucos cliques</title>
       </Helmet>
 
       <Head>
         <title>
-          Gyan - Conectando pessoas incríveis com projetos apaixonantes
+          Freelas.town - Conectando pessoas incríveis com projetos apaixonantes
         </title>
 
-        <meta name="description" content="Home Gyan" />
+        <meta name="description" content="Home Freelas.town" />
       </Head>
       {typeof window !== 'undefined' && (
         <>

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { FooterBody, Content, FooterInfo, FooterSocial } from './style';
-import LogoGyan from '../../assets/gyan-logo-cinza.png';
+import LogoGyan from '../../assets/logo-cinza-sem-fundo.svg';
 import Whatsapp from '../../assets/whatsapp-borda.svg';
 import { useAuth } from '../../contexts/auth';
 import { useValorProjetoPago } from '../../contexts/valorProjetoPago';
@@ -83,7 +83,7 @@ export function Footer() {
                     className="li-click"
                     onClick={() => router.push('https://blog.gyan.com.br/')}
                   >
-                    Blog Gyan
+                    Blog Freelas.town
                   </li>
 
                   <li
@@ -231,7 +231,12 @@ export function Footer() {
           </div>
 
           <div className="content-version">
-            <Image width={122} height={48} src={LogoGyan} alt="Logo da GYAN" />
+            <Image
+              width={122}
+              height={48}
+              src={LogoGyan}
+              alt="Logo da Freelas.town"
+            />
             <p>{process.env.REACT_APP_VERSION}</p>
           </div>
         </FooterSocial>

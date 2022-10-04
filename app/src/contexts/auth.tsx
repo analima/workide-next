@@ -10,9 +10,9 @@ import { services } from 'src/services';
 import { IPessoa } from '../interfaces/IPessoa';
 import { pessoas_api } from '../services/pessoas_api';
 
-export const ID_TOKEN = '@Gyan:id_token';
-export const REFRESH_TOKEN = '@Gyan:refresh_token';
-export const USER = '@Gyan:user';
+export const ID_TOKEN = '@Freelas.town:id_token';
+export const REFRESH_TOKEN = '@Freelas.town:refresh_token';
+export const USER = '@Freelas.town:user';
 
 interface IAuthProps {
   id_token: string;

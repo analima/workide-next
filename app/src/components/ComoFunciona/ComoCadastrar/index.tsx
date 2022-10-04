@@ -48,8 +48,8 @@ export function ComoCadastrar() {
 
             <span>
               Se você está desenvolvendo um projeto e precisa de uma equipe para
-              trabalhar remotamente, cadastre sua necessidade na Gyan e encontre
-              um talento remoto incrível para te ajudar.
+              trabalhar remotamente, cadastre sua necessidade na Freelas.town e
+              encontre um talento remoto incrível para te ajudar.
             </span>
           </Box>
 
@@ -90,8 +90,8 @@ export function ComoCadastrar() {
 
             <span>
               Seu tempo e expertise podem trazer muitas melhorias para o mundo
-              em que vivemos. Na Gyan, você se conecta com ONGs que atuam em
-              prol das causas que você acredita.
+              em que vivemos. Na Freelas.town, você se conecta com ONGs que
+              atuam em prol das causas que você acredita.
             </span>
           </Box>
         </ContentBox>

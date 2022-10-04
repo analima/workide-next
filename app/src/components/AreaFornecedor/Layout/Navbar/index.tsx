@@ -87,9 +87,9 @@ export default function Navbar({
   };
 
   useEffect(() => {
-    let local = localStorage.getItem('@Gyan:id_token');
+    let local = localStorage.getItem('@Freelas.town:id_token');
     if (local) {
-      const ID_TOKEN = '@Gyan:id_token';
+      const ID_TOKEN = '@Freelas.town:id_token';
       refreshUserData(ID_TOKEN);
     }
   }, []);

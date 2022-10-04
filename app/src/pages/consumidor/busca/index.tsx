@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { hotjar } from 'react-hotjar';
 import { useEffect } from 'react';
 import { BuscaFornecedorOfertaProvider } from '../../../hooks/buscaConsumidor';
-import  ContentBusca  from '../../../components/AreaConsumidor/Busca/ContentBusca';
+import ContentBusca from '../../../components/AreaConsumidor/Busca/ContentBusca';
 import Content from '../../../components/AreaConsumidor/Busca/style';
 
 export default function Busca() {
@@ -17,7 +17,7 @@ export default function Busca() {
   return (
     <Content>
       <Helmet>
-        <title>Gyan - Buscar oportunidades</title>
+        <title>Freelas.town - Buscar oportunidades</title>
       </Helmet>
       <BuscaFornecedorOfertaProvider>
         <ContentBusca />

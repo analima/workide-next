@@ -5,7 +5,7 @@ import { Col, Form, Row, Button } from 'react-bootstrap';
 import ContainerLogin from '../../components/Login/style';
 
 import Google from '../../assets/google.svg';
-import Logo from '../../assets/logo.svg';
+import Logo from '../../assets/logo-azul-sem-fundo.svg';
 import { seguranca_api } from '../../services/seguranca_api';
 import { pessoas_api } from '../../services/pessoas_api';
 import { updateToken } from '../../services';
@@ -126,8 +126,8 @@ export default class Login extends React.Component<any, any> {
         const { email } = usuario;
         const { id_token, refresh_token } = res.data;
 
-        localStorage.setItem('@Gyan:id_token', id_token);
-        localStorage.setItem('@Gyan:refresh_token', refresh_token);
+        localStorage.setItem('@Freelas.town:id_token', id_token);
+        localStorage.setItem('@Freelas.town:refresh_token', refresh_token);
 
         updateToken();
 
@@ -148,7 +148,7 @@ export default class Login extends React.Component<any, any> {
           id_pessoa,
         };
 
-        localStorage.setItem('@Gyan:user', JSON.stringify(usuarioData));
+        localStorage.setItem('@Freelas.town:user', JSON.stringify(usuarioData));
         // --> Redireciona para a Home
         this.setState({
           loading: false,
@@ -228,12 +228,12 @@ export default class Login extends React.Component<any, any> {
     return (
       <ContainerLogin>
         <Helmet>
-          <title>Gyan - Faça login em sua conta</title>
+          <title>Freelas.town - Faça login em sua conta</title>
         </Helmet>
         <div className="form-content">
           <div className="form-title">
             <div className="logo">
-              <Image src={Logo} alt="Logo Gyan" />
+              <Image src={Logo} alt="Logo Freelas.town" />
             </div>
             <br />
             <br />

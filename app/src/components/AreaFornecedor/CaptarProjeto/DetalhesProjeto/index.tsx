@@ -469,7 +469,7 @@ export default function DetalhesProjeto() {
   return (
     <Content>
       <Helmet>
-        <title>Gyan - Projeto {project.nome || ''}</title>
+        <title>Freelas.town - Projeto {project.nome || ''}</title>
       </Helmet>
       <Layout>
         <AvatarErroGeral

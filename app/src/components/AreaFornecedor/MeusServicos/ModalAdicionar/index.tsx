@@ -197,7 +197,7 @@ export default function ModalAdicionar({
                 <Col lg={12} className="mt-5">
                   <InputCheck
                     control={control}
-                    label="Declaro que estes materiais foram criados por mim e não infigrem qual quer direitos de terceiros. Eu entendo que o uso ilegal de ativos digitais é contra os Termos de Serviço da Gyan e pode resultar em bloqueio da minha conta."
+                    label="Declaro que estes materiais foram criados por mim e não infigrem qual quer direitos de terceiros. Eu entendo que o uso ilegal de ativos digitais é contra os Termos de Serviço da Freelas.town e pode resultar em bloqueio da minha conta."
                     name="termo_autoria"
                     error={errors.termo_autoria && errors.termo_autoria.message}
                   />

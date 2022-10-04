@@ -15,7 +15,7 @@ export function SEO({
   excludeTitleSuffix,
   indexPage,
 }: SEOProps) {
-  const pageTitle = `${title} ${!excludeTitleSuffix ? ' | GYAN' : ''}`;
+  const pageTitle = `${title} ${!excludeTitleSuffix ? ' | Freelas.town' : ''}`;
 
   return (
     <Helmet>
@@ -55,7 +55,7 @@ export function SEO({
 }
 
 SEO.defaultProps = {
-  description: 'GYAN',
+  description: 'Freelas.town',
   image:
     'https://gyan-sp-public.s3.sa-east-1.amazonaws.com/emails/images/logoazul.svg',
   excludeTitleSuffix: false,

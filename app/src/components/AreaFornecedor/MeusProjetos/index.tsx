@@ -32,7 +32,7 @@ export default function MeusProjetos() {
   return (
     <Content>
       <Helmet>
-        <title>Gyan - Veja os seus projetos e propostas</title>
+        <title>Freelas.town - Veja os seus projetos e propostas</title>
       </Helmet>
       <Layout titulo="Meus projetos">
         <ContainerTipoFiltro>

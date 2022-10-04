@@ -16,11 +16,7 @@ import { pessoas_api } from '../../../services/pessoas_api';
 import { pagamentos_api } from '../../../services/pagamentos_api';
 import { formatarValorParaReais } from '../../../utils/CurrencyFormat';
 
-import {
-  Contadores,
-  ContadoresTitulo,
-  ContadoresSubtitulo,
-} from './style';
+import { Contadores, ContadoresTitulo, ContadoresSubtitulo } from './style';
 import Cabecalho from './style';
 import { useEffect, useState } from 'react';
 import { oportunidades_api } from '../../../services/oportunidades_api';
@@ -199,7 +195,7 @@ export default function Dashboard() {
   return (
     <Layout titulo="Minha Dashboard">
       <Helmet>
-        <title>Gyan - Dashboard do fornecedor</title>
+        <title>Freelas.town - Dashboard do fornecedor</title>
       </Helmet>
       <Cabecalho>
         <GhostButton onClick={() => history.push('perfil')}>

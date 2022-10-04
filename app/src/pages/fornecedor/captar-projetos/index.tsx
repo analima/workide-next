@@ -17,7 +17,7 @@ export default function CaptarProjeto() {
   return (
     <Content>
       <Helmet>
-        <title>Gyan - Buscar oportunidades</title>
+        <title>Freelas.town - Buscar oportunidades</title>
       </Helmet>
 
       <CaptarProjetoFornecedorProvider>

@@ -146,7 +146,7 @@ export default function ContentBusca() {
     <Layout titulo="" activeMenu={activeMenu} maisSolucoesIsNotVisible={true}>
       {user.id_pessoa && <InformationUser page="busca" />}
       <Helmet>
-        <title>Gyan - Buscando soluções</title>
+        <title>Freelas.town - Buscando soluções</title>
       </Helmet>
       <AvatarCadastroIncompleto
         mostrar={showAvatarCadastroIncompleto}

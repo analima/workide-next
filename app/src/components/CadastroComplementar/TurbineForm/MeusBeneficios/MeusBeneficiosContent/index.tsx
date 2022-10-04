@@ -6,7 +6,7 @@ import { useAuth } from '../../../../../contexts/auth';
 import { useInformacoesFinanceiras } from '../../../../../hooks/informacoesFinanceiras';
 import { FiArrowRightCircle } from 'react-icons/fi';
 import { useHistory } from 'react-router-dom';
-import Image from 'next/image'
+import Image from 'next/image';
 import {
   ContainerPlans,
   TablePlans,
@@ -94,7 +94,7 @@ export default function MeusBeneficiosContent(): JSX.Element {
         />
         <Title>Vamos ajudar você a mostrar ao mundo o seu potencial</Title>
         <Subtitle>
-          Com a Gyan você pode ir mais longe. Confira seus benefícios{' '}
+          Com a Freelas.town você pode ir mais longe. Confira seus benefícios{' '}
           <span className="azul">totalmente grátis.</span>
         </Subtitle>
         <ContainerPlans>

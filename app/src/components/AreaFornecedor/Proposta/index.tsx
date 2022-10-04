@@ -17,7 +17,7 @@ export default function Proposta() {
   return (
     <Content>
       <Helmet>
-        <title>Gyan - Enviar uma proposta</title>
+        <title>Freelas.town - Enviar uma proposta</title>
       </Helmet>
       <PropostaFornecedorProvider>
         <PropostaContent />

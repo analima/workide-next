@@ -8,7 +8,7 @@ import {
   ButtonConfirm,
   ContainerText,
 } from './style';
-import Image from 'next/image'
+import Image from 'next/image';
 import andre from '../../assets/andre-full-regras-plano-png.png';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
 import { AZUL } from '../../styles/variaveis';
@@ -40,7 +40,7 @@ export function AvatarContaBancaria({ mostrar, esconderAvatar }: AndreProps) {
           <ContainerText>
             <p>
               Você precisa adicionar uma conta bancária em que o titular possua
-              o mesmo CPF ou CNPJ cadastrado aqui na Gyan.
+              o mesmo CPF ou CNPJ cadastrado aqui na Freelas.town.
             </p>
           </ContainerText>
           <ContainerButtons>

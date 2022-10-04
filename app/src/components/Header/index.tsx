@@ -10,7 +10,7 @@ import {
   ContainerLogin,
   ContainerMenuMobile,
 } from './style';
-import Logo from '../../assets/logo.svg';
+import Logo from '../../assets/logo-azul-sem-fundo.svg';
 import { useAuth } from '../../contexts/auth';
 import { AZUL, BRANCO, PRETO } from '../../styles/variaveis';
 import { Button } from '../Form/Button';
@@ -55,9 +55,9 @@ export function Header(): JSX.Element {
 
   useEffect(() => {
     //NewAuth()
-    let local = localStorage.getItem('@Gyan:id_token');
+    let local = localStorage.getItem('@Freelas.town:id_token');
     if (local) {
-      const ID_TOKEN = '@Gyan:id_token';
+      const ID_TOKEN = '@Freelas.town:id_token';
       refreshUserData(ID_TOKEN);
     }
   }, []);
@@ -90,10 +90,10 @@ export function Header(): JSX.Element {
         <HeaderInfo>
           <div>
             <p>
-              A Gyan une profissionais freelancer e voluntários em uma única
-              plataforma. Contratação rápida, gratuita e segura. Programadores,
-              web designers, redatores e o que mais você precisar para o seu
-              negócio.
+              A Freelas.town une profissionais freelancer e voluntários em uma
+              única plataforma. Contratação rápida, gratuita e segura.
+              Programadores, web designers, redatores e o que mais você precisar
+              para o seu negócio.
             </p>
           </div>
           <FiX onClick={() => setEsconder(true)} color={BRANCO} size={12} />
@@ -112,7 +112,7 @@ export function Header(): JSX.Element {
               <Image
                 src={Logo}
                 className="logo"
-                alt="Gyan"
+                alt="Freelas.town"
                 onClick={() => router.push('/')}
                 width={200}
                 height={50}

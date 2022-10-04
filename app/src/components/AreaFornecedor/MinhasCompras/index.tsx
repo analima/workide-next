@@ -8,7 +8,7 @@ export default function MinhasCompras() {
   return (
     <Content>
       <Helmet>
-        <title>Gyan - Minhas compras de fornecedor</title>
+        <title>Freelas.town - Minhas compras de fornecedor</title>
       </Helmet>
       <MinhasComprasFornecedorProvider>
         <InformacoesFinanceirasProvider>
