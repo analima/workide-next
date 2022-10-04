@@ -1,10 +1,10 @@
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from 'styled-components';
-import '../styles/global.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Head from 'next/head';
 import { AuthProvider } from 'src/contexts/auth';
 import { Loading } from 'src/components/Loading';
+import { GlobalStyles } from 'src/styles/global';
 
 interface ThemeInterface {
   colors: {
@@ -54,6 +54,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
       </Head>
       <html lang="pt_br">
+        <GlobalStyles />
         <ThemeProvider theme={theme}>
           <AuthProvider>
             <Loading>
