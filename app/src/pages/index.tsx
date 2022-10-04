@@ -13,8 +13,15 @@ import { CardCountUp } from '../components/CardCountUp';
 import { CardProjetosMaisBuscados } from '../components/CardProjetosMaisBuscados';
 import { Footer } from 'src/components/Footer';
 import Head from 'next/head';
+import { GetStaticProps } from 'next';
+import { consultas_api } from 'src/services/consultas_api';
+import { IServicoInfo } from 'src/interfaces/IServicoInfo';
 
-export default function Home() {
+interface IPropsData {
+  vitrineData: IServicoInfo[];
+}
+
+export default function Home({ vitrineData }: IPropsData) {
   useEffect(() => {
     hotjar.initialize(
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
@@ -36,23 +43,37 @@ export default function Home() {
 
         <meta name="description" content="Home Freelas.town" />
       </Head>
-      {typeof window !== 'undefined' && (
-        <>
-          <Header />
+      <Header />
 
-          <Container>
-            <Banner />
-            <CardCategory />
-            <CardBoasIdeias />
-            <CardConhecaComoFunciona />
-            <Vitrine />
-            <Conheca />
-            <CardCountUp />
-            <CardProjetosMaisBuscados />
-            <Footer />
-          </Container>
-        </>
-      )}
+      <Container>
+        <Banner />
+        <CardCategory />
+        <CardBoasIdeias />
+        <CardConhecaComoFunciona />
+        <Vitrine vitrineData={vitrineData} />
+        <Conheca />
+        <CardCountUp />
+        <CardProjetosMaisBuscados />
+        <Footer />
+      </Container>
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const searchOffers = async (): Promise<any> => {
+    const { data } = await consultas_api.post<{ values: IServicoInfo[] }>(
+      `/consulta/ofertas?limit=12`,
+    );
+    return data.values;
+  };
+
+  const vitrineData = await searchOffers();
+
+  return {
+    props: {
+      vitrineData,
+    },
+    revalidate: 86400,
+  };
+};
