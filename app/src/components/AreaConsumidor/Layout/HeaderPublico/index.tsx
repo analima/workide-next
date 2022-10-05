@@ -55,7 +55,7 @@ export default function HeaderPublico(): JSX.Element {
       <Container className="container">
         <Content>
           <Link href="/">
-            <Image src={Logo} alt="Freelas.town" width={200} height={60} />
+            <Image src={Logo} alt="freelas town" width={200} height={60} />
           </Link>
           <button type="button" onClick={handleToggleMenu}>
             <FiMenu size={34} color="#fff" />

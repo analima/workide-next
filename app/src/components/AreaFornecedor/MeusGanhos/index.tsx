@@ -28,7 +28,7 @@ export default function MeusGanhos() {
   return (
     <Layout titulo="Meus Ganhos">
       <Helmet>
-        <title>Freelas.town - Histórico de ganhos do fornecedor</title>
+        <title>freelas town - Histórico de ganhos do fornecedor</title>
       </Helmet>
       <Titulo
         titulo="Aqui você pode acompanhar como está seu desempenho na plataforma, o que

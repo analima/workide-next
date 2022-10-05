@@ -17,7 +17,7 @@ export default function Busca() {
   return (
     <Content>
       <Helmet>
-        <title>Freelas.town - Buscar oportunidades</title>
+        <title>freelas town - Buscar oportunidades</title>
       </Helmet>
       <BuscaFornecedorOfertaProvider>
         <ContentBusca />

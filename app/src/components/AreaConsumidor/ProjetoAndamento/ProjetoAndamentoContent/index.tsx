@@ -96,7 +96,7 @@ export default function ProjetoAndamentoContent() {
     <Content>
       <Helmet>
         <title>
-          Freelas.town - Andamento do projeto {dadosProjetos.nome || ''}
+          freelas town - Andamento do projeto {dadosProjetos.nome || ''}
         </title>
       </Helmet>
       <Layout

@@ -17,7 +17,7 @@ export const perguntaAreas = [
         id: 1,
         pergunta: 'Como escolher um designer ideal para o meu projeto?',
         resposta:
-          'Pesquise por designers na Freelas.town, após fazer uma pesquisa, você terá um grupo de freelancers  candidatos para o seu projeto com base em habilidades, disponibilidade e outros aspectos que você está buscando para o seu projeto. Agora olhe as experiências de cada um, veja seus projetos realizados e avaliações recebidas, assim você conseguirá identificar o designer perfeito para o seu projeto.',
+          'Pesquise por designers na freelas town, após fazer uma pesquisa, você terá um grupo de freelancers  candidatos para o seu projeto com base em habilidades, disponibilidade e outros aspectos que você está buscando para o seu projeto. Agora olhe as experiências de cada um, veja seus projetos realizados e avaliações recebidas, assim você conseguirá identificar o designer perfeito para o seu projeto.',
       },
       {
         id: 2,
@@ -273,7 +273,7 @@ export const perguntaComoFunciona = [
         id: 1,
         pergunta: 'Quanto pago para utilizar a plataforma?',
         resposta:
-          ' A Freelas.town é totalmente grátis e não cobra mensalidade para sua utilização, você utilizar dos benefícios por tempo indefinido sem nenhum gasto.',
+          ' A freelas town é totalmente grátis e não cobra mensalidade para sua utilização, você utilizar dos benefícios por tempo indefinido sem nenhum gasto.',
       },
       {
         id: 2,

@@ -228,7 +228,7 @@ export default function PropostaContent() {
     <Content>
       <Helmet>
         <title>
-          Freelas.town - Proposta enviada para {dadosProjetos.nome || ''}
+          freelas town - Proposta enviada para {dadosProjetos.nome || ''}
         </title>
       </Helmet>
       <Layout

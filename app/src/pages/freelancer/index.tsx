@@ -32,15 +32,15 @@ export default function Freelancer() {
   return (
     <>
       <Helmet>
-        <title>Freelas.town - Contrate um freelancer em poucos cliques</title>
+        <title>freelas town - Contrate um freelancer em poucos cliques</title>
       </Helmet>
 
       <Head>
         <title>
-          Freelas.town - Conectando pessoas incríveis com projetos apaixonantes
+          freelas town - Conectando pessoas incríveis com projetos apaixonantes
         </title>
 
-        <meta name="description" content="Home Freelas.town" />
+        <meta name="description" content="Home freelas town" />
       </Head>
       {typeof window !== 'undefined' && (
         <>

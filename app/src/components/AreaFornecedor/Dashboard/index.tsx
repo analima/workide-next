@@ -195,7 +195,7 @@ export default function Dashboard() {
   return (
     <Layout titulo="Minha Dashboard">
       <Helmet>
-        <title>Freelas.town - Dashboard do fornecedor</title>
+        <title>freelas town - Dashboard do fornecedor</title>
       </Helmet>
       <Cabecalho>
         <GhostButton onClick={() => history.push('perfil')}>

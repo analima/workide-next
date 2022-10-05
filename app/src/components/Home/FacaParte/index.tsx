@@ -19,7 +19,7 @@ export function FacaParte() {
                 Faça parte de nossa <br /> comunidade
               </h2>
               <p>
-                A Freelas.town e muito mais que uma plataforma que conecta
+                A freelas town e muito mais que uma plataforma que conecta
                 pessoas, e feito por indivíduos que desejam transformar o
                 ecossistema digital em um processo produtivo e totalmente
                 inovador.

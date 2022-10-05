@@ -27,12 +27,12 @@ export default function ComoFunciona() {
     <>
       <Helmet>
         <title>
-          Freelas.town - Conectando pessoas incríveis com projetos apaixonantes
+          freelas town - Conectando pessoas incríveis com projetos apaixonantes
         </title>
       </Helmet>
       <Head>
         <title>
-          Freelas.town - Conectando pessoas incríveis com projetos apaixonantes
+          freelas town - Conectando pessoas incríveis com projetos apaixonantes
         </title>
 
         <meta name="description" content="Como funciona" />

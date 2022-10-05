@@ -60,9 +60,7 @@ export const NavCustom = styled.div<{ hiddenBackground?: boolean }>`
       cursor: pointer;
 
       img {
-        @media (max-width: 768px) {
-          width: 132px;
-        }
+        width: 132px;
       }
     }
 

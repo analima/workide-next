@@ -94,7 +94,7 @@ export default function MeusBeneficiosContent(): JSX.Element {
         />
         <Title>Vamos ajudar você a mostrar ao mundo o seu potencial</Title>
         <Subtitle>
-          Com a Freelas.town você pode ir mais longe. Confira seus benefícios{' '}
+          Com a freelas town você pode ir mais longe. Confira seus benefícios{' '}
           <span className="azul">totalmente grátis.</span>
         </Subtitle>
         <ContainerPlans>

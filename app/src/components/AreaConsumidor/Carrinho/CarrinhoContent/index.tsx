@@ -75,7 +75,7 @@ export default function CarrinhoContent({ pacoteId, servicoInfo }: IProps) {
   return (
     <Content>
       <Helmet>
-        <title>Freelas.town - Mais detalhes do serviço</title>
+        <title>freelas town - Mais detalhes do serviço</title>
       </Helmet>
       <ModalAcceptProposal
         showModal={showModalPagamento}

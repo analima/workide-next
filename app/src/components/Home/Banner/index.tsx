@@ -40,14 +40,14 @@ const dados = [
     color: LARANJA,
     text: 'Encontre projetos facinantes que alavancarão sua carreira.',
     subText:
-      'Crie seu perfil na Freelas.town e exponha suas habilidades profissionais para o mundo.',
+      'Crie seu perfil na freelas town e exponha suas habilidades profissionais para o mundo.',
   },
   {
     title: 'Ofertas',
     id: 4,
     img: IMG5.src,
     color: '#E50052',
-    text: 'Encontre soluções prontas criadas pela comunidade de profissionais da Freelas.town.',
+    text: 'Encontre soluções prontas criadas pela comunidade de profissionais da freelas town.',
     subText: 'Contrate projetos com rapidez e facilidade.',
   },
 ];

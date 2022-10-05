@@ -24,7 +24,7 @@ export default function Ongs({ posts, stats }: PostProps) {
     <>
       <Head>
         <title>
-          Freelas.town - Conectando pessoas incríveis com projetos apaixonantes
+          freelas town - Conectando pessoas incríveis com projetos apaixonantes
         </title>
 
         <meta name="description" content="Pagina de ongs" />

@@ -333,7 +333,7 @@ const CardProposal = ({ id_proposta }: IProps) => {
 
   function saveLocalStorage() {
     localStorage.setItem(
-      '@Freelas.town:cart',
+      '@freelas_town:cart',
       JSON.stringify({
         nome: projeto.nome,
         preco: dadosProposta.valor,

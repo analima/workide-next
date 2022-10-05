@@ -23,7 +23,7 @@ export default function QuemSomos() {
     <>
       <Helmet>
         <title>
-          Freelas.town - Conectando pessoas incríveis com projetos apaixonantes
+          freelas town - Conectando pessoas incríveis com projetos apaixonantes
         </title>
       </Helmet>
       <Header />

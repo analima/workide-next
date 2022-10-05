@@ -48,7 +48,7 @@ export function Conheca() {
           </div>
 
           <div>
-            <h2>Soluções Freelas.town para o seu projeto</h2>
+            <h2>Soluções freelas town para o seu projeto</h2>
 
             <span>
               Conheça nosso catálogo de serviços
@@ -63,7 +63,7 @@ export function Conheca() {
       </ContentBanner>
 
       <ContentConheca>
-        <h1>Quem conhece a Freelas.town, recomenda:</h1>
+        <h1>Quem conhece a freelas town, recomenda:</h1>
 
         <ContentComents>
           <CardComent color={AZUL}>
@@ -71,7 +71,7 @@ export function Conheca() {
 
             <p>
               “Tive uma ótima experiência na contratação de profissionais pela
-              plataforma da Freelas.town para composição de nossos squads. O
+              plataforma da freelas town para composição de nossos squads. O
               processo é muito rápido, toda a comunicação é realizada pelo site,
               com toda segurança e transparência. Os profissionais da plataforma
               são experts em suas áreas!“.
@@ -94,7 +94,7 @@ export function Conheca() {
 
             <p>
               “Sempre tivemos muita dificuldade em encontrar pessoas
-              qualificadas para nos ajudar. Na Freelas.town encontrei
+              qualificadas para nos ajudar. Na freelas town encontrei
               voluntários incríveis e com certificação profissional. A dedicação
               destas pessoas fez toda a diferença na qualidade do material“.
             </p>

@@ -45,7 +45,7 @@ export function Conheca() {
             Voluntários
           </button>
           <span>
-            Na Freelas.town, você pode encontrar uma ONG em busca de voluntários
+            Na freelas town, você pode encontrar uma ONG em busca de voluntários
             com o seu perfil e que desperte seu interesse em ajudar.
           </span>
         </BoxContent>

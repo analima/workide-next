@@ -17,7 +17,7 @@ export function ConfirmacaoCadastroBasico() {
   return (
     <ContainerConfirmacao>
       <Helmet>
-        <title>Freelas.town - Por favor, confirme seu e-mail</title>
+        <title>freelas town - Por favor, confirme seu e-mail</title>
       </Helmet>
       <Menu />
       <Confirmacao />
