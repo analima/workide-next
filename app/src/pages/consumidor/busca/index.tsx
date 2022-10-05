@@ -1,10 +1,10 @@
-import { Helmet } from 'react-helmet';
-
 import { hotjar } from 'react-hotjar';
 import { useEffect } from 'react';
 import { BuscaFornecedorOfertaProvider } from '../../../hooks/buscaConsumidor';
 import ContentBusca from '../../../components/AreaConsumidor/Busca/ContentBusca';
 import Content from '../../../components/AreaConsumidor/Busca/style';
+import { GetStaticProps } from 'next';
+import { SEO } from 'src/components/SEO';
 
 export default function Busca() {
   useEffect(() => {
@@ -16,12 +16,17 @@ export default function Busca() {
   }, []);
   return (
     <Content>
-      <Helmet>
-        <title>Freelas.town - Buscar oportunidades</title>
-      </Helmet>
+      <SEO title="Buscar oportunidades" />
       <BuscaFornecedorOfertaProvider>
         <ContentBusca />
       </BuscaFornecedorOfertaProvider>
     </Content>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  return {
+    props: {},
+    revalidate: 86400,
+  };
+};

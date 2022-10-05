@@ -4,6 +4,8 @@ import Content from '../../../styles/fornecedor/captar-projetos/style';
 import { hotjar } from 'react-hotjar';
 import { useEffect } from 'react';
 import CaptarProjetoContent from '../../../components/AreaFornecedor/CaptarProjeto/CaptarProjetoContent';
+import { SEO } from 'src/components/SEO';
+import { GetStaticProps } from 'next';
 
 export default function CaptarProjeto() {
   useEffect(() => {
@@ -15,14 +17,20 @@ export default function CaptarProjeto() {
   }, []);
 
   return (
-    <Content>
-      <Helmet>
-        <title>Freelas.town - Buscar oportunidades</title>
-      </Helmet>
-
-      <CaptarProjetoFornecedorProvider>
-        <CaptarProjetoContent />
-      </CaptarProjetoFornecedorProvider>
-    </Content>
+    <>
+      <SEO title="Buscar oportunidades" />
+      <Content>
+        <CaptarProjetoFornecedorProvider>
+          <CaptarProjetoContent />
+        </CaptarProjetoFornecedorProvider>
+      </Content>
+    </>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  return {
+    props: {},
+    revalidate: 86400,
+  };
+};

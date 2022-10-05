@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { Conheca } from '../../components/QuemSomos/Conheca';
 import { Rodape } from '../../components/Rodape';
-import { Helmet } from 'react-helmet';
 import { hotjar } from 'react-hotjar';
 import { BannerQuemSomos } from '../../components/QuemSomos/BannerQuemSomos';
 import { Header } from '../../components/Header';
@@ -9,6 +8,8 @@ import { CardBoasIdeias } from '../../components/CardBoasIdeias';
 import { Container } from '../../components/QuemSomos/styles';
 import { CardCountUp } from '../../components/CardCountUp';
 import { CardProjetosMaisBuscados } from '../../components/CardProjetosMaisBuscados';
+import { SEO } from 'src/components/SEO';
+import { GetStaticProps } from 'next';
 
 export default function QuemSomos() {
   useEffect(() => {
@@ -21,11 +22,8 @@ export default function QuemSomos() {
 
   return (
     <>
-      <Helmet>
-        <title>
-          Freelas.town - Conectando pessoas incríveis com projetos apaixonantes
-        </title>
-      </Helmet>
+      <SEO title="Quem somos" />
+
       <Header />
       <Container>
         <BannerQuemSomos />
@@ -38,3 +36,10 @@ export default function QuemSomos() {
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  return {
+    props: {},
+    revalidate: 86400,
+  };
+};

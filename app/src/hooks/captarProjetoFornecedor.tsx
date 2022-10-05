@@ -221,7 +221,6 @@ export const CaptarProjetoFornecedorProvider: React.FC<GlobalLayoutProps> = ({
         ...formData,
       },
     );
-    console.log(data);
     setProjetos(data.values);
     setTotalPaginas(data.pages);
     setLoadingProjetos(false);
