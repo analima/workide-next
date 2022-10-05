@@ -16,6 +16,7 @@ import Head from 'next/head';
 import { GetStaticProps } from 'next';
 import { consultas_api } from 'src/services/consultas_api';
 import { IServicoInfo } from 'src/interfaces/IServicoInfo';
+import { SEO } from 'src/components/SEO';
 
 interface IPropsData {
   vitrineData: IServicoInfo[];
@@ -32,19 +33,11 @@ export default function Home({ vitrineData }: IPropsData) {
 
   return (
     <>
-      <Helmet>
-        <title>Freelas.town - Contrate um freelancer em poucos cliques</title>
-      </Helmet>
-
-      <Head>
-        <title>
-          Freelas.town - Conectando pessoas incríveis com projetos apaixonantes
-        </title>
-
-        <meta name="description" content="Home Freelas.town" />
-      </Head>
+      <SEO
+        title="Freelas.town - Contrate um freelancer em poucos cliques"
+        excludeTitleSuffix
+      />
       <Header />
-
       <Container>
         <Banner />
         <CardCategory />

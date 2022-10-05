@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { Helmet } from 'react-helmet';
 import { hotjar } from 'react-hotjar';
 import { Header } from '../../components/Header';
 import { Container } from '../../components/ComoFunciona/styles';
@@ -12,10 +11,10 @@ import { Vitrine } from 'src/components/Home/Vitrine';
 import { FrequentQuestions } from 'src/components/FrequentQuestions';
 import { perguntaComoFunciona } from '../../mock/perguntasFrequentesMock';
 import { Footer } from 'src/components/Footer';
-import Head from 'next/head';
 import { GetStaticProps } from 'next';
 import { consultas_api } from 'src/services/consultas_api';
 import { IServicoInfo } from 'src/interfaces/IServicoInfo';
+import { SEO } from 'src/components/SEO';
 
 interface IPropsData {
   vitrineData: IServicoInfo[];
@@ -32,18 +31,7 @@ export default function ComoFunciona({ vitrineData }: IPropsData) {
 
   return (
     <>
-      <Helmet>
-        <title>
-          Freelas.town - Conectando pessoas incríveis com projetos apaixonantes
-        </title>
-      </Helmet>
-      <Head>
-        <title>
-          Freelas.town - Conectando pessoas incríveis com projetos apaixonantes
-        </title>
-
-        <meta name="description" content="Como funciona" />
-      </Head>
+      <SEO title="Como funciona" />
       <Header />
       <Container>
         <BannerComoFunciona />
