@@ -102,7 +102,7 @@ export default function AvaliacaoProjetoContent({
   const notePlatform = useCallback(() => {
     if (nota_plataforma === undefined) {
       setError(
-        'É necessário que informe as chances de recomendar a Freelas.town para um amigo.',
+        'É necessário que informe as chances de recomendar a freelas town para um amigo.',
       );
       scrollTop();
       return true;

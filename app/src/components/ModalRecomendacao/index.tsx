@@ -28,7 +28,7 @@ export function ModalRecomendacao({
   loadServico,
 }: IModalRecomendacao) {
   const [mensagem, setMensagem] = useState(
-    'Olá amigo(a), como vai? Gostaria de compartilhar com você esse ideia. Estou usando uma plataforma muito legal chamada Freelas.town. Lá você encontrará muita coisa legal que vai te ajudar. Se cuida, abraço!',
+    'Olá amigo(a), como vai? Gostaria de compartilhar com você esse ideia. Estou usando uma plataforma muito legal chamada freelas town. Lá você encontrará muita coisa legal que vai te ajudar. Se cuida, abraço!',
   );
   let { user } = useAuth();
   if (!user) {
@@ -96,7 +96,7 @@ export function ModalRecomendacao({
                 >
                   <Image
                     src={logo}
-                    alt="Freelas.town Logo"
+                    alt="freelas town Logo"
                     className="logo"
                     width={'100px'}
                     height={'100px'}

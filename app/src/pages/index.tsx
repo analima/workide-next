@@ -12,7 +12,6 @@ import { CardConhecaComoFunciona } from '../components/CardConhecaComoFunciona';
 import { CardCountUp } from '../components/CardCountUp';
 import { CardProjetosMaisBuscados } from '../components/CardProjetosMaisBuscados';
 import { Footer } from 'src/components/Footer';
-import Head from 'next/head';
 import { GetStaticProps } from 'next';
 import { consultas_api } from 'src/services/consultas_api';
 import { IServicoInfo } from 'src/interfaces/IServicoInfo';
@@ -34,7 +33,7 @@ export default function Home({ vitrineData }: IPropsData) {
   return (
     <>
       <SEO
-        title="Freelas.town - Contrate um freelancer em poucos cliques"
+        title="freelas town - Contrate um freelancer em poucos cliques"
         excludeTitleSuffix
       />
       <Header />

@@ -21,7 +21,7 @@ const DetalheArea: React.FC = () => {
     <>
       <Head>
         <title>
-          Freelas.town - Conectando pessoas incríveis com projetos apaixonantes
+          freelas town - Conectando pessoas incríveis com projetos apaixonantes
         </title>
 
         <meta name="description" content="Pagina de detalhes da area" />

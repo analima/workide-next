@@ -81,7 +81,7 @@ export default function ProjetoAndamentoContent() {
   return (
     <Content>
       <Helmet>
-        <title>Freelas.town - Andamento do projeto {project.nome || ''}</title>
+        <title>freelas town - Andamento do projeto {project.nome || ''}</title>
       </Helmet>
       <Layout titulo={project.nome}>
         {project.propostaAceita && (

@@ -31,7 +31,7 @@ export function ModalFullRecordGuidance({
 }: IModalRecomendacao) {
   // eslint-disable-next-line
   const [mensagem, setMensagem] = useState(
-    'Olá amigo(a), como vai? Gostaria de compartilhar com você esse ideia. Estou usando uma plataforma muito legal chamada Freelas.town. Lá você encontrará muita coisa legal que vai te ajudar. Se cuida, abraço!',
+    'Olá amigo(a), como vai? Gostaria de compartilhar com você esse ideia. Estou usando uma plataforma muito legal chamada freelas town. Lá você encontrará muita coisa legal que vai te ajudar. Se cuida, abraço!',
   );
   const history = useHistory();
   const { user } = useAuth();

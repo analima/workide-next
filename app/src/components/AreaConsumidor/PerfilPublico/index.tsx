@@ -110,7 +110,7 @@ export default function PerfilPublico() {
   return (
     <Layout activeMenu titulo="">
       <Helmet>
-        <title>Freelas.town - perfil do consumidor</title>
+        <title>freelas town - perfil do consumidor</title>
       </Helmet>
       <ContentButtons>
         {!location.state?.id && (

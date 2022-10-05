@@ -65,9 +65,9 @@ class CadastroBasicoGoogle extends React.Component<any, any> {
           id_pessoa: id_pessoa_tmp,
         };
 
-        localStorage.setItem('@Freelas.town:id_token', id_token);
-        localStorage.setItem('@Freelas.town:refresh_token', refresh_token);
-        localStorage.setItem('@Freelas.town:user', JSON.stringify(usuarioData));
+        localStorage.setItem('@freelas_town:id_token', id_token);
+        localStorage.setItem('@freelas_town:refresh_token', refresh_token);
+        localStorage.setItem('@freelas_town:user', JSON.stringify(usuarioData));
         window.location.replace('/apresentacao');
       })
       .catch(async error => {

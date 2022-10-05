@@ -51,7 +51,7 @@ export default function CadastroComplementar() {
   return (
     <>
       <Helmet>
-        <title>Freelas.town - Complete o seu cadastro</title>
+        <title>freelas town - Complete o seu cadastro</title>
       </Helmet>
       <Template>
         <Content>

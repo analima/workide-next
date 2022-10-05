@@ -182,7 +182,7 @@ export function Rodape() {
       <FooterSocial>
         <Container>
           <div className="content-fale-conosco">
-            <Image src={LogoGyan} alt="Logo da Freelas.town" width={150} />
+            <Image src={LogoGyan} alt="Logo da freelas town" width={150} />
           </div>
           <div className="content-version">
             <p>v{process.env.REACT_APP_VERSION}</p>

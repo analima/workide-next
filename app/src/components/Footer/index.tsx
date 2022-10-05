@@ -83,7 +83,7 @@ export function Footer() {
                     className="li-click"
                     onClick={() => router.push('https://blog.gyan.com.br/')}
                   >
-                    Blog Freelas.town
+                    Blog freelas town
                   </li>
 
                   <li
@@ -235,7 +235,7 @@ export function Footer() {
               width={122}
               height={48}
               src={LogoGyan}
-              alt="Logo da Freelas.town"
+              alt="Logo da freelas town"
             />
             <p>{process.env.REACT_APP_VERSION}</p>
           </div>

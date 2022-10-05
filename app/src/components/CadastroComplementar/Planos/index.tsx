@@ -50,7 +50,7 @@ export default function Planos() {
   return (
     <Template>
       <Helmet>
-        <title>Freelas.town - Veja os nossos planos</title>
+        <title>freelas town - Veja os nossos planos</title>
       </Helmet>
       <Content>
         <Container>

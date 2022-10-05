@@ -40,7 +40,7 @@ export function AvatarContaBancaria({ mostrar, esconderAvatar }: AndreProps) {
           <ContainerText>
             <p>
               Você precisa adicionar uma conta bancária em que o titular possua
-              o mesmo CPF ou CNPJ cadastrado aqui na Freelas.town.
+              o mesmo CPF ou CNPJ cadastrado aqui na freelas town.
             </p>
           </ContainerText>
           <ContainerButtons>

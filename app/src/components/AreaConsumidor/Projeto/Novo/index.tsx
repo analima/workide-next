@@ -51,7 +51,7 @@ export default function Novo() {
   return (
     <Content>
       <Helmet>
-        <title>Freelas.town - Crie um novo projeto</title>
+        <title>freelas town - Crie um novo projeto</title>
       </Helmet>
       <Layout titulo="ESTA TELA É APENAS PARA DEBUG" activeMenu={true}>
         <Card>
