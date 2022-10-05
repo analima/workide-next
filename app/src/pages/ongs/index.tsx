@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { useEffect } from 'react';
 import { hotjar } from 'react-hotjar';
 import PageOng from 'src/components/PageOng';
+import { SEO } from 'src/components/SEO';
 import { IPostProps, IStatsProps } from 'src/interfaces/IPostProps';
 import { consultas_api } from 'src/services/consultas_api';
 
@@ -22,13 +23,7 @@ export default function Ongs({ posts, stats }: PostProps) {
 
   return (
     <>
-      <Head>
-        <title>
-          freelas town - Conectando pessoas incríveis com projetos apaixonantes
-        </title>
-
-        <meta name="description" content="Pagina de ongs" />
-      </Head>
+      <SEO title="Encontre um voluntário em poucos cliques" />
       <PageOng posts={posts} stats={stats} />
     </>
   );

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { hotjar } from 'react-hotjar';
 import { NovoPerfilPublico } from 'src/components/AreaFornecedor/NovoPerfilPublico';
+import { SEO } from 'src/components/SEO';
 
 export default function NovoPerfilPublicos() {
   useEffect(() => {
@@ -11,18 +12,23 @@ export default function NovoPerfilPublicos() {
     hotjar.stateChange('/fornecedor/perfil');
   }, []);
 
-  return <NovoPerfilPublico />;
+  return (
+    <>
+      <SEO title="Perfil" />
+      <NovoPerfilPublico />;
+    </>
+  );
 }
 
-// export async function getStaticPaths() {
-//   return {
-//     paths: [],
-//     fallback: 'blocking',
-//   };
-// }
+export async function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: true,
+  };
+}
 
-// export async function getStaticProps() {
-//   return {
-//     props: { post: {} },
-//   };
-// }
+export async function getStaticProps() {
+  return {
+    props: { post: {} },
+  };
+}
