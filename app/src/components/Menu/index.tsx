@@ -5,7 +5,7 @@ import separator from '../../assets/separador.svg';
 import logOutIcon from '../../assets/logout.svg';
 import Center from '../../assets/center.svg';
 import separador from '../../assets/separador.svg';
-import Logo from '../../assets/logo.svg';
+import Logo from '../../assets/logo-azul-sem-fundo.svg';
 
 import { NavCustom, ButtonToggle, NavLink } from './style';
 import { CadastroBasico } from '../CadastroBasico';
@@ -144,7 +144,7 @@ export function Menu({
         <Navbar expand="md">
           <Container className="nav-container">
             <Navbar.Brand className="logo" onClick={() => router.push('/')}>
-              <Image src={Logo} alt="freelas town" />
+              <Image src={Logo} width={220} height={60} alt="freelas town" />
             </Navbar.Brand>
 
             {!user.visitante && user.email && !hiddenCenterMenu && (
