@@ -20,14 +20,8 @@ import { Button } from '../Form/Button';
 import { IPessoa } from '../../interfaces/IPessoa';
 import autoAnimate from '@formkit/auto-animate';
 import Image from 'next/image';
-import { Router, useRouter } from 'next/router';
-import {
-  Navbar,
-  NavDropdown,
-  Container as CC,
-  Nav,
-  Accordion,
-} from 'react-bootstrap';
+import { useRouter } from 'next/router';
+import { NavDropdown } from 'react-bootstrap';
 import { IoIosArrowDown } from 'react-icons/io';
 interface IProps {
   esconderMsg?: boolean;
@@ -45,7 +39,6 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
   const { signOut } = useAuth();
   const router = useRouter();
   const [sizePage, setSizePage] = useState(0);
-  const [active, setActive] = useState(false);
   const [user, setUser] = useState({} as IPessoa);
   const [idToken, setIdToken] = useState('');
 
