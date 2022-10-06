@@ -91,7 +91,6 @@ export const Content = styled.section`
     width: 100%;
 
     .content-logo {
-      width: 300px;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -230,8 +229,16 @@ export const ContainerLogin = styled.span`
     }
   }
 
-  @media (max-width: 990px) {
-    margin-left: 0;
+  .link-user-login {
+    color: ${AZUL};
+  }
+
+  @media (max-width: 478px) {
+    background-color: ${AZUL};
+    justify-content: center;
+    .link-user-login {
+      color: ${BRANCO};
+    }
   }
 `;
 

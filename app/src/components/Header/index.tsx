@@ -123,8 +123,8 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
                 className="logo"
                 alt="freelas_town"
                 onClick={() => router.push('/')}
-                width={300}
-                height={80}
+                width={120}
+                height={47}
               />
             </div>
             <div className="links">
@@ -217,7 +217,6 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
               {user?.email ? (
                 <ContainerLogin>
                   <Link
-                    className="link-user-login"
                     href={
                       user.tipoPerfil === 'CONSUMIDOR'
                         ? '/consumidor/home'
@@ -227,7 +226,9 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
                       color: PRETO,
                     }}
                   >
-                    <BiUserCircle size={24} />
+                    <span className="link-user-login">
+                      {user.nome_tratamento}
+                    </span>
                   </Link>
                   <FiLogOut
                     onClick={() => {
@@ -263,8 +264,8 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
                   className="logo"
                   alt="Freelas.town"
                   onClick={() => router.push('/')}
-                  width={120}
-                  height={47}
+                  width={220}
+                  height={60}
                 />
 
                 <NavDropdown
@@ -300,22 +301,26 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
                 {user?.email ? (
                   <ContainerLogin>
                     <Link
-                      className="link-user-login"
-                      href="/fornecedor/perfil"
+                      href="/"
                       style={{
                         color: PRETO,
                       }}
                     >
-                      <BiUserCircle size={24} />
-                      {user.nome_tratamento}
+                      <>
+                        <BiUserCircle size={24} color={AZUL} />
+                        <span className="link-user-login">
+                          {user.nome_tratamento}
+                        </span>
+                      </>
                     </Link>
+
                     <FiLogOut
+                      color={AZUL}
                       onClick={() => {
                         router.push('/');
                         signOut();
                       }}
                       size={24}
-                      color="#FFF"
                     />
                   </ContainerLogin>
                 ) : (
