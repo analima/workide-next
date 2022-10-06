@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-
 import { Content, ContentCard, CardArea, Carrousel } from './styles';
 import { AiFillStar } from 'react-icons/ai';
 import { AMARELO } from '../../styles/variaveis';
@@ -19,7 +18,11 @@ interface ISubarea {
   descricao: string;
 }
 
-export function CardCategory() {
+interface IProps {
+  title: string;
+  page: 'home' | 'empresas';
+}
+export function CardCategory({ title, page }: IProps) {
   const router = useRouter();
 
   const [areas, setAreas] = useState<IArea[]>([]);
@@ -82,11 +85,13 @@ export function CardCategory() {
 
   return (
     <Content>
-      <h1>Procure talentos por categoria</h1>
-      <span>
-        Procurando por trabalho?
-        <Link href="/fornecedor/captar-projetos">Procurar projetos</Link>
-      </span>
+      <h1 className={page}>{title}</h1>
+      {page === 'home' && (
+        <span>
+          Procurando por trabalho?
+          <Link href="/fornecedor/captar-projetos">Procurar projetos</Link>
+        </span>
+      )}
       {sizePage > 530 ? (
         <ContentCard>
           {areas.map(area => (
@@ -133,6 +138,12 @@ export function CardCategory() {
             </li>
           ))}
         </Carrousel>
+      )}
+      {page === 'empresas' && (
+        <span>
+          Procurando por trabalho?
+          <Link href="/fornecedor/captar-projetos">Procurar projetos</Link>
+        </span>
       )}
     </Content>
   );
