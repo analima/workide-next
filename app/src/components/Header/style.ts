@@ -1,4 +1,4 @@
-import { Dropdown } from 'react-bootstrap';
+import { Accordion, Dropdown, NavDropdown } from 'react-bootstrap';
 import styled, { css } from 'styled-components';
 import { AZUL, BRANCO, LARANJA, PRETO_10 } from '../../styles/variaveis';
 
@@ -253,15 +253,19 @@ interface IProps {
   open: boolean;
 }
 
-export const TT = styled.div<IProps>`
+export const ContentMenuMobile = styled.div<IProps>`
   display: flex;
   align-items: center;
   width: 100%;
   justify-content: center;
   padding: 8px;
   position: relative;
+  background-color: #f6f6f6;
 
-  .content-logo-mobile {
+  .content-logo {
+    a {
+      font-size: 12px;
+    }
   }
 
   .items {
@@ -337,5 +341,62 @@ export const TT = styled.div<IProps>`
     :hover {
       opacity: 0.8;
     }
+  }
+`;
+
+export const DropdownItem = styled(NavDropdown.Item)`
+  text-align: center;
+  padding: 16px;
+  font-size: 12px;
+  :hover {
+    background-color: #d9eefb;
+  }
+`;
+
+export const AccordionPrimary = styled(Accordion)`
+  background-color: ${BRANCO};
+  border-bottom: 1px solid #00000020;
+  padding: 8px;
+
+  .collapse-itens {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    a {
+      padding: 8px;
+      :hover {
+        background-color: #d9eefb;
+      }
+    }
+
+    > a {
+      font-weight: 500;
+    }
+  }
+
+  @media (max-width: 768px) {
+    span {
+      font-size: 16px;
+    }
+  }
+`;
+
+export const AccordionSecondary = styled(Accordion.Toggle)`
+  border: none;
+  background-color: red;
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: ${BRANCO};
+  width: 100%;
+  gap: 8px;
+
+  span {
+    color: ${PRETO_10};
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
   }
 `;

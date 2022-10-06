@@ -8,18 +8,27 @@ import {
   Container,
   Content,
   ContainerLogin,
-  ContainerMenuMobile,
-  TT,
+  ContentMenuMobile,
+  AccordionPrimary,
+  AccordionSecondary,
+  DropdownItem,
 } from './style';
 import Logo from '../../assets/logo-azul-sem-fundo.svg';
 import { useAuth } from '../../contexts/auth';
-import { AZUL, BRANCO, PRETO } from '../../styles/variaveis';
+import { AZUL, BRANCO, PRETO, PRETO_10 } from '../../styles/variaveis';
 import { Button } from '../Form/Button';
 import { IPessoa } from '../../interfaces/IPessoa';
 import autoAnimate from '@formkit/auto-animate';
 import Image from 'next/image';
 import { Router, useRouter } from 'next/router';
-import { Navbar, NavDropdown, Container as CC, Nav } from 'react-bootstrap';
+import {
+  Navbar,
+  NavDropdown,
+  Container as CC,
+  Nav,
+  Accordion,
+} from 'react-bootstrap';
+import { IoIosArrowDown } from 'react-icons/io';
 interface IProps {
   esconderMsg?: boolean;
 }
@@ -36,7 +45,7 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
   const { signOut } = useAuth();
   const router = useRouter();
   const [sizePage, setSizePage] = useState(0);
-
+  const [active, setActive] = useState(false);
   const [user, setUser] = useState({} as IPessoa);
   const [idToken, setIdToken] = useState('');
 
@@ -102,7 +111,7 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
       )}
 
       {sizePage < 991 ? (
-        <TT open={open}>
+        <ContentMenuMobile open={open}>
           <div className="content-logo">
             <Image
               src={Logo}
@@ -126,14 +135,92 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
               />
             </div>
             <div className="links">
-              <Link href="/fornecedor/captar-projetos">Freelancers</Link>
+              <AccordionPrimary key="1" id="headingOne">
+                <AccordionSecondary
+                  id="headingOne"
+                  eventKey="1"
+                  onClick={() => {}}
+                >
+                  <span>Para profissionais</span>
+                  <IoIosArrowDown size={20} color={PRETO_10} />
+                </AccordionSecondary>
 
-              <Link href="/consumidor/busca">Empresas</Link>
-              <Link href="/consumidor/busca?voluntarios=true">Voluntários</Link>
-              <Link href="https://blog.gyan.com.br/">
-                <a target="_blank">Blog</a>
-              </Link>
+                <AccordionPrimary.Collapse eventKey="1">
+                  <div className="collapse-itens">
+                    <Link href="/consumidor/busca">Empresas</Link>
+                    <Link href="/consumidor/busca?voluntarios=true">
+                      Voluntários
+                    </Link>
+                    <Link href="https://blog.gyan.com.br/">
+                      <a target="_blank">Blog</a>
+                    </Link>
+                  </div>
+                </AccordionPrimary.Collapse>
+              </AccordionPrimary>
+
+              <AccordionPrimary key="1" id="headingOne">
+                <AccordionSecondary
+                  id="headingOne"
+                  eventKey="1"
+                  onClick={() => {}}
+                >
+                  <span>Para empresas</span>
+                  <IoIosArrowDown size={20} color={PRETO_10} />
+                </AccordionSecondary>
+
+                <AccordionPrimary.Collapse eventKey="1">
+                  <div className="collapse-itens">
+                    <span>
+                      <Link href="/consumidor/busca">Empresas</Link>
+                    </span>
+                    <Link href="/consumidor/busca?voluntarios=true">
+                      Voluntários
+                    </Link>
+                    <Link href="https://blog.gyan.com.br/">
+                      <a target="_blank">Blog</a>
+                    </Link>
+                  </div>
+                </AccordionPrimary.Collapse>
+              </AccordionPrimary>
+
+              <AccordionPrimary key="1" id="headingOne">
+                <AccordionSecondary
+                  id="headingOne"
+                  eventKey="1"
+                  onClick={() => {}}
+                >
+                  <span>Para Ongs</span>
+                  <IoIosArrowDown size={20} color={PRETO_10} />
+                </AccordionSecondary>
+
+                <AccordionPrimary.Collapse eventKey="1">
+                  <div className="collapse-itens">
+                    <span>
+                      <Link href="/consumidor/busca">Empresas</Link>
+                    </span>
+                    <Link href="/consumidor/busca?voluntarios=true">
+                      Voluntários
+                    </Link>
+                    <Link href="https://blog.gyan.com.br/">
+                      <a target="_blank">Blog</a>
+                    </Link>
+                  </div>
+                </AccordionPrimary.Collapse>
+              </AccordionPrimary>
+
+              <AccordionPrimary key="1" id="headingOne">
+                <AccordionSecondary
+                  id="headingOne"
+                  eventKey="1"
+                  onClick={() => {}}
+                >
+                  <Link href="https://blog.gyan.com.br/">
+                    <a target="_blank">Blog</a>
+                  </Link>
+                </AccordionSecondary>
+              </AccordionPrimary>
               {!user?.email && <Link href="/login">Login</Link>}
+
               {user?.email ? (
                 <ContainerLogin>
                   <Link
@@ -164,11 +251,11 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
           </div>
 
           {open ? (
-            <FiX onClick={() => setOpen(false)} size={30} />
+            <FiX color={AZUL} onClick={() => setOpen(false)} size={30} />
           ) : (
-            <FiMenu onClick={() => setOpen(true)} size={30} />
+            <FiMenu color={AZUL} onClick={() => setOpen(true)} size={30} />
           )}
-        </TT>
+        </ContentMenuMobile>
       ) : (
         <Container>
           <Content>
@@ -187,30 +274,22 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
                   title=" Para profissionais"
                   id="collasible-nav-dropdown"
                 >
-                  <NavDropdown.Item href="#action/3.1">
+                  <DropdownItem href="#action/3.1">
                     Para profissionais
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">
+                  </DropdownItem>
+                  <DropdownItem href="#action/3.2">
                     Para profissionais
-                  </NavDropdown.Item>
+                  </DropdownItem>
                 </NavDropdown>
 
                 <NavDropdown title="Para empresas" id="collasible-nav-dropdown">
-                  <NavDropdown.Item href="#action/3.1">
-                    Para empresas
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">
-                    Para empresas
-                  </NavDropdown.Item>
+                  <DropdownItem href="#action/3.1">Para empresas</DropdownItem>
+                  <DropdownItem href="#action/3.2">Para empresas</DropdownItem>
                 </NavDropdown>
 
                 <NavDropdown title="Para Ongs" id="collasible-nav-dropdown">
-                  <NavDropdown.Item href="#action/3.1">
-                    Para Ongs
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">
-                    Para Ongs
-                  </NavDropdown.Item>
+                  <DropdownItem href="#action/3.1">Para Ongs</DropdownItem>
+                  <DropdownItem href="#action/3.2">Para Ongs</DropdownItem>
                 </NavDropdown>
 
                 <Link href="https://blog.gyan.com.br/">
