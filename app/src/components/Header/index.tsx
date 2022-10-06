@@ -114,8 +114,8 @@ export function Header(): JSX.Element {
                 className="logo"
                 alt="freelas_town"
                 onClick={() => router.push('/')}
-                width={200}
-                height={50}
+                width={300}
+                height={80}
               />
             </div>
 

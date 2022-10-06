@@ -137,7 +137,7 @@ export const Content = styled.section<IMobileProp>`
     width: 100%;
 
     .content-logo {
-      width: 200px;
+      width: 300px;
       .logo {
         cursor: pointer;
       }
