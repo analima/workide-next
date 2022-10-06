@@ -1,3 +1,4 @@
+import { Dropdown } from 'react-bootstrap';
 import styled, { css } from 'styled-components';
 import { AZUL, BRANCO, LARANJA, PRETO_10 } from '../../styles/variaveis';
 
@@ -52,7 +53,7 @@ export const HeaderInfo = styled.div`
   }
 `;
 
-export const Container = styled.header<IMobileProp>`
+export const Container = styled.header`
   padding: 8px 0px;
   z-index: 10;
   height: 116px;
@@ -66,56 +67,6 @@ export const Container = styled.header<IMobileProp>`
   @media (max-width: 630px) {
     padding: 0;
   }
-
-  @media (max-width: 478px) {
-    height: 0;
-    background-color: #fff;
-    ${({ mostrarMenu, isMobile }) =>
-      isMobile === false &&
-      mostrarMenu === false &&
-      css`
-        height: 116px;
-      `}
-
-    ${({ mostrarMenu, isMobile }) =>
-      isMobile &&
-      css`
-        height: 0vh;
-      `}
-
-    ${({ mostrarMenu }) =>
-      mostrarMenu &&
-      css`
-        height: 0vh;
-        animation: liq 0.5s normal forwards ease-in-out;
-      `}
-
-  ${({ mostrarMenu, isMobile }) =>
-      !mostrarMenu &&
-      isMobile &&
-      css`
-        height: 100vh;
-        animation: desl 0.5s normal forwards ease-in-out;
-      `}
-
-    @keyframes liq {
-      from {
-        height: 0px;
-      }
-      to {
-        height: 100vh;
-      }
-    }
-
-    @keyframes desl {
-      from {
-        height: 100vh;
-      }
-      to {
-        height: 0;
-      }
-    }
-  }
 `;
 
 interface IMobileProp {
@@ -123,31 +74,42 @@ interface IMobileProp {
   mostrarMenu: boolean;
 }
 
-export const Content = styled.section<IMobileProp>`
+export const Content = styled.section`
   display: flex;
   flex-direction: column;
   max-width: 1440px;
+  padding: 0 62px;
   margin: 0 auto;
+
   nav {
     border-bottom: 1px solid #c6c6c6;
     padding: 16px 0;
     display: flex;
+    gap: 16px;
     align-items: center;
     justify-content: space-between;
     width: 100%;
 
     .content-logo {
-      width: 200px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
       .logo {
         cursor: pointer;
+      }
+
+      a {
+        color: ${PRETO_10};
+        text-decoration: none;
+        font-size: 18px;
       }
     }
 
     .menu {
       display: flex;
-      flex-direction: row;
       align-items: center;
-      gap: 40px;
+      gap: 32px;
 
       a {
         color: ${PRETO_10};
@@ -156,18 +118,17 @@ export const Content = styled.section<IMobileProp>`
       }
 
       button {
-        padding: 16px 52px;
+        padding: 16 40px;
         white-space: nowrap;
       }
     }
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1100px) {
+    padding: 0 24px;
+
     nav {
       .logo {
-        img {
-          width: 160px;
-        }
       }
     }
   }
@@ -214,32 +175,6 @@ export const Content = styled.section<IMobileProp>`
       display: flex;
       flex-direction: column;
       align-items: center;
-    }
-  }
-
-  @media (max-width: 478px) {
-    nav {
-      border: none;
-
-      .logo {
-        margin-bottom: 16px;
-        img {
-          width: 200px;
-        }
-      }
-
-      .menu {
-        flex-direction: column;
-        gap: 8px;
-
-        a {
-          font-size: 24px;
-        }
-
-        button {
-          padding: 16px 20px;
-        }
-      }
     }
   }
 `;
@@ -310,6 +245,96 @@ export const ContainerMenuMobile = styled.div`
     cursor: pointer;
 
     &:hover {
+      opacity: 0.8;
+    }
+  }
+`;
+interface IProps {
+  open: boolean;
+}
+
+export const TT = styled.div<IProps>`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  padding: 8px;
+  position: relative;
+
+  .content-logo-mobile {
+  }
+
+  .items {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 0vh;
+    background-color: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+    z-index: 999;
+    padding: 16px 8px;
+    transition: width 0.5s, height 0.5s, opacity 0.5s;
+    opacity: 0;
+    transition-timing-function: ease-in;
+
+    ${({ open }) =>
+      open
+        ? css`
+            width: 75%;
+            height: 100vh;
+            opacity: 1;
+          `
+        : css`
+            width: 0;
+            height: 0vh;
+            opacity: 0;
+          `}
+
+    .links {
+      margin-top: 16px;
+      flex-direction: column;
+      gap: 16px;
+      display: none;
+      transition: display 5s;
+
+      a {
+        color: #767676;
+        font-size: 18px;
+        font-weight: 600;
+      }
+      ${({ open }) =>
+        open
+          ? css`
+              display: flex;
+            `
+          : css`
+              display: none;
+            `}
+    }
+
+    > .content-logo-mobile {
+      text-align: center;
+      display: none;
+      transition: display 5s;
+
+      ${({ open }) =>
+        open
+          ? css`
+              display: inline;
+            `
+          : css`
+              display: none;
+            `}
+    }
+  }
+
+  svg {
+    position: absolute;
+    right: 16px;
+
+    :hover {
       opacity: 0.8;
     }
   }

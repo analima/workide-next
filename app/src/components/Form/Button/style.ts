@@ -61,7 +61,9 @@ export const Content = styled.button<IButtonProps>`
   }
 `;
 
-export const ButtonLabel = styled.span``;
+export const ButtonLabel = styled.span`
+  font-family: 'Renner';
+`;
 
 export const ButtonIcon = styled(FiLoader)`
   margin: 0 14px;

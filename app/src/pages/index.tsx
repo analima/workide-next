@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { Conheca } from '../components/Home/Conheca';
 import { Header } from '../components/Header';
-import { Helmet } from 'react-helmet';
 import { hotjar } from 'react-hotjar';
 import { Banner } from '../components/Home/Banner';
 import { Vitrine } from '../components/Home/Vitrine';
@@ -12,7 +11,6 @@ import { CardConhecaComoFunciona } from '../components/CardConhecaComoFunciona';
 import { CardCountUp } from '../components/CardCountUp';
 import { CardProjetosMaisBuscados } from '../components/CardProjetosMaisBuscados';
 import { Footer } from 'src/components/Footer';
-import Head from 'next/head';
 import { GetStaticProps } from 'next';
 import { consultas_api } from 'src/services/consultas_api';
 import { IServicoInfo } from 'src/interfaces/IServicoInfo';
@@ -40,7 +38,7 @@ export default function Home({ vitrineData }: IPropsData) {
       <Header />
       <Container>
         <Banner />
-        <CardCategory />
+        <CardCategory title="Procure talentos por categoria" page="home" />
         <CardBoasIdeias />
         <CardConhecaComoFunciona />
         <Vitrine vitrineData={vitrineData} />
