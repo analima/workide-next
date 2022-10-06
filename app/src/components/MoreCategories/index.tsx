@@ -24,7 +24,10 @@ export function MoreCategories({ area }: IArea) {
         {area?.subareas && (
           <ContentCategory>
             {area.subareas.slice(0, 32).map((subarea: ISubarea) => (
-              <span key={subarea.id}>{subarea.descricao}</span>
+              <span key={subarea.id}>
+                {subarea.descricao[0].toUpperCase() +
+                  subarea.descricao.substring(1)}
+              </span>
             ))}
           </ContentCategory>
         )}
@@ -32,7 +35,10 @@ export function MoreCategories({ area }: IArea) {
         {area?.subareas && (
           <ContentCategoryMobile>
             {area.subareas.slice(0, 10).map((subarea: ISubarea) => (
-              <span key={subarea.id}>{subarea.descricao}</span>
+              <span key={subarea.id}>
+                {subarea.descricao[0].toUpperCase() +
+                  subarea.descricao.substring(1)}
+              </span>
             ))}
           </ContentCategoryMobile>
         )}
