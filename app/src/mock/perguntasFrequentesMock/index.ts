@@ -17,7 +17,7 @@ export const perguntaAreas = [
         id: 1,
         pergunta: 'Como escolher um designer ideal para o meu projeto?',
         resposta:
-          'Pesquise por designers na Freelas.town, após fazer uma pesquisa, você terá um grupo de freelancers  candidatos para o seu projeto com base em habilidades, disponibilidade e outros aspectos que você está buscando para o seu projeto. Agora olhe as experiências de cada um, veja seus projetos realizados e avaliações recebidas, assim você conseguirá identificar o designer perfeito para o seu projeto.',
+          'Pesquise por designers na freelas town, após fazer uma pesquisa, você terá um grupo de freelancers  candidatos para o seu projeto com base em habilidades, disponibilidade e outros aspectos que você está buscando para o seu projeto. Agora olhe as experiências de cada um, veja seus projetos realizados e avaliações recebidas, assim você conseguirá identificar o designer perfeito para o seu projeto.',
       },
       {
         id: 2,
@@ -273,7 +273,7 @@ export const perguntaComoFunciona = [
         id: 1,
         pergunta: 'Quanto pago para utilizar a plataforma?',
         resposta:
-          ' A Freelas.town é totalmente grátis e não cobra mensalidade para sua utilização, você utilizar dos benefícios por tempo indefinido sem nenhum gasto.',
+          ' A freelas town é totalmente grátis e não cobra mensalidade para sua utilização, você utilizar dos benefícios por tempo indefinido sem nenhum gasto.',
       },
       {
         id: 2,
@@ -304,7 +304,7 @@ export const perguntaComoFunciona = [
         id: 6,
         pergunta: 'Qual valor da taxa de intermediação?',
         resposta:
-          ' Atualmente temos uma taxa de intermediação de 12% em cima do valor do projeto, que é o valor cobrado ́ do fornecedor pela plataforma pelo serviço de intermediação de negócios entre Fornecedores e Clientes. Atualmente, para a intermediação da contratação de projetos, esta taxa é de 12% sobre o Valor Total Pago pelo Cliente, sendo R$14,00 a taxa mínima para projetos inferiores a 100,000. Para a intermediação da venda de ofertas prontas, promocionalmente, esta taxa também será de 12% sobre o Valor Total Pago pelo Cliente, sendo R$ sendo R$14,00 a taxa mínima para ofertas até 100,000.',
+          ' Atualmente temos uma taxa de intermediação de 12% em cima do valor do projeto, que é o valor cobrado ́ do fornecedor pela plataforma pelo serviço de intermediação de negócios entre Fornecedores e Clientes. Atualmente, para a intermediação da contratação de projetos, esta taxa é de 12% sobre o Valor Total Pago pelo Cliente, sendo R$14,00 a taxa mínima para projetos inferiores a 100,00. Para a intermediação da venda de ofertas prontas, promocionalmente, esta taxa também será de 12% sobre o Valor Total Pago pelo Cliente, sendo R$ sendo R$14,00 a taxa mínima para ofertas até 100,00.',
       },
     ],
   },

@@ -73,9 +73,9 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
 
   useEffect(() => {
     //NewAuth()
-    let local = localStorage.getItem('@Freelas.town:id_token');
+    let local = localStorage.getItem('@freelas_town:id_token');
     if (local) {
-      const ID_TOKEN = '@Freelas.town:id_token';
+      const ID_TOKEN = '@freelas_town:id_token';
       refreshUserData(ID_TOKEN);
     }
   }, []);
@@ -100,7 +100,7 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
         <HeaderInfo>
           <div>
             <p>
-              A Freelas.town une profissionais freelancer e voluntários em uma
+              A freelas_town une profissionais freelancer e voluntários em uma
               única plataforma. Contratação rápida, gratuita e segura.
               Programadores, web designers, redatores e o que mais você precisar
               para o seu negócio.
@@ -128,7 +128,7 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
               <Image
                 src={Logo}
                 className="logo"
-                alt="Freelas.town"
+                alt="freelas_town"
                 onClick={() => router.push('/')}
                 width={120}
                 height={47}
@@ -225,7 +225,11 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
                 <ContainerLogin>
                   <Link
                     className="link-user-login"
-                    href="/fornecedor/perfil"
+                    href={
+                      user.tipoPerfil === 'CONSUMIDOR'
+                        ? '/consumidor/home'
+                        : '/fornecedor/home'
+                    }
                     style={{
                       color: PRETO,
                     }}

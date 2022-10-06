@@ -65,7 +65,7 @@ class Confirmacao extends React.Component<any, any> {
                 <div>
                   <h1>Confirme seu e-mail</h1>
                   <p>
-                    Bem-vindo ao Freelas.town! Enviamos um e-mail de confirmação
+                    Bem-vindo ao freelas town! Enviamos um e-mail de confirmação
                     para: <br />
                     <b>{this.email}</b>
                   </p>

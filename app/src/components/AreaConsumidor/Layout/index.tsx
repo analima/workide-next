@@ -63,9 +63,9 @@ export default function Layout({
   };
 
   useEffect(() => {
-    let local = localStorage.getItem('@Freelas.town:id_token');
+    let local = localStorage.getItem('@freelas_town:id_token');
     if (local) {
-      const ID_TOKEN = '@Freelas.town:id_token';
+      const ID_TOKEN = '@freelas_town:id_token';
       refreshUserData(ID_TOKEN);
     }
   }, []);

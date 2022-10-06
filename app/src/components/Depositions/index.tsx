@@ -11,7 +11,7 @@ export function Depositions() {
             profissional que contribuiu muito com a nossa instituição e que
             trouxe vários resultados positivos, como o impulsionamento das
             nossas redes sociais, atraindo assim novos doadores. Obrigado
-            Freelas.town por facilitar o encontro de profissionais qualificados,
+            freelas town por facilitar o encontro de profissionais qualificados,
             de maneira simples e prática!“.
           </span>
           <strong>Giovanna Marques - Instituto Integridade</strong>
@@ -19,7 +19,7 @@ export function Depositions() {
         <BoxDepositions>
           <span>
             “Sempre tivemos muita dificuldade em encontrar pessoas qualificadas
-            para nos ajudar. Na Freelas.town encontrei voluntários incríveis e
+            para nos ajudar. Na freelas town encontrei voluntários incríveis e
             com certificação profissional. A dedicação destas pessoas fez toda a
             diferença na qualidade do material”.
           </span>

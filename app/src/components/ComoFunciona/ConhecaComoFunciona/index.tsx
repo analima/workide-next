@@ -58,7 +58,7 @@ export function ConhecaComoFunciona() {
           </div>
 
           <p>
-            Na Freelas.town você tem a garantia de que o pagamento só será
+            Na freelas town você tem a garantia de que o pagamento só será
             efetuado quando o projeto estiver concluído e validado, tanto pelo
             freelancer quanto pela empresa.
           </p>

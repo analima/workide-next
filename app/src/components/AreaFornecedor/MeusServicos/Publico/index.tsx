@@ -12,7 +12,7 @@ import {
   ContentButton,
   Button,
 } from './styled';
-import Content from'./styled';
+import Content from './styled';
 import { AZUL } from '../../../../styles/variaveis';
 import { useCallback, useEffect, useState } from 'react';
 import { Spacer } from '../../../../components/Spacer';
@@ -174,7 +174,7 @@ export default function ServicoFornecedorPublico() {
   return (
     <Content>
       <Helmet>
-        <title>Freelas.town - Serviço {servico.nome || ''}</title>
+        <title>freelas town - Serviço {servico.nome || ''}</title>
       </Helmet>
       <AvatarRegrasPlano
         mostrar={showAvatar}

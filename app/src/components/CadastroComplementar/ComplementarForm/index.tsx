@@ -730,7 +730,7 @@ export default function ComplementarForm() {
         )}
         <Spacer size={20} />
         <Titulo
-          titulo="Seja bem vindo(a) a comunidade Freelas.town!"
+          titulo="Seja bem vindo(a) a comunidade freelas town!"
           tamanho={32}
           cor={AZUL}
         />
@@ -1118,7 +1118,7 @@ export default function ComplementarForm() {
         </Row>
         <Subtitulo className="mt-4">Pro bono & Voluntariado</Subtitulo>
         <Titulo
-          titulo="Aqui na Freelas.town nós também apoiamos projetos sociais. Vamos nessa juntos? Selecione as causas que são do seu interesse."
+          titulo="Aqui na freelas town nós também apoiamos projetos sociais. Vamos nessa juntos? Selecione as causas que são do seu interesse."
           tamanho={18}
           cor={PRETO_60}
         />

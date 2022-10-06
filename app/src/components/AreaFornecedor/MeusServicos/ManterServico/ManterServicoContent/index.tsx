@@ -89,7 +89,7 @@ export default function ManterServicoContent({
   return (
     <Content>
       <Helmet>
-        <title>Freelas.town - Crie ou edite um serviço</title>
+        <title>freelas town - Crie ou edite um serviço</title>
       </Helmet>
       <Spacer size={32} />
 

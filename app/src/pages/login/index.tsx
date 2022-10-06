@@ -126,8 +126,8 @@ export default class Login extends React.Component<any, any> {
         const { email } = usuario;
         const { id_token, refresh_token } = res.data;
 
-        localStorage.setItem('@Freelas.town:id_token', id_token);
-        localStorage.setItem('@Freelas.town:refresh_token', refresh_token);
+        localStorage.setItem('@freelas_town:id_token', id_token);
+        localStorage.setItem('@freelas_town:refresh_token', refresh_token);
 
         updateToken();
 
@@ -148,7 +148,7 @@ export default class Login extends React.Component<any, any> {
           id_pessoa,
         };
 
-        localStorage.setItem('@Freelas.town:user', JSON.stringify(usuarioData));
+        localStorage.setItem('@freelas_town:user', JSON.stringify(usuarioData));
         // --> Redireciona para a Home
         this.setState({
           loading: false,
@@ -228,12 +228,12 @@ export default class Login extends React.Component<any, any> {
     return (
       <ContainerLogin>
         <Helmet>
-          <title>Freelas.town - Faça login em sua conta</title>
+          <title>freelas_town - Faça login em sua conta</title>
         </Helmet>
         <div className="form-content">
           <div className="form-title">
             <div className="logo">
-              <Image src={Logo} alt="Logo Freelas.town" />
+              <Image src={Logo} alt="Logo freelas_town" />
             </div>
             <br />
             <br />
