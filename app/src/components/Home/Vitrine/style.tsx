@@ -16,7 +16,6 @@ export const Content = styled.section`
   margin: 0 auto;
 
   h1 {
-    margin-top: 60px;
     color: ${CINZA_40};
     font-size: 36px;
     font-weight: bold;

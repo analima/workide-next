@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { Conheca } from '../components/Home/Conheca';
 import { Header } from '../components/Header';
-import { Helmet } from 'react-helmet';
 import { hotjar } from 'react-hotjar';
 import { Banner } from '../components/Home/Banner';
 import { Vitrine } from '../components/Home/Vitrine';
@@ -39,7 +38,7 @@ export default function Home({ vitrineData }: IPropsData) {
       <Header />
       <Container>
         <Banner />
-        <CardCategory />
+        <CardCategory title="Procure talentos por categoria" page="home" />
         <CardBoasIdeias />
         <CardConhecaComoFunciona />
         <Vitrine vitrineData={vitrineData} />
