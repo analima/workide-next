@@ -91,6 +91,7 @@ export const Content = styled.section`
     width: 100%;
 
     .content-logo {
+      width: 300px;
       display: flex;
       align-items: center;
       gap: 8px;

@@ -130,8 +130,8 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
                 className="logo"
                 alt="freelas_town"
                 onClick={() => router.push('/')}
-                width={120}
-                height={47}
+                width={300}
+                height={80}
               />
             </div>
             <div className="links">
