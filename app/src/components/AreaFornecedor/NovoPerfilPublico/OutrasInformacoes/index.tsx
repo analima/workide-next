@@ -125,7 +125,7 @@ export function OutrasInformacoes({ data, imageLoaded }: Props) {
   function settingSlider(data: any[]) {
     return {
       speed: 500,
-      dots: true,
+      dots: false,
       autoplay: true,
       autoplaySpeed: 2000,
       slidesToShow: data?.length > 3 ? 3 : data?.length,
