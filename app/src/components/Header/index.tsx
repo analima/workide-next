@@ -134,7 +134,11 @@ export function Header(): JSX.Element {
                 <ContainerLogin>
                   <Link
                     className="link-user-login"
-                    href="/fornecedor/perfil"
+                    href={
+                      user.tipoPerfil === 'CONSUMIDOR'
+                        ? '/consumidor/home'
+                        : '/fornecedor/home'
+                    }
                     style={{
                       color: PRETO,
                     }}
