@@ -77,7 +77,7 @@ interface IMobileProp {
 export const Content = styled.section`
   display: flex;
   flex-direction: column;
-  max-width: 1440px;
+  max-width: 1315px;
   padding: 0 62px;
   margin: 0 auto;
 
@@ -131,8 +131,6 @@ export const Content = styled.section`
   }
 
   @media (max-width: 1100px) {
-    padding: 0 24px;
-
     nav {
       .logo {
       }
