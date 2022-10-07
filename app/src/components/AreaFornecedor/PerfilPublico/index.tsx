@@ -84,7 +84,7 @@ export default function PerfilPublico() {
         image={
           dataProvider.arquivo
             ? dataProvider.arquivo.url
-            : 'https://hom.gyan.com.br/gyan.png'
+            : 'https://hom.freelas.town/gyan.png'
         }
       />
       <Layout isConsumidor={true}>

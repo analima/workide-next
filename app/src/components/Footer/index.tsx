@@ -81,7 +81,7 @@ export function Footer() {
 
                   <li
                     className="li-click"
-                    onClick={() => router.push('https://blog.gyan.com.br/')}
+                    onClick={() => router.push('https://blog.freelas.town/')}
                   >
                     Blog freelas town
                   </li>

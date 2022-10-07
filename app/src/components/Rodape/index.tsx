@@ -72,43 +72,43 @@ export function Rodape() {
               <h2>Áreas</h2>
               <ul>
                 <li className="li-click">
-                  <Link href="https://gyan.com.br/detalhe-area?area=1">
+                  <Link href="https://freelas.town/detalhe-area?area=1">
                     Gráficos e Design
                   </Link>
                 </li>
                 <li className="li-click">
-                  <Link href="https://gyan.com.br/detalhe-area?area=2">
+                  <Link href="https://freelas.town/detalhe-area?area=2">
                     Marketing
                   </Link>
                 </li>
                 <li className="li-click">
-                  <Link href="https://gyan.com.br/detalhe-area?area=3">
+                  <Link href="https://freelas.town/detalhe-area?area=3">
                     Escrita e Tradução
                   </Link>
                 </li>
 
                 <li className="li-click">
-                  <Link href="https://gyan.com.br/detalhe-area?area=4">
+                  <Link href="https://freelas.town/detalhe-area?area=4">
                     Vídeo e Animação
                   </Link>
                 </li>
                 <li className="li-click">
-                  <Link href="https://gyan.com.br/detalhe-area?area=5">
+                  <Link href="https://freelas.town/detalhe-area?area=5">
                     Tecnologia da Informação
                   </Link>
                 </li>
                 <li className="li-click">
-                  <Link href="https://gyan.com.br/detalhe-area?area=6">
+                  <Link href="https://freelas.town/detalhe-area?area=6">
                     Legal
                   </Link>
                 </li>
                 <li className="li-click">
-                  <Link href="https://gyan.com.br/detalhe-area?area=7">
+                  <Link href="https://freelas.town/detalhe-area?area=7">
                     Administração
                   </Link>
                 </li>
                 <li className="li-click">
-                  <Link href="https://gyan.com.br/detalhe-area?area=8">
+                  <Link href="https://freelas.town/detalhe-area?area=8">
                     Finanças e Contabilidade
                   </Link>
                 </li>
