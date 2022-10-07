@@ -70,6 +70,11 @@ export const ContentInfo = styled.div`
     border: none;
     padding: 16px;
     border-radius: 4px;
+    transition: all 0.3s;
+
+    :hover {
+      opacity: 0.8;
+    }
   }
 
   .blue {

@@ -154,8 +154,9 @@ export const LastInformation = styled(Information)`
     button {
       background-color: ${LARANJA};
       color: ${BRANCO};
-      padding: 16px 54px;
+      padding: 16px 40px;
       border: none;
+      transition: all 0.3s;
 
       :hover {
         opacity: 0.8;

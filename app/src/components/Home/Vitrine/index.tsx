@@ -23,9 +23,11 @@ interface SampleArrowProps {
 
 interface IPropsData {
   vitrineData: IServicoInfo[];
+  title?: string;
+  subtitle?: string;
 }
 
-export function Vitrine({ vitrineData }: IPropsData) {
+export function Vitrine({ vitrineData, title, subtitle }: IPropsData) {
   const [sizePage, setSizePage] = useState(0);
   const router = useRouter();
 
@@ -147,12 +149,18 @@ export function Vitrine({ vitrineData }: IPropsData) {
       <Container>
         <CardCarrousel>
           <ContentTitles>
-            <h1>Ofertas</h1>
+            <h1>{title ? title : 'Ofertas'}</h1>
             <Title>
-              Acelere seu negócio com soluções prontas, mas totalmente
-              adaptaveis, na hora em que você precisa.
-              <br />
-              hora em que você precisa.
+              {subtitle ? (
+                subtitle
+              ) : (
+                <>
+                  Acelere seu negócio com soluções prontas, mas totalmente
+                  adaptaveis, na hora em que você precisa.
+                  <br />
+                  hora em que você precisa.
+                </>
+              )}
             </Title>
           </ContentTitles>
 

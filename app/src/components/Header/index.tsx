@@ -128,91 +128,16 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
               />
             </div>
             <div className="links">
-              <AccordionPrimary key="1" id="headingOne">
-                <AccordionSecondary
-                  id="headingOne"
-                  eventKey="1"
-                  onClick={() => {}}
-                >
-                  <span>Para profissionais</span>
-                  <IoIosArrowDown size={20} color={PRETO_10} />
-                </AccordionSecondary>
+              <Link href="/consumidor/busca?ofertas=true">
+                Para profissionais
+              </Link>
+              <Link href="/consumidor/busca">Para empresas</Link>
+              <Link href="/ongs">Para Ongs</Link>
 
-                <AccordionPrimary.Collapse eventKey="1">
-                  <div className="collapse-itens">
-                    <Link href="/consumidor/busca">Empresas</Link>
-                    <Link href="/consumidor/busca?voluntarios=true">
-                      Voluntários
-                    </Link>
-                    <Link href="https://blog.freelas.town/">
-                      <a target="_blank">Blog</a>
-                    </Link>
-                  </div>
-                </AccordionPrimary.Collapse>
-              </AccordionPrimary>
-
-              <AccordionPrimary key="1" id="headingOne">
-                <AccordionSecondary
-                  id="headingOne"
-                  eventKey="1"
-                  onClick={() => {}}
-                >
-                  <span>Para empresas</span>
-                  <IoIosArrowDown size={20} color={PRETO_10} />
-                </AccordionSecondary>
-
-                <AccordionPrimary.Collapse eventKey="1">
-                  <div className="collapse-itens">
-                    <span>
-                      <Link href="/consumidor/busca">Empresas</Link>
-                    </span>
-                    <Link href="/consumidor/busca?voluntarios=true">
-                      Voluntários
-                    </Link>
-                    <Link href="https://blog.freelas.town/">
-                      <a target="_blank">Blog</a>
-                    </Link>
-                  </div>
-                </AccordionPrimary.Collapse>
-              </AccordionPrimary>
-
-              <AccordionPrimary key="1" id="headingOne">
-                <AccordionSecondary
-                  id="headingOne"
-                  eventKey="1"
-                  onClick={() => {}}
-                >
-                  <span>Para Ongs</span>
-                  <IoIosArrowDown size={20} color={PRETO_10} />
-                </AccordionSecondary>
-
-                <AccordionPrimary.Collapse eventKey="1">
-                  <div className="collapse-itens">
-                    <span>
-                      <Link href="/consumidor/busca">Empresas</Link>
-                    </span>
-                    <Link href="/consumidor/busca?voluntarios=true">
-                      Voluntários
-                    </Link>
-                    <Link href="https://blog.freelas.town/">
-                      <a target="_blank">Blog</a>
-                    </Link>
-                  </div>
-                </AccordionPrimary.Collapse>
-              </AccordionPrimary>
-
-              <AccordionPrimary key="1" id="headingOne">
-                <AccordionSecondary
-                  id="headingOne"
-                  eventKey="1"
-                  onClick={() => {}}
-                >
-                  <Link href="https://blog.freelas.town/">
-                    <a target="_blank">Blog</a>
-                  </Link>
-                </AccordionSecondary>
-              </AccordionPrimary>
-              {!user?.email && <Link href="/login">Login</Link>}
+              <Link href="https://blog.freelas.town/">
+                <a target="_blank">Blog</a>
+              </Link>
+              {/* {!user?.email && <Link href="/login">Login</Link>} */}
 
               {user?.email ? (
                 <ContainerLogin>
@@ -240,10 +165,12 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
                   />
                 </ContainerLogin>
               ) : (
-                <Button
-                  label="CADASTRE-SE"
-                  onClick={() => router.push('/cadastro-basico')}
-                />
+                <div className="content-btn">
+                  <Button
+                    label="CADASTRE-SE"
+                    onClick={() => router.push('/cadastro-basico')}
+                  />
+                </div>
               )}
             </div>
           </div>
@@ -264,31 +191,14 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
                   className="logo"
                   alt="Freelas.town"
                   onClick={() => router.push('/')}
-                  width={220}
                   height={60}
                 />
 
-                <NavDropdown
-                  title=" Para profissionais"
-                  id="collasible-nav-dropdown"
-                >
-                  <DropdownItem href="#action/3.1">
-                    Para profissionais
-                  </DropdownItem>
-                  <DropdownItem href="#action/3.2">
-                    Para profissionais
-                  </DropdownItem>
-                </NavDropdown>
-
-                <NavDropdown title="Para empresas" id="collasible-nav-dropdown">
-                  <DropdownItem href="#action/3.1">Para empresas</DropdownItem>
-                  <DropdownItem href="#action/3.2">Para empresas</DropdownItem>
-                </NavDropdown>
-
-                <NavDropdown title="Para Ongs" id="collasible-nav-dropdown">
-                  <DropdownItem href="#action/3.1">Para Ongs</DropdownItem>
-                  <DropdownItem href="#action/3.2">Para Ongs</DropdownItem>
-                </NavDropdown>
+                <Link href="/consumidor/busca?ofertas=true">
+                  Para profissionais
+                </Link>
+                <Link href="/consumidor/busca">Para empresas</Link>
+                <Link href="/ongs">Para Ongs</Link>
 
                 <Link href="https://blog.freelas.town/">
                   <a target="_blank">Blog</a>

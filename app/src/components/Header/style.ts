@@ -93,7 +93,7 @@ export const Content = styled.section`
     .content-logo {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 16px;
 
       .logo {
         cursor: pointer;
@@ -103,6 +103,12 @@ export const Content = styled.section`
         color: ${PRETO_10};
         text-decoration: none;
         font-size: 18px;
+        font-weight: 500;
+        transition: all 0.3s;
+
+        :hover {
+          opacity: 0.8;
+        }
       }
     }
 
@@ -311,15 +317,28 @@ export const ContentMenuMobile = styled.div<IProps>`
       display: none;
       transition: display 5s;
 
+      .content-btn {
+        display: none;
+
+        button {
+          white-space: nowrap;
+        }
+      }
+
       a {
         color: #767676;
         font-size: 18px;
         font-weight: 600;
       }
+
       ${({ open }) =>
         open
           ? css`
               display: flex;
+
+              .content-btn {
+                display: block;
+              }
             `
           : css`
               display: none;
