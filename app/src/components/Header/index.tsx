@@ -124,9 +124,7 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
               />
             </div>
             <div className="links">
-              <Link href="/consumidor/busca?ofertas=true">
-                Para profissionais
-              </Link>
+              <Link href="/fornecedor/captar-projetos">Para profissionais</Link>
               <Link href="/consumidor/busca">Para empresas</Link>
               <Link href="/ongs">Para Ongs</Link>
 
@@ -190,7 +188,7 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
                   height={60}
                 />
 
-                <Link href="/consumidor/busca?ofertas=true">
+                <Link href="/fornecedor/captar-projetos">
                   Para profissionais
                 </Link>
                 <Link href="/consumidor/busca">Para empresas</Link>

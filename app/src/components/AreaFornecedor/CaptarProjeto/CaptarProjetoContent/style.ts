@@ -205,6 +205,11 @@ export const ContentFilter = styled.div`
   margin-bottom: 4px;
   width: 100%;
 
+  button {
+    padding: 16px;
+    width: auto;
+  }
+
   @media (max-width: 578px) {
   }
 

@@ -70,6 +70,13 @@ export function Footer() {
 
                   <li
                     className="li-click"
+                    onClick={() => router.push('/empresas/home')}
+                  >
+                    Pagina Empresas
+                  </li>
+
+                  <li
+                    className="li-click"
                     onClick={() => router.push('/quem-somos')}
                   >
                     Quem Somos
