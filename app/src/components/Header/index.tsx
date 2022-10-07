@@ -9,20 +9,16 @@ import {
   Content,
   ContainerLogin,
   ContentMenuMobile,
-  AccordionPrimary,
-  AccordionSecondary,
-  DropdownItem,
 } from './style';
 import Logo from '../../assets/logo-azul-sem-fundo.svg';
 import { useAuth } from '../../contexts/auth';
-import { AZUL, BRANCO, PRETO, PRETO_10 } from '../../styles/variaveis';
+import { AZUL, BRANCO, PRETO } from '../../styles/variaveis';
 import { Button } from '../Form/Button';
 import { IPessoa } from '../../interfaces/IPessoa';
 import autoAnimate from '@formkit/auto-animate';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { NavDropdown } from 'react-bootstrap';
-import { IoIosArrowDown } from 'react-icons/io';
+
 interface IProps {
   esconderMsg?: boolean;
 }
@@ -137,7 +133,7 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
               <Link href="https://blog.freelas.town/">
                 <a target="_blank">Blog</a>
               </Link>
-              {/* {!user?.email && <Link href="/login">Login</Link>} */}
+              {!user?.email && <Link href="/login">Login</Link>}
 
               {user?.email ? (
                 <ContainerLogin>
