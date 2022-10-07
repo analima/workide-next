@@ -2,8 +2,10 @@ import { Container, Content, ContentImage, ContentInfo } from './style';
 import IMG from '@public/mulher-banner.png';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export function BannerEmpresa() {
+  const router = useRouter();
   return (
     <Container>
       <Content>
@@ -13,8 +15,18 @@ export function BannerEmpresa() {
             Uma plataforma para voce encontrar profissionais e tirar do papel
             todos os seus projetos.
           </span>
-          <button className="orange">QUERO VER PROFISSIONAIS</button>
-          <button className="blue">QUERO ME CADASTRAR</button>
+          <button
+            onClick={() => router.push('/consumidor/busca')}
+            className="orange"
+          >
+            QUERO VER PROFISSIONAIS
+          </button>
+          <button
+            onClick={() => router.push('/cadastro-basico')}
+            className="blue"
+          >
+            QUERO ME CADASTRAR
+          </button>
 
           <p>
             Quer ser contratado?

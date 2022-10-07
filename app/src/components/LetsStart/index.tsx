@@ -18,7 +18,10 @@ export function LetsStart() {
           Faça sua primeira solicitação de serviços e encontre agora mesmo um
           profissional qualificado para a sua demanda.
         </span>
-        <Button label="CRIAR PROJETO" onClick={() => router.push('')} />
+        <Button
+          label="CRIAR PROJETO"
+          onClick={() => router.push('/cadastro-basico')}
+        />
       </ContentInfo>
 
       <ContentImage>

@@ -46,7 +46,11 @@ export default function EmpresasHome({ vitrineData }: IPropsData) {
         />
         <LetsStart />
         <RecommendationComment />
-        <Vitrine vitrineData={vitrineData} />
+        <Vitrine
+          vitrineData={vitrineData}
+          title="Veja nossa vitrine de soluções."
+          subtitle="Esses são algumas soluções prontas para otimizar sua demanda, nossos profissionais criam e agilizam o processo do seu projeto"
+        />
         <FrequentQuestions item={perguntaComoFunciona[0]} />
       </Container>
     </>
