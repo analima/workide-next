@@ -172,9 +172,10 @@ export default function ContentBusca() {
                       type="radio"
                       name="profissionais"
                       id="profissionais"
-                      checked={!ofertaFiltro}
+                      checked={!ofertaFiltro && !volunteers}
                       onChange={() => {
-                        setOfertaFiltro(!ofertaFiltro);
+                        setOfertaFiltro(false);
+                        setVolunteers(false);
                         limparFiltros();
                       }}
                     />
@@ -198,7 +199,7 @@ export default function ContentBusca() {
                       type="radio"
                       name="vol"
                       id="vol"
-                      checked={volunteers}
+                      checked={volunteers && !ofertaFiltro}
                       onChange={handleChangeVolunteers}
                       disabled={ofertaFiltro}
                     />
