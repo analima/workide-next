@@ -151,7 +151,7 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
                     <Link href="/consumidor/busca?voluntarios=true">
                       Voluntários
                     </Link>
-                    <Link href="https://blog.gyan.com.br/">
+                    <Link href="https://blog.freelas.town/">
                       <a target="_blank">Blog</a>
                     </Link>
                   </div>
@@ -176,7 +176,7 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
                     <Link href="/consumidor/busca?voluntarios=true">
                       Voluntários
                     </Link>
-                    <Link href="https://blog.gyan.com.br/">
+                    <Link href="https://blog.freelas.town/">
                       <a target="_blank">Blog</a>
                     </Link>
                   </div>
@@ -201,7 +201,7 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
                     <Link href="/consumidor/busca?voluntarios=true">
                       Voluntários
                     </Link>
-                    <Link href="https://blog.gyan.com.br/">
+                    <Link href="https://blog.freelas.town/">
                       <a target="_blank">Blog</a>
                     </Link>
                   </div>
@@ -214,7 +214,7 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
                   eventKey="1"
                   onClick={() => {}}
                 >
-                  <Link href="https://blog.gyan.com.br/">
+                  <Link href="https://blog.freelas.town/">
                     <a target="_blank">Blog</a>
                   </Link>
                 </AccordionSecondary>
@@ -296,7 +296,7 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
                   <DropdownItem href="#action/3.2">Para Ongs</DropdownItem>
                 </NavDropdown>
 
-                <Link href="https://blog.gyan.com.br/">
+                <Link href="https://blog.freelas.town/">
                   <a target="_blank">Blog</a>
                 </Link>
               </div>

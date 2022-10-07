@@ -35,7 +35,7 @@ export function ModalEbookOngs({
   const [errorInstitution, setErrorInstitution] = useState<string>('');
   const [loading, setLoading] = useState(false);
   const [linkDownload, setLinkDownload] = useState<string>(
-    'https://static.gyan.com.br/ebook-gyan.pdf',
+    'https://static.freelas.town/ebook-gyan.pdf',
   );
   const [authorizedDownload, setAuthorizedDownload] = useState<boolean>(false);
   const { control, watch, setValue } = useForm({
@@ -70,7 +70,7 @@ export function ModalEbookOngs({
     setErrorInstitution('');
     setErrorTelephone('');
     setAuthorizedDownload(false);
-    setLinkDownload('https://static.gyan.com.br/ebook-gyan.pdf');
+    setLinkDownload('https://static.freelas.town/ebook-gyan.pdf');
   }, []);
 
   const validatingFields = () => {

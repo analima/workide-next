@@ -32,10 +32,10 @@ function MyApp({ Component, pageProps }: AppProps) {
           property="og:title"
           content="freelas town - Contrate um freelancer em poucos cliques"
         />
-        <meta name="image" content="https://static.gyan.com.br/logo.jpeg" />
+        <meta name="image" content="https://static.freelas.town/logo.jpeg" />
         <meta
           property="og:image"
-          content="https://static.gyan.com.br/logo.jpeg"
+          content="https://static.freelas.town/logo.jpeg"
         />
         <meta name="keywords" content="sites, web, desenvolvimento"></meta>
 
