@@ -40,7 +40,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="keywords" content="sites, web, desenvolvimento"></meta>
 
         <link rel="preload" as="font" />
-        <link rel="shortcut icon" type="image/png" href="./favicon.ico" />
+        <link rel="shortcut icon" type="image/png" href="./favicon.png" />
         <link
           rel="stylesheet"
           type="text/css"
