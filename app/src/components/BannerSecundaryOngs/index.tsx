@@ -1,5 +1,5 @@
 import { Container, Content } from './style';
-import ImgOng from '@public/blue.png';
+import ImgOng from '@public/blue.webp';
 
 export function BannerSecundaryOngs() {
   return (
