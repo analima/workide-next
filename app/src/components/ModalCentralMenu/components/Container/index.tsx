@@ -115,17 +115,17 @@ export function Card({
           if (!user.consumidor) {
             refreshUserData().then(() => {
               if (img === 'beTobe')
-                history.push('/consumidor/busca?ofertas=true');
-              if (img === 'searchUsers') history.push('/consumidor/busca');
+                history.push('/contratante/busca?ofertas=true');
+              if (img === 'searchUsers') history.push('/contratante/busca');
               if (img === 'buildingTogether')
-                history.push('/consumidor/busca?voluntarios=true');
+                history.push('/contratante/busca?voluntarios=true');
             });
           } else {
             if (img === 'beTobe')
-              history.push('/consumidor/busca?ofertas=true');
-            if (img === 'searchUsers') history.push('/consumidor/busca');
+              history.push('/contratante/busca?ofertas=true');
+            if (img === 'searchUsers') history.push('/contratante/busca');
             if (img === 'buildingTogether')
-              history.push('/consumidor/busca?voluntarios=true');
+              history.push('/contratante/busca?voluntarios=true');
           }
         });
     }

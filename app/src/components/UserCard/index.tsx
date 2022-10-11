@@ -12,9 +12,9 @@ import {
   GhostButtonStyled,
   ButtonMainStyled,
 } from './style';
-import Image from 'next/image'
-import EstrelaOff  from '../../assets/estrela-off.svg';
-import Estrela  from '../../assets/estrela.svg';
+import Image from 'next/image';
+import EstrelaOff from '../../assets/estrela-off.svg';
+import Estrela from '../../assets/estrela.svg';
 import PlaceholderImage from '../../assets/placeholderImg.png';
 
 import { useAuth } from '../../contexts/auth';
@@ -117,7 +117,7 @@ export const UserCard = ({
         <ContainerImageStyled
           onClick={() => {
             visao === 'fornecedor'
-              ? history.push(`/consumidor/perfil-publico/`, {
+              ? history.push(`/contratante/perfil-publico/`, {
                   id,
                 })
               : history.push(`/fornecedor/perfil-publico/${id}`);
@@ -143,7 +143,7 @@ export const UserCard = ({
                   onClick={() => {
                     visao === 'consumidor'
                       ? history.push(`/fornecedor/perfil-publico/${id}`)
-                      : history.push(`/consumidor/perfil-publico/`, {
+                      : history.push(`/contratante/perfil-publico/`, {
                           id,
                         });
                   }}

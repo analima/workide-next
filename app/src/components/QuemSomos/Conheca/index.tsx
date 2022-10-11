@@ -11,7 +11,7 @@ export function Conheca() {
         <BoxContent color={AZUL}>
           <button
             onClick={() => {
-              router.push('/consumidor/busca');
+              router.push('/contratante/busca');
             }}
           >
             Empresas
@@ -39,7 +39,7 @@ export function Conheca() {
         <BoxContent color={VERDE}>
           <button
             onClick={() => {
-              router.push('/consumidor/busca?voluntario=true');
+              router.push('/contratante/busca?voluntario=true');
             }}
           >
             Voluntários
@@ -53,7 +53,7 @@ export function Conheca() {
         <BoxContent color={VERDE}>
           <button
             onClick={() => {
-              router.push('/consumidor/busca?ong=true');
+              router.push('/contratante/busca?ong=true');
             }}
           >
             ONGs

@@ -30,7 +30,7 @@ export function useFaturaProjeto(idProjeto: number | string) {
   useEffect(() => {
     const carregarCompras = async () => {
       const { data } = await pagamentos_api.get(
-        `/faturas-servico/consumidor/${user.id_pessoa}?order=dh_criacao=DESC`,
+        `/faturas-servico/contratante/${user.id_pessoa}?order=dh_criacao=DESC`,
       );
       const compra = data.values.filter(
         (item: ICompraProps) => item.id_projeto === idProjeto,

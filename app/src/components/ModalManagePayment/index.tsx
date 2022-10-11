@@ -27,7 +27,7 @@ import { ModalConfirmarAtualizacaoFatura } from '../ModalConfirmarAtualizacaoFat
 import { FiXCircle } from 'react-icons/fi';
 import { usePooling } from '../../hooks/usePooling';
 import { useFaturaProjeto } from '../../hooks/faturasProjeto';
-import Image from 'next/image'
+import Image from 'next/image';
 
 interface IModalProps {
   show: boolean;
@@ -140,7 +140,7 @@ export function ModalManagePayment({
 
   const acompanharStatusFatura = async () => {
     const { data } = await pagamentos_api.get(
-      `/faturas-servico/consumidor/${user.id_pessoa}?order=dh_criacao=DESC`,
+      `/faturas-servico/contratante/${user.id_pessoa}?order=dh_criacao=DESC`,
     );
     const compraCancelada = data.values.filter(
       (item: ICompraProps) => item.id_fatura === compras?.id_fatura,

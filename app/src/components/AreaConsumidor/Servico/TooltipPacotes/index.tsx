@@ -205,7 +205,7 @@ export default function TooltipPacotes({
                           if (user && user.id === undefined) {
                             history.push('/login');
                           } else {
-                            history.push('/consumidor/detalhes-oferta', {
+                            history.push('/contratante/detalhes-oferta', {
                               pacoteId: i.id,
                               servicoInfo: servicoInfo,
                             });

@@ -89,7 +89,7 @@ export default function ProjetoAndamentoContent() {
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
-    hotjar.stateChange('/consumidor/projeto/andamento');
+    hotjar.stateChange('/contratante/projeto/andamento');
   }, []);
 
   return (

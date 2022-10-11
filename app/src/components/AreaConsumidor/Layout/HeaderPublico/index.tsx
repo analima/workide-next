@@ -65,7 +65,7 @@ export default function HeaderPublico(): JSX.Element {
             <Link id="nav-to-part-1" href="/fornecedor/captar-projetos">
               Freelancers
             </Link>
-            <Link id="nav-to-part-2" href="/consumidor/busca">
+            <Link id="nav-to-part-2" href="/contratante/busca">
               Clientes
             </Link>
             <Link id="nav-to-part-3" href="/como-funciona">

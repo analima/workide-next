@@ -16,7 +16,7 @@ export function BannerEmpresa() {
             todos os seus projetos.
           </span>
           <button
-            onClick={() => router.push('/consumidor/busca')}
+            onClick={() => router.push('/contratante/busca')}
             className="orange"
           >
             QUERO VER PROFISSIONAIS

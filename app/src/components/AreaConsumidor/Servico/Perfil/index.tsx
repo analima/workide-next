@@ -98,7 +98,7 @@ export default function Perfil({
       if (publico) {
         history.push('/login');
       } else {
-        if (path === '/consumidor/projetos/exclusivo/' + idUsuario) {
+        if (path === '/contratante/projetos/exclusivo/' + idUsuario) {
           history.push(path, { id_fornecedor: dataProvider.id });
         } else {
           history.push(path);
@@ -256,7 +256,7 @@ export default function Perfil({
                       handleShowDenuncedAvatar();
                       return;
                     }
-                    linkTo('/consumidor/projetos/exclusivo/' + idUsuario);
+                    linkTo('/contratante/projetos/exclusivo/' + idUsuario);
                   }}
                 >
                   SOLICITAR ORÇAMENTO

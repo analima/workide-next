@@ -145,7 +145,7 @@ export default function AvaliacaoProjetoContent({
       setSuccessModalIsOpen(true);
       setTimeout(() => {
         setSuccessModalIsOpen(false);
-        history.push('/consumidor/home');
+        history.push('/contratante/home');
       }, 3000);
     } catch (error: any) {
       setError(error.response.data.message);
