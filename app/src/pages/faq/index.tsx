@@ -4,7 +4,7 @@ import { SearchInput } from '../../components/SearchInput';
 import { SEO } from '../../components/SEO';
 import { Spacer } from '../../components/Spacer';
 import Layout from '../../components/AreaFornecedor/Layout';
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 import {
   ContainerPost,
   ContainerFilterTags,
@@ -23,7 +23,6 @@ import {
 } from '../../components/FAQ/style';
 import { IFaqPost } from '../../interfaces/IFaq';
 import { CustomToggle } from '../../components/FAQ/CustomToggle';
-import { useHistory } from 'react-router';
 import { consultas_api } from '../../services/consultas_api';
 import { geral_api } from '../../services/geral_api';
 
