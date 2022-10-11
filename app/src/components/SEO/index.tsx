@@ -22,7 +22,6 @@ export function SEO({
       <title>{pageTitle}</title>
       {description && <meta name="description" content={description} />}
       {image && <meta name="image" content={image} />}
-      {!indexPage && <meta name="robots" content="noindex,nofollow" />}
       <meta httpEquiv="x-ua-compatible" content="IE=edge,chrome=1" />
       <meta name="MobileOptimized" content="320" />
       <meta name="HandheldFriendly" content="True" />

@@ -27,7 +27,7 @@ import { Spinner } from 'src/components/Spinner';
 export default function CaptarProjetoContent() {
   const projetosRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  let { user } = useAuth();
+  const { user } = useAuth();
   const router = useRouter();
   const { query } = router;
 

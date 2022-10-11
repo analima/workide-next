@@ -1,8 +1,6 @@
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
-import { useHistory } from 'react-router';
 import { useRouter } from 'next/router';
 import { useAuth } from '../../contexts/auth';
-import { IPessoa } from '../../interfaces/IPessoa';
 import { AZUL, CINZA_10 } from '../../styles/variaveis';
 import {
   ContainerPaginacao,
@@ -31,10 +29,7 @@ export function Paginacao({
   ultima,
   primeira,
 }: IPaginacao) {
-  let { user } = useAuth();
-  if(!user){
-    user = {} as IPessoa;
-  }
+  const { user } = useAuth();
   const router = useRouter();
 
   return (
@@ -50,10 +45,15 @@ export function Paginacao({
               Primeira
             </ButtonPagina>
           )}
-          <button disabled={pagina === 1} onClick={anterior}>
+          <button
+            aria-controls="arrow lefts"
+            disabled={pagina === 1}
+            onClick={anterior}
+          >
             <FiChevronLeft color={pagina === 1 ? CINZA_10 : AZUL} />
           </button>
           <button
+            aria-controls="arrow right"
             disabled={pagina === totalPaginas}
             onClick={() => {
               if (!user.id_pessoa) {
