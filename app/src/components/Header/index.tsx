@@ -205,7 +205,11 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
                 {user?.email ? (
                   <ContainerLogin>
                     <Link
-                      href="/"
+                      href={
+                        user.tipoPerfil === 'CONSUMIDOR'
+                          ? '/contratante/home'
+                          : '/fornecedor/home'
+                      }
                       style={{
                         color: PRETO,
                       }}
