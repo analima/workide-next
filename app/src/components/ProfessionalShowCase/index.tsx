@@ -117,7 +117,7 @@ export function ProfessionalShowCase() {
           </Carrousel>
         </CardCarrousel>
         <ContentButton>
-          <button onClick={() => router.push('/consumidor/busca')}>
+          <button onClick={() => router.push('/contratante/busca')}>
             VER TODOS
           </button>
         </ContentButton>

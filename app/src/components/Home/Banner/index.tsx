@@ -89,11 +89,11 @@ export function Banner() {
     if (e.trim() === '') return;
 
     if (type === 'freelancers') {
-      router.push(`/consumidor/busca?filter=${e}`);
+      router.push(`/contratante/busca?filter=${e}`);
     }
 
     if (type === 'voluntários') {
-      router.push(`/consumidor/busca?voluntarios=true&filter=${e}`);
+      router.push(`/contratante/busca?voluntarios=true&filter=${e}`);
     }
 
     if (type === 'projetos') {
@@ -101,7 +101,7 @@ export function Banner() {
     }
 
     if (type === 'ofertas') {
-      router.push(`/consumidor/busca?ofertas=true&filter=${e}`);
+      router.push(`/contratante/busca?ofertas=true&filter=${e}`);
     }
   }
 

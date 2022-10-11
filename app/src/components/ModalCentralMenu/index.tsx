@@ -51,7 +51,7 @@ export function ModalCentralMenu({
         break;
       case 'homeProvider':
         setShowModal(false);
-        router.push('/consumidor/home');
+        router.push('/contratante/home');
         break;
       case 'editProfile':
         setShowModal(false);
@@ -75,7 +75,7 @@ export function ModalCentralMenu({
         break;
       case 'myFavorite':
         setShowModal(false);
-        router.push('/consumidor/home?section=favoritos');
+        router.push('/contratante/home?section=favoritos');
         break;
 
       case 'campaigns':
@@ -90,12 +90,12 @@ export function ModalCentralMenu({
 
       case 'myProjectsProvider':
         setShowModal(false);
-        router.push('/consumidor/home?section=meus-projetos');
+        router.push('/contratante/home?section=meus-projetos');
         break;
 
       default:
         setShowModal(false);
-        router.push('/consumidor/home');
+        router.push('/contratante/home');
     }
   };
 

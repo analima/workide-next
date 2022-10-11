@@ -100,7 +100,7 @@ export default function Navbar({ toggleSidebar, isConsumidor }: INavbar) {
       <div className="icones">
         <FiMenu onClick={toggleSidebar} />
 
-        <Link to={isConsumidor ? '/consumidor/home' : '/fornecedor/home'}>
+        <Link to={isConsumidor ? '/contratante/home' : '/fornecedor/home'}>
           <Home className="fi-icon-home" />
         </Link>
       </div>
@@ -109,7 +109,7 @@ export default function Navbar({ toggleSidebar, isConsumidor }: INavbar) {
         <GhostButton
           onClick={() => {
             isConsumidor
-              ? history.push('/consumidor/busca')
+              ? history.push('/contratante/busca')
               : history.push('/fornecedor/captar-projetos');
           }}
         >

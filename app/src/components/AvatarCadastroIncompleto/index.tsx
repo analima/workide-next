@@ -9,7 +9,7 @@ import {
   ButtonConfirm,
   ContainerText,
 } from './style';
-import Andre  from '../../assets/andre-full-cadastro-incompleto.svg';
+import Andre from '../../assets/andre-full-cadastro-incompleto.svg';
 import { IoMdCloseCircleOutline } from 'react-icons/io';
 import { AZUL } from '../../styles/variaveis';
 import { useHistory } from 'react-router-dom';
@@ -74,7 +74,7 @@ export function AvatarCadastroIncompleto({
               }
               esconderAvatar();
               isConsumer
-                ? history.push('/consumidor/home')
+                ? history.push('/contratante/home')
                 : history.push('/fornecedor/home');
             }}
             color={AZUL}
@@ -97,7 +97,7 @@ export function AvatarCadastroIncompleto({
               onClick={() => {
                 esconderAvatar();
                 isConsumer
-                  ? history.push('/consumidor/home')
+                  ? history.push('/contratante/home')
                   : history.push('/fornecedor/home');
               }}
             >

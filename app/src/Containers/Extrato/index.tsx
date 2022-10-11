@@ -91,7 +91,7 @@ export default function Extrato({ type }: TypeProfileProps) {
             values: IExtratoProps[];
             pages: number;
           }>(
-            `/consulta/extrato/consumidor/${user?.id_pessoa}?limit=10&page=${pagina}`,
+            `/consulta/extrato/contratante/${user?.id_pessoa}?limit=10&page=${pagina}`,
             {
               idPessoaFornecedor: filterUser || 0,
               periodo: periodo || 0,

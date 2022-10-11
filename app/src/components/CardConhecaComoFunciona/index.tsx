@@ -15,7 +15,7 @@ export function CardConhecaComoFunciona() {
 
           <span>
             Anuncie o seu trabalho facilmente, {''}
-            <Link href="/consumidor/busca">
+            <Link href="/contratante/busca">
               <>
                 contrate <br /> freelancers e pague com segurança.
               </>

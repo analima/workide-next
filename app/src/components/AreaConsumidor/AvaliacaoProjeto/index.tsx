@@ -17,7 +17,7 @@ export default function AvaliacaoProjeto() {
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
-    hotjar.stateChange('/consumidor/avaliacao-projeto');
+    hotjar.stateChange('/contratante/avaliacao-projeto');
   }, []);
 
   return (

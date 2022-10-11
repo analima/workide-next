@@ -115,9 +115,9 @@ export default function ContentBusca() {
 
   const handleRedirect = (type: string) => {
     if (type === 'geral') {
-      history.push('/consumidor/projetos/geral');
+      history.push('/contratante/projetos/geral');
     } else if (type === 'exclusivo') {
-      history.push('/consumidor/projetos/exclusivo');
+      history.push('/contratante/projetos/exclusivo');
     }
   };
 
@@ -126,7 +126,7 @@ export default function ContentBusca() {
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
-    hotjar.stateChange('/consumidor/busca');
+    hotjar.stateChange('/contratante/busca');
   }, []);
 
   useEffect(() => {

@@ -247,7 +247,7 @@ export default function Contratado({ id_fornecedor }: IProps) {
                       return;
                     }
                     history.push(
-                      `/consumidor/projetos/exclusivo/${dadosFornecedor.id_usuario}`,
+                      `/contratante/projetos/exclusivo/${dadosFornecedor.id_usuario}`,
                       {
                         id_fornecedor: dadosFornecedor.id,
                       },

@@ -221,7 +221,7 @@ export function Profissional(): JSX.Element {
             <Drapper>
               <span>Por onde começar?</span>
               <ContentButton>
-                <GhostButton onClick={() => history.push('/consumidor/busca')}>
+                <GhostButton onClick={() => history.push('/contratante/busca')}>
                   CONHECER PROFISSIONAIS
                 </GhostButton>
                 <GhostButton

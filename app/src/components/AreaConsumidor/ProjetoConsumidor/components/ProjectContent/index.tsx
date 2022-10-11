@@ -221,7 +221,7 @@ export default function PropostaContent() {
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
-    hotjar.stateChange('/consumidor/propostas');
+    hotjar.stateChange('/contratante/propostas');
   }, []);
 
   return (

@@ -24,7 +24,7 @@ export function RequirementInstituition() {
 
       <ContentButton>
         <button
-          onClick={() => router.push(`/consumidor/busca?voluntario=true`)}
+          onClick={() => router.push(`/contratante/busca?voluntario=true`)}
         >
           CONTRATE UM VOLUNTÁRIO AGORA
         </button>

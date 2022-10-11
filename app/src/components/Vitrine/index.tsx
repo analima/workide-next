@@ -287,7 +287,7 @@ export function ItemVitrine({
           <Button
             label="RECONTRATAR"
             onClick={() =>
-              router.push(`/consumidor/projetos/exclusivo/${item.idUsuario}`)
+              router.push(`/contratante/projetos/exclusivo/${item.idUsuario}`)
             }
           />
         </ContainerRecontratar>
