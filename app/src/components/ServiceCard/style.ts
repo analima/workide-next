@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styled from 'styled-components';
 import {
   BRANCO,
@@ -31,6 +32,12 @@ export const ImageContainer = styled.div`
   position: relative;
   width: 100%;
   overflow: hidden;
+
+  .content-image {
+    border: 1px solid red;
+    height: 160px;
+    width: 100%;
+  }
 `;
 
 export const FillBlack = styled.div`
@@ -46,13 +53,6 @@ export const FillBlack = styled.div`
   );
   z-index: 1;
   cursor: pointer;
-`;
-
-export const ImageProfile = styled.img`
-  width: 100%;
-  height: 160px;
-
-  object-fit: cover;
 `;
 
 export const ImageContainerInfos = styled.div`
