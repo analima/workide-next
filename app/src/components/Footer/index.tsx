@@ -22,6 +22,7 @@ export function Footer() {
     useState<string>('abrir');
   const [abrirOpcoesSuporte, setAbrirOpcoesSuporte] = useState<string>('abrir');
   const router = useRouter();
+
   return (
     <FooterBody>
       <Content>
@@ -67,40 +68,40 @@ export function Footer() {
                   >
                     Cadastre-se
                   </li>
-
-                  <li
-                    className="li-click"
-                    onClick={() => router.push('/empresas/home')}
-                  >
-                    Para Empresas
-                  </li>
-
-                  <li
-                    className="li-click"
-                    onClick={() => router.push('/quem-somos')}
-                  >
-                    Quem Somos
-                  </li>
-
-                  <li className="li-click" onClick={() => router.push('/ongs')}>
-                    Para Ongs
-                  </li>
-
-                  <li
-                    className="li-click"
-                    onClick={() => router.push('https://blog.freelas.town/')}
-                  >
-                    Blog freelas town
-                  </li>
-
-                  <li
-                    className="li-click"
-                    onClick={() => router.push('/como-funciona')}
-                  >
-                    Como funciona
-                  </li>
                 </>
               )}
+
+              <li
+                className="li-click"
+                onClick={() => router.push('/empresas/home')}
+              >
+                Para Empresas
+              </li>
+
+              <li
+                className="li-click"
+                onClick={() => router.push('/quem-somos')}
+              >
+                Quem Somos
+              </li>
+
+              <li className="li-click" onClick={() => router.push('/ongs')}>
+                Para Ongs
+              </li>
+
+              <li
+                className="li-click"
+                onClick={() => router.push('https://blog.freelas.town/')}
+              >
+                Blog freelas town
+              </li>
+
+              <li
+                className="li-click"
+                onClick={() => router.push('/como-funciona')}
+              >
+                Como funciona
+              </li>
             </ul>
           </article>
 

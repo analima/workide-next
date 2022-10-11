@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useState } from 'react';
 import { ReactNode } from 'react';
 import { Container } from 'react-bootstrap';
 import { Menu } from '../../../components/Menu';
@@ -13,10 +13,8 @@ import SidebarConsumidor from '../../AreaConsumidor/Layout/Sidebar/index';
 import { Subtitulo } from './style';
 import Content from './style';
 import { useAuth } from '../../../contexts/auth';
-import HeaderPublico from '../../AreaConsumidor/Layout/HeaderPublico';
 import { FeedbackChat } from '../../../components/FeedbackChat';
-import { IPessoa } from '../../../interfaces/IPessoa';
-import { pessoas_api } from '../../../services/pessoas_api';
+import { Header } from 'src/components/Header';
 
 interface LayoutProps {
   titulo?: string;
@@ -46,8 +44,7 @@ export default function Layout({
     <Content>
       {!user?.id_pessoa ? (
         <>
-          <HeaderPublico />
-          <Spacer size={60} />
+          <Header />
         </>
       ) : (
         <>

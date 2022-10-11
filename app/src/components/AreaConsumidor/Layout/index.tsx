@@ -8,12 +8,12 @@ import { Spacer } from '../../Spacer';
 import { Titulo } from '../../Titulo';
 import { ID_TOKEN, useAuth } from '../../../contexts/auth';
 import { IPessoa } from '../../../interfaces/IPessoa';
-import HeaderPublico from './HeaderPublico';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import { Subtitulo } from './style';
 import Content from './style';
 import { pessoas_api } from '../../../services/pessoas_api';
+import { Header } from 'src/components/Header';
 
 interface LayoutProps {
   titulo: string;
@@ -87,8 +87,7 @@ export default function Layout({
         </>
       ) : (
         <>
-          <HeaderPublico />
-          <Spacer size={60} />
+          <Header />
         </>
       )}
       {activeMenu && <Sidebar open={sidebar} />}
