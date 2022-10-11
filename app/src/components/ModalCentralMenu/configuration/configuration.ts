@@ -24,18 +24,18 @@ export const infoProvider = [
     img: 'buildingTogether',
     text: 'Encontre Voluntários',
     type: 'Consumidor',
-    link: '/consumidor/busca?voluntarios=true',
+    link: '/contratante/busca?voluntarios=true',
   },
   {
     img: 'searchUsers',
     text: 'Encontre Profissionais',
     type: 'Consumidor',
-    link: '/consumidor/busca',
+    link: '/contratante/busca',
   },
   {
     img: 'beTobe',
     text: 'Encontre Ofertas',
     type: 'Consumidor',
-    link: '/consumidor/busca?ofertas=true',
+    link: '/contratante/busca?ofertas=true',
   },
 ];

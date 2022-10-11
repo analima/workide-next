@@ -51,7 +51,7 @@ export function DataThatProvesSuccess({ stats }: StatsProps) {
 
       <ContentButton>
         <button
-          onClick={() => router.push('/consumidor/busca?filter=voluntarios')}
+          onClick={() => router.push('/contratante/busca?filter=voluntarios')}
         >
           ENCONTRAR VOLUNTÁRIOS
         </button>

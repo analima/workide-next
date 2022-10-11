@@ -45,7 +45,7 @@ export default function Servico() {
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
-    hotjar.stateChange('/consumidor/servico');
+    hotjar.stateChange('/contratante/servico');
   }, []);
 
   return (

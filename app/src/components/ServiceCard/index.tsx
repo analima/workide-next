@@ -147,7 +147,7 @@ export function ServiceCard({
               onClick={() =>
                 visao === 'consumidor'
                   ? router.push(
-                      `/consumidor/servico/${
+                      `/contratante/servico/${
                         service.id_pessoa || service.idPessoa
                       }/${service.id}`,
                     )
@@ -169,7 +169,7 @@ export function ServiceCard({
               onClick={() =>
                 visao === 'consumidor'
                   ? router.push(
-                      `/consumidor/servico/${
+                      `/contratante/servico/${
                         service.id_pessoa || service.idPessoa
                       }/${service.id}`,
                     )

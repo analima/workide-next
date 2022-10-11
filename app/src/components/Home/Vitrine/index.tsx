@@ -174,7 +174,9 @@ export function Vitrine({ vitrineData, title, subtitle }: IPropsData) {
           </Carrousel>
         </CardCarrousel>
         <ContainerButton>
-          <Button onClick={() => router.push('/consumidor/busca?ofertas=true')}>
+          <Button
+            onClick={() => router.push('/contratante/busca?ofertas=true')}
+          >
             <span>VER TODOS</span>
           </Button>
         </ContainerButton>

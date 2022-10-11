@@ -20,7 +20,7 @@ export default function Home() {
   const history = useHistory();
   const { refreshUserData } = useAuth();
   const handleRedirect = () => {
-    history.push('/consumidor/busca');
+    history.push('/contratante/busca');
   };
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export default function Home() {
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
-    hotjar.stateChange('/consumidor/home');
+    hotjar.stateChange('/contratante/home');
   }, []);
 
   return (

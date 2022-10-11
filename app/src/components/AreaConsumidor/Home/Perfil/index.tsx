@@ -12,7 +12,7 @@ import {
   ContentPerfilData,
 } from './style';
 import Content from './style';
-import Image from 'next/image'
+import Image from 'next/image';
 import EstrelaOff from '../../../../assets/estrela-off.svg';
 import Estrela from '../../../../assets/estrela.svg';
 import { AZUL_60, CINZA_40 } from '../../../../styles/variaveis';
@@ -134,7 +134,10 @@ export default function Perfil({ isConsumidor }: IProps) {
               </PerfilInfo>
 
               <PerfilFoto>
-                <Image src={user.url_avatar || defaultImage} alt="Foto Perfil" />
+                <Image
+                  src={user.url_avatar || defaultImage}
+                  alt="Foto Perfil"
+                />
               </PerfilFoto>
             </ContentPerfilData>
             <PorcentageCompleted
@@ -154,7 +157,7 @@ export default function Perfil({ isConsumidor }: IProps) {
             <EyeContent>
               <button
                 onClick={() =>
-                  history.push('/consumidor/perfil-publico', {
+                  history.push('/contratante/perfil-publico', {
                     id: user.id_pessoa,
                   })
                 }

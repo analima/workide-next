@@ -149,7 +149,7 @@ export default function Compras() {
 
   const acompanharStatusFatura = async () => {
     const { data } = await pagamentos_api.get(
-      `/faturas-servico/consumidor/${user.id_pessoa}?order=dh_criacao=DESC`,
+      `/faturas-servico/contratante/${user.id_pessoa}?order=dh_criacao=DESC`,
     );
     const compraCancelada = data.values.filter(
       (item: ICompraProps) => item.id_fatura === compraSelecionada?.id_fatura,

@@ -10,7 +10,7 @@ export default class BuscarFaturaProjeto {
     try {
       const {
         data: { values: faturas },
-      } = await pagamentos_api.get(`/faturas-servico/consumidor/${idPessoa}`);
+      } = await pagamentos_api.get(`/faturas-servico/contratante/${idPessoa}`);
       const faturasFiltradas = this.filtrarFaturasPorProjeto(
         faturas,
         idProjeto,

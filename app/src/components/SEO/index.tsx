@@ -41,6 +41,7 @@ export function SEO({
       <meta property="og:image:type" content="image/png" />
       <meta property="og:image:width" content="640" />
       <meta property="og:image:height" content="640" />
+      <meta content="pt-br, en-US, fr" />
 
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:card" content="summary_large_image" />

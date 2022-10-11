@@ -45,7 +45,7 @@ export default function Novo() {
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
-    hotjar.stateChange('/consumidor/projeto/novo');
+    hotjar.stateChange('/contratante/projeto/novo');
   }, []);
 
   return (

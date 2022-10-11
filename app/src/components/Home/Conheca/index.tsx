@@ -42,7 +42,7 @@ export function Conheca() {
               <FiArrowRight
                 color={BRANCO}
                 size={16}
-                onClick={() => router.push('/consumidor/busca')}
+                onClick={() => router.push('/contratante/busca')}
               />
             </span>
           </div>
@@ -55,7 +55,7 @@ export function Conheca() {
               <FiArrowRight
                 color={BRANCO}
                 size={16}
-                onClick={() => router.push('/consumidor/busca?ofertas=true')}
+                onClick={() => router.push('/contratante/busca?ofertas=true')}
               />
             </span>
           </div>

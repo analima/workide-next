@@ -19,14 +19,14 @@ export function CardBoasIdeias() {
 
         <div className="content-button">
           <button
-            onClick={() => router.push('/consumidor/busca?voluntarios=true')}
+            onClick={() => router.push('/contratante/busca?voluntarios=true')}
           >
             BUSCAR VOLUNTÁRIOS
           </button>
           <FiArrowRight
             size={24}
             color={BRANCO}
-            onClick={() => router.push('/consumidor/busca?voluntario=true')}
+            onClick={() => router.push('/contratante/busca?voluntario=true')}
           />
         </div>
       </Content>

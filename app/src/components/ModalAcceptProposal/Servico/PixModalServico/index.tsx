@@ -93,7 +93,7 @@ export function PixModalServico({
       setLoading(true);
       setJaPossuiFaturaPendente(false);
       const response = await pagamentos_api.get(
-        `/faturas-servico/consumidor/${idPessoaConsumidor}`,
+        `/faturas-servico/contratante/${idPessoaConsumidor}`,
       );
       const lastInvoice = response.data.values.find(
         (fatura: any) => fatura.id_projeto === idProjeto,
@@ -138,7 +138,7 @@ export function PixModalServico({
                 Você Já possui uma fatura pendente!
               </TextPendingInvoice>
               <GhostButton
-                onClick={() => history.push('/consumidor/minhas-compras')}
+                onClick={() => history.push('/contratante/minhas-compras')}
               >
                 IR PARA MINHAS FATURAS
               </GhostButton>
@@ -150,7 +150,7 @@ export function PixModalServico({
                 Você Já pagou por esse projeto!
               </TextPendingInvoice>
               <GhostButton
-                onClick={() => history.push('/consumidor/minhas-compras')}
+                onClick={() => history.push('/contratante/minhas-compras')}
               >
                 IR PARA MINHAS FATURAS
               </GhostButton>
