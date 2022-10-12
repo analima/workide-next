@@ -1,12 +1,10 @@
 import { useState, ReactNode, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import { FeedbackChat } from '../../FeedbackChat';
-
 import { Menu } from '../../Menu';
-import { Rodape } from '../../Rodape';
 import { Spacer } from '../../Spacer';
 import { Titulo } from '../../Titulo';
-import { ID_TOKEN, useAuth } from '../../../contexts/auth';
+import { ID_TOKEN } from '../../../contexts/auth';
 import { IPessoa } from '../../../interfaces/IPessoa';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
@@ -14,6 +12,7 @@ import { Subtitulo } from './style';
 import Content from './style';
 import { pessoas_api } from '../../../services/pessoas_api';
 import { Header } from 'src/components/Header';
+import { Footer } from 'src/components/Footer';
 
 interface LayoutProps {
   titulo: string;
@@ -33,7 +32,6 @@ export default function Layout({
   navbarIsNotVisible,
 }: LayoutProps) {
   const [sidebar, setSidebar] = useState(false);
-  const { idToken, isAuthDataLoading } = useAuth();
 
   function toggleSidebar() {
     sidebar && setSidebar(!sidebar);
@@ -98,7 +96,7 @@ export default function Layout({
         {children}
       </Container>
       <Spacer size={150} />
-      <Rodape />
+      <Footer />
       <FeedbackChat />
     </Content>
   );

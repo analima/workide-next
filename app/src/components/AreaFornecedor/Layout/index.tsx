@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { ReactNode } from 'react';
 import { Container } from 'react-bootstrap';
 import { Menu } from '../../../components/Menu';
-import { Rodape } from '../../../components/Rodape';
 import { Spacer } from '../../../components/Spacer';
 import { Titulo } from '../../../components/Titulo';
 
@@ -15,6 +14,7 @@ import Content from './style';
 import { useAuth } from '../../../contexts/auth';
 import { FeedbackChat } from '../../../components/FeedbackChat';
 import { Header } from 'src/components/Header';
+import { Footer } from 'src/components/Footer';
 
 interface LayoutProps {
   titulo?: string;
@@ -76,7 +76,7 @@ export default function Layout({
         {children}
       </Container>
       <Spacer size={150} />
-      <Rodape />
+      <Footer />
       <FeedbackChat />
     </Content>
   );
