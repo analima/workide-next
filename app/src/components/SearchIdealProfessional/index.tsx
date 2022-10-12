@@ -50,7 +50,7 @@ export function SearchIdealProfessional() {
       <h3>Nossa plataforma é gratuita</h3>
       <h4>
         Você não tem limites para uso e só é cobrada taxa <br /> de
-        intermediação quando um projeto for finalizado com suceso.
+        intermediação quando um projeto for finalizado com sucesso.
       </h4>
     </Content>
   );
