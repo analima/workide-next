@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { Conheca } from '../../components/QuemSomos/Conheca';
-import { Rodape } from '../../components/Rodape';
 import { hotjar } from 'react-hotjar';
 import { BannerQuemSomos } from '../../components/QuemSomos/BannerQuemSomos';
 import { Header } from '../../components/Header';
@@ -10,6 +9,7 @@ import { CardCountUp } from '../../components/CardCountUp';
 import { CardProjetosMaisBuscados } from '../../components/CardProjetosMaisBuscados';
 import { SEO } from 'src/components/SEO';
 import { GetStaticProps } from 'next';
+import { Footer } from 'src/components/Footer';
 
 export default function QuemSomos() {
   useEffect(() => {
@@ -31,7 +31,7 @@ export default function QuemSomos() {
         <CardBoasIdeias />
         <CardCountUp />
         <CardProjetosMaisBuscados />
-        <Rodape />
+        <Footer />
       </Container>
     </>
   );
