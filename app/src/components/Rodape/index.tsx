@@ -28,9 +28,6 @@ export function Rodape() {
             <article>
               <h2>Menu</h2>
               <ul>
-                <li className="li-click" onClick={() => router.push('/')}>
-                  Home
-                </li>
                 {user.id_pessoa && (
                   <li
                     className="li-click"

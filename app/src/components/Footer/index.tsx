@@ -38,9 +38,6 @@ export function Footer() {
               Menu
             </h2>
             <ul className={abrirOpcoesMenu}>
-              <li className="li-click" onClick={() => router.push('/')}>
-                Home
-              </li>
               {user?.id_pessoa && (
                 <li
                   className="li-click"
