@@ -15,6 +15,7 @@ import { useAuth } from '../../../contexts/auth';
 import { FeedbackChat } from '../../../components/FeedbackChat';
 import { Header } from 'src/components/Header';
 import { Footer } from 'src/components/Footer';
+import { useInformacoesTipoUsuario } from 'src/hooks/informacoesTipoUsuario';
 
 interface LayoutProps {
   titulo?: string;
@@ -37,6 +38,7 @@ export default function Layout({
 }: LayoutProps) {
   const [sidebar, setSidebar] = useState(false);
   const { user } = useAuth();
+  const { typeSelected } = useInformacoesTipoUsuario();
 
   function toggleSidebar() {
     sidebar && setSidebar(!sidebar);
@@ -52,7 +54,7 @@ export default function Layout({
         <>
           <Menu />
           <Spacer size={90} />
-          {isConsumidor ? (
+          {isConsumidor || typeSelected === 'CONTRATANTE' ? (
             <NavbarConsumidor
               activeMenu={true}
               toggleSidebar={() => setSidebar(!sidebar)}
@@ -64,7 +66,7 @@ export default function Layout({
               hinddenOportunidades={hinddenOportunidades}
             />
           )}
-          {isConsumidor ? (
+          {isConsumidor || typeSelected === 'CONTRATANTE' ? (
             <SidebarConsumidor open={sidebar} />
           ) : (
             <SidebarFornecedor open={sidebar} />
