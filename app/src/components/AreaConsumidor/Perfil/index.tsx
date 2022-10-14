@@ -669,6 +669,7 @@ export default function Perfil() {
                   <ModalCentralMenu
                     showModal={showRecomendacaoModal}
                     setShowModal={setShowRecomendacaoModal}
+                    type="Contratante"
                   />
                   <Condicao>
                     <label>Receber notificação via chat interno</label>
