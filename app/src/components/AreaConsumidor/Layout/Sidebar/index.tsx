@@ -79,7 +79,7 @@ export default function Sidebar({ open }: ISidebar) {
             titulo="Suporte"
             itens={[
               {
-                link: '/FAQ#isConsumidor',
+                link: '/FAQ#isContratante',
                 descricao: 'FAQ - Perguntas e Respostas',
               },
               {
@@ -107,11 +107,11 @@ export default function Sidebar({ open }: ISidebar) {
             titulo="Opções de Conta"
             itens={[
               {
-                link: '/opcoes-conta#isConsumidor',
+                link: '/opcoes-conta#isContratante',
                 descricao: 'Alterar Senha',
               },
               {
-                link: '/opcoes-conta#isConsumidor',
+                link: '/opcoes-conta#isContratante',
                 descricao: 'Excluir Conta',
               },
             ]}
