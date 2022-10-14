@@ -52,7 +52,7 @@ const nextConfig = {
       },
       {
         source: '/:path*',
-        destination: `${process.env.REACT_APP_PROXY_HOST}/:path*`,
+        destination: `http://localhost:4000`,
       },
     ];
   },
