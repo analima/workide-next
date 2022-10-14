@@ -130,29 +130,27 @@ export function Menu({
           type={returnTypeSelected()}
           setShowModal={setShowModal}
         />
-        <Navbar expand="md" style={{ backgroundColor: '#f95' }}>
+        <Navbar expand="md">
           <Container
-            style={{ backgroundColor: '#095' }}
+            style={{ paddingRight: sizePage < 768 ? '0px !important' : '10px' }}
             className="nav-container"
           >
             <Navbar.Brand
-              style={{ backgroundColor: '#509' }}
               className="logo"
               onClick={() => router.push(selecionarRotaHome(user))}
             >
               <Image
-                style={{ backgroundColor: '#d09' }}
                 src={sizePage > 768 ? Logo : LogoMenor}
-                width={180}
-                height={60}
                 alt="freelas town"
+                width={sizePage > 768 ? 180 : 40}
+                height={sizePage > 768 ? 60 : 40}
               />
             </Navbar.Brand>
 
             {user.tipoPerfil !== 'VISITANTE' &&
               user.email &&
               !hiddenCenterMenu && (
-                <ContainerCentral style={{ backgroundColor: '#d99' }}>
+                <ContainerCentral>
                   {typeSelected === 'Selecione...' && (
                     <div className="icone-center">
                       <Image

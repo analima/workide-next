@@ -7,6 +7,17 @@ export const NavCustom = styled.div<{ hiddenBackground?: boolean }>`
   margin: 0px;
   padding: 0px;
 
+  .container,
+  .container-fluid,
+  .container-xxl,
+  .container-xl,
+  .container-lg,
+  .container-md,
+  .container-sm {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+
   ${props =>
     props.hiddenBackground &&
     `
@@ -15,12 +26,22 @@ export const NavCustom = styled.div<{ hiddenBackground?: boolean }>`
       padding: 0px 50px;
       width: inherit;
       max-width: inherit;
+
+      @media (max-width: 768) {
+        padding: 0px !important;
+      }
     }
     `}
 
   .icone-center {
+    width: 80px;
+    height: 60px;
     cursor: pointer;
     justify-self: center !important;
+    margin: 0 auto !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &:hover {
       -moz-transform: scale(1.05);
@@ -30,6 +51,8 @@ export const NavCustom = styled.div<{ hiddenBackground?: boolean }>`
 
     @media (max-width: 768px) {
       width: 54px;
+      height: 20px !important;
+      margin: 0 !important;
     }
   }
 
@@ -381,6 +404,10 @@ export const ContainerCentral = styled.div`
 
   div {
     width: 200px !important;
+  }
+
+  @media (max-width: 900px) {
+    width: 80% !important;
   }
 
   @media (max-width: 578px) {
