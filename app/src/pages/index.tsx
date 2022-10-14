@@ -15,12 +15,18 @@ import { GetStaticProps } from 'next';
 import { consultas_api } from 'src/services/consultas_api';
 import { IServicoInfo } from 'src/interfaces/IServicoInfo';
 import { SEO } from 'src/components/SEO';
+import { useAuth } from 'src/contexts/auth';
+import { useRouter } from 'next/router';
+import { version } from '../../package.json';
 
 interface IPropsData {
   vitrineData: IServicoInfo[];
+  appVersion: string;
 }
 
-export default function Home({ vitrineData }: IPropsData) {
+export default function Home({ vitrineData, appVersion }: IPropsData) {
+  const { user } = useAuth();
+  const router = useRouter();
   useEffect(() => {
     hotjar.initialize(
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
@@ -35,23 +41,35 @@ export default function Home({ vitrineData }: IPropsData) {
         title="freelas town - Contrate um freelancer em poucos cliques"
         excludeTitleSuffix
       />
-      <Header />
-      <Container>
-        <Banner />
-        <CardCategory title="Procure talentos por categoria" page="home" />
-        <CardBoasIdeias />
-        <CardConhecaComoFunciona />
-        <Vitrine vitrineData={vitrineData} />
-        <Conheca />
-        <CardCountUp />
-        <CardProjetosMaisBuscados />
-        <Footer />
-      </Container>
+
+      {user.id_pessoa ? (
+        user.tipoPerfil === 'CONSUMIDOR' ? (
+          router.push('/consumidor/home')
+        ) : (
+          router.push('/fornecedor/home')
+        )
+      ) : (
+        <>
+          <Header />
+          <Container>
+            <Banner />
+            <CardCategory title="Procure talentos por categoria" page="home" />
+            <CardBoasIdeias />
+            <CardConhecaComoFunciona />
+            <Vitrine vitrineData={vitrineData} />
+            <Conheca />
+            <CardCountUp />
+            <CardProjetosMaisBuscados />
+            <Footer versao={appVersion} />
+          </Container>
+        </>
+      )}
     </>
   );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+  const appVersion = version;
   const searchOffers = async (): Promise<any> => {
     const { data } = await consultas_api.post<{ values: IServicoInfo[] }>(
       `/consulta/ofertas?limit=12`,
@@ -64,6 +82,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       vitrineData,
+      appVersion,
     },
     revalidate: 86400,
   };

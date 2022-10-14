@@ -24,10 +24,14 @@ import NovoFiltro from '../NovoFiltro';
 import { InputCheck } from 'src/components/Form/InputCheck';
 import { Spinner } from 'src/components/Spinner';
 
-export default function CaptarProjetoContent() {
+interface IProps {
+  versao?: string;
+}
+
+export default function CaptarProjetoContent({ versao }: IProps) {
   const projetosRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  let { user } = useAuth();
+  const { user } = useAuth();
   const router = useRouter();
   const { query } = router;
 
@@ -130,6 +134,7 @@ export default function CaptarProjetoContent() {
   return (
     <Content ref={contentRef}>
       <Layout
+        versao={versao}
         titulo={
           user.id_pessoa && !!projetosExclusivos.length
             ? 'Oportunidades enviadas para você'

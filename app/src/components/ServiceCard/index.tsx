@@ -14,7 +14,6 @@ import Image from 'next/image';
 
 import {
   Content,
-  ImageProfile,
   ImageContainer,
   ImageContainerInfos,
   ContainerServicePrice,
@@ -142,25 +141,28 @@ export function ServiceCard({
                 />
               )}
             </ImageContainerInfos>
-
-            <ImageProfile
-              onClick={() =>
-                visao === 'consumidor'
-                  ? router.push(
-                      `/contratante/servico/${
-                        service.id_pessoa || service.idPessoa
-                      }/${service.id}`,
-                    )
-                  : router.push(
-                      `/fornecedor/servico/${
-                        service.id_pessoa || service.idPessoa
-                      }/${service.id}`,
-                    )
-              }
-              data-testid="content__image-profile"
-              src={service.arquivo ? service.arquivo.url : service.urlArquivo}
-              alt={service.nome + ' - image'}
-            />
+            <div className="content-image">
+              <Image
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPU0NS8CAACSAFN02dlbQAAAABJRU5ErkJggg=="
+                onClick={() =>
+                  visao === 'consumidor'
+                    ? router.push(
+                        `/contratante/servico/${
+                          service.id_pessoa || service.idPessoa
+                        }/${service.id}`,
+                      )
+                    : router.push(
+                        `/fornecedor/servico/${
+                          service.id_pessoa || service.idPessoa
+                        }/${service.id}`,
+                      )
+                }
+                data-testid="content__image-profile"
+                src={service?.arquivo?.url ?? service?.urlArquivo}
+                alt={service.nome + ' - image'}
+                layout="fill"
+              />
+            </div>
 
             <ImageNameService data-testid="content__name">
               {service.nome}

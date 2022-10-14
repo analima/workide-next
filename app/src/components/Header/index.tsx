@@ -125,7 +125,7 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
             </div>
             <div className="links">
               <Link href="/fornecedor/captar-projetos">Para profissionais</Link>
-              <Link href="/contratante/busca">Para empresas</Link>
+              <Link href="/empresas/home">Para empresas</Link>
               <Link href="/ongs">Para Ongs</Link>
 
               <Link href="https://blog.freelas.town/">
@@ -191,7 +191,7 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
                 <Link href="/fornecedor/captar-projetos">
                   Para profissionais
                 </Link>
-                <Link href="/contratante/busca">Para empresas</Link>
+                <Link href="/empresas/home">Para empresas</Link>
                 <Link href="/ongs">Para Ongs</Link>
 
                 <Link href="https://blog.freelas.town/">
@@ -205,7 +205,11 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
                 {user?.email ? (
                   <ContainerLogin>
                     <Link
-                      href="/"
+                      href={
+                        user.tipoPerfil === 'CONSUMIDOR'
+                          ? '/contratante/home'
+                          : '/fornecedor/home'
+                      }
                       style={{
                         color: PRETO,
                       }}

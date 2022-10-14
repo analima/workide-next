@@ -21,7 +21,7 @@ import { Alert } from 'react-bootstrap';
 import { typeFile } from '../../utils/typeFile';
 import { useAuth } from '../../contexts/auth';
 import { IPessoa } from '../../interfaces/IPessoa';
-import Image from 'next/image'
+import Image from 'next/image';
 
 export function FeedbackChat() {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,17 +34,23 @@ export function FeedbackChat() {
   const [sucessImage, setSucessImage] = useState('');
   const [showAlert, setShowAlert] = useState(false);
   const [urlAtual, setUrlAtual] = useState('');
-  let { user } = useAuth();
-
-  if(!user){
-    user = {} as IPessoa;
-  }
+  const { user } = useAuth();
+  const [sizePage, setSizePage] = useState(window.innerWidth);
 
   const handleSelectedFeedback = (
     evt: React.ChangeEvent<HTMLSelectElement>,
   ) => {
     setFeedbackSelectetd(evt.target.value);
   };
+
+  const handleResize = (e: any) => {
+    setSizePage(window.innerWidth);
+  };
+
+  useEffect(() => {
+    setSizePage(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+  }, []);
 
   function handleOpen() {
     setIsOpen(!isOpen);

@@ -247,7 +247,7 @@ export const HeaderContentButton = styled.div`
   }
 `;
 
-export const Compartilhar = styled.a`
+export const Compartilhar = styled.button`
   padding: 16px 40px;
   width: 236px;
   font-weight: bold;

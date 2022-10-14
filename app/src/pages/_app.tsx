@@ -5,6 +5,7 @@ import Head from 'next/head';
 import { AuthProvider } from 'src/contexts/auth';
 import { Loading } from 'src/components/Loading';
 import { GlobalStyles } from 'src/styles/global';
+import { InformacoesTipoUsuario } from 'src/hooks/informacoesTipoUsuario';
 
 interface ThemeInterface {
   colors: {
@@ -57,9 +58,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         <GlobalStyles />
         <ThemeProvider theme={theme}>
           <AuthProvider>
-            <Loading>
-              <Component {...pageProps} />
-            </Loading>
+            <InformacoesTipoUsuario>
+              <Loading>
+                <Component {...pageProps} />
+              </Loading>
+            </InformacoesTipoUsuario>
           </AuthProvider>
         </ThemeProvider>
       </html>
