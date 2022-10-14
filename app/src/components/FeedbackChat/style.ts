@@ -48,14 +48,21 @@ export const Content = styled.div<OpenProps>`
   }
 `;
 
-export const ContainerThais = styled.div`
+interface IPropsPage {
+  sizePage?: number;
+}
+
+export const ContainerThais = styled.div<IPropsPage>`
   position: fixed;
-  right: 15px;
+  left: 15px;
   bottom: 16px;
   z-index: 9999;
   display: flex;
   flex-direction: column;
-  align-items: center;
+
+  @media (max-width: 600px) {
+    bottom: 60px;
+  }
 `;
 
 export const ContentThais = styled.a`
@@ -65,10 +72,22 @@ export const ContentThais = styled.a`
   border: 2px solid ${AZUL};
   width: 80px;
   height: 80px;
+  overflow: hidden;
+  padding-left: 12px;
+  display: flex;
+  justify-content: center;
+
+  #chat {
+    height: 120px;
+  }
 
   @media (max-width: 1200px) {
     width: 72px;
     height: 72px;
+
+    #chat {
+      height: 120px;
+    }
   }
 
   @media (max-width: 998px) {
@@ -77,6 +96,7 @@ export const ContentThais = styled.a`
   }
 
   @media (max-width: 600px) {
+    padding-left: 0;
     #chat {
       width: 60px;
       height: 60px;
@@ -102,7 +122,7 @@ export const Wrapper = styled.div<OpenProps>`
   position: fixed;
   margin: 0 96px 16px 0;
   bottom: 0;
-  right: 25px;
+  left: 100px;
   z-index: 9999;
   display: ${({ open }) => (open ? 'flex' : 'none')};
   flex-direction: column;
