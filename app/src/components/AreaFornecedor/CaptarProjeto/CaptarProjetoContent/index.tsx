@@ -25,7 +25,7 @@ import { InputCheck } from 'src/components/Form/InputCheck';
 import { Spinner } from 'src/components/Spinner';
 
 interface IProps {
-  versao: string;
+  versao?: string;
 }
 
 export default function CaptarProjetoContent({ versao }: IProps) {
