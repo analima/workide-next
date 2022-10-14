@@ -58,7 +58,11 @@ export type ServiceProps = {
   itens: Array<ItemsService>;
 };
 
-export default function ContentBusca() {
+interface IProps {
+  versao?: string;
+}
+
+export default function ContentBusca({ versao }: IProps) {
   const history = useHistory();
   const { query } = useRouter();
 
@@ -143,7 +147,12 @@ export default function ContentBusca() {
   }, [handleResize]);
 
   return (
-    <Layout titulo="" activeMenu={activeMenu} maisSolucoesIsNotVisible={true}>
+    <Layout
+      versao={versao}
+      titulo=""
+      activeMenu={activeMenu}
+      maisSolucoesIsNotVisible={true}
+    >
       {user.id_pessoa && <InformationUser page="busca" />}
       <Helmet>
         <title>freelas town - Buscando soluções</title>

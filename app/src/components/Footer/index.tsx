@@ -13,7 +13,11 @@ import {
 } from 'react-icons/fa';
 import Link from 'next/link';
 
-export function Footer() {
+interface IProps {
+  versao?: string;
+}
+
+export function Footer({ versao }: IProps) {
   const { user, signOut } = useAuth();
   const { apagarLocalStorage } = useValorProjetoPago();
   const [abrirOpcoesMenu, setAbrirOpcoesMenu] = useState<string>('abrir');
@@ -242,7 +246,7 @@ export function Footer() {
               src={LogoGyan}
               alt="Logo da freelas town"
             />
-            <p>{process.env.REACT_APP_VERSION}</p>
+            <p>{versao}</p>
           </div>
         </FooterSocial>
       </Content>

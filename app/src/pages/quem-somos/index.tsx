@@ -10,8 +10,13 @@ import { CardProjetosMaisBuscados } from '../../components/CardProjetosMaisBusca
 import { SEO } from 'src/components/SEO';
 import { GetStaticProps } from 'next';
 import { Footer } from 'src/components/Footer';
+import { version } from '../../../package.json';
 
-export default function QuemSomos() {
+interface IProps {
+  appVersion: string;
+}
+
+export default function QuemSomos({ appVersion }: IProps) {
   useEffect(() => {
     hotjar.initialize(
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
@@ -31,15 +36,19 @@ export default function QuemSomos() {
         <CardBoasIdeias />
         <CardCountUp />
         <CardProjetosMaisBuscados />
-        <Footer />
+        <Footer versao={appVersion} />
       </Container>
     </>
   );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+  const appVersion = version;
+
   return {
-    props: {},
+    props: {
+      appVersion,
+    },
     revalidate: 86400,
   };
 };

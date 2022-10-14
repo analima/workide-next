@@ -21,6 +21,7 @@ interface LayoutProps {
   activeMenu: boolean;
   maisSolucoesIsNotVisible?: boolean;
   navbarIsNotVisible?: boolean;
+  versao?: string;
 }
 
 export default function Layout({
@@ -30,6 +31,7 @@ export default function Layout({
   activeMenu,
   maisSolucoesIsNotVisible,
   navbarIsNotVisible,
+  versao,
 }: LayoutProps) {
   const [sidebar, setSidebar] = useState(false);
 
@@ -96,7 +98,7 @@ export default function Layout({
         {children}
       </Container>
       <Spacer size={150} />
-      <Footer />
+      <Footer versao={versao} />
       <FeedbackChat />
     </Content>
   );

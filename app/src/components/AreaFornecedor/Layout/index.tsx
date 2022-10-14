@@ -24,6 +24,7 @@ interface LayoutProps {
   hinddenOportunidades?: boolean;
   subtitulo?: string;
   isConsumidor?: boolean;
+  versao?: string;
 }
 
 export default function Layout({
@@ -33,6 +34,7 @@ export default function Layout({
   children,
   hinddenOportunidades,
   isConsumidor,
+  versao,
 }: LayoutProps) {
   const [sidebar, setSidebar] = useState(false);
   const { user } = useAuth();
@@ -78,7 +80,7 @@ export default function Layout({
         {children}
       </Container>
       <Spacer size={150} />
-      <Footer />
+      <Footer versao={versao} />
       <FeedbackChat />
     </Content>
   );
