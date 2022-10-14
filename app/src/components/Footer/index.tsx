@@ -18,7 +18,6 @@ interface IProps {
 }
 
 export function Footer({ versao }: IProps) {
-  console.log(versao);
   const { user, signOut } = useAuth();
   const { apagarLocalStorage } = useValorProjetoPago();
   const [abrirOpcoesMenu, setAbrirOpcoesMenu] = useState<string>('abrir');
