@@ -6,8 +6,13 @@ import { useEffect } from 'react';
 import CaptarProjetoContent from '../../../components/AreaFornecedor/CaptarProjeto/CaptarProjetoContent';
 import { SEO } from 'src/components/SEO';
 import { GetStaticProps } from 'next';
+import { version } from '../../../../package.json';
 
-export default function CaptarProjeto() {
+interface IProps {
+  appVersion: string;
+}
+
+export default function CaptarProjeto({ appVersion }: IProps) {
   useEffect(() => {
     hotjar.initialize(
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
@@ -21,7 +26,7 @@ export default function CaptarProjeto() {
       <SEO title="Buscar oportunidades" />
       <Content>
         <CaptarProjetoFornecedorProvider>
-          <CaptarProjetoContent />
+          <CaptarProjetoContent versao={appVersion} />
         </CaptarProjetoFornecedorProvider>
       </Content>
     </>
@@ -29,8 +34,12 @@ export default function CaptarProjeto() {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+  const appVersion = version;
+
   return {
-    props: {},
+    props: {
+      appVersion,
+    },
     revalidate: 86400,
   };
 };

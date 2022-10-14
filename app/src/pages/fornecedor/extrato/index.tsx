@@ -1,11 +1,15 @@
+import { GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { hotjar } from 'react-hotjar';
 import Layout from 'src/components/AreaFornecedor/Layout';
 import Extrato from 'src/Containers/Extrato';
 import { ID_TOKEN } from 'src/contexts/auth';
-
-export default function Extratos() {
+import { version } from '../../../../package.json';
+interface IProps {
+  appVersion: string;
+}
+export default function Extratos({ appVersion }: IProps) {
   const router = useRouter();
   useEffect(() => {
     hotjar.initialize(
@@ -18,12 +22,23 @@ export default function Extratos() {
   return (
     <>
       {localStorage.getItem(ID_TOKEN) ? (
-        <Layout>
+        <Layout versao={appVersion}>
           <Extrato type="provider" />
         </Layout>
       ) : (
-        router.push('/consumidor/home')
+        router.push('/')
       )}
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const appVersion = version;
+
+  return {
+    props: {
+      appVersion,
+    },
+    revalidate: 86400,
+  };
+};

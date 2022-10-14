@@ -17,12 +17,14 @@ import { IServicoInfo } from 'src/interfaces/IServicoInfo';
 import { SEO } from 'src/components/SEO';
 import { useAuth } from 'src/contexts/auth';
 import { useRouter } from 'next/router';
+import { version } from '../../package.json';
 
 interface IPropsData {
   vitrineData: IServicoInfo[];
+  appVersion: string;
 }
 
-export default function Home({ vitrineData }: IPropsData) {
+export default function Home({ vitrineData, appVersion }: IPropsData) {
   const { user } = useAuth();
   const router = useRouter();
   useEffect(() => {
@@ -58,7 +60,7 @@ export default function Home({ vitrineData }: IPropsData) {
             <Conheca />
             <CardCountUp />
             <CardProjetosMaisBuscados />
-            <Footer />
+            <Footer versao={appVersion} />
           </Container>
         </>
       )}
@@ -67,6 +69,7 @@ export default function Home({ vitrineData }: IPropsData) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+  const appVersion = version;
   const searchOffers = async (): Promise<any> => {
     const { data } = await consultas_api.post<{ values: IServicoInfo[] }>(
       `/consulta/ofertas?limit=12`,
@@ -79,6 +82,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       vitrineData,
+      appVersion,
     },
     revalidate: 86400,
   };

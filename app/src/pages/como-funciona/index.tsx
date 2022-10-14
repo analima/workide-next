@@ -15,12 +15,14 @@ import { GetStaticProps } from 'next';
 import { consultas_api } from 'src/services/consultas_api';
 import { IServicoInfo } from 'src/interfaces/IServicoInfo';
 import { SEO } from 'src/components/SEO';
+import { version } from '../../../package.json';
 
 interface IPropsData {
   vitrineData: IServicoInfo[];
+  appVersion: string;
 }
 
-export default function ComoFunciona({ vitrineData }: IPropsData) {
+export default function ComoFunciona({ vitrineData, appVersion }: IPropsData) {
   useEffect(() => {
     hotjar.initialize(
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
@@ -41,13 +43,15 @@ export default function ComoFunciona({ vitrineData }: IPropsData) {
         <Vitrine vitrineData={vitrineData} />
         <FrequentQuestions item={perguntaComoFunciona[0]} />
         <CardProjetosMaisBuscados />
-        <Footer />
+        <Footer versao={appVersion} />
       </Container>
     </>
   );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+  const appVersion = version;
+
   const searchOffers = async (): Promise<any> => {
     const { data } = await consultas_api.post<{ values: IServicoInfo[] }>(
       `/consulta/ofertas?limit=12`,
@@ -60,6 +64,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       vitrineData,
+      appVersion,
     },
     revalidate: 86400,
   };
