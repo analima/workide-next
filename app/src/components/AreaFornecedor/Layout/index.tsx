@@ -35,7 +35,6 @@ export default function Layout({
   isConsumidor,
   versao,
 }: LayoutProps) {
-  console.log(versao);
   const [sidebar, setSidebar] = useState(false);
   const { user } = useAuth();
 
