@@ -1,9 +1,14 @@
+import { GetStaticProps } from 'next';
 import { useEffect } from 'react';
 import { hotjar } from 'react-hotjar';
 import { NovoPerfilPublico } from 'src/components/AreaFornecedor/NovoPerfilPublico';
 import { SEO } from 'src/components/SEO';
+import { version } from '../../../../package.json';
 
-export default function NovoPerfilPublicos() {
+interface IProps {
+  appVersion: string;
+}
+export default function NovoPerfilPublicos({ appVersion }: IProps) {
   useEffect(() => {
     hotjar.initialize(
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
@@ -15,7 +20,7 @@ export default function NovoPerfilPublicos() {
   return (
     <>
       <SEO title="Perfil" />
-      <NovoPerfilPublico />;
+      <NovoPerfilPublico versao={appVersion} />;
     </>
   );
 }
@@ -27,8 +32,13 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
+  const appVersion = version;
+
   return {
-    props: { post: {} },
+    props: {
+      appVersion,
+    },
+    revalidate: 86400,
   };
-}
+};

@@ -25,8 +25,14 @@ import { IFaqPost } from '../../interfaces/IFaq';
 import { CustomToggle } from '../../components/FAQ/CustomToggle';
 import { consultas_api } from '../../services/consultas_api';
 import { geral_api } from '../../services/geral_api';
+import { GetStaticProps } from 'next';
+import { version } from '../../../package.json';
 
-export default function FaqContent() {
+interface IProps {
+  appVersion: string;
+}
+
+export default function FaqContent({ appVersion }: IProps) {
   const [categories, setCategories] = useState<
     { id: string; descricao: string }[]
   >([]);
@@ -130,6 +136,7 @@ export default function FaqContent() {
     <Content>
       <SEO title="Tem alguma dúvida?" indexPage />
       <Layout
+        versao={appVersion}
         isConsumidor={false}
         titleIsNotBold={true}
         titulo="Como posso te ajudar?"
@@ -255,3 +262,14 @@ export default function FaqContent() {
     </Content>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const appVersion = version;
+
+  return {
+    props: {
+      appVersion,
+    },
+    revalidate: 86400,
+  };
+};

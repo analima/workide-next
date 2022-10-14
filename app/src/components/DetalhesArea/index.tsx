@@ -15,7 +15,11 @@ import {
 } from '../../interfaces/IDetalheAreaProps';
 import { geral_api } from '../../services/geral_api';
 
-const DetalhesArea: React.FC = () => {
+interface IProps {
+  versao?: string;
+}
+
+export default function DetalhesArea({ versao }: IProps) {
   const { query }: any = useRouter();
   const [areas, setAreas] = useState<IAreaProps[]>([]);
   const [dataArea, setDataArea] = useState<IPerguntasAreasProps>(
@@ -61,10 +65,8 @@ const DetalhesArea: React.FC = () => {
             areas.find(i => i.descricao === dataArea.nome) || areas[dataArea.id]
           }
         />
-        <Footer />
+        <Footer versao={versao} />
       </Container>
     </>
   );
-};
-
-export default DetalhesArea;
+}
