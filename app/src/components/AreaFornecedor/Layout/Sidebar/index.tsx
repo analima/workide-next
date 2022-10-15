@@ -1,61 +1,30 @@
 import { useState, useEffect } from 'react';
-import { NavItem, NavLink, Nav, BotaoCaptar, NavButton } from './style';
-import Content from './style';
-import { useAuth } from '../../../../contexts/auth';
-import { useHistory } from 'react-router-dom';
-import { IPessoa } from '../../../../interfaces/IPessoa';
-import { pessoas_api } from '../../../../services/pessoas_api';
-
-import DropdownMenu from './Dropdown';
+import { useAuth } from 'src/contexts/auth';
+import {
+  Content,
+  NavItem,
+  NavLink,
+  Nav,
+  BotaoCaptar,
+  NavButton,
+} from './style';
+import { Dropdown as DropdownMenu } from './Dropdown';
+import { useRouter } from 'next/router';
 
 interface ISidebar {
   open: boolean;
 }
 
-export default function Sidebar({ open }: ISidebar) {
+export function SidebarFornecedor({ open }: ISidebar) {
+  const { user } = useAuth();
   const [display, setDisplay] = useState(open);
-  const history = useHistory();
+  const router = useRouter();
 
   useEffect(() => {
     setTimeout(() => {
       setDisplay(open);
     }, 400);
   }, [open]);
-
-  const [user, setUser] = useState({} as IPessoa);
-  const [isAuthDataLoading, setIsAuthDataLoading] = useState(true);
-  const [idToken, setIdToken] = useState('');
-
-  const refreshUserData = async (ID_TOKEN: any) => {
-    const newIdToken = localStorage.getItem(ID_TOKEN);
-
-    setIdToken(newIdToken || '');
-    if (newIdToken) {
-      const res = await pessoas_api.get('/pessoas/me', {
-        headers: {
-          Authorization: `Bearer ${newIdToken}`,
-        },
-      });
-      if (res) {
-        const { data: newUser } = res;
-        setUser({
-          ...newUser,
-          id_pessoa: newUser.id,
-          email: newUser.usuario?.email,
-          url_avatar: newUser.arquivo?.url,
-          admin: newUser.usuario?.admin,
-        });
-      }
-    }
-  };
-
-  useEffect(() => {
-    let local = localStorage.getItem('@freelas_town:id_token');
-    if (local) {
-      const ID_TOKEN = '@freelas_town:id_token';
-      refreshUserData(ID_TOKEN);
-    }
-  }, []);
 
   return (
     <Content open={open} display={display}>
@@ -69,7 +38,10 @@ export default function Sidebar({ open }: ISidebar) {
                 descricao: `Completo em ${user.percentageRegisterProvider}%`,
                 onClick: true,
               },
-              { link: '/fornecedor/perfil', descricao: 'Visualizar' },
+              {
+                link: `/fornecedor/perfil-publico/${user.id_pessoa}`,
+                descricao: 'Visualizar',
+              },
             ]}
           />
         </NavItem>
@@ -107,7 +79,9 @@ export default function Sidebar({ open }: ISidebar) {
         </NavItem>
 
         <NavItem>
-          <BotaoCaptar onClick={() => history.push('captar-projetos')}>
+          <BotaoCaptar
+            onClick={() => router.push('/fornecedor/captar-projetos')}
+          >
             BUSCAR
           </BotaoCaptar>
           <DropdownMenu
@@ -145,22 +119,15 @@ export default function Sidebar({ open }: ISidebar) {
         </NavItem>
         <NavItem>
           <NavButton
-            onClick={() => history.push('/turbine-seu-potencial/planos')}
+            onClick={() => router.push('/turbine-seu-potencial/planos')}
           >
             Minha assinatura
           </NavButton>
         </NavItem>
 
         <NavItem>
-          <NavButton
-            onClick={() =>
-              history.push('/cadastro-complementar', {
-                cadastroCompleto: true,
-                selectAba: 3,
-              })
-            }
-          >
-            Minha Carteira
+          <NavButton onClick={() => router.push('/cadastro-complementar')}>
+            !!Minha Carteira!!
           </NavButton>
         </NavItem>
         <NavItem>
