@@ -46,7 +46,7 @@ export default function ModalConcluir({
         if (response.status === 200) {
           setShowModal(false);
           setIsLoading(false);
-          history.push(`/consumidor/avaliacao-projeto`, {
+          history.push(`/contratante/avaliacao-projeto`, {
             idProjeto: idProjeto,
             idFornecedor: response.data.idPessoaFornecedor,
           });
@@ -55,7 +55,7 @@ export default function ModalConcluir({
         setShowModalInformation(true);
         setIsLoading(false);
         setMensagem(
-          'Não foi possível concluir o projeto, contate o suporte da Gyan.',
+          'Não foi possível concluir o projeto, contate o suporte da freelas town.',
         );
 
         setTimeout(() => {

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { FooterBody, Content, FooterInfo, FooterSocial } from './style';
-import LogoGyan from '../../assets/gyan-logo-cinza.png';
+import LogoGyan from '../../assets/logo-cinza-sem-fundo.svg';
 import Whatsapp from '../../assets/whatsapp-borda.svg';
 import { useAuth } from '../../contexts/auth';
 import { useValorProjetoPago } from '../../contexts/valorProjetoPago';
@@ -13,7 +13,11 @@ import {
 } from 'react-icons/fa';
 import Link from 'next/link';
 
-export function Footer() {
+interface IProps {
+  versao?: string;
+}
+
+export function Footer({ versao }: IProps) {
   const { user, signOut } = useAuth();
   const { apagarLocalStorage } = useValorProjetoPago();
   const [abrirOpcoesMenu, setAbrirOpcoesMenu] = useState<string>('abrir');
@@ -22,6 +26,7 @@ export function Footer() {
     useState<string>('abrir');
   const [abrirOpcoesSuporte, setAbrirOpcoesSuporte] = useState<string>('abrir');
   const router = useRouter();
+
   return (
     <FooterBody>
       <Content>
@@ -37,9 +42,6 @@ export function Footer() {
               Menu
             </h2>
             <ul className={abrirOpcoesMenu}>
-              <li className="li-click" onClick={() => router.push('/')}>
-                Home
-              </li>
               {user?.id_pessoa && (
                 <li
                   className="li-click"
@@ -67,33 +69,40 @@ export function Footer() {
                   >
                     Cadastre-se
                   </li>
-
-                  <li
-                    className="li-click"
-                    onClick={() => router.push('/quem-somos')}
-                  >
-                    Quem Somos
-                  </li>
-
-                  <li className="li-click" onClick={() => router.push('/ongs')}>
-                    Para Ongs
-                  </li>
-
-                  <li
-                    className="li-click"
-                    onClick={() => router.push('https://blog.gyan.com.br/')}
-                  >
-                    Blog Gyan
-                  </li>
-
-                  <li
-                    className="li-click"
-                    onClick={() => router.push('/como-funciona')}
-                  >
-                    Como funciona
-                  </li>
                 </>
               )}
+
+              <li
+                className="li-click"
+                onClick={() => router.push('/empresas/home')}
+              >
+                Para Empresas
+              </li>
+
+              <li
+                className="li-click"
+                onClick={() => router.push('/quem-somos')}
+              >
+                Quem Somos
+              </li>
+
+              <li className="li-click" onClick={() => router.push('/ongs')}>
+                Para Ongs
+              </li>
+
+              <li
+                className="li-click"
+                onClick={() => router.push('https://blog.freelas.town/')}
+              >
+                Blog freelas town
+              </li>
+
+              <li
+                className="li-click"
+                onClick={() => router.push('/como-funciona')}
+              >
+                Como funciona
+              </li>
             </ul>
           </article>
 
@@ -231,8 +240,13 @@ export function Footer() {
           </div>
 
           <div className="content-version">
-            <Image width={122} height={48} src={LogoGyan} alt="Logo da GYAN" />
-            <p>{process.env.REACT_APP_VERSION}</p>
+            <Image
+              width={122}
+              height={48}
+              src={LogoGyan}
+              alt="Logo da freelas town"
+            />
+            <p>{versao}</p>
           </div>
         </FooterSocial>
       </Content>

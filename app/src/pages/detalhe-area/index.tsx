@@ -1,9 +1,14 @@
+import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { hotjar } from 'react-hotjar';
 import DetalhesArea from 'src/components/DetalhesArea';
+import { version } from '../../../package.json';
 
-const DetalheArea: React.FC = () => {
+interface IProps {
+  appVersion: string;
+}
+export default function DetalheArea({ appVersion }: IProps) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -21,14 +26,23 @@ const DetalheArea: React.FC = () => {
     <>
       <Head>
         <title>
-          Gyan - Conectando pessoas incríveis com projetos apaixonantes
+          freelas town - Conectando pessoas incríveis com projetos apaixonantes
         </title>
 
         <meta name="description" content="Pagina de detalhes da area" />
       </Head>
-      {!isLoading && <DetalhesArea />}
+      {!isLoading && <DetalhesArea versao={appVersion} />}
     </>
   );
-};
+}
 
-export default DetalheArea;
+export const getStaticProps: GetStaticProps = async () => {
+  const appVersion = version;
+
+  return {
+    props: {
+      appVersion,
+    },
+    revalidate: 86400,
+  };
+};

@@ -45,13 +45,13 @@ export default function Novo() {
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
-    hotjar.stateChange('/consumidor/projeto/novo');
+    hotjar.stateChange('/contratante/projeto/novo');
   }, []);
 
   return (
     <Content>
       <Helmet>
-        <title>Gyan - Crie um novo projeto</title>
+        <title>freelas town - Crie um novo projeto</title>
       </Helmet>
       <Layout titulo="ESTA TELA É APENAS PARA DEBUG" activeMenu={true}>
         <Card>

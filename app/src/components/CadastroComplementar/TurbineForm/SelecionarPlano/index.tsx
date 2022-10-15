@@ -5,7 +5,7 @@ export default function SelecionarPlano(): JSX.Element {
   return (
     <InformacoesFinanceirasProvider>
       <Helmet>
-        <title>Gyan - Turbine seu potencial com os nossos planos</title>
+        <title>freelas town - Turbine seu potencial com os nossos planos</title>
       </Helmet>
       <SelecionarPlanoContent />
     </InformacoesFinanceirasProvider>

@@ -4,21 +4,32 @@ import userIcon from '../../assets/user_circle.svg';
 import separator from '../../assets/separador.svg';
 import logOutIcon from '../../assets/logout.svg';
 import Center from '../../assets/center.svg';
+import CenterProfissional from '../../assets/center-profissional.svg';
+import CenterContratante from '../../assets/center-contratante.svg';
 import separador from '../../assets/separador.svg';
-import Logo from '../../assets/logo.svg';
+import Logo from '../../assets/logo-azul-sem-fundo.svg';
+import LogoMenor from '../../assets/logo-pequena-azul.png';
 
-import { NavCustom, ButtonToggle, NavLink } from './style';
+import {
+  NavCustom,
+  ButtonToggle,
+  DivOptions,
+  NavLink,
+  ContainerCentral,
+  ContainerMenuMobile,
+} from './style';
 import { CadastroBasico } from '../CadastroBasico';
-import { useHistory } from 'react-router-dom';
 import { useRouter } from 'next/router';
 
 import { useEffect, useState } from 'react';
 import { ModalCentralMenu } from '../ModalCentralMenu';
 import { useValorProjetoPago } from '../../contexts/valorProjetoPago';
 import { ID_TOKEN, useAuth } from '../../contexts/auth';
-import { IPessoa } from 'src/interfaces/IPessoa';
-import { pessoas_api } from '../../services/pessoas_api';
 import { selecionarRotaHome } from 'src/utils/selecionarRotaHome';
+import { useInformacoesTipoUsuario } from 'src/hooks/informacoesTipoUsuario';
+import { Select } from '../Form/Select';
+import { FiMenu } from 'react-icons/fi';
+import { AZUL } from 'src/styles/variaveis';
 
 export function Menu({
   hiddenCenterMenu,
@@ -31,47 +42,21 @@ export function Menu({
   const [displayOfOverlay, setdisplayOfOverlay] = useState('none');
   const [showModal, setShowModal] = useState<boolean>(false);
   const [sizePage, setSizePage] = useState(0);
+  const {
+    optionsType,
+    typeSelected,
+    handleSelectedType,
+    control,
+    returnTypeSelected,
+  } = useInformacoesTipoUsuario();
 
-  const { signOut } = useAuth();
-  const history = useHistory();
+  const { signOut, user } = useAuth();
+  const [open, setOpen] = useState(false);
+
   const router = useRouter();
   const background = 'transparent';
   const [name, setName] = useState('');
   const { apagarLocalStorage } = useValorProjetoPago();
-
-  const [user, setUser] = useState({} as IPessoa);
-  const [isAuthDataLoading, setIsAuthDataLoading] = useState(true);
-  const [idToken, setIdToken] = useState('');
-
-  const refreshUserData = async (ID_TOKEN: any) => {
-    const newIdToken = localStorage.getItem(ID_TOKEN);
-    setIdToken(newIdToken || '');
-    if (newIdToken) {
-      const res = await pessoas_api.get('/pessoas/me', {
-        headers: {
-          Authorization: `Bearer ${newIdToken}`,
-        },
-      });
-      if (res) {
-        const { data: newUser } = res;
-        setUser({
-          ...newUser,
-          id_pessoa: newUser.id,
-          email: newUser.usuario?.email,
-          url_avatar: newUser.arquivo?.url,
-          admin: newUser.usuario?.admin,
-        });
-      }
-    }
-  };
-
-  useEffect(() => {
-    let local = localStorage.getItem('@Gyan:id_token');
-    if (local) {
-      const ID_TOKEN = '@Gyan:id_token';
-      refreshUserData(ID_TOKEN);
-    }
-  }, []);
 
   const handleResize = (e: any) => {
     setSizePage(window.innerWidth);
@@ -140,73 +125,135 @@ export function Menu({
           handleShowOverlay={handleShowOverlay}
         />
 
-        <ModalCentralMenu showModal={showModal} setShowModal={setShowModal} />
+        <ModalCentralMenu
+          showModal={showModal}
+          type={returnTypeSelected()}
+          setShowModal={setShowModal}
+        />
         <Navbar expand="md">
-          <Container className="nav-container">
-            <Navbar.Brand className="logo" onClick={() => router.push('/')}>
-              <Image src={Logo} alt="Gyan" />
+          <Container
+            style={{ paddingRight: sizePage < 768 ? '0px !important' : '10px' }}
+            className="nav-container"
+          >
+            <Navbar.Brand
+              className="logo"
+              onClick={() => router.push(selecionarRotaHome(user))}
+            >
+              <Image
+                src={sizePage > 768 ? Logo : LogoMenor}
+                alt="freelas town"
+                width={sizePage > 768 ? 180 : 40}
+                height={sizePage > 768 ? 60 : 40}
+              />
             </Navbar.Brand>
 
-            {!user.visitante && user.email && !hiddenCenterMenu && (
-              <Image
-                alt=""
-                src={Center}
-                className="icone-center"
-                onClick={() => {
-                  setShowModal(!showModal);
-                }}
-              />
+            {user.tipoPerfil !== 'VISITANTE' &&
+              user.email &&
+              !hiddenCenterMenu && (
+                <ContainerCentral>
+                  {typeSelected === 'Selecione...' && (
+                    <div className="icone-center">
+                      <Image
+                        alt="Selecione"
+                        src={Center}
+                        onClick={() => {
+                          setShowModal(!showModal);
+                        }}
+                      />
+                    </div>
+                  )}
+
+                  {typeSelected === 'CONTRATANTE' && (
+                    <div className="icone-center">
+                      <Image
+                        alt=""
+                        src={CenterContratante}
+                        onClick={() => {
+                          setShowModal(!showModal);
+                        }}
+                      />
+                    </div>
+                  )}
+
+                  {typeSelected === 'PROFISSIONAL' && (
+                    <div className="icone-center">
+                      <Image
+                        alt=""
+                        src={CenterProfissional}
+                        onClick={() => {
+                          setShowModal(!showModal);
+                        }}
+                      />
+                    </div>
+                  )}
+
+                  <Select
+                    control={control}
+                    name="userType"
+                    event={handleSelectedType}
+                    options={optionsType}
+                    value={typeSelected}
+                    className="selectType"
+                    noValueOption={
+                      typeSelected === 'Selecione...'
+                        ? 'Selecione...'
+                        : returnTypeSelected()
+                    }
+                  />
+                </ContainerCentral>
+              )}
+
+            {sizePage > 578 && <Navbar.Toggle aria-controls="navbarScroll" />}
+            {sizePage < 579 && (
+              <ContainerMenuMobile>
+                <FiMenu onClick={() => setOpen(true)} color={AZUL} size={24} />
+              </ContainerMenuMobile>
             )}
 
-            <Navbar.Toggle aria-controls="navbarScroll" />
-
             {localStorage.getItem(ID_TOKEN) ? (
-              <>
+              <DivOptions>
                 <Navbar.Collapse
                   id="navbarScroll"
                   className="justify-content-end"
                 >
-                  <Image className="separator" src={separator} alt="perfil" />
+                  {sizePage <= 578 && <Image src={Logo} alt="freelas town" />}
+                  <div className="separator">
+                    <Image src={separator} alt="perfil" />
+                  </div>
                   <Nav.Link
                     className="container-profile"
-                    onClick={() =>
-                      router.push(selecionarRotaHome(user?.tipoPerfil))
-                    }
+                    onClick={() => router.push(selecionarRotaHome(user))}
                   >
-                    <Image className="profile" src={userIcon} alt="perfil" />
+                    <div className="profile">
+                      <Image src={userIcon} alt="perfil" />
+                    </div>
                     {name}
                   </Nav.Link>
                   <Nav.Link
                     className="container-log-out"
-                    href="#"
+                    href="/"
                     onClick={() => {
-                      router.push('/');
                       signOut();
+                      apagarLocalStorage();
                     }}
                   >
                     <Image src={logOutIcon} alt="Sair" />
                     <span className="log-out-text">Sair</span>
                   </Nav.Link>
                 </Navbar.Collapse>
-              </>
+              </DivOptions>
             ) : (
               <Navbar.Collapse
                 id="navbarScroll"
                 className="justify-content-end"
               >
-                {sizePage > 767 ? (
+                {!user.id_pessoa && sizePage > 767 ? (
                   <>
-                    <Nav.Link onClick={() => handleScrollTo('find-solution')}>
-                      Encontre a solução para seu projeto
-                    </Nav.Link>
+                    <Nav.Link>Encontre a solução para seu projeto</Nav.Link>
 
-                    <Nav.Link onClick={() => handleScrollTo('who-we-are')}>
-                      Quem somos
-                    </Nav.Link>
+                    <Nav.Link>Quem somos</Nav.Link>
 
-                    <Nav.Link onClick={() => handleScrollTo('how-it-works')}>
-                      Como funciona
-                    </Nav.Link>
+                    <Nav.Link>Como funciona</Nav.Link>
 
                     <div className="divisor">
                       <Image src={separador} alt="Separador" />
@@ -217,24 +264,13 @@ export function Menu({
                   </>
                 ) : (
                   <>
-                    <NavLink
-                      aria-controls="navbarScroll"
-                      onClick={() => handleScrollTo('find-solution')}
-                    >
+                    <NavLink aria-controls="navbarScroll">
                       Encontre a solução para seu projeto
                     </NavLink>
 
-                    <NavLink
-                      aria-controls="navbarScroll"
-                      onClick={() => handleScrollTo('who-we-are')}
-                    >
-                      Quem somos
-                    </NavLink>
+                    <NavLink aria-controls="navbarScroll">Quem somos</NavLink>
 
-                    <NavLink
-                      aria-controls="navbarScroll"
-                      onClick={() => handleScrollTo('how-it-works')}
-                    >
+                    <NavLink aria-controls="navbarScroll">
                       Como funciona
                     </NavLink>
 
@@ -255,10 +291,6 @@ export function Menu({
                   {' '}
                   CADASTRE-SE{' '}
                 </ButtonToggle>
-                {/* Cartão 062
-                <Nav.Link href="/login">
-                  <Image src={user_circle} alt="login icon" />
-                </Nav.Link> */}
               </Navbar.Collapse>
             )}
           </Container>

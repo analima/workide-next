@@ -47,7 +47,7 @@ export function InformationUser({ page }: IProps) {
             <span>Cadastre um projeto e receba propostas da comunidade.</span>
             <Button
               label="CADASTRAR PROJETO"
-              onClick={() => router.push('/consumidor/projetos/geral')}
+              onClick={() => router.push('/contratante/projetos/geral')}
             />
           </>
         )}
@@ -67,11 +67,11 @@ export function InformationUser({ page }: IProps) {
           <>
             <Button
               label="CADASTRAR PROJETO"
-              onClick={() => router.push('/consumidor/projetos/geral')}
+              onClick={() => router.push('/contratante/projetos/geral')}
             />
             <Button
               label="BUSCAR PROFISSIONAIS"
-              onClick={() => router.push('/consumidor/busca')}
+              onClick={() => router.push('/contratante/busca')}
             />
           </>
         )}

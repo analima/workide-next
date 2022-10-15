@@ -84,13 +84,13 @@ export default function Perfil() {
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
-    hotjar.stateChange('/consumidor/perfil');
+    hotjar.stateChange('/contratante/perfil');
   }, []);
 
   return (
     <Content>
       <Helmet>
-        <title>Gyan - Editar suas informações de consumidor</title>
+        <title>freelas town - Editar suas informações de consumidor</title>
       </Helmet>
       <Layout titulo="Meu Perfil" activeMenu={true}>
         <Container>
@@ -669,6 +669,7 @@ export default function Perfil() {
                   <ModalCentralMenu
                     showModal={showRecomendacaoModal}
                     setShowModal={setShowRecomendacaoModal}
+                    type="Contratante"
                   />
                   <Condicao>
                     <label>Receber notificação via chat interno</label>

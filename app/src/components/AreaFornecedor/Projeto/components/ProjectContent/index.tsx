@@ -222,7 +222,9 @@ export default function PropostaContent() {
   return (
     <Content>
       <Helmet>
-        <title>Gyan - Ver proposta enviada para {project.nome || ''}</title>
+        <title>
+          freelas town - Ver proposta enviada para {project.nome || ''}
+        </title>
       </Helmet>
       <Layout
         titulo={project.nome && `${project.nome}`}

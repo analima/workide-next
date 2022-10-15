@@ -12,12 +12,12 @@ export default function MinhasComprasConsumidor() {
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
-    hotjar.stateChange('/consumidor/minhas-compras');
+    hotjar.stateChange('/contratante/minhas-compras');
   }, []);
   return (
     <Content>
       <Helmet>
-        <title>Gyan - Minhas compras de consumidor</title>
+        <title>freelas town - Minhas compras de consumidor</title>
       </Helmet>
       <MinhasComprasConsumidorProvider>
         <InformacoesFinanceirasProvider>

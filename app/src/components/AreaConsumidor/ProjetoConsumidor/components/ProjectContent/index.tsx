@@ -221,13 +221,15 @@ export default function PropostaContent() {
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
-    hotjar.stateChange('/consumidor/propostas');
+    hotjar.stateChange('/contratante/propostas');
   }, []);
 
   return (
     <Content>
       <Helmet>
-        <title>Gyan - Proposta enviada para {dadosProjetos.nome || ''}</title>
+        <title>
+          freelas town - Proposta enviada para {dadosProjetos.nome || ''}
+        </title>
       </Helmet>
       <Layout
         activeMenu={true}

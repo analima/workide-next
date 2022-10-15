@@ -1,6 +1,6 @@
 import { Container, Content, ContentButton } from './style';
 import ImgOng from '@public/img-ong.webp';
-import Logo from '../../assets/logo-branca.svg';
+import Logo from '../../assets/logo-branca-sem-fundo.svg';
 import Image from 'next/image';
 import { ModalEbookOngs } from '../ModalEbookOngs';
 import { useState } from 'react';
@@ -18,17 +18,17 @@ export function BannerOngs() {
           <Image
             src={Logo}
             className="logo"
-            alt="Gyan"
-            width={152}
-            height={38}
+            alt="freelas town"
+            width={200}
+            height={80}
             onClick={() => router.push('/')}
           />
         </div>
         <h1>Sua ONG precisa de trabalho digital voluntário?</h1>
         <span>
           Está em busca de voluntários para colaborar com a sua causa, venha
-          fazer parte da GYAN, e encontre os profissionais qualificados para
-          solucionar os problemas que sua ONG passa no dia a dia.
+          fazer parte da freelas town, e encontre os profissionais qualificados
+          para solucionar os problemas que sua ONG passa no dia a dia.
         </span>
 
         <ContentButton>

@@ -25,7 +25,7 @@ export default function PropostaContent() {
   return (
     <Content>
       <Helmet>
-        <title>Gyan - Proposta enviada para Morning Show</title>
+        <title>freelas town - Proposta enviada para Morning Show</title>
       </Helmet>
       <Layout titulo="Projeto Morning Show" activeMenu>
         <Row>

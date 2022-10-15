@@ -66,16 +66,15 @@ export default function ModalDenuncia({
     },
   ];
 
-
   const [errors, setErrors] = useState<ErrorMessages>({} as ErrorMessages);
   const [tipoDenuncia, setTipoDenuncia] = useState('');
 
   const [denuncia, setDenuncia] = useState('');
   const [checkedDenuncia, setCheckedDenuncia] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
-  let{ user } = useAuth();
+  let { user } = useAuth();
 
-  if(!user){
+  if (!user) {
     user = {} as IPessoa;
   }
 
@@ -186,7 +185,7 @@ export default function ModalDenuncia({
             <Row className="mb-12">
               <Col lg={12} className="mb-12">
                 <Titulo
-                  titulo="Nós da Gyan valorizamos a sua segurança e privacidade. Por favor, nos informe abaixo o motivo dessa denúncia."
+                  titulo="Nós da freelas town valorizamos a sua segurança e privacidade. Por favor, nos informe abaixo o motivo dessa denúncia."
                   tamanho={15}
                   cor="rgba(73, 73, 73, 0.8)"
                 />

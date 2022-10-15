@@ -40,14 +40,14 @@ const dados = [
     color: LARANJA,
     text: 'Encontre projetos facinantes que alavancarão sua carreira.',
     subText:
-      'Crie seu perfil na Gyan e exponha suas habilidades profissionais para o mundo.',
+      'Crie seu perfil na freelas town e exponha suas habilidades profissionais para o mundo.',
   },
   {
     title: 'Ofertas',
     id: 4,
     img: IMG5.src,
     color: '#E50052',
-    text: 'Encontre soluções prontas criadas pela comunidade de profissionais da Gyan.',
+    text: 'Encontre soluções prontas criadas pela comunidade de profissionais da freelas town.',
     subText: 'Contrate projetos com rapidez e facilidade.',
   },
 ];
@@ -89,11 +89,11 @@ export function Banner() {
     if (e.trim() === '') return;
 
     if (type === 'freelancers') {
-      router.push(`/consumidor/busca?filter=${e}`);
+      router.push(`/contratante/busca?filter=${e}`);
     }
 
     if (type === 'voluntários') {
-      router.push(`/consumidor/busca?voluntarios=true&filter=${e}`);
+      router.push(`/contratante/busca?voluntarios=true&filter=${e}`);
     }
 
     if (type === 'projetos') {
@@ -101,7 +101,7 @@ export function Banner() {
     }
 
     if (type === 'ofertas') {
-      router.push(`/consumidor/busca?ofertas=true&filter=${e}`);
+      router.push(`/contratante/busca?ofertas=true&filter=${e}`);
     }
   }
 

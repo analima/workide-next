@@ -65,7 +65,7 @@ export function BoletoModalServico({
       setLoading(true);
       setJaPossuiFaturaPendente(false);
       const response = await pagamentos_api.get(
-        `/faturas-servico/consumidor/${idPessoaConsumidor}`,
+        `/faturas-servico/contratante/${idPessoaConsumidor}`,
       );
       const lastInvoice = response.data.values.find(
         (fatura: any) => fatura.id_projeto === idProjeto,
@@ -130,7 +130,7 @@ export function BoletoModalServico({
                 Você Já possui uma fatura pendente!
               </TextPendingInvoice>
               <GhostButton
-                onClick={() => history.push('/consumidor/minhas-compras')}
+                onClick={() => history.push('/contratante/minhas-compras')}
               >
                 IR PARA MINHAS FATURAS
               </GhostButton>
@@ -142,7 +142,7 @@ export function BoletoModalServico({
                 Você Já pagou por esse projeto!
               </TextPendingInvoice>
               <GhostButton
-                onClick={() => history.push('/consumidor/minhas-compras')}
+                onClick={() => history.push('/contratante/minhas-compras')}
               >
                 IR PARA MINHAS FATURAS
               </GhostButton>
@@ -177,7 +177,7 @@ export function BoletoModalServico({
               <Button
                 onClick={() => {
                   setShow(false);
-                  history.push('/consumidor/minhas-compras');
+                  history.push('/contratante/minhas-compras');
                 }}
               >
                 FEITO

@@ -4,8 +4,15 @@ import Content from '../../../styles/fornecedor/captar-projetos/style';
 import { hotjar } from 'react-hotjar';
 import { useEffect } from 'react';
 import CaptarProjetoContent from '../../../components/AreaFornecedor/CaptarProjeto/CaptarProjetoContent';
+import { SEO } from 'src/components/SEO';
+import { GetStaticProps } from 'next';
+import { version } from '../../../../package.json';
 
-export default function CaptarProjeto() {
+interface IProps {
+  appVersion: string;
+}
+
+export default function CaptarProjeto({ appVersion }: IProps) {
   useEffect(() => {
     hotjar.initialize(
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
@@ -15,14 +22,24 @@ export default function CaptarProjeto() {
   }, []);
 
   return (
-    <Content>
-      <Helmet>
-        <title>Gyan - Buscar oportunidades</title>
-      </Helmet>
-
-      <CaptarProjetoFornecedorProvider>
-        <CaptarProjetoContent />
-      </CaptarProjetoFornecedorProvider>
-    </Content>
+    <>
+      <SEO title="Buscar oportunidades" />
+      <Content>
+        <CaptarProjetoFornecedorProvider>
+          <CaptarProjetoContent versao={appVersion} />
+        </CaptarProjetoFornecedorProvider>
+      </Content>
+    </>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const appVersion = version;
+
+  return {
+    props: {
+      appVersion,
+    },
+    revalidate: 86400,
+  };
+};

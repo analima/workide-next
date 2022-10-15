@@ -3,7 +3,11 @@ import styled from 'styled-components';
 import { lighten } from 'polished';
 import { AZUL, BRANCO } from '../../styles/variaveis';
 
-export const Content = styled.div``;
+export const Content = styled.div`
+  .logo {
+    border: solid 3px red;
+  }
+`;
 
 export const Center = styled.div`
   display: flex;

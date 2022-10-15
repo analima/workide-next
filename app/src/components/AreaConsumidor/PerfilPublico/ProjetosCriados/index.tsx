@@ -20,7 +20,7 @@ export default function ProjetosCriados({ idPessoa }: { idPessoa?: number }) {
         const {
           data: { values: projects },
         } = await oportunidades_api.get(
-          `/projetos/consumidor/${idPessoa}?order=dataHoraUltimaAtualizacao=desc`,
+          `/projetos/contratante/${idPessoa}?order=dataHoraUltimaAtualizacao=desc`,
         );
         setProjetoPublicado(projects);
       } else {

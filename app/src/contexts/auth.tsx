@@ -10,9 +10,9 @@ import { services } from 'src/services';
 import { IPessoa } from '../interfaces/IPessoa';
 import { pessoas_api } from '../services/pessoas_api';
 
-export const ID_TOKEN = '@Gyan:id_token';
-export const REFRESH_TOKEN = '@Gyan:refresh_token';
-export const USER = '@Gyan:user';
+export const ID_TOKEN = '@freelas_town:id_token';
+export const REFRESH_TOKEN = '@freelas_town:refresh_token';
+export const USER = '@freelas_town:user';
 
 interface IAuthProps {
   id_token: string;
@@ -59,22 +59,26 @@ export function AuthProvider({ children }: IProps) {
   const refreshUserData = useCallback(async () => {
     const newIdToken = localStorage.getItem(ID_TOKEN);
     setIdToken(newIdToken || '');
-    if (newIdToken) {
-      const res = await pessoas_api.get('/pessoas/me', {
-        headers: {
-          Authorization: `Bearer ${newIdToken}`,
-        },
-      });
-      if (res) {
-        const { data: newUser } = res;
-        setUser({
-          ...newUser,
-          id_pessoa: newUser.id,
-          email: newUser.usuario?.email,
-          url_avatar: newUser.arquivo?.url,
-          admin: newUser.usuario?.admin,
+    try {
+      if (newIdToken) {
+        const res = await pessoas_api.get('/pessoas/me', {
+          headers: {
+            Authorization: `Bearer ${newIdToken}`,
+          },
         });
+        if (res) {
+          const { data: newUser } = res;
+          setUser({
+            ...newUser,
+            id_pessoa: newUser.id,
+            email: newUser.usuario?.email,
+            url_avatar: newUser.arquivo?.url,
+            admin: newUser.usuario?.admin,
+          });
+        }
       }
+    } catch (error) {
+      console.error(error);
     }
   }, []);
 

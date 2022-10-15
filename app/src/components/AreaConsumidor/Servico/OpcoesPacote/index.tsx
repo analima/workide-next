@@ -198,7 +198,7 @@ export default function OpcoesPacote({
                                 if (user && user.id === undefined) {
                                   history.push('/login');
                                 } else {
-                                  history.push('/consumidor/detalhes-oferta', {
+                                  history.push('/contratante/detalhes-oferta', {
                                     pacoteId: pacote.id,
                                     servicoInfo: servicoInfo,
                                   });

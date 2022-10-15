@@ -184,7 +184,7 @@ export default function FinanceiroFormContent() {
           await pessoas_api.put('/pessoas/dados-recebimento', form);
         } else await pessoas_api.post('/pessoas/dados-recebimento', form);
         if (isConsumer) {
-          history.push('/consumidor/home');
+          history.push('/contratante/home');
         } else {
           history.push('/');
         }

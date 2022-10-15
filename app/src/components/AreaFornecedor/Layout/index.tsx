@@ -1,8 +1,7 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useState } from 'react';
 import { ReactNode } from 'react';
 import { Container } from 'react-bootstrap';
 import { Menu } from '../../../components/Menu';
-import { Rodape } from '../../../components/Rodape';
 import { Spacer } from '../../../components/Spacer';
 import { Titulo } from '../../../components/Titulo';
 
@@ -13,10 +12,10 @@ import SidebarConsumidor from '../../AreaConsumidor/Layout/Sidebar/index';
 import { Subtitulo } from './style';
 import Content from './style';
 import { useAuth } from '../../../contexts/auth';
-import HeaderPublico from '../../AreaConsumidor/Layout/HeaderPublico';
 import { FeedbackChat } from '../../../components/FeedbackChat';
-import { IPessoa } from '../../../interfaces/IPessoa';
-import { pessoas_api } from '../../../services/pessoas_api';
+import { Header } from 'src/components/Header';
+import { Footer } from 'src/components/Footer';
+import { useInformacoesTipoUsuario } from 'src/hooks/informacoesTipoUsuario';
 
 interface LayoutProps {
   titulo?: string;
@@ -25,6 +24,7 @@ interface LayoutProps {
   hinddenOportunidades?: boolean;
   subtitulo?: string;
   isConsumidor?: boolean;
+  versao?: string;
 }
 
 export default function Layout({
@@ -34,9 +34,11 @@ export default function Layout({
   children,
   hinddenOportunidades,
   isConsumidor,
+  versao,
 }: LayoutProps) {
   const [sidebar, setSidebar] = useState(false);
   const { user } = useAuth();
+  const { typeSelected } = useInformacoesTipoUsuario();
 
   function toggleSidebar() {
     sidebar && setSidebar(!sidebar);
@@ -46,14 +48,13 @@ export default function Layout({
     <Content>
       {!user?.id_pessoa ? (
         <>
-          <HeaderPublico />
-          <Spacer size={60} />
+          <Header />
         </>
       ) : (
         <>
           <Menu />
           <Spacer size={90} />
-          {isConsumidor ? (
+          {isConsumidor || typeSelected === 'CONTRATANTE' ? (
             <NavbarConsumidor
               activeMenu={true}
               toggleSidebar={() => setSidebar(!sidebar)}
@@ -65,7 +66,7 @@ export default function Layout({
               hinddenOportunidades={hinddenOportunidades}
             />
           )}
-          {isConsumidor ? (
+          {isConsumidor || typeSelected === 'CONTRATANTE' ? (
             <SidebarConsumidor open={sidebar} />
           ) : (
             <SidebarFornecedor open={sidebar} />
@@ -79,7 +80,7 @@ export default function Layout({
         {children}
       </Container>
       <Spacer size={150} />
-      <Rodape />
+      <Footer versao={versao} />
       <FeedbackChat />
     </Content>
   );

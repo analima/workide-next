@@ -103,7 +103,7 @@ export default function Contratante() {
           <Col lg={2}>
             <FotoPerfilContainer
               onClick={() => {
-                history.push(`/consumidor/perfil-publico/`, {
+                history.push(`/contratante/perfil-publico/`, {
                   id: dadosConsumidor.id,
                 });
               }}
@@ -120,7 +120,7 @@ export default function Contratante() {
               <Col lg={12}>
                 <NomeContainer
                   onClick={() => {
-                    history.push(`/consumidor/perfil-publico`, {
+                    history.push(`/contratante/perfil-publico`, {
                       id: dadosConsumidor.id,
                     });
                   }}

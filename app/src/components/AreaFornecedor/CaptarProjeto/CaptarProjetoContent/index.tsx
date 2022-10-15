@@ -1,27 +1,37 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Accordion, Col, Row } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import { useRouter } from 'next/router';
 import { Spacer } from '../../../../components/Spacer';
 
 import Layout from '../../Layout';
-import { Button, FiltroTelaCheia } from './style';
+import {
+  Button,
+  ContentFilterHeader,
+  Label,
+  ContentFilter,
+  FiltrosAplicados,
+} from './style';
 import Content from './style';
 import NenhumProjeto from '../NenhumProjeto';
 import Projeto from '../Projeto';
 import { useCaptarProjetoFornecedor } from '../../../../hooks/captarProjetoFornecedor';
 import { Paginacao } from '../../../../components/Paginacao';
 import { Titulo } from '../../../../components/Titulo';
-import { ToggleSwitch } from '../../../../components/Form/ToggleSwitch';
-import Filtro from '../Filtro';
 import Ordenacao from '../Ordenacao';
 import { SearchInput } from '../../../../components/Form/SearchInput';
 import { useAuth } from '../../../../contexts/auth';
-import { IPessoa } from '../../../../interfaces/IPessoa';
+import NovoFiltro from '../NovoFiltro';
+import { InputCheck } from 'src/components/Form/InputCheck';
+import { Spinner } from 'src/components/Spinner';
 
-export default function CaptarProjetoContent() {
+interface IProps {
+  versao?: string;
+}
+
+export default function CaptarProjetoContent({ versao }: IProps) {
   const projetosRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  let { user } = useAuth();
+  const { user } = useAuth();
   const router = useRouter();
   const { query } = router;
 
@@ -46,13 +56,15 @@ export default function CaptarProjetoContent() {
     projetosExclusivos,
     loadingProjetos,
     setSizeFilter,
-    sizeFilter,
+    limparFiltros,
     setValue,
   } = useCaptarProjetoFornecedor();
+  console.log(projetosExclusivos);
 
-  const favorito = watch('favorito');
+  const [favorito, setFavorito] = useState(false);
   const toggleVolutarios = watch('toggle_volutarios');
-  const [filtroEnviado, setFiltroEnviado] = useState(false);
+  const subareas = watch('subareas');
+
   const scrollProjetos = useCallback(() => {
     if (projetosRef?.current && !loadingProjetos) {
       window.scrollTo(0, projetosRef.current.offsetTop);
@@ -123,6 +135,7 @@ export default function CaptarProjetoContent() {
   return (
     <Content ref={contentRef}>
       <Layout
+        versao={versao}
         titulo={
           user.id_pessoa && !!projetosExclusivos.length
             ? 'Oportunidades enviadas para você'
@@ -162,50 +175,62 @@ export default function CaptarProjetoContent() {
         <Spacer size={32} />
 
         <Row>
-          <Col lg={sizeFilter === 'large' ? 4 : 1} className="mb-4">
-            <FiltroTelaCheia>
-              <Filtro
-                filtroEnviado={filtroEnviado}
-                setFiltroEnviado={setFiltroEnviado}
-              />
-            </FiltroTelaCheia>
+          <Col lg={12} className="mb-2">
+            <ContentFilterHeader>
+              <label className="label-busca">Estou em busca de:</label>
+
+              <div className="content-filters">
+                <div className="check">
+                  <label htmlFor="voluntariado">Voluntariado</label>
+                  <InputCheck
+                    id="voluntariado"
+                    name="toggle_volutarios"
+                    control={control}
+                    label=""
+                  />
+                </div>
+                <div className="search">
+                  <SearchInput
+                    name="pesquisa"
+                    control={control}
+                    placeholder="Pesquisar por palavra-chave"
+                    onClick={handleSubmit(onSubmit)}
+                    className="input-search"
+                  />
+                </div>
+              </div>
+
+              <NovoFiltro />
+
+              <div className="filter-footer">
+                <Ordenacao setFavorito={setFavorito} favorito={favorito} />
+              </div>
+            </ContentFilterHeader>
           </Col>
 
-          <Col ref={projetosRef} lg={sizeFilter === 'large' ? 8 : 11}>
-            {!favorito && (
-              <>
-                <Row>
-                  <Col lg={12}>
-                    <SearchInput
-                      name="pesquisa"
-                      control={control}
-                      placeholder="Pesquisar por palavra-chave"
-                      onClick={handleSubmit(onSubmit)}
-                    />
-                  </Col>
-                </Row>
+          <Col lg={12} className="mb-2">
+            <ContentFilter>
+              <p>Filtros aplicados: </p>
+              <Button
+                onClick={() => {
+                  limparFiltros();
+                }}
+              >
+                LIMPAR FILTROS
+              </Button>
+            </ContentFilter>
+            <FiltrosAplicados>
+              {subareas?.length > 0 && (
+                <>
+                  {subareas?.map((subarea: any) => (
+                    <Label key={subarea.id}>{subarea}</Label>
+                  ))}
+                </>
+              )}
+            </FiltrosAplicados>
+          </Col>
 
-                <Row>
-                  <Col lg={12}>
-                    <ToggleSwitch
-                      name="toggle_volutarios"
-                      control={control}
-                      label="Ver apenas projetos para voluntários"
-                    />
-                  </Col>
-                </Row>
-              </>
-            )}
-
-            <Row>
-              <Col lg={12}>
-                <span>Publicado em:</span>
-                <Ordenacao />
-              </Col>
-            </Row>
-
-            <Spacer size={16} />
-
+          <Col ref={projetosRef} lg={12}>
             <Row>
               <Col lg={12}>
                 {!!projetos.length && !favorito && !loadingProjetos && (
@@ -243,7 +268,11 @@ export default function CaptarProjetoContent() {
                   (favorito && !projetosFavoritos.length)) && (
                   <NenhumProjeto tipo="normal" />
                 )}
-                {loadingProjetos && <p>Carregando...</p>}
+                {loadingProjetos && (
+                  <Col className="mb-4 mt-4 d-flex align-items-center justify-content-center">
+                    <Spinner size="32px" type="info" />
+                  </Col>
+                )}
               </Col>
             </Row>
           </Col>

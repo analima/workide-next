@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { Conheca } from '../components/Home/Conheca';
 import { Header } from '../components/Header';
-import { Helmet } from 'react-helmet';
 import { hotjar } from 'react-hotjar';
 import { Banner } from '../components/Home/Banner';
 import { Vitrine } from '../components/Home/Vitrine';
@@ -12,16 +11,22 @@ import { CardConhecaComoFunciona } from '../components/CardConhecaComoFunciona';
 import { CardCountUp } from '../components/CardCountUp';
 import { CardProjetosMaisBuscados } from '../components/CardProjetosMaisBuscados';
 import { Footer } from 'src/components/Footer';
-import Head from 'next/head';
 import { GetStaticProps } from 'next';
 import { consultas_api } from 'src/services/consultas_api';
 import { IServicoInfo } from 'src/interfaces/IServicoInfo';
+import { SEO } from 'src/components/SEO';
+import { useAuth } from 'src/contexts/auth';
+import { useRouter } from 'next/router';
+import { version } from '../../package.json';
 
 interface IPropsData {
   vitrineData: IServicoInfo[];
+  appVersion: string;
 }
 
-export default function Home({ vitrineData }: IPropsData) {
+export default function Home({ vitrineData, appVersion }: IPropsData) {
+  const { user } = useAuth();
+  const router = useRouter();
   useEffect(() => {
     hotjar.initialize(
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
@@ -32,35 +37,39 @@ export default function Home({ vitrineData }: IPropsData) {
 
   return (
     <>
-      <Helmet>
-        <title>Gyan - Contrate um freelancer em poucos cliques</title>
-      </Helmet>
+      <SEO
+        title="freelas town - Contrate um freelancer em poucos cliques"
+        excludeTitleSuffix
+      />
 
-      <Head>
-        <title>
-          Gyan - Conectando pessoas incríveis com projetos apaixonantes
-        </title>
-
-        <meta name="description" content="Home Gyan" />
-      </Head>
-      <Header />
-
-      <Container>
-        <Banner />
-        <CardCategory />
-        <CardBoasIdeias />
-        <CardConhecaComoFunciona />
-        <Vitrine vitrineData={vitrineData} />
-        <Conheca />
-        <CardCountUp />
-        <CardProjetosMaisBuscados />
-        <Footer />
-      </Container>
+      {user.id_pessoa ? (
+        user.tipoPerfil === 'CONSUMIDOR' ? (
+          router.push('/contratante/home')
+        ) : (
+          router.push('/fornecedor/home')
+        )
+      ) : (
+        <>
+          <Header />
+          <Container>
+            <Banner />
+            <CardCategory title="Procure talentos por categoria" page="home" />
+            <CardBoasIdeias />
+            <CardConhecaComoFunciona />
+            <Vitrine vitrineData={vitrineData} />
+            <Conheca />
+            <CardCountUp />
+            <CardProjetosMaisBuscados />
+            <Footer versao={appVersion} />
+          </Container>
+        </>
+      )}
     </>
   );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+  const appVersion = version;
   const searchOffers = async (): Promise<any> => {
     const { data } = await consultas_api.post<{ values: IServicoInfo[] }>(
       `/consulta/ofertas?limit=12`,
@@ -73,6 +82,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       vitrineData,
+      appVersion,
     },
     revalidate: 86400,
   };

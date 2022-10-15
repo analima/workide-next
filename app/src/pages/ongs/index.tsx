@@ -3,15 +3,18 @@ import Head from 'next/head';
 import { useEffect } from 'react';
 import { hotjar } from 'react-hotjar';
 import PageOng from 'src/components/PageOng';
+import { SEO } from 'src/components/SEO';
 import { IPostProps, IStatsProps } from 'src/interfaces/IPostProps';
 import { consultas_api } from 'src/services/consultas_api';
+import { version } from '../../../package.json';
 
 interface PostProps {
   posts: IPostProps[];
   stats: IStatsProps;
+  appVersion: string;
 }
 
-export default function Ongs({ posts, stats }: PostProps) {
+export default function Ongs({ posts, stats, appVersion }: PostProps) {
   useEffect(() => {
     hotjar.initialize(
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
@@ -22,19 +25,15 @@ export default function Ongs({ posts, stats }: PostProps) {
 
   return (
     <>
-      <Head>
-        <title>
-          Gyan - Conectando pessoas incríveis com projetos apaixonantes
-        </title>
-
-        <meta name="description" content="Pagina de ongs" />
-      </Head>
-      <PageOng posts={posts} stats={stats} />
+      <SEO title="Encontre um voluntário em poucos cliques" />
+      <PageOng posts={posts} stats={stats} versao={appVersion} />
     </>
   );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+  const appVersion = version;
+
   const getAllPostsOngs = async (): Promise<IPostProps[]> => {
     const posts = await fetch(
       `${process.env.REACT_APP_BLOG_API}/articles?populate=deep&filters[category][slug][$eq]=ongs`,
@@ -63,6 +62,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       posts,
       stats,
+      appVersion,
     },
     revalidate: 86400,
   };

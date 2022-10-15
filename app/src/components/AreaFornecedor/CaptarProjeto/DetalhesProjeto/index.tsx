@@ -469,7 +469,7 @@ export default function DetalhesProjeto() {
   return (
     <Content>
       <Helmet>
-        <title>Gyan - Projeto {project.nome || ''}</title>
+        <title>freelas town - Projeto {project.nome || ''}</title>
       </Helmet>
       <Layout>
         <AvatarErroGeral
@@ -840,7 +840,7 @@ export default function DetalhesProjeto() {
                     <Col lg={2} className="d-flex justify-content-center">
                       <FotoPerfil
                         onClick={() =>
-                          history.push(`/consumidor/perfil-publico`, {
+                          history.push(`/contratante/perfil-publico`, {
                             id: dadosConsumidor.id,
                           })
                         }
@@ -857,7 +857,7 @@ export default function DetalhesProjeto() {
                               history.push('/cadastro-basico');
                               return;
                             }
-                            history.push(`/consumidor/perfil-publico`, {
+                            history.push(`/contratante/perfil-publico`, {
                               id: dadosConsumidor.id,
                             });
                           }}

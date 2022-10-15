@@ -24,7 +24,7 @@ export default function Home() {
   return (
     <Layout titulo="Bem-vindo!">
       <Helmet>
-        <title>Gyan - Home do fornecedor</title>
+        <title>freelas town - Home do fornecedor</title>
       </Helmet>
       <Spacer size={40} />
       <Subtitulo>

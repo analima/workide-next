@@ -333,7 +333,7 @@ const CardProposal = ({ id_proposta }: IProps) => {
 
   function saveLocalStorage() {
     localStorage.setItem(
-      '@Gyan:cart',
+      '@freelas_town:cart',
       JSON.stringify({
         nome: projeto.nome,
         preco: dadosProposta.valor,
@@ -550,7 +550,7 @@ const CardProposal = ({ id_proposta }: IProps) => {
                     <ButtonMainStyled
                       color={AZUL_60}
                       onClick={() =>
-                        history.push('/consumidor/projeto/andamento', {
+                        history.push('/contratante/projeto/andamento', {
                           id: dadosProposta.idProjeto,
                         })
                       }

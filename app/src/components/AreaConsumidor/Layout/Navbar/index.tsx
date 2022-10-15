@@ -116,14 +116,14 @@ export default function Navbar({
             alt={'home-image'}
             style={{ cursor: 'pointer' }}
             onClick={() => {
-              router.push('/consumidor/home');
+              router.push('/contratante/home');
             }}
           />
         </div>
 
         <ContentSession>
           {/* <GhostButton
-            to="/consumidor/busca"
+            to="/contratante/busca"
             opacity={maisSolucoesIsNotVisible ? 0 : 1}
           >
             BUSCAR SOLUÇÕES

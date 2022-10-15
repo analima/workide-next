@@ -20,7 +20,7 @@ export default function Home() {
   const history = useHistory();
   const { refreshUserData } = useAuth();
   const handleRedirect = () => {
-    history.push('/consumidor/busca');
+    history.push('/contratante/busca');
   };
 
   useEffect(() => {
@@ -32,13 +32,13 @@ export default function Home() {
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
-    hotjar.stateChange('/consumidor/home');
+    hotjar.stateChange('/contratante/home');
   }, []);
 
   return (
     <Layout titulo="Bem-vindo!" activeMenu={true}>
       <Helmet>
-        <title>Gyan - Home do consumidor</title>
+        <title>freelas town - Home do consumidor</title>
       </Helmet>
       <Spacer size={40} />
       <Subtitulo>

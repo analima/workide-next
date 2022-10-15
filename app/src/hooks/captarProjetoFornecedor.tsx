@@ -110,6 +110,9 @@ export type ProjectType = {
   usuarioUltimaAtualizacao?: null | string;
   escopo: string;
   totalHoras: number;
+  descricaoEscopo: string;
+  reunioes: string;
+  niveisExperiencia: string | string[];
 };
 
 export type CausaProp = {
@@ -282,6 +285,8 @@ export const CaptarProjetoFornecedorProvider: React.FC<GlobalLayoutProps> = ({
           id: project.id,
           nome: project.nome,
           descricao: project.descricao,
+          descricaoEscopo: project.descricaoEscopo,
+          niveisExperiencia: project.niveisExperiencia,
           subareas: project.subareas.map((subarea: any) => subarea.descricao),
           precoMinimo: project.precoMinimo,
           precoMaximo: project.precoMaximo,

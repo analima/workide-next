@@ -25,7 +25,9 @@ interface ILocationProps {
   id_servico?: number;
 }
 
-export default function ManterServicoContent({ aba = 0 }: IManterServicoContentProps) {
+export default function ManterServicoContent({
+  aba = 0,
+}: IManterServicoContentProps) {
   const location = useLocation<ILocationProps>();
 
   const {
@@ -87,7 +89,7 @@ export default function ManterServicoContent({ aba = 0 }: IManterServicoContentP
   return (
     <Content>
       <Helmet>
-        <title>Gyan - Crie ou edite um serviço</title>
+        <title>freelas town - Crie ou edite um serviço</title>
       </Helmet>
       <Spacer size={32} />
 
