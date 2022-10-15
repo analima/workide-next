@@ -457,7 +457,7 @@ export default function Projeto({
                   <strong className="atividades-requeridas">
                     Atividades Requeridades:{' '}
                   </strong>
-                  {projeto.descricao_escopo}
+                  {projeto.descricaoEscopo}
                 </AtividadesRequeridas>
               </Col>
             </Row>
@@ -472,9 +472,19 @@ export default function Projeto({
 
               <div className="niveis">
                 <span>Nível de experiência: </span>
-                {projeto?.niveisExperiencia?.map(nivel => (
-                  <Label key={nivel} label={nivel} cor={VERDE} />
-                ))}
+                {typeof projeto?.niveisExperiencia !== 'string' ? (
+                  <>
+                    {projeto?.niveisExperiencia?.map(nivel => (
+                      <Label key={nivel} label={nivel} cor={VERDE} />
+                    ))}
+                  </>
+                ) : (
+                  <>
+                    {projeto?.niveisExperiencia.split('|').map(nivel => (
+                      <Label key={nivel} label={nivel} cor={VERDE} />
+                    ))}
+                  </>
+                )}
               </div>
             </ContentLabels>
           </ProjetoBody>

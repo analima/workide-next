@@ -44,7 +44,7 @@ export default function Home({ vitrineData, appVersion }: IPropsData) {
 
       {user.id_pessoa ? (
         user.tipoPerfil === 'CONSUMIDOR' ? (
-          router.push('/consumidor/home')
+          router.push('/contratante/home')
         ) : (
           router.push('/fornecedor/home')
         )

@@ -128,7 +128,7 @@ export default function Planos() {
                 COMPLETE SEU CADASTRO AGORA
               </Button>
             </Col>
-            <LinkBtn to="consumidor/home">
+            <LinkBtn to="contratante/home">
               CADASTRE-SE COMO CONSUMIDOR E BUSQUE UMA SOLUÇÃO
             </LinkBtn>
           </Row>
