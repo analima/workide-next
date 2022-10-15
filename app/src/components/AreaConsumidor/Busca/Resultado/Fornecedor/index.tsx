@@ -43,9 +43,9 @@ export default function Fornecedor() {
 
   const handleRedirect = (type: string) => {
     if (type === 'geral') {
-      history.push('/consumidor/projetos/geral');
+      history.push('/contratante/projetos/geral');
     } else if (type === 'exclusivo') {
-      history.push('/consumidor/projetos/exclusivo');
+      history.push('/contratante/projetos/exclusivo');
     }
   };
 

@@ -12,7 +12,7 @@ import {
   ContentButton,
   Button,
 } from './styled';
-import Content from'./styled';
+import Content from './styled';
 import { AZUL } from '../../../../styles/variaveis';
 import { useCallback, useEffect, useState } from 'react';
 import { Spacer } from '../../../../components/Spacer';
@@ -168,13 +168,13 @@ export default function ServicoFornecedorPublico() {
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
-    hotjar.stateChange('/consumidor/servico');
+    hotjar.stateChange('/contratante/servico');
   }, []);
 
   return (
     <Content>
       <Helmet>
-        <title>Gyan - Serviço {servico.nome || ''}</title>
+        <title>freelas town - Serviço {servico.nome || ''}</title>
       </Helmet>
       <AvatarRegrasPlano
         mostrar={showAvatar}

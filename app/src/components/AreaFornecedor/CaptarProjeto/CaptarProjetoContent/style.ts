@@ -14,6 +14,121 @@ const Content = styled.section`
   }
 `;
 
+export const ContentFilterHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-between;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+  padding: 16px 34px;
+  gap: 8px;
+
+  .label-busca {
+    font-size: 28px;
+    font-weight: bold;
+    color: #767676;
+  }
+
+  .content-filters {
+    display: flex;
+    gap: 40px;
+    justify-content: space-between;
+    width: 100%;
+
+    .check {
+      display: flex;
+
+      label {
+        margin-right: 16px;
+        font-size: 18px;
+      }
+    }
+
+    .search {
+      display: flex;
+      width: 800px;
+      flex: 1;
+
+      .input-search {
+        width: 100%;
+        background: #d9d9d9;
+        border-radius: 18px;
+      }
+    }
+  }
+
+  .check {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    label {
+      font-size: 18px;
+      color: #767676;
+      font-weight: 500;
+    }
+  }
+
+  .filter-footer {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    .ordenacao {
+      width: 100%;
+    }
+
+    .favorito {
+      background-color: ${AZUL};
+    }
+  }
+
+  @media (max-width: 768px) {
+    justify-content: flex-start;
+    .content-filters {
+      gap: 16px;
+
+      .search {
+        display: flex;
+        width: 100%;
+        flex: 1;
+
+        .input-search {
+          width: 100%;
+          background: #d9d9d9;
+          border-radius: 18px;
+        }
+      }
+    }
+
+    .filter-footer {
+      .ordenacao {
+        width: 100%;
+      }
+
+      .favorito {
+        background-color: ${AZUL};
+      }
+    }
+  }
+
+  @media (max-width: 478px) {
+    display: flex;
+    flex-direction: column;
+
+    .content-filters {
+      flex-direction: column;
+    }
+
+    .filter-check {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+  }
+`;
+
 export const Button = styled.button`
   padding: 16px;
   width: 142px;
@@ -36,7 +151,7 @@ export const Button = styled.button`
   }
 
   @media (max-width: 578px) {
-    margin: 10px auto;
+    padding: 10px;
   }
 `;
 
@@ -63,6 +178,43 @@ export const ContainerFiltro = styled.div`
 
   @media (max-width: 900px) {
     flex-direction: column;
+  }
+`;
+
+export const Label = styled.span`
+  background-color: ${AZUL};
+  border-radius: 24px;
+  padding: 4px 12px;
+  font-size: 12px;
+  text-align: center;
+  color: ${BRANCO};
+  font-weight: bold;
+  margin-right: 4px;
+`;
+
+export const FiltrosAplicados = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+`;
+
+export const ContentFilter = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+  width: 100%;
+
+  button {
+    padding: 16px;
+    width: auto;
+  }
+
+  @media (max-width: 578px) {
+  }
+
+  p {
+    margin: 0;
   }
 `;
 

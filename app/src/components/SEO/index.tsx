@@ -15,14 +15,13 @@ export function SEO({
   excludeTitleSuffix,
   indexPage,
 }: SEOProps) {
-  const pageTitle = `${title} ${!excludeTitleSuffix ? ' | GYAN' : ''}`;
+  const pageTitle = `${title} ${!excludeTitleSuffix ? ' | freelas town' : ''}`;
 
   return (
     <Helmet>
       <title>{pageTitle}</title>
       {description && <meta name="description" content={description} />}
       {image && <meta name="image" content={image} />}
-      {!indexPage && <meta name="robots" content="noindex,nofollow" />}
       <meta httpEquiv="x-ua-compatible" content="IE=edge,chrome=1" />
       <meta name="MobileOptimized" content="320" />
       <meta name="HandheldFriendly" content="True" />
@@ -42,6 +41,7 @@ export function SEO({
       <meta property="og:image:type" content="image/png" />
       <meta property="og:image:width" content="640" />
       <meta property="og:image:height" content="640" />
+      <meta content="pt-br, en-US, fr" />
 
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:card" content="summary_large_image" />
@@ -55,7 +55,7 @@ export function SEO({
 }
 
 SEO.defaultProps = {
-  description: 'GYAN',
+  description: 'freelas town',
   image:
     'https://gyan-sp-public.s3.sa-east-1.amazonaws.com/emails/images/logoazul.svg',
   excludeTitleSuffix: false,

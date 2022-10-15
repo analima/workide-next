@@ -2,10 +2,10 @@ import { Col, Row } from 'react-bootstrap';
 import { Card } from '../../../../components/Card';
 import { Titulo } from '../../../../components/Titulo';
 
-import  EstrelaOff  from '../../../../assets/estrela-off.svg';
+import EstrelaOff from '../../../../assets/estrela-off.svg';
 import Estrela from '../../../../assets/estrela.svg';
 import PlaceholderImage from '../../../../assets/placeholderImg.png';
-import Image from 'next/image'
+import Image from 'next/image';
 
 import {
   AvaliacaoContainer,
@@ -100,24 +100,24 @@ export default function Contratante({ idPessoaConsumidor }: IContratanteProps) {
               {dadosContratante.ativo ? (
                 <>
                   {image ? (
-
-                    <FotoPerfil >
-                    <Image   onClick={() =>
-                        history.push(`/consumidor/perfil-publico/`, {
-                          id: idPessoaConsumidor,
-                        })
-                      }
-                      src={image}
-                      alt="Foto Contrantante" />
+                    <FotoPerfil>
+                      <Image
+                        onClick={() =>
+                          history.push(`/contratante/perfil-publico/`, {
+                            id: idPessoaConsumidor,
+                          })
+                        }
+                        src={image}
+                        alt="Foto Contrantante"
+                      />
                     </FotoPerfil>
                   ) : (
                     <Skeleton width="152px" height="152px" />
                   )}
                 </>
               ) : (
-
-                <FotoPerfil  >
-                <Image src={PlaceholderImage} alt="Foto Contrantante" />
+                <FotoPerfil>
+                  <Image src={PlaceholderImage} alt="Foto Contrantante" />
                 </FotoPerfil>
               )}
             </FotoPerfilContainer>
@@ -131,7 +131,7 @@ export default function Contratante({ idPessoaConsumidor }: IContratanteProps) {
                       <NomeContainer>
                         <p
                           onClick={() =>
-                            history.push(`/consumidor/perfil-publico/`, {
+                            history.push(`/contratante/perfil-publico/`, {
                               id: idPessoaConsumidor,
                             })
                           }

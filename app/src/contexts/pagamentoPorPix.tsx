@@ -17,7 +17,9 @@ const PagamentoPorPixContext = createContext<PagamentoPorPixContextProps>(
   {} as PagamentoPorPixContextProps,
 );
 
-export const PagamentoPorPixProvider: React.FC<GlobalLayoutProps> = ({ children }) => {
+export const PagamentoPorPixProvider: React.FC<GlobalLayoutProps> = ({
+  children,
+}) => {
   const [showModal, setSHowModal] = useState(false);
   const [descricaoFatura, setDescricaoFatura] = useState('');
   const [valorFatura, setValorFatura] = useState(0);
@@ -34,7 +36,7 @@ export const PagamentoPorPixProvider: React.FC<GlobalLayoutProps> = ({ children 
   const handleCheckPixPaid = useCallback(async () => {
     try {
       const response = await pagamentos_api.get(
-        `/faturas-servico/consumidor/${idPessoaConsumidor}`,
+        `/faturas-servico/contratante/${idPessoaConsumidor}`,
       );
       const lastInvoice = response.data.values.find(
         (fatura: any) => fatura.id_projeto === idProjeto,

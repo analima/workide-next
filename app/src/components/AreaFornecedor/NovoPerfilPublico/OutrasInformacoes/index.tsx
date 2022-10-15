@@ -111,7 +111,7 @@ export function OutrasInformacoes({ data, imageLoaded }: Props) {
     async function buscarCertificados() {
       try {
         const response = await oportunidades_api.get(
-          `/certificados?id_pessoa=${user.id_pessoa}`,
+          `/certificados?id_pessoa=${data.id}`,
         );
         setCertificados(response.data);
       } catch (error: any) {
@@ -120,12 +120,12 @@ export function OutrasInformacoes({ data, imageLoaded }: Props) {
     }
     handleData();
     buscarCertificados();
-  }, [data.id, user.id_pessoa]);
+  }, [data.id]);
 
   function settingSlider(data: any[]) {
     return {
       speed: 500,
-      dots: true,
+      dots: false,
       autoplay: true,
       autoplaySpeed: 2000,
       slidesToShow: data?.length > 3 ? 3 : data?.length,

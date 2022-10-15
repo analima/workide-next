@@ -6,7 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { cpf as cpfValidator, cnpj as cnpjValidator } from 'cpf-cnpj-validator';
 import { isValid, parse } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
-import Image from 'next/image'
+import Image from 'next/image';
 import { useAuth } from '../../../contexts/auth';
 import { useCadastroComplementar } from '../../../hooks/cadastroComplementar';
 import { pessoas_api } from '../../../services/pessoas_api';
@@ -18,12 +18,7 @@ import { InputMask } from '../../../components/Form/InputMask';
 import { Button } from '../../../components/Form/Button';
 import { IoMdHelpCircle } from 'react-icons/io';
 
-import {
-  Subtitulo,
-  Actions,
-  ContainerCausas,
-  SkipButton,
-} from './style';
+import { Subtitulo, Actions, ContainerCausas, SkipButton } from './style';
 import Content from './style';
 import { FiXCircle } from 'react-icons/fi';
 
@@ -735,7 +730,7 @@ export default function ComplementarForm() {
         )}
         <Spacer size={20} />
         <Titulo
-          titulo="Seja bem vindo(a) a comunidade Gyan!"
+          titulo="Seja bem vindo(a) a comunidade freelas town!"
           tamanho={32}
           cor={AZUL}
         />
@@ -1123,7 +1118,7 @@ export default function ComplementarForm() {
         </Row>
         <Subtitulo className="mt-4">Pro bono & Voluntariado</Subtitulo>
         <Titulo
-          titulo="Aqui na Gyan nós também apoiamos projetos sociais. Vamos nessa juntos? Selecione as causas que são do seu interesse."
+          titulo="Aqui na freelas town nós também apoiamos projetos sociais. Vamos nessa juntos? Selecione as causas que são do seu interesse."
           tamanho={18}
           cor={PRETO_60}
         />

@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
 import { Col, Form, Row, OverlayTrigger, Tooltip } from 'react-bootstrap';
-import LogoGyan from '../../assets/g-gyan.svg';
+import LogoGyan from '../../assets/logo-pequena-azul.png';
 import Google from '../../assets/google.svg';
 import {
   ButtonLogin,
@@ -49,7 +49,7 @@ interface DefaultProps {
   handleShowOverlay: () => void;
 }
 
-const CadastroBasico =({
+const CadastroBasico = ({
   isActive,
   display,
   handleShowOverlay,
@@ -90,9 +90,6 @@ const CadastroBasico =({
       confirmPassword: '',
       policyTerms: false,
     });
-
-
-
   }, []);
 
   function handleRegistryUser(user: UserToRegistry) {
@@ -237,7 +234,6 @@ const CadastroBasico =({
 
   return (
     <>
-
       <ModalInformation
         showModal={showModalPolitica}
         setShowModal={setShowModalPolitica}
@@ -259,8 +255,7 @@ const CadastroBasico =({
           <Row>
             <Col lg={12}>
               <div className="google">
-                <button
-                 onClick={() => handleGoogleRegistry()}>
+                <button onClick={() => handleGoogleRegistry()}>
                   <Image src={Google} alt="Google" /> CADASTRO COM GOOGLE
                 </button>
               </div>
@@ -330,7 +325,7 @@ const CadastroBasico =({
 
             <Row>
               <Col lg={12}>
-                 <OverlayTrigger
+                <OverlayTrigger
                   placement="bottom"
                   delay={{ show: 250, hide: 400 }}
                   overlay={handleRenderTooltip()}
@@ -360,7 +355,7 @@ const CadastroBasico =({
                       <span className="help-block">{errorPassword}</span>
                     )}
                   </Form.Group>
-                 </OverlayTrigger>
+                </OverlayTrigger>
               </Col>
             </Row>
 
@@ -509,6 +504,6 @@ const CadastroBasico =({
       </Content>
     </>
   );
-}
+};
 
 export default CadastroBasico;

@@ -10,14 +10,20 @@ import {
 import Slider from 'react-slick';
 
 export const Content = styled.section`
-  padding: 100px 60px 0px 60px;
+  padding: 0px 60px;
   display: flex;
+  gap: 16px;
   flex-direction: column;
   align-items: center;
   max-width: 1320px;
   margin: 0 auto;
 
+  .empresas {
+    margin-top: 0px;
+  }
+
   h1 {
+    margin-top: 100px;
     font-size: 40px;
     font-weight: bold;
     color: ${CINZA_40};
@@ -71,7 +77,6 @@ export const Content = styled.section`
 `;
 
 export const ContentCard = styled.div`
-  margin-top: 48px;
   padding-bottom: 22px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -86,15 +91,13 @@ export const ContentCard = styled.div`
   @media (max-width: 1200px) {
     grid-template-columns: 1fr 1fr 1fr;
   }
-  padding: 15px;
 
   @media (max-width: 991px) {
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
   }
 
   @media (max-width: 840px) {
-    grid-template-columns: 1fr 1fr;
     margin: 40px 0;
   }
 

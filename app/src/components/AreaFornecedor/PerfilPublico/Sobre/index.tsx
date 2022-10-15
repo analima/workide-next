@@ -14,8 +14,8 @@ import {
   ContentImg,
 } from './style';
 import Content from './style';
-import EstrelaOff  from '../../../../assets/estrela-off.svg';
-import  Estrela  from '../../../../assets/estrela.svg';
+import EstrelaOff from '../../../../assets/estrela-off.svg';
+import Estrela from '../../../../assets/estrela.svg';
 import CoracaoOff from '../../../../assets/coracao-off.svg';
 import Coracao from '../../../../assets/coracao.svg';
 import { Card } from '../../../../components/Card';
@@ -393,7 +393,7 @@ export default function Sobre({ dataProps, imageLoaded }: PropsPage) {
                     return;
                   }
                   history.push(
-                    `/consumidor/projetos/exclusivo/${dataProps?.id_usuario}`,
+                    `/contratante/projetos/exclusivo/${dataProps?.id_usuario}`,
                     {
                       id_fornecedor: dataProps?.id,
                     },

@@ -706,7 +706,7 @@ export default function Detalhes({ getProjeto }: Props) {
                   <Button
                     onClick={() => {
                       !isAvaliado &&
-                        history.push('/consumidor/avaliacao-projeto', {
+                        history.push('/contratante/avaliacao-projeto', {
                           idProjeto: dadosProjetos.id,
                           idFornecedor: dadosProjetos.idPessoaFornecedor,
                         });

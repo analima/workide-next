@@ -74,7 +74,9 @@ const MinhasComprasConsumidorContext =
     {} as MinhasComprasConsumidorContextProps,
   );
 
-export const MinhasComprasConsumidorProvider: React.FC<GlobalLayoutProps> = ({ children }) => {
+export const MinhasComprasConsumidorProvider: React.FC<GlobalLayoutProps> = ({
+  children,
+}) => {
   const [id, setId] = useState<number | undefined>(undefined);
   const [compras, setCompras] = useState<ICompraProps[]>([]);
   const [comprasSemFiltro, setComprasSemFiltro] = useState<ICompraProps[]>([]);
@@ -115,7 +117,7 @@ export const MinhasComprasConsumidorProvider: React.FC<GlobalLayoutProps> = ({ c
     async function () {
       try {
         const { data } = await pagamentos_api.get(
-          `/faturas-servico/consumidor/${user.id_pessoa}?order=dh_criacao=DESC`,
+          `/faturas-servico/contratante/${user.id_pessoa}?order=dh_criacao=DESC`,
         );
         setCompras(data.values.sort(ordenaData));
         setComprasSemFiltro(data);

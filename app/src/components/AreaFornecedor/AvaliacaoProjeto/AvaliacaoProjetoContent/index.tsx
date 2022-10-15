@@ -70,7 +70,7 @@ export default function AvaliacaoProjetoContent({
   const notePlatform = useCallback(() => {
     if (nota_plataforma === undefined) {
       setError(
-        'É necessário que informe as chances de recomendar a Gyan para um amigo.',
+        'É necessário que informe as chances de recomendar a freelas town para um amigo.',
       );
       scrollTop();
       return true;
@@ -140,7 +140,7 @@ export default function AvaliacaoProjetoContent({
   return (
     <Content>
       <Helmet>
-        <title>Gyan - Envie uma avaliação</title>
+        <title>freelas town - Envie uma avaliação</title>
       </Helmet>
       <Card>
         <Row>

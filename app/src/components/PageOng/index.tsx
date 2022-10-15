@@ -13,9 +13,10 @@ import { IPostProps, IStatsProps } from 'src/interfaces/IPostProps';
 interface PostProps {
   posts: IPostProps[];
   stats: IStatsProps;
+  versao: string;
 }
 
-export default function PageOng({ posts, stats }: PostProps) {
+export default function PageOng({ posts, stats, versao }: PostProps) {
   return (
     <Container>
       <BannerOngs />
@@ -26,7 +27,7 @@ export default function PageOng({ posts, stats }: PostProps) {
       <DataThatProvesSuccess stats={stats} />
       <MeetOurBlog posts={posts} />
       <ConnectOngs />
-      <Footer />
+      <Footer versao={versao} />
     </Container>
   );
 }

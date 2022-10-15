@@ -32,13 +32,13 @@ const Manter = (): JSX.Element => {
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
-    hotjar.stateChange('/consumidor/projeto/manter');
+    hotjar.stateChange('/contratante/projeto/manter');
   }, []);
 
   return (
     <Content>
       <Helmet>
-        <title>Gyan - Tela para debug</title>
+        <title>freelas town - Tela para debug</title>
       </Helmet>
       <Layout titulo="ESTA TELA É APENAS PARA DEBUG" activeMenu={true}>
         <Card>

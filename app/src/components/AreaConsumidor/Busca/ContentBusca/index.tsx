@@ -58,7 +58,11 @@ export type ServiceProps = {
   itens: Array<ItemsService>;
 };
 
-export default function ContentBusca() {
+interface IProps {
+  versao?: string;
+}
+
+export default function ContentBusca({ versao }: IProps) {
   const history = useHistory();
   const { query } = useRouter();
 
@@ -115,9 +119,9 @@ export default function ContentBusca() {
 
   const handleRedirect = (type: string) => {
     if (type === 'geral') {
-      history.push('/consumidor/projetos/geral');
+      history.push('/contratante/projetos/geral');
     } else if (type === 'exclusivo') {
-      history.push('/consumidor/projetos/exclusivo');
+      history.push('/contratante/projetos/exclusivo');
     }
   };
 
@@ -126,7 +130,7 @@ export default function ContentBusca() {
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
-    hotjar.stateChange('/consumidor/busca');
+    hotjar.stateChange('/contratante/busca');
   }, []);
 
   useEffect(() => {
@@ -143,10 +147,15 @@ export default function ContentBusca() {
   }, [handleResize]);
 
   return (
-    <Layout titulo="" activeMenu={activeMenu} maisSolucoesIsNotVisible={true}>
+    <Layout
+      versao={versao}
+      titulo=""
+      activeMenu={activeMenu}
+      maisSolucoesIsNotVisible={true}
+    >
       {user.id_pessoa && <InformationUser page="busca" />}
       <Helmet>
-        <title>Gyan - Buscando soluções</title>
+        <title>freelas town - Buscando soluções</title>
       </Helmet>
       <AvatarCadastroIncompleto
         mostrar={showAvatarCadastroIncompleto}

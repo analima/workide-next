@@ -20,7 +20,7 @@ export function ComoCadastrar() {
                 height={262}
                 src={ImgEllipse1}
                 quality={100}
-                blurDataURL='"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPU0NS8CAACSAFN02dlbQAAAABJRU5ErkJggg=="'
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPU0NS8CAACSAFN02dlbQAAAABJRU5ErkJggg=="
               />
             </div>
 
@@ -48,8 +48,8 @@ export function ComoCadastrar() {
 
             <span>
               Se você está desenvolvendo um projeto e precisa de uma equipe para
-              trabalhar remotamente, cadastre sua necessidade na Gyan e encontre
-              um talento remoto incrível para te ajudar.
+              trabalhar remotamente, cadastre sua necessidade na freelas town e
+              encontre um talento remoto incrível para te ajudar.
             </span>
           </Box>
 
@@ -90,8 +90,8 @@ export function ComoCadastrar() {
 
             <span>
               Seu tempo e expertise podem trazer muitas melhorias para o mundo
-              em que vivemos. Na Gyan, você se conecta com ONGs que atuam em
-              prol das causas que você acredita.
+              em que vivemos. Na freelas town, você se conecta com ONGs que
+              atuam em prol das causas que você acredita.
             </span>
           </Box>
         </ContentBox>

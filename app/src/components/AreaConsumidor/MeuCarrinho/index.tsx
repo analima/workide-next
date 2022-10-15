@@ -54,7 +54,9 @@ export default function MeuCarrinho() {
   const [error, setError] = useState(false);
   const [carrinhoData, setCarrinhoData] = useState<ICarrinhoData>(
     location.state ||
-      (JSON.parse(localStorage.getItem('@Gyan:cart') || '{}') as ICarrinhoData),
+      (JSON.parse(
+        localStorage.getItem('@freelas_town:cart') || '{}',
+      ) as ICarrinhoData),
   );
   const [valorTaxa, setValorTaxa] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
@@ -68,7 +70,7 @@ export default function MeuCarrinho() {
     if (location.state) {
       setCarrinhoData(location.state);
     } else {
-      const data = localStorage.getItem('@Gyan:cart');
+      const data = localStorage.getItem('@freelas_town:cart');
       if (data) {
         const newValues: ICarrinhoData = JSON.parse(data);
         if (newValues) {
@@ -130,7 +132,7 @@ export default function MeuCarrinho() {
   return (
     <Content>
       <Helmet>
-        <title>Gyan - Meu carrinho consumidor</title>
+        <title>freelas_town - Meu carrinho consumidor</title>
       </Helmet>
       <Layout titulo="Meu Carrinho" activeMenu>
         <ModalLoading showModal={isLoading} setShowModal={setIsLoading} />

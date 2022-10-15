@@ -15,7 +15,7 @@ export function CardConhecaComoFunciona() {
 
           <span>
             Anuncie o seu trabalho facilmente, {''}
-            <Link href="/consumidor/busca">
+            <Link href="/contratante/busca">
               <>
                 contrate <br /> freelancers e pague com segurança.
               </>
@@ -68,8 +68,8 @@ export function CardConhecaComoFunciona() {
 
             <span>
               O pagamento será repassado somente depois de o projeto ter sido
-              concluído. Esta é uma garantia da GYAN para tornar o processo mais
-              seguro.
+              concluído. Esta é uma garantia da freelas town para tornar o
+              processo mais seguro.
             </span>
             <span className="number-circle">3</span>
           </ImagesHowItWork>

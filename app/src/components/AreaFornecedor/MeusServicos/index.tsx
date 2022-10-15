@@ -107,7 +107,7 @@ export default function MeusServicos() {
 
   const mensagem = `
     Adicione e gerencie suas ofertas.*
-    Na Gyan o projeto é realmente seu: te damos a liberdade para deixá-lo a sua cara. Em cada oferta, você pode oferecer um ou três pacotes  totalmente configuráveis.  Por exemplo: Em cada pacote, você pode configurar plano de pagamento com diferentes preços e que contemplem diferentes entregas do projeto criado por você.*
+    Na freelas town o projeto é realmente seu: te damos a liberdade para deixá-lo a sua cara. Em cada oferta, você pode oferecer um ou três pacotes  totalmente configuráveis.  Por exemplo: Em cada pacote, você pode configurar plano de pagamento com diferentes preços e que contemplem diferentes entregas do projeto criado por você.*
     Ainda ficou com dúvida? Vamos juntos, tenho certeza que você vai curtir. Te vejo na próxima tela.
     `;
 
@@ -220,7 +220,7 @@ export default function MeusServicos() {
   return (
     <InformacoesFinanceirasProvider>
       <Helmet>
-        <title>Gyan - Veja os seus serviços</title>
+        <title>freelas town - Veja os seus serviços</title>
       </Helmet>
       <Content>
         <AvatarRegrasPlano

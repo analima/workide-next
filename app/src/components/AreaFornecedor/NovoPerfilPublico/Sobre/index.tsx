@@ -475,9 +475,9 @@ export function Sobre({ dataProps, getProvider, imageLoaded }: PropsPage) {
                         return;
                       }
                       router.push(
-                        `/consumidor/projetos/exclusivo/${dataProps?.id_usuario}`,
+                        `/contratante/projetos/exclusivo/${dataProps?.id_usuario}`,
                         {
-                          pathname: `/consumidor/projetos/exclusivo/${dataProps?.id_usuario}`,
+                          pathname: `/contratante/projetos/exclusivo/${dataProps?.id_usuario}`,
                           query: {
                             id_fornecedor: dataProps?.id,
                           },

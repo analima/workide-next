@@ -89,13 +89,15 @@ export default function ProjetoAndamentoContent() {
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
-    hotjar.stateChange('/consumidor/projeto/andamento');
+    hotjar.stateChange('/contratante/projeto/andamento');
   }, []);
 
   return (
     <Content>
       <Helmet>
-        <title>Gyan - Andamento do projeto {dadosProjetos.nome || ''}</title>
+        <title>
+          freelas town - Andamento do projeto {dadosProjetos.nome || ''}
+        </title>
       </Helmet>
       <Layout
         titulo={dadosProjetos?.nome}

@@ -26,7 +26,11 @@ interface IServicoConsumidorPublicoParams {
   strUsuario: string;
 }
 
-export function NovoPerfilPublico() {
+interface IProps {
+  versao: string;
+}
+
+export function NovoPerfilPublico({ versao }: IProps) {
   const [showModalDenuncia, setShowModalDenuncia] = useState(false);
   const [urlAtual, setUrlAtual] = useState('');
   const [dataProvider, setDataProvider] = useState<IProvider>({} as IProvider);
@@ -95,10 +99,10 @@ export function NovoPerfilPublico() {
         image={
           dataProvider.arquivo
             ? dataProvider.arquivo.url
-            : 'https://hom.gyan.com.br/gyan.png'
+            : 'https://hom.freelas.town/gyan.png'
         }
       />
-      <Layout>
+      <Layout versao={versao}>
         {(user ? user.id_pessoa : 0) === idPessoa && (
           <>
             <Row>

@@ -10,7 +10,7 @@ interface ISidebar {
 
 export default function Sidebar({ open }: ISidebar) {
   let { user } = useAuth();
-  if(!user){
+  if (!user) {
     user = {} as IPessoa;
   }
 
@@ -22,7 +22,7 @@ export default function Sidebar({ open }: ISidebar) {
             titulo="Meu perfil"
             itens={[
               {
-                link: '/consumidor/perfil-publico',
+                link: '/contratante/perfil-publico',
                 descricao: `Visualizar`,
               },
               {
@@ -71,7 +71,7 @@ export default function Sidebar({ open }: ISidebar) {
           />
         </NavItem>
         <NavItem>
-          <NavLink href="/consumidor/minhas-compras">Minhas Compras</NavLink>
+          <NavLink href="/contratante/minhas-compras">Minhas Compras</NavLink>
         </NavItem>
 
         <NavItem>
@@ -79,7 +79,7 @@ export default function Sidebar({ open }: ISidebar) {
             titulo="Suporte"
             itens={[
               {
-                link: '/FAQ#isConsumidor',
+                link: '/FAQ#isContratante',
                 descricao: 'FAQ - Perguntas e Respostas',
               },
               {
@@ -107,11 +107,11 @@ export default function Sidebar({ open }: ISidebar) {
             titulo="Opções de Conta"
             itens={[
               {
-                link: '/opcoes-conta#isConsumidor',
+                link: '/opcoes-conta#isContratante',
                 descricao: 'Alterar Senha',
               },
               {
-                link: '/opcoes-conta#isConsumidor',
+                link: '/opcoes-conta#isContratante',
                 descricao: 'Excluir Conta',
               },
             ]}

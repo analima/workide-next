@@ -65,13 +65,13 @@ class Confirmacao extends React.Component<any, any> {
                 <div>
                   <h1>Confirme seu e-mail</h1>
                   <p>
-                    Bem-vindo ao Gyan! Enviamos um e-mail de confirmação para: <br />
+                    Bem-vindo ao freelas town! Enviamos um e-mail de confirmação
+                    para: <br />
                     <b>{this.email}</b>
                   </p>
                   <strong>
-                    Se não receber em 05 minutos,
-                    verifique a sua caixa de Spam ou
-                    clique no botão abaixo para enviar novamente.
+                    Se não receber em 05 minutos, verifique a sua caixa de Spam
+                    ou clique no botão abaixo para enviar novamente.
                   </strong>
                   <span className="help-block">
                     {' '}

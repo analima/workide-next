@@ -25,7 +25,7 @@ export default function Carrinho() {
   return (
     <Content>
       <Helmet>
-        <title>Gyan - Carrinho consumidor</title>
+        <title>freelas town - Carrinho consumidor</title>
       </Helmet>
       <Layout titulo="" activeMenu>
         <CarrinhoConsumidorProvider>

@@ -80,7 +80,7 @@ export default function Aprensetacao() {
   return (
     <Template hiddenBackground hiddenCenterMenu={true}>
       <Helmet>
-        <title>Gyan - Apresentação</title>
+        <title>freelas town - Apresentação</title>
       </Helmet>
       <Content>
         <Container fluid={true}>

@@ -5,6 +5,7 @@ import Head from 'next/head';
 import { AuthProvider } from 'src/contexts/auth';
 import { Loading } from 'src/components/Loading';
 import { GlobalStyles } from 'src/styles/global';
+import { InformacoesTipoUsuario } from 'src/hooks/informacoesTipoUsuario';
 
 interface ThemeInterface {
   colors: {
@@ -22,25 +23,25 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Gyan</title>
+        <title>freelas town</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="description"
-          content="Olá amigo(a), como vai? Gostaria de compartilhar com você essa ideia. Estou usando uma plataforma muito legal chamada Gyan. Lá você encontrará muita coisa legal que vai te ajudar. Se cuida, abraço!"
+          content="Olá amigo(a), como vai? Gostaria de compartilhar com você essa ideia. Estou usando uma plataforma muito legal chamada freelas town. Lá você encontrará muita coisa legal que vai te ajudar. Se cuida, abraço!"
         />
         <meta
           property="og:title"
-          content="Gyan - Contrate um freelancer em poucos cliques"
+          content="freelas town - Contrate um freelancer em poucos cliques"
         />
-        <meta name="image" content="https://static.gyan.com.br/logo.jpeg" />
+        <meta name="image" content="https://static.freelas.town/logo.jpeg" />
         <meta
           property="og:image"
-          content="https://static.gyan.com.br/logo.jpeg"
+          content="https://static.freelas.town/logo.jpeg"
         />
         <meta name="keywords" content="sites, web, desenvolvimento"></meta>
 
         <link rel="preload" as="font" />
-        <link rel="shortcut icon" type="image/png" href="./favicon.ico" />
+        <link rel="shortcut icon" type="image/png" href="./favicon.png" />
         <link
           rel="stylesheet"
           type="text/css"
@@ -57,9 +58,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         <GlobalStyles />
         <ThemeProvider theme={theme}>
           <AuthProvider>
-            <Loading>
-              <Component {...pageProps} />
-            </Loading>
+            <InformacoesTipoUsuario>
+              <Loading>
+                <Component {...pageProps} />
+              </Loading>
+            </InformacoesTipoUsuario>
           </AuthProvider>
         </ThemeProvider>
       </html>

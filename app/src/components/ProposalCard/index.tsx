@@ -88,7 +88,7 @@ export const ProposalCard = ({
   return (
     <ContainerStyled
       onClick={() =>
-        history.push(`/consumidor/propostas`, {
+        history.push(`/contratante/propostas`, {
           id_proposta,
           id_projeto,
           id_fornecedor,

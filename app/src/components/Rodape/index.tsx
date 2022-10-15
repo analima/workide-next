@@ -1,7 +1,7 @@
 import { Container } from 'react-bootstrap';
 import { Footer, Content, FooterInfo, FooterSocial } from './style';
 import Image from 'next/image';
-import LogoGyan from '../../assets/logo-offset.svg';
+import LogoGyan from '../../assets/logo-cinza-sem-fundo.svg';
 import Whatsapp from '../../assets/whatsapp.svg';
 import Facebook from '../../assets/facebook.svg';
 import Linkedin from '../../assets/linkedin.svg';
@@ -28,9 +28,6 @@ export function Rodape() {
             <article>
               <h2>Menu</h2>
               <ul>
-                <li className="li-click" onClick={() => router.push('/')}>
-                  Home
-                </li>
                 {user.id_pessoa && (
                   <li
                     className="li-click"
@@ -72,43 +69,43 @@ export function Rodape() {
               <h2>Áreas</h2>
               <ul>
                 <li className="li-click">
-                  <Link href="https://gyan.com.br/detalhe-area?area=1">
+                  <Link href="https://freelas.town/detalhe-area?area=1">
                     Gráficos e Design
                   </Link>
                 </li>
                 <li className="li-click">
-                  <Link href="https://gyan.com.br/detalhe-area?area=2">
+                  <Link href="https://freelas.town/detalhe-area?area=2">
                     Marketing
                   </Link>
                 </li>
                 <li className="li-click">
-                  <Link href="https://gyan.com.br/detalhe-area?area=3">
+                  <Link href="https://freelas.town/detalhe-area?area=3">
                     Escrita e Tradução
                   </Link>
                 </li>
 
                 <li className="li-click">
-                  <Link href="https://gyan.com.br/detalhe-area?area=4">
+                  <Link href="https://freelas.town/detalhe-area?area=4">
                     Vídeo e Animação
                   </Link>
                 </li>
                 <li className="li-click">
-                  <Link href="https://gyan.com.br/detalhe-area?area=5">
+                  <Link href="https://freelas.town/detalhe-area?area=5">
                     Tecnologia da Informação
                   </Link>
                 </li>
                 <li className="li-click">
-                  <Link href="https://gyan.com.br/detalhe-area?area=6">
+                  <Link href="https://freelas.town/detalhe-area?area=6">
                     Legal
                   </Link>
                 </li>
                 <li className="li-click">
-                  <Link href="https://gyan.com.br/detalhe-area?area=7">
+                  <Link href="https://freelas.town/detalhe-area?area=7">
                     Administração
                   </Link>
                 </li>
                 <li className="li-click">
-                  <Link href="https://gyan.com.br/detalhe-area?area=8">
+                  <Link href="https://freelas.town/detalhe-area?area=8">
                     Finanças e Contabilidade
                   </Link>
                 </li>
@@ -182,7 +179,7 @@ export function Rodape() {
       <FooterSocial>
         <Container>
           <div className="content-fale-conosco">
-            <Image src={LogoGyan} alt="Logo da GYAN" width={260} />
+            <Image src={LogoGyan} alt="Logo da freelas town" width={150} />
           </div>
           <div className="content-version">
             <p>v{process.env.REACT_APP_VERSION}</p>

@@ -104,13 +104,13 @@ export default function PerfilPublico() {
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
-    hotjar.stateChange('/consumidor/perfil-publico');
+    hotjar.stateChange('/contratante/perfil-publico');
   }, []);
 
   return (
     <Layout activeMenu titulo="">
       <Helmet>
-        <title>Gyan - perfil do consumidor</title>
+        <title>freelas town - perfil do consumidor</title>
       </Helmet>
       <ContentButtons>
         {!location.state?.id && (

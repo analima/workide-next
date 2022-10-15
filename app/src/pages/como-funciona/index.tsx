@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { Helmet } from 'react-helmet';
 import { hotjar } from 'react-hotjar';
 import { Header } from '../../components/Header';
 import { Container } from '../../components/ComoFunciona/styles';
@@ -12,16 +11,18 @@ import { Vitrine } from 'src/components/Home/Vitrine';
 import { FrequentQuestions } from 'src/components/FrequentQuestions';
 import { perguntaComoFunciona } from '../../mock/perguntasFrequentesMock';
 import { Footer } from 'src/components/Footer';
-import Head from 'next/head';
 import { GetStaticProps } from 'next';
 import { consultas_api } from 'src/services/consultas_api';
 import { IServicoInfo } from 'src/interfaces/IServicoInfo';
+import { SEO } from 'src/components/SEO';
+import { version } from '../../../package.json';
 
 interface IPropsData {
   vitrineData: IServicoInfo[];
+  appVersion: string;
 }
 
-export default function ComoFunciona({ vitrineData }: IPropsData) {
+export default function ComoFunciona({ vitrineData, appVersion }: IPropsData) {
   useEffect(() => {
     hotjar.initialize(
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
@@ -32,18 +33,7 @@ export default function ComoFunciona({ vitrineData }: IPropsData) {
 
   return (
     <>
-      <Helmet>
-        <title>
-          Gyan - Conectando pessoas incríveis com projetos apaixonantes
-        </title>
-      </Helmet>
-      <Head>
-        <title>
-          Gyan - Conectando pessoas incríveis com projetos apaixonantes
-        </title>
-
-        <meta name="description" content="Como funciona" />
-      </Head>
+      <SEO title="Como funciona" />
       <Header />
       <Container>
         <BannerComoFunciona />
@@ -53,13 +43,15 @@ export default function ComoFunciona({ vitrineData }: IPropsData) {
         <Vitrine vitrineData={vitrineData} />
         <FrequentQuestions item={perguntaComoFunciona[0]} />
         <CardProjetosMaisBuscados />
-        <Footer />
+        <Footer versao={appVersion} />
       </Container>
     </>
   );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+  const appVersion = version;
+
   const searchOffers = async (): Promise<any> => {
     const { data } = await consultas_api.post<{ values: IServicoInfo[] }>(
       `/consulta/ofertas?limit=12`,
@@ -72,6 +64,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       vitrineData,
+      appVersion,
     },
     revalidate: 86400,
   };

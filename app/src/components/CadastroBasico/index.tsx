@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
 import { Col, Form, Row, OverlayTrigger, Tooltip } from 'react-bootstrap';
-import LogoGyan from '../../assets/g-gyan.svg';
+import LogoGyan from '../../assets/logo-pequena-azul.png';
 import Google from '../../assets/google.svg';
 import {
   ButtonLogin,

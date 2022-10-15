@@ -44,7 +44,7 @@ export function ModalAprovacaoPagamento({
     try {
       setJaPossuiFaturaPendente(false);
       const response = await pagamentos_api.get(
-        `/faturas-servico/consumidor/${idPessoaConsumidor}`,
+        `/faturas-servico/contratante/${idPessoaConsumidor}`,
       );
       const lastInvoice = response.data.values.find(
         (fatura: any) => fatura.id_projeto === idProjeto,
@@ -86,7 +86,7 @@ export function ModalAprovacaoPagamento({
       setStatus('APROVADO!');
       setTimeout(() => {
         setShow(false);
-        history.push('/consumidor/minhas-compras');
+        history.push('/contratante/minhas-compras');
       }, 7000);
     } catch (error: any) {
       console.error(error.response);
@@ -117,7 +117,7 @@ export function ModalAprovacaoPagamento({
         setPercentage(100);
       }, 14000);
       setTimeout(() => {
-        if (status === 'APROVADO!') history.push('/consumidor/minhas-compras');
+        if (status === 'APROVADO!') history.push('/contratante/minhas-compras');
       }, 16000);
     } catch (error) {}
   }
@@ -146,7 +146,7 @@ export function ModalAprovacaoPagamento({
                 Você Já possui uma fatura pendente!
               </TextPendingInvoice>
               <GhostButton
-                onClick={() => history.push('/consumidor/minhas-compras')}
+                onClick={() => history.push('/contratante/minhas-compras')}
               >
                 IR PARA MINHAS FATURAS
               </GhostButton>
@@ -158,7 +158,7 @@ export function ModalAprovacaoPagamento({
                 Você Já pagou por esse projeto!
               </TextPendingInvoice>
               <GhostButton
-                onClick={() => history.push('/consumidor/minhas-compras')}
+                onClick={() => history.push('/contratante/minhas-compras')}
               >
                 IR PARA MINHAS FATURAS
               </GhostButton>

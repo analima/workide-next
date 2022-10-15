@@ -60,7 +60,7 @@ export function ModalConfirmarAtualizacaoFatura({
       setTimeout(() => {
         setModalInformation(false);
         setMensagemModalInformation('');
-        history.push('/consumidor/minhas-compras');
+        history.push('/contratante/minhas-compras');
       }, 3000);
       setLoading(false);
       setShowModal(false);

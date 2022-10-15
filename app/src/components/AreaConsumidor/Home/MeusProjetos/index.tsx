@@ -86,7 +86,7 @@ export default function MeusProjetos() {
 
   const paginaProjeto = useCallback(
     (id: number) => {
-      history.push(`/consumidor/projeto/andamento`, { id });
+      history.push(`/contratante/projeto/andamento`, { id });
     },
     [history],
   );
@@ -140,7 +140,7 @@ export default function MeusProjetos() {
     const filtroQuery = `&filter=status.codigo=${filtroArray.join('|')}`;
     oportunidades_api
       .get<PropostaProps>(
-        `/projetos/consumidor?limit=5${
+        `/projetos/contratante?limit=5${
           filtroArray.length ? filtroQuery : ''
         }&page=${pagina}${order}${by ? '=asc' : '=desc'}`,
       )

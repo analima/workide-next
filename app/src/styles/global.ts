@@ -12,7 +12,7 @@ export const GlobalStyles = createGlobalStyle`
 
    @font-face {
      font-family: 'Renner';
-     src: url('./fonts/Renner.ttf');
+     src: url('/fonts/Renner.ttf');
    }
  }
 
