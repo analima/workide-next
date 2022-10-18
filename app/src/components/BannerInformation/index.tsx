@@ -73,8 +73,14 @@ export function BannerInformation() {
 
         <LastInformation cor="#0384d1">
           <div className="wrapper">
-            <h1>Quer saber como gerencias seus projetos com freelancers?</h1>
-            <button>BAIXE O E-BOOK GRATUÍTO</button>
+            <h1>Quer saber como gerenciar seus projetos com freelancers?</h1>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://static.freelas.town/ebook-gyan.pdf"
+            >
+              BAIXE O E-BOOK GRATUÍTO
+            </a>
           </div>
 
           <div className="img-ebook">
