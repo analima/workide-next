@@ -77,7 +77,7 @@ export function BannerInformation() {
             <a
               target="_blank"
               rel="noreferrer"
-              href="https://static.freelas.town/ebook-gyan.pdf"
+              href="https://gyan-sp-public.s3.sa-east-1.amazonaws.com/E-book++-+Empresas.pdf"
             >
               BAIXE O E-BOOK GRATUÍTO
             </a>

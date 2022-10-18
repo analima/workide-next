@@ -37,11 +37,13 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <GlobalStyles />
       <ThemeProvider theme={theme}>
-        <InformacoesTipoUsuario>
-          <Loading>
-            <Component {...pageProps} />
-          </Loading>
-        </InformacoesTipoUsuario>
+        <AuthProvider>
+          <InformacoesTipoUsuario>
+            <Loading>
+              <Component {...pageProps} />
+            </Loading>
+          </InformacoesTipoUsuario>
+        </AuthProvider>
       </ThemeProvider>
     </>
   );
