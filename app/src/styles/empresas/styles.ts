@@ -6,5 +6,4 @@ export const Container = styled.div`
   flex-direction: column;
   gap: 54px;
   background-color: ${BRANCO};
-  padding-bottom: 80px;
 `;

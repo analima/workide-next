@@ -38,7 +38,7 @@ export default function Home({ vitrineData, appVersion }: IPropsData) {
   return (
     <>
       <SEO
-        title="freelas town - Contrate um freelancer em poucos cliques"
+        title="Contrate um freelancer em poucos cliques"
         excludeTitleSuffix
       />
 
