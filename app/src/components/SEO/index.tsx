@@ -24,6 +24,7 @@ export function SEO({
       {image && <meta name="image" content={image} />}
       <meta httpEquiv="x-ua-compatible" content="IE=edge,chrome=1" />
       <meta name="MobileOptimized" content="320" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="HandheldFriendly" content="True" />
       <meta name="theme-color" content="#00A1CB" />
       <meta name="msapplication-TileColor" content="#00A1CB" />
