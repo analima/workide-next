@@ -5,12 +5,14 @@ import { consultas_api } from 'src/services/consultas_api';
 import { IServicoInfo } from 'src/interfaces/IServicoInfo';
 import { SEO } from 'src/components/SEO';
 import EmpresasHome from 'src/Containers/EmpresasHome';
+import { version } from '../../../../package.json';
 
 interface IPropsData {
   vitrineData: IServicoInfo[];
+  appVersion: string;
 }
 
-export default function Home({ vitrineData }: IPropsData) {
+export default function Home({ vitrineData, appVersion }: IPropsData) {
   useEffect(() => {
     hotjar.initialize(
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
@@ -21,13 +23,15 @@ export default function Home({ vitrineData }: IPropsData) {
 
   return (
     <>
-      <SEO title="Empresas - Contrate um freelancer em poucos cliques" />
-      <EmpresasHome vitrineData={vitrineData} />
+      <SEO title="Buscar oportunidades" />
+      <EmpresasHome vitrineData={vitrineData} version={appVersion} />
     </>
   );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+  const appVersion = version;
+
   const searchOffers = async (): Promise<any> => {
     const { data } = await consultas_api.post<{ values: IServicoInfo[] }>(
       `/consulta/ofertas?limit=12`,
@@ -39,6 +43,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
+      appVersion,
       vitrineData,
     },
     revalidate: 86400,

@@ -1,6 +1,6 @@
 {
   "name": "gyan-next",
-  "version": "1.9.1",
+  "version": "2.1.0",
   "private": true,
   "module": "es2015",
   "scripts": {

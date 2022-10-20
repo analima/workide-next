@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { formatDate } from '../../helpers/DateHelper';
 import { oportunidades_api } from '../../services/oportunidades_api';
-import EstrelaOff  from '../../assets/estrela-off.svg';
-import Estrela  from '../../assets/estrela.svg';
-import Image from 'next/image'
+import EstrelaOff from '../../assets/estrela-off.svg';
+import Estrela from '../../assets/estrela.svg';
+import Image from 'next/image';
 import {
   Avaliacao,
   AvaliacaoTitulo,
@@ -62,7 +62,7 @@ export function AvaliacoesFornecedor({ id }: IProps) {
   }
   return (
     <>
-      {evaluations && !!evaluations.length ? (
+      {evaluations.length > 0 ? (
         evaluations.map((obj, index) => {
           return (
             obj?.descricao?.length && (

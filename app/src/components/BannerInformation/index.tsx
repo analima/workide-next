@@ -73,8 +73,14 @@ export function BannerInformation() {
 
         <LastInformation cor="#0384d1">
           <div className="wrapper">
-            <h1>Quer saber como gerencias seus projetos com freelancers?</h1>
-            <button>BAIXE O E-BOOK GRATUÍTO</button>
+            <h1>Quer saber como gerenciar seus projetos com freelancers?</h1>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://gyan-sp-public.s3.sa-east-1.amazonaws.com/E-book++-+Empresas.pdf"
+            >
+              BAIXE O E-BOOK GRATUÍTO
+            </a>
           </div>
 
           <div className="img-ebook">
