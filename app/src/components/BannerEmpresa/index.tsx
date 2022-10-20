@@ -19,13 +19,7 @@ export function BannerEmpresa() {
             onClick={() => router.push('/contratante/busca')}
             className="orange"
           >
-            QUERO VER PROFISSIONAIS
-          </button>
-          <button
-            onClick={() => router.push('/cadastro-basico')}
-            className="blue"
-          >
-            QUERO ME CADASTRAR
+            PUBLICAR MEU PRIMEIRO PROJETO
           </button>
 
           <p>
@@ -35,7 +29,9 @@ export function BannerEmpresa() {
         </ContentInfo>
 
         <ContentImage>
-          <Image src={IMG} quality={100} alt="Empresas" />
+          <div className="content-img">
+            <Image src={IMG} quality={100} alt="Empresas" />
+          </div>
         </ContentImage>
       </Content>
     </Container>

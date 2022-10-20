@@ -6,7 +6,6 @@ import { IServicoInfo } from 'src/interfaces/IServicoInfo';
 import { SEO } from 'src/components/SEO';
 import EmpresasHome from 'src/Containers/EmpresasHome';
 import { version } from '../../../../package.json';
-
 interface IPropsData {
   vitrineData: IServicoInfo[];
   appVersion: string;
@@ -23,7 +22,11 @@ export default function Home({ vitrineData, appVersion }: IPropsData) {
 
   return (
     <>
-      <SEO title="Buscar oportunidades" />
+      <SEO
+        title="Para Empresas"
+        description="Olá amigo(a), como vai? Gostaria de compartilhar com você essa ideia. Estou usando uma plataforma muito legal chamada freelas town. Lá você encontrará muita coisa legal que vai te ajudar. Se cuida, abraço!"
+        excludeTitleSuffix
+      />
       <EmpresasHome vitrineData={vitrineData} version={appVersion} />
     </>
   );

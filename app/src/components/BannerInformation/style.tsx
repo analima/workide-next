@@ -151,7 +151,7 @@ export const LastInformation = styled(Information)`
       color: ${BRANCO};
     }
 
-    a {
+    button {
       background-color: ${LARANJA};
       color: ${BRANCO};
       padding: 16px 40px;

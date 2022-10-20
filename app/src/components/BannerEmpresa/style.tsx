@@ -30,6 +30,10 @@ export const ContentImage = styled.div`
   display: flex;
   align-items: center;
 
+  .content-img {
+    padding: 20px;
+  }
+
   @media (max-width: 768px) {
     display: none;
   }
