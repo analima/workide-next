@@ -8,7 +8,7 @@ interface ISidebar {
   open: boolean;
 }
 
-export default function Sidebar({ open }: ISidebar) {
+export default function SidebarConsumidor({ open }: ISidebar) {
   const { user } = useAuth();
 
   return (

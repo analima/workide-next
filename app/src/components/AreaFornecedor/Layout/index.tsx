@@ -7,7 +7,6 @@ import { Titulo } from '../../../components/Titulo';
 
 import NavbarFornecedor from '../../AreaFornecedor/Layout/Navbar/index';
 import NavbarConsumidor from '../../AreaConsumidor/Layout/Navbar/index';
-import SidebarConsumidor from '../../AreaConsumidor/Layout/Sidebar/index';
 import { Subtitulo } from './style';
 import Content from './style';
 import { useAuth } from '../../../contexts/auth';
@@ -15,7 +14,9 @@ import { FeedbackChat } from '../../../components/FeedbackChat';
 import { Header } from 'src/components/Header';
 import { Footer } from 'src/components/Footer';
 import { useInformacoesTipoUsuario } from 'src/hooks/informacoesTipoUsuario';
-import { Sidebar as SidebarFornecedor } from './Sidebar';
+
+import SidebarFornecedor from './Sidebar';
+import SidebarConsumidor from '../../AreaConsumidor/Layout/Sidebar/index';
 
 interface LayoutProps {
   titulo?: string;
