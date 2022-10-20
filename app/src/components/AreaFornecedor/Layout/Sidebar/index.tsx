@@ -15,7 +15,7 @@ interface ISidebar {
   open: boolean;
 }
 
-export function Sidebar({ open }: ISidebar) {
+export default function SidebarFornecedor({ open }: ISidebar) {
   const { user } = useAuth();
   const [display, setDisplay] = useState(open);
   const router = useRouter();
