@@ -21,11 +21,15 @@ import { pessoas_api } from 'src/services/pessoas_api';
 interface IModalRecomendacao {
   showModal: boolean;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+  link: string;
+  type: string;
 }
 
-export function ModalEbookOngs({
+export function ModalEbook({
   showModal,
   setShowModal,
+  link,
+  type,
 }: IModalRecomendacao) {
   const schema = Yup.object().shape({});
   const [error, setError] = useState('');
@@ -34,9 +38,6 @@ export function ModalEbookOngs({
   const [errorEmail, setErrorEmail] = useState<string>('');
   const [errorInstitution, setErrorInstitution] = useState<string>('');
   const [loading, setLoading] = useState(false);
-  const [linkDownload, setLinkDownload] = useState<string>(
-    'https://static.freelas.town/ebook-gyan.pdf',
-  );
   const [authorizedDownload, setAuthorizedDownload] = useState<boolean>(false);
   const { control, watch, setValue } = useForm({
     mode: 'all',
@@ -70,7 +71,6 @@ export function ModalEbookOngs({
     setErrorInstitution('');
     setErrorTelephone('');
     setAuthorizedDownload(false);
-    setLinkDownload('https://static.freelas.town/ebook-gyan.pdf');
   }, []);
 
   const validatingFields = () => {
@@ -174,7 +174,7 @@ export function ModalEbookOngs({
             <Row>
               <Spacer size={10} />
               <InputText
-                label="Instituição"
+                label={type === 'ong' ? 'Instituição' : 'Empresa'}
                 placeholder="Obrigatório"
                 name="inputInstituicao"
                 control={control}
@@ -214,11 +214,7 @@ export function ModalEbookOngs({
               <ContentButton onClick={download}>
                 <button disabled={authorizedDownload}>
                   {authorizedDownload ? (
-                    <ButtonDownload
-                      download
-                      href={linkDownload}
-                      target="_blank"
-                    >
+                    <ButtonDownload download href={link} target="_blank">
                       {loading ? 'Carregando...' : 'Fazer download'}
                     </ButtonDownload>
                   ) : (

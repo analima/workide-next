@@ -27,10 +27,19 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
   const [esconder, setEsconder] = useState(false);
   const parent = useRef(null);
   const [open, setOpen] = useState(false);
+  const { route } = useRouter();
+  const [classEmpresa, setClassEmpresa] = useState('');
+  const [classOng, setClassOng] = useState('');
+  const [classCaptar, setClassCaptar] = useState('');
 
   useEffect(() => {
+    if (route === '/empresas/home') setClassEmpresa('empresas');
+    if (route === '/ongs') setClassOng('ongs');
+    if (route === '/fornecedor/captar-projetos')
+      setClassCaptar('captar-projetos');
+
     parent.current && autoAnimate(parent.current);
-  }, [parent]);
+  }, [parent, route]);
 
   const { signOut } = useAuth();
   const router = useRouter();
@@ -124,9 +133,15 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
               />
             </div>
             <div className="links">
-              <Link href="/fornecedor/captar-projetos">Para profissionais</Link>
-              <Link href="/empresas/home">Para empresas</Link>
-              <Link href="/ongs">Para Ongs</Link>
+              <Link href="/fornecedor/captar-projetos">
+                <span className={classCaptar}>Para profissionais</span>
+              </Link>
+              <Link href="/empresas/home">
+                <span className={classEmpresa}>Para empresas</span>
+              </Link>
+              <Link href="/ongs">
+                <span className={classOng}>Para Ongs</span>
+              </Link>
 
               <Link href="https://blog.freelas.town/">
                 <a target="_blank">Blog</a>
@@ -161,7 +176,11 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
               ) : (
                 <div className="content-btn">
                   <Button
-                    label="CADASTRE-SE"
+                    label={
+                      classEmpresa !== 'empresas'
+                        ? 'CADASTRE-SE'
+                        : 'PUBLICAR PROJETO'
+                    }
                     onClick={() => router.push('/cadastro-basico')}
                   />
                 </div>
@@ -189,10 +208,14 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
                 />
 
                 <Link href="/fornecedor/captar-projetos">
-                  Para profissionais
+                  <span className={classCaptar}>Para profissionais</span>
                 </Link>
-                <Link href="/empresas/home">Para empresas</Link>
-                <Link href="/ongs">Para Ongs</Link>
+                <Link href="/empresas/home">
+                  <span className={classEmpresa}>Para empresas</span>
+                </Link>
+                <Link href="/ongs">
+                  <span className={classOng}>Para Ongs</span>
+                </Link>
 
                 <Link href="https://blog.freelas.town/">
                   <a target="_blank">Blog</a>
@@ -233,7 +256,11 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
                   </ContainerLogin>
                 ) : (
                   <Button
-                    label="CADASTRE-SE"
+                    label={
+                      classEmpresa !== 'empresas'
+                        ? 'CADASTRE-SE'
+                        : 'PUBLICAR PROJETO'
+                    }
                     onClick={() => router.push('/cadastro-basico')}
                   />
                 )}
