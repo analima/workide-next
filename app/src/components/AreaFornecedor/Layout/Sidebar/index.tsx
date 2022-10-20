@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useAuth } from 'src/contexts/auth';
 import {
   Content,
   NavItem,
@@ -8,6 +7,7 @@ import {
   BotaoCaptar,
   NavButton,
 } from './style';
+import { useAuth } from 'src/contexts/auth';
 import { Dropdown as DropdownMenu } from './Dropdown';
 import { useRouter } from 'next/router';
 
@@ -15,7 +15,7 @@ interface ISidebar {
   open: boolean;
 }
 
-export function SidebarFornecedor({ open }: ISidebar) {
+export function Sidebar({ open }: ISidebar) {
   const { user } = useAuth();
   const [display, setDisplay] = useState(open);
   const router = useRouter();
@@ -51,37 +51,32 @@ export function SidebarFornecedor({ open }: ISidebar) {
             titulo="Atualizar Cadastro"
             itens={[
               {
-                link: '/cadastro-complementar',
+                link: '/cadastro-complementar?cadastro=true&aba=0',
                 descricao: 'Cadastro complementar',
                 isButton: true,
-                props: { cadastroCompleto: true, selectAba: 0 },
               },
               {
-                link: '/cadastro-complementar',
+                link: '/cadastro-complementar?cadastro=true&aba=1',
                 descricao: 'Condições Gerais',
                 isButton: true,
-                props: { cadastroCompleto: true, selectAba: 1 },
               },
               {
-                link: '/cadastro-complementar',
+                link: '/cadastro-complementar?cadastro=true&aba=2',
+
                 descricao: 'Turbine seu potencial',
                 isButton: true,
-                props: { cadastroCompleto: true, selectAba: 2 },
               },
               {
-                link: '/cadastro-complementar',
+                link: '/cadastro-complementar?cadastro=true&aba=3',
                 descricao: 'Informações financeiras',
                 isButton: true,
-                props: { cadastroCompleto: true, selectAba: 3 },
               },
             ]}
           />
         </NavItem>
 
         <NavItem>
-          <BotaoCaptar
-            onClick={() => router.push('/fornecedor/captar-projetos')}
-          >
+          <BotaoCaptar onClick={() => router.push('captar-projetos')}>
             BUSCAR
           </BotaoCaptar>
           <DropdownMenu
@@ -126,8 +121,12 @@ export function SidebarFornecedor({ open }: ISidebar) {
         </NavItem>
 
         <NavItem>
-          <NavButton onClick={() => router.push('/cadastro-complementar')}>
-            !!Minha Carteira!!
+          <NavButton
+            onClick={() =>
+              router.push('/cadastro-complementar?cadastro=true&aba=3')
+            }
+          >
+            Minha Carteira
           </NavButton>
         </NavItem>
         <NavItem>

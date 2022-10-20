@@ -15,7 +15,7 @@ import { FeedbackChat } from '../../../components/FeedbackChat';
 import { Header } from 'src/components/Header';
 import { Footer } from 'src/components/Footer';
 import { useInformacoesTipoUsuario } from 'src/hooks/informacoesTipoUsuario';
-import { SidebarFornecedor } from './Sidebar';
+import { Sidebar as SidebarFornecedor } from './Sidebar';
 
 interface LayoutProps {
   titulo?: string;
