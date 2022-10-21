@@ -1,61 +1,30 @@
 import { useState, useEffect } from 'react';
-import { NavItem, NavLink, Nav, BotaoCaptar, NavButton } from './style';
-import Content from './style';
-import { useAuth } from '../../../../contexts/auth';
-import { useHistory } from 'react-router-dom';
-import { IPessoa } from '../../../../interfaces/IPessoa';
-import { pessoas_api } from '../../../../services/pessoas_api';
-
-import DropdownMenu from './Dropdown';
+import {
+  Content,
+  NavItem,
+  NavLink,
+  Nav,
+  BotaoCaptar,
+  NavButton,
+} from './style';
+import { useAuth } from 'src/contexts/auth';
+import { Dropdown as DropdownMenu } from './Dropdown';
+import { useRouter } from 'next/router';
 
 interface ISidebar {
   open: boolean;
 }
 
-export default function Sidebar({ open }: ISidebar) {
+export default function SidebarFornecedor({ open }: ISidebar) {
+  const { user } = useAuth();
   const [display, setDisplay] = useState(open);
-  const history = useHistory();
+  const router = useRouter();
 
   useEffect(() => {
     setTimeout(() => {
       setDisplay(open);
     }, 400);
   }, [open]);
-
-  const [user, setUser] = useState({} as IPessoa);
-  const [isAuthDataLoading, setIsAuthDataLoading] = useState(true);
-  const [idToken, setIdToken] = useState('');
-
-  const refreshUserData = async (ID_TOKEN: any) => {
-    const newIdToken = localStorage.getItem(ID_TOKEN);
-
-    setIdToken(newIdToken || '');
-    if (newIdToken) {
-      const res = await pessoas_api.get('/pessoas/me', {
-        headers: {
-          Authorization: `Bearer ${newIdToken}`,
-        },
-      });
-      if (res) {
-        const { data: newUser } = res;
-        setUser({
-          ...newUser,
-          id_pessoa: newUser.id,
-          email: newUser.usuario?.email,
-          url_avatar: newUser.arquivo?.url,
-          admin: newUser.usuario?.admin,
-        });
-      }
-    }
-  };
-
-  useEffect(() => {
-    let local = localStorage.getItem('@freelas_town:id_token');
-    if (local) {
-      const ID_TOKEN = '@freelas_town:id_token';
-      refreshUserData(ID_TOKEN);
-    }
-  }, []);
 
   return (
     <Content open={open} display={display}>
@@ -69,7 +38,10 @@ export default function Sidebar({ open }: ISidebar) {
                 descricao: `Completo em ${user.percentageRegisterProvider}%`,
                 onClick: true,
               },
-              { link: '/fornecedor/perfil', descricao: 'Visualizar' },
+              {
+                link: `/fornecedor/perfil-publico/${user.id_pessoa}`,
+                descricao: 'Visualizar',
+              },
             ]}
           />
         </NavItem>
@@ -79,35 +51,32 @@ export default function Sidebar({ open }: ISidebar) {
             titulo="Atualizar Cadastro"
             itens={[
               {
-                link: '/cadastro-complementar',
+                link: '/cadastro-complementar?cadastro=true&aba=0',
                 descricao: 'Cadastro complementar',
                 isButton: true,
-                props: { cadastroCompleto: true, selectAba: 0 },
               },
               {
-                link: '/cadastro-complementar',
+                link: '/cadastro-complementar?cadastro=true&aba=1',
                 descricao: 'Condições Gerais',
                 isButton: true,
-                props: { cadastroCompleto: true, selectAba: 1 },
               },
               {
-                link: '/cadastro-complementar',
+                link: '/cadastro-complementar?cadastro=true&aba=2',
+
                 descricao: 'Turbine seu potencial',
                 isButton: true,
-                props: { cadastroCompleto: true, selectAba: 2 },
               },
               {
-                link: '/cadastro-complementar',
+                link: '/cadastro-complementar?cadastro=true&aba=3',
                 descricao: 'Informações financeiras',
                 isButton: true,
-                props: { cadastroCompleto: true, selectAba: 3 },
               },
             ]}
           />
         </NavItem>
 
         <NavItem>
-          <BotaoCaptar onClick={() => history.push('captar-projetos')}>
+          <BotaoCaptar onClick={() => router.push('captar-projetos')}>
             BUSCAR
           </BotaoCaptar>
           <DropdownMenu
@@ -145,7 +114,7 @@ export default function Sidebar({ open }: ISidebar) {
         </NavItem>
         <NavItem>
           <NavButton
-            onClick={() => history.push('/turbine-seu-potencial/planos')}
+            onClick={() => router.push('/turbine-seu-potencial/planos')}
           >
             Minha assinatura
           </NavButton>
@@ -154,10 +123,7 @@ export default function Sidebar({ open }: ISidebar) {
         <NavItem>
           <NavButton
             onClick={() =>
-              history.push('/cadastro-complementar', {
-                cadastroCompleto: true,
-                selectAba: 3,
-              })
+              router.push('/cadastro-complementar?cadastro=true&aba=3')
             }
           >
             Minha Carteira

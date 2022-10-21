@@ -1,17 +1,12 @@
+import { AZUL, BRANCO, LARANJA, LARANJA_80 } from 'src/styles/variaveis';
 import styled from 'styled-components';
-import {
-  AZUL,
-  BRANCO,
-  LARANJA,
-  LARANJA_80,
-} from '../../../../styles/variaveis';
 
 interface ISidebar {
   open: boolean;
   display: boolean;
 }
 
-const Content = styled.div<ISidebar>`
+export const Content = styled.div<ISidebar>`
   background-color: ${BRANCO};
   width: 340px;
   height: 100vh;
@@ -117,5 +112,3 @@ export const BotaoCaptar = styled.button`
   margin-left: 190px;
   font-size: 14px;
 `;
-
-export default Content;
