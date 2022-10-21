@@ -24,6 +24,7 @@ import { IExtratoProps } from 'src/interfaces/IExtratoProps';
 import Paginacao from 'src/components/AreaFornecedor/MeusProjetos/Paginacao';
 import { ID_TOKEN, useAuth } from 'src/contexts/auth';
 import { consultas_api } from 'src/services/consultas_api';
+import { SemConteudo } from 'src/components/SemConteudo';
 // import { FaRegCalendarAlt } from 'react-icons/fa';
 
 interface TypeProfileProps {
@@ -226,32 +227,43 @@ export default function Extrato({ type }: TypeProfileProps) {
         </ContentFilter>
 
         <Main>
-          <ContentCardExtrato>
-            {extractData.map((item: IExtratoProps) => (
-              <CardExtrato type={type} key={item.id} item={item} />
-            ))}
-            <Paginacao
-              pagina={pagina}
-              setPagina={setPagina}
-              totalPaginas={totalPaginas}
-            />
-          </ContentCardExtrato>
+          {extractData.length > 0 ? (
+            <>
+              <ContentCardExtrato>
+                {extractData.map((item: IExtratoProps) => (
+                  <CardExtrato type={type} key={item.id} item={item} />
+                ))}
+                <Paginacao
+                  pagina={pagina}
+                  setPagina={setPagina}
+                  totalPaginas={totalPaginas}
+                />
+              </ContentCardExtrato>
 
-          <CardTotalExtrato dados={extractData} type={type} periodo={periodo} />
+              <CardTotalExtrato
+                dados={extractData}
+                type={type}
+                periodo={periodo}
+              />
 
-          {type === 'provider' && (
-            <ContentEntendaMelhor>
-              <span>Entenda melhor:</span>
-              <p>
-                Quando o cliente paga via cartão de crédito: Nessa forma de
-                pagamento, pode levar até 30 dias para o pagamento ser
-                processado. Por isso, as vezes, pode levar mais tempo para que o
-                valor seja liberado para você. Pagamentos que estão “Aguardando
-                conclusão”: Para estimarmos com mais precisão quando o valor
-                será liberado, é necessário que o projeto seja primeiramente
-                concluído. Por isso, não é possível informarmos uma data.
-              </p>
-            </ContentEntendaMelhor>
+              {type === 'provider' && (
+                <ContentEntendaMelhor>
+                  <span>Entenda melhor:</span>
+                  <p>
+                    Quando o cliente paga via cartão de crédito: Nessa forma de
+                    pagamento, pode levar até 30 dias para o pagamento ser
+                    processado. Por isso, as vezes, pode levar mais tempo para
+                    que o valor seja liberado para você. Pagamentos que estão
+                    “Aguardando conclusão”: Para estimarmos com mais precisão
+                    quando o valor será liberado, é necessário que o projeto
+                    seja primeiramente concluído. Por isso, não é possível
+                    informarmos uma data.
+                  </p>
+                </ContentEntendaMelhor>
+              )}
+            </>
+          ) : (
+            <SemConteudo mensagem="Você ainda não possui itens." />
           )}
 
           <ContentButton>

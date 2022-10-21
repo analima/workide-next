@@ -2,12 +2,14 @@ import { formatDate } from 'src/helpers/DateHelper';
 import { formatToPrice } from 'src/helpers/formatsHelper';
 import { IExtratoProps } from 'src/interfaces/IExtratoProps';
 import { Content } from './styles';
+import { useRouter } from 'next/router';
 
 interface IDadosExtratoProps {
   item: IExtratoProps;
   type: string;
 }
 export function CardExtrato({ item, type }: IDadosExtratoProps) {
+  const router = useRouter();
   function handleColorStatus(status: string) {
     if (status === 'Projeto em andamento') return 'andamento';
     if (status === 'Concluído parcialmente') return 'parcialmente';
@@ -16,6 +18,8 @@ export function CardExtrato({ item, type }: IDadosExtratoProps) {
     if (status === 'Aguardando início') return 'aguardando-inicio';
     if (status === 'Conclusão solicitada') return 'conclusao-solicitada';
     if (status === 'Desistência em andamento') return 'desistencia-andamento';
+    if (status === 'Cancelamento do Projeto Solicitado')
+      return 'cancelamento-solicitado';
   }
 
   function handleDatePagamento(status: string) {
@@ -25,7 +29,17 @@ export function CardExtrato({ item, type }: IDadosExtratoProps) {
   }
 
   return (
-    <Content status={item.statusProjeto === 'Projeto cancelado'}>
+    <Content
+      status={item.statusProjeto === 'Projeto cancelado'}
+      onClick={() =>
+        router.push({
+          pathname: `/${
+            type === 'provider' ? 'fornecedor' : 'contratante'
+          }/projeto/andamento`,
+          query: `${item.id}`,
+        })
+      }
+    >
       <div className="collunm-1">
         <h1>{item.nomeProjeto}</h1>
         <p>{type === 'provider' ? item.nomeConsumidor : item.nomeFornecedor}</p>
@@ -48,25 +62,33 @@ export function CardExtrato({ item, type }: IDadosExtratoProps) {
       </div>
 
       <div className="collunm-3">
-        <span>Pago pelo cliente via {item.meioPagamento}</span>
-        <span>Taxa administrativa</span>
-        <span>Repasse</span>
+        <span>Valor pago via {item.meioPagamento}</span>
+        {type === 'provider' && (
+          <>
+            <span>Taxa administrativa</span>
+            <span>Repasse</span>
+          </>
+        )}
       </div>
 
       <div className="collunm-4">
         <span className="pago">
           +{' '}
           {formatToPrice(
-            type === 'provider' ? item.vlrConsumidor : item.vlrFornecedor,
-          )}
-        </span>
-        <span className="taxa">- {formatToPrice(item.vlrTaxa)}</span>
-        <span className="repase">
-          +{' '}
-          {formatToPrice(
             type === 'provider' ? item.vlrFornecedor : item.vlrConsumidor,
           )}
         </span>
+        {type === 'provider' && (
+          <>
+            <span className="taxa">- {formatToPrice(item.vlrTaxa)}</span>
+            <span className="repase">
+              +{' '}
+              {formatToPrice(
+                type === 'provider' ? item.vlrFornecedor : item.vlrConsumidor,
+              )}
+            </span>
+          </>
+        )}
       </div>
     </Content>
   );
