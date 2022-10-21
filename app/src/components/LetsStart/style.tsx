@@ -39,7 +39,7 @@ export const ContentInfo = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   gap: 24px;
   width: 407px;
 
@@ -63,6 +63,9 @@ export const ContentInfo = styled.div`
     font-size: 16px;
   }
 
+  button {
+    width: 100%;
+  }
   @media (max-width: 991px) {
     width: 540px;
 

@@ -16,7 +16,7 @@ export function BannerEmpresa() {
             todos os seus projetos.
           </span>
           <button
-            onClick={() => router.push('/contratante/busca')}
+            onClick={() => router.push('/cadastro-basico')}
             className="orange"
           >
             PUBLICAR MEU PRIMEIRO PROJETO

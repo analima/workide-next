@@ -23,7 +23,7 @@ export default function Home({ vitrineData, appVersion }: IPropsData) {
   return (
     <>
       <SEO
-        title="Para Empresas"
+        title="Freelas Town - Encontre e contrate os melhores profissionais"
         description="Olá amigo(a), como vai? Gostaria de compartilhar com você essa ideia. Estou usando uma plataforma muito legal chamada freelas town. Lá você encontrará muita coisa legal que vai te ajudar. Se cuida, abraço!"
         excludeTitleSuffix
       />
