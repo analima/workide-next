@@ -139,12 +139,6 @@ export function CardCategory({ title, page }: IProps) {
           ))}
         </Carrousel>
       )}
-      {page === 'empresas' && (
-        <span>
-          Procurando por trabalho?
-          <Link href="/fornecedor/captar-projetos">Procurar projetos</Link>
-        </span>
-      )}
     </Content>
   );
 }

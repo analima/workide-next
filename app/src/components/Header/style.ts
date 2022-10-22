@@ -99,16 +99,24 @@ export const Content = styled.section`
         cursor: pointer;
       }
 
-      a {
+      a,
+      span {
         color: ${PRETO_10};
         text-decoration: none;
         font-size: 18px;
         font-weight: 500;
         transition: all 0.3s;
+        cursor: pointer;
 
         :hover {
           opacity: 0.8;
         }
+      }
+
+      .empresas,
+      .ongs,
+      .captar-projetos {
+        font-weight: bold;
       }
     }
 
