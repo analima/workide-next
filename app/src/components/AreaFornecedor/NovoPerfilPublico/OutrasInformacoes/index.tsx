@@ -69,18 +69,15 @@ export function OutrasInformacoes({ data, imageLoaded }: Props) {
   const [certificados, setCertificados] = useState<Certificado[]>([]);
   const [redesSociais, setRedesSociais] = useState<IRedeSocialProps[]>([]);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const redes = [
-    'instagram',
-    'facebook',
-    'twitter',
-    'linkedin-empresa',
-    'linkedin-pessoal',
-  ];
-
   const loadRedesSociais = useCallback(async () => {
-    const response = await pessoas_api.get(`/pessoas/${data.id}/redes-sociais`);
-    setRedesSociais(response.data);
+    try {
+      const response = await pessoas_api.get(
+        `/pessoas/${data.id}/redes-sociais`,
+      );
+      setRedesSociais(response.data);
+    } catch (error) {
+      console.error(error);
+    }
   }, [data.id]);
 
   useEffect(() => {
@@ -317,7 +314,12 @@ export function OutrasInformacoes({ data, imageLoaded }: Props) {
                   />
                   <div className="redes">
                     {redesSociais
-                      .filter((i: IRedeSocialProps) => !redes.includes(i.tipo))
+                      .filter(
+                        a =>
+                          !a.url.includes(
+                            'linkedin' || 'instagram' || 'facebook' || 'twiter',
+                          ),
+                      )
                       .map(item => handleRedes(item))}
                   </div>
                 </Wrapper>
