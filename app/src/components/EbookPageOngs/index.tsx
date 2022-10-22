@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Content, Container, ContentButton } from './styles';
 import IMG from '@public/img-ebook.png';
 import { useState } from 'react';
-import { ModalEbookOngs } from '../ModalEbookOngs';
+import { ModalEbook } from '../ModalEbook';
 export function EbookPageOngs() {
   const router = useRouter();
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -14,7 +14,12 @@ export function EbookPageOngs() {
 
   return (
     <Container>
-      <ModalEbookOngs showModal={showModal} setShowModal={setShowModal} />
+      <ModalEbook
+        showModal={showModal}
+        link=""
+        type="ong"
+        setShowModal={setShowModal}
+      />
       <Content>
         <div className="info">
           <h1>
