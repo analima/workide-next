@@ -2,7 +2,7 @@ import { Container, Content, ContentButton } from './style';
 import ImgOng from '@public/img-ong.webp';
 import Logo from '../../assets/logo-branca-sem-fundo.svg';
 import Image from 'next/image';
-import { ModalEbookOngs } from '../ModalEbookOngs';
+import { ModalEbook } from '../ModalEbook';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 
@@ -11,7 +11,12 @@ export function BannerOngs() {
   const router = useRouter();
   return (
     <Container img={ImgOng.src}>
-      <ModalEbookOngs showModal={showModal} setShowModal={setShowModal} />
+      <ModalEbook
+        showModal={showModal}
+        link="https://static.freelas.town/ebook-gyan.pdf"
+        setShowModal={setShowModal}
+        type="ong"
+      />
 
       <Content>
         <div className="content-logo">

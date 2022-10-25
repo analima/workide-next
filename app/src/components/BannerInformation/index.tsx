@@ -10,9 +10,11 @@ import IMG from '@public/homen-info.png';
 import IMGEbook from '@public/ebook.png';
 import Image from 'next/image';
 import { useState } from 'react';
+import { ModalEbook } from '../ModalEbook';
 
 export function BannerInformation() {
   const [title, setTitle] = useState('price');
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <Content>
@@ -74,13 +76,9 @@ export function BannerInformation() {
         <LastInformation cor="#0384d1">
           <div className="wrapper">
             <h1>Quer saber como gerenciar seus projetos com freelancers?</h1>
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://gyan-sp-public.s3.sa-east-1.amazonaws.com/E-book++-+Empresas.pdf"
-            >
+            <button onClick={() => setShowModal(true)}>
               BAIXE O E-BOOK GRATUÍTO
-            </a>
+            </button>
           </div>
 
           <div className="img-ebook">
@@ -88,6 +86,12 @@ export function BannerInformation() {
           </div>
         </LastInformation>
       </ContentInfo>
+      <ModalEbook
+        type="empresas"
+        showModal={showModal}
+        setShowModal={setShowModal}
+        link="https://gyan-sp-public.s3.sa-east-1.amazonaws.com/E-book++-+Empresas.pdf"
+      />
     </Content>
   );
 }

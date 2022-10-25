@@ -40,6 +40,7 @@ export default function Home({ vitrineData, appVersion }: IPropsData) {
       <SEO
         title="Contrate um freelancer em poucos cliques"
         excludeTitleSuffix
+        description="Olá amigo(a), como vai? Gostaria de compartilhar com você essa ideia. Estou usando uma plataforma muito legal chamada freelas town. Lá você encontrará muita coisa legal que vai te ajudar. Se cuida, abraço!"
       />
 
       {user.id_pessoa ? (
