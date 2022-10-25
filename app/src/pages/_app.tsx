@@ -39,10 +39,35 @@ function MyApp({ Component, pageProps }: AppProps) {
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+
+        <meta property="title" content="Freelas town" />
+        <meta property="og:title" content="Freelas town" />
+        <meta name="twitter:title" content="Freelas town" />
+
         <meta
           name="description"
           content="Olá amigo(a), como vai? Gostaria de compartilhar com você essa ideia. Estou usando uma plataforma muito legal chamada freelas town. Lá você encontrará muita coisa legal que vai te ajudar. Se cuida, abraço!"
         />
+
+        <meta
+          name="twitter:description"
+          content="Olá amigo(a), como vai? Gostaria de compartilhar com você essa ideia. Estou usando uma plataforma muito legal chamada freelas town. Lá você encontrará muita coisa legal que vai te ajudar. Se cuida, abraço!"
+        />
+
+        <meta
+          name="og:description"
+          content="Olá amigo(a), como vai? Gostaria de compartilhar com você essa ideia. Estou usando uma plataforma muito legal chamada freelas town. Lá você encontrará muita coisa legal que vai te ajudar. Se cuida, abraço!"
+        />
+
+        <meta
+          itemProp="description"
+          content="Olá amigo(a), como vai? Gostaria de compartilhar com você essa ideia. Estou usando uma plataforma muito legal chamada freelas town. Lá você encontrará muita coisa legal que vai te ajudar. Se cuida, abraço!"
+        />
+
+        <meta name="og:type" content="website" />
+
+        <meta itemProp="name" content="Freelas town" />
+
         <meta
           name="image"
           content="https://static.freelas.town/Azul-Semfundo-3x.png"
