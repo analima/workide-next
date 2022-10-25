@@ -367,4 +367,6 @@ export const LinkToScroll = styled(Link)`
   }
 `;
 
-export const ContainerMedalhas = styled.div``;
+export const ContainerMedalhas = styled.div`
+  margin-top: 10px;
+`;

@@ -12,7 +12,7 @@ export function BannerEmpresa() {
         <ContentInfo>
           <h1>Encontre e contrate os melhores profissionais</h1>
           <span>
-            Uma plataforma para voce encontrar profissionais e tirar do papel
+            Uma plataforma para você encontrar profissionais e tirar do papel
             todos os seus projetos.
           </span>
           <button
