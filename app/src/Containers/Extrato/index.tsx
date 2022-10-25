@@ -63,7 +63,7 @@ export default function Extrato({ type }: TypeProfileProps) {
             {
               idPessoaConsumidor: filterUser || 0,
               periodo: periodo || 0,
-              statusPagamento: filter,
+              statusPagamento: filter === 'todos' ? undefined : filter,
             },
           );
           setTotalPaginas(data.pages);
@@ -96,7 +96,7 @@ export default function Extrato({ type }: TypeProfileProps) {
             {
               idPessoaFornecedor: filterUser || 0,
               periodo: periodo || 0,
-              statusPagamento: filter,
+              statusPagamento: filter === 'todos' ? undefined : filter,
             },
           );
           setTotalPaginas(data.pages);
