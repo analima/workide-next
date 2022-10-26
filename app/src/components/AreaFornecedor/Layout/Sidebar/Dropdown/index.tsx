@@ -1,16 +1,17 @@
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { FiChevronDown } from 'react-icons/fi';
-import { useHistory, useLocation } from 'react-router';
-import { ModalFullRecordGuidance } from '../../../../../components/ModalFullRecordGuidance';
-import { useAuth } from '../../../../../contexts/auth';
-import { LARANJA } from '../../../../../styles/variaveis';
+import { useLocation } from 'react-router';
+import { ModalFullRecordGuidance } from 'src/components/ModalFullRecordGuidance';
+import { useAuth } from 'src/contexts/auth';
+import { LARANJA } from 'src/styles/variaveis';
 import {
+  Content,
   NavDropdown,
   NavDropdownButton,
   NavDropdownItem,
   TituloDropdown,
 } from './style';
-import Content from './style';
 
 interface Item {
   link: string;
@@ -26,20 +27,12 @@ interface IDropdown {
   itens: Item[];
 }
 
-export default function Dropdown({ titulo, itens }: IDropdown) {
+export function Dropdown({ titulo, itens }: IDropdown) {
   const [state, setState] = useState(true);
-  //const { user } = useAuth();
+  const { user } = useAuth();
+  const router = useRouter();
 
-  const history = useHistory();
-  //assigning location variable
-  //const location = useLocation();
   const [showModal, setShowModal] = useState(false);
-
-  //destructuring pathname from location
-  //const { pathname } = location;
-
-  //Javascript split method to get the name of the path in array
-  //const splitLocation = pathname.split('/');
 
   function toggle() {
     setState(!state);
@@ -50,14 +43,13 @@ export default function Dropdown({ titulo, itens }: IDropdown) {
       <TituloDropdown onClick={toggle}>
         {titulo} <FiChevronDown color={LARANJA} />
       </TituloDropdown>
-      {/* <NavDropdown open={state}>
+      <NavDropdown open={state}>
         {itens.map((item, index) => {
           if (item.isButton) {
             return (
               <NavDropdownButton
                 key={index}
-                className={splitLocation[1] === item.link ? 'ativo' : ''}
-                onClick={() => history.push(item.link, item.props)}
+                onClick={() => router.push(item.link)}
               >
                 {item.descricao}
               </NavDropdownButton>
@@ -66,11 +58,7 @@ export default function Dropdown({ titulo, itens }: IDropdown) {
 
           if (item.onClick) {
             return (
-              <NavDropdownButton
-                key={index}
-                className={splitLocation[1] === item.link ? 'ativo' : ''}
-                onClick={() => setShowModal(true)}
-              >
+              <NavDropdownButton key={index} onClick={() => setShowModal(true)}>
                 {item.descricao}
               </NavDropdownButton>
             );
@@ -78,21 +66,13 @@ export default function Dropdown({ titulo, itens }: IDropdown) {
 
           if (item.isShowCadastro) {
             return (
-              <NavDropdownButton
-                key={index}
-                className={splitLocation[1] === item.link ? 'ativo' : ''}
-                onClick={() => setShowModal(true)}
-              >
+              <NavDropdownButton key={index} onClick={() => setShowModal(true)}>
                 {item.descricao}
               </NavDropdownButton>
             );
           } else {
             return (
-              <NavDropdownItem
-                key={index}
-                className={splitLocation[1] === item.link ? 'ativo' : ''}
-                href={item.link}
-              >
+              <NavDropdownItem key={index} href={item.link}>
                 {item.descricao}
               </NavDropdownItem>
             );
@@ -103,7 +83,7 @@ export default function Dropdown({ titulo, itens }: IDropdown) {
           setShowModal={setShowModal}
           id_usuario={user.id_usuario}
         />
-      </NavDropdown> */}
+      </NavDropdown>
     </Content>
   );
 }
