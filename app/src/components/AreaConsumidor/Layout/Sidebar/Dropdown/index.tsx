@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { FiChevronDown } from 'react-icons/fi';
-import { useHistory, useLocation } from 'react-router';
 import { ModalFullRecordGuidance } from '../../../../ModalFullRecordGuidance';
 import { AZUL } from '../../../../../styles/variaveis';
 import {
@@ -29,21 +28,10 @@ interface IDropdown {
 
 export default function Dropdown({ titulo, itens }: IDropdown) {
   const [state, setState] = useState(true);
-  const history = useHistory();
   //assigning location variable
   const router = useRouter();
   const [showModal, setShowModal] = useState(false);
   const { user } = useAuth();
-  const [pathname, setPathname] = useState<String>('');
-  let splitLocation: String[] = [];
-
-  //destructuring pathname from location
-  if (router.query.pathname) {
-    setPathname(router.query.pathname as String);
-    splitLocation = pathname?.split('/');
-  }
-
-  //Javascript split method to get the name of the path in array
 
   function toggle() {
     setState(!state);
@@ -60,29 +48,20 @@ export default function Dropdown({ titulo, itens }: IDropdown) {
             return (
               <NavDropdownButton
                 key={index}
-                className={splitLocation[1] === item.link ? 'ativo' : ''}
-                onClick={() => history.push(item.link, item.props)}
+                onClick={() => router.push(item.link)}
               >
                 {item.descricao}
               </NavDropdownButton>
             );
           if (item.isShowCadastro)
             return (
-              <NavDropdownButton
-                key={index}
-                className={splitLocation[1] === item.link ? 'ativo' : ''}
-                onClick={() => setShowModal(true)}
-              >
+              <NavDropdownButton key={index} onClick={() => setShowModal(true)}>
                 {item.descricao}
               </NavDropdownButton>
             );
           else
             return (
-              <NavDropdownItem
-                key={index}
-                className={splitLocation[1] === item.link ? 'ativo' : ''}
-                href={item.link}
-              >
+              <NavDropdownItem key={index} href={item.link}>
                 {item.descricao}
               </NavDropdownItem>
             );
