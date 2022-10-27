@@ -12,7 +12,7 @@ export function BannerEmpresa() {
         <ContentInfo>
           <h1>Encontre e contrate os melhores profissionais</h1>
           <span>
-            Uma plataforma para voce encontrar profissionais e tirar do papel
+            Uma plataforma para você encontrar profissionais e tirar do papel
             todos os seus projetos.
           </span>
           <button
@@ -30,7 +30,13 @@ export function BannerEmpresa() {
 
         <ContentImage>
           <div className="content-img">
-            <Image src={IMG} quality={100} alt="Empresas" />
+            <Image
+              src={IMG}
+              height={600}
+              width={600}
+              quality={70}
+              alt="Empresas"
+            />
           </div>
         </ContentImage>
       </Content>

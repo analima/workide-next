@@ -348,7 +348,7 @@ type ButtonProps = {
   isMesmoUsuario?: boolean;
 };
 
-export const Compartilhar = styled.a`
+export const Compartilhar = styled.button`
   padding: 16px 40px;
   text-decoration: none;
   border-radius: 8px;
@@ -362,6 +362,8 @@ export const Compartilhar = styled.a`
   font-size: 12.8px;
   line-height: 150%;
   justify-content: center;
+  border: none;
+  background-color: ${BRANCO};
 
   :hover {
     opacity: 0.8;

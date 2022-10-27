@@ -1,10 +1,10 @@
+import { LARANJA, PRETO, PRETO_10 } from 'src/styles/variaveis';
 import styled from 'styled-components';
-import { LARANJA, PRETO, PRETO_10 } from '../../../../../styles/variaveis';
 
 interface IDropdown {
   open: boolean;
 }
-const Content = styled.div<IDropdown>`
+export const Content = styled.div<IDropdown>`
   svg {
     transition: transform 0.2s ease-in-out;
     transform: ${props => (props.open ? 'rotate(180deg)' : 'rotate(0deg)')};
@@ -77,5 +77,3 @@ export const NavDropdownButton = styled.button`
     font-weight: bold;
   }
 `;
-
-export default Content;
