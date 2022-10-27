@@ -34,7 +34,6 @@ export const ImageContainer = styled.div`
   overflow: hidden;
 
   .content-image {
-    border: 1px solid red;
     height: 160px;
     width: 100%;
   }
