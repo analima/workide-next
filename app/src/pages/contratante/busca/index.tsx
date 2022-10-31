@@ -17,7 +17,7 @@ export default function Busca({ appVersion }: IProps) {
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
-    hotjar.stateChange('/fornecedor/captar-projetos');
+    hotjar.stateChange('/contratante/busca');
   }, []);
   return (
     <Content>
