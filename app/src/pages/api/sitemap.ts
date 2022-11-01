@@ -1,11 +1,12 @@
-const Sitemap = () => {
-  return null;
-};
+import { NextApiRequest, NextApiResponse } from 'next';
 
-export const getServerSideProps = async ({ res }: any) => {
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/xml');
+  res.setHeader('Cache-control', 'stale-while-revalidate, s-maxage=3600');
+
   const BASE_URL = process.env.REACT_APP_URL;
-
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
       <loc>${BASE_URL}/</loc>
@@ -62,16 +63,6 @@ export const getServerSideProps = async ({ res }: any) => {
       <changefreq>monthly</changefreq>
       <priority>1.0</priority>
     </url>
-  </urlset>
-`;
-
-  res.setHeader('Content-Type', 'text/xml');
-  res.write(sitemap);
-  res.end();
-
-  return {
-    props: {},
-  };
-};
-
-export default Sitemap;
+  </urlset>`;
+  res.end(xml);
+}
