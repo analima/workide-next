@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import styled from 'styled-components';
 import {
   BRANCO,
@@ -34,7 +33,6 @@ export const ImageContainer = styled.div`
   overflow: hidden;
 
   .content-image {
-    border: 1px solid red;
     height: 160px;
     width: 100%;
   }

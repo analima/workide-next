@@ -17,7 +17,7 @@ export default function Home({ vitrineData, appVersion }: IPropsData) {
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
-    hotjar.stateChange('/');
+    hotjar.stateChange('/empresas/home');
   }, []);
 
   return (
