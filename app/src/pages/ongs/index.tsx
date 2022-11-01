@@ -25,7 +25,10 @@ export default function Ongs({ posts, stats, appVersion }: PostProps) {
 
   return (
     <>
-      <SEO title="Encontre um voluntário em poucos cliques" />
+      <SEO
+        title="Encontre um voluntário em poucos cliques"
+        description="Faça parte desse movimento! Busque voluntários das mais variadas áreas."
+      />
       <PageOng posts={posts} stats={stats} versao={appVersion} />
     </>
   );
