@@ -185,7 +185,7 @@ export default function Extrato({ type }: TypeProfileProps) {
 
               <ButtonFilter
                 active={filter === 'todos'}
-                onClick={() => setFilter('')}
+                onClick={() => setFilter('todos')}
               >
                 Todos
               </ButtonFilter>
