@@ -102,6 +102,7 @@ export const FooterSocial = styled.section`
     position: fixed !important;
     top: 50%;
     right: 10px;
+    z-index: 10;
   }
 
   .content-fale-conosco {
