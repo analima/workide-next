@@ -167,12 +167,7 @@ export function VitrineServico({
     dots: numberCard ? false : true,
     autoplay: true,
     autoplaySpeed: 2500,
-
-    slidesToShow: numberCard
-      ? numberCard
-      : vitrineData.length > 3
-      ? 3.7
-      : vitrineData.length,
+    slidesToShow: vitrineData?.length > 3 ? 3.1 : vitrineData?.length,
     className: 'container-slider',
     infinite: vitrineData.length >= 3,
     initialSlide: 1,
@@ -188,11 +183,7 @@ export function VitrineServico({
       {
         breakpoint: 1200,
         settings: {
-          slidesToShow: numberCard
-            ? numberCard
-            : vitrineData.length > 3
-            ? 3
-            : vitrineData.length,
+          slidesToShow: vitrineData?.length > 2 ? 2 : 1.4,
           slidesToScroll: 1,
         },
       },
