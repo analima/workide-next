@@ -19,7 +19,7 @@ export function BannerInformation() {
   return (
     <Content>
       <ContentImage>
-        <Image src={IMG} alt="homem-info" />
+        <Image src={IMG} width={480} height={720} alt="homem-info" />
       </ContentImage>
 
       <ContentInfo>
@@ -82,7 +82,7 @@ export function BannerInformation() {
           </div>
 
           <div className="img-ebook">
-            <Image src={IMGEbook} alt="homem-info" />
+            <Image width={320} height={360} src={IMGEbook} alt="homem-info" />
           </div>
         </LastInformation>
       </ContentInfo>

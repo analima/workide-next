@@ -161,6 +161,8 @@ export function ServiceCard({
                 src={service?.arquivo?.url ?? service?.urlArquivo}
                 alt={service.nome + ' - image'}
                 layout="fill"
+                height={160}
+                width={200}
               />
             </div>
 
