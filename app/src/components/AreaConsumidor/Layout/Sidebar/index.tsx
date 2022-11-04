@@ -8,11 +8,8 @@ interface ISidebar {
   open: boolean;
 }
 
-export default function Sidebar({ open }: ISidebar) {
-  let { user } = useAuth();
-  if (!user) {
-    user = {} as IPessoa;
-  }
+export default function SidebarConsumidor({ open }: ISidebar) {
+  const { user } = useAuth();
 
   return (
     <Content open={open}>
@@ -38,34 +35,19 @@ export default function Sidebar({ open }: ISidebar) {
             titulo="Atualizar Cadastro"
             itens={[
               {
-                link: '/cadastro-complementar',
+                link: '/cadastro-complementar?cadastro=true&aba=0&consumidor=true',
                 descricao: 'Cadastro complementar',
                 isButton: true,
-                props: {
-                  cadastroCompleto: true,
-                  selectAba: 0,
-                  isConsumidor: true,
-                },
               },
               {
-                link: '/cadastro-complementar',
+                link: '/cadastro-complementar?cadastro=true&aba=1&consumidor=true',
                 descricao: 'Condições Gerais',
                 isButton: true,
-                props: {
-                  cadastroCompleto: true,
-                  selectAba: 1,
-                  isConsumidor: true,
-                },
               },
               {
-                link: '/cadastro-complementar',
+                link: '/cadastro-complementar?cadastro=true&aba=3&consumidor=true',
                 descricao: 'Informações financeiras',
                 isButton: true,
-                props: {
-                  cadastroCompleto: true,
-                  selectAba: 3,
-                  isConsumidor: true,
-                },
               },
             ]}
           />

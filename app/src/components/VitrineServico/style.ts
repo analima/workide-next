@@ -26,6 +26,7 @@ export const Carrousel = styled(Slider)`
     justify-content: ${(props: CarrouselProps) =>
       props.size <= 3 ? 'flex-start' : 'center'};
     width: 100%;
+    padding: 0 15px;
   }
 `;
 
@@ -39,7 +40,7 @@ export const ArrowSlider = styled.div`
   text-align: center;
   display: flex;
   padding: 10px;
-
+  z-index: 9999;
   &:hover {
     background-color: ${CINZA_40};
   }

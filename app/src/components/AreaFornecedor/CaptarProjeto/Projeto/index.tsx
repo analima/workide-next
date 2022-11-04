@@ -227,6 +227,8 @@ export default function Projeto({
               className="estrela"
               key={i + Math.random()}
               alt="estrela-apagada"
+              width={18}
+              height={18}
             />,
           );
         else
@@ -236,6 +238,8 @@ export default function Projeto({
               className="estrela"
               key={i + Math.random()}
               alt="estrela"
+              width={18}
+              height={18}
             />,
           );
       } else {
@@ -245,6 +249,8 @@ export default function Projeto({
             className="estrela"
             key={i + Math.random()}
             alt="estrela-apagada"
+            width={18}
+            height={18}
           />,
         );
       }

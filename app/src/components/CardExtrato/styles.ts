@@ -9,6 +9,7 @@ import {
   VERDE,
   VERDE_100,
   VERMELHO,
+  VERMELHO_70,
 } from '../../styles/variaveis';
 
 interface IStatusProps {
@@ -26,6 +27,8 @@ export const Content = styled.section<IStatusProps>`
   background-color: ${({ status }) => (status ? CINZA_10 : BRANCO)};
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
+
+  cursor: pointer;
 
   .collunm-1,
   .collunm-2,
@@ -97,6 +100,10 @@ export const Content = styled.section<IStatusProps>`
 
     .desistencia-andamento {
       background-color: ${LARANJA};
+    }
+
+    .cancelamento-solicitado {
+      background-color: ${VERMELHO_70};
     }
   }
 
