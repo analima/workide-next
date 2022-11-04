@@ -27,7 +27,10 @@ export default function QuemSomos({ appVersion }: IProps) {
 
   return (
     <>
-      <SEO title="Quem somos" />
+      <SEO
+        title="Quem somos"
+        description="Nossa plataforma elimina barreiras geográficas e permite a conexão entre profissionais, empresas e ONGs."
+      />
 
       <Header />
       <Container>
