@@ -86,6 +86,7 @@ export function ModalEbook({
     )
       setErrorInstitution('Por favor, informe a instituição.');
     else setErrorInstitution('');
+    console.log(!!control._formValues.inputInstituicao);
     if (
       !control._formValues.inputTelefone ||
       control._formValues.inputTelefone === undefined
@@ -102,6 +103,7 @@ export function ModalEbook({
     if (
       control._formValues.inputEmail === undefined ||
       control._formValues.inputInstituicao === undefined ||
+      !!control._formValues.inputInstituicao === false ||
       control._formValues.inputNome === undefined ||
       control._formValues.inputTelefone === undefined
     )
@@ -113,18 +115,21 @@ export function ModalEbook({
     try {
       setLoading(true);
       if (validatingFields()) return;
-      await pessoas_api.post(`/dados-ebook`, {
+      const res = await pessoas_api.post(`/dados-ebook`, {
         nome: control._formValues.inputNome,
         instituicao: control._formValues.inputInstituicao,
         email: control._formValues.inputEmail,
         telefone: control._formValues.inputTelefone,
+        ebook: type,
       });
-      setAuthorizedDownload(true);
-      setShowModal(false);
-      setValue('inputEmail', '');
-      setValue('inputTelefone', '');
-      setValue('inputInstituicao', '');
-      setValue('inputNome', '');
+      if (res.status === 201) {
+        setAuthorizedDownload(true);
+        setShowModal(false);
+        setValue('inputEmail', '');
+        setValue('inputTelefone', '');
+        setValue('inputInstituicao', '');
+        setValue('inputNome', '');
+      }
     } catch (error: any) {
       console.error(error);
       setError(error.reponse?.message);

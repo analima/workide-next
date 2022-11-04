@@ -98,6 +98,13 @@ export const FooterInfo = styled.section`
 export const FooterSocial = styled.section`
   padding-bottom: 20px;
 
+  .imageWpp {
+    position: fixed !important;
+    top: 50%;
+    right: 10px;
+    z-index: 10;
+  }
+
   .content-fale-conosco {
     display: flex;
     flex-direction: column;

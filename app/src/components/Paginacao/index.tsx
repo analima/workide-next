@@ -46,14 +46,18 @@ export function Paginacao({
             </ButtonPagina>
           )}
           <button
-            aria-controls="arrow lefts"
+            aria-controls="arrow-left"
+            aria-label="arrow-left"
             disabled={pagina === 1}
             onClick={anterior}
+            type="button"
           >
             <FiChevronLeft color={pagina === 1 ? CINZA_10 : AZUL} />
           </button>
           <button
-            aria-controls="arrow right"
+            aria-controls="arrow-right"
+            aria-label="arrow-right"
+            type="button"
             disabled={pagina === totalPaginas}
             onClick={() => {
               if (!user.id_pessoa) {

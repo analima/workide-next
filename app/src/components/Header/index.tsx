@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { FiLogOut, FiMenu, FiX } from 'react-icons/fi';
 import { BiUserCircle } from 'react-icons/bi';
-import { pessoas_api } from '../../services/pessoas_api';
 import {
   HeaderInfo,
   Container,
@@ -14,7 +13,6 @@ import Logo from '../../assets/logo-azul-sem-fundo.svg';
 import { useAuth } from '../../contexts/auth';
 import { AZUL, BRANCO, PRETO } from '../../styles/variaveis';
 import { Button } from '../Form/Button';
-import { IPessoa } from '../../interfaces/IPessoa';
 import autoAnimate from '@formkit/auto-animate';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -27,6 +25,7 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
   const [esconder, setEsconder] = useState(false);
   const parent = useRef(null);
   const [open, setOpen] = useState(false);
+  const { user } = useAuth();
   const { route } = useRouter();
   const [classEmpresa, setClassEmpresa] = useState('');
   const [classOng, setClassOng] = useState('');
@@ -44,39 +43,6 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
   const { signOut } = useAuth();
   const router = useRouter();
   const [sizePage, setSizePage] = useState(0);
-  const [user, setUser] = useState({} as IPessoa);
-  const [idToken, setIdToken] = useState('');
-
-  const refreshUserData = async (ID_TOKEN: any) => {
-    const newIdToken = localStorage.getItem(ID_TOKEN);
-    setIdToken(newIdToken || '');
-    if (newIdToken) {
-      const res = await pessoas_api.get('/pessoas/me', {
-        headers: {
-          Authorization: `Bearer ${newIdToken}`,
-        },
-      });
-      if (res) {
-        const { data: newUser } = res;
-        setUser({
-          ...newUser,
-          id_pessoa: newUser.id,
-          email: newUser.usuario?.email,
-          url_avatar: newUser.arquivo?.url,
-          admin: newUser.usuario?.admin,
-        });
-      }
-    }
-  };
-
-  useEffect(() => {
-    //NewAuth()
-    let local = localStorage.getItem('@freelas_town:id_token');
-    if (local) {
-      const ID_TOKEN = '@freelas_town:id_token';
-      refreshUserData(ID_TOKEN);
-    }
-  }, []);
 
   const handleResize = (e: any) => {
     setSizePage(window.innerWidth);
@@ -205,6 +171,7 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
                   alt="Freelas.town"
                   onClick={() => router.push('/')}
                   height={60}
+                  width={155}
                 />
 
                 <Link href="/fornecedor/captar-projetos">

@@ -56,8 +56,14 @@ export function CardTotalExtrato({ dados, periodo, type }: ITotalProps) {
       <span>{!periodo ? 'Todo o período' : `Nos ultimos ${periodo} dias`}</span>
       <div className="info-total">
         <div className="textos">
-          <span className="total-liberado">Total liberado:</span>
-          <span className="total-previsto">Total previsto:</span>
+          {type === 'provider' && (
+            <span className="total-liberado">Total liberado:</span>
+          )}
+          {type === 'provider' ? (
+            <span className="total-previsto">Total previsto:</span>
+          ) : (
+            <span className="total-previsto">Total de reembolso:</span>
+          )}
           {type === 'provider' && (
             <span className="total-aguardando">
               Total aguardando conclusão:
@@ -70,6 +76,7 @@ export function CardTotalExtrato({ dados, periodo, type }: ITotalProps) {
 
         <div className="valores">
           <span className="total-liberado">{formatToPrice(totalLiberado)}</span>
+
           <span className="total-previsto">{formatToPrice(totalPrevisto)}</span>
           {type === 'provider' && (
             <span className="total-aguardando">
