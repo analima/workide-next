@@ -38,7 +38,7 @@ export function BannerOngs() {
 
         <ContentButton>
           <button
-            onClick={() => router.push('/cadastro-basico')}
+            onClick={() => router.push('/primeiro-acesso')}
             className="btn-cadastrar"
           >
             CADASTRAR ONG
