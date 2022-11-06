@@ -11,7 +11,6 @@ import {
 import { Area } from 'src/components/VitrinePerfil/style';
 import { geral_api } from 'src/services/geral_api';
 import { InputCheck } from '../Form/InputCheck';
-import { Spinner } from '../Spinner';
 
 export type Subarea = {
   id: number;
@@ -30,11 +29,9 @@ type FiltroSubareaProps = {
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   onChange?: (subareas: Subarea[]) => void;
   label?: string;
-  setter?: React.Dispatch<React.SetStateAction<Subarea[]>>;
+  setter: React.Dispatch<React.SetStateAction<Subarea[]>>;
   initialValue?: Subarea[];
 };
-
-interface IProps {}
 
 export function FilterPrimaryAcess({
   control,
@@ -65,17 +62,17 @@ export function FilterPrimaryAcess({
     });
   }, []);
 
-  // useEffect(() => {
-  //   const selSubareas: Subarea[] = [];
+  useEffect(() => {
+    const selSubareas: Subarea[] = [];
 
-  //   areas.forEach(a => {
-  //     a.subareas.forEach(sa => {
-  //       if (sa.selected) selSubareas.push(sa);
-  //     });
-  //   });
+    areas.forEach(a => {
+      a.subareas.forEach(sa => {
+        if (sa.selected) selSubareas.push(sa);
+      });
+    });
 
-  //   setSelectedSubareas(selSubareas);
-  // }, [areas]);
+    setter(selSubareas);
+  }, [areas, setter]);
 
   useEffect(() => {
     try {

@@ -4,7 +4,7 @@ import { SEO } from 'src/components/SEO';
 import { GetStaticProps } from 'next';
 import PrimaryAcess from 'src/Containers/PrimaryAcess';
 
-export default function QuemSomos() {
+export default function PrimeiroAcesso() {
   useEffect(() => {
     hotjar.initialize(
       Number(process.env.REACT_APP_HOTJAR_ID) || 0,

@@ -8,7 +8,6 @@ export const Container = styled.div`
   justify-content: center;
   background-color: ${BRANCO};
   min-height: 100vh;
-  border: 4px solid green;
 `;
 
 export const ContentFilter = styled.div`
@@ -17,7 +16,7 @@ export const ContentFilter = styled.div`
   justify-content: center;
   flex-direction: column;
   gap: 32px;
-  padding: 16px 0;
+  padding: 16px;
   min-height: 100vh;
 
   h1 {
@@ -31,6 +30,7 @@ export const ContentFilter = styled.div`
   h2 {
     font-size: 24px;
     color: #383838;
+    text-align: center;
   }
 
   .content-input {
@@ -45,11 +45,16 @@ export const ContentFilter = styled.div`
   }
 `;
 
-export const ButtonOrange = styled.button`
+interface ColorProps {
+  color: string;
+}
+
+export const Button = styled.button<ColorProps>`
   padding: 16px 40px;
-  font-weight: bold;
+  width: 100%;
+  font-weight: 700;
   color: ${BRANCO};
-  background-color: ${LARANJA};
+  background-color: ${({ color }) => color};
   border-radius: 8px;
   border: none;
   font-size: 12px;
@@ -61,9 +66,14 @@ export const ButtonOrange = styled.button`
 `;
 
 export const ContentButton = styled.div`
-  width: 100%;
+  width: 617px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 48px;
+
+  @media (max-width: 630px) {
+    width: 100%;
+    gap: 20px;
+  }
 `;
