@@ -167,7 +167,8 @@ export function VitrineServico({
     dots: numberCard ? false : true,
     autoplay: true,
     autoplaySpeed: 2500,
-    slidesToShow: vitrineData?.length > 3 ? 3.1 : vitrineData?.length,
+
+    slidesToShow: vitrineData.length > 3 ? 2.7 : vitrineData.length,
     className: 'container-slider',
     infinite: vitrineData.length >= 3,
     initialSlide: 1,
