@@ -47,6 +47,10 @@ const nextConfig = {
   rewrites() {
     return [
       {
+        source: '/sitemap.xml',
+        destination: '/api/sitemap',
+      },
+      {
         source: '/:path*',
         destination: '/:path*',
       },
