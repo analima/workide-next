@@ -234,7 +234,7 @@ export function Footer({ versao }: IProps) {
               aria-label="WhatsApp"
               href="https://api.whatsapp.com/send/?phone=55061991053691"
               rel="noopener noreferrer"
-              className="imageWpp"
+              className={!user?.id_pessoa ? 'imageWpp' : undefined}
             >
               <Image width={94} height={94} src={Whatsapp} alt="Whatsapp" />
             </a>
