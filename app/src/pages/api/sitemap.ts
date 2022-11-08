@@ -37,7 +37,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     </url>
 
     <url>
-      <loc>${BASE_URL}/fornecedor/quem-somos</loc>
+      <loc>${BASE_URL}/quem-somos</loc>
       <lastmod>${new Date().toISOString()}</lastmod>
       <changefreq>monthly</changefreq>
       <priority>1.0</priority>
