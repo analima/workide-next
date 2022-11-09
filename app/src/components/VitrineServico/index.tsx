@@ -168,38 +168,33 @@ export function VitrineServico({
     autoplay: true,
     autoplaySpeed: 2500,
 
-    slidesToShow: vitrineData.length > 3 ? 2.7 : vitrineData.length,
+    slidesToShow: vitrineData.length > 3 ? 2.3 : vitrineData.length,
     className: 'container-slider',
     infinite: vitrineData.length >= 3,
     initialSlide: 1,
-    slidesToScroll: numberCard
-      ? 1
-      : vitrineData.length > 3
-      ? 3.7
-      : vitrineData.length,
+    slidesToScroll: vitrineData.length > 3 ? 2 : vitrineData.length,
     nextArrow: <ArrowSlider />,
     prevArrow: <ArrowSlider />,
 
     responsive: [
       {
+        breakpoint: 1320,
+        settings: {
+          slidesToShow: vitrineData.length > 3 ? 1.8 : vitrineData.length,
+          slidesToScroll: 1,
+        },
+      },
+      {
         breakpoint: 1200,
         settings: {
-          slidesToShow: numberCard
-            ? numberCard
-            : vitrineData.length > 3
-            ? 3
-            : vitrineData.length,
+          slidesToShow: vitrineData.length > 3 ? 1.7 : vitrineData.length,
           slidesToScroll: 1,
         },
       },
       {
         breakpoint: 991,
         settings: {
-          slidesToShow: numberCard
-            ? numberCard
-            : vitrineData.length > 3
-            ? 2.1
-            : vitrineData.length,
+          slidesToShow: vitrineData.length > 3 ? 2.3 : vitrineData.length,
           slidesToScroll: 1,
         },
       },
@@ -207,11 +202,7 @@ export function VitrineServico({
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: numberCard
-            ? numberCard
-            : vitrineData.length > 3
-            ? 1.3
-            : vitrineData.length,
+          slidesToShow: vitrineData.length > 3 ? 1.5 : vitrineData.length,
           slidesToScroll: 1,
         },
       },
