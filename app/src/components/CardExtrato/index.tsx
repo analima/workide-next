@@ -20,7 +20,7 @@ export function CardExtrato({ item, type }: IDadosExtratoProps) {
     if (status === 'Desistência em andamento') return 'desistencia-andamento';
     if (status === 'Cancelamento do Projeto Solicitado')
       return 'cancelamento-solicitado';
-    if (status === 'Pausado') return 'pausado';
+    if (status === 'Projeto pausado') return 'pausado';
   }
 
   function handleDatePagamento(status: string) {
