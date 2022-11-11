@@ -187,12 +187,12 @@ export function Rodape() {
 
           <div className="content-redes-sociais">
             <a
-              href="https://www.linkedin.com/company/gyan-plataforma-de-servi%C3%A7os/?viewAsMember=true"
+              href="https://www.linkedin.com/company/freelastown/"
               target="blank"
             >
               <Image src={Linkedin} width={40} height={40} alt="Linkedin" />
             </a>
-            <a href="https://www.instagram.com/gyan.br/" target="blank">
+            <a href="https://www.instagram.com/freelas.town/" target="blank">
               <Image src={Instagram} width={40} height={40} alt="Instagram" />
             </a>
             <a
