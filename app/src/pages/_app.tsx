@@ -80,6 +80,8 @@ function MyApp({ Component, pageProps }: AppProps) {
           property="og:image:secure_url"
           content="https://static.freelas.town/Azul-Semfundo-3x.png"
         />
+        <meta property="og:image:width" content="465" />
+        <meta property="og:image:height" content="185" />
         <meta
           name="facebook-domain-verification"
           content="hvr9vw3njwc6wrgf4hscf2yu9fdq5l"
