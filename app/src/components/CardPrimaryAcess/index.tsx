@@ -10,6 +10,16 @@ interface IProps {
 }
 export function CardPrimaryAcess({ setStep }: IProps) {
   const router = useRouter();
+
+  function saveLocalStorage(type: string) {
+    localStorage.setItem(
+      '@freelas_town:type-cadastro',
+      JSON.stringify({
+        type: type,
+      }),
+    );
+  }
+
   return (
     <Container>
       <Content>
@@ -27,7 +37,13 @@ export function CardPrimaryAcess({ setStep }: IProps) {
           <p>Selecione a opção que você se encaixa abaixo:</p>
         </div>
         <div className="content-cards">
-          <Card onClick={() => router.push('cadastro-basico')} color={LARANJA}>
+          <Card
+            onClick={() => {
+              saveLocalStorage('fornecedor');
+              router.push('cadastro-basico');
+            }}
+            color={LARANJA}
+          >
             <h2>QUERO TRABALHAR</h2>
             <span>
               Estou buscando <br />
@@ -35,7 +51,13 @@ export function CardPrimaryAcess({ setStep }: IProps) {
             </span>
           </Card>
 
-          <Card onClick={() => setStep(2)} color={AZUL}>
+          <Card
+            onClick={() => {
+              saveLocalStorage('contratante');
+              setStep(2);
+            }}
+            color={AZUL}
+          >
             <h2>QUERO CONTRATAR</h2>
             <span>
               Estou contratando <br />
@@ -43,7 +65,13 @@ export function CardPrimaryAcess({ setStep }: IProps) {
             </span>
           </Card>
 
-          <Card onClick={() => setStep(2)} color={VERDE}>
+          <Card
+            onClick={() => {
+              saveLocalStorage('contratante');
+              setStep(2);
+            }}
+            color={VERDE}
+          >
             <h2>QUERO VOLUNTÁRIO</h2>
             <span>
               Estou buscando voluntários <br />
