@@ -206,13 +206,13 @@ export function Footer({ versao }: IProps) {
                 <span>Siga-nos</span>
                 <a
                   aria-label="Facebook"
-                  href="https://www.facebook.com/Gyan-101972215654187"
+                  href="https://www.facebook.com/freellas.town"
                   target="blank"
                 >
                   <FaFacebookSquare size={30} color="#6E6E6E" />
                 </a>
                 <a
-                  href="https://www.instagram.com/gyan.br/"
+                  href="https://www.instagram.com/freelas.town/"
                   aria-label="Instagram"
                   target="blank"
                 >
@@ -220,7 +220,7 @@ export function Footer({ versao }: IProps) {
                 </a>
                 <a
                   aria-label="Linkedin"
-                  href="https://www.linkedin.com/company/gyan-plataforma-de-servi%C3%A7os/?viewAsMember=true"
+                  href="https://www.linkedin.com/company/freelastown/"
                   target="blank"
                 >
                   <FaLinkedin size={30} color="#6E6E6E" />
