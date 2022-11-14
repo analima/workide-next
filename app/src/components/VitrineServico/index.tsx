@@ -184,11 +184,7 @@ export function VitrineServico({
       {
         breakpoint: 1200,
         settings: {
-          slidesToShow: numberCard
-            ? numberCard
-            : vitrineData.length > 3
-            ? 3
-            : vitrineData.length,
+          slidesToShow: vitrineData?.length > 2 ? 2 : 1.4,
           slidesToScroll: 1,
         },
       },
