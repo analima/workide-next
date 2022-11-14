@@ -163,6 +163,7 @@ export function ServiceCard({
                 layout="fill"
                 height={160}
                 width={200}
+                quality={70}
               />
             </div>
 
