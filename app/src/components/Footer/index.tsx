@@ -206,7 +206,7 @@ export function Footer({ versao }: IProps) {
                 <span>Siga-nos</span>
                 <a
                   aria-label="Facebook"
-                  href="https://www.facebook.com/freellas.town"
+                  href="https://www.facebook.com/freelas.town"
                   target="blank"
                 >
                   <FaFacebookSquare size={30} color="#6E6E6E" />

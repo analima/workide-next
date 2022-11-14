@@ -68,20 +68,17 @@ function MyApp({ Component, pageProps }: AppProps) {
 
         <meta itemProp="name" content="Freelas town" />
 
-        <meta
-          name="image"
-          content="https://static.freelas.town/Azul-Semfundo-3x.png"
-        />
+        <meta name="image" content="https://freelas.town/freelas-town.png" />
         <meta
           property="og:image"
-          content="https://static.freelas.town/Azul-Semfundo-3x.png"
+          content="https://freelas.town/freelas-town.png"
         />
         <meta
           property="og:image:secure_url"
-          content="https://static.freelas.town/Azul-Semfundo-3x.png"
+          content="https://freelas.town/freelas-town.png"
         />
-        <meta property="og:image:width" content="465" />
-        <meta property="og:image:height" content="185" />
+        <meta property="og:image:width" content="500" />
+        <meta property="og:image:height" content="500" />
         <meta
           name="facebook-domain-verification"
           content="hvr9vw3njwc6wrgf4hscf2yu9fdq5l"
