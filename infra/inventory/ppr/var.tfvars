@@ -1,6 +1,6 @@
 name= "gyan-next"
 env= "ppr"
-region = "us-west-2" 
+region = "us-west-2"
 vpc="vpc-0ff531caadea3c221"
 container_port=3000
 cidr="10.142.80.0/21"
@@ -9,7 +9,8 @@ alb_tls_cert_arn="arn:aws:acm:us-west-2:812671651954:certificate/621cf05e-6f6d-4
 container_image="812671651954.dkr.ecr.us-west-2.amazonaws.com/gyan-next-ppr:latest"
 container_environment=[ {"name": "APP_HOST", "value": "0.0.0.0"},
                         {"name": "APP_PORT", "value": "3000"},
-                        {"name": "SKIP_PREFLIGHT_CHECK", "value": "true"}
+                        {"name": "SKIP_PREFLIGHT_CHECK", "value": "true"},
+                        {"name": "NEXT_PUBLIC_LOAD_VENDOR_SCRIPTS", "value": "false"}
                         ]
 cluster_name="cluster-gyan-ppr"
 subnets=["subnet-088f25a4bb7af05d9","subnet-071a0c615343f69f4","subnet-059a5378d9503100d","subnet-03657454904b0bf66"]
