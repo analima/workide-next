@@ -1,6 +1,6 @@
 name= "gyan-next"
 env= "prod"
-region = "us-east-1" 
+region = "us-east-1"
 vpc="vpc-0629c2c281f6e17d4"
 container_port=3000
 cidr="10.142.0.0/19"
@@ -9,7 +9,8 @@ alb_tls_cert_arn="arn:aws:acm:us-east-1:812671651954:certificate/f41cfd52-8a15-4
 container_image="812671651954.dkr.ecr.us-east-1.amazonaws.com/gyan-next-prod:latest"
 container_environment=[{"name": "APP_HOST", "value": "0.0.0.0"},
                         {"name": "APP_PORT", "value": "3000"},
-                        {"name": "SKIP_PREFLIGHT_CHECK", "value": "true"}                        
+                        {"name": "SKIP_PREFLIGHT_CHECK", "value": "true"},
+                        {"name": "NEXT_PUBLIC_LOAD_VENDOR_SCRIPTS", "value": "false"}
                     ]
 cluster_name="cluster-gyan-prod"
 subnets=["subnet-0dd6e78bb871d3f17","subnet-00469d372f7b5b092","subnet-0ce475122233fc3ec","subnet-0f6209318ec3ad850"]
@@ -21,7 +22,3 @@ parameter_id="arn:aws:ssm:us-east-1:812671651954:parameter/APP_JWK-PROD"
 bucket_name="files-gyan-prod"
 cpu=256
 memory=1024
-
-
-
-
