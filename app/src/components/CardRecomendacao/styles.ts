@@ -11,6 +11,7 @@ export const CardRecomendacao = styled.div`
   justify-content: space-between;
   width: 400px;
   height: 224px;
+  margin-top: 10px;
 
   span {
     color: ${PRETO_10};
