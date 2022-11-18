@@ -40,17 +40,17 @@ export function MedalhasFornecedor({ id }: IProps) {
   const handleMedals = useCallback(async () => {
     try {
       if (id) {
-        const responsePessoa = await pessoas_api.get(`/pessoas/${id}`);
-        setHasFundadorMedal(responsePessoa.data?.fundador);
-        setHasVerificadoMedal(responsePessoa.data?.moderacao);
-
-        const feedback = await userHasFeedback(responsePessoa.data?.id_usuario);
-        feedback ? setHasFeedbackMedal(true) : setHasFeedbackMedal(false);
-
         const projetos = await userHasProject();
         projetos
           ? setHasPrimeiroProjetoMedal(true)
           : setHasPrimeiroProjetoMedal(false);
+
+        const responsePessoa = await pessoas_api.get(`/pessoas/${id}`);
+        setHasFundadorMedal(responsePessoa.data?.fundador);
+        setHasVerificadoMedal(responsePessoa.data?.moderacao && projetos);
+
+        const feedback = await userHasFeedback(responsePessoa.data?.id_usuario);
+        feedback ? setHasFeedbackMedal(true) : setHasFeedbackMedal(false);
       }
     } catch (error: any) {
       console.error(error.response);
