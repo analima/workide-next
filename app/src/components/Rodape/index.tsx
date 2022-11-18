@@ -195,10 +195,7 @@ export function Rodape() {
             <a href="https://www.instagram.com/freelas.town/" target="blank">
               <Image src={Instagram} width={40} height={40} alt="Instagram" />
             </a>
-            <a
-              href="https://www.facebook.com/Gyan-101972215654187"
-              target="blank"
-            >
+            <a href="https://www.facebook.com/www.freelas.town" target="blank">
               <Image src={Facebook} width={40} height={40} alt="Facebook" />
             </a>
           </div>
