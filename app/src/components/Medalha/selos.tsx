@@ -1,11 +1,11 @@
-import PessoaVerificada from '../../assets/selo-pessoa_verificada.svg';
-import  Fundador from '../../assets/selo-fundador.svg';
-import  Feedback from '../../assets/selo-feedback.svg';
+import PessoaVerificadaAzul from '../../assets/selo-pessoa_verificada_azul.svg';
+import Fundador from '../../assets/selo-fundador.svg';
+import Feedback from '../../assets/selo-feedback.svg';
 import PrimeiroProjeto from '../../assets/selo-primeiro-projeto.svg';
 import CadastroCompleto from '../../assets/selo-cadastro-completo.svg';
-import  RecomendacaoBronze from '../../assets/selo-recomendacoes-bronze.svg';
-import  RecomendacaoPrata from '../../assets/selo-recomendacoes-prata.svg';
-import  RecomendacaoOuro from '../../assets/selo-recomendacoes-ouro.svg';
+import RecomendacaoBronze from '../../assets/selo-recomendacoes-bronze.svg';
+import RecomendacaoPrata from '../../assets/selo-recomendacoes-prata.svg';
+import RecomendacaoOuro from '../../assets/selo-recomendacoes-ouro.svg';
 import IndicacaoBronze from '../../assets/selo-indicacao-bronze.svg';
 import IndicacaoPrata from '../../assets/selo-indicacao-prata.svg';
 import IndicacaoOuro from '../../assets/selo-indicacao-ouro.svg';
@@ -13,7 +13,7 @@ import IndicacaoOuro from '../../assets/selo-indicacao-ouro.svg';
 export const Selos = [
   {
     chave: 'pessoa-verificada',
-    componente: PessoaVerificada,
+    componente: PessoaVerificadaAzul,
     descricao: 'Pessoa Verificada',
   },
   { chave: 'fundador', componente: Fundador, descricao: 'Fundador' },
