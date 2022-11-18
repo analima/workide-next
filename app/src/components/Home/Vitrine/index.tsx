@@ -149,7 +149,7 @@ export function Vitrine({ vitrineData, title, subtitle }: IPropsData) {
       <Container>
         <CardCarrousel>
           <ContentTitles>
-            <h1>{title ? title : 'Ofertas'}</h1>
+            <h1>{title ? title : 'Vitrine de ofertas'}</h1>
             <Title>
               {subtitle ? (
                 subtitle
@@ -158,7 +158,6 @@ export function Vitrine({ vitrineData, title, subtitle }: IPropsData) {
                   Acelere seu negócio com soluções prontas, mas totalmente
                   adaptaveis, na hora em que você precisa.
                   <br />
-                  hora em que você precisa.
                 </>
               )}
             </Title>
