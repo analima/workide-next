@@ -9,7 +9,7 @@ import {
 
 export const Content = styled.div`
   width: calc(267px + 2px);
-  height: 358px;
+  height: 370px;
   border: solid 1px ${CINZA_10};
   transition: all 0.2s;
   border-radius: 8px;
@@ -146,5 +146,17 @@ export const ContainerProfile = styled.div`
   .numberStarts {
     margin: 0px 8px 0px 0px;
     color: rgb(250, 124, 73);
+  }
+`;
+
+export const InfoUser = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+
+  span {
+    margin-right: 10px;
   }
 `;

@@ -23,8 +23,11 @@ import {
   ContainerDados,
   ContainerProfile,
   ContentInfoSecundary,
+  InfoUser,
 } from './style';
 import { pessoas_api } from '../../services/pessoas_api';
+import { Medalha } from '../Medalha';
+import { oportunidades_api } from 'src/services/oportunidades_api';
 
 interface ServiceProps {
   nome_tratamento: string;
@@ -50,6 +53,7 @@ export function ServiceCard({
   const [dadosFornec, setDadosFornec] = useState<ServiceProps>(
     {} as ServiceProps,
   );
+  const [hasVerificadoMedal, setHasVerificadoMedal] = useState(false);
 
   const handleFavorite = useCallback(async () => {
     if (!isFavorite) {
@@ -68,6 +72,38 @@ export function ServiceCard({
         });
     }
   }, [service]);
+
+  const userHasProject = useCallback(
+    async function () {
+      const id = service.idPessoa || service.id_pessoa;
+      const { data: projetos } = await oportunidades_api.get(
+        `/projetos/count?idPessoaFornecedor=${id}`,
+      );
+      if (projetos > 0) {
+        return true;
+      }
+      return false;
+    },
+    [service.idPessoa, service.id_pessoa],
+  );
+
+  const handleMedals = useCallback(async () => {
+    try {
+      const id = service.idPessoa || service.id_pessoa;
+      if (id) {
+        const responsePessoa = await pessoas_api.get(`/pessoas/${id}`);
+        const projetos = await userHasProject();
+
+        setHasVerificadoMedal(responsePessoa.data?.moderacao && projetos);
+      }
+    } catch (error: any) {
+      console.error(error.response);
+    }
+  }, [service.idPessoa, service.id_pessoa, userHasProject]);
+
+  useEffect(() => {
+    handleMedals();
+  }, [handleMedals]);
 
   function handleShowStars(numberOfStars: number) {
     const stars = [];
@@ -241,7 +277,13 @@ export function ServiceCard({
             </div>
 
             <div>
-              <span>{service.fornecedor.nome_tratamento}</span>
+              <InfoUser>
+                <span>{service.fornecedor.nome_tratamento}</span>
+                <Medalha
+                  chave="pessoa-verificada"
+                  isActive={hasVerificadoMedal}
+                />
+              </InfoUser>
 
               <span>
                 {Number(service.fornecedor?.ranking?.nota_media || 0)?.toFixed(
@@ -267,8 +309,14 @@ export function ServiceCard({
             </div>
 
             <div>
-              <span>{dadosFornec.nome_tratamento}</span>
-              <br />
+              <InfoUser>
+                <span>{dadosFornec.nome_tratamento}</span>
+                <Medalha
+                  chave="pessoa-verificada"
+                  isActive={hasVerificadoMedal}
+                />
+              </InfoUser>
+
               <span className="numberStarts">
                 {Number(dadosFornec?.ranking?.notaMedia || 0)?.toFixed(2)}
               </span>
