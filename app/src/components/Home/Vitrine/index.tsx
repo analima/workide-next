@@ -149,7 +149,7 @@ export function Vitrine({ vitrineData, title, subtitle }: IPropsData) {
       <Container>
         <CardCarrousel>
           <ContentTitles>
-            <h1>{title ? title : 'Vitrine de ofertas'}</h1>
+            <h1>{title ? title : 'Vitrine de projetos'}</h1>
             <Title>
               {subtitle ? (
                 subtitle
