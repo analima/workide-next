@@ -43,8 +43,8 @@ jobs:
             echo "REACT_APP_TOKEN_BLOG=$NEXT_APP_TOKEN" >> .env
             echo "REACT_APP_IUGU_CADASTRO_CARTAO=$IUGU_CADASTRO_CARTAO" >> .env
             echo "REACT_APP_ID_IUGU=$ID_IUGU" >> .env
-            echo "REACT_APP_GA_TRACKING_CODE=$APP_GA_TRACKING_CODE" >> .env  
-            echo "REACT_APP_HOTJAR_ID=$APP_HOTJAR_ID" >> .env  
+            echo "REACT_APP_GA_TRACKING_CODE=$APP_GA_TRACKING_CODE" >> .env
+            echo "REACT_APP_HOTJAR_ID=$APP_HOTJAR_ID" >> .env
             echo "REACT_APP_HOTJAR_SV=$APP_HOTJAR_SV" >> .env
             echo "REACT_APP_VERSION=1.8.0" >> .env
       - aws-ecr/build-and-push-image:
@@ -98,8 +98,8 @@ jobs:
             echo "REACT_APP_TOKEN_BLOG=$NEXT_APP_TOKEN" >> .env
             echo "REACT_APP_IUGU_CADASTRO_CARTAO=$IUGU_CADASTRO_CARTAO" >> .env
             echo "REACT_APP_ID_IUGU=$ID_IUGU" >> .env
-            echo "REACT_APP_GA_TRACKING_CODE=$APP_GA_TRACKING_CODE" >> .env  
-            echo "REACT_APP_HOTJAR_ID=$APP_HOTJAR_ID" >> .env  
+            echo "REACT_APP_GA_TRACKING_CODE=$APP_GA_TRACKING_CODE" >> .env
+            echo "REACT_APP_HOTJAR_ID=$APP_HOTJAR_ID" >> .env
             echo "REACT_APP_HOTJAR_SV=$APP_HOTJAR_SV" >> .env
             echo "REACT_APP_VERSION=1.8.0" >> .env
       - aws-ecr/build-and-push-image:
@@ -153,8 +153,8 @@ jobs:
             echo "REACT_APP_TOKEN_BLOG=$NEXT_APP_TOKEN" >> .env
             echo "REACT_APP_IUGU_CADASTRO_CARTAO=$IUGU_CADASTRO_CARTAO" >> .env
             echo "REACT_APP_ID_IUGU=$ID_IUGU" >> .env
-            echo "REACT_APP_GA_TRACKING_CODE=$APP_GA_TRACKING_CODE" >> .env  
-            echo "REACT_APP_HOTJAR_ID=$APP_HOTJAR_ID" >> .env  
+            echo "REACT_APP_GA_TRACKING_CODE=$APP_GA_TRACKING_CODE" >> .env
+            echo "REACT_APP_HOTJAR_ID=$APP_HOTJAR_ID" >> .env
             echo "REACT_APP_HOTJAR_SV=$APP_HOTJAR_SV" >> .env
             echo "REACT_APP_VERSION=1.8.0" >> .env
       - aws-ecr/build-and-push-image:
@@ -388,7 +388,7 @@ workflows:
           filters: # using regex filters requires the entire branch to match
             branches:
               only:
-                - HotFix
+                - master
 
       - plan-apply-ppr:
           context: ppr
@@ -397,7 +397,7 @@ workflows:
           filters: # using regex filters requires the entire branch to match
             branches:
               only:
-                - HotFix
+                - master
       - apply-ppr:
           context: ppr
           requires:
@@ -405,16 +405,31 @@ workflows:
           filters: # using regex filters requires the entire branch to match
             branches:
               only:
-                - HotFix
+                - master
 
-      - build-push-prod:
+      - slack/on-hold:
           context: production
-          name: ecr-prod
+          mentions: "@suporte"
           filters: # using regex filters requires the entire branch to match
             branches:
               only:
                 - master
-
+      - hold-build-plan-apply:
+          context: production
+          type: approval
+          filters: # using regex filters requires the entire branch to match
+            branches:
+              only:
+                - master
+      - build-push-prod:
+          context: production
+          name: ecr-prod
+          requires:
+            - hold-build-plan-apply
+          filters: # using regex filters requires the entire branch to match
+            branches:
+              only:
+                - master
       - plan-apply:
           context: production
           requires:
@@ -423,28 +438,10 @@ workflows:
             branches:
               only:
                 - master
-      - slack/on-hold:
-          context: production
-          mentions: "@suporte"
-          requires:
-            - plan-apply
-          filters: # using regex filters requires the entire branch to match
-            branches:
-              only:
-                - master
-      - hold-apply:
-          context: production
-          type: approval
-          requires:
-            - plan-apply
-          filters: # using regex filters requires the entire branch to match
-            branches:
-              only:
-                - master
       - apply:
           context: production
           requires:
-            - hold-apply
+            - plan-apply
           filters: # using regex filters requires the entire branch to match
             branches:
               only:
