@@ -104,6 +104,7 @@ interface BuscaFornecedorOfertaProps {
   setFilter: Dispatch<SetStateAction<string>>;
   order: string;
   setOrder: Dispatch<SetStateAction<string>>;
+  loading: boolean;
 }
 
 export type CausaProp = {
@@ -199,6 +200,7 @@ export function BuscaFornecedorOfertaProvider({ children }: GlobalLayoutProps) {
   const [allFilters, setAllFilters] = useState<any>({});
   const [causas, setCausas] = useState<CausaProp[]>([]);
   const [filter, setFilter] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
 
   function handleShowAvatarCadastroIncompleto() {
     setShowAvatarCadastroIncompleto(!showAvatarCadastroIncompleto);
@@ -221,6 +223,7 @@ export function BuscaFornecedorOfertaProvider({ children }: GlobalLayoutProps) {
 
   const atualizaBusca = useCallback(async () => {
     if (!ofertaFiltro) {
+      setLoading(true);
       const niveis: string[] = [];
       if (basic) niveis.push('BASICO');
       if (intermediary) niveis.push('INTERMEDIARIO');
@@ -268,6 +271,7 @@ export function BuscaFornecedorOfertaProvider({ children }: GlobalLayoutProps) {
         .then(({ data }) => {
           setPeople(data?.values);
           setTotalPaginasPerfis(data.pages);
+          setLoading(false);
         });
 
       consultas_api
@@ -457,6 +461,7 @@ export function BuscaFornecedorOfertaProvider({ children }: GlobalLayoutProps) {
         causas,
         setFilter,
         filter,
+        loading,
       }}
     >
       {children}
