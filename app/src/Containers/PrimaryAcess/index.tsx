@@ -79,13 +79,6 @@ export default function PrimaryAcess() {
                 setter={setSelectedSubareas}
               />
               <ContentButton>
-                <Button
-                  color={LARANJA}
-                  onClick={() => router.push('/cadastro-basico')}
-                >
-                  PULAR
-                </Button>
-
                 <Button color={AZUL} onClick={saveLocalStorage}>
                   AVANÇAR
                 </Button>
