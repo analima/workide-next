@@ -20,7 +20,7 @@ export function LetsStart() {
         </span>
         <Button
           label="CRIAR PROJETO"
-          onClick={() => router.push('/primeiro-acesso')}
+          onClick={() => router.push('/cadastro-basico')}
         />
       </ContentInfo>
 
