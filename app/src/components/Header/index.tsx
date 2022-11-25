@@ -228,7 +228,7 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
                         ? 'CADASTRE-SE'
                         : 'PUBLICAR PROJETO'
                     }
-                    onClick={() => router.push('/primeiro-acesso')}
+                    onClick={() => router.push('/cadastro-basico')}
                   />
                 )}
               </div>
