@@ -217,18 +217,17 @@ export default function FaqContent({ appVersion }: IProps) {
                     </PostItem>
                   ))
                 ) : (
-                  <Spinner size="10px" />
+                  <p
+                    ref={loadMoreRef}
+                    style={{
+                      display: !loading ? 'none' : 'block',
+                    }}
+                  >
+                    Carregando mais posts... <Spinner size="15px" />
+                  </p>
                 )}
-                <p
-                  ref={loadMoreRef}
-                  style={{
-                    display: hasEndingPosts ? 'none' : 'block',
-                  }}
-                >
-                  Carregando mais posts...
-                </p>
                 {postsFaq.length === 0 && !loading && (
-                  <SemConteudo mensagem="Não foram encontrados conteudos" />
+                  <SemConteudo mensagem="Nenhum post encontrado." />
                 )}
               </ContainerPost>
             </Col>

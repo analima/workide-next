@@ -1,6 +1,13 @@
 import { Accordion, Row } from 'react-bootstrap';
 import styled from 'styled-components';
-import { AZUL, AZUL_60, BRANCO, CINZA_40 } from '../../styles/variaveis';
+import {
+  AZUL,
+  AZUL_60,
+  BRANCO,
+  BRANCO_GELO,
+  CINZA_20,
+  CINZA_40,
+} from '../../styles/variaveis';
 
 export const Content = styled.div``;
 
@@ -50,7 +57,7 @@ export const FilterTopicCard = styled.div<{ selected: boolean }>`
   width: 288px;
   height: 93px;
 
-  background: ${BRANCO};
+  background-color: ${props => (props.selected ? BRANCO_GELO : BRANCO)};
 
   font-size: 12px;
   font-weight: bold;
