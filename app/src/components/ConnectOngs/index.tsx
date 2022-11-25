@@ -26,7 +26,7 @@ export function ConnectOngs() {
             crescimento de seus projetos.
           </span>
           <ContentButton>
-            <button onClick={() => router.push('/primeiro-acesso')}>
+            <button onClick={() => router.push('/cadastro-basico')}>
               CADASTRE SUA NECESSIDADE
             </button>
           </ContentButton>
