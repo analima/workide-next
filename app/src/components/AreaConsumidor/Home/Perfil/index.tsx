@@ -13,7 +13,6 @@ import {
 } from './style';
 import Content from './style';
 import Image from 'next/image';
-import EstrelaOff from '../../../../assets/estrela-off.svg';
 import Estrela from '../../../../assets/estrela.svg';
 import { AZUL_60, CINZA_40 } from '../../../../styles/variaveis';
 import { Card } from '../../../Card';
@@ -74,23 +73,6 @@ export default function Perfil({ isConsumidor }: IProps) {
     userHasPrimeiroProjeto();
   }, [user.id_pessoa]);
 
-  function handleShowStars(numberOfStars: number) {
-    const stars = [];
-    for (let i = 1; i <= 5; i += 1) {
-      if (i <= numberOfStars) {
-        if (numberOfStars === 0)
-          stars.push(
-            <EstrelaOff className="estrela" key={i + Math.random()} />,
-          );
-        else
-          stars.push(<Estrela className="estrela" key={i + Math.random()} />);
-      } else {
-        stars.push(<EstrelaOff className="estrela" key={i + Math.random()} />);
-      }
-    }
-    return stars;
-  }
-
   useEffect(() => {
     const userHasFeedback = async () => {
       if (user?.id_usuario) {
@@ -121,7 +103,7 @@ export default function Perfil({ isConsumidor }: IProps) {
                 />
                 <PerfilAvaliacao>
                   <span>{notaMedia ? notaMedia?.toFixed(2) : '0.00'}</span>
-                  {handleShowStars(notaMedia)}
+                  <Estrela className="estrela" key={0} />
                 </PerfilAvaliacao>
 
                 <PerfilSelos>
@@ -164,7 +146,7 @@ export default function Perfil({ isConsumidor }: IProps) {
               >
                 <FiEye size={30} color={AZUL_60} />
               </button>
-              <p>Veja como estão te vendo</p>
+              {/* <p>Veja como estão te vendo</p> */}
             </EyeContent>
             <GhostButton
               onClick={() =>

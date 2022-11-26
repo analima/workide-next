@@ -28,6 +28,11 @@ const Content = styled.div`
 export const ContainerNameUser = styled.div`
   cursor: pointer;
 
+  .estrela {
+    width: 22px;
+    height: 22px;
+  }
+
   .content-medal {
     margin-top: 10px;
   }

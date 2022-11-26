@@ -12,7 +12,6 @@ import {
 import Exclusivo from '../../../../assets/exclusive.svg';
 import ModalDenuncia from '../../../ModalDenuncia';
 import IconeVoluntario from '../../../../assets/icon-voluntare.svg';
-import EstrelaOff from '../../../../assets/estrela-off.svg';
 import Estrela from '../../../../assets/estrela.svg';
 import userPhoto from '../../../../assets/user.png';
 
@@ -215,48 +214,6 @@ export default function Projeto({
         obterNotaMedia(res.data?.id);
       });
   }, [projeto.idPessoaConsumidor, obterNotaMedia]);
-
-  function handleShowStars(numberOfStars: number) {
-    const stars = [];
-    for (let i = 1; i <= 5; i += 1) {
-      if (i <= numberOfStars) {
-        if (numberOfStars === 0)
-          stars.push(
-            <Image
-              src={EstrelaOff}
-              className="estrela"
-              key={i + Math.random()}
-              alt="estrela-apagada"
-              width={18}
-              height={18}
-            />,
-          );
-        else
-          stars.push(
-            <Image
-              src={Estrela}
-              className="estrela"
-              key={i + Math.random()}
-              alt="estrela"
-              width={18}
-              height={18}
-            />,
-          );
-      } else {
-        stars.push(
-          <Image
-            src={EstrelaOff}
-            className="estrela"
-            key={i + Math.random()}
-            alt="estrela-apagada"
-            width={18}
-            height={18}
-          />,
-        );
-      }
-    }
-    return stars;
-  }
 
   function handleShowAvatarCadastroIncompleto() {
     setShowAvatarCadastroIncompleto(!showAvatarCadastroIncompleto);
@@ -519,7 +476,13 @@ export default function Projeto({
                   />
                   <Avaliacao>
                     <span>{notaMedia?.toFixed(2)}</span>
-                    {handleShowStars(notaMedia)}
+                    <Image
+                      src={Estrela}
+                      height={22}
+                      width={22}
+                      alt="estrela"
+                      key={0}
+                    />
                   </Avaliacao>
                 </Info>
               </Consumidor>

@@ -8,7 +8,6 @@ import {
   ContentImg,
 } from './style';
 import Content from './style';
-import EstrelaOff from '../../../../assets/estrela-off.svg';
 import Estrela from '../../../../assets/estrela.svg';
 import { AZUL } from '../../../../styles/variaveis';
 import { Card } from '../../../Card';
@@ -101,23 +100,6 @@ export default function Sobre({ dataProps }: PerfilConsumidorProps) {
     handleImg();
   }, [dataProps]);
 
-  function handleShowStars(numberOfStars: number) {
-    const stars = [];
-    for (let i = 1; i <= 5; i += 1) {
-      if (i <= numberOfStars) {
-        if (numberOfStars === 0)
-          stars.push(
-            <EstrelaOff className="estrela" key={i + Math.random()} />,
-          );
-        else
-          stars.push(<Estrela className="estrela" key={i + Math.random()} />);
-      } else {
-        stars.push(<EstrelaOff className="estrela" key={i + Math.random()} />);
-      }
-    }
-    return stars;
-  }
-
   return (
     <Content>
       <Card>
@@ -169,7 +151,7 @@ export default function Sobre({ dataProps }: PerfilConsumidorProps) {
                   {img ? (
                     <Avaliacao>
                       <span>{notaMedia?.toFixed(2)}</span>
-                      {handleShowStars(notaMedia)}
+                      <Estrela className="estrela" key={0} />
                     </Avaliacao>
                   ) : (
                     <Skeleton width="50%" height="20px" />
