@@ -2,7 +2,6 @@ import { Col, Row } from 'react-bootstrap';
 import { Card } from '../../../Card';
 import { Titulo } from '../../../Titulo';
 
-import EstrelaOff from '../../../../assets/estrela-off.svg';
 import Estrela from '../../../../assets/estrela.svg';
 import PlaceholderImage from '../../../../assets/placeholderImg.png';
 
@@ -101,23 +100,6 @@ export default function Contratado({ id_fornecedor }: IProps) {
     refreshUserData();
   }, [refreshUserData]);
 
-  function handleShowStars(numberOfStars: number) {
-    const stars = [];
-    for (let i = 1; i <= 5; i += 1) {
-      if (i <= numberOfStars) {
-        if (numberOfStars === 0)
-          stars.push(
-            <EstrelaOff className="estrela" key={i + Math.random()} />,
-          );
-        else
-          stars.push(<Estrela className="estrela" key={i + Math.random()} />);
-      } else {
-        stars.push(<EstrelaOff className="estrela" key={i + Math.random()} />);
-      }
-    }
-    return stars;
-  }
-
   return (
     <Content>
       <AvatarErroGeral
@@ -203,7 +185,7 @@ export default function Contratado({ id_fornecedor }: IProps) {
                 {dadosFornecedor.ativo && (
                   <AvaliacaoContainer>
                     <span>{dadosRanking?.notaMedia}</span>
-                    {handleShowStars(dadosRanking?.notaMedia || 0)}
+                    <Estrela className="estrela" key={0} />
                   </AvaliacaoContainer>
                 )}
               </Col>

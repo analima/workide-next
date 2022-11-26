@@ -9,7 +9,6 @@ import Coracao from '../../../../assets/coracao.svg';
 import ExclusivoImage from '../../../../assets/exclusive.svg';
 
 import IconeVoluntario from '../../../../assets/icon-voluntare.svg';
-import EstrelaOff from '../../../../assets/estrela-off.svg';
 import Estrela from '../../../../assets/estrela.svg';
 import {
   Header,
@@ -288,23 +287,6 @@ export default function DetalhesProjeto() {
     );
     hotjar.stateChange('/detalhes-projeto/');
   }, []);
-
-  function handleShowStars(numberOfStars: number) {
-    const stars = [];
-    for (let i = 1; i <= 5; i += 1) {
-      if (i <= numberOfStars) {
-        if (numberOfStars === 0)
-          stars.push(
-            <EstrelaOff className="estrela" key={i + Math.random()} />,
-          );
-        else
-          stars.push(<Estrela className="estrela" key={i + Math.random()} />);
-      } else {
-        stars.push(<EstrelaOff className="estrela" key={i + Math.random()} />);
-      }
-    }
-    return stars;
-  }
 
   const handleDate = (elm: any) => {
     const date = new Date(elm);
@@ -588,7 +570,7 @@ export default function DetalhesProjeto() {
                           COMPARTILHAR
                         </Compartilhar>
 
-                        <span>Veja como estão vendo sua proposta</span>
+                        {/* <span>Veja como estão vendo sua proposta</span> */}
                       </HeaderContentButton>
                     </Col>
                   ) : (
@@ -866,7 +848,7 @@ export default function DetalhesProjeto() {
                         </NomeTitulo>
                         <Avaliacao>
                           <span>{notaMedia?.toFixed(2)}</span>
-                          {handleShowStars(notaMedia)}
+                          <Estrela className="estrela" key={0} />
                         </Avaliacao>
                         <SobreDrescricao>
                           {dadosConsumidor.resumo_profissional}

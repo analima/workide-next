@@ -71,6 +71,11 @@ export const EvaluationStyled = styled.div`
     color: ${LARANJA};
     margin: 0;
   }
+
+  svg {
+    width: 22px;
+    height: 22px;
+  }
 `;
 
 export const ContentMedalStyled = styled.section`

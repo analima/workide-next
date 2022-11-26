@@ -21,22 +21,21 @@ export const FotoPerfilContainer = styled.div`
 `;
 
 export const FotoPerfil = styled.div`
-img:{
-  object-fit: cover;
-  max-width: 152px;
-  height: 152px;
-  object-fit: cover;
-  border-radius: 8px;
-  background-size: cover;
-  background-position: center;
+  img: {
+    object-fit: cover;
+    max-width: 152px;
+    height: 152px;
+    object-fit: cover;
+    border-radius: 8px;
+    background-size: cover;
+    background-position: center;
 
-  @media (max-width: 478px) {
-    width: 100px;
-    height: 100px;
-    margin: 16px 0;
+    @media (max-width: 478px) {
+      width: 100px;
+      height: 100px;
+      margin: 16px 0;
+    }
   }
-}
-
 `;
 
 export const NomeContainer = styled.div`
@@ -60,6 +59,11 @@ export const AvaliacaoContainer = styled.div`
   span {
     color: ${LARANJA};
     margin-right: 8px;
+  }
+
+  svg {
+    width: 22px;
+    height: 22px;
   }
 
   @media (max-width: 478px) {

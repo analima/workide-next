@@ -1,5 +1,4 @@
-import EstrelaOff  from '../../assets/estrela-off.svg';
-import  Estrela  from '../../assets/estrela.svg';
+import Estrela from '../../assets/estrela.svg';
 import defaultImage from '../../assets/profileImage.svg';
 import { Titulo } from '../Titulo';
 import { AZUL_60, PRETO_10 } from '../../styles/variaveis';
@@ -24,7 +23,7 @@ import {
   InfoFooter,
 } from './style';
 import { useHistory } from 'react-router-dom';
-import Link from 'next/link'
+import Link from 'next/link';
 import { ModalFullRecordGuidance } from '../ModalFullRecordGuidance';
 import { useState } from 'react';
 import { useAuth } from '../../contexts/auth';
@@ -70,23 +69,6 @@ export function UserProfileCard({
     return stringProfissoes !== '' ? stringProfissoes : 'Não informado';
   }
 
-  function handleShowStars(numberOfStars: number) {
-    const stars = [];
-    for (let i = 1; i <= 5; i += 1) {
-      if (i <= numberOfStars) {
-        if (numberOfStars === 0)
-          stars.push(
-            <EstrelaOff className="estrela" key={i + Math.random()} />,
-          );
-        else
-          stars.push(<Estrela className="estrela" key={i + Math.random()} />);
-      } else {
-        stars.push(<EstrelaOff className="estrela" key={i + Math.random()} />);
-      }
-    }
-    return stars;
-  }
-
   return (
     <Content>
       <Body>
@@ -95,7 +77,7 @@ export function UserProfileCard({
             <Titulo titulo={dataVitrine.nome} tamanho={24} cor={PRETO_10} />
             <Avaliacao>
               <span>{dataVitrine.notaMedia ? dataVitrine.notaMedia : 0}</span>
-              {handleShowStars(dataVitrine.notaMedia)}
+              <Estrela className="estrela" key={0} />
             </Avaliacao>
             <Ranking>
               Ranking: {dataVitrine.ranking ? dataVitrine.ranking : 0}

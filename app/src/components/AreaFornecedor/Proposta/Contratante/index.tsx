@@ -2,7 +2,6 @@ import { Col, Row } from 'react-bootstrap';
 import { Card } from '../../../../components/Card';
 import { Titulo } from '../../../../components/Titulo';
 
-import EstrelaOff from '../../../../assets/estrela-off.svg';
 import Estrela from '../../../../assets/estrela.svg';
 
 import {
@@ -54,23 +53,6 @@ export default function Contratante() {
         });
     }
   }, [project.idPessoaConsumidor]);
-
-  function handleShowStars(numberOfStars: number) {
-    const stars = [];
-    for (let i = 1; i <= 5; i += 1) {
-      if (i <= numberOfStars) {
-        if (numberOfStars === 0)
-          stars.push(
-            <EstrelaOff className="estrela" key={i + Math.random()} />,
-          );
-        else
-          stars.push(<Estrela className="estrela" key={i + Math.random()} />);
-      } else {
-        stars.push(<EstrelaOff className="estrela" key={i + Math.random()} />);
-      }
-    }
-    return stars;
-  }
 
   useEffect(() => {
     if (project.idPessoaConsumidor) {
@@ -142,7 +124,7 @@ export default function Contratante() {
               <Col lg={12}>
                 <AvaliacaoContainer>
                   <span>{notaMedia?.toFixed(2)}</span>
-                  {handleShowStars(notaMedia)}
+                  <Estrela className="estrela" key={0} />
                 </AvaliacaoContainer>
               </Col>
             </Row>
