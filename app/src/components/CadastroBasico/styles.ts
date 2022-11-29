@@ -1,70 +1,56 @@
 import { lighten } from 'polished';
 import styled from 'styled-components';
-import { AZUL, BRANCO, PRETO, PRETO_10, LARANJA } from '../../styles/variaveis';
-import Button from '../Button';
-
-interface Props {
-  isActive: boolean;
-  display: string;
-}
+import { AZUL, BRANCO, PRETO, PRETO_10, LARANJA } from 'src/styles/variaveis';
+import OndaGradiente from '../../assets/onda-gradiente2.svg';
 
 export const ItemPolitica = styled.div`
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  z-index: 99999999;
 
   .icon-politica {
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
   }
 
   p {
-    margin: 0;
-    font-size: 14px;
-    text-align: justify;
+    width: 90%;
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
   }
-`;
-
-interface IProps {
-  showModal: boolean;
-}
-
-export const ContentModal = styled.div`
-  position: fixed;
-  padding: 24px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.9);
-  top: 20%;
-  background-color: ${BRANCO};
-  right: 40px;
-  width: 500px;
-  border-radius: 8px;
-  flex-direction: column;
-  display: ${(props: IProps) => (props.showModal ? 'flex' : 'none')};
-  opacity: ${(props: IProps) => (props.showModal ? 1 : 0)};
-  transition: opacity 0.4s ease;
 `;
 
 export const PoliticaParagrafo = styled.p`
   color: ${LARANJA};
-  font-weight: 900;
-  font-size: 14px;
-  margin: 0;
+  font-family: 'Renner';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  margin-top: 2px;
   cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
-export const Content = styled.div<Props>`
-  z-index: 2;
+export const Content = styled.div`
+  z-index: 1;
   align-items: center;
-  position: fixed;
-  position: absolute;
-  right: 0;
-  top: 0;
-  transition: all 700ms;
-  transform: translateX(${props => (props.isActive ? '0' : '100%')});
-  display: ${props => props.display};
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5) !important;
-  border-bottom-left-radius: 16px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+
+  background-image: url(${OndaGradiente.src});
+  background-repeat: no-repeat;
+  background-position: center;
+
+  .ondaGradiente {
+    position: absolute;
+  }
 
   .logo {
     text-align: center;
@@ -72,35 +58,20 @@ export const Content = styled.div<Props>`
   }
 
   .form-content {
-    background-color: red;
-    width: 600px !important;
+    width: 570px !important;
+    margin: auto;
     transition-property: width;
     transition-duration: 1s;
+    box-shadow: 4px 0px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 16px;
+    z-index: 99999;
     padding: 32px;
-    border-bottom-left-radius: 16px;
-
     background-color: ${BRANCO};
+    margin-top: 40px;
 
     @media (max-width: 660px) {
-      width: 465px !important;
-    }
-
-    @media (max-width: 470px) {
-      padding: 80px 20px;
-      width: 400px !important;
-    }
-
-    @media (max-width: 395px) {
       width: 100% !important;
-    }
-
-    .form-title {
-      color: ${PRETO};
-      margin-bottom: 25px;
-      h2 {
-        font-size: 61px;
-        font-weight: bold;
-      }
+      margin-top: 10px;
     }
 
     .form-switch {
@@ -112,8 +83,7 @@ export const Content = styled.div<Props>`
       text-align: center;
 
       @media (max-width: 660px) {
-        width: 85%;
-        margin-bottom: 80px;
+        width: auto;
       }
       button {
         display: flex;
@@ -131,7 +101,7 @@ export const Content = styled.div<Props>`
         color: ${PRETO};
 
         @media (max-width: 660px) {
-          width: inherit;
+          width: 100%;
           padding: 16px 25px;
         }
 
@@ -182,30 +152,24 @@ export const Content = styled.div<Props>`
     }
 
     .btn {
-      width: 100%;
-      height: 48px;
+      width: 505px;
+      height: 47px;
       border-radius: 8px;
       padding: 16px 0;
       margin: 1rem 0;
       display: flex;
       justify-content: center;
       align-items: center;
-
-      @media (max-width: 990px) {
-        width: 50%;
-        align-self: center;
-        justify-self: center;
-      }
     }
 
     .btn-primary {
       background-color: ${AZUL};
+      background-color: ${AZUL};
+
       &:hover {
         background-color: ${lighten(0.1, AZUL)};
-        border: ${lighten(0.1, AZUL)};
       }
     }
-
     .btn-login {
       background-color: ${BRANCO};
       border: 1px solid ${AZUL};
@@ -213,7 +177,6 @@ export const Content = styled.div<Props>`
 
       &:hover {
         background-color: ${lighten(0.1, AZUL)};
-        border: 1px solid ${lighten(0.1, AZUL)};
         color: ${BRANCO};
       }
     }
@@ -250,41 +213,55 @@ export const Content = styled.div<Props>`
     display: flex;
     justify-content: center;
   }
+
+  @media (max-width: 660px) {
+    .btn {
+      width: 100% !important;
+    }
+  }
 `;
 
 export const FormTitle = styled.div`
-  margin-bottom: 8px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  align-items: center;
 
-  svg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: 8px;
-    cursor: pointer;
-
-    &:hover {
-      opacity: 0.7;
-    }
+  img {
+    width: 120px;
   }
 
   h2 {
-    font-size: 48px;
-    font-weight: bold;
+    font-size: 32px;
     color: ${PRETO_10};
-    opacity: 0.8;
+    font-family: 'Renner';
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
   }
 
   p {
     font-size: 16px;
     color: ${PRETO_10};
-    opacity: 0.8;
+    font-family: 'Renner';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
   }
 `;
 
-export const ButtonLogin = styled(Button)``;
+export const ButtonLogin = styled.span`
+  font-family: 'Renner';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 150%;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 20px auto 0;
+  color: ${AZUL};
+  cursor: pointer;
+`;
 
 export const LinksFooter = styled.div`
   display: flex;
@@ -300,17 +277,23 @@ export const LinksFooter = styled.div`
   }
 `;
 
+export const LinkToTerms = styled.a`
+  color: ${AZUL};
+  font-weight: bold;
+  text-decoration: none;
+`;
+
 export const InputCheck = styled.input`
   width: 20px;
   height: 20px;
   border-radius: 15px;
+  margin-right: 15px;
 `;
 
 export const ContainerInputCheck = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 16px;
   margin-bottom: 8px;
 
   span {
@@ -319,28 +302,31 @@ export const ContainerInputCheck = styled.div`
 
     a {
       color: #000;
-      font-size: 12px;
+      font-size: 14px;
     }
   }
 `;
 
-export const TituloCadastroManual = styled.h4`
-  margin: 20px 0;
-`;
-
-export const ContainerButtons = styled.div`
-  display: flex !important;
-  flex-direction: column !important;
+export const ContainerTermos = styled.div`
+  width: 100%;
+  display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  position: relative;
 
-  button {
-    position: relative !important;
-    align-self: center !important;
-    justify-self: center !important;
-    right: 0;
-    width: 90% !important;
+  margin-top: 8px;
+`;
+
+export const Termos = styled.span`
+  padding: 2px 10px;
+
+  a {
+    text-decoration: none;
+    font-family: 'Renner';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 150%;
+    color: ${PRETO_10};
+    padding: 2px;
   }
 `;

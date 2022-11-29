@@ -119,11 +119,7 @@ export function Menu({
   return (
     <>
       <NavCustom hiddenBackground={hiddenBackground} className={background}>
-        <CadastroBasico
-          isActive={showRegisterForm}
-          display={displayOfOverlay}
-          handleShowOverlay={handleShowOverlay}
-        />
+        <CadastroBasico />
 
         <ModalCentralMenu
           showModal={showModal}

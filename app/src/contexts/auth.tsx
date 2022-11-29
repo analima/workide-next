@@ -28,6 +28,8 @@ interface IAuthContextProps {
   refreshUserData(): Promise<void>;
   signOut(): void;
   setUser: React.Dispatch<React.SetStateAction<IPessoa>>;
+  idFiliate: string;
+  setIdFiliate: React.Dispatch<React.SetStateAction<string>>;
 }
 interface IProps {
   children: React.ReactNode;
@@ -39,6 +41,7 @@ export function AuthProvider({ children }: IProps) {
   const [user, setUser] = useState({} as IPessoa);
   const [isAuthDataLoading, setIsAuthDataLoading] = useState(true);
   const [idToken, setIdToken] = useState('');
+  const [idFiliate, setIdFiliate] = useState('');
 
   const saveAuthData = useCallback(
     async ({ id_token, refresh_token, user }: IAuthProps) => {
@@ -89,10 +92,10 @@ export function AuthProvider({ children }: IProps) {
   useEffect(() => {
     services.forEach(service => {
       service.interceptors.response.use(
-        response => {
+        (response: any) => {
           return response;
         },
-        err => {
+        (err: any) => {
           return new Promise((resolve, reject) => {
             const originalReq: AxiosRequestConfig = err.config;
             if (
@@ -170,6 +173,8 @@ export function AuthProvider({ children }: IProps) {
         saveAuthData,
         refreshUserData,
         signOut,
+        idFiliate,
+        setIdFiliate,
       }}
     >
       {children}
