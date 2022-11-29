@@ -9,6 +9,7 @@ import { pessoas_api } from '../../../../services/pessoas_api';
 import { geral_api } from '../../../../services/geral_api';
 import { consultas_api } from '../../../../services/consultas_api';
 import { oportunidades_api } from '../../../../services/oportunidades_api';
+import { IS_EMPTY } from 'src/const';
 
 type ConsultaRankingType = {
   idUsuario: number;
@@ -97,7 +98,7 @@ export default function Perfil() {
       <UserProfileCard
         dataVitrine={{
           nome: user.nome_tratamento || '',
-          notaMedia: user.ranking?.notaMedia || 0,
+          notaMedia: user.ranking?.notaMedia || IS_EMPTY,
           resumo_profissional: user.resumo_profissional,
           imagem: user.url_avatar || '',
           ranking: consultaRanking.ranking,
@@ -108,7 +109,7 @@ export default function Perfil() {
             user.profissoes?.map(profissao => profissao.descricao) || null,
           areas_interesse: minhasAreasDeInteresse,
         }}
-        percentageRegister={user.percentageRegisterProvider || 0}
+        percentageRegister={user.percentageRegisterProvider || IS_EMPTY}
       />
     </Content>
   );

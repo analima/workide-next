@@ -7,6 +7,7 @@ import CaptarProjetoContent from '../../../components/AreaFornecedor/CaptarProje
 import { SEO } from 'src/components/SEO';
 import { GetStaticProps } from 'next';
 import { version } from '../../../../package.json';
+import { TIME_REVALIDATE } from 'src/const';
 
 interface IProps {
   appVersion: string;
@@ -40,6 +41,6 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       appVersion,
     },
-    revalidate: 86400,
+    revalidate: TIME_REVALIDATE,
   };
 };

@@ -15,6 +15,7 @@ import { RequirementsList } from '../../../RequirementsList';
 import { SearchProject } from '../../../SearchProject';
 import { Helmet } from 'react-helmet';
 import { hotjar } from 'react-hotjar';
+import { IS_EMPTY } from 'src/const';
 
 const Manter = (): JSX.Element => {
   const [showModalConfirmation, setShowModalConfirmation] =
@@ -27,9 +28,9 @@ const Manter = (): JSX.Element => {
     'Requisito 03',
     'Requisito 04',
   ];
-  useEffect(() => {
+  useEffect(() => {''
     hotjar.initialize(
-      Number(process.env.REACT_APP_HOTJAR_ID) || 0,
+      Number(process.env.REACT_APP_HOTJAR_ID) || IS_EMPTY,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
     hotjar.stateChange('/contratante/projeto/manter');

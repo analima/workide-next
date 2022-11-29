@@ -20,6 +20,7 @@ import { geral_api } from '../../../../services/geral_api';
 import { oportunidades_api } from '../../../../services/oportunidades_api';
 import { Skeleton } from '../../../Skeleton';
 import { SeloMembro } from '../../../SeloMembro';
+import { IS_EMPTY } from 'src/const';
 
 type PerfilConsumidorProps = {
   dataProps: {
@@ -49,7 +50,7 @@ export default function Sobre({ dataProps }: PerfilConsumidorProps) {
 
   useEffect(() => {
     oportunidades_api
-      .get(`/projetos/avaliacoes-consumidor/${dataProps?.idPessoa || 0}/count`)
+      .get(`/projetos/avaliacoes-consumidor/${dataProps?.idPessoa || IS_EMPTY}/count`)
       .then(({ data }) => {
         setNotaMedia(data.media || 0);
       });

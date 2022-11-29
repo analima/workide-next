@@ -82,6 +82,7 @@ import { useFaturaProjeto } from '../../../../hooks/faturasProjeto';
 
 import BuscarFaturaProjeto from '../../../../utils/buscarFaturaProjeto';
 import { useValorProjetoPago } from '../../../../contexts/valorProjetoPago';
+import { IS_EMPTY } from 'src/const';
 const schema = Yup.object().shape({});
 
 interface ListPerguntasProps {
@@ -149,16 +150,16 @@ export default function Detalhes({ getProjeto }: Props) {
   async function handleGetProjectInvoiceValue() {
     try {
       if (buscarProjeto(dadosProjetos.id)) {
-        setValorProjetoPago(buscarProjeto(dadosProjetos.id)?.valorComTaxa || 0);
+        setValorProjetoPago(buscarProjeto(dadosProjetos.id)?.valorComTaxa || IS_EMPTY);
         return;
       }
       const projetoPago = await BuscarFaturaProjeto.buscarFatura(
-        user.id || 0,
+        user.id || IS_EMPTY,
         dadosProjetos.id,
       );
       if (projetoPago) {
         adicinarProjeto(projetoPago);
-        setValorProjetoPago(projetoPago?.valorComTaxa || 0);
+        setValorProjetoPago(projetoPago?.valorComTaxa || IS_EMPTY);
       }
     } catch (error: any) {
       console.error(error);
@@ -235,7 +236,7 @@ export default function Detalhes({ getProjeto }: Props) {
           if (
             !pergunta.lida &&
             pergunta.pessoaDestinatario &&
-            (pergunta.pessoaDestinatario.id || 0) === (user.id || 0)
+            (pergunta.pessoaDestinatario.id || IS_EMPTY) === (user.id || IS_EMPTY)
           ) {
             pessoas_api.patch(`/pessoas/mensagens/${pergunta.id}/lida`, {
               lida: true,

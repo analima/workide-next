@@ -47,6 +47,7 @@ import { useHistory } from 'react-router';
 import { formatToPrice } from '../../../../../helpers/formatsHelper';
 import { useLimitacoesPlanos } from '../../../../../contexts/planLimitations';
 import { ModalCalculadora } from '../../../../../components/ModalCalculadora';
+import { IS_EMPTY } from 'src/const';
 
 interface IOpcoesPacoteProps {
   continuar: () => void;
@@ -1206,13 +1207,13 @@ export default function OpcoesPacote({ continuar }: IOpcoesPacoteProps) {
                         <>
                           <div className="container-taxa-admin">
                             <span>Taxa Admin</span>
-                            <span>{formatToPrice(taxaPacoteBasico || 0)}</span>
+                            <span>{formatToPrice(taxaPacoteBasico || IS_EMPTY)}</span>
                           </div>
                           <div className="container-valor-total">
                             <span>Total</span>
                             <span>
                               {formatToPrice(
-                                valorPacoteBasico + taxaPacoteBasico || 0,
+                                valorPacoteBasico + taxaPacoteBasico || IS_EMPTY,
                               )}
                             </span>
                           </div>
@@ -1239,7 +1240,7 @@ export default function OpcoesPacote({ continuar }: IOpcoesPacoteProps) {
                               <div className="container-taxa-admin">
                                 <span>Taxa Admin</span>
                                 <span>
-                                  {formatToPrice(taxaPacoteIntermediario || 0)}
+                                  {formatToPrice(taxaPacoteIntermediario || IS_EMPTY)}
                                 </span>
                               </div>
                               <div className="container-valor-total">
@@ -1247,7 +1248,7 @@ export default function OpcoesPacote({ continuar }: IOpcoesPacoteProps) {
                                 <span>
                                   {formatToPrice(
                                     valorPacoteIntermediario +
-                                      taxaPacoteIntermediario || 0,
+                                      taxaPacoteIntermediario || IS_EMPTY,
                                   )}
                                 </span>
                               </div>
@@ -1271,7 +1272,7 @@ export default function OpcoesPacote({ continuar }: IOpcoesPacoteProps) {
                               <div className="container-taxa-admin">
                                 <span>Taxa Admin</span>
                                 <span>
-                                  {formatToPrice(taxaPacoteAvancado || 0)}
+                                  {formatToPrice(taxaPacoteAvancado || IS_EMPTY)}
                                 </span>
                               </div>
                               <div className="container-valor-total">

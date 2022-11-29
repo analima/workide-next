@@ -22,6 +22,7 @@ import {
 import { Titulo } from '../Titulo';
 import { LARANJA } from '../../styles/variaveis';
 import { IEvaluation } from '../../interfaces/IProvider';
+import { IS_EMPTY } from 'src/const';
 
 interface IProps {
   id: number;
@@ -168,7 +169,7 @@ export function CardAvaliacao({ id }: IProps) {
 
                         {obj.nota
                           ? handleShowStars(5)
-                          : handleShowStars(obj.nota || 0)}
+                          : handleShowStars(obj.nota || IS_EMPTY)}
                       </ContentNota>
                     </div>
                   </ContainerCardUsuario>

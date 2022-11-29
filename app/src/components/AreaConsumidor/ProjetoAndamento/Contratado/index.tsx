@@ -29,6 +29,7 @@ import { useHistory } from 'react-router-dom';
 import { consultas_api } from '../../../../services/consultas_api';
 import { Skeleton } from '../../../Skeleton';
 import { AvatarErroGeral } from '../../../AvatarErroGeral';
+import { IS_EMPTY } from 'src/const';
 
 interface IProps {
   id_fornecedor: number;
@@ -203,7 +204,7 @@ export default function Contratado({ id_fornecedor }: IProps) {
                 {dadosFornecedor.ativo && (
                   <AvaliacaoContainer>
                     <span>{dadosRanking?.notaMedia}</span>
-                    {handleShowStars(dadosRanking?.notaMedia || 0)}
+                    {handleShowStars(dadosRanking?.notaMedia || IS_EMPTY)}
                   </AvaliacaoContainer>
                 )}
               </Col>

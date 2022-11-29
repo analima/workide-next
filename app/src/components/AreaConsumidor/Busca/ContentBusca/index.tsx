@@ -22,6 +22,7 @@ import { useBuscaFornecedorOferta } from '../../../../hooks/buscaConsumidor';
 import { InformationUser } from 'src/components/InformationUser';
 import NovoFiltro from '../NovoFiltro';
 import { useRouter } from 'next/router';
+import { IS_EMPTY } from 'src/const';
 
 type Cases = {
   titulo: string;
@@ -127,7 +128,7 @@ export default function ContentBusca({ versao }: IProps) {
 
   useEffect(() => {
     hotjar.initialize(
-      Number(process.env.REACT_APP_HOTJAR_ID) || 0,
+      Number(process.env.REACT_APP_HOTJAR_ID) || IS_EMPTY,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
     hotjar.stateChange('/contratante/busca');

@@ -62,6 +62,7 @@ import { Skeleton } from '../../../../../components/Skeleton';
 import { useAuth } from '../../../../../contexts/auth';
 import { useValorProjetoPago } from '../../../../../contexts/valorProjetoPago';
 import BuscarFaturaProjeto from '../../../../../utils/buscarFaturaProjeto';
+import { IS_EMPTY } from 'src/const';
 
 interface DetalhesPropostaProps {
   dataInicioEstimada: string;
@@ -174,7 +175,7 @@ const CardProposal = ({
     try {
       if (buscarProjeto(detalhesProposta.idProjeto)) {
         setValorProjetoPago(
-          buscarProjeto(detalhesProposta.idProjeto)?.valorComTaxa || 0,
+          buscarProjeto(detalhesProposta.idProjeto)?.valorComTaxa || IS_EMPTY,
         );
         return;
       }
@@ -184,7 +185,7 @@ const CardProposal = ({
       );
       if (projetoPago) {
         adicinarProjeto(projetoPago);
-        setValorProjetoPago(projetoPago?.valorComTaxa || 0);
+        setValorProjetoPago(projetoPago?.valorComTaxa || IS_EMPTY);
       } else {
         const valorTotal =
           detalhesProposta.valor * (1 - 0.12) > 14

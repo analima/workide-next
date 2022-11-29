@@ -1,4 +1,5 @@
 import Helmet from 'react-helmet';
+import { KEY_WORDS } from 'src/keywords';
 
 type SEOProps = {
   title: string;
@@ -21,6 +22,7 @@ export function SEO({
       <title>{pageTitle}</title>
       {description && <meta name="description" content={description} />}
       {image && <meta name="image" content={image} />}
+      <meta name="description" content={(KEY_WORDS.join()).toString()} />
       <meta httpEquiv="x-ua-compatible" content="IE=edge,chrome=1" />
       <meta name="MobileOptimized" content="320" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />

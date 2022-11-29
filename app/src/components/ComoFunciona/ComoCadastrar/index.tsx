@@ -90,7 +90,7 @@ export function ComoCadastrar() {
 
             <span>
               Seu tempo e expertise podem trazer muitas melhorias para o mundo
-              em que vivemos. Na freelas town, você se conecta com ONGs que
+              em que vivemos. Na freelas town, você se conecta com <strong>ONGs</strong>  que
               atuam em prol das causas que você acredita.
             </span>
           </Box>
