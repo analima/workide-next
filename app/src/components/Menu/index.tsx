@@ -104,23 +104,9 @@ export function Menu({
     smoothscroll();
   };
 
-  function handleScrollTo(
-    link: 'find-solution' | 'who-we-are' | 'how-it-works',
-  ) {
-    if (link === 'find-solution') {
-      router.push(`/#find-solution`);
-    } else if (link === 'who-we-are') {
-      router.push(`/#who-we-are`);
-    } else if (link === 'how-it-works') {
-      router.push(`/#how-it-works`);
-    }
-  }
-
   return (
     <>
       <NavCustom hiddenBackground={hiddenBackground} className={background}>
-        <CadastroBasico />
-
         <ModalCentralMenu
           showModal={showModal}
           type={returnTypeSelected()}
