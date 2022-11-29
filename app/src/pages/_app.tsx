@@ -1,5 +1,4 @@
 import type { AppProps } from 'next/app';
-import Script from 'next/script';
 import { ThemeProvider } from 'styled-components';
 import 'bootstrap/dist/css/bootstrap.css';
 import Head from 'next/head';
@@ -24,7 +23,6 @@ const theme: ThemeInterface = {
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [loadVendorScripts, setLoadVendorScripts] = useState(false);
-
   useEffect(() => {
     setLoadVendorScripts(
       process.env.NEXT_PUBLIC_LOAD_VENDOR_SCRIPTS === 'true',

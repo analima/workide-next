@@ -1,21 +1,30 @@
 import { useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
-import { Col, Form, Row, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import {
+  Col,
+  Form,
+  Row,
+  OverlayTrigger,
+  Tooltip,
+  Modal,
+  ModalBody,
+} from 'react-bootstrap';
+
 import LogoGyan from '../../assets/logo-pequena-azul.png';
 import Google from '../../assets/google.svg';
 import {
   ButtonLogin,
+  ContainerInputCheck,
+  ContainerTermos,
   Content,
   FormTitle,
   InputCheck,
-  ContainerInputCheck,
   ItemPolitica,
   PoliticaParagrafo,
-  ContainerButtons,
-  ContentModal,
-} from './style';
-import { Spacer } from '../../components/Spacer';
-import { FiX } from 'react-icons/fi';
+  Termos,
+} from './styles';
+
+import { Spacer } from '../Spacer';
 import { pessoas_api } from '../../services/pessoas_api';
 import Boia from '../../assets/boia.svg';
 import Chave from '../../assets/chave.svg';
@@ -25,6 +34,7 @@ import { ModalInformation } from '../ModalInformation';
 import { VERMELHO } from '../../styles/variaveis';
 import { useGAEventsTracker } from '../../hooks/useGAEventsTracker';
 import Image from 'next/image';
+import { useAuth } from 'src/contexts/auth';
 
 interface User {
   name: string;
@@ -41,24 +51,17 @@ interface UserToRegistry {
   password: string;
   password_confirmation: string;
   consumidor: boolean;
+  affiliate_id: string;
 }
 
-interface DefaultProps {
-  isActive: boolean;
-  display: string;
-  handleShowOverlay: () => void;
-}
-
-export function CadastroBasico({
-  isActive,
-  display,
-  handleShowOverlay,
-}: DefaultProps): JSX.Element {
+export function CadastroBasico() {
+  const { idFiliate } = useAuth();
   const [showModal, setShowModal] = useState(false);
   const [userData, setUserData] = useState<User>({} as User);
   const [errorName, setErrorName] = useState<string | null>(null);
   const [errorEmail, setErrorEmail] = useState<string | null>(null);
   const [errorPassword, setErrorPassword] = useState<string | null>(null);
+  const [errorSenha, setErroSenha] = useState<string>('');
   const [errorConfirmPassword, setErrorConfirmPassword] = useState<
     string | null
   >(null);
@@ -145,30 +148,29 @@ export function CadastroBasico({
           });
       })
       .catch(async error => {
-        if (error.response) {
-          console.error(error.response);
-          if (error.response.status === 422) {
-            if (
-              error.response.data.message.includes('validation error detected')
-            )
-              setErrorEmail(
-                'Erro ao prosseguir com o cadastro. Preencha o campo com um formato válido.',
-              );
-            else setErrorEmail(error.response.data.message);
-            setUserData({ ...userData, email: '' });
-          }
-          if (error.response.status === 500) {
-            if (
-              error.response.data.message.includes(
-                'An account with the given email already exists',
-              )
-            ) {
-              setErrorEmail('Erro esse email já está cadastrado.');
-            }
-            setUserData({ ...userData, email: '' });
-          }
-        } else {
-          console.log(error);
+        if (error.response) console.error(error.response);
+        if (
+          error.response.data.message.includes(
+            'Password did not conform with policy: Password must have symbol characters',
+          )
+        ) {
+          setErroSenha(
+            'A senha deve possuir pelo menos 8 caracteres, dígitos, letras maíusculas e minúsculas e caractere especial.',
+          );
+        }
+        if (
+          error?.response?.data?.message?.includes(
+            'An account with the given email already exists.',
+          )
+        ) {
+          setErrorEmail('Já existe uma conta com o email fornecido!');
+        }
+        if (error.response.status === 422) {
+          if (error.response.data.message.includes('validation error detected'))
+            setErrorEmail(
+              'Erro ao prosseguir com o cadastro. Preencha o campo com um formato válido.',
+            );
+          else setErrorEmail(error.response.data.message);
         }
       });
   }
@@ -191,6 +193,7 @@ export function CadastroBasico({
       password: userData.password,
       password_confirmation: userData.confirmPassword,
       consumidor: false,
+      affiliate_id: idFiliate,
     };
     handleRegistryUser(user);
     GAEventsTracker('Modal cadastro', 'Concluindo cadastro');
@@ -241,28 +244,16 @@ export function CadastroBasico({
         text="Para continuar o cadastro é necessário confirmar que está de acordo com o nosso Termo de uso, Política de privacidade e Política de cookies."
       />
 
-      <Content isActive={isActive} display={display}>
+      <Content>
         <div id="cadastro_basico" className="form-content">
           <FormTitle>
-            <FiX onClick={() => handleShowOverlay()} size={24} />
             <div className="title">
-              <h2>Olá</h2>
+              <h2>Olá!</h2>
               <p>Deixe-nos conhecer melhor você:</p>
             </div>
-            <Image src={LogoGyan} alt="Logo" />
+            <Image src={LogoGyan} width={100} height={100} alt="Logo" />
           </FormTitle>
-
-          <Row>
-            <Col lg={12}>
-              <div className="google">
-                <button onClick={() => handleGoogleRegistry()}>
-                  <Image src={Google} alt="Google" /> CADASTRO COM GOOGLE
-                </button>
-              </div>
-            </Col>
-          </Row>
-
-          <Form action="">
+          <Form onSubmit={handleSubmit}>
             <Row>
               <Col lg={12}>
                 <Form.Group controlId="Nome">
@@ -270,14 +261,18 @@ export function CadastroBasico({
                     type="text"
                     placeholder="Nome"
                     name="nome"
-                    onChange={e => {
+                    onChange={(e: any) => {
                       const regValidateName =
                         /^$|^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$/;
                       if (regValidateName.test(e.target.value)) {
                         setUserData({ ...userData, name: e.target.value });
                         if (!e.target.value.length)
                           setErrorName('Preenchimento obrigatório.');
-                        else setErrorName(null);
+                        else if (!handleValidateName(e.target.value)) {
+                          setErrorName(
+                            'O nome deve ser preenchido com o nome completo.',
+                          );
+                        } else setErrorName(null);
                       }
                     }}
                     value={userData.name}
@@ -296,7 +291,7 @@ export function CadastroBasico({
                     type="text"
                     placeholder="E-mail"
                     name="email"
-                    onChange={e => {
+                    onChange={(e: any) => {
                       setUserData({ ...userData, email: e.target.value });
                       if (!e.target.value.length)
                         setErrorEmail('Preenchimento obrigatório.');
@@ -308,8 +303,6 @@ export function CadastroBasico({
                         userData.email?.length > 3
                       ) {
                         setErrorEmail('O email não é válido');
-                      } else {
-                        setErrorEmail(null);
                       }
                     }}
                     value={userData.email}
@@ -334,10 +327,10 @@ export function CadastroBasico({
                     <Form.Control
                       type="password"
                       placeholder="Senha"
-                      onChange={e => {
+                      onChange={(e: any) => {
                         setUserData({ ...userData, password: e.target.value });
                         const validatePassword =
-                          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&+-_])[A-Za-z\d@$#.!%*?&+-_]{8,}$/;
+                          /(?=.*[}{%&$@ç!#*,.^?~=+\-/*\-+.|])(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[0-9]).{8,}/gm;
                         if (!e.target.value.length)
                           setErrorPassword('Preenchimento obrigatório.');
                         else if (!validatePassword.test(e.target.value))
@@ -365,7 +358,7 @@ export function CadastroBasico({
                   <Form.Control
                     type="password"
                     placeholder="Confirme a senha"
-                    onChange={e => {
+                    onChange={(e: any) => {
                       setUserData({
                         ...userData,
                         confirmPassword: e.target.value,
@@ -384,66 +377,61 @@ export function CadastroBasico({
                   {errorConfirmPassword && (
                     <span className="help-block">{errorConfirmPassword}</span>
                   )}
+                  {errorSenha !== '' && (
+                    <span className="help-block">{errorSenha}</span>
+                  )}
                 </Form.Group>
               </Col>
             </Row>
 
-            <Spacer size={12} />
+            <Spacer size={10} />
 
-            <Row
-              onMouseEnter={() => setShowModal(true)}
-              onMouseLeave={() => setShowModal(false)}
-            >
+            <Row onClick={() => setShowModal(true)}>
               <Col lg={12}>
                 <PoliticaParagrafo>
-                  Veja nossa Política de Privacidade em poucas palavras:
+                  Nossa Política de Privacidade em poucas palavras.
                 </PoliticaParagrafo>
               </Col>
             </Row>
 
-            <Spacer size={12} />
-            <ContentModal showModal={showModal}>
-              <ItemPolitica>
-                <Image src={Boia} className="icon-politica" alt="icon-boia" />
-                <p>
-                  Não compartilhamos seus dados com terceiros sem que você saiba
-                  e concorde.
-                </p>
-              </ItemPolitica>
+            <Modal
+              show={showModal}
+              onHide={() => setShowModal(false)}
+              style={{ zIndex: 9999999999 }}
+            >
+              <ModalBody
+                style={{ boxShadow: '4px 0px 20px rgba(0, 0, 0, 0.25)' }}
+              >
+                <ItemPolitica>
+                  <Boia className="icon-politica" />
+                  <p>
+                    Não compartilhamos seus dados com terceiros sem que você
+                    saiba e concorde.
+                  </p>
+                </ItemPolitica>
 
-              <ItemPolitica>
-                <Image
-                  src={Chave}
-                  className="icon-politica"
-                  alt="icon-politica"
-                />
-                <p>
-                  Temos controles e medidas de segurança para evitarmos
-                  vazamento de dados.
-                </p>
-              </ItemPolitica>
+                <ItemPolitica>
+                  <Chave className="icon-politica" />
+                  <p>
+                    Temos controles e medidas de segurança para evitarmos
+                    vazamento de dados.
+                  </p>
+                </ItemPolitica>
 
-              <ItemPolitica>
-                <Image
-                  src={GuardaChuva}
-                  className="icon-politica"
-                  alt="icon-guarda-chuva"
-                />
-                <p>
-                  O tratamento que damos ao seus dados é sempre informado e
-                  fundamentado em bases legais.
-                </p>
-              </ItemPolitica>
+                <ItemPolitica>
+                  <GuardaChuva className="icon-politica" />
+                  <p>
+                    O tratamento que damos ao seus dados é sempre informado e
+                    fundamentado em bases legais.
+                  </p>
+                </ItemPolitica>
 
-              <ItemPolitica>
-                <Image
-                  src={Escudinho}
-                  className="icon-politica"
-                  alt="icon-escudo"
-                />
-                <p>Garantimos e defendemos seus direitos sobre seus dados.</p>
-              </ItemPolitica>
-            </ContentModal>
+                <ItemPolitica>
+                  <Escudinho className="icon-politica" />
+                  <p>Garantimos e defendemos seus direitos sobre seus dados.</p>
+                </ItemPolitica>
+              </ModalBody>
+            </Modal>
 
             <Row>
               <Col lg={12}>
@@ -451,10 +439,9 @@ export function CadastroBasico({
                   <InputCheck
                     type="checkbox"
                     id={`termos_de_uso`}
-                    checked={userData?.policyTerms}
                     name="termos_de_uso"
                     value="true"
-                    onChange={e => {
+                    onChange={(e: any) => {
                       setUserData({
                         ...userData,
                         policyTerms: e.target.checked,
@@ -483,25 +470,46 @@ export function CadastroBasico({
             </Row>
 
             <Row>
-              <ContainerButtons>
-                <ButtonLogin
-                  className="btn btn-primary"
-                  onClick={() => handleSubmit()}
-                >
+              <Col lg={12} className="container-register">
+                <button className="btn btn-primary btn-block btn-cadastrar">
                   CADASTRAR
-                </ButtonLogin>
-
-                <ButtonLogin
-                  className="btn btn-default btn-login"
-                  onClick={() => handleLogin()}
-                >
-                  LOGIN
-                </ButtonLogin>
-              </ContainerButtons>
+                </button>
+                <Row>
+                  <Col>
+                    <div className="google">
+                      <button onClick={handleGoogleRegistry}>
+                        <Image
+                          width={20}
+                          height={20}
+                          src={Google}
+                          alt="Google"
+                        />
+                        CADASTRO COM GOOGLE
+                      </button>
+                    </div>
+                  </Col>
+                </Row>
+              </Col>
             </Row>
+            <Row>
+              <ButtonLogin className="" onClick={() => handleLogin()}>
+                LOGIN
+              </ButtonLogin>
+            </Row>
+
+            <ContainerTermos>
+              <Termos>
+                <a href="/termos-de-uso">Termos de uso</a>
+              </Termos>
+              <Termos>
+                <a href="/politicas-de-privacidade">Politica de privacidade</a>
+              </Termos>
+            </ContainerTermos>
           </Form>
         </div>
       </Content>
     </>
   );
 }
+
+export default CadastroBasico;

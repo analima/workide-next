@@ -1,4 +1,4 @@
-import { Accordion, Dropdown, NavDropdown } from 'react-bootstrap';
+import { Accordion, NavDropdown } from 'react-bootstrap';
 import styled, { css } from 'styled-components';
 import { AZUL, BRANCO, LARANJA, PRETO_10 } from '../../styles/variaveis';
 
@@ -412,24 +412,5 @@ export const AccordionPrimary = styled(Accordion)`
     span {
       font-size: 16px;
     }
-  }
-`;
-
-export const AccordionSecondary = styled(Accordion.Toggle)`
-  border: none;
-  background-color: red;
-  padding: 8px 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: ${BRANCO};
-  width: 100%;
-  gap: 8px;
-
-  span {
-    color: ${PRETO_10};
-    font-size: 18px;
-    font-weight: 600;
-    text-align: center;
   }
 `;
