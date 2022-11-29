@@ -14,10 +14,10 @@ export function CardConhecaComoFunciona() {
           <h1>Como funciona?</h1>
 
           <span>
-            Anuncie o seu trabalho facilmente, {''}
+            Anuncie o seu <strong>trabalho</strong> facilmente, {''}
             <Link href="/contratante/busca">
               <>
-                contrate <br /> freelancers e pague com segurança.
+                contrate <br /> <strong>freelancers</strong> e pague com segurança.
               </>
             </Link>
           </span>
@@ -35,7 +35,7 @@ export function CardConhecaComoFunciona() {
             </div>
             <h2>Publique um projeto</h2>
             <span>
-              Publique a sua vaga para milhares de profissionais. Você irá
+              Publique a sua vaga para milhares de <strong>profissionais</strong>. Você irá
               receber propostas de freelancers talentosos em poucos minutos.
             </span>
 

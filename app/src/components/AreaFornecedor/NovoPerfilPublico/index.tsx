@@ -21,6 +21,7 @@ import { OutrasInformacoes } from './OutrasInformacoes';
 import Layout from '../Layout';
 import ModalDenuncia from 'src/components/ModalDenuncia';
 import { useRouter } from 'next/router';
+import { IS_EMPTY } from 'src/const';
 
 interface IServicoConsumidorPublicoParams {
   strUsuario: string;
@@ -84,7 +85,7 @@ export function NovoPerfilPublico({ versao }: IProps) {
 
   useEffect(() => {
     hotjar.initialize(
-      Number(process.env.REACT_APP_HOTJAR_ID) || 0,
+      Number(process.env.REACT_APP_HOTJAR_ID) || IS_EMPTY,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
     hotjar.stateChange('/fornecedor/perfil');

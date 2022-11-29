@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { hotjar } from 'react-hotjar';
 import Layout from 'src/components/AreaFornecedor/Layout';
+import { TIME_REVALIDATE } from 'src/const';
 import Extrato from 'src/Containers/Extrato';
 import { ID_TOKEN } from 'src/contexts/auth';
 import { version } from '../../../../package.json';
@@ -39,6 +40,6 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       appVersion,
     },
-    revalidate: 86400,
+    revalidate: TIME_REVALIDATE,
   };
 };

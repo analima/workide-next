@@ -38,6 +38,7 @@ import { ModalCancelamentoFatura } from '../../../ModalCancelamentoFatura';
 import { usePooling } from '../../../../hooks/usePooling';
 import { useAuth } from '../../../../contexts/auth';
 import { pagamentos_api } from '../../../../services/pagamentos_api';
+import { IS_EMPTY } from 'src/const';
 
 interface IMeioPagamentoProps {
   [key: string]: string;
@@ -172,12 +173,12 @@ export default function Compras() {
       <ModalConfirmarAtualizacaoFatura
         showModal={showModalUpdateInvoice}
         setShowModal={setShowModalUpdateInvoice}
-        id_pessoa_consum={compraSelecionada?.id_pessoa_consum || 0}
-        id_pessoa_forn={compraSelecionada?.id_pessoa_forn || 0}
+        id_pessoa_consum={compraSelecionada?.id_pessoa_consum || IS_EMPTY}
+        id_pessoa_forn={compraSelecionada?.id_pessoa_forn || IS_EMPTY}
         descricao={compraSelecionada?.ds_descricao || ''}
         valor_serv_cent={valorProjeto}
         nm_meio_pagamento={compraSelecionada?.nm_meio_pagamento}
-        id_projeto={compraSelecionada?.id_projeto || 0}
+        id_projeto={compraSelecionada?.id_projeto || IS_EMPTY}
       />
       <ModalLoading
         showModal={loadingAtualizarFatura}
@@ -186,7 +187,7 @@ export default function Compras() {
       <ModalCancelamentoFatura
         showModal={showModalCancelInvoice}
         setShowModal={setShowModalCancelInvoice}
-        idFatura={obterIdFatura() || 0}
+        idFatura={obterIdFatura() || IS_EMPTY}
       />
       <ModalAcceptProposal
         showModal={showModalAcceptProposal}

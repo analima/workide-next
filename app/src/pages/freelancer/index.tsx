@@ -32,7 +32,7 @@ export default function Freelancer() {
   return (
     <>
       <Helmet>
-        <title>freelas town - Contrate um freelancer em poucos cliques</title>
+        <title>freelas town - <strong>Contrate um freelancer</strong>  em poucos cliques</title>
       </Helmet>
 
       <Head>

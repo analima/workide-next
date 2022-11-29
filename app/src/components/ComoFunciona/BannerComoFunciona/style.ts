@@ -64,7 +64,7 @@ export const Box = styled.div`
     }
   }
 
-  span {
+  p {
     color: ${PRETO_10};
     font-size: 16px;
     text-align: center;
