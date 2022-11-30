@@ -7,14 +7,10 @@ export const ContainerConfirmacao = styled.div`
   background-repeat: no-repeat;
   background-position-x: right;
   /* min-height: 100vh; */
- 
-  
+
   @media (max-width: 991px) {
-    background: none; 
+    background: none;
   }
-
-
-
 `;
 
 export const Content = styled.div`
