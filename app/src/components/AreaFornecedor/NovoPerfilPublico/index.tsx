@@ -91,6 +91,11 @@ export function NovoPerfilPublico({ versao }: IProps) {
     hotjar.stateChange('/fornecedor/perfil');
   }, []);
 
+  function backPage() {
+    router.back();
+    router.back();
+  }
+
   return (
     <Content>
       <SEO
@@ -172,7 +177,7 @@ export function NovoPerfilPublico({ versao }: IProps) {
         <Row>
           <Col lg={12}>
             <ContentButton>
-              <ButtonVoltar onClick={() => router.back()}>VOLTAR</ButtonVoltar>
+              <ButtonVoltar onClick={() => backPage()}>VOLTAR</ButtonVoltar>
             </ContentButton>
           </Col>
         </Row>

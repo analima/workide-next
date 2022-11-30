@@ -144,8 +144,8 @@ export const Avaliacao = styled.div`
   }
 
   svg {
-    width: 16px;
-    height: 16px;
+    width: 22px;
+    height: 22px;
   }
 `;
 

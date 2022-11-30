@@ -62,7 +62,12 @@ export const Avatar = styled.img`
 
   object-fit: cover;
 `;
-export const ContentNota = styled.section``;
+export const ContentNota = styled.section`
+  svg {
+    width: 22px;
+    height: 22px;
+  }
+`;
 
 export const LabelNota = styled.label`
   color: ${LARANJA};
