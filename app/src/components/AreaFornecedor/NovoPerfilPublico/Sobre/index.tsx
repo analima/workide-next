@@ -43,6 +43,7 @@ import { MedalhasFornecedor } from '../../../../components/MedalhasFornecedor';
 import { consultas_api } from '../../../../services/consultas_api';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { salvarOrigemAcesso } from 'src/utils/origemAcesso';
 
 type PropsPage = {
   imageLoaded: boolean;
@@ -426,6 +427,9 @@ export function Sobre({ dataProps, getProvider, imageLoaded }: PropsPage) {
                         return;
                       }
                       if (!user.id_pessoa) {
+                        console.log('PASSOU SOLICITAR PROPOSTA NEXT');
+
+                        salvarOrigemAcesso();
                         router.push('/cadastro-basico');
                         return;
                       }
