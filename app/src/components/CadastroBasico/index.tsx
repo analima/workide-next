@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, ChangeEvent } from 'react';
 import axios from 'axios';
 import {
   Col,
@@ -175,7 +175,8 @@ export function CadastroBasico() {
       });
   }
 
-  function handleSubmit() {
+  function handleSubmit(event: any) {
+    event.preventDefault();
     if (
       errorName ||
       errorEmail ||
