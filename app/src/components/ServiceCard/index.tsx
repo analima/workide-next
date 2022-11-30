@@ -286,7 +286,10 @@ export function ServiceCard({
               </InfoUser>
 
               <span className="numberStarts">
-                {Number(dadosFornec?.ranking?.notaMedia || 0)?.toFixed(2)}
+              {Number(dadosFornec?.ranking?.notaMedia).toFixed(2) === 'NaN'
+                ? 0
+                : Number(dadosFornec?.ranking?.notaMedia || 0)?.toFixed(2)
+              }
               </span>
               <Image
                 src={Estrela}
