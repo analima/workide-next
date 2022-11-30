@@ -18,6 +18,7 @@ import { Helmet } from 'react-helmet';
 import { PRETO_10 } from '../../../../../styles/variaveis';
 import { useQuery } from '../../../../../hooks/geral';
 import { hotjar } from 'react-hotjar';
+import { IS_EMPTY } from 'src/const';
 
 interface EtapasProps {
   id: number;
@@ -213,7 +214,7 @@ export default function PropostaContent() {
 
   useEffect(() => {
     hotjar.initialize(
-      Number(process.env.REACT_APP_HOTJAR_ID) || 0,
+      Number(process.env.REACT_APP_HOTJAR_ID) || IS_EMPTY,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
     hotjar.stateChange('/fornecedor/propostas');

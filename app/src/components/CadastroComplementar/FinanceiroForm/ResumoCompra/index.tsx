@@ -43,6 +43,7 @@ import ModalCancelarAssinatura from './ModalCancelarAssinatura';
 import { pagamentos_api } from '../../../../services/pagamentos_api';
 import { ModalAcceptProposal } from '../../../../components/ModalAcceptProposal';
 import { handleFormatDocument } from '../../../../helpers/formatsHelper';
+import { IS_EMPTY } from 'src/const';
 
 interface IProps {
   plano: number;
@@ -135,7 +136,7 @@ function ResumoCompra({ plano }: IProps) {
         showModal={showPagamento}
         setShowModal={setShowPagamento}
         valor={
-          user.fundador ? 0 : handlePlanPrice(assinaturaEscolhida.preco) || 0
+          user.fundador ? 0 : handlePlanPrice(assinaturaEscolhida.preco) || IS_EMPTY
         }
         parcelas={1}
         tipo="assinatura"
@@ -199,7 +200,7 @@ function ResumoCompra({ plano }: IProps) {
 
                     <Titulo
                       titulo={handleFormatPlanPrice(
-                        assinaturaEscolhida.preco || 0,
+                        assinaturaEscolhida.preco || IS_EMPTY,
                       )}
                       tamanho={24}
                       cor={CINZA_40}
@@ -214,7 +215,7 @@ function ResumoCompra({ plano }: IProps) {
                     </div>
 
                     <span>
-                      - {handleFormatPlanPrice(assinaturaEscolhida.preco || 0)}
+                      - {handleFormatPlanPrice(assinaturaEscolhida.preco || IS_EMPTY)}
                     </span>
                   </ContentDesconto>
                 )}
@@ -226,7 +227,7 @@ function ResumoCompra({ plano }: IProps) {
                   titulo={
                     user.fundador
                       ? 'R$ 0'
-                      : handleFormatPlanPrice(assinaturaEscolhida.preco || 0)
+                      : handleFormatPlanPrice(assinaturaEscolhida.preco || IS_EMPTY)
                   }
                   tamanho={24}
                   cor={VERDE}

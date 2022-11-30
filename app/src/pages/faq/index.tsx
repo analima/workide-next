@@ -27,6 +27,7 @@ import { consultas_api } from '../../services/consultas_api';
 import { geral_api } from '../../services/geral_api';
 import { GetStaticProps } from 'next';
 import { version } from '../../../package.json';
+import { TIME_REVALIDATE } from 'src/const';
 import { Spinner } from 'src/components/Spinner';
 import { SemConteudo } from 'src/components/SemConteudo';
 
@@ -268,6 +269,6 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       appVersion,
     },
-    revalidate: 86400,
+    revalidate: TIME_REVALIDATE,
   };
 };

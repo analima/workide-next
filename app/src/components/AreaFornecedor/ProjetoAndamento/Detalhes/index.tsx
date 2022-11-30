@@ -73,6 +73,7 @@ import { AtividadesProps } from '../../../../hooks/propostaConsumidor';
 import PDFIcon from '../../../../assets/print-icon.svg';
 import { useValorProjetoPago } from '../../../../contexts/valorProjetoPago';
 import BuscarFaturaProjeto from '../../../../utils/buscarFaturaProjeto';
+import { IS_EMPTY } from 'src/const';
 
 const SECONDS_TO_UPDATE_MESSAGE = 15 * 1000;
 
@@ -147,17 +148,17 @@ export default function Detalhes({ getProjeto }: DetalhesProps) {
   async function handleGetProjectInvoiceValue() {
     try {
       if (buscarProjeto(project.id)) {
-        setValorProjetoPago(buscarProjeto(project.id)?.valorComTaxa || 0);
+        setValorProjetoPago(buscarProjeto(project.id)?.valorComTaxa || IS_EMPTY);
         return;
       }
       const projetoPago = await BuscarFaturaProjeto.buscarFatura(
-        project.idPessoaConsumidor || 0,
+        project.idPessoaConsumidor || IS_EMPTY,
         project.id,
       );
 
       if (projetoPago) {
         adicinarProjeto(projetoPago);
-        setValorProjetoPago(projetoPago?.valorComTaxa || 0);
+        setValorProjetoPago(projetoPago?.valorComTaxa || IS_EMPTY);
       }
     } catch (error: any) {
       console.error(error);
@@ -200,7 +201,7 @@ export default function Detalhes({ getProjeto }: DetalhesProps) {
         {
           texto: chat,
           id_arquivo: idAnexo ? idAnexo : undefined,
-          id_proposta: project.propostaAceita?.id || 0,
+          id_proposta: project.propostaAceita?.id || IS_EMPTY,
         },
       );
       setListPerguntas(oldState => [...oldState, listPergunta]);

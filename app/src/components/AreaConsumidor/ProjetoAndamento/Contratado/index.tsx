@@ -28,6 +28,7 @@ import { useHistory } from 'react-router-dom';
 import { consultas_api } from '../../../../services/consultas_api';
 import { Skeleton } from '../../../Skeleton';
 import { AvatarErroGeral } from '../../../AvatarErroGeral';
+import { IS_EMPTY } from 'src/const';
 
 interface IProps {
   id_fornecedor: number;

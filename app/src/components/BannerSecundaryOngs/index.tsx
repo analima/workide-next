@@ -10,7 +10,7 @@ export function BannerSecundaryOngs() {
             <h1>PLATAFORMA GRATUITA</h1>
 
             <span>
-              Voluntários e ONGs utilizam nossos serviços de forma gratuita, sem
+              <strong>Voluntários e ONGs</strong> utilizam nossos serviços de forma gratuita, sem
               gerar custo.
             </span>
           </div>
