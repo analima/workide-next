@@ -50,6 +50,7 @@ import { useGAEventsTracker } from '../../../hooks/useGAEventsTracker';
 import { useHistory } from 'react-router-dom';
 import { Spinner } from '../../../components/Spinner';
 import Idioma from '../ComplementarForm/Idioma';
+import { IS_EMPTY } from 'src/const';
 
 interface IFormProps {
   resumo_profissional: string;
@@ -694,10 +695,10 @@ export default function TurbineForm() {
   useEffect(() => {
     watch((value: any) => {
       setNumHabilidadesComportamentais(
-        value.habilidades_comportamentais?.split('|').length || 0,
+        value.habilidades_comportamentais?.split('|').length || IS_EMPTY,
       );
       setNumHabilidadesTecnicas(
-        value.habilidades_tecnicas?.split('|').length || 0,
+        value.habilidades_tecnicas?.split('|').length || IS_EMPTY,
       );
     });
   }, [watch, control._formValues.experiencia]);

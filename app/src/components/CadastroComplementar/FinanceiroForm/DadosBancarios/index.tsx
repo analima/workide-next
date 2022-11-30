@@ -20,6 +20,7 @@ import { useEffect, useState, memo, useCallback } from 'react';
 import { AntonioDadosBancarios } from '../../../../components/AntonioDadosBancarios';
 import { useAuth } from '../../../../contexts/auth';
 import { useCadastroComplementar } from '../../../../hooks/cadastroComplementar';
+import { IS_EMPTY } from 'src/const';
 
 interface IProps {
   control: Control<FieldValues, object>;
@@ -213,8 +214,8 @@ function DadosBancarios({ control, errorsControl, watch, getValues }: IProps) {
             name="agencia"
             placeholder="Obrigatório"
             maxLength={
-              (bancoSelecionado?.digitos_agencia || 0) +
-                (bancoSelecionado?.digito_verificador_agencia || 0) || 6
+              (bancoSelecionado?.digitos_agencia || IS_EMPTY) +
+                (bancoSelecionado?.digito_verificador_agencia || IS_EMPTY) || 6
             }
             error={errorsControl.agencia && errorsControl.agencia.message}
           />
@@ -237,8 +238,8 @@ function DadosBancarios({ control, errorsControl, watch, getValues }: IProps) {
             name="contaCorrente"
             placeholder="Obrigatório"
             maxLength={
-              (bancoSelecionado?.digitos_conta || 0) +
-                (bancoSelecionado?.digito_verificador_conta || 0) || 14
+              (bancoSelecionado?.digitos_conta || IS_EMPTY) +
+                (bancoSelecionado?.digito_verificador_conta || IS_EMPTY) || 14
             }
             error={
               errorsControl.contaCorrente && errorsControl.contaCorrente.message

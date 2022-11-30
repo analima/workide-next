@@ -15,6 +15,7 @@ import { consultas_api } from '../../../../../services/consultas_api';
 import Layout from '../../../Layout';
 import { Helmet } from 'react-helmet';
 import { hotjar } from 'react-hotjar';
+import { IS_EMPTY } from 'src/const';
 
 interface IAnexos {
   id: string;
@@ -218,7 +219,7 @@ export default function PropostaContent() {
 
   useEffect(() => {
     hotjar.initialize(
-      Number(process.env.REACT_APP_HOTJAR_ID) || 0,
+      Number(process.env.REACT_APP_HOTJAR_ID) || IS_EMPTY,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
     hotjar.stateChange('/contratante/propostas');
@@ -244,7 +245,7 @@ export default function PropostaContent() {
           <Col lg={8} className="mt-4">
             <DadosProjeto
               projeto={dadosProjetos}
-              valor={dadosProjetos.propostaAceita?.valor || 0}
+              valor={dadosProjetos.propostaAceita?.valor || IS_EMPTY}
             />
           </Col>
           <Spacer size={40} />

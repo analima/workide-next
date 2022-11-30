@@ -25,6 +25,7 @@ import ModalRecomendacao from './ModalRecomendacao';
 
 import { LARANJA } from '../../../../styles/variaveis';
 import HabilidadesPercebidas from '../../PerfilPublico/Reputacao/HabilidadesPercebidas';
+import { IS_EMPTY } from 'src/const';
 
 interface IProps {
   pontuacao?: boolean;
@@ -107,13 +108,13 @@ export default function MinhaReputacao({ pontuacao }: IProps) {
             </CardReputacao>
             <CardReputacao className="skills">
               <Subtitulo>Habilidades Percebidas</Subtitulo>
-              <HabilidadesPercebidas idPessoa={user.id_pessoa || 0} />
+              <HabilidadesPercebidas idPessoa={user.id_pessoa || IS_EMPTY} />
             </CardReputacao>
           </ContainerAvaliation>
         )}
         <CardReputacao>
           <Subtitulo>Avaliações</Subtitulo>
-          <AvaliacoesFornecedor id={user?.id_pessoa || 0} />
+          <AvaliacoesFornecedor id={user?.id_pessoa || IS_EMPTY} />
         </CardReputacao>
 
         <CardRecomendacao>

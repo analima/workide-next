@@ -13,6 +13,7 @@ import { AZUL, BRANCO } from '../../styles/variaveis';
 import { ScrollContainer } from '../ScrollContainer';
 import { FiX } from 'react-icons/fi';
 import { oportunidades_api } from '../../services/oportunidades_api';
+import { IS_EMPTY } from 'src/const';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
@@ -118,7 +119,7 @@ export function Anexo({
                 onChange(e);
                 setValue(name, e.target.files);
                 let files = [];
-                for (let i = 0; i < (e.target.files?.length || 0); i += 1) {
+                for (let i = 0; i < (e.target.files?.length || IS_EMPTY); i += 1) {
                   files.push(e.target.files?.item(i));
                 }
                 setAnexos(files as File[]);

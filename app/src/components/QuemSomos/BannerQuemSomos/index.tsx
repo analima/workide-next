@@ -28,7 +28,7 @@ export function BannerQuemSomos() {
               seus projetos para atrair os profissionais que precisam.
             </p>
             <p>
-              As ONGs e instituições sem fins lucrativos sabem que o trabalho
+              As <strong>ONGs</strong>  e instituições sem fins lucrativos sabem que o trabalho
               pro bono é a forma mais efetiva de voluntariado!
             </p>
             <p>

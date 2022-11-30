@@ -16,6 +16,7 @@ import { consultas_api } from 'src/services/consultas_api';
 import { IServicoInfo } from 'src/interfaces/IServicoInfo';
 import { SEO } from 'src/components/SEO';
 import { version } from '../../../package.json';
+import { TIME_REVALIDATE } from 'src/const';
 
 interface IPropsData {
   vitrineData: IServicoInfo[];
@@ -33,7 +34,7 @@ export default function ComoFunciona({ vitrineData, appVersion }: IPropsData) {
 
   return (
     <>
-      <SEO title="Como funciona" />
+      <SEO title="Como funciona" description="Descrição da plataforma" />
       <Header />
       <Container>
         <BannerComoFunciona />
@@ -66,6 +67,6 @@ export const getStaticProps: GetStaticProps = async () => {
       vitrineData,
       appVersion,
     },
-    revalidate: 86400,
+    revalidate: TIME_REVALIDATE,
   };
 };

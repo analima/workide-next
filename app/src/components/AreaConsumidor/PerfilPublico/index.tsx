@@ -20,6 +20,7 @@ import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { useGAEventsTracker } from '../../../hooks/useGAEventsTracker';
 import { hotjar } from 'react-hotjar';
+import { IS_EMPTY } from 'src/const';
 
 type UserProps = {
   id: number;
@@ -101,7 +102,7 @@ export default function PerfilPublico() {
 
   useEffect(() => {
     hotjar.initialize(
-      Number(process.env.REACT_APP_HOTJAR_ID) || 0,
+      Number(process.env.REACT_APP_HOTJAR_ID) || IS_EMPTY,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
     hotjar.stateChange('/contratante/perfil-publico');

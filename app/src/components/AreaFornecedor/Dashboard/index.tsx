@@ -24,6 +24,7 @@ import { addMonths, endOfMonth, startOfMonth } from 'date-fns';
 import { formatToPrice } from '../../../helpers/formatsHelper';
 import { Helmet } from 'react-helmet';
 import { hotjar } from 'react-hotjar';
+import { IS_EMPTY } from 'src/const';
 
 interface IMeusGanhos {
   aguardandoRepasse: number;
@@ -162,7 +163,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     hotjar.initialize(
-      Number(process.env.REACT_APP_HOTJAR_ID) || 0,
+      Number(process.env.REACT_APP_HOTJAR_ID) || IS_EMPTY,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
     hotjar.stateChange('/apresentacao');

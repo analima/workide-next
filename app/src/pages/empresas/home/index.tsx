@@ -6,6 +6,7 @@ import { IServicoInfo } from 'src/interfaces/IServicoInfo';
 import { SEO } from 'src/components/SEO';
 import EmpresasHome from 'src/Containers/EmpresasHome';
 import { version } from '../../../../package.json';
+import { TIME_REVALIDATE } from 'src/const';
 interface IPropsData {
   vitrineData: IServicoInfo[];
   appVersion: string;
@@ -49,6 +50,6 @@ export const getStaticProps: GetStaticProps = async () => {
       appVersion,
       vitrineData,
     },
-    revalidate: 86400,
+    revalidate: TIME_REVALIDATE,
   };
 };

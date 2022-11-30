@@ -3,6 +3,7 @@ import { Content } from './style';
 import { PagamentoServicoProvider } from '../../hooks/pagamentoServico';
 import { InformacoesFinanceirasProvider } from '../../hooks/informacoesFinanceiras';
 import { ModalAcceptProposalContent } from './ModalAcceptProposalContent';
+import { IS_EMPTY } from 'src/const';
 
 interface IModal {
   showModal: boolean;
@@ -41,8 +42,8 @@ export function ModalAcceptProposal({
             valor={valor}
             parcelas={parcelas}
             tipo={tipo}
-            idPessoaConsumidor={idPessoaConsumidor || 0}
-            idPessoaFornecedor={idPessoaFornecedor || 0}
+            idPessoaConsumidor={idPessoaConsumidor || IS_EMPTY}
+            idPessoaFornecedor={idPessoaFornecedor || IS_EMPTY}
             descricao={descricao}
             idProjeto={idProjeto || null}
             nomeProjeto={nomeProjeto || ''}

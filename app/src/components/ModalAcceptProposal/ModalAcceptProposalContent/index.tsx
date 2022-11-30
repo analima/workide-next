@@ -29,6 +29,7 @@ import { PixModalAssinatura } from '../Assinatura/PixModalAssinatura';
 import { BoletoModalServico } from '../Servico/BoletoModalServico';
 import { pessoas_api } from '../../../services/pessoas_api';
 import { FiXCircle } from 'react-icons/fi';
+import { IS_EMPTY } from 'src/const';
 
 interface IModal {
   showModal: boolean;
@@ -85,7 +86,7 @@ export function ModalAcceptProposalContent({
           `/pessoas/${idPessoaFornecedor}`,
         );
         const { data } = await pagamentos_api.post('/faturas-servico/previa', {
-          valor_serv_cent: (valor || 0) * 100,
+          valor_serv_cent: (valor || IS_EMPTY) * 100,
           nm_plano_assin_fornec: responsePessoa.data.plano.toLowerCase(),
           nr_parcelas_cartao: 1,
         });
@@ -137,25 +138,25 @@ export function ModalAcceptProposalContent({
             idPessoaFornecedor={idPessoaFornecedor}
             parcelas={1}
             descricao={descricao}
-            idProjeto={idProjeto || 0}
+            idProjeto={idProjeto || IS_EMPTY}
           />
           <PixModalServico
             show={pixShow}
             setShow={setPixShow}
-            idPessoaConsumidor={idPessoaConsumidor || 0}
-            idPessoaFornecedor={idPessoaFornecedor || 0}
+            idPessoaConsumidor={idPessoaConsumidor || IS_EMPTY}
+            idPessoaFornecedor={idPessoaFornecedor || IS_EMPTY}
             valor={valor}
             descricao={descricao}
-            idProjeto={idProjeto || 0}
+            idProjeto={idProjeto || IS_EMPTY}
           />
           <BoletoModalServico
             show={showModalBoleto}
             setShow={setShowModalBoleto}
-            idPessoaConsumidor={idPessoaConsumidor || 0}
-            idPessoaFornecedor={idPessoaFornecedor || 0}
+            idPessoaConsumidor={idPessoaConsumidor || IS_EMPTY}
+            idPessoaFornecedor={idPessoaFornecedor || IS_EMPTY}
             valor={valor}
             descricao={descricao}
-            idProjeto={idProjeto || 0}
+            idProjeto={idProjeto || IS_EMPTY}
           />
         </>
       ) : (
