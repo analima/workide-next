@@ -27,6 +27,7 @@ import Content from './style';
 import { useAuth } from '../../../../contexts/auth';
 import { useHistory } from 'react-router';
 import { ModalRecomendacao } from '../../../ModalRecomendacao';
+import { salvarOrigemAcesso } from 'src/utils/origemAcesso';
 
 interface IItem {
   pacote: IPacoteInfo[];
@@ -198,11 +199,13 @@ export default function TooltipPacotes({
                       <Button
                         onClick={() => {
                           if (!user.id_pessoa) {
+                            salvarOrigemAcesso();
                             history.push('/cadastro-basico');
                             return;
                           }
 
                           if (user && user.id === undefined) {
+                            salvarOrigemAcesso();
                             history.push('/login');
                           } else {
                             history.push('/contratante/detalhes-oferta', {
