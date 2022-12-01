@@ -319,10 +319,24 @@ export const FotoPerfil = styled.img`
   margin-right: 12px;
 `;
 
-export const Info = styled.div``;
+export const Info = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const ContainerName = styled.div`
+  display: flex;
+  align-items: center;
+
+  h2 {
+    margin-right: 5px;
+  }
+`;
 
 export const Avaliacao = styled.div`
   color: ${LARANJA};
+  display: flex;
+  align-items: center;
 
   span {
     margin-right: 4px;
