@@ -42,6 +42,7 @@ import {
   ContentTrash,
   TextoPublicacao,
   ContentLabels,
+  ContainerName,
 } from './style';
 import Content from './style';
 import { Card } from '../../../../components/Card';
@@ -71,6 +72,7 @@ import { GiShare } from 'react-icons/gi';
 import { ModalRecomendacao } from '../../../../components/ModalRecomendacao';
 import { Spinner } from '../../../../components/Spinner';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+import { Medalha } from 'src/components/Medalha';
 
 type PessoaType = {
   id: number;
@@ -78,6 +80,7 @@ type PessoaType = {
   nome: string;
   nome_tratamento: string;
   idPessoaConsumidor: number;
+  moderacao: boolean;
   arquivo: {
     id: string;
     url: string;
@@ -469,11 +472,16 @@ export default function Projeto({
                   <Skeleton width="45px" height="45px" radius="50%" />
                 )}
                 <Info>
-                  <Titulo
-                    titulo={consumidor.nome_tratamento}
-                    tamanho={20}
-                    cor={CINZA_40}
-                  />
+                  <ContainerName>
+                    <Titulo
+                      titulo={consumidor.nome_tratamento}
+                      tamanho={20}
+                      cor={CINZA_40}
+                    />
+                    {consumidor.moderacao && (
+                      <Medalha chave="pessoa-verificada" isActive={true} />
+                    )}
+                  </ContainerName>
                   <Avaliacao>
                     <span>{notaMedia?.toFixed(2)}</span>
                     <Image
