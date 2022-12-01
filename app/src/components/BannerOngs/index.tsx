@@ -31,7 +31,7 @@ export function BannerOngs() {
             onClick={() => router.push('/cadastro-basico')}
             className="btn-cadastrar"
           >
-            CADASTRAR ONG
+            CADASTRAR UM PROJETO
           </button>
           <button onClick={() => setShowModal(true)} className="btn-ebook">
             E-BOOK GRATUITO
