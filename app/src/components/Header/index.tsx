@@ -98,15 +98,15 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
                 height={47}
               />
             </div>
-            <div className="links">
+            <nav className="links">
               <Link href="/fornecedor/captar-projetos">
-                <span className={classCaptar}>Para profissionais</span>
+                <a className={classCaptar}>Para profissionais</a>
               </Link>
               <Link href="/empresas/home">
-                <span className={classEmpresa}>Para empresas</span>
+                <a className={classEmpresa}>Para empresas</a>
               </Link>
               <Link href="/ongs">
-                <span className={classOng}>Para Ongs</span>
+                <a className={classOng}>Para Ongs</a>
               </Link>
 
               <Link href="https://blog.freelas.town/">
@@ -160,7 +160,7 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
                   />
                 </div>
               )}
-            </div>
+            </nav>
           </div>
 
           {open ? (
@@ -171,33 +171,38 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
         </ContentMenuMobile>
       ) : (
         <Container>
+          <Image
+            src={Logo}
+            className="logo"
+            alt="Freelas.town"
+            onClick={() => router.push('/')}
+            height={60}
+            width={155}
+          />
           <Content>
-            <nav>
-              <div className="content-logo">
-                <Image
-                  src={Logo}
-                  className="logo"
-                  alt="Freelas.town"
-                  onClick={() => router.push('/')}
-                  height={60}
-                  width={155}
-                />
-
+            <ul>
+              <li>
                 <Link href="/fornecedor/captar-projetos">
-                  <span className={classCaptar}>Para profissionais</span>
+                  <a className={classCaptar}>Para profissionais</a>
                 </Link>
+              </li>
+              <li>
                 <Link href="/empresas/home">
                   <span className={classEmpresa}>Para empresas</span>
                 </Link>
+              </li>
+              <li>
                 <Link href="/ongs">
                   <span className={classOng}>Para Ongs</span>
                 </Link>
-
+              </li>
+              <li>
                 <Link href="https://blog.freelas.town/">
                   <a target="_blank">Blog</a>
                 </Link>
-              </div>
-
+              </li>
+            </ul>
+            <ul>
               <div className="menu">
                 {!user?.email && <Link href="/login">Login</Link>}
 
@@ -241,7 +246,7 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
                   />
                 )}
               </div>
-            </nav>
+            </ul>
           </Content>
         </Container>
       )}

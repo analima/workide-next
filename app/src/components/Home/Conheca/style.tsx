@@ -5,7 +5,9 @@ import IMG2 from '../../../assets/banner-quem-somos2.webp';
 
 export const Content = styled.section`
   margin: 0 auto;
-  max-width: 1440px;
+  width: 100%;
+  border: 2px solid red;
+
   @media (max-width: 768px) {
     padding: 0px 20px;
   }
@@ -27,14 +29,11 @@ export const ContentBanner = styled.div`
 
   @media (max-width: 1920px) {
     height: 950px;
-    max-width: 1440px;
-    min-width: 1439px;
+    width: auto;
   }
 
   @media (max-width: 1340px) {
     height: 692px;
-    max-width: 1300px;
-    min-width: 90%;
     margin: 0 20px;
   }
 
