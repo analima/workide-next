@@ -149,6 +149,15 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
                     }
                     onClick={() => router.push('/cadastro-basico')}
                   />
+                  <Button
+                    label="Fale com nossos consultores"
+                    onClick={() =>
+                      router.push(
+                        'https://api.whatsapp.com/send/?phone=55061991053691',
+                      )
+                    }
+                    color="ghost"
+                  />
                 </div>
               )}
             </div>

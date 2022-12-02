@@ -59,7 +59,6 @@ export default function CaptarProjetoContent({ versao }: IProps) {
     limparFiltros,
     setValue,
   } = useCaptarProjetoFornecedor();
-  console.log(projetosExclusivos);
 
   const [favorito, setFavorito] = useState(false);
   const toggleVolutarios = watch('toggle_volutarios');
