@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { hotjar } from 'react-hotjar';
 import { Container, ContentFilter, ContentButton, Button } from './styles';
-import { CardPrimaryAcess } from 'src/components/CardPrimaryAcess';
 import { FilterPrimaryAcess } from 'src/components/FilterPrimaryAcess';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -9,8 +7,10 @@ import * as Yup from 'yup';
 import { AZUL, LARANJA } from 'src/styles/variaveis';
 import { useRouter } from 'next/router';
 import autoAnimate from '@formkit/auto-animate';
-import { Spinner } from 'src/components/Spinner';
 import { InputText } from 'src/components/Form/InputText';
+import { salvarOrigemAcesso } from 'src/utils/origemAcesso';
+import { GhostButton } from 'src/components/GhostButton';
+import { useHistory } from 'react-router-dom';
 
 export type Subarea = {
   id: number;
@@ -26,6 +26,7 @@ export default function PrimaryAcess() {
   const [loading, setLoading] = useState(false);
   const [selectedSubareas, setSelectedSubareas] = useState<Subarea[]>([]);
   const [nameProject, setNameProject] = useState('');
+  const history = useHistory();
   const { control, watch } = useForm({
     mode: 'all',
     shouldFocusError: true,
@@ -44,49 +45,42 @@ export default function PrimaryAcess() {
 
   function saveLocalStorage() {
     localStorage.setItem(
-      '@freelas_town:primeiro-acesso',
+      '@freelas_town:primeiro-projeto',
       JSON.stringify({
         nameProject,
         subareas: selectedSubareas,
       }),
     );
-
+    salvarOrigemAcesso('contratante/projetos/geral');
     router.push('/cadastro-basico');
   }
 
   return (
     <Container ref={parent}>
-      {step === 1 ? (
-        <CardPrimaryAcess setStep={setStep} />
-      ) : (
-        <>
-          {loading ? (
-            <Spinner type="info" size="32px" />
-          ) : (
-            <ContentFilter ref={parent}>
-              <h1>Aproveite e publique seu primeiro projeto!</h1>
-              <div className="content-input">
-                <InputText
-                  control={control}
-                  label="Como seu projeto deve ser chamado:"
-                  name="name_project"
-                />
-              </div>
-              <h2>SELECIONE ÁREA E SUB-ÁREA DA ATIVIDADE NECESSITADA</h2>
-              <FilterPrimaryAcess
-                control={control}
-                setLoading={setLoading}
-                setter={setSelectedSubareas}
-              />
-              <ContentButton>
-                <Button color={AZUL} onClick={saveLocalStorage}>
-                  AVANÇAR
-                </Button>
-              </ContentButton>
-            </ContentFilter>
-          )}
-        </>
-      )}
+      <ContentFilter ref={parent}>
+        <h1>Publicando seu primeiro projeto!</h1>
+        <div className="content-input">
+          <InputText
+            control={control}
+            label="Nome do projeto:"
+            name="name_project"
+          />
+        </div>
+        <h2>SELECIONE ÁREA E SUB-ÁREA DA ATIVIDADE NECESSITADA</h2>
+        <FilterPrimaryAcess
+          control={control}
+          setLoading={setLoading}
+          setter={setSelectedSubareas}
+        />
+        <ContentButton>
+          <Button color={LARANJA} onClick={() => history.goBack()}>
+            VOLTAR
+          </Button>
+          <Button color={AZUL} onClick={saveLocalStorage}>
+            AVANÇAR
+          </Button>
+        </ContentButton>
+      </ContentFilter>
     </Container>
   );
 }

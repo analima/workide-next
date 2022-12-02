@@ -1,7 +1,10 @@
 import { setLocalStorage, getLocalStorage } from './../hooks/localStorage';
 
 export function salvarOrigemAcesso(link?: string) {
-  setLocalStorage('origem_acesso', link || window.location.href);
+  setLocalStorage(
+    'origem_acesso',
+    link ? gerarUrl(link) : window.location.href,
+  );
 }
 
 export function obterOrigemAcesso() {
@@ -16,4 +19,12 @@ export function gerarUrl(url: string) {
 
 export function resetOrigemAcesso() {
   localStorage.removeItem('@freelas_town:origem_acesso');
+}
+
+export function resetDadosProjeto() {
+  localStorage.removeItem('@freelas_town:primeiro-projeto');
+}
+
+export function obterDadosProjeto() {
+  return getLocalStorage('primeiro-projeto');
 }

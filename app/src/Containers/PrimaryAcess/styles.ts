@@ -51,7 +51,7 @@ interface ColorProps {
 
 export const Button = styled.button<ColorProps>`
   padding: 16px 40px;
-  width: 100%;
+  width: 200px;
   font-weight: 700;
   color: ${BRANCO};
   background-color: ${({ color }) => color};

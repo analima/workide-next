@@ -31,6 +31,7 @@ export interface IProviderLittle {
   nome: string;
   nomeTratamento: string;
   usuario?: IUser;
+  verificado?: boolean;
 }
 
 export interface IPremiacao {
