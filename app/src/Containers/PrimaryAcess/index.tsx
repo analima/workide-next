@@ -48,7 +48,7 @@ export default function PrimaryAcess() {
       '@freelas_town:primeiro-projeto',
       JSON.stringify({
         nameProject,
-        subareas: selectedSubareas.map(area => area.descricao),
+        subareas: selectedSubareas,
       }),
     );
     salvarOrigemAcesso('contratante/projetos/geral');

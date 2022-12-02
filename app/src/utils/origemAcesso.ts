@@ -21,6 +21,10 @@ export function resetOrigemAcesso() {
   localStorage.removeItem('@freelas_town:origem_acesso');
 }
 
+export function resetDadosProjeto() {
+  localStorage.removeItem('@freelas_town:primeiro-projeto');
+}
+
 export function obterDadosProjeto() {
   return getLocalStorage('primeiro-projeto');
 }
