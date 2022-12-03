@@ -24,6 +24,7 @@ import { arquivos_api } from '../../../../services/arquivos_api';
 import { oportunidades_api } from '../../../../services/oportunidades_api';
 import { useHistory } from 'react-router-dom';
 import { Skeleton } from '../../../../components/Skeleton';
+import { useAuth } from 'src/contexts/auth';
 
 interface IContratanteProps {
   idPessoaConsumidor: number;
@@ -41,6 +42,7 @@ export default function Contratante({ idPessoaConsumidor }: IContratanteProps) {
   const [dadosContratante, setDadosContratante] = useState<IContratanteDados>(
     {} as IContratanteDados,
   );
+  const { user } = useAuth()
   const [image, setImage] = useState('');
   const [notaMedia, setNotaMedia] = useState<number>(0);
   const history = useHistory();
@@ -103,7 +105,7 @@ export default function Contratante({ idPessoaConsumidor }: IContratanteProps) {
                     <FotoPerfil>
                       <Image
                         onClick={() =>
-                          history.push(`/contratante/perfil-publico/`, {
+                          history.push(`/contratante/perfil-publico?apelido=${user.nome_tratamento}`, {
                             id: idPessoaConsumidor,
                           })
                         }
