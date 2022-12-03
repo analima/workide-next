@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { hotjar } from 'react-hotjar';
 import DetalhesArea from 'src/components/DetalhesArea';
+import { TIME_REVALIDATE } from 'src/const';
 import { version } from '../../../package.json';
 
 interface IProps {
@@ -43,6 +44,6 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       appVersion,
     },
-    revalidate: 86400,
+    revalidate: TIME_REVALIDATE,
   };
 };

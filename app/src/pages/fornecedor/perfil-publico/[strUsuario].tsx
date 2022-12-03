@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { hotjar } from 'react-hotjar';
 import { NovoPerfilPublico } from 'src/components/AreaFornecedor/NovoPerfilPublico';
 import { SEO } from 'src/components/SEO';
+import { TIME_REVALIDATE } from 'src/const';
 import { version } from '../../../../package.json';
 
 interface IProps {
@@ -39,6 +40,6 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       appVersion,
     },
-    revalidate: 86400,
+    revalidate: TIME_REVALIDATE,
   };
 };

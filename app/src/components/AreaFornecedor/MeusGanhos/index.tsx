@@ -12,6 +12,7 @@ import DetalhesDosGanhos from './DetalhesGanhos';
 import { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { hotjar } from 'react-hotjar';
+import { IS_EMPTY } from 'src/const';
 
 export default function MeusGanhos() {
   const history = useHistory();
@@ -19,7 +20,7 @@ export default function MeusGanhos() {
 
   useEffect(() => {
     hotjar.initialize(
-      Number(process.env.REACT_APP_HOTJAR_ID) || 0,
+      Number(process.env.REACT_APP_HOTJAR_ID) || IS_EMPTY,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
     hotjar.stateChange('/fornecedor/meus-ganhos');

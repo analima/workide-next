@@ -92,7 +92,7 @@ export default function Extrato({ type }: TypeProfileProps) {
             values: IExtratoProps[];
             pages: number;
           }>(
-            `/consulta/extrato/contratante/${user?.id_pessoa}?limit=10&page=${pagina}`,
+            `/consulta/extrato/consumidor/${user?.id_pessoa}?limit=10&page=${pagina}`,
             {
               idPessoaFornecedor: filterUser || 0,
               periodo: periodo || 0,
@@ -250,7 +250,7 @@ export default function Extrato({ type }: TypeProfileProps) {
                 <ContentEntendaMelhor>
                   <span>Entenda melhor:</span>
                   <p>
-                    Quando o cliente paga via cartão de crédito: Nessa forma de
+                    Quando o cliente paga via <strong>cartão de crédito</strong>: Nessa forma de
                     pagamento, pode levar até 30 dias para o pagamento ser
                     processado. Por isso, as vezes, pode levar mais tempo para
                     que o valor seja liberado para você. Pagamentos que estão

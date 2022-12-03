@@ -45,6 +45,7 @@ jobs:
             echo "REACT_APP_ID_IUGU=$ID_IUGU" >> .env
             echo "REACT_APP_GA_TRACKING_CODE=$APP_GA_TRACKING_CODE" >> .env
             echo "REACT_APP_HOTJAR_ID=$APP_HOTJAR_ID" >> .env
+            echo "REACT_APP_HOTJAR_ID_2=$APP_HOTJAR_ID_2" >> .env
             echo "REACT_APP_HOTJAR_SV=$APP_HOTJAR_SV" >> .env
             echo "REACT_APP_VERSION=1.8.0" >> .env
       - aws-ecr/build-and-push-image:
@@ -100,6 +101,7 @@ jobs:
             echo "REACT_APP_ID_IUGU=$ID_IUGU" >> .env
             echo "REACT_APP_GA_TRACKING_CODE=$APP_GA_TRACKING_CODE" >> .env
             echo "REACT_APP_HOTJAR_ID=$APP_HOTJAR_ID" >> .env
+            echo "REACT_APP_HOTJAR_ID_2=$APP_HOTJAR_ID_2" >> .env
             echo "REACT_APP_HOTJAR_SV=$APP_HOTJAR_SV" >> .env
             echo "REACT_APP_VERSION=1.8.0" >> .env
       - aws-ecr/build-and-push-image:
@@ -155,6 +157,7 @@ jobs:
             echo "REACT_APP_ID_IUGU=$ID_IUGU" >> .env
             echo "REACT_APP_GA_TRACKING_CODE=$APP_GA_TRACKING_CODE" >> .env
             echo "REACT_APP_HOTJAR_ID=$APP_HOTJAR_ID" >> .env
+            echo "REACT_APP_HOTJAR_ID_2=$APP_HOTJAR_ID_2" >> .env
             echo "REACT_APP_HOTJAR_SV=$APP_HOTJAR_SV" >> .env
             echo "REACT_APP_VERSION=1.8.0" >> .env
       - aws-ecr/build-and-push-image:

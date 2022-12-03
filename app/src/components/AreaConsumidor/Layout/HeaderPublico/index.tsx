@@ -47,11 +47,6 @@ export default function HeaderPublico(): JSX.Element {
 
   return (
     <Containe>
-      {/* <CadastroBasico
-        isActive={showRegisterForm}
-        display={displayOfOverlay}
-        handleShowOverlay={handleShowOverlay}
-      /> */}
       <Container className="container">
         <Content>
           <Link href="/">

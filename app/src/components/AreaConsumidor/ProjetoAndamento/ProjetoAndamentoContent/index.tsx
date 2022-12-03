@@ -19,6 +19,7 @@ import HistoricoOrcamento from '../HistoricoOrcamento';
 import { Button } from './style';
 import Content from './style';
 import { hotjar } from 'react-hotjar';
+import { IS_EMPTY } from 'src/const';
 
 export default function ProjetoAndamentoContent() {
   const { setDadosProjetos, dadosProjetos, setEtapas, etapas } =
@@ -86,7 +87,7 @@ export default function ProjetoAndamentoContent() {
 
   useEffect(() => {
     hotjar.initialize(
-      Number(process.env.REACT_APP_HOTJAR_ID) || 0,
+      Number(process.env.REACT_APP_HOTJAR_ID) || IS_EMPTY,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
     hotjar.stateChange('/contratante/projeto/andamento');
@@ -120,7 +121,7 @@ export default function ProjetoAndamentoContent() {
             <DadosProjeto
               projeto={dadosProjetos}
               cor={PRETO_10}
-              valor={dadosProjetos.propostaAceita?.valor || 0}
+              valor={dadosProjetos.propostaAceita?.valor || IS_EMPTY}
             />
           </Col>
         </Row>

@@ -6,6 +6,7 @@ import Content from '../../../components/AreaConsumidor/Busca/style';
 import { GetStaticProps } from 'next';
 import { SEO } from 'src/components/SEO';
 import { version } from '../../../../package.json';
+import { TIME_REVALIDATE } from 'src/const';
 
 interface IProps {
   appVersion: string;
@@ -14,7 +15,7 @@ interface IProps {
 export default function Busca({ appVersion }: IProps) {
   useEffect(() => {
     hotjar.initialize(
-      Number(process.env.REACT_APP_HOTJAR_ID) || 0,
+      Number(process.env.REACT_APP_HOTJAR_ID_2) || 0,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
     hotjar.stateChange('/contratante/busca');
@@ -36,6 +37,6 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       appVersion,
     },
-    revalidate: 86400,
+    revalidate: TIME_REVALIDATE,
   };
 };

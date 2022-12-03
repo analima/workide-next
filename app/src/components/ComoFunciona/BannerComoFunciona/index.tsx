@@ -14,13 +14,13 @@ export function BannerComoFunciona() {
               <div className="content-border">
                 <hr />
               </div>
-              <span>
+              <p>
                 Navegue no nosso ambiente e observe os profissionais e desafios
                 cadastrados nele. Você se conectará com várias pessoas e ideias
                 bem bacanas, que estarão alinhadas, não apenas aos seus
-                propósitos profissionais, mas aos seus valores e percepção de
+                propósitos <strong>profissionais</strong>, mas aos seus valores e percepção de
                 mundo.
-              </span>
+              </p>
             </Box>
 
             <Box>
@@ -28,12 +28,12 @@ export function BannerComoFunciona() {
               <div className="content-border">
                 <hr />
               </div>
-              <span>
+              <p>
                 Ganhe acesso total a nossa plataforma. Queremos lembrar que o
-                cadastro na freelas town é totalmente gratuito. Isso reforça
+                cadastro na <span>freelas</span> town é totalmente gratuito. Isso reforça
                 nosso compromisso em garantir que aqui seja um espaço de
                 encontro entre ideias, talentos e causas sociais.
-              </span>
+              </p>
             </Box>
           </div>
           <FiArrowDown color={PRETO_10} />

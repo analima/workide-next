@@ -15,6 +15,7 @@ import { Helmet } from 'react-helmet';
 import { useAuth } from '../../../contexts/auth';
 import { useEffect } from 'react';
 import { hotjar } from 'react-hotjar';
+import { IS_EMPTY } from 'src/const';
 
 export default function Home() {
   const history = useHistory();
@@ -29,7 +30,7 @@ export default function Home() {
 
   useEffect(() => {
     hotjar.initialize(
-      Number(process.env.REACT_APP_HOTJAR_ID) || 0,
+      Number(process.env.REACT_APP_HOTJAR_ID) || IS_EMPTY,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
     hotjar.stateChange('/contratante/home');

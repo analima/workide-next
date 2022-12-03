@@ -10,7 +10,7 @@ export function BannerEmpresa() {
     <Container>
       <Content>
         <ContentInfo>
-          <h1>Encontre e contrate os melhores profissionais</h1>
+          <h1>Encontre e <strong>contrate</strong> os melhores profissionais</h1>
           <span>
             Uma plataforma para você encontrar profissionais e tirar do papel
             todos os seus projetos.

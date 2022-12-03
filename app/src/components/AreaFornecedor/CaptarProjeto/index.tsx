@@ -5,13 +5,14 @@ import Content from './style';
 import { hotjar } from 'react-hotjar';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { IS_EMPTY } from 'src/const';
 
 const CaptarProjeto: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     hotjar.initialize(
-      Number(process.env.REACT_APP_HOTJAR_ID) || 0,
+      Number(process.env.REACT_APP_HOTJAR_ID) || IS_EMPTY,
       Number(process.env.REACT_APP_HOTJAR_SV),
     );
     hotjar.stateChange('/AreaFornecedor/CaptarProjeto');

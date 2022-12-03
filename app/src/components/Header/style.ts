@@ -1,4 +1,4 @@
-import { Accordion, Dropdown, NavDropdown } from 'react-bootstrap';
+import { Accordion, NavDropdown } from 'react-bootstrap';
 import styled, { css } from 'styled-components';
 import { AZUL, BRANCO, LARANJA, PRETO_10 } from '../../styles/variaveis';
 
@@ -54,12 +54,17 @@ export const HeaderInfo = styled.div`
 `;
 
 export const Container = styled.header`
-  padding: 8px 0px;
+  padding: 8px 62px;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
   z-index: 10;
-  height: 116px;
-  margin: 0 auto;
+  height: 96px;
   background-color: ${BRANCO};
 
+  .logo {
+    cursor: pointer;
+  }
   @media (max-width: 768px) {
     padding: 20px;
   }
@@ -74,30 +79,27 @@ interface IMobileProp {
   mostrarMenu: boolean;
 }
 
-export const Content = styled.section`
+export const Content = styled.nav`
   display: flex;
-  flex-direction: column;
-  max-width: 1315px;
-  padding: 0 62px;
-  margin: 0 auto;
+  justify-content: space-between;
+  gap: 32px;
+  width: 100%;
 
-  nav {
+  ul {
     border-bottom: 1px solid #c6c6c6;
-    padding: 16px 0;
     display: flex;
     gap: 16px;
     align-items: center;
-    justify-content: space-between;
     width: 100%;
+    padding-left: 0;
+    margin-bottom: 0;
 
-    .content-logo {
-      display: flex;
-      align-items: center;
-      gap: 16px;
+    :last-child {
+      justify-content: flex-end;
+    }
 
-      .logo {
-        cursor: pointer;
-      }
+    li {
+      list-style: none;
 
       a,
       span {
@@ -112,29 +114,29 @@ export const Content = styled.section`
           opacity: 0.8;
         }
       }
-
-      .empresas,
-      .ongs,
-      .captar-projetos {
-        font-weight: bold;
-      }
     }
 
-    .menu {
-      display: flex;
-      align-items: center;
-      gap: 32px;
+    .empresas,
+    .ongs,
+    .captar-projetos {
+      font-weight: bold;
+    }
+  }
 
-      a {
-        color: ${PRETO_10};
-        text-decoration: none;
-        font-size: 18px;
-      }
+  .menu {
+    display: flex;
+    align-items: center;
+    gap: 32px;
 
-      button {
-        padding: 16 40px;
-        white-space: nowrap;
-      }
+    a {
+      color: ${PRETO_10};
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    button {
+      padding: 16 40px;
+      white-space: nowrap;
     }
   }
 
@@ -412,24 +414,5 @@ export const AccordionPrimary = styled(Accordion)`
     span {
       font-size: 16px;
     }
-  }
-`;
-
-export const AccordionSecondary = styled(Accordion.Toggle)`
-  border: none;
-  background-color: red;
-  padding: 8px 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: ${BRANCO};
-  width: 100%;
-  gap: 8px;
-
-  span {
-    color: ${PRETO_10};
-    font-size: 18px;
-    font-weight: 600;
-    text-align: center;
   }
 `;

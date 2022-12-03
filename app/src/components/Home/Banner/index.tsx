@@ -107,11 +107,6 @@ export function Banner() {
 
   return (
     <Container>
-      <CadastroBasico
-        isActive={showRegisterForm}
-        display={displayOfOverlay}
-        handleShowOverlay={handleShowOverlay}
-      />
       <Content img={img}>
         <ContentDescription>
           <h1 data-testid="hero-title">{text}</h1>
