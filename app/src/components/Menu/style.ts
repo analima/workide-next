@@ -411,7 +411,7 @@ export const ContainerCentral = styled.div`
   }
 
   @media (max-width: 578px) {
-    width: 70%;
+    width: 70% !important;
     div {
       width: 130px !important;
     }
