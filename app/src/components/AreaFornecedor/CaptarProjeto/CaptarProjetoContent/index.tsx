@@ -129,7 +129,8 @@ export default function CaptarProjetoContent({ versao }: IProps) {
 
   useEffect(() => {
     if (query.filter) setValue('pesquisa', query.filter);
-  }, [query.filter, setValue]);
+    if (query.voluntario) setValue('toggle_volutarios', true);
+  }, [query.filter, query.voluntario, setValue]);
 
   return (
     <Content ref={contentRef}>
