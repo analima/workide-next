@@ -835,19 +835,21 @@ export default function DetalhesProjeto() {
 
                     <Col lg={10}>
                       <Info>
-                        <NomeTitulo
-                          onClick={() => {
-                            if (!user.id_pessoa) {
-                              history.push('/cadastro-basico');
-                              return;
-                            }
-                            history.push(`/contratante/perfil-publico`, {
-                              id: dadosConsumidor.id,
-                            });
-                          }}
-                        >
-                          {dadosConsumidor.nome_tratamento}
-                        </NomeTitulo>
+                        <div className="container-name">
+                          <NomeTitulo
+                            onClick={() => {
+                              if (!user.id_pessoa) {
+                                history.push('/cadastro-basico');
+                                return;
+                              }
+                              history.push(`/contratante/perfil-publico`, {
+                                id: dadosConsumidor.id,
+                              });
+                            }}
+                          >
+                            {dadosConsumidor.nome_tratamento}
+                          </NomeTitulo>
+                        </div>
                         <Avaliacao>
                           <span>{notaMedia?.toFixed(2)}</span>
                           <Estrela className="estrela" key={0} />
