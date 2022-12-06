@@ -68,6 +68,7 @@ import { hotjar } from 'react-hotjar';
 import { AvatarErroGeral } from '../../../../components/AvatarErroGeral';
 import { ModalRecomendacao } from '../../../../components/ModalRecomendacao';
 import { Skeleton } from '../../../../components/Skeleton';
+import { salvarOrigemAcesso } from 'src/utils/origemAcesso';
 
 export interface IProduct {
   id: number;
@@ -586,6 +587,7 @@ export default function DetalhesProjeto() {
                             <Button
                               onClick={() => {
                                 if (!user.id_pessoa) {
+                                  salvarOrigemAcesso('/cadastro-complementar');
                                   history.push('/cadastro-basico');
                                   return;
                                 }

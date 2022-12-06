@@ -518,17 +518,12 @@ export default function Projeto({
                     projeto.idPessoaConsumidor === user.id ? false : true
                   }
                   disabled={projeto.idPessoaConsumidor === user.id}
-                  onClick={() => {
-                    if (!user.id_pessoa) {
-                      router.push('/cadastro-basico');
-                      return;
-                    }
-
+                  onClick={() =>
                     router.push({
                       pathname: `/detalhes-projeto/${projeto.id}`,
                       query: { tipo: tipo === 'exclusivo' },
-                    });
-                  }}
+                    })
+                  }
                 >
                   MAIS DETALHES
                 </Button>
