@@ -19,7 +19,7 @@ export default function SidebarConsumidor({ open }: ISidebar) {
             titulo="Meu perfil"
             itens={[
               {
-                link: '/contratante/perfil-publico',
+                link: `/contratante/perfil-publico?apelido=${user.nome_tratamento}`,
                 descricao: `Visualizar`,
               },
             ]}

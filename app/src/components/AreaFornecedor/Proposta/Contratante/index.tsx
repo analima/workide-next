@@ -22,6 +22,7 @@ import { arquivos_api } from '../../../../services/arquivos_api';
 import { oportunidades_api } from '../../../../services/oportunidades_api';
 import { useHistory } from 'react-router';
 import { Skeleton } from '../../../../components/Skeleton';
+import { useAuth } from 'src/contexts/auth';
 
 interface ConsumidorProps {
   id: number;
@@ -38,6 +39,7 @@ export default function Contratante() {
   const [dadosConsumidor, setDadosConsumidor] = useState<ConsumidorProps>(
     {} as ConsumidorProps,
   );
+  const { user } = useAuth()
   const [image, setImage] = useState<string>('');
   const history = useHistory();
   const [notaMedia, setNotaMedia] = useState<number>(0);
@@ -85,7 +87,7 @@ export default function Contratante() {
           <Col lg={2}>
             <FotoPerfilContainer
               onClick={() => {
-                history.push(`/contratante/perfil-publico/`, {
+                history.push(`/contratante/perfil-publico?apelido=${user.nome_tratamento}`, {
                   id: dadosConsumidor.id,
                 });
               }}
@@ -102,7 +104,7 @@ export default function Contratante() {
               <Col lg={12}>
                 <NomeContainer
                   onClick={() => {
-                    history.push(`/contratante/perfil-publico`, {
+                    history.push(`/contratante/perfil-publico?apelido=${user.nome_tratamento}`, {
                       id: dadosConsumidor.id,
                     });
                   }}

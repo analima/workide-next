@@ -99,7 +99,7 @@ export const UserCard = ({
         <ContainerImageStyled
           onClick={() => {
             visao === 'fornecedor'
-              ? history.push(`/contratante/perfil-publico/`, {
+              ? history.push(`/contratante/perfil-publico?apelido=${user.nome_tratamento}`, {
                   id,
                 })
               : history.push(`/fornecedor/perfil-publico/${id}`);
@@ -125,7 +125,7 @@ export const UserCard = ({
                   onClick={() => {
                     visao === 'consumidor'
                       ? history.push(`/fornecedor/perfil-publico/${id}`)
-                      : history.push(`/contratante/perfil-publico/`, {
+                      : history.push(`/contratante/perfil-publico?apelido=${user.nome_tratamento}`, {
                           id,
                         });
                   }}

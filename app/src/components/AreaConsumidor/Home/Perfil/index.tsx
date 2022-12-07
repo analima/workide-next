@@ -139,7 +139,7 @@ export default function Perfil({ isConsumidor }: IProps) {
             <EyeContent>
               <button
                 onClick={() =>
-                  history.push('/contratante/perfil-publico', {
+                  history.push(`/contratante/perfil-publico?apelido=${user.nome_tratamento}`, {
                     id: user.id_pessoa,
                   })
                 }
