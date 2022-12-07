@@ -77,3 +77,17 @@ export const ContentButton = styled.div`
     gap: 20px;
   }
 `;
+
+export const ContainerLogin = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  span {
+    margin-right: 5px;
+  }
+
+  a {
+    color: ${AZUL};
+  }
+`;

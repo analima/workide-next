@@ -1,5 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
-import { Container, ContentFilter, ContentButton, Button } from './styles';
+import {
+  Container,
+  ContentFilter,
+  ContentButton,
+  Button,
+  ContainerLogin,
+} from './styles';
 import { FilterPrimaryAcess } from 'src/components/FilterPrimaryAcess';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -11,6 +17,7 @@ import { InputText } from 'src/components/Form/InputText';
 import { salvarOrigemAcesso } from 'src/utils/origemAcesso';
 import { GhostButton } from 'src/components/GhostButton';
 import { useHistory } from 'react-router-dom';
+import Link from 'next/link';
 
 export type Subarea = {
   id: number;
@@ -80,6 +87,9 @@ export default function PrimaryAcess() {
             AVANÇAR
           </Button>
         </ContentButton>
+        <ContainerLogin>
+          <span>Já tem uma conta? Faça</span> <Link href="/login">Login</Link>
+        </ContainerLogin>
       </ContentFilter>
     </Container>
   );
