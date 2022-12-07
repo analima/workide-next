@@ -154,12 +154,18 @@ export default class Login extends React.Component<any, any> {
         this.setState({
           loading: false,
         });
+        let origemAcesso;
         if (pessoaResponse.data.percentageRegisterProvider > 20) {
-          const origemAcesso = obterOrigemAcesso();
+          origemAcesso = obterOrigemAcesso();
           resetOrigemAcesso();
           if (origemAcesso) window.location.replace(origemAcesso);
           else window.location.replace(selecionarRotaHome(pessoaResponse.data));
-        } else window.location.replace('/apresentacao');
+        } else {
+          origemAcesso = obterOrigemAcesso();
+          resetOrigemAcesso();
+          if (origemAcesso) window.location.replace(origemAcesso);
+          else window.location.replace('/apresentacao');
+        }
       })
       .catch(async error => {
         errors['serviceMessage'] = error.response?.data?.message;
