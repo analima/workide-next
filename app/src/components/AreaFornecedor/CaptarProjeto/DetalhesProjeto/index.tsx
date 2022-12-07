@@ -840,7 +840,7 @@ export default function DetalhesProjeto() {
                     <Col lg={2} className="d-flex justify-content-center">
                       <FotoPerfil
                         onClick={() =>
-                          history.push(`/contratante/perfil-publico`, {
+                          history.push(`/contratante/perfil-publico?apelido=${user.nome_tratamento}`, {
                             id: dadosConsumidor.id,
                           })
                         }
