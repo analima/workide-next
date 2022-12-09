@@ -155,26 +155,31 @@ export default function Projeto({
   };
 
   const handleFavoritar = useCallback(async () => {
-    if (!user.id_pessoa) {
-      router.push('/login');
-      return;
-    }
+    try {
+      if (!user.id_pessoa) {
+        router.push('/login');
+        return;
+      }
+      setProjetoFavorito(true);
+      const response = await oportunidades_api.get('/projetos/favoritos');
+      const numeroFavoritos = response.data.length;
 
-    const response = await oportunidades_api.get('/projetos/favoritos');
-    const numeroFavoritos = response.data.length;
-
-    if (numeroFavoritos >= limitacoesPlano.favoritarProjetos) {
-      handleShowAvatarRegrasPlano();
-      return;
+      if (numeroFavoritos >= limitacoesPlano.favoritarProjetos) {
+        handleShowAvatarRegrasPlano();
+        return;
+      }
+      oportunidades_api
+        .post(`/projetos/${projeto.id}/favoritos`)
+        .then(() => {
+          obterProjetosFavoritos();
+        })
+        .catch(error => {
+          console.error(error.response);
+        });
+    } catch (error: any) {
+      console.log(error.message);
+      setProjetoFavorito(false);
     }
-    oportunidades_api
-      .post(`/projetos/${projeto.id}/favoritos`)
-      .then(() => {
-        obterProjetosFavoritos();
-      })
-      .catch(error => {
-        console.error(error.response);
-      });
   }, [
     user.id_pessoa,
     limitacoesPlano.favoritarProjetos,

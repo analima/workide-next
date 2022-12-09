@@ -214,6 +214,7 @@ export default function CaptarProjetoContent({ versao }: IProps) {
               <Button
                 onClick={() => {
                   limparFiltros();
+                  setFavorito(false);
                 }}
               >
                 LIMPAR FILTROS
