@@ -156,6 +156,10 @@ export default function Projeto({
 
   const handleFavoritar = useCallback(async () => {
     try {
+      if (!user.id_pessoa) {
+        router.push('/login');
+        return;
+      }
       setProjetoFavorito(true);
       const response = await oportunidades_api.get('/projetos/favoritos');
       const numeroFavoritos = response.data.length;
@@ -177,8 +181,10 @@ export default function Projeto({
       setProjetoFavorito(false);
     }
   }, [
+    user.id_pessoa,
     limitacoesPlano.favoritarProjetos,
     projeto.id,
+    router,
     handleShowAvatarRegrasPlano,
     obterProjetosFavoritos,
   ]);
