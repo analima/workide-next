@@ -587,9 +587,15 @@ export default function DetalhesProjeto() {
                             <Button
                               onClick={() => {
                                 if (!user.id_pessoa) {
-                                  salvarOrigemAcesso('/cadastro-complementar');
+                                  salvarOrigemAcesso(
+                                    `detalhes-projeto/${idProject}?tipo=false`,
+                                  );
                                   history.push('/cadastro-basico');
                                   return;
+                                } else {
+                                  salvarOrigemAcesso(
+                                    `detalhes-projeto/${idProject}?tipo=false`,
+                                  );
                                 }
                                 handleCheckNumberOfConcurrenceProjects();
                               }}
@@ -824,9 +830,12 @@ export default function DetalhesProjeto() {
                     <Col lg={2} className="d-flex justify-content-center">
                       <FotoPerfil
                         onClick={() =>
-                          history.push(`/contratante/perfil-publico?apelido=${user.nome_tratamento}`, {
-                            id: dadosConsumidor.id,
-                          })
+                          history.push(
+                            `/contratante/perfil-publico?apelido=${user.nome_tratamento}`,
+                            {
+                              id: dadosConsumidor.id,
+                            },
+                          )
                         }
                         alt="foto"
                         src={image}
