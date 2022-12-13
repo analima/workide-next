@@ -15,8 +15,6 @@ import { useRouter } from 'next/router';
 import autoAnimate from '@formkit/auto-animate';
 import { InputText } from 'src/components/Form/InputText';
 import { salvarOrigemAcesso } from 'src/utils/origemAcesso';
-import { GhostButton } from 'src/components/GhostButton';
-import { useHistory } from 'react-router-dom';
 import Link from 'next/link';
 
 export type Subarea = {
@@ -26,14 +24,12 @@ export type Subarea = {
 };
 
 export default function PrimaryAcess() {
-  const [step, setStep] = useState(1);
   const router = useRouter();
   const parent = useRef(null);
   const schema = Yup.object().shape({});
   const [loading, setLoading] = useState(false);
   const [selectedSubareas, setSelectedSubareas] = useState<Subarea[]>([]);
   const [nameProject, setNameProject] = useState('');
-  const history = useHistory();
   const { control, watch } = useForm({
     mode: 'all',
     shouldFocusError: true,
@@ -80,7 +76,7 @@ export default function PrimaryAcess() {
           setter={setSelectedSubareas}
         />
         <ContentButton>
-          <Button color={LARANJA} onClick={() => history.goBack()}>
+          <Button color={LARANJA} onClick={() => router.back()}>
             VOLTAR
           </Button>
           <Button color={AZUL} onClick={saveLocalStorage}>
