@@ -1,26 +1,12 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { hotjar } from 'react-hotjar';
 import { GetStaticProps } from 'next';
 import { consultas_api } from 'src/services/consultas_api';
 import { IServicoInfo } from 'src/interfaces/IServicoInfo';
 import { SEO } from 'src/components/SEO';
-import EmpresasHome from 'src/Containers/EmpresasHome';
 import { version } from '../../../../package.json';
 import { TIME_REVALIDATE } from 'src/const';
-import { Accordion, Col, FormCheck, Row } from 'react-bootstrap';
-import { geral_api } from 'src/services/geral_api';
-import { AccordionItem } from 'src/components/Accordion/AccordionItem';
 import PrimaryAcess from 'src/Containers/PrimaryAcess';
-interface IPropsData {
-  vitrineData: IServicoInfo[];
-  appVersion: string;
-}
-
-interface IArea {
-  id: number;
-  descricao: string;
-  subareas: ISubarea[];
-}
 
 interface ISubarea {
   id: number;
