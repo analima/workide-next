@@ -100,7 +100,10 @@ export function NovoPerfilPublico({ versao }: IProps) {
     <Content>
       <SEO
         title={`Perfil do fornecedor ${dataProvider.nome_tratamento}`}
-        description={`Perfil público do fornecedor ${dataProvider.nome_tratamento}`}
+        description={
+          dataProvider.resumo_profissional ??
+          `Perfil público do fornecedor ${dataProvider.nome_tratamento}`
+        }
         indexPage
         image={
           dataProvider.arquivo
