@@ -159,7 +159,10 @@ export default class Login extends React.Component<any, any> {
           origemAcesso = obterOrigemAcesso();
           resetOrigemAcesso();
           if (origemAcesso) window.location.replace(origemAcesso);
-          else window.location.replace(selecionarRotaHome(pessoaResponse.data));
+          else
+            window.location.replace(
+              selecionarRotaHome(pessoaResponse.data?.tipoPerfil),
+            );
         } else {
           origemAcesso = obterOrigemAcesso();
           resetOrigemAcesso();

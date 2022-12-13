@@ -119,7 +119,7 @@ export function Menu({
           >
             <Navbar.Brand
               className="logo"
-              onClick={() => router.push(selecionarRotaHome(user))}
+              onClick={() => router.push(selecionarRotaHome(user?.tipoPerfil))}
             >
               <Image
                 src={sizePage > 768 ? Logo : LogoMenor}
@@ -204,7 +204,9 @@ export function Menu({
                   </div>
                   <Nav.Link
                     className="container-profile"
-                    onClick={() => router.push(selecionarRotaHome(user))}
+                    onClick={() =>
+                      router.push(selecionarRotaHome(user?.tipoPerfil))
+                    }
                   >
                     <div className="profile">
                       <Image src={userIcon} alt="perfil" />

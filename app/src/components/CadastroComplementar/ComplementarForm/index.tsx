@@ -749,7 +749,7 @@ export default function ComplementarForm() {
               cor={LARANJA}
             />
             <SkipButton
-              to="/persona"
+              to="/fornecedor/home"
               onClick={() =>
                 GAEventsTracker(
                   'Pular cadastro',
