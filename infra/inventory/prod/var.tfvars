@@ -1,24 +1,24 @@
 name= "gyan-next"
 env= "prod"
-region = "us-east-1"
-vpc="vpc-0629c2c281f6e17d4"
-container_port=3000
-cidr="10.142.0.0/19"
+region = "us-west-2"
+vpc="vpc-0bd46e85953144f27"
+container_port=3333
+cidr="10.142.80.0/21"
+subnets=["subnet-05fd40e166201db1c","subnet-0b04a90487abc0cbc","subnet-06057086c6734afc1","subnet-0bc0a24e6d7212cfb"]
 health_check_path="/"
-alb_tls_cert_arn="arn:aws:acm:us-east-1:812671651954:certificate/f41cfd52-8a15-4e87-9148-c6ed28c0c04b"
-container_image="812671651954.dkr.ecr.us-east-1.amazonaws.com/gyan-next-prod:latest"
+alb_tls_cert_arn="arn:aws:acm:us-west-2:184313004318:certificate/d60f8293-08ab-4793-a5a2-075abb89d5c2"
+container_image="184313004318.dkr.ecr.us-west-2.amazonaws.com/workidetechnology-next-prod:latest"
 container_environment=[{"name": "APP_HOST", "value": "0.0.0.0"},
                         {"name": "APP_PORT", "value": "3000"},
                         {"name": "SKIP_PREFLIGHT_CHECK", "value": "true"},
                         {"name": "NEXT_PUBLIC_LOAD_VENDOR_SCRIPTS", "value": "false"}
                     ]
-cluster_name="cluster-gyan-prod"
-subnets=["subnet-0dd6e78bb871d3f17","subnet-00469d372f7b5b092","subnet-0ce475122233fc3ec","subnet-0f6209318ec3ad850"]
-listener_arn="arn:aws:elasticloadbalancing:us-east-1:812671651954:listener/app/next-alb-prod/70930dad5f828ee3/fd54e30658c0b3cb"
+cluster_name="arn:aws:ecs:us-west-2:184313004318:cluster/cluster-workidetechnology-prod"
+listener_arn="arn:aws:elasticloadbalancing:us-west-2:184313004318:listener/app/next-alb-prod/f1418c7b74977ef5/c986dff2b8c3dbbb"
 retention=30
 health_check_grace_period_seconds=300
-secret_id="arn:aws:secretsmanager:us-east-1:812671651954:secret:dbinfo-9uuxfv"
-parameter_id="arn:aws:ssm:us-east-1:812671651954:parameter/APP_JWK-PROD"
-bucket_name="files-gyan-prod"
+secret_id="arn:aws:secretsmanager:us-west-2:184313004318:secret:dbinfo-prod-4bR123"
+parameter_id="arn:aws:ssm:us-west-2:184313004318:parameter/APP_JWK"
+bucket_name="files-workide-prod"
 cpu=256
 memory=1024

@@ -64,63 +64,7 @@ jobs:
           mentions: "@suporte"
           template: basic_fail_1
 
-  build-push-ppr:
-    working_directory: /tmp/project
-    docker:
-      - image: "cimg/base:stable"
-    steps:
-      - checkout
-      - setup_remote_docker:
-          docker_layer_caching: false
-          version: 19.03.13
-      - run:
-          name: buil & push ecr
-          command: |
-            cd /tmp/project/app/
-            echo "REACT_APP_URL=https://$APP_URL" >> .env
-            echo "REACT_APP_REDIRECT_URL=https://$APP_REDIRECT_URL" >> .env
-            echo "REACT_APP_AWS_COGNITO_CLIENT_ID=$AWS_COGNITO_CLIENT_ID" >> .env
-            echo "REACT_APP_IUGU_TEST_MODE=$IUGU_TEST_MODE" >> .env
-            echo "REACT_APP_AWS_COGNITO_CLIENT_DOMAIN=$AWS_COGNITO_CLIENT_DOMAIN" >> .env
-            echo "SKIP_PREFLIGHT_CHECK=true" >> .env
-            echo "REACT_APP_ARQUIVOS_API=https://$API_HOST" >> .env
-            echo "REACT_APP_CHAT_API=https://$CHAT_URL" >> .env
-            echo "REACT_APP_OFERTAS_API=https://$API_HOST" >> .env
-            echo "REACT_APP_GERAL_API=https://$API_HOST" >> .env
-            echo "REACT_APP_SEGURANCA_API=https://$API_HOST" >> .env
-            echo "REACT_APP_PESSOAS_API=https://$API_HOST" >> .env
-            echo "REACT_APP_EMAILS_API=https://$API_HOST" >> .env
-            echo "REACT_APP_CONSULTAS_API=https://$API_HOST" >> .env
-            echo "REACT_APP_PAGAMENTOS_API=https://$API_HOST" >> .env
-            echo "REACT_APP_OPORTUNIDADES_API=https://$API_HOST" >> .env
-            echo "REACT_APP_NOTIFICACOES_API=https://$API_HOST" >> .env
-            echo "REACT_APP_PROXY_HOST=https://$APP_URL" >> .env
-            echo "REACT_APP_API_URL=https://$API_HOST/" >> .env
-            echo "REACT_APP_BLOG_API=https://$BLOG_API/api" >> .env
-            echo "REACT_APP_TOKEN_BLOG=$NEXT_APP_TOKEN" >> .env
-            echo "REACT_APP_IUGU_CADASTRO_CARTAO=$IUGU_CADASTRO_CARTAO" >> .env
-            echo "REACT_APP_ID_IUGU=$ID_IUGU" >> .env
-            echo "REACT_APP_GA_TRACKING_CODE=$APP_GA_TRACKING_CODE" >> .env
-            echo "REACT_APP_HOTJAR_ID=$APP_HOTJAR_ID" >> .env
-            echo "REACT_APP_HOTJAR_ID_2=$APP_HOTJAR_ID_2" >> .env
-            echo "REACT_APP_HOTJAR_SV=$APP_HOTJAR_SV" >> .env
-            echo "REACT_APP_VERSION=1.8.0" >> .env
-            echo "NEXT_PUBLIC_LOAD_VENDOR_SCRIPTS=false" >> .env
-      - aws-ecr/build-and-push-image:
-          account-url: AWS_ECR_ACCOUNT_URL
-          aws-access-key-id: AWS_ACCESS_KEY_ID
-          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
-          create-repo: false
-          dockerfile: Dockerfile
-          path: ./app
-          region: AWS_REGION
-          repo: gyan-next-ppr
-          tag: "$CIRCLE_SHA1,latest"
-      - slack/notify:
-          event: fail
-          mentions: "@suporte"
-          template: basic_fail_1
-
+  
   build-push-prod:
     working_directory: /tmp/project
     docker:
@@ -233,61 +177,6 @@ jobs:
           event: pass
           template: basic_success_1
 
-  plan-apply-ppr:
-    working_directory: /tmp/project
-    docker:
-      - image: docker.mirror.hashicorp.services/hashicorp/terraform:light
-    steps:
-      - checkout
-      - run:
-          name: terraform init & plan
-          command: |
-            apk add curl
-            apk add jq
-            cd /tmp/project/infra
-            export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
-            export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
-            terraform init -var-file=./inventory/ppr/var.tfvars
-            terraform workspace select ppr
-            terraform plan -out tfapplyppr -var-file="./inventory/ppr/var.tfvars"
-      - persist_to_workspace:
-          root: .
-          paths:
-            - .
-      - slack/notify:
-          event: fail
-          mentions: "@suporte"
-          template: basic_fail_1
-
-  apply-ppr:
-    working_directory: /tmp/project
-    docker:
-      - image: docker.mirror.hashicorp.services/hashicorp/terraform:light
-    steps:
-      - attach_workspace:
-          at: .
-      - run:
-          name: terraform
-          command: |
-            apk add curl
-            apk add jq
-            cd /tmp/project/infra
-            export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
-            export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
-            terraform apply -auto-approve tfapplyppr
-      - persist_to_workspace:
-          root: .
-          paths:
-            - .
-      - slack/notify:
-          event: fail
-          mentions: "@suporte"
-          template: basic_fail_1
-
-      - slack/notify:
-          event: pass
-          template: basic_success_1
-
   plan-apply:
     working_directory: /tmp/project
     docker:
@@ -387,31 +276,6 @@ workflows:
             branches:
               only:
                 - develop
-
-      - build-push-ppr:
-          context: ppr
-          name: ecr-ppr
-          filters: # using regex filters requires the entire branch to match
-            branches:
-              only:
-                - master
-
-      - plan-apply-ppr:
-          context: ppr
-          requires:
-            - ecr-ppr
-          filters: # using regex filters requires the entire branch to match
-            branches:
-              only:
-                - master
-      - apply-ppr:
-          context: ppr
-          requires:
-            - plan-apply-ppr
-          filters: # using regex filters requires the entire branch to match
-            branches:
-              only:
-                - master
 
       - slack/on-hold:
           context: production
