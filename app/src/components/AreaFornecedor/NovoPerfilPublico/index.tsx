@@ -100,7 +100,7 @@ export function NovoPerfilPublico({ versao }: IProps) {
         image={
           dataProvider.arquivo
             ? dataProvider.arquivo.url
-            : 'https://hom.freelas.town/gyan.png'
+            : 'https://hom.workide.com/gyan.png'
         }
       />
       <Layout versao={versao}>

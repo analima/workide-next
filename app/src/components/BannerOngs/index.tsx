@@ -13,7 +13,7 @@ export function BannerOngs() {
     <Container img={ImgOng.src}>
       <ModalEbook
         showModal={showModal}
-        link="https://static.freelas.town/ebook-gyan.pdf"
+        link="https://static.workide.com/ebook-gyan.pdf"
         setShowModal={setShowModal}
         type="ong"
       />

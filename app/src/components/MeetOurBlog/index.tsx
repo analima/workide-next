@@ -65,7 +65,7 @@ export function MeetOurBlog({ posts }: PostProps) {
               key={item.id}
               onClick={() =>
                 router.push(
-                  `https://blog.freelas.town/post/${item?.attributes?.slug}`,
+                  `https://blog.workide.com/post/${item?.attributes?.slug}`,
                 )
               }
             >

@@ -92,7 +92,7 @@ export function Footer({ versao }: IProps) {
 
               <li
                 className="li-click"
-                onClick={() => router.push('https://blog.freelas.town/')}
+                onClick={() => router.push('https://blog.workide.com/')}
               >
                 Blog freelas town
               </li>
@@ -206,13 +206,13 @@ export function Footer({ versao }: IProps) {
                 <span>Siga-nos</span>
                 <a
                   aria-label="Facebook"
-                  href="https://www.facebook.com/www.freelas.town"
+                  href="https://www.facebook.com/www.workide.com"
                   target="blank"
                 >
                   <FaFacebookSquare size={30} color="#6E6E6E" />
                 </a>
                 <a
-                  href="https://www.instagram.com/freelas.town/"
+                  href="https://www.instagram.com/workide.com/"
                   aria-label="Instagram"
                   target="blank"
                 >

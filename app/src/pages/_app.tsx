@@ -77,14 +77,14 @@ function MyApp({ Component, pageProps }: AppProps) {
 
         <meta itemProp="name" content="Freelas town" />
 
-        <meta name="image" content="https://freelas.town/freelas-town.png" />
+        <meta name="image" content="https://workide.com/freelas-town.png" />
         <meta
           property="og:image"
-          content="https://freelas.town/freelas-town.png"
+          content="https://workide.com/freelas-town.png"
         />
         <meta
           property="og:image:secure_url"
-          content="https://freelas.town/freelas-town.png"
+          content="https://workide.com/freelas-town.png"
         />
         <meta property="og:image:width" content="500" />
         <meta property="og:image:height" content="500" />

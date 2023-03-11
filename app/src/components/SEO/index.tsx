@@ -59,7 +59,7 @@ export function SEO({
 SEO.defaultProps = {
   description:
     'Olá amigo(a), como vai? Gostaria de compartilhar com você essa ideia. Estou usando uma plataforma muito legal chamada freelas town. Lá você encontrará muita coisa legal que vai te ajudar. Se cuida, abraço!',
-  image: 'https://static.freelas.town/Azul-Semfundo-3x.png',
+  image: 'https://static.workide.com/Azul-Semfundo-3x.png',
   excludeTitleSuffix: false,
   indexPage: false,
 };

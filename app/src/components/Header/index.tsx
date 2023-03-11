@@ -80,7 +80,7 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
             <Image
               src={Logo}
               className="logo"
-              alt="Freelas.town"
+              alt="workide.com"
               onClick={() => router.push('/')}
               width={120}
               height={47}
@@ -109,7 +109,7 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
                 <a className={classOng}>Para Ongs</a>
               </Link>
 
-              <Link href="https://blog.freelas.town/">
+              <Link href="https://blog.workide.com/">
                 <a target="_blank">Blog</a>
               </Link>
               {!user?.email && <Link href="/login">Login</Link>}
@@ -165,7 +165,7 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
           <Image
             src={Logo}
             className="logo"
-            alt="Freelas.town"
+            alt="workide.com"
             onClick={() => router.push('/')}
             height={60}
             width={155}
@@ -188,7 +188,7 @@ export function Header({ esconderMsg }: IProps): JSX.Element {
                 </Link>
               </li>
               <li>
-                <Link href="https://blog.freelas.town/">
+                <Link href="https://blog.workide.com/">
                   <a target="_blank">Blog</a>
                 </Link>
               </li>

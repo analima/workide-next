@@ -39,7 +39,7 @@ export function BannerInformation() {
           {title === 'price' && (
             <Information cor="#0384d1">
               <span>
-                A freelas.town não tem limites de uso. O usuário tem acesso
+                A workide.com não tem limites de uso. O usuário tem acesso
                 gratuito à todas as funcionalidades da plataforma, e o repasse
                 da taxa de 12% de intermediação ocorre apenas quando um projeto
                 for finalizado com sucesso.

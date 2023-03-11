@@ -28,7 +28,7 @@ export function SearchIdealProfessional() {
 
         <CardComent color="#e8e8e8">
           <span>2</span>
-          <h2>A freelas.town receberá seu projeto</h2>
+          <h2>A workide.com receberá seu projeto</h2>
           <p>
             Os profissionais cadastrados na plataforma receberão seu projeto e
             enviarão propostas. Você entra em contato e negocia com os

@@ -17,7 +17,7 @@ export function RecommendationComment() {
 
           <p>
             “Tive uma ótima experiência na contratação de profissionais pela
-            plataforma da Freelas.town para composição de nossos squads. O
+            plataforma da workide.com para composição de nossos squads. O
             processo é muito rápido, toda a comunicação é realizada pelo site,
             com toda segurança e transparência. Os profissionais da plataforma
             são experts em suas áreas!“.
@@ -40,7 +40,7 @@ export function RecommendationComment() {
 
           <p>
             “Sempre tivemos muita dificuldade em encontrar pessoas qualificadas
-            para nos ajudar. Na Freelas.town encontrei voluntários incríveis e
+            para nos ajudar. Na workide.com encontrei voluntários incríveis e
             com certificação profissional. A dedicação destas pessoas fez toda a
             diferença na qualidade do material“.
           </p>

@@ -69,43 +69,43 @@ export function Rodape() {
               <h2>Áreas</h2>
               <ul>
                 <li className="li-click">
-                  <Link href="https://freelas.town/detalhe-area?area=1">
+                  <Link href="https://workide.com/detalhe-area?area=1">
                     Gráficos e Design
                   </Link>
                 </li>
                 <li className="li-click">
-                  <Link href="https://freelas.town/detalhe-area?area=2">
+                  <Link href="https://workide.com/detalhe-area?area=2">
                     Marketing
                   </Link>
                 </li>
                 <li className="li-click">
-                  <Link href="https://freelas.town/detalhe-area?area=3">
+                  <Link href="https://workide.com/detalhe-area?area=3">
                     Escrita e Tradução
                   </Link>
                 </li>
 
                 <li className="li-click">
-                  <Link href="https://freelas.town/detalhe-area?area=4">
+                  <Link href="https://workide.com/detalhe-area?area=4">
                     Vídeo e Animação
                   </Link>
                 </li>
                 <li className="li-click">
-                  <Link href="https://freelas.town/detalhe-area?area=5">
+                  <Link href="https://workide.com/detalhe-area?area=5">
                     Tecnologia da Informação
                   </Link>
                 </li>
                 <li className="li-click">
-                  <Link href="https://freelas.town/detalhe-area?area=6">
+                  <Link href="https://workide.com/detalhe-area?area=6">
                     Legal
                   </Link>
                 </li>
                 <li className="li-click">
-                  <Link href="https://freelas.town/detalhe-area?area=7">
+                  <Link href="https://workide.com/detalhe-area?area=7">
                     Administração
                   </Link>
                 </li>
                 <li className="li-click">
-                  <Link href="https://freelas.town/detalhe-area?area=8">
+                  <Link href="https://workide.com/detalhe-area?area=8">
                     Finanças e Contabilidade
                   </Link>
                 </li>
@@ -192,10 +192,10 @@ export function Rodape() {
             >
               <Image src={Linkedin} width={40} height={40} alt="Linkedin" />
             </a>
-            <a href="https://www.instagram.com/freelas.town/" target="blank">
+            <a href="https://www.instagram.com/workide.com/" target="blank">
               <Image src={Instagram} width={40} height={40} alt="Instagram" />
             </a>
-            <a href="https://www.facebook.com/www.freelas.town" target="blank">
+            <a href="https://www.facebook.com/www.workide.com" target="blank">
               <Image src={Facebook} width={40} height={40} alt="Facebook" />
             </a>
           </div>
