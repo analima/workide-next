@@ -2,7 +2,6 @@ import { Col, Row } from 'react-bootstrap';
 import { Card } from '../../../../components/Card';
 import { Titulo } from '../../../../components/Titulo';
 
-import EstrelaOff from '../../../../assets/estrela-off.svg';
 import Estrela from '../../../../assets/estrela.svg';
 import PlaceholderImage from '../../../../assets/placeholderImg.png';
 import Image from 'next/image';
@@ -61,23 +60,6 @@ export default function Contratante({ idPessoaConsumidor }: IContratanteProps) {
         });
     }
   }, [dadosContratante.id_arquivo, idPessoaConsumidor]);
-
-  function handleShowStars(numberOfStars: number) {
-    const stars = [];
-    for (let i = 1; i <= 5; i += 1) {
-      if (i <= numberOfStars) {
-        if (numberOfStars === 0)
-          stars.push(
-            <EstrelaOff className="estrela" key={i + Math.random()} />,
-          );
-        else
-          stars.push(<Estrela className="estrela" key={i + Math.random()} />);
-      } else {
-        stars.push(<EstrelaOff className="estrela" key={i + Math.random()} />);
-      }
-    }
-    return stars;
-  }
 
   useEffect(() => {
     if (idPessoaConsumidor) {
@@ -157,7 +139,7 @@ export default function Contratante({ idPessoaConsumidor }: IContratanteProps) {
                 {dadosContratante.ativo && (
                   <AvaliacaoContainer>
                     <span>{notaMedia?.toFixed(2)}</span>
-                    {handleShowStars(notaMedia)}
+                    <Estrela className="estrela" key={0} />
                   </AvaliacaoContainer>
                 )}
               </Col>

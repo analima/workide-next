@@ -28,6 +28,8 @@ import { geral_api } from '../../services/geral_api';
 import { GetStaticProps } from 'next';
 import { version } from '../../../package.json';
 import { TIME_REVALIDATE } from 'src/const';
+import { Spinner } from 'src/components/Spinner';
+import { SemConteudo } from 'src/components/SemConteudo';
 
 interface IProps {
   appVersion: string;
@@ -44,81 +46,68 @@ export default function FaqContent({ appVersion }: IProps) {
   const [hasEndingPosts, setHasEndingPosts] = useState(false);
   const [filterTagSelected, setFilterTagSelected] = useState('');
   const [filterCategorySelected, setFilterCategorySelected] = useState('');
+  const [loading, setLoading] = useState<boolean>(false);
 
   const loadMoreRef = useRef(null);
 
   const router = useRouter();
   const getPostsAndSetOrIncrementIntoState = useCallback(
     async (reset?: boolean) => {
-      const SIZE_TO_GET_FAQ = 10;
+      try {
+        const SIZE_TO_GET_FAQ = 10;
+        setLoading(true);
 
-      const bodyToSearch: any = {};
+        const bodyToSearch: any = {};
 
-      if (searchTerm.length > 0) {
-        bodyToSearch['termo'] = searchTerm;
-      }
+        if (searchTerm.length > 0) {
+          bodyToSearch['termo'] = searchTerm;
+        }
 
-      if (filterTagSelected && filterTagSelected.length > 0) {
-        bodyToSearch['ids_tags'] = [filterTagSelected];
-      }
+        if (filterTagSelected && filterTagSelected.length > 0) {
+          bodyToSearch['ids_tags'] = [filterTagSelected];
+        }
 
-      if (filterCategorySelected && filterCategorySelected.length > 0) {
-        bodyToSearch['id_categoria'] = filterCategorySelected;
-      }
+        if (filterCategorySelected && filterCategorySelected.length > 0) {
+          bodyToSearch['id_categoria'] = filterCategorySelected;
+        }
 
-      const { data: responsePostInfos } = await consultas_api.post(
-        `/consulta/faq?limit=${SIZE_TO_GET_FAQ}&page=${currentPage}`,
-        bodyToSearch,
-      );
-      let { values: posts }: { values: IFaqPost[] } = responsePostInfos;
+        const { data: responsePostInfos } = await consultas_api.post(
+          `/consulta/faq?limit=${SIZE_TO_GET_FAQ}&page=${currentPage}`,
+          bodyToSearch,
+        );
+        let { values: posts }: { values: IFaqPost[] } = responsePostInfos;
 
-      if (currentPage >= responsePostInfos.pages) {
-        setHasEndingPosts(true);
-      } else {
-        setHasEndingPosts(false);
-      }
+        if (currentPage >= responsePostInfos.pages) {
+          setHasEndingPosts(true);
+        } else {
+          setHasEndingPosts(false);
+        }
 
-      if (reset) {
+        if (reset) {
+          setPostsFaq(posts);
+          return;
+        }
+
         setPostsFaq(posts);
-        return;
+      } catch (error: any) {
+        console.log(error.message);
+      } finally {
+        setLoading(false);
       }
-
-      setPostsFaq(oldPosts => [...oldPosts, ...posts]);
     },
     [currentPage, searchTerm, filterTagSelected, filterCategorySelected],
   );
-
-  useEffect(() => {
-    getPostsAndSetOrIncrementIntoState();
-  }, [getPostsAndSetOrIncrementIntoState, currentPage]);
 
   // when a filter change
   useEffect(() => {
     setCurrentPage(1);
     getPostsAndSetOrIncrementIntoState(true);
-
-    // eslint-disable-next-line
-  }, [searchTerm, filterTagSelected, filterCategorySelected]);
-
-  useEffect(() => {
-    const options = {
-      root: null,
-      rootMargin: '20px',
-      threshold: 1.0,
-    };
-
-    const observer = new IntersectionObserver(entities => {
-      const target = entities[0];
-
-      if (target.isIntersecting) {
-        setCurrentPage(old => old + 1);
-      }
-    }, options);
-
-    if (loadMoreRef.current) {
-      observer.observe(loadMoreRef.current);
-    }
-  }, []);
+  }, [
+    searchTerm,
+    filterTagSelected,
+    filterCategorySelected,
+    getPostsAndSetOrIncrementIntoState,
+  ]);
 
   useEffect(() => {
     const getAllCategoriesAndTagsFromApi = async () => {
@@ -164,11 +153,12 @@ export default function FaqContent({ appVersion }: IProps) {
                   <FilterTags
                     key={tagFilter.id}
                     selected={filterTagSelected === tagFilter.id}
-                    onClick={() =>
+                    onClick={() => {
+                      if (loading) return;
                       setFilterTagSelected(oldSelected =>
                         oldSelected === tagFilter.id ? '' : tagFilter.id,
-                      )
-                    }
+                      );
+                    }}
                   >
                     #{tagFilter.descricao}
                   </FilterTags>
@@ -186,13 +176,15 @@ export default function FaqContent({ appVersion }: IProps) {
                   <FilterTopicCard
                     key={categoryFilter.id}
                     selected={filterCategorySelected === categoryFilter.id}
-                    onClick={() =>
+                    onClick={() => {
+                      if (loading) return;
+
                       setFilterCategorySelected(oldSelected =>
                         oldSelected === categoryFilter.id
                           ? ''
                           : categoryFilter.id,
-                      )
-                    }
+                      );
+                    }}
                   >
                     {categoryFilter.descricao}
                   </FilterTopicCard>
@@ -206,32 +198,38 @@ export default function FaqContent({ appVersion }: IProps) {
           <RowCentered>
             <Col lg={12}>
               <ContainerPost>
-                {postsFaq.map((post: IFaqPost) => (
-                  <PostItem key={post.id}>
-                    <CustomToggle eventKey={post.id.toString()} post={post} />
-                    <PostFaqCardBody eventKey={post.id.toString()}>
-                      <>
-                        <p>{post.conteudo}</p>
-                        <ContainerTagPost>
-                          {post.tags &&
-                            post.tags.map(tag => (
-                              <TagItemPost key={tag.id}>
-                                #{tag.descricao}
-                              </TagItemPost>
-                            ))}
-                        </ContainerTagPost>
-                      </>
-                    </PostFaqCardBody>
-                  </PostItem>
-                ))}
-                <p
-                  ref={loadMoreRef}
-                  style={{
-                    display: hasEndingPosts ? 'none' : 'block',
-                  }}
-                >
-                  Carregando mais posts...
-                </p>
+                {postsFaq && !loading ? (
+                  postsFaq.map((post: IFaqPost) => (
+                    <PostItem key={post.id}>
+                      <CustomToggle eventKey={post.id.toString()} post={post} />
+                      <PostFaqCardBody eventKey={post.id.toString()}>
+                        <>
+                          <p>{post.conteudo}</p>
+                          <ContainerTagPost>
+                            {post.tags &&
+                              post.tags.map(tag => (
+                                <TagItemPost key={tag.id}>
+                                  #{tag.descricao}
+                                </TagItemPost>
+                              ))}
+                          </ContainerTagPost>
+                        </>
+                      </PostFaqCardBody>
+                    </PostItem>
+                  ))
+                ) : (
+                  <p
+                    ref={loadMoreRef}
+                    style={{
+                      display: !loading ? 'none' : 'block',
+                    }}
+                  >
+                    Carregando mais posts... <Spinner size="15px" />
+                  </p>
+                )}
+                {postsFaq.length === 0 && !loading && (
+                  <SemConteudo mensagem="Nenhum post encontrado." />
+                )}
               </ContainerPost>
             </Col>
           </RowCentered>

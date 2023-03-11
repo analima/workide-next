@@ -13,7 +13,6 @@ import {
   ButtonMainStyled,
 } from './style';
 import Image from 'next/image';
-import EstrelaOff from '../../assets/estrela-off.svg';
 import Estrela from '../../assets/estrela.svg';
 import PlaceholderImage from '../../assets/placeholderImg.png';
 
@@ -77,23 +76,6 @@ export const UserCard = ({
 
   function handleShowAvatarCadastroIncompleto() {
     setShowAvatarCadastroIncompleto(!showAvatarCadastroIncompleto);
-  }
-
-  function handleShowStars(numberOfStars: number) {
-    const stars = [];
-    for (let i = 1; i <= 5; i += 1) {
-      if (i <= numberOfStars) {
-        if (numberOfStars === 0)
-          stars.push(
-            <EstrelaOff className="estrela" key={i + Math.random()} />,
-          );
-        else
-          stars.push(<Estrela className="estrela" key={i + Math.random()} />);
-      } else {
-        stars.push(<EstrelaOff className="estrela" key={i + Math.random()} />);
-      }
-    }
-    return stars;
   }
 
   useEffect(() => {
@@ -171,7 +153,7 @@ export const UserCard = ({
           {ativo && (
             <>
               <p>{notaMedia?.toFixed(2)}</p>
-              {handleShowStars(notaMedia || 0)}
+              <Estrela className="estrela" key={0} />
             </>
           )}
         </EvaluationStyled>

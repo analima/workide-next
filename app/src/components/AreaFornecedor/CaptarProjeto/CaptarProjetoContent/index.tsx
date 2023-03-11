@@ -59,7 +59,6 @@ export default function CaptarProjetoContent({ versao }: IProps) {
     limparFiltros,
     setValue,
   } = useCaptarProjetoFornecedor();
-  console.log(projetosExclusivos);
 
   const [favorito, setFavorito] = useState(false);
   const toggleVolutarios = watch('toggle_volutarios');
@@ -130,7 +129,8 @@ export default function CaptarProjetoContent({ versao }: IProps) {
 
   useEffect(() => {
     if (query.filter) setValue('pesquisa', query.filter);
-  }, [query.filter, setValue]);
+    if (query.voluntario) setValue('toggle_volutarios', true);
+  }, [query.filter, query.voluntario, setValue]);
 
   return (
     <Content ref={contentRef}>
@@ -214,6 +214,7 @@ export default function CaptarProjetoContent({ versao }: IProps) {
               <Button
                 onClick={() => {
                   limparFiltros();
+                  setFavorito(false);
                 }}
               >
                 LIMPAR FILTROS

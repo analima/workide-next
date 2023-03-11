@@ -58,6 +58,21 @@ export const Nav = styled.ul`
 export const NavItem = styled.li`
   list-style: none;
   padding: 6px 0;
+
+  .em-breve {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    span {
+      padding: 6px;
+      background-color: ${AZUL};
+      color: ${BRANCO};
+      font-size: 12px;
+      font-weight: bold;
+      border-radius: 16px;
+    }
+  }
 `;
 
 export const NavLink = styled.a`

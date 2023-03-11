@@ -91,11 +91,19 @@ export function NovoPerfilPublico({ versao }: IProps) {
     hotjar.stateChange('/fornecedor/perfil');
   }, []);
 
+  function backPage() {
+    router.back();
+    router.back();
+  }
+
   return (
     <Content>
       <SEO
         title={`Perfil do fornecedor ${dataProvider.nome_tratamento}`}
-        description={`Perfil público do fornecedor ${dataProvider.nome_tratamento}`}
+        description={
+          dataProvider.resumo_profissional ??
+          `Perfil público do fornecedor ${dataProvider.nome_tratamento}`
+        }
         indexPage
         image={
           dataProvider.arquivo
@@ -172,7 +180,7 @@ export function NovoPerfilPublico({ versao }: IProps) {
         <Row>
           <Col lg={12}>
             <ContentButton>
-              <ButtonVoltar onClick={() => router.back()}>VOLTAR</ButtonVoltar>
+              <ButtonVoltar onClick={() => backPage()}>VOLTAR</ButtonVoltar>
             </ContentButton>
           </Col>
         </Row>

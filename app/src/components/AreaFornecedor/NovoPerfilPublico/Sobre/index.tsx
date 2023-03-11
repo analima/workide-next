@@ -18,7 +18,6 @@ import {
   BannerVoluntario,
 } from './style';
 
-import EstrelaOff from '../../../../assets/estrela-off.svg';
 import Estrela from '../../../../assets/estrela.svg';
 import CoracaoOff from '../../../../assets/coracao-off.svg';
 import Coracao from '../../../../assets/coracao.svg';
@@ -44,6 +43,7 @@ import { MedalhasFornecedor } from '../../../../components/MedalhasFornecedor';
 import { consultas_api } from '../../../../services/consultas_api';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { salvarOrigemAcesso } from 'src/utils/origemAcesso';
 
 type PropsPage = {
   imageLoaded: boolean;
@@ -190,45 +190,6 @@ export function Sobre({ dataProps, getProvider, imageLoaded }: PropsPage) {
       load();
     }
   }, [dataProps, user]);
-
-  function handleShowStars(numberOfStars: number) {
-    const stars = [];
-    for (let i = 1; i <= 5; i += 1) {
-      if (i <= numberOfStars) {
-        if (numberOfStars === 0)
-          stars.push(
-            <Image
-              src={EstrelaOff}
-              height={18}
-              width={18}
-              alt="estrela"
-              key={i + Math.random()}
-            />,
-          );
-        else
-          stars.push(
-            <Image
-              src={Estrela}
-              height={18}
-              width={18}
-              alt="estrela"
-              key={i + Math.random()}
-            />,
-          );
-      } else {
-        stars.push(
-          <Image
-            src={EstrelaOff}
-            height={18}
-            width={18}
-            alt="estrela"
-            key={i + Math.random()}
-          />,
-        );
-      }
-    }
-    return stars;
-  }
 
   const handleFavorite = useCallback(() => {
     const load = async () => {
@@ -443,7 +404,13 @@ export function Sobre({ dataProps, getProvider, imageLoaded }: PropsPage) {
                       <span className="nota">
                         {Number(dataProps?.ranking.notaMedia)}
                       </span>
-                      {handleShowStars(Number(dataProps?.ranking?.notaMedia))}
+                      <Image
+                        src={Estrela}
+                        height={22}
+                        width={22}
+                        alt="estrela"
+                        key={0}
+                      />
                     </Avaliacao>
                   )}
                 </section>
@@ -460,6 +427,9 @@ export function Sobre({ dataProps, getProvider, imageLoaded }: PropsPage) {
                         return;
                       }
                       if (!user.id_pessoa) {
+                        console.log('PASSOU SOLICITAR PROPOSTA NEXT');
+
+                        salvarOrigemAcesso();
                         router.push('/cadastro-basico');
                         return;
                       }

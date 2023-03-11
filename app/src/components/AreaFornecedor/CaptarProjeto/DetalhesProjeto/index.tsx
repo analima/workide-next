@@ -9,7 +9,6 @@ import Coracao from '../../../../assets/coracao.svg';
 import ExclusivoImage from '../../../../assets/exclusive.svg';
 
 import IconeVoluntario from '../../../../assets/icon-voluntare.svg';
-import EstrelaOff from '../../../../assets/estrela-off.svg';
 import Estrela from '../../../../assets/estrela.svg';
 import {
   Header,
@@ -69,6 +68,7 @@ import { hotjar } from 'react-hotjar';
 import { AvatarErroGeral } from '../../../../components/AvatarErroGeral';
 import { ModalRecomendacao } from '../../../../components/ModalRecomendacao';
 import { Skeleton } from '../../../../components/Skeleton';
+import { salvarOrigemAcesso } from 'src/utils/origemAcesso';
 
 export interface IProduct {
   id: number;
@@ -288,23 +288,6 @@ export default function DetalhesProjeto() {
     );
     hotjar.stateChange('/detalhes-projeto/');
   }, []);
-
-  function handleShowStars(numberOfStars: number) {
-    const stars = [];
-    for (let i = 1; i <= 5; i += 1) {
-      if (i <= numberOfStars) {
-        if (numberOfStars === 0)
-          stars.push(
-            <EstrelaOff className="estrela" key={i + Math.random()} />,
-          );
-        else
-          stars.push(<Estrela className="estrela" key={i + Math.random()} />);
-      } else {
-        stars.push(<EstrelaOff className="estrela" key={i + Math.random()} />);
-      }
-    }
-    return stars;
-  }
 
   const handleDate = (elm: any) => {
     const date = new Date(elm);
@@ -588,7 +571,7 @@ export default function DetalhesProjeto() {
                           COMPARTILHAR
                         </Compartilhar>
 
-                        <span>Veja como estão vendo sua proposta</span>
+                        {/* <span>Veja como estão vendo sua proposta</span> */}
                       </HeaderContentButton>
                     </Col>
                   ) : (
@@ -604,8 +587,15 @@ export default function DetalhesProjeto() {
                             <Button
                               onClick={() => {
                                 if (!user.id_pessoa) {
+                                  salvarOrigemAcesso(
+                                    `detalhes-projeto/${idProject}?tipo=false`,
+                                  );
                                   history.push('/cadastro-basico');
                                   return;
+                                } else {
+                                  salvarOrigemAcesso(
+                                    `detalhes-projeto/${idProject}?tipo=false`,
+                                  );
                                 }
                                 handleCheckNumberOfConcurrenceProjects();
                               }}
@@ -840,9 +830,12 @@ export default function DetalhesProjeto() {
                     <Col lg={2} className="d-flex justify-content-center">
                       <FotoPerfil
                         onClick={() =>
-                          history.push(`/contratante/perfil-publico?apelido=${user.nome_tratamento}`, {
-                            id: dadosConsumidor.id,
-                          })
+                          history.push(
+                            `/contratante/perfil-publico?apelido=${user.nome_tratamento}`,
+                            {
+                              id: dadosConsumidor.id,
+                            },
+                          )
                         }
                         alt="foto"
                         src={image}
@@ -851,22 +844,24 @@ export default function DetalhesProjeto() {
 
                     <Col lg={10}>
                       <Info>
-                        <NomeTitulo
-                          onClick={() => {
-                            if (!user.id_pessoa) {
-                              history.push('/cadastro-basico');
-                              return;
-                            }
-                            history.push(`/contratante/perfil-publico`, {
-                              id: dadosConsumidor.id,
-                            });
-                          }}
-                        >
-                          {dadosConsumidor.nome_tratamento}
-                        </NomeTitulo>
+                        <div className="container-name">
+                          <NomeTitulo
+                            onClick={() => {
+                              if (!user.id_pessoa) {
+                                history.push('/cadastro-basico');
+                                return;
+                              }
+                              history.push(`/contratante/perfil-publico`, {
+                                id: dadosConsumidor.id,
+                              });
+                            }}
+                          >
+                            {dadosConsumidor.nome_tratamento}
+                          </NomeTitulo>
+                        </div>
                         <Avaliacao>
                           <span>{notaMedia?.toFixed(2)}</span>
-                          {handleShowStars(notaMedia)}
+                          <Estrela className="estrela" key={0} />
                         </Avaliacao>
                         <SobreDrescricao>
                           {dadosConsumidor.resumo_profissional}

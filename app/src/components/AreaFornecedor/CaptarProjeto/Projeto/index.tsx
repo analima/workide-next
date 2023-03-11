@@ -12,7 +12,6 @@ import {
 import Exclusivo from '../../../../assets/exclusive.svg';
 import ModalDenuncia from '../../../ModalDenuncia';
 import IconeVoluntario from '../../../../assets/icon-voluntare.svg';
-import EstrelaOff from '../../../../assets/estrela-off.svg';
 import Estrela from '../../../../assets/estrela.svg';
 import userPhoto from '../../../../assets/user.png';
 
@@ -43,6 +42,7 @@ import {
   ContentTrash,
   TextoPublicacao,
   ContentLabels,
+  ContainerName,
 } from './style';
 import Content from './style';
 import { Card } from '../../../../components/Card';
@@ -72,6 +72,7 @@ import { GiShare } from 'react-icons/gi';
 import { ModalRecomendacao } from '../../../../components/ModalRecomendacao';
 import { Spinner } from '../../../../components/Spinner';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+import { Medalha } from 'src/components/Medalha';
 
 type PessoaType = {
   id: number;
@@ -79,6 +80,7 @@ type PessoaType = {
   nome: string;
   nome_tratamento: string;
   idPessoaConsumidor: number;
+  moderacao: boolean;
   arquivo: {
     id: string;
     url: string;
@@ -153,26 +155,31 @@ export default function Projeto({
   };
 
   const handleFavoritar = useCallback(async () => {
-    if (!user.id_pessoa) {
-      router.push('/login');
-      return;
-    }
+    try {
+      if (!user.id_pessoa) {
+        router.push('/login');
+        return;
+      }
+      setProjetoFavorito(true);
+      const response = await oportunidades_api.get('/projetos/favoritos');
+      const numeroFavoritos = response.data.length;
 
-    const response = await oportunidades_api.get('/projetos/favoritos');
-    const numeroFavoritos = response.data.length;
-
-    if (numeroFavoritos >= limitacoesPlano.favoritarProjetos) {
-      handleShowAvatarRegrasPlano();
-      return;
+      if (numeroFavoritos >= limitacoesPlano.favoritarProjetos) {
+        handleShowAvatarRegrasPlano();
+        return;
+      }
+      oportunidades_api
+        .post(`/projetos/${projeto.id}/favoritos`)
+        .then(() => {
+          obterProjetosFavoritos();
+        })
+        .catch(error => {
+          console.error(error.response);
+        });
+    } catch (error: any) {
+      console.log(error.message);
+      setProjetoFavorito(false);
     }
-    oportunidades_api
-      .post(`/projetos/${projeto.id}/favoritos`)
-      .then(() => {
-        obterProjetosFavoritos();
-      })
-      .catch(error => {
-        console.error(error.response);
-      });
   }, [
     user.id_pessoa,
     limitacoesPlano.favoritarProjetos,
@@ -215,48 +222,6 @@ export default function Projeto({
         obterNotaMedia(res.data?.id);
       });
   }, [projeto.idPessoaConsumidor, obterNotaMedia]);
-
-  function handleShowStars(numberOfStars: number) {
-    const stars = [];
-    for (let i = 1; i <= 5; i += 1) {
-      if (i <= numberOfStars) {
-        if (numberOfStars === 0)
-          stars.push(
-            <Image
-              src={EstrelaOff}
-              className="estrela"
-              key={i + Math.random()}
-              alt="estrela-apagada"
-              width={18}
-              height={18}
-            />,
-          );
-        else
-          stars.push(
-            <Image
-              src={Estrela}
-              className="estrela"
-              key={i + Math.random()}
-              alt="estrela"
-              width={18}
-              height={18}
-            />,
-          );
-      } else {
-        stars.push(
-          <Image
-            src={EstrelaOff}
-            className="estrela"
-            key={i + Math.random()}
-            alt="estrela-apagada"
-            width={18}
-            height={18}
-          />,
-        );
-      }
-    }
-    return stars;
-  }
 
   function handleShowAvatarCadastroIncompleto() {
     setShowAvatarCadastroIncompleto(!showAvatarCadastroIncompleto);
@@ -512,14 +477,25 @@ export default function Projeto({
                   <Skeleton width="45px" height="45px" radius="50%" />
                 )}
                 <Info>
-                  <Titulo
-                    titulo={consumidor.nome_tratamento}
-                    tamanho={20}
-                    cor={CINZA_40}
-                  />
+                  <ContainerName>
+                    <Titulo
+                      titulo={consumidor.nome_tratamento}
+                      tamanho={20}
+                      cor={CINZA_40}
+                    />
+                    {consumidor.moderacao && (
+                      <Medalha chave="pessoa-verificada" isActive={true} />
+                    )}
+                  </ContainerName>
                   <Avaliacao>
                     <span>{notaMedia?.toFixed(2)}</span>
-                    {handleShowStars(notaMedia)}
+                    <Image
+                      src={Estrela}
+                      height={22}
+                      width={22}
+                      alt="estrela"
+                      key={0}
+                    />
                   </Avaliacao>
                 </Info>
               </Consumidor>
@@ -547,17 +523,12 @@ export default function Projeto({
                     projeto.idPessoaConsumidor === user.id ? false : true
                   }
                   disabled={projeto.idPessoaConsumidor === user.id}
-                  onClick={() => {
-                    if (!user.id_pessoa) {
-                      router.push('/cadastro-basico');
-                      return;
-                    }
-
+                  onClick={() =>
                     router.push({
                       pathname: `/detalhes-projeto/${projeto.id}`,
                       query: { tipo: tipo === 'exclusivo' },
-                    });
-                  }}
+                    })
+                  }
                 >
                   MAIS DETALHES
                 </Button>

@@ -523,8 +523,8 @@ export const Avaliacao = styled.div`
   }
 
   .estrela {
-    width: 18px;
-    height: 18px;
+    width: 22px;
+    height: 22px;
   }
 
   @media (max-width: 478px) {

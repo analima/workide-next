@@ -12,7 +12,7 @@ export function ConhecaComoFunciona() {
             <span>
               <BsCheckCircleFill color={LARANJA} size={51} />
             </span>
-            Para fornecedores
+            Para profissionais
           </div>
 
           <p>

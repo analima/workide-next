@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router';
-import { CardContainer } from './style';
+import { CardContainer, ContainerCarregamentoConteudo } from './style';
 import Content from './style';
 import { useAuth } from '../../../../../contexts/auth';
 import { AvatarCadastroIncompleto } from '../../../../AvatarCadastroIncompleto';
@@ -19,6 +19,7 @@ import Avatar from '../../../../CadastroComplementar/Apresentacao/style';
 import Carol from '../../../../../assets/carol-full.svg';
 import iconSelectPosition from '../../../../../assets/IconSelectPositionGrey.svg';
 import { useBuscaFornecedorOferta } from '../../../../../hooks/buscaConsumidor';
+import { Spinner } from 'src/components/Spinner';
 
 export default function Fornecedor() {
   const parent = useRef(null);
@@ -31,6 +32,7 @@ export default function Fornecedor() {
     setOrder,
     setPaginaPerfis,
     totalPaginasPerfis,
+    loading,
   } = useBuscaFornecedorOferta();
   const { user } = useAuth();
 
@@ -124,23 +126,29 @@ export default function Fornecedor() {
             </>
           ) : (
             <Card>
-              <AvatarContainer full>
-                <Dialogo>
-                  <ContentAvatar>
-                    <p>
-                      Opa.. Parece que não encontramos uma o que você procurava.
-                      O que acha de fazer uma nova busca ?
-                      <br />
-                      <br />
-                      Ou se o seu problema for bem específico fique a vontade
-                      para publicar um novo projeto.
-                    </p>
-                  </ContentAvatar>
-                </Dialogo>
-                <Avatar>
-                  <Image src={Carol} alt="avatar carol" />
-                </Avatar>
-              </AvatarContainer>
+              {!loading ? (
+                <AvatarContainer full>
+                  <Dialogo>
+                    <ContentAvatar>
+                      <p>
+                        Opa.. Parece que não encontramos uma o que você
+                        procurava. O que acha de fazer uma nova busca ?
+                        <br />
+                        <br />
+                        Ou se o seu problema for bem específico fique a vontade
+                        para publicar um novo projeto.
+                      </p>
+                    </ContentAvatar>
+                  </Dialogo>
+                  <Avatar>
+                    <Image src={Carol} alt="avatar carol" />
+                  </Avatar>
+                </AvatarContainer>
+              ) : (
+                <ContainerCarregamentoConteudo>
+                  <Spinner size="100" />
+                </ContainerCarregamentoConteudo>
+              )}
             </Card>
           )}
         </Col>
