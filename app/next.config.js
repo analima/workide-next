@@ -2,13 +2,13 @@
 const nextConfig = {
   images: {
     domains: [
-      'files-gyan-hom.s3.amazonaws.com',
-      'files-gyan-ppr.s3.amazonaws.com',
-      'files-gyan-prod.s3.amazonaws.com',
-      'gyan-sp-public.s3.sa-east-1.amazonaws.com',
-      'blog-gyan-hom.s3.us-west-2.amazonaws.com',
-      'blog-gyan-prod.s3.us-west-2.amazonaws.com',
-      'blog-gyan-prod.s3.amazonaws.com',
+      'files-workide-hom.s3.amazonaws.com',
+      'files-workide-ppr.s3.amazonaws.com',
+      'files-workide-prod.s3.amazonaws.com',
+      'workide-public.s3.amazonaws.com',
+      'blog-workide-hom.s3.us-west-2.amazonaws.com',
+      'blog-workide-prod.s3.us-west-2.amazonaws.com',
+      'blog-workide-prod.s3.amazonaws.com',
     ],
   },
   swcMinify: true,
