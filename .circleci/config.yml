@@ -57,7 +57,7 @@ jobs:
           dockerfile: Dockerfile
           path: ./app
           region: AWS_REGION
-          repo: gyan-next-hom
+          repo: workidetechnology-next-hom
           tag: "$CIRCLE_SHA1,latest"
       - slack/notify:
           event: fail
@@ -115,7 +115,7 @@ jobs:
           dockerfile: Dockerfile
           path: ./app
           region: AWS_REGION
-          repo: gyan-next-prod
+          repo: workidetechnology-next-prod
           tag: "$CIRCLE_SHA1,latest"
       - slack/notify:
           event: fail
