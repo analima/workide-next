@@ -17,7 +17,7 @@ import { IServicoInfo } from 'src/interfaces/IServicoInfo';
 import { SEO } from 'src/components/SEO';
 import { useAuth } from 'src/contexts/auth';
 import { useRouter } from 'next/router';
-import { version } from '../../package.json';
+import packageInfo from '../../package.json';
 import { TIME_REVALIDATE } from 'src/const';
 import { KEY_WORDS } from 'src/keywords';
 
@@ -71,7 +71,7 @@ export default function Home({ vitrineData, appVersion }: IPropsData) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const appVersion = version;
+  const appVersion = packageInfo.version;
   const searchOffers = async (): Promise<any> => {
     const { data } = await consultas_api.post<{ values: IServicoInfo[] }>(
       `/consulta/ofertas?limit=12`,

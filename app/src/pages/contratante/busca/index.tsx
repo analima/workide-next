@@ -5,7 +5,8 @@ import ContentBusca from '../../../components/AreaConsumidor/Busca/ContentBusca'
 import Content from '../../../components/AreaConsumidor/Busca/style';
 import { GetStaticProps } from 'next';
 import { SEO } from 'src/components/SEO';
-import { version } from '../../../../package.json';
+//import { version } from '../../../../package.json';
+import packageInfo from '../../../../package.json';
 import { TIME_REVALIDATE } from 'src/const';
 
 interface IProps {
@@ -31,7 +32,7 @@ export default function Busca({ appVersion }: IProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const appVersion = version;
+  const appVersion = packageInfo.version;
 
   return {
     props: {

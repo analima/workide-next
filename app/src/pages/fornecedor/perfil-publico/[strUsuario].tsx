@@ -4,7 +4,7 @@ import { hotjar } from 'react-hotjar';
 import { NovoPerfilPublico } from 'src/components/AreaFornecedor/NovoPerfilPublico';
 import { SEO } from 'src/components/SEO';
 import { TIME_REVALIDATE } from 'src/const';
-import { version } from '../../../../package.json';
+import packageInfo from '../../../../package.json';
 
 interface IProps {
   appVersion: string;
@@ -34,7 +34,7 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const appVersion = version;
+  const appVersion = packageInfo.version;
 
   return {
     props: {

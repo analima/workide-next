@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import CaptarProjetoContent from '../../../components/AreaFornecedor/CaptarProjeto/CaptarProjetoContent';
 import { SEO } from 'src/components/SEO';
 import { GetStaticProps } from 'next';
-import { version } from '../../../../package.json';
+import packageInfo from '../../../../package.json';
 import { TIME_REVALIDATE } from 'src/const';
 
 interface IProps {
@@ -35,7 +35,7 @@ export default function CaptarProjeto({ appVersion }: IProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const appVersion = version;
+  const appVersion = packageInfo.version;
 
   return {
     props: {

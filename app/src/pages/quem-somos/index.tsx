@@ -10,7 +10,7 @@ import { CardProjetosMaisBuscados } from '../../components/CardProjetosMaisBusca
 import { SEO } from 'src/components/SEO';
 import { GetStaticProps } from 'next';
 import { Footer } from 'src/components/Footer';
-import { version } from '../../../package.json';
+import packageInfo from '../../../package.json';
 
 interface IProps {
   appVersion: string;
@@ -46,7 +46,7 @@ export default function QuemSomos({ appVersion }: IProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const appVersion = version;
+  const appVersion = packageInfo.version;
 
   return {
     props: {

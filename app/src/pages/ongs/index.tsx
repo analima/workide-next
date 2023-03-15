@@ -6,7 +6,7 @@ import PageOng from 'src/components/PageOng';
 import { SEO } from 'src/components/SEO';
 import { IPostProps, IStatsProps } from 'src/interfaces/IPostProps';
 import { consultas_api } from 'src/services/consultas_api';
-import { version } from '../../../package.json';
+import packageInfo from '../../../package.json';
 
 interface PostProps {
   posts: IPostProps[];
@@ -35,7 +35,7 @@ export default function Ongs({ posts, stats, appVersion }: PostProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const appVersion = version;
+  const appVersion = packageInfo.version;
 
   const getAllPostsOngs = async (): Promise<IPostProps[]> => {
     const posts = await fetch(

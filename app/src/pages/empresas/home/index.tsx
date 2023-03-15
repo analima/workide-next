@@ -5,7 +5,7 @@ import { consultas_api } from 'src/services/consultas_api';
 import { IServicoInfo } from 'src/interfaces/IServicoInfo';
 import { SEO } from 'src/components/SEO';
 import EmpresasHome from 'src/Containers/EmpresasHome';
-import { version } from '../../../../package.json';
+import packageInfo from '../../../../package.json';
 import { TIME_REVALIDATE } from 'src/const';
 interface IPropsData {
   vitrineData: IServicoInfo[];
@@ -34,7 +34,7 @@ export default function Home({ vitrineData, appVersion }: IPropsData) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const appVersion = version;
+  const appVersion = packageInfo.version;
 
   const searchOffers = async (): Promise<any> => {
     const { data } = await consultas_api.post<{ values: IServicoInfo[] }>(

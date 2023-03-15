@@ -26,7 +26,7 @@ import { CustomToggle } from '../../components/FAQ/CustomToggle';
 import { consultas_api } from '../../services/consultas_api';
 import { geral_api } from '../../services/geral_api';
 import { GetStaticProps } from 'next';
-import { version } from '../../../package.json';
+import packageInfo from '../../../package.json';
 import { TIME_REVALIDATE } from 'src/const';
 
 interface IProps {
@@ -265,7 +265,7 @@ export default function FaqContent({ appVersion }: IProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const appVersion = version;
+  const appVersion = packageInfo.version;
 
   return {
     props: {

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { hotjar } from 'react-hotjar';
 import DetalhesArea from 'src/components/DetalhesArea';
 import { TIME_REVALIDATE } from 'src/const';
-import { version } from '../../../package.json';
+import packageInfo  from '../../../package.json';
 
 interface IProps {
   appVersion: string;
@@ -38,7 +38,7 @@ export default function DetalheArea({ appVersion }: IProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const appVersion = version;
+  const appVersion = packageInfo.version;
 
   return {
     props: {

@@ -6,7 +6,8 @@ import Layout from 'src/components/AreaConsumidor/Layout';
 import { TIME_REVALIDATE } from 'src/const';
 import Extrato from 'src/Containers/Extrato';
 import { ID_TOKEN } from 'src/contexts/auth';
-import { version } from '../../../../package.json';
+//import { version } from '../../../../package.json';
+import packageInfo from '../../../../package.json';
 
 interface IProps {
   appVersion: string;
@@ -40,7 +41,7 @@ export default function Extratos({ appVersion }: IProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const appVersion = version;
+  const appVersion = packageInfo.version;
 
   return {
     props: {
