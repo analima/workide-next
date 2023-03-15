@@ -97,11 +97,4 @@ export const Button = styled.button`
   }
 `;
 
-export const ContainerCarregamentoConteudo = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
 export default Content;

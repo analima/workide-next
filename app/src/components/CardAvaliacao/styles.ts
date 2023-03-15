@@ -21,7 +21,6 @@ export const Avaliacao = styled.div`
   gap: 8px;
   width: 400px;
   height: 340px;
-  margin-top: 10px !important;
 
   span {
     color: ${PRETO_10};

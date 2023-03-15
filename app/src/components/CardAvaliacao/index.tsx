@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { formatDate } from '../../helpers/DateHelper';
 import { oportunidades_api } from '../../services/oportunidades_api';
+import EstrelaOff from '../../assets/estrela-off.svg';
 import Estrela from '../../assets/estrela.svg';
 import PlaceholderImg from '../../assets/placeholderImg.png';
 import Image from 'next/image';
@@ -41,12 +42,7 @@ export function CardAvaliacao({ id }: IProps) {
           } = await oportunidades_api.get(
             `/projetos/avaliacoes-fornecedor/${id}`,
           );
-
-          setEvaluations(
-            evaluationsGotInApiRequest.filter(
-              (evaluation: any) => evaluation.descricao !== null,
-            ),
-          );
+          setEvaluations(evaluationsGotInApiRequest);
         }
       } catch (error) {
         console.log(error);
@@ -55,11 +51,47 @@ export function CardAvaliacao({ id }: IProps) {
     getAllConsumerEvaluations();
   }, [id]);
 
+  function handleShowStars(numberOfStars: number) {
+    const stars = [];
+    for (let i = 1; i <= 5; i += 1) {
+      if (i <= numberOfStars) {
+        if (numberOfStars === 0)
+          stars.push(
+            <Image
+              src={EstrelaOff}
+              className="estrela"
+              key={i + Math.random()}
+              alt="estrela-apagada"
+            />,
+          );
+        else
+          stars.push(
+            <Image
+              src={Estrela}
+              className="estrela"
+              key={i + Math.random()}
+              alt="estrela"
+            />,
+          );
+      } else {
+        stars.push(
+          <Image
+            src={EstrelaOff}
+            className="estrela"
+            key={i + Math.random()}
+            alt="estrela-apagada"
+          />,
+        );
+      }
+    }
+    return stars;
+  }
+
   const settingsSlider = {
     speed: 700,
     dots: true,
     autoplaySpeed: 3000,
-    slidesToShow: evaluations.length > 3 ? 1.6 : evaluations.length,
+    slidesToShow: 1.4,
     className: 'container-slider',
     initialSlide: 1,
     slidesToScroll: 1,
@@ -70,21 +102,21 @@ export function CardAvaliacao({ id }: IProps) {
       {
         breakpoint: 1320,
         settings: {
-          slidesToShow: evaluations.length > 3 ? 1.3 : evaluations.length,
+          slidesToShow: 1.3,
           slidesToScroll: 1,
         },
       },
       {
         breakpoint: 1200,
         settings: {
-          slidesToShow: evaluations.length > 3 ? 1.1 : evaluations.length,
+          slidesToShow: 1,
           slidesToScroll: 1,
         },
       },
       {
         breakpoint: 991,
         settings: {
-          slidesToShow: evaluations.length > 3 ? 1 : evaluations.length,
+          slidesToShow: 1.5,
           slidesToScroll: 1,
         },
       },
@@ -135,13 +167,9 @@ export function CardAvaliacao({ id }: IProps) {
                       <ContentNota>
                         <span>{obj.nota}</span>
 
-                        <Image
-                          src={Estrela}
-                          height={22}
-                          width={22}
-                          alt="estrela"
-                          key={0}
-                        />
+                        {obj.nota
+                          ? handleShowStars(5)
+                          : handleShowStars(obj.nota || IS_EMPTY)}
                       </ContentNota>
                     </div>
                   </ContainerCardUsuario>

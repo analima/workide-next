@@ -9,7 +9,6 @@ import { ImpactfulProject } from '../ImpactfulProject';
 import { DataThatProvesSuccess } from '../DataThatProvesSuccess';
 import { ConnectOngs } from '../ConnectOngs';
 import { IPostProps, IStatsProps } from 'src/interfaces/IPostProps';
-import { Header } from '../Header';
 
 interface PostProps {
   posts: IPostProps[];
@@ -19,19 +18,16 @@ interface PostProps {
 
 export default function PageOng({ posts, stats, versao }: PostProps) {
   return (
-    <>
-      <Header esconderMsg />
-      <Container>
-        <BannerOngs />
-        <BannerSecundaryOngs />
-        <WhyInvestInVolunteers />
-        <Depositions />
-        <ImpactfulProject />
-        <DataThatProvesSuccess stats={stats} />
-        <MeetOurBlog posts={posts} />
-        <ConnectOngs />
-        <Footer versao={versao} />
-      </Container>
-    </>
+    <Container>
+      <BannerOngs />
+      <BannerSecundaryOngs />
+      <WhyInvestInVolunteers />
+      <Depositions />
+      <ImpactfulProject />
+      <DataThatProvesSuccess stats={stats} />
+      <MeetOurBlog posts={posts} />
+      <ConnectOngs />
+      <Footer versao={versao} />
+    </Container>
   );
 }

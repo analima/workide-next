@@ -75,7 +75,7 @@ export function VitrineServico({
   useEffect(() => {
     const load = async () => {
       if (isAllFavorite) {
-        const processedServices: IService[] = vitrineData?.map(service => {
+        const processedServices: IService[] = vitrineData.map(service => {
           return {
             ...service,
             isFavorite: true,
@@ -116,7 +116,7 @@ export function VitrineServico({
     servicesIndexFoundAsFavorite: number[],
     servicesProps: IServicoInfo[],
   ) => {
-    const processedServices: IService[] | any[] = servicesProps?.map(
+    const processedServices: IService[] | any[] = servicesProps.map(
       (service, index) => {
         const isFoundThisIndexInFavoriteServicesArray =
           servicesIndexFoundAsFavorite.findIndex(
@@ -167,33 +167,35 @@ export function VitrineServico({
     dots: numberCard ? false : true,
     autoplay: true,
     autoplaySpeed: 2500,
-    slidesToShow: vitrineData?.length > 3 ? 2.3 : vitrineData?.length,
+
+    slidesToShow: vitrineData.length > 3 ? 2.7 : vitrineData.length,
     className: 'container-slider',
-    infinite: vitrineData?.length >= 3,
+    infinite: vitrineData.length >= 3,
     initialSlide: 1,
-    slidesToScroll: vitrineData?.length > 3 ? 2 : vitrineData?.length,
+    slidesToScroll: numberCard
+      ? 1
+      : vitrineData.length > 3
+      ? 3.7
+      : vitrineData.length,
     nextArrow: <ArrowSlider />,
     prevArrow: <ArrowSlider />,
 
     responsive: [
       {
-        breakpoint: 1320,
-        settings: {
-          slidesToShow: vitrineData?.length > 3 ? 1.8 : vitrineData?.length,
-          slidesToScroll: 1,
-        },
-      },
-      {
         breakpoint: 1200,
         settings: {
-          slidesToShow: vitrineData?.length > 3 ? 1.7 : vitrineData?.length,
+          slidesToShow: vitrineData?.length > 2 ? 2 : 1.4,
           slidesToScroll: 1,
         },
       },
       {
         breakpoint: 991,
         settings: {
-          slidesToShow: vitrineData?.length > 3 ? 2.3 : vitrineData?.length,
+          slidesToShow: numberCard
+            ? numberCard
+            : vitrineData.length > 3
+            ? 2.1
+            : vitrineData.length,
           slidesToScroll: 1,
         },
       },
@@ -201,7 +203,11 @@ export function VitrineServico({
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: vitrineData?.length > 3 ? 1.5 : vitrineData?.length,
+          slidesToShow: numberCard
+            ? numberCard
+            : vitrineData.length > 3
+            ? 1.3
+            : vitrineData.length,
           slidesToScroll: 1,
         },
       },
@@ -209,7 +215,7 @@ export function VitrineServico({
       {
         breakpoint: 540,
         settings: {
-          slidesToShow: vitrineData?.length > 3 ? 1.3 : vitrineData?.length,
+          slidesToShow: vitrineData.length > 3 ? 1.3 : vitrineData.length,
           slidesToScroll: 1,
         },
       },
@@ -225,9 +231,9 @@ export function VitrineServico({
 
   return (
     <Content>
-      {services?.length > 0 ? (
+      {services.length > 0 ? (
         <>
-          <Carrousel size={vitrineData?.length} {...settingsSlider}>
+          <Carrousel size={vitrineData.length} {...settingsSlider}>
             {services.map(item => (
               <li key={item.id}>
                 <ServiceCard

@@ -68,11 +68,6 @@ export const PerfilAvaliacao = styled.div`
   display: flex;
   align-items: center;
   margin-top: 16px;
-
-  svg {
-    width: 22px;
-    height: 22px;
-  }
 `;
 
 export const PerfilSelos = styled.div`

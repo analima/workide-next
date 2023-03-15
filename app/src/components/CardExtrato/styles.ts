@@ -102,8 +102,7 @@ export const Content = styled.section<IStatusProps>`
       background-color: ${LARANJA};
     }
 
-    .cancelamento-solicitado,
-    .pausado {
+    .cancelamento-solicitado {
       background-color: ${VERMELHO_70};
     }
   }

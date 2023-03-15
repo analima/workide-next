@@ -43,6 +43,7 @@ import { useAuth } from '../../../../contexts/auth';
 import { hotjar } from 'react-hotjar';
 import { SEO } from '../../../SEO';
 
+import EstrelaOff from '../../../../assets/estrela-off.svg';
 import Estrela from '../../../../assets/estrela.svg';
 import { FaCheckCircle } from 'react-icons/fa';
 import Pontuacao from '../../../AreaFornecedor/Home/MinhaReputacao/Pontuacao';
@@ -178,6 +179,23 @@ export default function ServicoConsumidorPublico() {
     hotjar.stateChange('/contratante/servico');
   }, []);
 
+  function handleShowStars(numberOfStars: number) {
+    const stars = [];
+    for (let i = 1; i <= 5; i += 1) {
+      if (i <= numberOfStars) {
+        if (numberOfStars === 0)
+          stars.push(
+            <EstrelaOff className="estrela" key={i + Math.random()} />,
+          );
+        else
+          stars.push(<Estrela className="estrela" key={i + Math.random()} />);
+      } else {
+        stars.push(<EstrelaOff className="estrela" key={i + Math.random()} />);
+      }
+    }
+    return stars;
+  }
+
   useEffect(() => {
     try {
       pessoas_api.get(`/pessoas/${servico.id_pessoa}`).then(({ data }) => {
@@ -245,7 +263,11 @@ export default function ServicoConsumidorPublico() {
 
                       <ContentNota>
                         <LabelNota>{dadosPessoa.notaMedia}</LabelNota>
-                        <Estrela className="estrela" key={0} />
+                        {handleShowStars(
+                          Number(
+                            dadosPessoa.notaMedia ? dadosPessoa.notaMedia : 0,
+                          ),
+                        )}
                       </ContentNota>
                     </div>
                   </ContentUser>

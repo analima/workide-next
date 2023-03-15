@@ -19,7 +19,8 @@ export function ComoCadastrar() {
                 width={262}
                 height={262}
                 src={ImgEllipse1}
-                quality={60}
+                quality={100}
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPU0NS8CAACSAFN02dlbQAAAABJRU5ErkJggg=="
               />
             </div>
 
@@ -39,7 +40,8 @@ export function ComoCadastrar() {
                 width={262}
                 height={262}
                 src={ImgEllipse2}
-                quality={60}
+                blurDataURL='"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPU0NS8CAACSAFN02dlbQAAAABJRU5ErkJggg=="'
+                quality={100}
               />
             </div>
             <h3>Tem uma empresa?</h3>
@@ -58,8 +60,9 @@ export function ComoCadastrar() {
                 className="imag"
                 width={262}
                 height={262}
+                blurDataURL='"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPU0NS8CAACSAFN02dlbQAAAABJRU5ErkJggg=="'
                 src={ImgEllipse3}
-                quality={60}
+                quality={100}
               />
             </div>
             <h3>Tem um projeto social?</h3>
@@ -78,8 +81,9 @@ export function ComoCadastrar() {
                 className="imag"
                 width={262}
                 height={262}
+                blurDataURL='"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPU0NS8CAACSAFN02dlbQAAAABJRU5ErkJggg=="'
                 src={ImgEllipse4}
-                quality={60}
+                quality={100}
               />
             </div>
             <h3>Tem interesse em ser voluntário?</h3>

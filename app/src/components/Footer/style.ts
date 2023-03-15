@@ -160,12 +160,6 @@ export const FooterSocial = styled.section`
   }
 
   @media (max-width: 478px) {
-    .imageWpp {
-      position: relative !important;
-      top: 0%;
-      right: 10px;
-      z-index: 10;
-    }
     .content-fale-conosco {
       > div {
         margin-left: 0px;
