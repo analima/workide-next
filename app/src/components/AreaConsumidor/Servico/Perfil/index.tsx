@@ -9,6 +9,7 @@ import {
   Sobre,
 } from './style';
 import Content from './style';
+import EstrelaOff from '../../../../assets/estrela-off.svg';
 import Estrela from '../../../../assets/estrela.svg';
 import { useHistory } from 'react-router-dom';
 import { Titulo } from '../../../Titulo';
@@ -129,6 +130,23 @@ export default function Perfil({
     }
   }, [onChange, dataProvider]);
 
+  function handleShowStars(numberOfStars: number) {
+    const stars = [];
+    for (let i = 1; i <= 5; i += 1) {
+      if (i <= numberOfStars) {
+        if (numberOfStars === 0)
+          stars.push(
+            <EstrelaOff className="estrela" key={i + Math.random()} />,
+          );
+        else
+          stars.push(<Estrela className="estrela" key={i + Math.random()} />);
+      } else {
+        stars.push(<EstrelaOff className="estrela" key={i + Math.random()} />);
+      }
+    }
+    return stars;
+  }
+
   return (
     <>
       {!erro ? (
@@ -198,7 +216,13 @@ export default function Perfil({
                     <Col lg={12}>
                       <MobileCenter>
                         <LabelNota>{evaluation}</LabelNota>
-                        <Estrela className="estrela" key={0} />
+                        {handleShowStars(
+                          Number(
+                            dataProvider.ranking
+                              ? dataProvider.ranking.notaMedia
+                              : 0,
+                          ),
+                        )}
                       </MobileCenter>
                     </Col>
                   </Row>

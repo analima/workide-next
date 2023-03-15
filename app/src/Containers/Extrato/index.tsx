@@ -205,8 +205,8 @@ export default function Extrato({ type }: TypeProfileProps) {
               </ButtonFilter>
 
               <ButtonFilter
-                onClick={() => setFilter('estornado')}
-                active={filter === 'estornado'}
+                onClick={() => setFilter('cancelado')}
+                active={filter === 'cancelado'}
               >
                 Cancelado
               </ButtonFilter>
@@ -250,14 +250,14 @@ export default function Extrato({ type }: TypeProfileProps) {
                 <ContentEntendaMelhor>
                   <span>Entenda melhor:</span>
                   <p>
-                    Quando o cliente paga via <strong>cartão de crédito</strong>
-                    : Nessa forma de pagamento, pode levar até 30 dias para o
-                    pagamento ser processado. Por isso, as vezes, pode levar
-                    mais tempo para que o valor seja liberado para você.
-                    Pagamentos que estão “Aguardando conclusão”: Para estimarmos
-                    com mais precisão quando o valor será liberado, é necessário
-                    que o projeto seja primeiramente concluído. Por isso, não é
-                    possível informarmos uma data.
+                    Quando o cliente paga via <strong>cartão de crédito</strong>: Nessa forma de
+                    pagamento, pode levar até 30 dias para o pagamento ser
+                    processado. Por isso, as vezes, pode levar mais tempo para
+                    que o valor seja liberado para você. Pagamentos que estão
+                    “Aguardando conclusão”: Para estimarmos com mais precisão
+                    quando o valor será liberado, é necessário que o projeto
+                    seja primeiramente concluído. Por isso, não é possível
+                    informarmos uma data.
                   </p>
                 </ContentEntendaMelhor>
               )}

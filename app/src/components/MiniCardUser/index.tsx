@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { arquivos_api } from '../../services/arquivos_api';
 import { pessoas_api } from '../../services/pessoas_api';
-import Estrela from '../../assets/estrela.svg';
+import EstrelaOff from '../../assets/estrela-off.svg';
+import  Estrela from '../../assets/estrela.svg';
 import defaultImage from '../../assets/profileImage.svg';
 import { Avaliacao, Container } from './style';
-import Image from 'next/image';
+import Image from 'next/image'
 
 type Props = {
   id: number;
@@ -34,6 +35,23 @@ export function MiniCardUser({ id, estrela }: Props) {
     loadData();
   }, [id]);
 
+  function handleShowStars(numberOfStars: number) {
+    const stars = [];
+    for (let i = 1; i <= 5; i += 1) {
+      if (i <= numberOfStars) {
+        if (numberOfStars === 0)
+          stars.push(
+            <EstrelaOff className="estrela" key={i + Math.random()} />,
+          );
+        else
+          stars.push(<Estrela className="estrela" key={i + Math.random()} />);
+      } else {
+        stars.push(<EstrelaOff className="estrela" key={i + Math.random()} />);
+      }
+    }
+    return stars;
+  }
+
   return (
     <Container>
       {!user.imagem ? (
@@ -45,7 +63,7 @@ export function MiniCardUser({ id, estrela }: Props) {
         <p>{name}</p>
         <Avaliacao>
           <span>{user.avaliacao}</span>
-          <Estrela className="estrela" key={0} />
+          {handleShowStars(estrela)}
         </Avaliacao>
       </div>
     </Container>

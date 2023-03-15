@@ -19,6 +19,16 @@ export function BannerOngs() {
       />
 
       <Content>
+        <div className="content-logo">
+          <Image
+            src={Logo}
+            className="logo"
+            alt="freelas town"
+            width={200}
+            height={80}
+            onClick={() => router.push('/')}
+          />
+        </div>
         <h1>Sua ONG precisa de trabalho digital voluntário?</h1>
         <span>
           Está em busca de voluntários para colaborar com a sua causa, venha
@@ -31,7 +41,7 @@ export function BannerOngs() {
             onClick={() => router.push('/cadastro-basico')}
             className="btn-cadastrar"
           >
-            CADASTRAR UM PROJETO
+            CADASTRAR ONG
           </button>
           <button onClick={() => setShowModal(true)} className="btn-ebook">
             E-BOOK GRATUITO

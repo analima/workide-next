@@ -1,5 +1,5 @@
 import { Modal } from 'react-bootstrap';
-import Link from 'next/link';
+import Link from 'next/link'
 import styled from 'styled-components';
 
 import {
@@ -281,7 +281,7 @@ export const ButtonNotifications = styled.button`
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  font-size: 10px !important;
+  font-size: 10px;
   font-weight: bold;
   background-color: transparent;
   &:hover {

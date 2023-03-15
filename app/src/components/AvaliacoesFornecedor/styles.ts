@@ -171,9 +171,4 @@ export const ContainerCardUsuario = styled.div`
   padding: 2px;
   align-items: center;
   justify-content: flex-start;
-
-  .estrela {
-    width: 22px;
-    height: 22px;
-  }
 `;

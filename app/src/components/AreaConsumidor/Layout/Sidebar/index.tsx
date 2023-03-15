@@ -22,6 +22,11 @@ export default function SidebarConsumidor({ open }: ISidebar) {
                 link: `/contratante/perfil-publico?apelido=${user.nome_tratamento}`,
                 descricao: `Visualizar`,
               },
+              {
+                link: '#',
+                descricao: `Completo em ${user.percentageRegisterConsumer}%`,
+                isShowCadastro: true,
+              },
             ]}
           />
         </NavItem>
@@ -31,7 +36,12 @@ export default function SidebarConsumidor({ open }: ISidebar) {
             itens={[
               {
                 link: '/cadastro-complementar?cadastro=true&aba=0&consumidor=true',
-                descricao: 'Informações Pessoais',
+                descricao: 'Cadastro complementar',
+                isButton: true,
+              },
+              {
+                link: '/cadastro-complementar?cadastro=true&aba=1&consumidor=true',
+                descricao: 'Condições Gerais',
                 isButton: true,
               },
               {
@@ -45,12 +55,7 @@ export default function SidebarConsumidor({ open }: ISidebar) {
         <NavItem>
           <NavLink href="/contratante/minhas-compras">Minhas Compras</NavLink>
         </NavItem>
-        <NavItem>
-          <div className="em-breve">
-            <NavLink>Financeiro</NavLink>
-            <span>EM BREVE</span>
-          </div>
-        </NavItem>
+
         <NavItem>
           <DropdownMenu
             titulo="Suporte"

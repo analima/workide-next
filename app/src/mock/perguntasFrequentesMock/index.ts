@@ -304,7 +304,7 @@ export const perguntaComoFunciona = [
         id: 6,
         pergunta: 'Qual valor da taxa de intermediação?',
         resposta:
-          'Atualmente temos uma taxa de intermediação de 12% em cima do valor do projeto, que é o valor cobrado do  profissional pela plataforma pelo serviço de intermediação de negócios entre Profissionais e Clientes. Atualmente, para a intermediação da contratação de projetos, esta taxa é de 12% sobre o Valor Total Pago pelo Cliente, sendo R$14,00 a taxa mínima para projetos inferiores a 100,00. Para a intermediação da venda de ofertas prontas, promocionalmente, esta taxa também será de 12% sobre o Valor Total Pago pelo Cliente, sendo R$ sendo R$14,00 a taxa mínima para ofertas até 100,00.',
+          ' Atualmente temos uma taxa de intermediação de 12% em cima do valor do projeto, que é o valor cobrado ́ do fornecedor pela plataforma pelo serviço de intermediação de negócios entre Fornecedores e Clientes. Atualmente, para a intermediação da contratação de projetos, esta taxa é de 12% sobre o Valor Total Pago pelo Cliente, sendo R$14,00 a taxa mínima para projetos inferiores a 100,00. Para a intermediação da venda de ofertas prontas, promocionalmente, esta taxa também será de 12% sobre o Valor Total Pago pelo Cliente, sendo R$ sendo R$14,00 a taxa mínima para ofertas até 100,00.',
       },
     ],
   },

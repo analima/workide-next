@@ -14,6 +14,7 @@ import {
   ContentImg,
 } from './style';
 import Content from './style';
+import EstrelaOff from '../../../../assets/estrela-off.svg';
 import Estrela from '../../../../assets/estrela.svg';
 import CoracaoOff from '../../../../assets/coracao-off.svg';
 import Coracao from '../../../../assets/coracao.svg';
@@ -123,6 +124,23 @@ export default function Sobre({ dataProps, imageLoaded }: PropsPage) {
       load();
     }
   }, [dataProps, user]);
+
+  function handleShowStars(numberOfStars: number) {
+    const stars = [];
+    for (let i = 1; i <= 5; i += 1) {
+      if (i <= numberOfStars) {
+        if (numberOfStars === 0)
+          stars.push(
+            <EstrelaOff className="estrela" key={i + Math.random()} />,
+          );
+        else
+          stars.push(<Estrela className="estrela" key={i + Math.random()} />);
+      } else {
+        stars.push(<EstrelaOff className="estrela" key={i + Math.random()} />);
+      }
+    }
+    return stars;
+  }
 
   const handleFavorite = useCallback(() => {
     const load = async () => {
@@ -263,7 +281,7 @@ export default function Sobre({ dataProps, imageLoaded }: PropsPage) {
                   <Col lg={12}>
                     <Avaliacao>
                       <span>{Number(dataProps?.ranking.notaMedia)}</span>
-                      <Estrela className="estrela" key={0} />
+                      {handleShowStars(Number(dataProps?.ranking.notaMedia))}
                     </Avaliacao>
                   </Col>
                 </Row>

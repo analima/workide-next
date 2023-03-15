@@ -1,9 +1,13 @@
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { useHistory } from 'react-router';
 import { useAuth } from '../../../../../contexts/auth';
 import { AZUL, CINZA_10 } from '../../../../../styles/variaveis';
-import { ContainerPaginacao, Registro, RegistroQuantidade } from './style';
+import {
+  ContainerPaginacao,
+  Registro,
+  RegistroQuantidade,
+} from './style';
 import Content from './style';
-import { useRouter } from 'next/router';
 
 interface IPaginacao {
   totalPaginas: number;
@@ -11,14 +15,9 @@ interface IPaginacao {
   setPagina: (pagina: number) => void;
 }
 
-export default function Paginacao({
-  totalPaginas,
-  setPagina,
-  pagina,
-}: IPaginacao) {
+export default function Paginacao({ totalPaginas, setPagina, pagina }: IPaginacao) {
   const { user } = useAuth();
-  const router = useRouter();
-
+  const history = useHistory();
   const handleProximaPagina = () => {
     setPagina(pagina < totalPaginas ? pagina + 1 : pagina);
   };
@@ -41,7 +40,7 @@ export default function Paginacao({
           <button
             onClick={() => {
               if (!user.id_pessoa) {
-                router.push('/cadastro-basico');
+                history.push('/cadastro-basico');
                 return;
               } else {
                 handleProximaPagina();

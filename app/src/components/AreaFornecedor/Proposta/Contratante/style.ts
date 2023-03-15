@@ -37,11 +37,6 @@ export const AvaliacaoContainer = styled.div`
     margin-right: 8px;
   }
 
-  svg {
-    width: 22px;
-    height: 22px;
-  }
-
   @media (max-width: 478px) {
     display: flex;
     justify-content: center;

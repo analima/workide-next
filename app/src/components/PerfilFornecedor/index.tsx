@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { FiHeart, FiShare2 } from 'react-icons/fi';
 
+import EstrelaOff from '../../assets/estrela-off.svg';
 import Estrela from '../../assets/estrela.svg';
 
 import { AZUL_60, LARANJA } from '../../styles/variaveis';
@@ -63,6 +64,23 @@ export function PerfilFornecedor({ dataProps }: PerfilFornecedorProps) {
     setMedals('');
     refreshUserData();
   }, [refreshUserData]);
+
+  function handleShowStars(numberOfStars: number) {
+    const stars = [];
+    for (let i = 1; i <= 5; i += 1) {
+      if (i <= numberOfStars) {
+        if (numberOfStars === 0)
+          stars.push(
+            <EstrelaOff className="estrela" key={i + Math.random()} />,
+          );
+        else
+          stars.push(<Estrela className="estrela" key={i + Math.random()} />);
+      } else {
+        stars.push(<EstrelaOff className="estrela" key={i + Math.random()} />);
+      }
+    }
+    return stars;
+  }
 
   function handleShowMedals() {
     const arrayMedals: Array<JSX.Element> = [];
@@ -147,7 +165,7 @@ export function PerfilFornecedor({ dataProps }: PerfilFornecedorProps) {
             <div className="info-star">
               <div className="content-star">
                 <span>{evaluation}</span>
-                <Estrela className="estrela" key={0} />
+                {handleShowStars(0)}
               </div>
               <div className="content-medal">
                 {medals && <>{handleShowMedals().map(obj => obj)}</>}

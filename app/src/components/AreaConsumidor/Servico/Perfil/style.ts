@@ -61,11 +61,6 @@ export const MobileCenter = styled.label`
     border-radius: 50%;
   }
 
-  svg {
-    width: 22px;
-    height: 22px;
-  }
-
   @media (max-width: 1400px) {
     margin-right: 15px;
   }

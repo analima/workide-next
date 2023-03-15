@@ -6,6 +6,7 @@ import { ofertas_api } from '../../services/ofertas_api';
 import { LARANJA } from '../../styles/variaveis';
 import { formatarValor } from '../../utils/CurrencyFormat';
 import { Skeleton } from '../Skeleton';
+import EstrelaOff from '../../assets/estrela-off.svg';
 import autoAnimate from '@formkit/auto-animate';
 import Estrela from '../../assets/estrela.svg';
 import { useRouter } from 'next/router';
@@ -104,6 +105,41 @@ export function ServiceCard({
     handleMedals();
   }, [handleMedals]);
 
+  function handleShowStars(numberOfStars: number) {
+    const stars = [];
+    for (let i = 1; i <= 5; i += 1) {
+      if (i <= numberOfStars) {
+        if (numberOfStars === 0)
+          stars.push(
+            <Image
+              src={EstrelaOff}
+              alt={'avaliação'}
+              className="estrela"
+              key={i + Math.random()}
+            />,
+          );
+        else
+          stars.push(
+            <Image
+              src={Estrela}
+              alt={'avaliação'}
+              className="estrela"
+              key={i + Math.random()}
+            />,
+          );
+      } else {
+        stars.push(
+          <Image
+            src={EstrelaOff}
+            alt={'avaliação'}
+            className="estrela"
+            key={i + Math.random()}
+          />,
+        );
+      }
+    }
+    return stars;
+  }
   useEffect(() => {
     parent.current && autoAnimate(parent.current);
   }, [parent]);
@@ -163,7 +199,6 @@ export function ServiceCard({
                 layout="fill"
                 height={160}
                 width={200}
-                quality={70}
               />
             </div>
 
@@ -250,17 +285,13 @@ export function ServiceCard({
               </InfoUser>
 
               <span>
-                {Number(service.fornecedor?.ranking?.nota_media ?? 0)?.toFixed(
+                {Number(service.fornecedor?.ranking?.nota_media || 0)?.toFixed(
                   2,
                 )}
               </span>
-              <Image
-                src={Estrela}
-                height={22}
-                width={22}
-                alt="estrela"
-                key={0}
-              />
+              {handleShowStars(
+                Number(service.fornecedor?.ranking?.nota_media || 0) || 0,
+              )}
             </div>
           </ContainerProfile>
         )}
@@ -286,19 +317,14 @@ export function ServiceCard({
               </InfoUser>
 
               <span className="numberStarts">
-                {Number(dadosFornec?.ranking?.notaMedia).toFixed(2) === 'NaN' ||
-                dadosFornec?.ranking?.notaMedia === undefined ||
-                dadosFornec?.ranking?.notaMedia === null
-                  ? 0
-                  : Number(dadosFornec?.ranking?.notaMedia || 0)?.toFixed(2)}
+              {Number(dadosFornec?.ranking?.notaMedia).toFixed(2) === 'NaN'
+                ? 0
+                : Number(dadosFornec?.ranking?.notaMedia || 0)?.toFixed(2)
+              }
               </span>
-              <Image
-                src={Estrela}
-                height={22}
-                width={22}
-                alt="estrela"
-                key={0}
-              />
+              {handleShowStars(
+                Number(dadosFornec?.ranking?.notaMedia || 0) || 0,
+              )}
             </div>
           </ContainerProfile>
         )}

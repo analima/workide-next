@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { LARANJA, PRETO_10 } from '../../styles/variaveis';
+import styled from "styled-components";
+import { LARANJA, PRETO_10 } from "../../styles/variaveis";
 
 export const Container = styled.div`
   display: flex;
@@ -14,6 +14,7 @@ export const Container = styled.div`
   }
 
   div {
+
     p {
       font-size: 18px;
       font-weight: bold;
@@ -25,10 +26,10 @@ export const Container = styled.div`
 
   @media (max-width: 600px) {
     div {
-      p {
-        font-size: 16px;
-      }
+    p {
+      font-size: 16px;
     }
+  }
   }
 `;
 
@@ -39,10 +40,5 @@ export const Avaliacao = styled.div`
   span {
     color: ${LARANJA};
     margin-right: 8px;
-  }
-
-  svg {
-    width: 22px;
-    height: 22px;
   }
 `;

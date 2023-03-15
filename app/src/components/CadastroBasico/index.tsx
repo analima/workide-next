@@ -95,7 +95,7 @@ export function CadastroBasico() {
     });
   }, []);
 
-  async function handleRegistryUser(user: UserToRegistry) {
+  function handleRegistryUser(user: UserToRegistry) {
     if (userData) {
       if (!userData.policyTerms) {
         setErrorPolicyTerms(
@@ -113,35 +113,66 @@ export function CadastroBasico() {
       !user.password_confirmation &&
         setErrorConfirmPassword('Preenchimento obrigatório.');
     }
-    try {
-      await axios.post(process.env.REACT_APP_SEGURANCA_API + '/usuarios', user);
-      var emBase64 = btoa(userData.email);
-      window.location.replace('/confirmacao?q=' + emBase64);
-    } catch (error: any) {
-      if (error.response) {
-        console.error(error.response);
+    axios
+      .post(process.env.REACT_APP_SEGURANCA_API + '/usuarios', user)
+      .then(async res => {
+        // --> Consulta Usuario
+        axios
+          .get(
+            process.env.REACT_APP_SEGURANCA_API +
+              '/usuarios?email=' +
+              user.email,
+          )
+          .then(async res => {
+            const pessoa = {
+              id_usuario: res.data.id,
+              nome: userData.name,
+              tipo_pessoa: 'PF',
+              tipo_cadastro: 'VISITANTE',
+            };
+            await axios
+              .post(process.env.REACT_APP_PESSOAS_API + '/pessoas', pessoa)
+              .then(async res => {
+                await pessoas_api.post(`/politicas/${res.data.id}`);
+                var emBase64 = btoa(userData.email);
+                window.location.replace('/confirmacao?q=' + emBase64);
+              })
+              .catch(async error => {
+                if (error.response.data.message)
+                  console.error(error.response.data.message);
+                else console.log(error);
+              });
+          })
+          .catch(async error => {
+            console.error(error);
+          });
+      })
+      .catch(async error => {
+        if (error.response) console.error(error.response);
+        if (
+          error.response.data.message.includes(
+            'Password did not conform with policy: Password must have symbol characters',
+          )
+        ) {
+          setErroSenha(
+            'A senha deve possuir pelo menos 8 caracteres, dígitos, letras maíusculas e minúsculas e caractere especial.',
+          );
+        }
+        if (
+          error?.response?.data?.message?.includes(
+            'An account with the given email already exists.',
+          )
+        ) {
+          setErrorEmail('Já existe uma conta com o email fornecido!');
+        }
         if (error.response.status === 422) {
           if (error.response.data.message.includes('validation error detected'))
             setErrorEmail(
               'Erro ao prosseguir com o cadastro. Preencha o campo com um formato válido.',
             );
           else setErrorEmail(error.response.data.message);
-          setUserData({ ...userData, email: '' });
         }
-        if (error.response.status === 500) {
-          if (
-            error.response.data.message.includes(
-              'An account with the given email already exists',
-            )
-          ) {
-            setErrorEmail('Erro esse email já está cadastrado.');
-          }
-          setUserData({ ...userData, email: '' });
-        }
-      } else {
-        console.log(error);
-      }
-    }
+      });
   }
 
   function handleSubmit(event: any) {
