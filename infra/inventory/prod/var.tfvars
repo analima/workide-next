@@ -1,4 +1,4 @@
-name= "gyan-next"
+name= "workidetechnology-next"
 env= "prod"
 region = "us-west-2"
 vpc="vpc-0bd46e85953144f27"
